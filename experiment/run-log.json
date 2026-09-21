@@ -13,7 +13,7 @@
   "git": {
     "starting_commit": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
     "branch": "gemini_3.8_flash_medium_single_agent_classic_sdd",
-    "final_commit": "1eaf137ba55d450f44d82d5a3ede03b11c943576",
+    "final_commit": "ea15ce4b4f13ed89801cba78deb51f051390d1a4",
     "commits": [
       { "sha": "ee30dcc", "message": "docs(ac): complete Phase 1 Acceptance Criteria and initialize experiment run log" },
       { "sha": "09f7902", "message": "docs(spec): complete Phase 2 Technical Specification" },
