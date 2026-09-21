@@ -49,6 +49,24 @@
       ],
       "commit": "81d2baff0681cf222afd1c919fa65608c9e0a007",
       "notes": "78 user-story acceptance criteria plus 17 cross-cutting criteria derived from PROJECT_CONSTRAINTS.md and FORM_SCHEMA.md. No clarification required from a human."
+    },
+    {
+      "phase": 2,
+      "name": "Specification",
+      "startedUtc": "2026-09-21T10:36:54Z",
+      "completedUtc": "2026-09-21T10:41:19Z",
+      "artefacts": [
+        "docs/specification.md"
+      ],
+      "commit": "ce8fd804e07a175ee1b450ad2e6dc3fb53aed84d",
+      "architectureDecisions": [
+        "ADR-001 layered modular monolith",
+        "ADR-002 SQLite as the relational database",
+        "ADR-003 multi-page frontend without a UI framework",
+        "ADR-004 configuration-driven conference options",
+        "ADR-005 self-contained anti-automation instead of third-party CAPTCHA"
+      ],
+      "notes": "No production code or tests written in this phase. No clarification required from a human."
     }
   ],
   "events": [],

@@ -1,0 +1,26 @@
+{
+  "name": "conference-registration-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Conference registration system (external participant and student registration).",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "lint": "npm run lint --workspace backend && npm run lint --workspace frontend",
+    "typecheck": "npm run typecheck --workspace backend && npm run typecheck --workspace frontend",
+    "test": "npm run test --workspace backend && npm run test --workspace frontend",
+    "test:coverage": "npm run test:coverage --workspace backend",
+    "dev": "npm run dev --workspace backend & npm run dev --workspace frontend"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "overrides": {
+    "exceljs": {
+      "uuid": "^11.1.1"
+    }
+  }
+}

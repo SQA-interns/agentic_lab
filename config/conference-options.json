@@ -1,0 +1,90 @@
+{
+  "conferenceName": "Conference 2026",
+  "privacyConsentText": "I agree that my personal data may be processed for the purpose of organising the conference, in accordance with the conference privacy notice.",
+  "groups": [
+    {
+      "id": "workshops",
+      "displayName": "Workshops",
+      "options": [
+        {
+          "id": "workshop-ai",
+          "displayName": "Workshop: Introduction to artificial intelligence",
+          "active": true,
+          "availableTo": ["external", "student"]
+        },
+        {
+          "id": "workshop-security",
+          "displayName": "Workshop: Secure application development",
+          "active": true,
+          "availableTo": ["external", "student"]
+        },
+        {
+          "id": "workshop-industry-round-table",
+          "displayName": "Workshop: Industry round table",
+          "active": true,
+          "availableTo": ["external"]
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "displayName": "Events",
+      "options": [
+        {
+          "id": "event-opening-ceremony",
+          "displayName": "Opening ceremony",
+          "active": true,
+          "availableTo": ["external", "student"]
+        },
+        {
+          "id": "event-social-evening",
+          "displayName": "Social evening",
+          "active": true,
+          "availableTo": ["external", "student"]
+        }
+      ]
+    },
+    {
+      "id": "meals",
+      "displayName": "Meals",
+      "options": [
+        {
+          "id": "meal-lunch-day-1",
+          "displayName": "Lunch, day 1",
+          "active": true,
+          "availableTo": ["external", "student"]
+        },
+        {
+          "id": "meal-lunch-day-2",
+          "displayName": "Lunch, day 2",
+          "active": true,
+          "availableTo": ["external", "student"]
+        },
+        {
+          "id": "meal-conference-dinner",
+          "displayName": "Conference dinner",
+          "active": true,
+          "availableTo": ["external"]
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "displayName": "Other activities",
+      "options": [
+        {
+          "id": "other-guided-campus-tour",
+          "displayName": "Guided campus tour",
+          "active": true,
+          "availableTo": ["external", "student"]
+        },
+        {
+          "id": "other-poster-session",
+          "displayName": "Poster session",
+          "active": false,
+          "availableTo": ["external", "student"]
+        }
+      ]
+    }
+  ]
+}
