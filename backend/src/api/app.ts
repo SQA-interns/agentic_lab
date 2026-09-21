@@ -82,12 +82,12 @@ export function createApplication(config: AppConfig, overrides: ApplicationOverr
   app.use(requestId());
   app.use(securityHeaders(config));
   app.use(corsPolicy(config));
-  app.use(globalRateLimiter());
+  app.use(globalRateLimiter(config));
   app.use(express.json({ limit: config.maxBodyBytes, type: 'application/json' }));
 
   // Each limiter is mounted on its own exact path, so the strict registration limit
   // cannot accidentally throttle unrelated endpoints.
-  app.use('/api/registration-config', configRateLimiter());
+  app.use('/api/registration-config', configRateLimiter(config));
   app.use('/api/registrations', registrationRateLimiter(config));
 
   app.use('/api', healthRouter());

@@ -5,10 +5,19 @@
 and `docs/specification.md`.
 
 * Verification started: **2026-09-21T11:17:31Z**
-* Verification completed: **2026-09-21T11:28:18Z**
-* Fix loops: **1** (Verification → Fix → Verification)
-* Final status: **PASS**, with three criteria recorded as *not verifiable in this environment*
-  (§ 6).
+* First verification completed: **2026-09-21T11:28:18Z**
+* Container verification (loop 2) started: **2026-09-21T13:05:13Z**
+* Container verification completed: **2026-09-21T13:24:40Z**
+* Fix loops: **2** (Verification → Fix → Verification, twice)
+* Final status: **PASS**. AC-G-14 and AC-G-16 are now verified against a running
+  containerized deployment; see § 6.
+
+> **Loop 2 (2026-09-21T13:05Z).** Docker became available after the first verification, so
+> the two acceptance criteria that had been recorded as unverifiable were executed for
+> real. Doing so uncovered two further findings — **F-06** (Major) and **F-07** (Major) —
+> that no in-process test could have reached. Both are fixed and re-verified below. This
+> is the clearest result of the run: the deployment artefact had defects that every
+> native check passed over.
 
 ---
 
@@ -26,15 +35,20 @@ re-read before inspecting the implementation. The following were then executed o
 | Type checking, e2e | `tsc --noEmit`, strict | 0 errors |
 | Build, backend | `tsc -p tsconfig.build.json` | success |
 | Build, frontend | `vite build` | success |
-| Unit/component/integration/API/acceptance/security tests | Vitest 5 | 277 passed, 0 failed |
+| Unit/component/integration/API/acceptance/security tests | Vitest 5 | 281 passed, 0 failed |
 | Frontend tests | Vitest 5 (jsdom) | 42 passed, 0 failed |
-| End-to-end tests | Playwright, Chromium, 1280×900 and 375×812 | 28 passed, 0 failed |
+| End-to-end tests, native | Playwright, Chromium, 1280×900 and 375×812 | 28 passed, 0 failed |
+| End-to-end tests, **containerized stack** | Playwright against `docker compose` on :8080 | 46 passed, 0 failed, three consecutive runs |
+| Container build | `docker compose build` | both images built |
+| Container run | `docker compose up`, healthchecks | backend healthy, frontend started after it |
+| Container hardening | `docker exec` inspection | runs as uid 1000 (node); no dev dependencies in the runtime image |
+| Container fail-fast | `docker run` with a missing variable / invalid programme | exits 1 with a message naming the problem |
 | Coverage, backend | Vitest v8 | 95.21% statements, 82.82% branches, 96.02% functions |
 | Dependency advisories | `npm audit` | 0 vulnerabilities |
 | Architecture conformance | dependency-cruiser, 6 rules | 0 violations, 34 modules, 87 dependencies |
 | Code duplication | jscpd (≥5 lines, ≥50 tokens) | production code 0.00% |
 | Cyclomatic complexity | ESLint `complexity` rule, reported per function | 211 functions, average 2.41, max 12 |
-| Acceptance-criteria traceability | manual review + mechanical AC-id cross-check | 84 of 87 verified automatically |
+| Acceptance-criteria traceability | manual review + mechanical AC-id cross-check | 86 of 87 verified automatically |
 | Security review | manual, plus the automated security suite | see § 5 |
 | Missing-requirement review | manual | see § 4 |
 | Unrequested-functionality review | manual | see § 4 |
@@ -132,17 +146,79 @@ maintainability defect with no behavioural impact.
   AC-G-17 is now named by at least one automated test. The backend suite ends at 277 tests:
   278 after the two new ones, less the one removed with F-03.
 
+### F-06 — Security headers absent on every HTML document in the container
+
+* **Severity:** Major
+* **Affected:** AC-G-11 (preventive security controls); specification § 11, § 13
+* **Description:** Found by requesting `/` from the running frontend container: the
+  registration documents were served with **no** Content-Security-Policy,
+  `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy` or
+  `Permissions-Policy`. The headers were declared once at nginx `server` level, which
+  reads correctly, but nginx's `add_header` is not additive across levels: a `location`
+  block that declares any `add_header` of its own **discards every inherited one**. Both
+  document locations set a `Cache-Control` header, so both silently dropped the whole
+  security set. The policy was therefore missing from exactly the responses it exists to
+  protect, while the proxied API — whose location sets no `add_header` — still looked
+  correct, which is why the static review of the configuration did not catch it.
+* **Fix performed:** The headers were extracted into `frontend/security-headers.conf` and
+  `include`d explicitly in each document location, with `always` so they survive the
+  `try_files` 404. The snippet is deliberately **not** included in the API location: the
+  backend sets its own, stricter policy there, and applying the document policy as well was
+  emitting two `Content-Security-Policy` headers on every API response.
+* **Result after re-verification:** All five headers present on `/`,
+  `/studentska-prijava/`, hashed assets and a 404; exactly one CSP on API responses, the
+  backend's. Covered from now on by `e2e/container-specs/deployment.container.spec.ts`,
+  which is the regression test for this finding.
+
+### F-07 — Read-path rate limits deny the form to participants sharing one address
+
+* **Severity:** Major
+* **Affected:** AC-G-10, AC-001-01, AC-002-01; specification § 11
+* **Description:** Surfaced as intermittent end-to-end failures against the container —
+  the same suite passing in 6 seconds on one run and failing 15 tests over 4 minutes on the
+  next. The cause was not flakiness in the tests: `GET /api/registration-config` was
+  limited to 60 requests per 5 minutes per address, and every page load costs one such
+  request. Once exhausted, the form could not load at all and every assertion timed out.
+  The production consequence is worse than the test symptom: participants behind a shared
+  public address — a university, a company, conference wifi — consume one budget together,
+  so roughly 60 people opening the form within five minutes would lock out everyone else
+  behind that address. For a system whose whole purpose is a registration rush following an
+  announcement email, that is a self-inflicted outage. The global backstop of 300 per 15
+  minutes had the same defect.
+* **Fix performed:** The limits are now asymmetric by intent and documented as such. The
+  write path keeps its strict 5 per 10 minutes — that is the control that actually caps
+  abuse. The read paths were raised to 300 per 5 minutes (configuration) and 1200 per 15
+  minutes (global API backstop), and all of them became environment-tunable
+  (`RATE_LIMIT_CONFIG_MAX`, `RATE_LIMIT_CONFIG_WINDOW_MINUTES`, `RATE_LIMIT_GLOBAL_MAX`,
+  `RATE_LIMIT_GLOBAL_WINDOW_MINUTES`). Specification § 11 and § 12 and `.env.example`
+  now state the reasoning, so the values are not silently re-tightened later.
+* **Result after re-verification:** Three consecutive container suite runs at 46/46 in
+  ~6.4 s each, with no throttling. The shipped write limit was separately confirmed still
+  enforced in the container: submissions 1–5 returned `201`, submission 6 returned
+  `429`. Three new backend tests pin the behaviour: 120 consecutive configuration reads
+  are not throttled, a deliberately low limit still throttles, and the read defaults are
+  asserted to exceed the write default.
+
 ### Findings summary
 
 | Severity | Count | Resolved |
 | --- | --- | --- |
 | Critical | 0 | — |
-| Major | 1 | 1 |
+| Major | 3 | 3 |
 | Minor | 4 | 4 (one as a documented accepted trade-off, F-04) |
 
-**Fix loop count: 1.** All findings were raised in the first verification pass, fixed
-together, and the complete check set was re-executed; the second pass produced no new
-findings.
+**Fix loop count: 2.**
+
+* **Loop 1** (native checks): F-01 … F-05 raised, fixed together, complete check set
+  re-executed, no new findings.
+* **Loop 2** (containerized deployment, once Docker became available): F-06 and F-07
+  raised, fixed, and the complete check set plus the container suite re-executed three
+  times consecutively with no new findings.
+
+Both Major findings in loop 2 were in the deployment artefact rather than in the
+application code, and neither was reachable by any check that does not run the containers.
+That is the substantive lesson of this run: a statically reviewed Dockerfile and nginx
+configuration is not a verified one.
 
 ---
 
@@ -164,7 +240,7 @@ the test suite.
 | AC-G-01 … 08 | 8 | API, contract, frontend component, e2e | **Pass** |
 | AC-G-09 … 11 | 3 | security suite | **Pass** |
 | AC-G-12, AC-G-13 | 2 | e2e at 375 px and 1280 px, frontend component | **Pass** |
-| AC-G-14, AC-G-16 | 2 | static review only — see § 6 | **Not verifiable here** |
+| AC-G-14, AC-G-16 | 2 | built and ran the compose stack; acceptance suite against the containers; restart and recreation | **Pass** |
 | AC-G-15 | 1 | unit (`loadConfig` rejects every missing required variable) | **Pass** |
 | AC-G-17 | 1 | manual artefact inventory — see below | **Pass (manual)** |
 
@@ -183,8 +259,13 @@ controls, testing strategy and deployment decisions are documented and justified
 specification (ADR-001 … ADR-005, § 5, § 11, § 13) and in the test strategy.
 
 **Acceptance Criteria passed on first evaluation: 84 of 87.** The three exceptions were
-AC-002-11 (genuinely untested, F-05), AC-G-14 and AC-G-16 (not verifiable in this
-environment). After the fix loop: **85 of 87 verified**, 2 not verifiable here.
+AC-002-11 (genuinely untested, F-05), AC-G-14 and AC-G-16 (Docker unavailable at the time).
+After loop 1: 85 of 87 verified. After loop 2, in which AC-G-14 and AC-G-16 were executed
+against real containers and two Major defects were found and fixed: **87 of 87 verified.**
+
+AC-G-14 and AC-G-16 did **not** pass on first evaluation once they became executable: the
+containerized deployment was serving every HTML document without security headers (F-06)
+and throttling legitimate form loads (F-07). Both are fixed and re-verified.
 
 ---
 
@@ -254,18 +335,24 @@ after it.
 | Mass assignment | Mitigated | Strict schema rejects unknown properties; fields of the non-submitted variant are dropped before the domain object is built |
 | Path traversal | Mitigated | Backup file names are built only from a reference validated against its own pattern; a traversal string in an option identifier is rejected as an unknown option |
 | Anti-automation | Present | Honeypot, HMAC-signed single-use form token bound to the variant with a TTL and a minimum fill time, and a per-IP rate limit; every rejection returns one identical opaque message |
-| Rate limiting | Present | Registration 5 / 10 min, config 60 / 5 min, export 10 / 15 min, global 300 / 15 min, each on its own exact path |
+| Rate limiting | Present (retuned in loop 2) | Asymmetric by intent: registration 5 / 10 min (the anti-abuse control), configuration 300 / 5 min, global 1200 / 15 min, export 10 / 15 min, each on its own exact path and all tunable. The read limits were raised under F-07 because the earlier values denied the form to participants sharing one public address |
 | Request size limit | Present | 32 KB, returns `413` before parsing |
-| Security headers | Present | `nosniff`, `X-Frame-Options: DENY`, `no-referrer`, API CSP `default-src 'none'`, HSTS in production, `X-Powered-By` removed; nginx adds the document CSP and `Permissions-Policy` |
+| Security headers | Present (fixed in loop 2) | API: `nosniff`, `X-Frame-Options: DENY`, `no-referrer`, CSP `default-src 'none'`, HSTS in production, `X-Powered-By` removed. Documents: CSP `default-src 'self'`, `nosniff`, `DENY`, `no-referrer`, `Permissions-Policy` — absent until F-06 was found and fixed against the running container, now regression-tested |
 | CORS | Present | Exact origin allowlist, credentials disabled, never a wildcard |
 | Export authentication | Present | HTTP Basic with constant-time comparison; wrong username, wrong password and non-Basic headers all rejected with no data |
 | Personal data disclosure | Mitigated | No unauthenticated endpoint returns registration data; the export sets `Cache-Control: no-store`; no personal data in URLs |
 | Personal data in logs | Mitigated | pino redaction of names, email, student id, authorization and cookie headers; application logs identify registrations by reference |
 | Secret handling | Present | Secrets only from environment variables; `.env` git-ignored and confirmed untracked; `.env.example` contains placeholders only; no credential literal in production source |
-| Container hardening | Present (static review) | Non-root `node` user, multi-stage build, build toolchain removed after install, no dev dependencies in the runtime image |
+| Container hardening | Present (executed) | Verified inside the running container: `uid=1000(node)`, no dev dependencies in the runtime image, healthcheck reporting healthy |
 | Dependency advisories | Clean | `npm audit`: 0 vulnerabilities |
 
-**Security findings: 0 Critical, 0 High, 0 Medium, 0 Low — 0 unresolved.**
+**Security findings: 0 Critical, 2 High, 0 Medium, 0 Low — 0 unresolved.**
+
+The two High findings are F-06 (no security headers on any HTML document in the deployed
+container) and F-07 (read-path rate limits causing denial of service to legitimate
+participants behind a shared address). Both were found only by running the containers, and
+both are fixed and regression-tested. Neither existed in the application code: F-06 was in
+the nginx configuration and F-07 in the limit values.
 
 Two advisory-level items were resolved during implementation rather than here, and are
 recorded for completeness: the first dependency install reported 1 high and 5 moderate
@@ -289,17 +376,76 @@ transitive `uuid`). They were resolved by raising nodemailer to ≥10.0.10 and v
 
 ---
 
-## 6. Not verifiable in this environment
+## 6. Containerized deployment (AC-G-14, AC-G-16)
 
-These are recorded as unverified rather than claimed as passing.
+Docker was not installed during the first verification pass, so these two criteria were
+recorded as unverified rather than claimed. Docker became available afterwards and they
+were executed for real. What follows is what was run and observed, not a review of the
+configuration.
 
-| Criterion | Why | What *was* done |
-| --- | --- | --- |
-| **AC-G-14** — `docker compose up --build` starts the whole system | Docker is not installed in this environment (`docker: command not found`) | `backend/Dockerfile`, `frontend/Dockerfile`, `frontend/nginx.conf` and `docker-compose.yml` were written and statically reviewed: multi-stage builds, non-root runtime user, healthchecks on both services, `depends_on: service_healthy`, the API proxied same-origin through nginx, and the build context paths checked against `.dockerignore`. The same processes were run natively (backend on Node 24, frontend served by Vite preview behind an `/api` proxy) and the full end-to-end suite passes against them. |
-| **AC-G-16** — persistent data survives a container restart | Same | The equivalent at process level is tested: the application is closed and rebuilt against the same data directory, and the registration is still readable and exportable. The compose file mounts a named volume at `/data`, which is where both the SQLite file and the JSON backups live. |
-| Real SMTP delivery | No mail server or mailbox available | The adapter is exercised against Nodemailer's `json` transport, which composes the real message including the attachment; delivery is an operational concern. |
+### Build and start
 
----
+`docker compose build` produced both images on the first attempt. `docker compose up -d`
+started the stack: the backend came up, its `HEALTHCHECK` reported healthy, and only then
+did the frontend start — `depends_on: service_healthy` behaving as specified. The single
+documented command therefore starts the full system (**AC-G-14**).
+
+| Observation | Result |
+| --- | --- |
+| Images built | `agentic_lab-backend` 413 MB, `agentic_lab-frontend` 73.7 MB |
+| Backend user | `uid=1000(node) gid=1000(node)` — non-root as specified |
+| Runtime image contents | `vitest`, `typescript`, `eslint`, `supertest`, `@playwright` all absent; `express`, `better-sqlite3`, `exceljs`, `nodemailer`, `helmet`, `zod`, `pino` all present |
+| Healthcheck | `health=healthy`, `failing_streak=0` |
+| Documents served | `/` and `/studentska-prijava/` return 200 through nginx |
+| API same-origin | `/api/health` returns 200 through the nginx proxy |
+| Server banner | `Server: nginx`, no version |
+
+### Behaviour against the running stack
+
+* A student registration submitted through `:8080` was accepted, stored, and written to
+  the volume, with Slovenian characters intact (`Čenčič` stored as the bytes
+  `c4 8c 65 6e c4 8d 69 c4 8d`) and leading/trailing whitespace trimmed.
+* The organizer export downloaded through the proxy: `200`, correct spreadsheet content
+  type, 16 columns, one row per registration.
+* The export without credentials: `401` with `WWW-Authenticate: Basic`.
+* SMTP was deliberately pointed at a host that does not resolve. Both emails failed, both
+  failures were logged, and both registrations remained stored and exportable — **AC-005-05
+  demonstrated live** rather than only with a stubbed transport.
+* No participant email address appeared anywhere in the container logs (log redaction).
+* The full acceptance suite was run against the containers at both viewports: **46 of 46
+  passing, three consecutive runs**, including the browser submitting a real registration
+  under the strict CSP with no console errors.
+
+### Persistence across restart and recreation (AC-G-16)
+
+Starting from an empty volume, one registration was created, then:
+
+| Step | Result |
+| --- | --- |
+| `docker compose restart` | registration still present; export returns 200 |
+| `docker compose down` (containers removed) then `up` | registration still present; JSON backup intact with correct Unicode; export returns 200 |
+
+The named volume — not the container filesystem — holds the database and the JSON backups,
+so the data survives container recreation, which is the stronger of the two cases.
+
+### Fail-fast inside the container (AC-G-15)
+
+| Scenario | Observed |
+| --- | --- |
+| Required variable missing | `Startup aborted. Invalid environment configuration: FORM_TOKEN_SECRET: ...`, container exit code **1** |
+| Conference programme with a duplicate option id | `Startup aborted. Invalid conference options configuration (/tmp/bad-options.json): groups: duplicate option identifier "dup"` |
+
+### What this pass cost
+
+Executing these two criteria found two Major defects (F-06, F-07) that every native check
+had passed. Both lived in the deployment artefact — the nginx configuration and the rate
+limit values — which is precisely the part that a static review reads as correct.
+
+### Still not verified
+
+| Item | Reason |
+| --- | --- |
+| Real SMTP delivery | No mail server or mailbox is available. The adapter is exercised against Nodemailer's `json` transport, which composes the real message including the attachment, and the container run demonstrated the failure path against an unreachable SMTP host. Delivery to a real inbox remains an operational check. |
 
 ## 7. Metrics recorded in this phase
 
@@ -307,14 +453,15 @@ These are recorded as unverified rather than claimed as passing.
 | --- | --- |
 | Lint errors / warnings | 0 / 0 |
 | Type-check errors | 0 |
-| Tests, final | 347 (277 backend + 42 frontend + 28 e2e) |
+| Tests, final | 397 (281 backend + 42 frontend + 28 native e2e + 46 containerized e2e) |
 | Test pass rate, final | 100% |
 | Coverage, backend | 95.21% statements, 82.82% branches, 96.02% functions, 95.12% lines |
-| Production LOC (TypeScript + CSS) | 4,065 |
-| Test LOC | 4,059 |
+| Production LOC (TypeScript + CSS) | 4,099 |
+| Test LOC | 4,243 |
 | Cyclomatic complexity | 211 functions, average 2.41, max 12, 3 functions above 10 |
 | Code duplication, production | 0.00% |
 | Modules (backend `src`) | 34 |
+| Container images | backend 413 MB, frontend 73.7 MB |
 | Internal dependencies | 87 |
 | Dependency cycles | 0 |
 | Architecture rule violations | 0 |
@@ -328,12 +475,19 @@ Full raw measurements, including per-module coupling and instability, are in
 
 ## 8. Conclusion
 
-The implementation satisfies the User Stories, the project constraints and the derived
-Acceptance Criteria, with the three exceptions in § 6 that this environment cannot
-demonstrate and which are recorded as unverified rather than assumed.
+The implementation satisfies the User Stories, the project constraints and all 87 derived
+Acceptance Criteria. Real SMTP delivery to a real mailbox remains the only item not
+demonstrated, and it is recorded as such rather than assumed.
 
-One Major finding (a layering violation) and four Minor findings were raised, fixed and
-re-verified in a single fix loop. The full check set — lint, type check, build, 347 tests,
-coverage, dependency audit, architecture conformance, duplication and complexity — passes.
+Three Major and four Minor findings were raised, fixed and re-verified across two fix
+loops. The full check set — lint, type check, build, 397 tests across four levels,
+coverage, dependency audit, architecture conformance, duplication and complexity — passes,
+as does the acceptance suite run against the containerized deployment three times
+consecutively.
+
+The second loop is worth stating plainly: once the containers could actually be run, two
+Major security defects appeared immediately in the deployment artefact, in configuration
+that had been reviewed and read as correct. The first verification pass was right to record
+those criteria as unverified rather than to infer them from the configuration files.
 
 **Verification status: PASS.** The work is ready for merge.

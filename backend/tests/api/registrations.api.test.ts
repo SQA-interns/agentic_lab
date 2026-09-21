@@ -311,4 +311,32 @@ describe('POST /api/registrations — rate limiting (AC-G-10)', () => {
       app.dispose();
     }
   });
+
+  it('lets many participants behind one shared address open the form (regression for F-07)', async () => {
+    // One page load costs one configuration request. A limit tight enough to trip here
+    // would deny the form to everyone behind a university or company NAT during a
+    // registration rush, which is a worse failure than serving a public document twice.
+    const app = createTestApplication();
+    try {
+      for (let attempt = 0; attempt < 120; attempt += 1) {
+        const response = await request(app.app).get('/api/registration-config?variant=external');
+        expect(response.status, `request ${attempt + 1} was throttled`).toBe(200);
+      }
+    } finally {
+      app.dispose();
+    }
+  });
+
+  it('still throttles the configuration endpoint once its own limit is reached', async () => {
+    const app = createTestApplication({ env: { RATE_LIMIT_CONFIG_MAX: '3' } });
+    try {
+      const statuses: number[] = [];
+      for (let attempt = 0; attempt < 5; attempt += 1) {
+        statuses.push((await request(app.app).get('/api/registration-config?variant=external')).status);
+      }
+      expect(statuses).toEqual([200, 200, 200, 429, 429]);
+    } finally {
+      app.dispose();
+    }
+  });
 });

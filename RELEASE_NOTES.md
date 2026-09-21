@@ -114,11 +114,13 @@ opaque message. `npm audit` reports no vulnerabilities.
 with no horizontal overflow, labelled inputs, error messages linked to their fields, a status
 region for the confirmation, full keyboard operability and visible focus outlines.
 
-**Deployment.** `docker compose up --build` builds and starts both services. Both images are
-multi-stage; the backend runs as a non-root user, both declare healthchecks, and a named
-volume at `/data` holds the database and the JSON backups so registrations survive container
-restart and recreation. All environment-specific values come from the environment, and the
-backend refuses to start with a clear message when a required one is missing.
+**Deployment.** `docker compose up --build` builds and starts both services; this was run,
+not just written. The backend comes up, reports healthy, and only then does the frontend
+start. The backend image runs as a non-root user and contains no development dependencies.
+A named volume at `/data` holds the database and the JSON backups, verified to survive both
+a container restart and a full `down`/`up` recreation. All environment-specific values come
+from the environment, and the backend exits with code 1 and a message naming the problem
+when a required value is missing or the conference programme is invalid.
 
 ---
 
@@ -137,7 +139,7 @@ change. Decisions and their trade-offs are recorded as ADR-001 … ADR-005 in
 
 | | |
 | --- | --- |
-| Tests | 347 passing (277 backend, 42 frontend, 28 browser end-to-end at two viewports) |
+| Tests | 397 passing (281 backend, 42 frontend, 28 native browser end-to-end, 46 against the containerized stack) |
 | Backend coverage | 95.21% statements, 82.82% branches, 96.02% functions |
 | Lint | 0 errors, 0 warnings |
 | Type check | 0 errors, strict mode |
@@ -145,18 +147,20 @@ change. Decisions and their trade-offs are recorded as ADR-001 … ADR-005 in
 | Architecture rule violations | 0; 0 dependency cycles |
 | Production code duplication | 0.00% |
 | Cyclomatic complexity | average 2.41, maximum 12 |
-| Verification findings | 1 Major, 4 Minor — all resolved or documented; 0 Critical |
+| Verification findings | 3 Major, 4 Minor — all resolved or documented; 0 Critical |
 
-Verification details, including three criteria this environment could not demonstrate, are in
+All 87 acceptance criteria are verified. Verification details, including the two Major
+defects that only running the containers could reveal, are in
 [`docs/verification-report.md`](docs/verification-report.md).
 
 ---
 
 ## Known limitations
 
-* **Docker was not available in the build environment**, so `docker compose up --build` and
-  volume persistence across container restarts were reviewed statically rather than executed.
-  The same processes were run natively and the full end-to-end suite passes against them.
+* **Real SMTP delivery to a mailbox is not demonstrated.** No mail server was available. The
+  message composition including the attachment is tested, and the container run demonstrated
+  the failure path against an unreachable SMTP host, so only delivery to a real inbox remains
+  an operational check.
 * **Single backend instance.** The used-token cache and the rate-limit counters are
   per-process; running several instances would weaken both until a shared store is added.
 * **TLS terminates upstream.** The application expects a TLS-terminating reverse proxy;
@@ -167,6 +171,24 @@ Verification details, including three criteria this environment could not demons
   point.
 
 ---
+
+## Fixed before release, found by running the containers
+
+Two Major defects existed in the deployment artefact and were invisible to every check that
+did not start the containers. Both are fixed and regression-tested.
+
+* **No security headers on any served HTML document.** The Content-Security-Policy and the
+  four other security headers were declared once at nginx `server` level. nginx does not
+  inherit `add_header` into a location that declares one of its own, and both document
+  locations set `Cache-Control` — so the documents, the very thing the policy protects, were
+  served bare, while the proxied API still looked correct. The headers are now included
+  explicitly per location.
+* **Read-path rate limits denied the form to participants sharing one address.** Loading the
+  form costs one configuration request, and the limit was 60 per five minutes per address.
+  Everyone behind a university or company NAT shares that budget, so a registration rush
+  would have locked them out. The read limits are now 300 per five minutes and a 1200 per
+  fifteen minutes global backstop, all tunable; the strict 5 per 10 minutes on submissions —
+  the control that actually caps abuse — is unchanged.
 
 ## Upgrading
 

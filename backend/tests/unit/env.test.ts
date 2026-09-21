@@ -29,6 +29,29 @@ describe('loadConfig', () => {
     expect(config.corsAllowedOrigins).toEqual(['http://localhost:8080']);
   });
 
+  it('defaults the read limits far above the write limit, for shared public addresses', () => {
+    const config = loadConfig(minimal);
+    expect(config.rateLimit.registrationMax).toBe(5);
+    expect(config.rateLimit.configMax).toBe(300);
+    expect(config.rateLimit.globalMax).toBe(1200);
+    expect(config.rateLimit.configMax).toBeGreaterThan(config.rateLimit.registrationMax);
+    expect(config.rateLimit.globalMax).toBeGreaterThan(config.rateLimit.configMax);
+  });
+
+  it('allows every rate limit to be tuned per deployment', () => {
+    const config = loadConfig({
+      ...minimal,
+      RATE_LIMIT_CONFIG_MAX: '42',
+      RATE_LIMIT_CONFIG_WINDOW_MINUTES: '2',
+      RATE_LIMIT_GLOBAL_MAX: '99',
+      RATE_LIMIT_GLOBAL_WINDOW_MINUTES: '3',
+    });
+    expect(config.rateLimit.configMax).toBe(42);
+    expect(config.rateLimit.configWindowMs).toBe(120_000);
+    expect(config.rateLimit.globalMax).toBe(99);
+    expect(config.rateLimit.globalWindowMs).toBe(180_000);
+  });
+
   it('derives the database file and backup directory from the data directory', () => {
     const config = loadConfig({ ...minimal, DATA_DIR: './tmp-data' });
     expect(config.databaseFile.endsWith('registrations.db')).toBe(true);

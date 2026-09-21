@@ -1,9 +1,13 @@
 /**
  * Rate limiting (specification § 11).
  *
- * Per-IP limits sized for human use: a participant registers once, an organizer exports
- * occasionally. The registration limit is the main brake on scripted submissions that
- * clear the other anti-automation controls (AC-G-10).
+ * The limits are asymmetric on purpose. Creating a registration is the only action worth
+ * abusing, so the write endpoint is strict. The read-only endpoints must stay generous,
+ * because many legitimate participants share one public address behind NAT — a
+ * university, a company or conference wifi — and a limit tight enough to be interesting
+ * to an attacker would deny the form to everyone behind that address during a
+ * registration rush. Denying the form is a worse outcome than serving one extra copy of
+ * a public configuration document.
  */
 import rateLimit, { type RateLimitRequestHandler } from 'express-rate-limit';
 
@@ -24,6 +28,7 @@ function limiter(windowMs: number, max: number, code: string, message: string): 
   });
 }
 
+/** The real anti-abuse control: submissions per address (AC-G-10). */
 export function registrationRateLimiter(config: AppConfig): RateLimitRequestHandler {
   return limiter(
     config.rateLimit.registrationWindowMs,
@@ -33,15 +38,23 @@ export function registrationRateLimiter(config: AppConfig): RateLimitRequestHand
   );
 }
 
-export function configRateLimiter(): RateLimitRequestHandler {
+/**
+ * Form configuration reads.
+ *
+ * One page load costs one request here, so this limit is effectively a cap on how many
+ * people behind a shared address may open the form. It is a backstop against scripted
+ * token farming only; the registration limit above is what actually caps submissions.
+ */
+export function configRateLimiter(config: AppConfig): RateLimitRequestHandler {
   return limiter(
-    5 * 60_000,
-    60,
+    config.rateLimit.configWindowMs,
+    config.rateLimit.configMax,
     'RATE_LIMITED',
     'Too many requests. Please try again later.',
   );
 }
 
+/** Organizer-only endpoint: a human downloading a spreadsheet occasionally. */
 export function exportRateLimiter(): RateLimitRequestHandler {
   return limiter(
     15 * 60_000,
@@ -51,6 +64,12 @@ export function exportRateLimiter(): RateLimitRequestHandler {
   );
 }
 
-export function globalRateLimiter(): RateLimitRequestHandler {
-  return limiter(15 * 60_000, 300, 'RATE_LIMITED', 'Too many requests. Please try again later.');
+/** Blanket backstop across the whole API, sized for the shared-address case. */
+export function globalRateLimiter(config: AppConfig): RateLimitRequestHandler {
+  return limiter(
+    config.rateLimit.globalWindowMs,
+    config.rateLimit.globalMax,
+    'RATE_LIMITED',
+    'Too many requests. Please try again later.',
+  );
 }

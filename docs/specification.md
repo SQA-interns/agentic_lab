@@ -627,7 +627,7 @@ the confirmation region has `role="status"` and receives focus; full keyboard op
 | Spreadsheet injection | Formula-leading cell values are prefixed with `'` in the export. | AC-008-08 |
 | Mass assignment | Strict schemas reject unknown properties; only the variant's own fields are mapped to the domain object. | AC-G-06, AC-001-13 |
 | Export access | HTTP Basic auth with constant-time comparison; export-specific rate limit; `Cache-Control: no-store`. | AC-008-07 |
-| Rate limiting | `POST /api/registrations`: 5 requests / 10 min / IP. `GET /api/registration-config`: 60 / 5 min / IP. `GET /api/export/*`: 10 / 15 min / IP. Global fallback 300 / 15 min / IP. Standard `RateLimit-*` headers, `429` + `Retry-After`. | AC-G-10 |
+| Rate limiting | Per client address, asymmetric by design. Write: `POST /api/registrations` 5 / 10 min — the actual anti-abuse control. Reads: `GET /api/registration-config` 300 / 5 min and a global API backstop of 1200 / 15 min — deliberately loose, because one page load costs one configuration request and many legitimate participants share a single public address behind NAT; a read limit tight enough to deter an attacker denies the form to everyone behind that address during a registration rush, which is the worse failure. Organizer export: 10 / 15 min. All four are environment-tunable. Standard `RateLimit-*` headers, `429` + `Retry-After`. | AC-G-10 |
 | Anti-automation | (a) **Honeypot** `website` — any non-empty value rejects. (b) **Signed form token**: `base64url(JSON{nonce,variant,issuedAt})` + `.` + `base64url(HMAC-SHA256(payload, FORM_TOKEN_SECRET))`, compared in constant time; rejected when the signature is wrong, the variant differs from the submission, the age exceeds `FORM_TOKEN_TTL_SECONDS` (1800) or is below `FORM_MIN_FILL_SECONDS` (3), or the nonce is already in the single-use replay cache (a TTL-bounded in-memory set, so one token buys one registration). All failures return the same opaque `ANTI_AUTOMATION_FAILED`. | AC-G-10 |
 | Personal data in logs | `pino` redaction for `req.body.email`, names, student id and the `authorization` header; application logs identify registrations by reference only. No personal data in URLs or query strings. | AC-G-11 |
 | Secrets | Only via environment variables; `.env` is git-ignored; `.env.example` contains placeholders only; the container runs as a non-root user. | AC-G-15 |
@@ -661,6 +661,12 @@ limitation for the single-instance deployment specified here.
 | `EXPORT_USERNAME`/`EXPORT_PASSWORD` | **yes** | — | Export Basic credentials (password ≥12 chars) |
 | `CONFERENCE_NAME` | no | from the options file | Name used in emails and the UI |
 | `LOG_LEVEL` | no | `info` | pino level |
+| `RATE_LIMIT_REGISTRATION_MAX` | no | `5` | Registrations per window per address |
+| `RATE_LIMIT_REGISTRATION_WINDOW_MINUTES` | no | `10` | Window for the registration limit |
+| `RATE_LIMIT_CONFIG_MAX` | no | `300` | Form-configuration reads per window per address |
+| `RATE_LIMIT_CONFIG_WINDOW_MINUTES` | no | `5` | Window for the configuration limit |
+| `RATE_LIMIT_GLOBAL_MAX` | no | `1200` | Requests per window per address across the API |
+| `RATE_LIMIT_GLOBAL_WINDOW_MINUTES` | no | `15` | Window for the global limit |
 
 `config/env.ts` parses and validates the whole environment with a Zod schema at startup and exposes a frozen typed
 object; a missing or invalid required value aborts startup with a message naming the variable (AC-G-15). The frontend

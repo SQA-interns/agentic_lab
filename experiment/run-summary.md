@@ -15,7 +15,7 @@
 | OS | Windows 11 Pro 10.0.26200 (win32) |
 | Node.js / npm / git | v24.13.0 / 11.6.2 / 2.53.0.windows.1 |
 | Python | not installed |
-| Docker | **not available** — affects two acceptance criteria, see § Unavailable measurements |
+| Docker | not available during phases 1–6; **29.8.0 / Compose v5.5.1** installed by the human afterwards, enabling verification loop 2 |
 | npm registry | reachable |
 
 ## Commits
@@ -47,7 +47,12 @@ anticipated.
 | 4 — Tests | 11:01:08 | 11:16:53 | 15.8 min |
 | 5 — Verification | 11:17:31 | 11:28:18 | 10.8 min |
 | 6 — Merge | 11:28:18 | 11:31:19 | 3.0 min |
-| **Total** | **10:35:03** | **11:31:19** | **56.3 min** |
+| **Subtotal to merge** | **10:35:03** | **11:31:19** | **56.3 min** |
+| 7 — Verification loop 2 (containers) | 13:05:13 | 13:24:40 | 19.4 min |
+| **Total working time** | | | **75.7 min** |
+
+The gap between 11:33Z and 13:05Z is waiting for the human to install Docker, not working
+time, and is excluded from the total.
 
 Phase boundaries held: no production code was written before the specification was
 complete, no feature test was written before the implementation was complete, and
@@ -64,6 +69,8 @@ verification ran as a separate pass after the test suite existed.
 | `RELEASE_NOTES.md` | Phase 6 — derived from the implemented User Stories and the actual changes |
 | `experiment/run-log.json` | Objective events and measurements recorded as they occurred |
 | `experiment/run-summary.md` | This document |
+| `e2e/container-specs/`, `e2e/playwright.container.config.ts` | Phase 7 — acceptance and deployment checks against the running containers |
+| `frontend/security-headers.conf` | Phase 7 — fix for finding F-06 |
 | `README.md`, `.env.example` | Operating instructions and configuration reference |
 | Application | `backend/` (34 modules), `frontend/`, `config/`, `e2e/`, `docker-compose.yml` |
 
@@ -74,21 +81,21 @@ verification ran as a separate pass after the test suite existed.
 | First working backend happy path | 2026-09-21T10:52:49Z (17.8 min from start) |
 | First working full-stack happy path in a browser | 2026-09-21T10:59:04Z (24.0 min from start) |
 | First complete test run | 313 tests, 313 passed, 0 failed |
-| Final test suite | 347 tests, 100% passing (277 backend, 42 frontend, 28 e2e) |
+| Final test suite | 397 tests, 100% passing (281 backend, 42 frontend, 28 native e2e, 46 containerized e2e) |
 | Backend coverage | 95.21% statements, 82.82% branches, 96.02% functions |
 | Acceptance Criteria passed on first evaluation | 84 of 87 |
-| Acceptance Criteria passed finally | 85 of 87 (2 not verifiable here) |
-| Verification findings | 0 Critical, 1 Major, 4 Minor |
-| Fix loops | 1 |
-| Security findings in the implementation | 0 |
+| Acceptance Criteria passed finally | **87 of 87** |
+| Verification findings | 0 Critical, 3 Major, 4 Minor |
+| Fix loops | 2 |
+| Security findings | 2 High, both in the deployment artefact, both resolved |
 | Lint / type-check errors | 0 / 0 |
 | Dependency advisories | 0 |
 | Architecture violations, dependency cycles | 0, 0 |
 | Production code duplication | 0.00% |
 | Cyclomatic complexity | average 2.41, max 12 |
-| Production LOC / test LOC | 4,065 / 4,059 |
+| Production LOC / test LOC | 4,099 / 4,243 |
 | Implementation rewritten after first verification | 1.68% of production lines |
-| Human interventions / clarifying questions | 0 / 0 |
+| Human interventions / clarifying questions | 1 (installed Docker) / 0 |
 
 ## Deviations from the required process
 
@@ -106,6 +113,11 @@ deviations:
 3. **One Phase 3 smoke check** exercised the registration happy path to establish the
    "first working version" timestamp. It was a throwaway script in the scratchpad, not part
    of the repository, and no feature test was created before Phase 4.
+4. **A second verification loop ran after the merge.** Docker was installed by the human
+   after Phase 6, which made AC-G-14 and AC-G-16 executable for the first time. Running them
+   found two Major defects, so the process re-entered Verification → Fix → Verification and
+   merged again. This is the prescribed fix loop applied to criteria that had been honestly
+   recorded as unverified, not a departure from the order of phases.
 
 ## Unavailable measurements
 
@@ -118,21 +130,31 @@ Recorded as `null` in `experiment/run-log.json`, with the reason, rather than es
 | Tool calls | No tool-call counter is exposed. A figure reconstructed from memory would be an estimate. |
 | Harness/tool version | Claude Code does not expose a version string to the agent. |
 | Failed CI runs | No CI system is configured in this repository; no CI run occurred. |
+| Real SMTP delivery | No mail server or mailbox is available. Message composition is tested and the failure path was demonstrated in the container against an unreachable SMTP host. |
 | Human time | Not externally supplied for this run. |
 | Unit vs integration coverage, separately | The suites share one instrumentation run; no per-suite coverage was configured, so splitting the figure would be an estimate. |
 | Maximum dependency depth | No depth calculation was defined; dependency-cruiser was configured for rule conformance, not path-length reporting. |
 | Change-experiment metrics (files, modules, LOC, time) | PROMPT.md defines no maintainability/change experiment for this run, so there is nothing to measure. |
 | Cohesion, modularity, architectural consistency, pattern consistency as scores | No deterministic calculation is defined for these concepts. The raw module graph (per-module Ca, Ce and instability, 34 modules, 87 dependencies, 0 cycles) is recorded instead for external evaluation. |
 
-### Acceptance Criteria that could not be verified here
+### Acceptance Criteria verified late, in loop 2
 
 **AC-G-14** (`docker compose up --build` starts the whole system) and **AC-G-16**
-(persistent data survives a container restart) require Docker, which is not installed in
-this environment. The container definitions were written and reviewed statically; the same
-processes were run natively and the complete end-to-end suite passes against them; and the
-process-level equivalent of AC-G-16 — closing the application and rebuilding it against the
-same data directory — is covered by an automated test. Both criteria are recorded as
-**unverified**, not as passing.
+(persistent data survives a container restart) could not be executed during phases 1–6
+because Docker was not installed, and were recorded as unverified rather than inferred from
+the configuration files. That caution was justified: when they were finally executed, both
+the build and the run succeeded, but doing so exposed **two Major defects in the deployment
+artefact** that every native check had passed —
+
+* **F-06:** every served HTML document was missing its Content-Security-Policy and four
+  other security headers, because nginx does not inherit `add_header` into a location that
+  declares one of its own;
+* **F-07:** the read-path rate limits would have denied the registration form to
+  participants sharing one public address during a registration rush.
+
+Both were fixed and regression-tested, and the acceptance suite now runs against the
+containers themselves — 46 of 46, three consecutive times. All 87 acceptance criteria are
+verified in the final state.
 
 ## Raw metric references
 
@@ -147,11 +169,19 @@ same data directory — is covered by an automated test. Both criteria are recor
 
 ## Final verification status
 
-**PASS.** Lint, type check, build, 347 tests, coverage, dependency audit, architecture
-conformance, duplication and complexity all pass on the merged commit. One Major and four
-Minor findings were raised, fixed and re-verified in a single fix loop; no Critical finding
-was found. Two acceptance criteria are recorded as unverified because this environment
-cannot demonstrate them.
+**PASS.** Lint, type check, build, 397 tests across five levels, coverage, dependency audit,
+architecture conformance, duplication and complexity all pass, as does the acceptance suite
+run three consecutive times against the containerized deployment. Three Major and four Minor
+findings were raised, fixed and re-verified across two fix loops; no Critical finding was
+found. All 87 acceptance criteria are verified; only delivery of a real email to a real
+mailbox remains undemonstrated, and it is recorded as such.
+
+The most useful result of the run is the second loop. The first pass recorded the two
+container criteria as unverified rather than inferring them from files that read correctly.
+When they were finally executed, both of them failed — a missing Content-Security-Policy on
+every served document, and rate limits that would have denied the form to participants
+behind a shared address. Neither was reachable by any check that does not start the
+containers.
 
 Merged into `opus5_medium_single_agent_classic_sdd` at **2026-09-21T11:31:19Z** as
 `6c2af9f6a8b1c8b5b916267be61189eff43fa951`. The experiment record is committed on top of

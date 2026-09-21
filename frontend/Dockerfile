@@ -13,6 +13,7 @@ RUN npm run build --workspace frontend
 
 FROM nginx:1.27-alpine AS runtime
 COPY frontend/nginx.conf /etc/nginx/conf.d/default.conf
+COPY frontend/security-headers.conf /etc/nginx/security-headers.conf
 COPY --from=build /app/frontend/dist /usr/share/nginx/html
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \

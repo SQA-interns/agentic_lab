@@ -78,6 +78,18 @@ npm run build        # production build of both workspaces
 npm audit            # dependency advisories
 ```
 
+Against a running containerized stack (`docker compose up -d` first):
+
+```bash
+npm run test:e2e:container
+```
+
+This runs the same acceptance specs plus deployment-only checks — security headers on the
+served documents, the nginx proxy, export authentication — against the images that actually
+ship. It needs a `.env` with `RATE_LIMIT_REGISTRATION_MAX` raised: the suite performs more
+registrations from one address than the shipped production limit of 5 per 10 minutes allows,
+and that limit is covered separately by the API tests.
+
 ## Repository layout
 
 | Path | Contents |
