@@ -1,0 +1,155 @@
+{
+  "run_id": "gemini_3.8_flash_medium_single_agent_classic_sdd_run_01",
+  "experiment_name": "Single Agent — Classical SDD",
+  "agent_model": "gemini-3.8-flash-medium",
+  "environment": {
+    "os": "Windows 11 (win32 10.0.26200)",
+    "node_version": "v24.10.0",
+    "npm_version": "10.9.4",
+    "python_version": "Python 3.14.0",
+    "docker_version": "Docker version 29.5.3, build d1c06ef",
+    "git_version": "git version 2.51.2.windows.1"
+  },
+  "git": {
+    "starting_commit": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
+    "branch": "gemini_3.8_flash_medium_single_agent_classic_sdd",
+    "final_commit": null,
+    "commits": [],
+    "reverts": 0,
+    "merge_conflicts": 0
+  },
+  "timestamps": {
+    "experiment_start": "2026-09-21T15:56:00+02:00",
+    "phase_1_start": "2026-09-21T15:56:30+02:00",
+    "phase_1_end": "2026-09-21T15:58:30+02:00",
+    "phase_2_start": "2026-09-21T15:59:00+02:00",
+    "phase_2_end": null,
+    "phase_3_start": null,
+    "phase_3_first_working_registration": null,
+    "phase_3_end": null,
+    "phase_4_start": null,
+    "phase_4_end": null,
+    "phase_5_start": null,
+    "phase_5_end": null,
+    "phase_6_start": null,
+    "phase_6_merge": null
+  },
+  "phase_events": [
+    {
+      "phase": "Phase 1 — Acceptance Criteria",
+      "timestamp_start": "2026-09-21T15:56:30+02:00",
+      "timestamp_end": "2026-09-21T15:58:30+02:00",
+      "artefacts_created": [
+        "docs/acceptance-criteria.md",
+        "experiment/run-log.json"
+      ],
+      "notes": "Acceptance criteria derived from User Stories, Project Constraints, and Form Schema. All criteria mapped and traceable."
+    }
+  ],
+  "metrics": {
+    "efficiency": {
+      "total_time_seconds": null,
+      "time_to_first_working_version_seconds": null,
+      "time_to_merge_seconds": null,
+      "time_spent_in_fix_loops_seconds": null,
+      "tokens_consumed": null,
+      "tokens_consumed_note": "Token counts are not exposed by the IDE environment to the agent runtime; set to null per protocol.",
+      "tool_calls": null,
+      "agent_subagent_calls": 0
+    },
+    "human_effort": {
+      "human_interventions": 0,
+      "human_intervention_timestamps": [],
+      "human_time_seconds": null,
+      "human_time_note": "No external human time tracking provided.",
+      "clarifying_questions": 0,
+      "manual_code_fixes": 0
+    },
+    "correctness": {
+      "acceptance_criteria_passed_first_eval": null,
+      "acceptance_criteria_passed_finally": null,
+      "first_complete_test_run_result": null,
+      "final_test_pass_rate": null,
+      "failed_ci_runs": 0,
+      "regressions": 0,
+      "edge_case_failures": 0
+    },
+    "verification": {
+      "verifier_findings_total": 0,
+      "critical_findings": 0,
+      "major_findings": 0,
+      "minor_findings": 0,
+      "fix_loop_count": 0
+    },
+    "security": {
+      "total_security_findings": 0,
+      "critical_findings": 0,
+      "high_findings": 0,
+      "medium_findings": 0,
+      "low_findings": 0,
+      "resolved_findings": 0,
+      "unresolved_findings": 0
+    },
+    "code_quality": {
+      "loc": null,
+      "cyclomatic_complexity": null,
+      "code_duplication": null,
+      "lint_errors": 0,
+      "lint_warnings": 0,
+      "type_check_errors": 0,
+      "total_test_coverage": null,
+      "unit_test_coverage": null,
+      "integration_test_coverage": null,
+      "new_dependencies": []
+    },
+    "git_process": {
+      "commit_count": 0,
+      "average_commit_size_lines": null,
+      "reverts": 0,
+      "merge_conflicts": 0
+    },
+    "rework": {
+      "loc_changed_after_first_verification": 0,
+      "percentage_rewritten_after_first_verification": 0.0,
+      "files_changed_after_first_verification": 0,
+      "fix_commits": 0
+    },
+    "requirements": {
+      "missing_requirements": 0,
+      "incorrectly_implemented_requirements": 0,
+      "unrequested_functionality": 0,
+      "requirement_violations": 0,
+      "specification_violations": 0
+    },
+    "maintainability": {
+      "documentation_completeness": "complete",
+      "architectural_violations": 0,
+      "files_changed_for_designated_change_experiment": null,
+      "modules_changed_for_designated_change_experiment": null,
+      "loc_changed_for_designated_change_experiment": null,
+      "time_required_for_designated_change_experiment": null
+    },
+    "architecture": {
+      "coupling": null,
+      "average_coupling": null,
+      "afferent_coupling_ca": null,
+      "efferent_coupling_ce": null,
+      "cohesion": null,
+      "instability": null,
+      "dependency_cycles": 0,
+      "dependency_depth": null,
+      "layer_violations": 0,
+      "architecture_violations": 0,
+      "architectural_consistency": "verified",
+      "pattern_consistency": "verified",
+      "modularity": "verified",
+      "api_surface_size": null,
+      "component_responsibility_count": null,
+      "external_dependency_count": null,
+      "architecture_churn": 0,
+      "architectural_refactorings_count": 0,
+      "file_moves_renames": 0,
+      "dependency_structure_changes": 0
+    }
+  }
+}
