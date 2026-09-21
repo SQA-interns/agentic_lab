@@ -17,7 +17,7 @@
     "npm": "11.6.2",
     "git": "2.53.0.windows.1",
     "python": "not installed",
-    "docker": "not available on PATH in this environment",
+    "docker": "not available during phases 1-6; Docker 29.8.0 with Compose v5.5.1 installed by the human afterwards, which enabled verification loop 2",
     "npmRegistryReachable": true
   },
   "startState": {
@@ -767,6 +767,147 @@
       },
       "mergeCommitSha": "6c2af9f6a8b1c8b5b916267be61189eff43fa951",
       "finalCommitNote": "The merge commit 6c2af9f6a8b1c8b5b916267be61189eff43fa951 is the final commit of the merged application work. One further documentation-only commit follows it on opus5_medium_single_agent_classic_sdd, carrying this run log and experiment/run-summary.md; its SHA cannot be written into its own content, so it is left null here and is obtainable with \"git rev-parse opus5_medium_single_agent_classic_sdd\"."
+    },
+    {
+      "phase": 7,
+      "name": "Verification loop 2 — containerized deployment",
+      "startedUtc": "2026-09-21T13:05:13Z",
+      "completedUtc": "2026-09-21T13:24:40Z",
+      "trigger": "The human installed Docker after the merge and asked for the remaining work. AC-G-14 and AC-G-16 had been recorded as not verifiable; they became executable.",
+      "artefacts": [
+        "frontend/security-headers.conf",
+        "e2e/playwright.container.config.ts",
+        "e2e/container-specs/deployment.container.spec.ts"
+      ],
+      "environment": {
+        "docker": "29.8.0",
+        "compose": "v5.5.1",
+        "daemonOsType": "linux",
+        "arch": "x86_64"
+      },
+      "checksExecuted": {
+        "dockerComposeBuild": "both images built on the first attempt",
+        "dockerComposeUp": "backend started, healthcheck healthy, frontend started only after it (depends_on: service_healthy)",
+        "imageSizes": {
+          "backend": "413MB",
+          "frontend": "73.7MB"
+        },
+        "backendUser": "uid=1000(node) gid=1000(node) — non-root",
+        "devDependenciesInRuntimeImage": 0,
+        "devDependenciesChecked": [
+          "vitest",
+          "typescript",
+          "eslint",
+          "supertest",
+          "@playwright"
+        ],
+        "runtimeDependenciesPresent": [
+          "express",
+          "better-sqlite3",
+          "exceljs",
+          "nodemailer",
+          "helmet",
+          "zod",
+          "pino"
+        ],
+        "healthcheck": "health=healthy, failing_streak=0",
+        "registrationThroughContainer": "accepted, stored in the volume, Unicode byte-verified (c48c656ec48d69c48d)",
+        "exportThroughContainer": "200, correct xlsx content type, 16 columns, one row per registration",
+        "exportUnauthenticated": "401 with WWW-Authenticate: Basic",
+        "emailFailurePath": "SMTP host deliberately unresolvable: both emails failed and were logged, both registrations remained stored and exportable (AC-005-05 demonstrated live)",
+        "logRedaction": "no participant email address found anywhere in the container logs",
+        "containerAcceptanceSuite": "46 of 46 passing, three consecutive runs, ~6.4s each",
+        "browserAgainstContainer": "registration submitted in a real browser under the strict CSP, no console errors",
+        "persistenceRestart": "docker compose restart — registration still present, export 200",
+        "persistenceRecreation": "docker compose down (containers removed) then up — registration and JSON backup intact with correct Unicode, export 200",
+        "failFastMissingVariable": "Startup aborted, message names FORM_TOKEN_SECRET, container exit code 1",
+        "failFastInvalidProgramme": "Startup aborted, message names the duplicate option identifier",
+        "shippedWriteLimitInContainer": "submissions 1-5 returned 201, submission 6 returned 429"
+      },
+      "findings": [
+        {
+          "id": "F-06",
+          "severity": "Major",
+          "securitySeverity": "High",
+          "category": "security / deployment",
+          "affected": "AC-G-11, specification 11 and 13",
+          "description": "Every HTML document served by the frontend container had no Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy or Permissions-Policy. nginx add_header is not additive across levels: a location block declaring any add_header discards all inherited ones, and both document locations set Cache-Control. The proxied API location set no add_header and therefore still looked correct, which is why the static configuration review missed it.",
+          "fix": "Headers extracted into frontend/security-headers.conf and included explicitly in each document location with \"always\"; deliberately not included in the API location, which was also emitting a duplicate CSP.",
+          "resultAfterReVerification": "All five headers present on both documents, hashed assets and a 404; exactly one CSP on API responses. Regression-tested by e2e/container-specs/deployment.container.spec.ts.",
+          "reachableByNativeChecks": false
+        },
+        {
+          "id": "F-07",
+          "severity": "Major",
+          "securitySeverity": "High",
+          "category": "security / availability",
+          "affected": "AC-G-10, AC-001-01, AC-002-01, specification 11",
+          "description": "GET /api/registration-config was limited to 60 requests per 5 minutes per address and the global API backstop to 300 per 15 minutes. One page load costs one configuration request, so participants behind a shared public address consume one budget together: roughly 60 people opening the form within five minutes would lock out everyone else behind that address. Surfaced as intermittent container suite runs — 6 seconds and green on one run, 15 failures over 4 minutes on the next.",
+          "fix": "Limits made asymmetric by intent and environment-tunable: write path stays 5 per 10 minutes (the anti-abuse control), configuration raised to 300 per 5 minutes, global backstop to 1200 per 15 minutes. Reasoning documented in specification 11 and 12 and in .env.example so the values are not silently re-tightened.",
+          "resultAfterReVerification": "Three consecutive container suite runs at 46/46 in ~6.4s with no throttling; shipped write limit separately confirmed still enforced in the container (201 x5 then 429). Three new backend tests pin the behaviour.",
+          "reachableByNativeChecks": false
+        }
+      ],
+      "testsAdded": {
+        "backend": 3,
+        "backendDetail": "120 consecutive configuration reads are not throttled; a deliberately low configuration limit still throttles; the read defaults are asserted to exceed the write default.",
+        "container": 9,
+        "containerDetail": "e2e/container-specs/deployment.container.spec.ts: document security headers on both forms, on a 404 and on hashed assets; no server version banner; API reachable same-origin; API carries its own policy and not the document policy; backend headers survive the proxy; export refused without credentials."
+      },
+      "finalTestRun": {
+        "backend": {
+          "files": 18,
+          "tests": 281,
+          "passed": 281,
+          "failed": 0
+        },
+        "frontend": {
+          "files": 3,
+          "tests": 42,
+          "passed": 42,
+          "failed": 0
+        },
+        "e2eNative": {
+          "tests": 28,
+          "passed": 28,
+          "failed": 0
+        },
+        "e2eContainer": {
+          "tests": 46,
+          "passed": 46,
+          "failed": 0,
+          "consecutiveGreenRuns": 3
+        },
+        "total": {
+          "tests": 397,
+          "passed": 397,
+          "failed": 0,
+          "passRate": 1
+        }
+      },
+      "coverage": {
+        "statements": 95.21,
+        "branches": 82.82,
+        "functions": 96.02,
+        "lines": 95.12
+      },
+      "automatedChecks": {
+        "lintErrors": 0,
+        "lintWarnings": 0,
+        "typeCheckErrors": 0,
+        "buildResult": "success",
+        "npmAudit": 0,
+        "dependencyCruiser": {
+          "violations": 0,
+          "modules": 34,
+          "dependencies": 87,
+          "cycles": 0
+        },
+        "duplicationProductionPercent": 0
+      },
+      "humanInterventions": 1,
+      "humanInterventionDetail": "The human installed Docker and asked for the remaining work. No technical decision was delegated to them and no clarifying question was asked.",
+      "humanClarificationsRequired": 0
     }
   ],
   "events": [],
@@ -774,8 +915,11 @@
     "efficiency": {
       "totalTimeUtc": {
         "start": "2026-09-21T10:35:03Z",
-        "end": "2026-09-21T11:31:19Z",
-        "minutes": 56.3
+        "endPhase6Merge": "2026-09-21T11:31:19Z",
+        "endLoop2": "2026-09-21T13:24:40Z",
+        "minutesToMerge": 56.3,
+        "minutesExcludingIdleBetweenMergeAndLoop2": 75.7,
+        "note": "The gap between 11:33Z and 13:05Z is waiting for the human to install Docker, not working time, and is excluded from the working total."
       },
       "timeToFirstWorkingVersion": {
         "backendApiHappyPathMinutes": 17.8,
@@ -783,8 +927,8 @@
         "measuredFrom": "2026-09-21T10:35:03Z (experiment start state recorded)"
       },
       "timeToMergeMinutes": 56.3,
-      "timeInFixLoopsMinutes": 8.5,
-      "timeInFixLoopsNote": "Phase 5 fix loop, from the first dependency-cruiser violation to the completed re-verification. Development-feedback fixes inside Phase 3 (lint, type and smoke-check corrections) are not counted here; they are recorded under phase 3 developmentFeedbackChecks.",
+      "timeInFixLoopsMinutes": 28.1,
+      "timeInFixLoopsNote": "Loop 1: 8.5 minutes. Loop 2: 19.6 minutes, covering container build, execution, two Major fixes and re-verification.",
       "phaseDurationsMinutes": {
         "phase1": 1.4,
         "phase2": 4.4,
@@ -804,20 +948,23 @@
       "subagentCallsNote": "Single-agent run by design; the Agent tool was never invoked."
     },
     "humanEffort": {
-      "humanInterventions": 0,
-      "humanInterventionTimestamps": [],
+      "humanInterventions": 1,
+      "humanInterventionTimestamps": [
+        "2026-09-21T13:05:13Z"
+      ],
       "humanTimeSeconds": null,
       "humanTimeUnavailableReason": "Not externally supplied for this run.",
       "clarifyingQuestionsAsked": 0,
       "clarifyingQuestionsNote": "The inputs were sufficient to proceed autonomously throughout. No decision required human input.",
       "manualCodeFixes": 0,
-      "manualCodeFixesNote": "All code was written by the agent; the human made no edits during the run."
+      "manualCodeFixesNote": "All code was written by the agent; the human made no edits during the run.",
+      "humanInterventionDetail": "The human installed Docker after the merge and asked for the remaining work to be completed. No technical decision was delegated and no clarifying question was asked."
     },
     "correctness": {
       "acceptanceCriteriaTotal": 87,
       "acceptanceCriteriaPassedFirstEvaluation": 84,
-      "acceptanceCriteriaPassedFinally": 85,
-      "acceptanceCriteriaNotVerifiable": 2,
+      "acceptanceCriteriaPassedFinally": 87,
+      "acceptanceCriteriaNotVerifiable": 0,
       "firstCompleteTestRun": {
         "tests": 313,
         "passed": 313,
@@ -825,31 +972,33 @@
         "timestampUtc": "2026-09-21T11:11:37Z"
       },
       "finalTestPassRate": 1,
-      "finalTests": 347,
+      "finalTests": 397,
       "failedCiRuns": null,
       "failedCiRunsUnavailableReason": "No CI system is configured in this repository; no CI run occurred.",
       "regressions": 0,
-      "edgeCaseFailures": 0
+      "edgeCaseFailures": 0,
+      "acceptanceCriteriaNote": "AC-G-14 and AC-G-16 were not verifiable during phases 1-6 because Docker was absent. Once it was installed they were executed and did NOT pass on first evaluation: two Major defects (F-06, F-07) were found in the deployment artefact and fixed. All 87 criteria are verified in the final state. Real SMTP delivery to a real mailbox remains undemonstrated and is recorded as such."
     },
     "verification": {
-      "findings": 5,
+      "findings": 7,
       "critical": 0,
-      "major": 1,
+      "major": 3,
       "minor": 4,
-      "fixLoops": 1
+      "fixLoops": 2
     },
     "security": {
-      "total": 0,
+      "total": 2,
       "critical": 0,
-      "high": 0,
+      "high": 2,
       "medium": 0,
       "low": 0,
-      "resolved": 0,
-      "unresolved": 0
+      "resolved": 2,
+      "unresolved": 0,
+      "detail": "Both found only by running the containers: F-06 (no security headers on any served HTML document) and F-07 (read-path rate limits denying the form to participants behind a shared address). Neither was in the application code; both were in the deployment artefact. Both fixed and regression-tested."
     },
     "codeQuality": {
-      "locProduction": 4065,
-      "locTests": 4059,
+      "locProduction": 4099,
+      "locTests": 4243,
       "locHtmlAndDeploymentConfig": 340,
       "cyclomaticComplexityAverage": 2.41,
       "cyclomaticComplexityMax": 12,
@@ -878,7 +1027,7 @@
       "percentageCalculation": "(43 + 25) / 4047 production lines present at the end of Phase 4, expressed as a percentage.",
       "filesChangedAfterFirstVerification": 25,
       "productionFilesChangedAfterFirstVerification": 10,
-      "fixCommits": 1
+      "fixCommits": 2
     },
     "requirements": {
       "missing": 0,

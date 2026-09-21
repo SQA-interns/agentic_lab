@@ -10,7 +10,8 @@ The same justification appears at the top of every test file, next to the tests 
 | Level | Written from | Location |
 | --- | --- | --- |
 | Acceptance | User Stories + Acceptance Criteria | `backend/tests/acceptance/` |
-| End-to-end | User Stories + Acceptance Criteria | `e2e/specs/` |
+| End-to-end, native | User Stories + Acceptance Criteria | `e2e/specs/` |
+| End-to-end, containerized | User Stories + Acceptance Criteria + Specification § 13 | `e2e/specs/` + `e2e/container-specs/` |
 | REST API / contract | Specification § 4 + Acceptance Criteria | `backend/tests/api/`, `frontend/tests/api.test.ts` |
 | Integration | Specification § 6 + Acceptance Criteria | `backend/tests/integration/` |
 | Component | Specification + implementation | `backend/tests/component/`, `frontend/tests/registrationPage.test.ts` |
@@ -58,6 +59,14 @@ actually demonstrates AC-004-01 ("the confirmation appears only after a success 
 and AC-G-12 (no horizontal overflow at 375 px and 1280 px), neither of which can be observed
 without a browser doing layout and a real network round trip. Run at both viewport sizes.
 
+**End-to-end against the containers** — the same specs, plus `e2e/container-specs/`, run
+against a running `docker compose` stack via `playwright.container.config.ts`. This level
+exists because the deployment artefact has behaviour of its own that nothing else observes:
+the nginx configuration, the security headers on the served documents, the same-origin
+proxy. It earned its place immediately — the first run against real containers found two
+Major defects (verification findings F-06 and F-07) in configuration that had been reviewed
+and read as correct. A statically reviewed Dockerfile is not a verified one.
+
 **Security** — attacker-perspective tests that submit hostile input through the public API and
 then inspect what reached storage and what came back: script payloads, SQL metacharacters,
 CRLF, null bytes, traversal in an option identifier, oversized bodies, mass assignment, plus
@@ -88,8 +97,7 @@ the whole suite runs on every change, which is what turns it into a regression s
 
 | Area | Why | How it is covered instead |
 | --- | --- | --- |
-| Real SMTP delivery | Needs a live mail server and a real mailbox | The adapter is tested against Nodemailer's `json` transport, which composes the real message; delivery itself is an operational concern |
-| Container build and `docker compose up` | Docker is not available in this environment | Recorded as an unverified item in `docs/verification-report.md` |
+| Real SMTP delivery to a mailbox | Needs a live mail server and a real mailbox | The adapter is tested against Nodemailer's `json` transport, which composes the real message; the container run additionally demonstrated the failure path against an unreachable SMTP host, so only delivery to a real inbox is undemonstrated |
 | Visual appearance | No stated visual requirement | Layout is checked structurally (overflow, control size, labels) at both viewports |
 
 ## Running the tests
@@ -98,4 +106,5 @@ the whole suite runs on every change, which is what turns it into a regression s
 npm test                                  # unit, component, integration, API, acceptance, security
 npm run test:coverage --workspace backend # the same backend suites with coverage
 npm run test:e2e                          # browser end-to-end at 1280 px and 375 px
+npm run test:e2e:container                # the same, against a running docker compose stack
 ```

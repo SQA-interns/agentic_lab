@@ -58,8 +58,15 @@ const envSchema = z
     CONFERENCE_NAME: z.string().min(1).optional(),
     LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
 
+    // Anti-abuse control on the write endpoint; deliberately strict.
     RATE_LIMIT_REGISTRATION_MAX: z.coerce.number().int().min(1).default(5),
     RATE_LIMIT_REGISTRATION_WINDOW_MINUTES: z.coerce.number().int().min(1).default(10),
+    // Read-only endpoints. These must tolerate many legitimate participants sharing one
+    // public address behind NAT, so they are far looser than the write limit.
+    RATE_LIMIT_CONFIG_MAX: z.coerce.number().int().min(1).default(300),
+    RATE_LIMIT_CONFIG_WINDOW_MINUTES: z.coerce.number().int().min(1).default(5),
+    RATE_LIMIT_GLOBAL_MAX: z.coerce.number().int().min(1).default(1200),
+    RATE_LIMIT_GLOBAL_WINDOW_MINUTES: z.coerce.number().int().min(1).default(15),
   })
   .superRefine((env, ctx) => {
     if (env.MAIL_TRANSPORT === 'smtp' && !env.SMTP_HOST) {
@@ -110,6 +117,10 @@ export interface AppConfig {
   readonly rateLimit: {
     readonly registrationMax: number;
     readonly registrationWindowMs: number;
+    readonly configMax: number;
+    readonly configWindowMs: number;
+    readonly globalMax: number;
+    readonly globalWindowMs: number;
   };
 }
 
@@ -162,6 +173,10 @@ export function loadConfig(source: NodeJS.ProcessEnv = process.env): AppConfig {
     rateLimit: Object.freeze({
       registrationMax: env.RATE_LIMIT_REGISTRATION_MAX,
       registrationWindowMs: env.RATE_LIMIT_REGISTRATION_WINDOW_MINUTES * 60_000,
+      configMax: env.RATE_LIMIT_CONFIG_MAX,
+      configWindowMs: env.RATE_LIMIT_CONFIG_WINDOW_MINUTES * 60_000,
+      globalMax: env.RATE_LIMIT_GLOBAL_MAX,
+      globalWindowMs: env.RATE_LIMIT_GLOBAL_WINDOW_MINUTES * 60_000,
     }),
   });
 }
