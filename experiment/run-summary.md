@@ -25,8 +25,9 @@
 | Starting commit | `d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513` (2026-09-21T10:20:05Z) |
 | Starting branch | `opus5_medium_single_agent_classic_sdd` |
 | Experiment branch | `experiment/conference-registration-opus5` |
-| Final commit | `6c2af9f6a8b1c8b5b916267be61189eff43fa951` (merge commit) |
-| Commits | 12 (11 plus one `--no-ff` merge commit) |
+| Merge commit | `6c2af9f6a8b1c8b5b916267be61189eff43fa951` — the final commit of the merged application work |
+| Final repository commit | One documentation-only commit follows the merge, carrying `experiment/run-log.json` and this summary. A commit cannot contain its own SHA, so it is not quoted here; obtain it with `git rev-parse opus5_medium_single_agent_classic_sdd`. |
+| Commits | 13 (12 plus one `--no-ff` merge commit) |
 | Reverts | 0 |
 | Merge conflicts | 0 |
 | Baseline overwritten | No. `main` was never touched. |
@@ -153,4 +154,5 @@ was found. Two acceptance criteria are recorded as unverified because this envir
 cannot demonstrate them.
 
 Merged into `opus5_medium_single_agent_classic_sdd` at **2026-09-21T11:31:19Z** as
-`6c2af9f6a8b1c8b5b916267be61189eff43fa951`.
+`6c2af9f6a8b1c8b5b916267be61189eff43fa951`. The experiment record is committed on top of
+that merge.

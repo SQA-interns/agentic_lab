@@ -660,15 +660,15 @@
         "RELEASE_NOTES.md"
       ],
       "startingCommitSha": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
-      "finalCommitSha": "6c2af9f6a8b1c8b5b916267be61189eff43fa951",
+      "finalCommitSha": null,
       "experimentBranch": "experiment/conference-registration-opus5",
       "mergedInto": "opus5_medium_single_agent_classic_sdd",
       "mergeStrategy": "--no-ff",
       "mergeTimestampUtc": "2026-09-21T11:31:19Z",
       "baselineOverwritten": false,
       "baselineNote": "main was not touched. Work was done on an isolated branch off the model-specific experiment branch and merged back into it with an explicit merge commit.",
-      "commits": 12,
-      "commitsExcludingMerge": 11,
+      "commits": 13,
+      "commitsExcludingMerge": 12,
       "reverts": 0,
       "mergeConflicts": 0,
       "commitSizes": {
@@ -751,12 +751,22 @@
             "files": 1,
             "added": 339,
             "deleted": 0
+          },
+          {
+            "sha": "d3b908f",
+            "subject": "docs(experiment): final run log measurements and run summary",
+            "files": 2,
+            "added": 476,
+            "deleted": 1,
+            "note": "Counted from the commit as made; the two lines corrected afterwards are not re-counted separately."
           }
         ],
         "averageFilesPerCommit": 11.8,
         "averageLinesAddedPerCommit": 984.5,
         "averageLinesDeletedPerCommit": 9.9
-      }
+      },
+      "mergeCommitSha": "6c2af9f6a8b1c8b5b916267be61189eff43fa951",
+      "finalCommitNote": "The merge commit 6c2af9f6a8b1c8b5b916267be61189eff43fa951 is the final commit of the merged application work. One further documentation-only commit follows it on opus5_medium_single_agent_classic_sdd, carrying this run log and experiment/run-summary.md; its SHA cannot be written into its own content, so it is left null here and is obtainable with \"git rev-parse opus5_medium_single_agent_classic_sdd\"."
     }
   ],
   "events": [],
