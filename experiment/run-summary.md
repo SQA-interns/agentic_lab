@@ -49,10 +49,16 @@ anticipated.
 | 6 — Merge | 11:28:18 | 11:31:19 | 3.0 min |
 | **Subtotal to merge** | **10:35:03** | **11:31:19** | **56.3 min** |
 | 7 — Verification loop 2 (containers) | 13:05:13 | 13:24:40 | 19.4 min |
-| **Total working time** | | | **75.7 min** |
+| **Total working time** | | | **96.0 min** |
 
-The gap between 11:33Z and 13:05Z is waiting for the human to install Docker, not working
-time, and is excluded from the total.
+Active time is two segments: 10:35:03Z–11:33:20Z (58.3 min) and 13:05:13Z–13:42:56Z
+(37.7 min). The seven numbered phases account for 73.7 min of that; the other 22.3 min is
+inter-phase gaps plus the documentation, commit and merge work closing each loop. The
+91.9-minute gap between 11:33Z and 13:05Z is waiting for the human to install Docker, not
+working time, and is excluded. 96.0 + 91.9 = 187.9 min wall clock.
+
+(An earlier figure of 75.7 min recorded during the run was wrong: it omitted the 22.3 min
+of unphased active work. Corrected here and in `experiment/run-log.json`.)
 
 Phase boundaries held: no production code was written before the specification was
 complete, no feature test was written before the implementation was complete, and

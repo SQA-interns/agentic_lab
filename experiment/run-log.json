@@ -927,10 +927,13 @@
       "totalTimeUtc": {
         "start": "2026-09-21T10:35:03Z",
         "endPhase6Merge": "2026-09-21T11:31:19Z",
-        "endLoop2": "2026-09-21T13:24:40Z",
+        "endLoop2": "2026-09-21T13:42:56Z",
         "minutesToMerge": 56.3,
-        "minutesExcludingIdleBetweenMergeAndLoop2": 75.7,
-        "note": "The gap between 11:33Z and 13:05Z is waiting for the human to install Docker, not working time, and is excluded from the working total."
+        "activeWorkingMinutes": 96,
+        "idleWaitingForHumanMinutes": 91.9,
+        "wallClockMinutes": 187.9,
+        "derivation": "Two working segments: 10:35:03Z to 11:33:20Z (58.3 min) and 13:05:13Z to 13:42:56Z (37.7 min). The gap between them is waiting for the human to install Docker and is excluded. 96.0 + 91.9 = 187.9, which reconciles with wall clock exactly.",
+        "correction": "Supersedes an earlier figure of 75.7 minutes recorded during the run, which summed only (start -> first merge) + (phase 7 duration) and omitted 22.3 minutes of inter-phase gaps and post-phase documentation, commit and merge work."
       },
       "timeToFirstWorkingVersion": {
         "backendApiHappyPathMinutes": 17.8,
@@ -956,7 +959,8 @@
       "toolCallsUnavailableReason": "The environment does not expose a tool-call counter to the agent. A count reconstructed from memory would be an estimate, which the protocol forbids.",
       "agentCalls": 1,
       "subagentCalls": 0,
-      "subagentCallsNote": "Single-agent run by design; the Agent tool was never invoked."
+      "subagentCallsNote": "Single-agent run by design; the Agent tool was never invoked.",
+      "timeInFixLoopsShareOfActivePercent": 29.3
     },
     "humanEffort": {
       "humanInterventions": 1,
