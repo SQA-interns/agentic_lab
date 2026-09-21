@@ -1,0 +1,16 @@
+event,start_utc,end_utc,duration_minutes,kind
+session created,2026-09-21T10:34:21Z,,,milestone
+experiment start state recorded,2026-09-21T10:35:03Z,,,milestone
+phase 1 Acceptance Criteria,2026-09-21T10:35:22Z,2026-09-21T10:36:45Z,1.4,phase
+phase 2 Specification,2026-09-21T10:36:54Z,2026-09-21T10:41:19Z,4.4,phase
+phase 3 Implementation,2026-09-21T10:41:27Z,2026-09-21T11:00:19Z,18.9,phase
+phase 4 Tests,2026-09-21T11:01:08Z,2026-09-21T11:16:53Z,15.8,phase
+phase 5 Verification,2026-09-21T11:17:31Z,2026-09-21T11:28:18Z,10.8,phase
+phase 6 Merge,2026-09-21T11:28:18Z,2026-09-21T11:31:19Z,3.0,phase
+phase 7 Verification loop 2 — containerized deployment,2026-09-21T13:05:13Z,2026-09-21T13:24:40Z,19.4,phase
+backend happy path first works,2026-09-21T10:52:49Z,,,milestone
+full stack happy path in browser,2026-09-21T10:59:04Z,,,milestone
+first merge,2026-09-21T11:31:19Z,,,milestone
+idle waiting for Docker install,2026-09-21T11:33:00Z,2026-09-21T13:05:13Z,92.0,idle
+second merge,2026-09-21T13:42:34Z,,,milestone
+final commit,2026-09-21T13:42:56Z,,,milestone

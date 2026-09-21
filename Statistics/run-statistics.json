@@ -1,0 +1,730 @@
+{
+  "$comment": "Statistics for the conference-registration-system experimental run. Every value carries a 'provenance' marker: 'environment-reported' (read from an API the harness exposes), 'tool-measured' (output of a deterministic tool, reproducible), 'git-derived' (computed from the repository history), 'recorded-during-run' (written into experiment/run-log.json as events occurred), or 'unavailable' (with a reason). No value here is an estimate.",
+  "run": {
+    "identifier": "opus5-medium-single-agent-classic-sdd-2026-09-21",
+    "project": "Conference Registration System",
+    "repository": "E:\\13 - Lab Projects\\agentic_lab",
+    "statisticsGeneratedUtc": "2026-09-21T13:57:17Z",
+    "provenance": "recorded-during-run"
+  },
+  "agent": {
+    "sessionId": "local_15b3b0d1-f142-40ff-abcf-c8cfd041c7a4",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "permissionMode": "auto",
+    "fastMode": "off",
+    "isRemote": false,
+    "harness": "Claude Code (Claude Agent SDK, desktop app Code tab)",
+    "harnessVersion": null,
+    "harnessVersionUnavailableReason": "Not exposed to the agent by the environment.",
+    "sessionCreatedUtc": "2026-09-21T10:34:21Z",
+    "provenance": "environment-reported (mcp__ccd_session_mgmt__get_session)"
+  },
+  "environment": {
+    "os": "Windows 11 Pro 10.0.26200 (win32)",
+    "shells": [
+      "PowerShell",
+      "Git Bash"
+    ],
+    "node": "v24.13.0",
+    "npm": "11.6.2",
+    "git": "2.53.0.windows.1",
+    "python": "not installed",
+    "dockerDuringPhases1to6": "not installed",
+    "dockerFromPhase7": "29.8.0, Compose v5.5.1, linux/x86_64 daemon",
+    "npmRegistryReachable": true,
+    "provenance": "tool-measured"
+  },
+  "tokens": {
+    "note": "The environment exposes the session's CONTEXT WINDOW occupancy, not cumulative token consumption. These are different quantities and must not be conflated: the context window is the size of the conversation currently held in memory, whereas cumulative consumption counts every token sent and received across all turns, which is far larger because each turn re-sends the accumulated context.",
+    "contextWindowOccupancy": {
+      "readingTakenUtc": "2026-09-21T13:56:50Z",
+      "readingTakenAt": "after the run was complete and merged, while generating these statistics",
+      "tokensUsed": 545695,
+      "contextWindowSize": 1000000,
+      "percentUsed": 55,
+      "autoCompactThresholdPercent": 97,
+      "compactionsTriggered": 0,
+      "categories": {
+        "messages": 485899,
+        "systemTools": 33322,
+        "mcpTools": 17576,
+        "systemPrompt": 4552,
+        "skills": 4364
+      },
+      "provenance": "environment-reported (mcp__ccd_session_mgmt__get_usage)"
+    },
+    "earlierReading": {
+      "readingTakenUtc": "2026-09-21T13:55:30Z",
+      "tokensUsed": 531970,
+      "percentUsed": 53,
+      "note": "Taken roughly 80 seconds before the reading above. The 13,725-token difference is the cost of the statistics-gathering work itself, and is shown to make clear that these readings are live snapshots, not a fixed total for the run.",
+      "provenance": "environment-reported"
+    },
+    "cumulativeTokensConsumed": null,
+    "cumulativeTokensConsumedUnavailableReason": "The harness exposes no cumulative token counter. Cumulative consumption cannot be derived from context-window occupancy, because occupancy is a point-in-time measure of the retained conversation while consumption accumulates the full context on every turn. Estimating it is forbidden by the experiment protocol and would be a fabricated number.",
+    "accountPlanUsage": {
+      "plan": "Pro",
+      "fiveHourWindowPercentUsed": 56,
+      "fiveHourWindowResetsAtUtc": "2026-09-21T16:20:00Z",
+      "weeklyAllModelsPercentUsed": 95,
+      "weeklyResetsAtUtc": "2026-09-26T03:00:00Z",
+      "extraUsageEnabled": false,
+      "caveat": "These are ACCOUNT-level rolling-window percentages, not a measurement of this run. They include any other work done on the account within the same windows, so they cannot be attributed to this run alone.",
+      "provenance": "environment-reported"
+    },
+    "monetaryCost": null,
+    "monetaryCostUnavailableReason": "Not exposed by the environment; the account is on a subscription plan with extra usage disabled, so there is no per-run cost figure to read."
+  },
+  "time": {
+    "sessionCreatedUtc": "2026-09-21T10:34:21Z",
+    "experimentStartStateRecordedUtc": "2026-09-21T10:35:03Z",
+    "finalCommitUtc": "2026-09-21T13:42:56Z",
+    "wallClockFromStartToFinalCommitMinutes": 187.9,
+    "activeWorkingMinutes": 96,
+    "idleWaitingForHumanMinutes": 91.9,
+    "idleExplanation": "Between 2026-09-21T11:33Z (end of the first merge) and 2026-09-21T13:05Z the agent was idle, waiting for the human to install Docker. This is not working time and is excluded from the active total.",
+    "timeToFirstWorkingVersion": {
+      "backendHappyPathUtc": "2026-09-21T10:52:49Z",
+      "backendHappyPathMinutesFromStart": 17.8,
+      "fullStackBrowserHappyPathUtc": "2026-09-21T10:59:04Z",
+      "fullStackBrowserHappyPathMinutesFromStart": 24
+    },
+    "timeToFirstMergeMinutes": 56.3,
+    "timeInFixLoopsMinutes": 28.1,
+    "timeInFixLoopsBreakdown": {
+      "loop1Minutes": 8.5,
+      "loop2Minutes": 19.6
+    },
+    "phases": [
+      {
+        "phase": 1,
+        "name": "Acceptance Criteria",
+        "startUtc": "2026-09-21T10:35:22Z",
+        "endUtc": "2026-09-21T10:36:45Z",
+        "minutes": 1.4,
+        "shareOfActivePercent": 1.5
+      },
+      {
+        "phase": 2,
+        "name": "Specification",
+        "startUtc": "2026-09-21T10:36:54Z",
+        "endUtc": "2026-09-21T10:41:19Z",
+        "minutes": 4.4,
+        "shareOfActivePercent": 4.6
+      },
+      {
+        "phase": 3,
+        "name": "Implementation",
+        "startUtc": "2026-09-21T10:41:27Z",
+        "endUtc": "2026-09-21T11:00:19Z",
+        "minutes": 18.9,
+        "shareOfActivePercent": 19.7
+      },
+      {
+        "phase": 4,
+        "name": "Tests",
+        "startUtc": "2026-09-21T11:01:08Z",
+        "endUtc": "2026-09-21T11:16:53Z",
+        "minutes": 15.8,
+        "shareOfActivePercent": 16.5
+      },
+      {
+        "phase": 5,
+        "name": "Verification (loop 1)",
+        "startUtc": "2026-09-21T11:17:31Z",
+        "endUtc": "2026-09-21T11:28:18Z",
+        "minutes": 10.8,
+        "shareOfActivePercent": 11.3
+      },
+      {
+        "phase": 6,
+        "name": "Merge",
+        "startUtc": "2026-09-21T11:28:18Z",
+        "endUtc": "2026-09-21T11:31:19Z",
+        "minutes": 3,
+        "shareOfActivePercent": 3.1
+      },
+      {
+        "phase": 7,
+        "name": "Verification loop 2 (containers)",
+        "startUtc": "2026-09-21T13:05:13Z",
+        "endUtc": "2026-09-21T13:24:40Z",
+        "minutes": 19.4,
+        "shareOfActivePercent": 20.2
+      }
+    ],
+    "postPhaseDocumentationMinutes": 18.3,
+    "postPhaseDocumentationNote": "13:24:40Z to 13:42:56Z covers the loop-2 documentation updates, commit and merge. Counted inside the 96.0-minute active total but not inside a numbered phase.",
+    "provenance": "recorded-during-run (timestamps taken with `date -u` as events occurred) and git-derived (commit timestamps)",
+    "activeWorkingMinutesDerivation": "Two working segments: 2026-09-21T10:35:03Z to 11:33:20Z (58.3 min, ending at the last commit before the idle period) plus 2026-09-21T13:05:13Z to 13:42:56Z (37.7 min, loop 2 through the final commit). 96.0 + 91.9 idle = 187.9 wall clock, which reconciles exactly.",
+    "sumOfNumberedPhaseDurationsMinutes": 73.7,
+    "unphasedWorkMinutes": 22.3,
+    "unphasedWorkNote": "Active time not inside a numbered phase: ~2.0 min of gaps between phases, 2.0 min of run-log and summary commits after the first merge, and 18.3 min of loop-2 documentation, commit and merge after phase 7 closed.",
+    "correctionNote": "An earlier figure of 75.7 minutes was published during the run and is superseded. It summed only (start -> first merge) + (phase 7 duration) and omitted the 22.3 minutes above. The corrected value is 96.0 minutes.",
+    "timeInFixLoopsShareOfActivePercent": 29.3
+  },
+  "iterations": {
+    "note": "Counts of repeated cycles. Where a count is reconstructable from durable artefacts (git, the run log) it is marked git-derived or recorded-during-run. Counts that would depend on recalling individual tool invocations are recorded as unavailable rather than estimated.",
+    "processPhases": 7,
+    "processPhasesPlanned": 6,
+    "processPhasesExtra": 1,
+    "processPhasesExtraReason": "Phase 7 was an additional Verification -> Fix -> Verification loop, triggered when the human installed Docker and made two previously unverifiable acceptance criteria executable.",
+    "verificationFixLoops": 2,
+    "verificationFixLoopDetail": [
+      {
+        "loop": 1,
+        "findingsRaised": 5,
+        "critical": 0,
+        "major": 1,
+        "minor": 4,
+        "newFindingsOnReVerification": 0
+      },
+      {
+        "loop": 2,
+        "findingsRaised": 2,
+        "critical": 0,
+        "major": 2,
+        "minor": 0,
+        "newFindingsOnReVerification": 0
+      }
+    ],
+    "commits": 17,
+    "commitsExcludingMerges": 15,
+    "mergeCommits": 2,
+    "reverts": 0,
+    "mergeConflicts": 0,
+    "branchesCreated": 2,
+    "amendedCommits": 2,
+    "amendedCommitsNote": "Two commits were amended to correct factual errors in their own content before being merged: a miscounted test total, and a commit-count figure.",
+    "implementationCorrectionRounds": {
+      "backendTypeCheckRounds": 2,
+      "backendTypeCheckDetail": "First `tsc` run reported 5 errors; second run after fixes reported 0.",
+      "frontendTypeCheckRounds": 2,
+      "frontendTypeCheckDetail": "First run 1 error; second run 0.",
+      "backendLintRounds": 3,
+      "backendLintDetail": "First `eslint` run 5 errors + 2 warnings; after targeted fixes 1 error + 1 warning; third run clean.",
+      "frontendLintRounds": 2,
+      "frontendLintDetail": "First run 2 errors + 1 warning; second run clean.",
+      "smokeCheckRounds": 3,
+      "smokeCheckDetail": "Development smoke script run three times: first failed on module resolution, second returned HTTP 500 from an fsync EPERM on Windows, third returned 201 and established the first-working-version timestamp.",
+      "provenance": "recorded-during-run"
+    },
+    "dependencyInstallRounds": 4,
+    "dependencyInstallDetail": "Initial install; version bumps after `npm audit` reported 1 high and 5 moderate advisories; a lockfile regeneration when a flat `uuid` override did not apply; a full clean reinstall after a vitest transitive dependency failed to resolve.",
+    "containerBuilds": 4,
+    "containerBuildDetail": "Initial build of both images; frontend rebuild after the security-header fix; backend rebuild after the rate-limit fix; a final `--no-cache` rebuild of both to confirm the fixes hold from a cold cache.",
+    "containerStackStartStopCycles": 7,
+    "e2eSuiteExecutions": {
+      "native": 6,
+      "containerized": 9
+    },
+    "e2eStabilityRuns": {
+      "beforeRateLimitFix": [
+        {
+          "run": 1,
+          "passed": 31,
+          "failed": 15,
+          "durationMinutesApprox": 4.8
+        },
+        {
+          "run": 2,
+          "passed": 46,
+          "failed": 0,
+          "durationSeconds": 6.5
+        },
+        {
+          "run": 3,
+          "passed": 30,
+          "failed": 16,
+          "durationMinutesApprox": 4.3
+        }
+      ],
+      "afterRateLimitFix": [
+        {
+          "run": 1,
+          "passed": 46,
+          "failed": 0,
+          "durationSeconds": 6.4
+        },
+        {
+          "run": 2,
+          "passed": 46,
+          "failed": 0,
+          "durationSeconds": 6.5
+        },
+        {
+          "run": 3,
+          "passed": 46,
+          "failed": 0,
+          "durationSeconds": 6.4
+        }
+      ],
+      "interpretation": "The instability was not flaky tests. The form-configuration endpoint's rate limit was exhausted by a full suite run, which is what led to finding F-07.",
+      "provenance": "tool-measured"
+    },
+    "toolCalls": null,
+    "toolCallsUnavailableReason": "The harness exposes no tool-call counter. A count reconstructed from memory would be an estimate, which the experiment protocol forbids.",
+    "agentInvocations": 1,
+    "subagentInvocations": 0,
+    "subagentNote": "Single-agent run by design; the Agent tool was never used."
+  },
+  "humanEffort": {
+    "humanInterventions": 1,
+    "humanInterventionTimestampsUtc": [
+      "2026-09-21T13:05:13Z"
+    ],
+    "humanInterventionDetail": "The human installed Docker after the first merge and asked for the remaining work to be completed. No technical decision was delegated to the human.",
+    "clarifyingQuestionsAsked": 0,
+    "clarifyingQuestionsNote": "The provided inputs were sufficient to proceed autonomously throughout; no decision required human input.",
+    "manualCodeFixesByHuman": 0,
+    "humanTimeSeconds": null,
+    "humanTimeUnavailableReason": "Not externally supplied for this run.",
+    "provenance": "recorded-during-run"
+  },
+  "output": {
+    "trackedFilesExcludingLockfile": 106,
+    "filesByArea": {
+      "backend/src": {
+        "files": 31,
+        "lines": 3088
+      },
+      "backend/tests": {
+        "files": 21,
+        "lines": 3262
+      },
+      "frontend/src": {
+        "files": 7,
+        "lines": 1011
+      },
+      "frontend/tests": {
+        "files": 3,
+        "lines": 583
+      },
+      "e2e": {
+        "files": 5,
+        "lines": 421
+      },
+      "docs": {
+        "files": 4,
+        "lines": 1615
+      },
+      "experiment": {
+        "files": 2,
+        "lines": 1275
+      },
+      "config": {
+        "files": 1,
+        "lines": 90
+      }
+    },
+    "productionLoc": 4099,
+    "productionLocScope": "backend/src and frontend/src, .ts and .css",
+    "testLoc": 4243,
+    "testLocScope": "backend/tests, frontend/tests, e2e",
+    "testToProductionLocRatio": 1.04,
+    "deploymentAndConfigLoc": 403,
+    "documentationLoc": 3192,
+    "documentationLocScope": "docs/*.md, README.md, RELEASE_NOTES.md, experiment/*",
+    "totalAuthoredLoc": 11937,
+    "totalAuthoredLocNote": "production + test + deployment/config + documentation. Excludes package-lock.json, which is generated.",
+    "provenance": "tool-measured (wc -l over git-tracked files)"
+  },
+  "quality": {
+    "lintErrors": 0,
+    "lintWarnings": 0,
+    "typeCheckErrors": 0,
+    "typeCheckScope": "backend src+tests, frontend src+tests, e2e; TypeScript strict mode",
+    "buildResult": "success (backend tsc, frontend vite)",
+    "npmAuditVulnerabilities": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 0,
+      "low": 0,
+      "total": 0
+    },
+    "cyclomaticComplexity": {
+      "tool": "ESLint complexity rule with threshold 0, reporting every function's value",
+      "functionsMeasured": 209,
+      "totalComplexity": 503,
+      "average": 2.41,
+      "max": 12,
+      "functionsAbove10": 3,
+      "distribution": {
+        "1-3": 169,
+        "4-5": 19,
+        "6-10": 18,
+        "11+": 3
+      }
+    },
+    "duplication": {
+      "tool": "jscpd, minimum 5 lines / 50 tokens",
+      "productionClones": 0,
+      "productionDuplicatedLinesPercent": 0,
+      "testClones": 8,
+      "testDuplicatedLinesPercent": 1.67,
+      "testNote": "Remaining clones are per-file test fixtures, deliberately not shared so each test file is readable on its own."
+    },
+    "architecture": {
+      "tool": "dependency-cruiser, 6 rules",
+      "modules": 34,
+      "internalDependencies": 87,
+      "violations": 0,
+      "dependencyCycles": 0,
+      "layers": 4,
+      "averageEfferentCoupling": 2.5,
+      "averageAfferentCoupling": 2.5,
+      "maxEfferentCoupling": 18,
+      "maxAfferentCoupling": 13
+    },
+    "provenance": "tool-measured"
+  },
+  "tests": {
+    "totalExecuted": 397,
+    "totalPassed": 397,
+    "totalFailed": 0,
+    "passRate": 1,
+    "suites": {
+      "backend": {
+        "files": 18,
+        "executed": 281
+      },
+      "frontend": {
+        "files": 3,
+        "executed": 42
+      },
+      "e2eNative": {
+        "specFiles": 1,
+        "projects": 2,
+        "executed": 28
+      },
+      "e2eContainerized": {
+        "specFiles": 2,
+        "projects": 2,
+        "executed": 46
+      }
+    },
+    "backendByLevel": {
+      "unit": 128,
+      "component": 42,
+      "apiContract": 51,
+      "integration": 24,
+      "acceptance": 19,
+      "security": 17
+    },
+    "firstCompleteTestRun": {
+      "timestampUtc": "2026-09-21T11:11:37Z",
+      "executed": 313,
+      "passed": 313,
+      "failed": 0,
+      "note": "Recorded before any change was made in response to it, as the protocol requires. No test failed, so no implementation or test was changed because of this run.",
+      "blockedEarlierAttempt": "An earlier attempt failed to start with ERR_MODULE_NOT_FOUND for a vitest transitive dependency. No test executed, so it is not counted as a test run."
+    },
+    "testsModifiedToMakeImplementationPass": 0,
+    "coverage": {
+      "scope": "backend workspace only; frontend and e2e are not instrumented",
+      "statements": {
+        "covered": 597,
+        "total": 627,
+        "percent": 95.21
+      },
+      "branches": {
+        "covered": 270,
+        "total": 326,
+        "percent": 82.82
+      },
+      "functions": {
+        "covered": 145,
+        "total": 151,
+        "percent": 96.02
+      },
+      "lines": {
+        "covered": 585,
+        "total": 615,
+        "percent": 95.12
+      },
+      "filesAt100Percent": 18,
+      "lowestCoveredFile": {
+        "file": "src/infrastructure/logging/logger.ts",
+        "statementsPercent": 50
+      },
+      "unitVsIntegrationCoverageSeparately": null,
+      "unitVsIntegrationUnavailableReason": "The suites share one instrumentation run; no per-suite coverage was configured, so splitting the figure would be an estimate."
+    },
+    "provenance": "tool-measured (vitest JSON reporter, v8 coverage, Playwright list reporter)"
+  },
+  "correctness": {
+    "acceptanceCriteriaTotal": 87,
+    "acceptanceCriteriaPassedFirstEvaluation": 84,
+    "acceptanceCriteriaPassedFinally": 87,
+    "acceptanceCriteriaNotVerifiable": 0,
+    "userStories": 8,
+    "firstEvaluationExceptions": [
+      "AC-002-11 was genuinely untested (finding F-05).",
+      "AC-G-14 and AC-G-16 could not be executed because Docker was absent; they were recorded as unverified rather than inferred."
+    ],
+    "acCriteriaThatFailedWhenFirstExecuted": [
+      "AC-G-14",
+      "AC-G-16"
+    ],
+    "acCriteriaThatFailedNote": "Both passed only after two Major defects found by running the containers were fixed.",
+    "regressions": 0,
+    "edgeCaseFailures": 0,
+    "failedCiRuns": null,
+    "failedCiRunsUnavailableReason": "No CI system is configured in this repository; no CI run occurred.",
+    "provenance": "recorded-during-run, tool-measured"
+  },
+  "findings": {
+    "total": 7,
+    "critical": 0,
+    "major": 3,
+    "minor": 4,
+    "resolved": 6,
+    "acceptedAsDocumentedTradeOff": 1,
+    "securityFindings": {
+      "total": 2,
+      "critical": 0,
+      "high": 2,
+      "medium": 0,
+      "low": 0,
+      "resolved": 2,
+      "unresolved": 0
+    },
+    "byLoop": {
+      "loop1": 5,
+      "loop2": 2
+    },
+    "foundOnlyByRunningContainers": 2,
+    "list": [
+      {
+        "id": "F-01",
+        "severity": "Major",
+        "loop": 1,
+        "category": "architecture",
+        "summary": "Infrastructure imported the application layer, breaking the specified layering rule."
+      },
+      {
+        "id": "F-02",
+        "severity": "Minor",
+        "loop": 1,
+        "category": "duplication",
+        "summary": "Zod issue formatting duplicated across two configuration modules."
+      },
+      {
+        "id": "F-03",
+        "severity": "Minor",
+        "loop": 1,
+        "category": "unrequested functionality",
+        "summary": "Three exported members had no production caller; one carried a false justification comment."
+      },
+      {
+        "id": "F-04",
+        "severity": "Minor",
+        "loop": 1,
+        "category": "unrequested functionality",
+        "summary": "Two repository query methods used only by tests; kept and documented as a deliberate trade-off."
+      },
+      {
+        "id": "F-05",
+        "severity": "Minor",
+        "loop": 1,
+        "category": "traceability",
+        "summary": "Eight acceptance criteria had no test naming them; one was genuinely untested."
+      },
+      {
+        "id": "F-06",
+        "severity": "Major",
+        "securitySeverity": "High",
+        "loop": 2,
+        "category": "security / deployment",
+        "summary": "Every served HTML document lacked all five security headers, because nginx does not inherit add_header into a location that declares its own."
+      },
+      {
+        "id": "F-07",
+        "severity": "Major",
+        "securitySeverity": "High",
+        "loop": 2,
+        "category": "security / availability",
+        "summary": "Read-path rate limits would have denied the registration form to participants sharing one public address."
+      }
+    ],
+    "provenance": "recorded-during-run (docs/verification-report.md)"
+  },
+  "rework": {
+    "loop1": {
+      "filesChanged": 25,
+      "linesAdded": 289,
+      "linesDeleted": 99,
+      "productionFilesChanged": 10,
+      "productionLinesAdded": 43,
+      "productionLinesDeleted": 25,
+      "productionLocBeforeLoop": 4047,
+      "percentOfProductionRewritten": 1.68
+    },
+    "loop2": {
+      "filesChanged": 21,
+      "linesAdded": 754,
+      "linesDeleted": 118,
+      "note": "Includes new test and configuration files as well as edits; the production source change itself was small and concentrated in nginx.conf, rateLimit.ts and env.ts."
+    },
+    "fixCommits": 2,
+    "totalReworkLinesTouched": 1260,
+    "provenance": "git-derived"
+  },
+  "git": {
+    "baselineCommit": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
+    "baselineCommitUtc": "2026-09-21T10:20:05Z",
+    "baselineBranch": "opus5_medium_single_agent_classic_sdd",
+    "finalCommit": "8b31571f431738b6575111a1fe0e3c02b9bc3c46",
+    "finalCommitUtc": "2026-09-21T13:42:56Z",
+    "firstMergeCommit": "6c2af9f6a8b1c8b5b916267be61189eff43fa951",
+    "secondMergeCommit": "111290f1e0dba5f8e9d91395f8981658625d585c",
+    "mainBranchTouched": false,
+    "mainBranchSha": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
+    "experimentInputsModified": false,
+    "experimentInputsChecked": [
+      "USER_STORIES.md",
+      "PROJECT_CONSTRAINTS.md",
+      "FORM_SCHEMA.md",
+      "PROMPT.md",
+      "ACTIVE_PROMPT.txt"
+    ],
+    "averageFilesPerNonMergeCommit": 11.3,
+    "averageLinesAddedPerNonMergeCommit": 788.7,
+    "averageLinesAddedPerNonMergeCommitExcludingLockfile": 545.1,
+    "largestCommit": {
+      "sha": "c639456",
+      "subject": "feat(backend)",
+      "filesExcludingLockfile": 40,
+      "linesAdded": 3320
+    },
+    "smallestCommit": {
+      "sha": "464be0a",
+      "subject": "chore: ignore Playwright output directories",
+      "files": 2,
+      "linesAdded": 2,
+      "linesDeleted": 4
+    },
+    "provenance": "git-derived",
+    "postRunCorrectionCommit": {
+      "sha": "ae47e03",
+      "committedUtc": "2026-09-21T16:03:38+02:00",
+      "subject": "docs(experiment): correct the active working time figure",
+      "reason": "Made after the run ended, while generating these statistics: cross-checking the arithmetic revealed that the 75.7-minute active-time figure recorded during the run omitted 22.3 minutes of unphased active work. Corrected to 96.0 minutes in experiment/run-log.json and experiment/run-summary.md.",
+      "countedInRunTotals": false,
+      "note": "The run is defined as baseline d4a6f12 to final commit 8b31571 (17 commits). This correction commit sits after that boundary and is listed separately rather than silently changing the run counts."
+    }
+  },
+  "dependencies": {
+    "backendRuntime": 9,
+    "backendRuntimeList": [
+      "better-sqlite3",
+      "cors",
+      "exceljs",
+      "express",
+      "express-rate-limit",
+      "helmet",
+      "nodemailer",
+      "pino",
+      "zod"
+    ],
+    "backendDev": 14,
+    "frontendDev": 9,
+    "rootDev": 1,
+    "overrides": {
+      "exceljs>uuid": "^11.1.1"
+    },
+    "installedTopLevelPackages": 428,
+    "advisoriesAtFirstInstall": {
+      "high": 1,
+      "moderate": 5,
+      "total": 6
+    },
+    "advisoriesAtEnd": 0,
+    "advisoryResolution": "nodemailer raised to >=10.0.10, vitest to >=5.0.1, and exceljs's transitive uuid overridden to ^11.1.1, all before the affected code paths were written.",
+    "provenance": "tool-measured (npm audit, package.json)"
+  },
+  "deployment": {
+    "containerImages": {
+      "backend": {
+        "size": "413MB",
+        "user": "uid=1000(node)",
+        "devDependenciesPresent": 0
+      },
+      "frontend": {
+        "size": "73.7MB"
+      }
+    },
+    "healthcheckStatus": "healthy, failing_streak 0",
+    "apiEndpoints": 4,
+    "apiEndpointList": [
+      "GET /api/health",
+      "GET /api/registration-config",
+      "POST /api/registrations",
+      "GET /api/export/registrations.xlsx"
+    ],
+    "persistenceVerified": [
+      "docker compose restart",
+      "docker compose down + up (container recreation)"
+    ],
+    "provenance": "tool-measured (docker inspect, docker exec, curl)"
+  },
+  "unavailableMeasurements": [
+    {
+      "metric": "cumulative tokens consumed",
+      "reason": "No cumulative counter exposed; cannot be derived from context-window occupancy."
+    },
+    {
+      "metric": "monetary cost",
+      "reason": "Not exposed; subscription plan with extra usage disabled."
+    },
+    {
+      "metric": "tool calls",
+      "reason": "No tool-call counter exposed; a count from memory would be an estimate."
+    },
+    {
+      "metric": "harness version",
+      "reason": "Not exposed to the agent."
+    },
+    {
+      "metric": "failed CI runs",
+      "reason": "No CI system configured; no CI run occurred."
+    },
+    {
+      "metric": "human time",
+      "reason": "Not externally supplied."
+    },
+    {
+      "metric": "unit vs integration coverage separately",
+      "reason": "Shared instrumentation run; no per-suite coverage configured."
+    },
+    {
+      "metric": "maximum dependency depth",
+      "reason": "No depth calculation defined; dependency-cruiser was configured for rule conformance, not path-length reporting."
+    },
+    {
+      "metric": "change-experiment metrics",
+      "reason": "PROMPT.md defines no maintainability/change experiment for this run."
+    },
+    {
+      "metric": "cohesion, modularity, architectural consistency, pattern consistency as scores",
+      "reason": "No deterministic calculation defined; the raw module graph is recorded instead."
+    },
+    {
+      "metric": "real SMTP delivery to a mailbox",
+      "reason": "No mail server or mailbox available; composition and the failure path were verified instead."
+    }
+  ],
+  "crossRunMetricsExcluded": {
+    "note": "These are cross-run metrics and are deliberately NOT calculated from a single run, per the experiment protocol. They are to be computed externally after multiple independent runs.",
+    "excluded": [
+      "similarity between runs",
+      "time variance",
+      "token variance",
+      "quality variance",
+      "architecture variance",
+      "cost per successful acceptance criterion",
+      "successful acceptance criteria per 10,000 tokens"
+    ]
+  }
+}

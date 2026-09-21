@@ -1,0 +1,19 @@
+sha,committed_utc,phase,subject,files_all,added_all,deleted_all,files_no_lockfile,added_no_lockfile,deleted_no_lockfile,is_merge
+55c5d92,2026-09-21T12:35:16+02:00,"start-state","chore(experiment): record experiment start state and initialise run log",1,41,0,1,41,0,false
+81d2baf,2026-09-21T12:36:46+02:00,"1 acceptance criteria","docs(phase-1): derive acceptance criteria from user stories and constraints",1,267,0,1,267,0,false
+ce8fd80,2026-09-21T12:41:20+02:00,"2 specification","docs(phase-2): technical specification with architecture decisions and traceability",2,750,2,2,750,2,false
+c639456,2026-09-21T12:55:11+02:00,"3 implementation","feat(backend): registration API, persistence, JSON backup, email and Excel export",41,9509,0,40,3320,0,false
+366693c,2026-09-21T12:59:29+02:00,"3 implementation","feat(frontend): responsive external and student registration forms",18,1242,2,17,1241,2,false
+bc13cfc,2026-09-21T13:00:19+02:00,"3 implementation","build: containerized deployment and project README",6,249,0,6,249,0,false
+15368b0,2026-09-21T13:16:53+02:00,"4 tests","test: unit, component, integration, API, acceptance, security and e2e suites",35,5129,427,34,3993,2,false
+464be0a,2026-09-21T13:17:09+02:00,"4 tests","chore: ignore Playwright output directories",2,2,4,2,2,4,false
+cd9dfcc,2026-09-21T13:26:24+02:00,"5 verification loop 1","fix(verification): correct layering violation and remove dead code",26,805,99,25,289,99,false
+669298f,2026-09-21T13:28:24+02:00,"5 verification loop 1","docs(phase-5): verification report",1,339,0,1,339,0,false
+147d0f2,2026-09-21T13:30:19+02:00,"6 merge","docs: release notes for 1.0.0",2,575,0,2,575,0,false
+6c2af9f,2026-09-21T13:31:19+02:00,"6 merge","Merge conference registration system (single agent, classical SDD run)",96,18374,0,95,10957,0,true
+d3b908f,2026-09-21T13:32:57+02:00,"6 merge","docs(experiment): final run log measurements and run summary",2,409,1,2,409,1,false
+6ffec26,2026-09-21T13:33:20+02:00,"6 merge","docs(experiment): distinguish the merge commit from the final repository commit",2,19,7,2,19,7,false
+22d32cb,2026-09-21T15:42:26+02:00,"7 verification loop 2","fix(deployment): restore security headers and retune read-path rate limits",21,754,118,21,754,118,false
+111290f,2026-09-21T15:42:34+02:00,"7 verification loop 2","Merge container verification (verification loop 2)",21,754,118,21,754,118,true
+8b31571,2026-09-21T15:42:56+02:00,"7 verification loop 2","docs(experiment): record the loop 2 merge",1,21,2,1,21,2,false
+ae47e03,2026-09-21T16:03:38+02:00,"post-run correction","docs(experiment): correct the active working time figure",2,17,7,2,17,7,false

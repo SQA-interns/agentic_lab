@@ -1,0 +1,25 @@
+workspace,file,level,tests_executed
+backend,acceptance/userStories.acceptance.test.ts,acceptance,19
+backend,api/export.api.test.ts,api-contract,10
+backend,api/registrationConfig.api.test.ts,api-contract,14
+backend,api/registrations.api.test.ts,api-contract,27
+backend,component/excelExporter.test.ts,component,15
+backend,component/jsonBackupStore.test.ts,component,10
+backend,component/mailer.test.ts,component,5
+backend,component/registrationRepository.test.ts,component,12
+backend,integration/failureRecovery.test.ts,integration,7
+backend,integration/registrationFlow.test.ts,integration,17
+backend,security/security.test.ts,security,17
+backend,unit/env.test.ts,unit,16
+backend,unit/formTokenService.test.ts,unit,13
+backend,unit/mailTemplates.test.ts,unit,8
+backend,unit/normalize.test.ts,unit,14
+backend,unit/optionsConfig.test.ts,unit,20
+backend,unit/reference.test.ts,unit,12
+backend,unit/registrationSchema.test.ts,unit,45
+frontend,api.test.ts,contract,11
+frontend,registrationPage.test.ts,component,16
+frontend,validation.test.ts,unit,15
+e2e,specs/registration.e2e.spec.ts,end-to-end (native; 14 specs x 2 viewports),28
+e2e,specs/registration.e2e.spec.ts,end-to-end (containerized; 14 specs x 2 viewports),28
+e2e,container-specs/deployment.container.spec.ts,deployment (9 specs x 2 viewports),18
