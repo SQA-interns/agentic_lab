@@ -9,7 +9,10 @@
   },
   "environment": {
     "os": "Windows 11 Pro 10.0.26200 (win32)",
-    "shells": ["PowerShell", "Git Bash"],
+    "shells": [
+      "PowerShell",
+      "Git Bash"
+    ],
     "node": "v24.13.0",
     "npm": "11.6.2",
     "git": "2.53.0.windows.1",
@@ -35,7 +38,19 @@
     ],
     "preExistingApplicationCode": false
   },
-  "phases": [],
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Acceptance Criteria",
+      "startedUtc": "2026-09-21T10:35:22Z",
+      "completedUtc": "2026-09-21T10:36:45Z",
+      "artefacts": [
+        "docs/acceptance-criteria.md"
+      ],
+      "commit": "81d2baff0681cf222afd1c919fa65608c9e0a007",
+      "notes": "78 user-story acceptance criteria plus 17 cross-cutting criteria derived from PROJECT_CONSTRAINTS.md and FORM_SCHEMA.md. No clarification required from a human."
+    }
+  ],
   "events": [],
   "measurements": {}
 }
