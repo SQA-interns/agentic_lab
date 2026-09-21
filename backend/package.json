@@ -7,11 +7,12 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/server.js",
-    "dev": "node --watch --experimental-strip-types src/server.ts",
+    "dev": "node --env-file=../.env --watch --experimental-strip-types src/server.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "start:local": "node --env-file=../.env dist/server.js"
   },
   "dependencies": {
     "better-sqlite3": "^12.2.0",

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Student registration</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="page">
+        <h1>Conference registration</h1>
+        <p>Students — <span id="conference-name">…</span></p>
+        <nav class="variant-nav">
+          <a href="/">Not a student? Use the external participant registration form</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div id="form-summary" class="summary" hidden></div>
+
+      <section id="confirmation" tabindex="-1" role="status" hidden></section>
+
+      <form id="registration-form" novalidate hidden>
+        <h2>Your details</h2>
+        <p class="hint">Fields marked with * are required.</p>
+        <div id="fixed-fields"></div>
+
+        <h2>Conference programme</h2>
+        <p class="hint">Selecting activities is optional.</p>
+        <div id="option-groups"></div>
+
+        <h2>Consent</h2>
+        <div id="consents"></div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button id="submit-button" type="submit">Submit registration</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>Your data is processed only for the purpose of organising the conference.</p>
+    </footer>
+
+    <script type="module" src="/src/main-student.ts"></script>
+  </body>
+</html>
