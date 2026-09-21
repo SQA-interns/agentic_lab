@@ -1,4 +1,3 @@
-
 Form Schema
 
 This file defines the fixed registration fields and configurable conference options.
@@ -9,36 +8,36 @@ External participant registration
 
 Fixed fields:
 
-* First name
-* Last name
-* Email
-* Organization / institution
+First name
+Last name
+Email
+Organization / institution
 
 Student registration
 
 Fixed fields:
 
-* First name
-* Last name
-* Email
-* Study institution
-* Study programme
-* Student ID
+First name
+Last name
+Email
+Study institution
+Study programme
+Student ID
 
 Configurable conference options
 
 The following are configurable and may change without changing the fixed participant fields:
 
-* Workshops
-* Events
-* Meals
-* Other optional conference activities
+Workshops
+Events
+Meals
+Other optional conference activities
 
 Each configurable option must have at least:
 
-* stable identifier
-* display name
-* active/inactive status
+stable identifier
+display name
+active/inactive status
 
 Consent
 
@@ -48,13 +47,13 @@ Mandatory consent must not be preselected.
 
 General field rules
 
-* Required fields must not be empty.
-* Email must have a valid email format.
-* Text fields must support Unicode characters, including Slovenian characters.
-* Leading and trailing whitespace should not be significant.
-* Validation must exist on both frontend and backend.
-* Configurable option identifiers submitted by the client must be validated by the backend.
-* Inactive or unknown configurable options must not be accepted.
+Required fields must not be empty.
+Email must have a valid email format.
+Text fields must support Unicode characters, including Slovenian characters.
+Leading and trailing whitespace should not be significant.
+Validation must exist on both frontend and backend.
+Configurable option identifiers submitted by the client must be validated by the backend.
+Inactive or unknown configurable options must not be accepted.
 
 Scope
 
@@ -62,12 +61,12 @@ This file defines only the form data.
 
 It does not define:
 
-* API design
-* database schema
-* architecture
-* implementation technologies
-* test strategy
-* security implementation
-* storage format
+API design
+database schema
+architecture
+implementation technologies
+test strategy
+security implementation
+storage format
 
 Those decisions belong to later phases of the development process.
