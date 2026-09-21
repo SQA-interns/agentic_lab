@@ -1,0 +1,41 @@
+{
+  "runIdentifier": "opus5-medium-single-agent-classic-sdd-2026-09-21",
+  "process": "User Stories -> Acceptance Criteria -> Specification -> Implementation -> Tests -> Verification -> Merge",
+  "agent": {
+    "modelIdentifier": "claude-opus-5",
+    "harness": "Claude Code (Claude Agent SDK, desktop app Code tab)",
+    "harnessVersionExposed": null,
+    "harnessVersionUnavailableReason": "The environment does not expose a Claude Code version string to the agent."
+  },
+  "environment": {
+    "os": "Windows 11 Pro 10.0.26200 (win32)",
+    "shells": ["PowerShell", "Git Bash"],
+    "node": "v24.13.0",
+    "npm": "11.6.2",
+    "git": "2.53.0.windows.1",
+    "python": "not installed",
+    "docker": "not available on PATH in this environment",
+    "npmRegistryReachable": true
+  },
+  "startState": {
+    "timestampUtc": "2026-09-21T10:35:03Z",
+    "startingBranch": "opus5_medium_single_agent_classic_sdd",
+    "startingCommitSha": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
+    "startingCommitDate": "2026-09-21T10:20:05Z",
+    "workingTreeClean": true,
+    "experimentBranch": "experiment/conference-registration-opus5",
+    "baselineFilesPresent": [
+      "USER_STORIES.md",
+      "PROJECT_CONSTRAINTS.md",
+      "PROMPT.md",
+      "FORM_SCHEMA.md",
+      "ACTIVE_PROMPT.txt",
+      "00_Documentation/README.md",
+      "00_Documentation/Brainstorming.docx"
+    ],
+    "preExistingApplicationCode": false
+  },
+  "phases": [],
+  "events": [],
+  "measurements": {}
+}
