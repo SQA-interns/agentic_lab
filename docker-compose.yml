@@ -1,0 +1,41 @@
+# Full system: frontend, backend and the persistent volume that holds the relational
+# database and the JSON backups (specification § 13).
+#
+#   cp .env.example .env   # then fill in real values
+#   docker compose up --build
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+      OPTIONS_CONFIG_FILE: /app/config/conference-options.json
+      PORT: "3000"
+      # nginx is the only caller and sets X-Forwarded-For, so rate limiting can trust it.
+      TRUST_PROXY: "true"
+      CORS_ALLOWED_ORIGINS: http://localhost:8080
+    volumes:
+      # Named volume: registrations survive container restart and recreation.
+      - registration-data:/data
+      # Conference programme, editable without rebuilding the image.
+      - ./config:/app/config:ro
+    expose:
+      - "3000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+volumes:
+  registration-data:
