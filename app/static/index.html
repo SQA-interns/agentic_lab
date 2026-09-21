@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Conference registration</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#registration">Skip to registration form</a>
+    <header>
+      <p class="eyebrow">Conference</p>
+      <h1 id="page-title">Registration</h1>
+      <nav aria-label="Registration type">
+        <a href="/external">External participant</a>
+        <a href="/student">Student</a>
+      </nav>
+    </header>
+    <main id="registration">
+      <div id="loading" role="status">Loading registration form…</div>
+      <section id="fatal-error" class="notice error" hidden>
+        <h2>Registration is unavailable</h2>
+        <p>We could not load the form. Please try again later.</p>
+        <button id="reload" type="button">Try again</button>
+      </section>
+      <form id="registration-form" novalidate hidden>
+        <div id="error-summary" class="notice error" role="alert" tabindex="-1" hidden></div>
+        <fieldset>
+          <legend>Your information</legend>
+          <div id="participant-fields" class="field-grid"></div>
+        </fieldset>
+        <div id="option-groups"></div>
+        <fieldset>
+          <legend>Consent</legend>
+          <div id="consent-fields"></div>
+        </fieldset>
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button id="submit" type="submit">Submit registration</button>
+      </form>
+      <section id="confirmation" class="notice success" role="status" hidden>
+        <h2>Registration received</h2>
+        <p>Your registration was successfully processed.</p>
+        <p>Registration ID: <strong id="registration-id"></strong></p>
+      </section>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+    <footer>
+      <p>Participant information is used for conference registration and communication.</p>
+    </footer>
+  </body>
+</html>
+

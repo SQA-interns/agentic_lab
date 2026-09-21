@@ -1,0 +1,43 @@
+{
+  "conferenceName": "Conference",
+  "configurationVersion": "2026-01",
+  "options": [
+    {
+      "id": "workshop-web-security",
+      "displayName": "Web security workshop",
+      "category": "workshop",
+      "active": true,
+      "variants": ["external", "student"]
+    },
+    {
+      "id": "event-opening-reception",
+      "displayName": "Opening reception",
+      "category": "event",
+      "active": true,
+      "variants": ["external", "student"]
+    },
+    {
+      "id": "meal-conference-lunch",
+      "displayName": "Conference lunch",
+      "category": "meal",
+      "active": true,
+      "variants": ["external", "student"]
+    },
+    {
+      "id": "other-campus-tour",
+      "displayName": "Campus tour",
+      "category": "other",
+      "active": false,
+      "variants": ["external", "student"]
+    }
+  ],
+  "consents": [
+    {
+      "id": "privacy",
+      "label": "I consent to the processing of my data for conference registration.",
+      "policyVersion": "2026-01",
+      "required": true,
+      "variants": ["external", "student"]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+services:
+  db:
+    image: postgres:16.4-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD_FILE: /run/secrets/database_password
+    secrets:
+      - database_password
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  migrate:
+    build: .
+    command: ["alembic", "upgrade", "head"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL_FILE: /run/secrets/database_url
+    secrets:
+      - database_url
+    depends_on:
+      db:
+        condition: service_healthy
+    read_only: true
+    tmpfs: [/tmp]
+  web:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL_FILE: /run/secrets/database_url
+      BACKUP_DIRECTORY: /data/backups
+      CONFERENCE_CONFIG_PATH: /app/config/conference-options.json
+    volumes:
+      - registration-backups:/data/backups
+      - ./config/conference-options.json:/app/config/conference-options.json:ro
+    secrets:
+      - database_url
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports: ["8000:8000"]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready')"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+  worker:
+    build: .
+    command: ["python", "-m", "app.worker"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL_FILE: /run/secrets/database_url
+      BACKUP_DIRECTORY: /data/backups
+      CONFERENCE_CONFIG_PATH: /app/config/conference-options.json
+    volumes:
+      - registration-backups:/data/backups
+      - ./config/conference-options.json:/app/config/conference-options.json:ro
+    secrets:
+      - database_url
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+
+volumes:
+  database-data:
+  registration-backups:
+
+secrets:
+  database_password:
+    file: ./secrets/database_password.txt
+  database_url:
+    file: ./secrets/database_url.txt
