@@ -650,8 +650,260 @@
         "dependencyStructureChangeDetail": "The port move (F-01) and the extraction of config/formatIssues.ts (F-02)."
       },
       "humanClarificationsRequired": 0
+    },
+    {
+      "phase": 6,
+      "name": "Merge",
+      "startedUtc": "2026-09-21T11:28:18Z",
+      "completedUtc": "2026-09-21T11:31:19Z",
+      "artefacts": [
+        "RELEASE_NOTES.md"
+      ],
+      "startingCommitSha": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
+      "finalCommitSha": "6c2af9f6a8b1c8b5b916267be61189eff43fa951",
+      "experimentBranch": "experiment/conference-registration-opus5",
+      "mergedInto": "opus5_medium_single_agent_classic_sdd",
+      "mergeStrategy": "--no-ff",
+      "mergeTimestampUtc": "2026-09-21T11:31:19Z",
+      "baselineOverwritten": false,
+      "baselineNote": "main was not touched. Work was done on an isolated branch off the model-specific experiment branch and merged back into it with an explicit merge commit.",
+      "commits": 12,
+      "commitsExcludingMerge": 11,
+      "reverts": 0,
+      "mergeConflicts": 0,
+      "commitSizes": {
+        "note": "Insertions and deletions per commit, excluding package-lock.json, which is generated and would dominate the figures.",
+        "unit": "files changed / lines added / lines deleted",
+        "perCommit": [
+          {
+            "sha": "55c5d92",
+            "subject": "chore(experiment): record experiment start state",
+            "files": 1,
+            "added": 41,
+            "deleted": 0
+          },
+          {
+            "sha": "81d2baf",
+            "subject": "docs(phase-1): acceptance criteria",
+            "files": 1,
+            "added": 267,
+            "deleted": 0
+          },
+          {
+            "sha": "ce8fd80",
+            "subject": "docs(phase-2): technical specification",
+            "files": 2,
+            "added": 750,
+            "deleted": 2
+          },
+          {
+            "sha": "c639456",
+            "subject": "feat(backend)",
+            "files": 40,
+            "added": 3320,
+            "deleted": 0
+          },
+          {
+            "sha": "366693c",
+            "subject": "feat(frontend)",
+            "files": 17,
+            "added": 1241,
+            "deleted": 2
+          },
+          {
+            "sha": "bc13cfc",
+            "subject": "build: containerized deployment and README",
+            "files": 6,
+            "added": 249,
+            "deleted": 0
+          },
+          {
+            "sha": "15368b0",
+            "subject": "test: full test suite",
+            "files": 34,
+            "added": 3993,
+            "deleted": 2
+          },
+          {
+            "sha": "464be0a",
+            "subject": "chore: ignore Playwright output",
+            "files": 2,
+            "added": 2,
+            "deleted": 4
+          },
+          {
+            "sha": "cd9dfcc",
+            "subject": "fix(verification)",
+            "files": 25,
+            "added": 289,
+            "deleted": 99
+          },
+          {
+            "sha": "669298f",
+            "subject": "docs(phase-5): verification report",
+            "files": 1,
+            "added": 339,
+            "deleted": 0
+          },
+          {
+            "sha": "147d0f2",
+            "subject": "docs: release notes",
+            "files": 1,
+            "added": 339,
+            "deleted": 0
+          }
+        ],
+        "averageFilesPerCommit": 11.8,
+        "averageLinesAddedPerCommit": 984.5,
+        "averageLinesDeletedPerCommit": 9.9
+      }
     }
   ],
   "events": [],
-  "measurements": {}
+  "measurements": {
+    "efficiency": {
+      "totalTimeUtc": {
+        "start": "2026-09-21T10:35:03Z",
+        "end": "2026-09-21T11:31:19Z",
+        "minutes": 56.3
+      },
+      "timeToFirstWorkingVersion": {
+        "backendApiHappyPathMinutes": 17.8,
+        "fullStackBrowserHappyPathMinutes": 24,
+        "measuredFrom": "2026-09-21T10:35:03Z (experiment start state recorded)"
+      },
+      "timeToMergeMinutes": 56.3,
+      "timeInFixLoopsMinutes": 8.5,
+      "timeInFixLoopsNote": "Phase 5 fix loop, from the first dependency-cruiser violation to the completed re-verification. Development-feedback fixes inside Phase 3 (lint, type and smoke-check corrections) are not counted here; they are recorded under phase 3 developmentFeedbackChecks.",
+      "phaseDurationsMinutes": {
+        "phase1": 1.4,
+        "phase2": 4.4,
+        "phase3": 18.9,
+        "phase4": 15.8,
+        "phase5": 10.8,
+        "phase6": 3
+      },
+      "tokensConsumed": null,
+      "tokensConsumedUnavailableReason": "The environment does not expose a token count to the agent. Estimating it is forbidden by the experiment protocol.",
+      "monetaryCost": null,
+      "monetaryCostUnavailableReason": "Not exposed by the environment.",
+      "toolCalls": null,
+      "toolCallsUnavailableReason": "The environment does not expose a tool-call counter to the agent. A count reconstructed from memory would be an estimate, which the protocol forbids.",
+      "agentCalls": 1,
+      "subagentCalls": 0,
+      "subagentCallsNote": "Single-agent run by design; the Agent tool was never invoked."
+    },
+    "humanEffort": {
+      "humanInterventions": 0,
+      "humanInterventionTimestamps": [],
+      "humanTimeSeconds": null,
+      "humanTimeUnavailableReason": "Not externally supplied for this run.",
+      "clarifyingQuestionsAsked": 0,
+      "clarifyingQuestionsNote": "The inputs were sufficient to proceed autonomously throughout. No decision required human input.",
+      "manualCodeFixes": 0,
+      "manualCodeFixesNote": "All code was written by the agent; the human made no edits during the run."
+    },
+    "correctness": {
+      "acceptanceCriteriaTotal": 87,
+      "acceptanceCriteriaPassedFirstEvaluation": 84,
+      "acceptanceCriteriaPassedFinally": 85,
+      "acceptanceCriteriaNotVerifiable": 2,
+      "firstCompleteTestRun": {
+        "tests": 313,
+        "passed": 313,
+        "failed": 0,
+        "timestampUtc": "2026-09-21T11:11:37Z"
+      },
+      "finalTestPassRate": 1,
+      "finalTests": 347,
+      "failedCiRuns": null,
+      "failedCiRunsUnavailableReason": "No CI system is configured in this repository; no CI run occurred.",
+      "regressions": 0,
+      "edgeCaseFailures": 0
+    },
+    "verification": {
+      "findings": 5,
+      "critical": 0,
+      "major": 1,
+      "minor": 4,
+      "fixLoops": 1
+    },
+    "security": {
+      "total": 0,
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "resolved": 0,
+      "unresolved": 0
+    },
+    "codeQuality": {
+      "locProduction": 4065,
+      "locTests": 4059,
+      "locHtmlAndDeploymentConfig": 340,
+      "cyclomaticComplexityAverage": 2.41,
+      "cyclomaticComplexityMax": 12,
+      "codeDuplicationProductionPercent": 0,
+      "codeDuplicationTestsPercent": 0.74,
+      "lintErrors": 0,
+      "lintWarnings": 0,
+      "typeCheckErrors": 0,
+      "coverageTotalStatements": 95.21,
+      "coverageBranches": 82.82,
+      "coverageFunctions": 96.02,
+      "coverageLines": 95.12,
+      "coverageScopeNote": "Measured for the backend workspace only. Per-level coverage (unit vs integration) is not recorded: the suites share one instrumentation run and no per-suite coverage was configured, so splitting it would be an estimate.",
+      "unitTestCoverage": null,
+      "integrationTestCoverage": null,
+      "newDependenciesRuntime": 9,
+      "newDependenciesDev": 17
+    },
+    "rework": {
+      "locChangedAfterFirstVerification": 388,
+      "locChangedAfterFirstVerificationDetail": "289 lines added and 99 removed in commit cd9dfcc, excluding package-lock.json.",
+      "productionLocChangedAfterFirstVerification": 68,
+      "productionLocChangedAfterFirstVerificationDetail": "43 added and 25 removed across 10 files under backend/src and frontend/src.",
+      "productionLocBeforeFirstVerification": 4047,
+      "percentageOfImplementationRewrittenAfterFirstVerification": 1.68,
+      "percentageCalculation": "(43 + 25) / 4047 production lines present at the end of Phase 4, expressed as a percentage.",
+      "filesChangedAfterFirstVerification": 25,
+      "productionFilesChangedAfterFirstVerification": 10,
+      "fixCommits": 1
+    },
+    "requirements": {
+      "missing": 0,
+      "incorrectlyImplemented": 0,
+      "unrequestedFunctionality": 3,
+      "requirementViolations": 0,
+      "specificationViolations": 1
+    },
+    "maintainability": {
+      "documentationCompleteness": {
+        "required": [
+          "docs/acceptance-criteria.md",
+          "docs/specification.md",
+          "docs/verification-report.md",
+          "RELEASE_NOTES.md",
+          "experiment/run-log.json",
+          "experiment/run-summary.md"
+        ],
+        "present": 6,
+        "total": 6,
+        "ratio": 1,
+        "additional": [
+          "docs/test-strategy.md",
+          "README.md",
+          ".env.example"
+        ]
+      },
+      "architecturalViolations": 0,
+      "changeExperiment": null,
+      "changeExperimentUnavailableReason": "No maintainability/change experiment was defined in PROMPT.md for this run, so there is nothing to measure. Files changed, modules changed, LOC changed and time required for such an experiment are therefore null.",
+      "changeExperimentFilesChanged": null,
+      "changeExperimentModulesChanged": null,
+      "changeExperimentLocChanged": null,
+      "changeExperimentTimeMinutes": null
+    },
+    "crossRunMetricsNote": "Similarity, time variance, token variance, quality variance and architecture variance between runs are cross-run metrics and are deliberately not calculated here. Derived metrics such as cost per successful acceptance criterion and successful acceptance criteria per 10,000 tokens are likewise left to external calculation from the raw values above."
+  }
 }
