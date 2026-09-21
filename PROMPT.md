@@ -1,0 +1,380 @@
+# Experiment: Single Agent — Classical SDD
+
+You are the only development agent responsible for this experimental run.
+
+## Inputs
+
+Read and treat as immutable source inputs:
+
+* `USER_STORIES.md`
+* `PROJECT_CONSTRAINTS.md`
+* `FORM_SCHEMA.md`
+* existing repository instructions such as `AGENTS.md`, `CLAUDE.md` or equivalent project rules
+
+Do not modify the original User Stories or project constraints during the run.
+
+## Required development process
+
+Follow this process strictly:
+
+**User Stories → Acceptance Criteria → Specification → Implementation → Tests → Verification → Merge**
+
+The order is part of the experiment.
+
+Do not skip, reorder or merge phases.
+
+### Phase 1 — Acceptance Criteria
+
+Derive Acceptance Criteria from the User Stories and project constraints.
+
+Create:
+
+`docs/acceptance-criteria.md`
+
+Requirements:
+
+* every User Story must have traceable Acceptance Criteria;
+* criteria must be observable and testable;
+* include successful paths, invalid-input behaviour and relevant edge cases;
+* do not start the specification before this artefact is complete.
+
+Record the completion timestamp.
+
+### Phase 2 — Specification
+
+Using the User Stories, Acceptance Criteria and project constraints, create the technical specification.
+
+Create:
+
+`docs/specification.md`
+
+The specification must define the technical solution sufficiently for implementation, including relevant:
+
+* architecture;
+* components/modules;
+* responsibilities;
+* data model;
+* REST API;
+* validation;
+* persistence;
+* JSON backup;
+* email processing;
+* Excel export;
+* frontend behaviour;
+* error handling;
+* security controls;
+* anti-automation controls;
+* containerized deployment;
+* relevant architecture decisions.
+
+Maintain traceability to the User Stories and Acceptance Criteria.
+
+Do not implement production code or tests during this phase.
+
+Record the completion timestamp.
+
+### Phase 3 — Implementation
+
+Implement the solution using the approved specification as the primary technical source of truth.
+
+The implementation may use the User Stories and Acceptance Criteria to resolve intent, but must not silently contradict the specification.
+
+Do not create the feature test suite during this phase.
+
+Compilation, formatting, linting and type checking may be used as development feedback and must be logged separately from the test phase.
+
+Avoid unrelated refactoring and functionality that was not requested.
+
+Record:
+
+* implementation start and end timestamps;
+* files created;
+* files modified;
+* dependencies added;
+* important implementation decisions;
+* any clarification required from a human.
+
+Record the first timestamp at which the application can successfully execute the primary registration happy path.
+
+### Phase 4 — Tests
+
+Only after implementation is complete, create the test suite.
+
+Tests must not merely reproduce the implementation.
+
+Use the appropriate source artefact for each test level:
+
+* User Stories and Acceptance Criteria for behavioural and acceptance tests;
+* Specification and Acceptance Criteria for API, contract and integration tests;
+* Specification and implementation for unit and implementation-specific tests.
+
+Select an appropriate combination of:
+
+* unit tests;
+* component tests;
+* integration tests;
+* REST API tests;
+* contract tests;
+* acceptance tests;
+* end-to-end tests;
+* regression tests;
+* negative and edge-case tests;
+* security tests;
+* relevant failure/recovery tests.
+
+Document why each selected test level is appropriate.
+
+Record the result of the first complete test run before fixing any failures.
+
+Do not modify tests merely to make an incorrect implementation pass.
+
+### Phase 5 — Verification
+
+After the test suite exists, perform a separate self-verification phase.
+
+Re-read:
+
+* all User Stories;
+* all Acceptance Criteria;
+* the specification;
+* project constraints.
+
+Then independently inspect the final implementation and execute all relevant automated checks.
+
+Verification must include:
+
+* Acceptance Criteria traceability;
+* complete automated test suite;
+* linting;
+* type checking where applicable;
+* build;
+* security checks available in the project;
+* architecture conformance;
+* review for missing requirements;
+* review for unrequested functionality;
+* review for regressions;
+* review for relevant edge cases.
+
+Create:
+
+`docs/verification-report.md`
+
+For every finding record:
+
+* severity: Critical / Major / Minor;
+* affected US/AC if applicable;
+* description;
+* fix performed;
+* result after re-verification.
+
+If verification fails, perform a fix loop:
+
+**Verification → Fix → Verification**
+
+Record every fix loop separately.
+
+### Phase 6 — Merge
+
+Merge only after verification passes.
+
+Use an isolated feature/experiment branch.
+
+Do not directly overwrite the experiment baseline.
+
+Create granular commits that represent meaningful development steps.
+
+Record:
+
+* starting commit SHA;
+* final commit SHA;
+* number of commits;
+* commit sizes;
+* reverts;
+* merge conflicts;
+* final merge timestamp.
+
+Create:
+
+`RELEASE_NOTES.md`
+
+Release notes must be derived from the implemented User Stories and actual repository changes.
+
+## Experimental logging
+
+Create:
+
+`experiment/run-log.json`
+
+Record objective events and measurements as they occur.
+
+Never fabricate or estimate a value that is not observable.
+
+For unavailable measurements use `null` and state why the value is unavailable.
+
+In particular:
+
+* do not estimate token consumption;
+* do not estimate monetary cost;
+* do not invent tool-call counts;
+* do not subjectively assign architecture metric values when no defined calculation exists.
+
+If the development environment exposes these values, record the exact environment-reported value.
+
+## Per-run measurements to record where objectively obtainable
+
+### Efficiency
+
+* total time;
+* time to first working version;
+* time to merge;
+* time spent in fix loops;
+* tokens consumed;
+* tool calls;
+* agent/subagent calls.
+
+### Human effort
+
+* human interventions;
+* human intervention timestamps;
+* human time where externally supplied;
+* clarifying questions;
+* manual code fixes.
+
+### Correctness
+
+* Acceptance Criteria passed on first evaluation;
+* Acceptance Criteria passed finally;
+* first complete test-run result;
+* final test pass rate;
+* failed CI runs;
+* regressions;
+* edge-case failures.
+
+### Verification
+
+* verifier/self-verification findings;
+* Critical findings;
+* Major findings;
+* Minor findings;
+* fix-loop count.
+
+### Security
+
+* total security findings;
+* Critical findings;
+* High findings;
+* Medium findings;
+* Low findings;
+* resolved findings;
+* unresolved findings.
+
+### Code quality
+
+* LOC;
+* cyclomatic complexity where a deterministic tool is available;
+* code duplication where a deterministic tool is available;
+* lint errors;
+* lint warnings;
+* type-check errors;
+* total test coverage;
+* unit test coverage;
+* integration test coverage;
+* new dependencies.
+
+### Git/process
+
+* commits;
+* average commit size;
+* reverts;
+* merge conflicts.
+
+### Rework
+
+* LOC changed after first verification;
+* percentage of implementation rewritten after first verification;
+* files changed after first verification;
+* fix commits.
+
+### Requirements
+
+* missing requirements;
+* incorrectly implemented requirements;
+* unrequested functionality;
+* requirement violations;
+* specification violations.
+
+### Maintainability
+
+* documentation completeness according to the required artefact list;
+* architectural violations;
+* files changed for the designated maintainability/change experiment;
+* modules changed for the designated maintainability/change experiment;
+* LOC changed for the designated maintainability/change experiment;
+* time required for the designated change experiment.
+
+### Architecture
+
+Where deterministic static analysis or an explicitly defined calculation is available, record:
+
+* coupling;
+* average coupling;
+* afferent coupling (Ca);
+* efferent coupling (Ce);
+* cohesion;
+* instability;
+* dependency cycles;
+* dependency depth;
+* layer violations;
+* architecture violations;
+* architectural consistency;
+* pattern consistency;
+* modularity;
+* API surface size;
+* component responsibility count;
+* external dependency count;
+* architecture churn;
+* number of architectural refactorings;
+* file moves/renames;
+* dependency-structure changes.
+
+Do not invent numerical scores for qualitative architecture concepts. If no objective calculation has been defined, record the raw observations required for later external evaluation instead.
+
+## Measurements that must NOT be calculated from a single run
+
+Do not calculate these inside this run:
+
+* similarity between runs;
+* time variance between runs;
+* token variance between runs;
+* quality variance between runs;
+* architecture variance between runs.
+
+These are cross-run metrics and will be calculated externally after multiple independent runs.
+
+Likewise, derived metrics such as:
+
+* cost per successful AC;
+* successful AC per 10,000 tokens;
+
+must be calculated externally from the raw measurements.
+
+## Final experiment report
+
+At the end create:
+
+`experiment/run-summary.md`
+
+Include:
+
+* run identifier;
+* agent/model identifier if exposed by the environment;
+* tool/environment version if exposed;
+* starting and final commit;
+* process followed;
+* generated artefacts;
+* deviations from the required process;
+* unavailable measurements and reasons;
+* raw metric references;
+* final verification status.
+
+Do not optimize the implementation for the metrics. Follow normal production-quality engineering practices and record the resulting measurements.
