@@ -38,7 +38,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-describe('submitRegistration', () => {
+describe('submitRegistration (AC-G-02: each documented status maps to its own outcome)', () => {
   it('treats 201 as a created registration — the only path to a confirmation (AC-004-01)', async () => {
     respondWith(201, { reference: 'REG-20260921-ABCDEFGHJK', email: 'ana@example.org' });
     const outcome = await submitRegistration(request);

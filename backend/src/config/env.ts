@@ -11,6 +11,7 @@ import path from 'node:path';
 import { z } from 'zod';
 
 import { ConfigurationError } from '../domain/errors.js';
+import { formatIssues } from './formatIssues.js';
 
 const booleanFromString = z
   .union([z.boolean(), z.enum(['true', 'false', '1', '0'])])
@@ -120,9 +121,7 @@ export interface AppConfig {
 export function loadConfig(source: NodeJS.ProcessEnv = process.env): AppConfig {
   const parsed = envSchema.safeParse(source);
   if (!parsed.success) {
-    const details = parsed.error.issues
-      .map((issue) => `  ${issue.path.join('.') || '(root)'}: ${issue.message}`)
-      .join('\n');
+    const details = formatIssues(parsed.error.issues);
     throw new ConfigurationError(`Invalid environment configuration:\n${details}`);
   }
 

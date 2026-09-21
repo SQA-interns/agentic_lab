@@ -81,5 +81,3 @@ export function runMigrations(db: Database): number {
   }
   return count;
 }
-
-export const LATEST_SCHEMA_VERSION = MIGRATIONS[MIGRATIONS.length - 1]?.version ?? 0;

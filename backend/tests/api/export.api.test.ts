@@ -9,7 +9,7 @@ import ExcelJS from 'exceljs';
 import request from 'supertest';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { EXPORT_AUTH, registerExternal, registerStudent } from '../helpers/requests.js';
+import { downloadExport, EXPORT_AUTH, registerExternal, registerStudent } from '../helpers/requests.js';
 import { createTestApplication, type TestApplication } from '../helpers/testApplication.js';
 
 const EXPORT_URL = '/api/export/registrations.xlsx';
@@ -69,15 +69,7 @@ describe('GET /api/export/registrations.xlsx — authentication (AC-008-07)', ()
 
 describe('GET /api/export/registrations.xlsx — response (AC-008-01, AC-008-09)', () => {
   it('returns an Excel workbook with download headers', async () => {
-    const response = await request(application.app)
-      .get(EXPORT_URL)
-      .set('Authorization', EXPORT_AUTH)
-      .buffer()
-      .parse((res, callback) => {
-        const chunks: Buffer[] = [];
-        res.on('data', (chunk: Buffer) => chunks.push(chunk));
-        res.on('end', () => callback(null, Buffer.concat(chunks)));
-      });
+    const response = await downloadExport(application.app, EXPORT_AUTH);
 
     expect(response.status).toBe(200);
     expect(response.headers['content-type']).toContain(XLSX_TYPE);
@@ -91,15 +83,7 @@ describe('GET /api/export/registrations.xlsx — response (AC-008-01, AC-008-09)
   });
 
   it('returns a header-only workbook when nothing is registered (AC-008-06)', async () => {
-    const response = await request(application.app)
-      .get(EXPORT_URL)
-      .set('Authorization', EXPORT_AUTH)
-      .buffer()
-      .parse((res, callback) => {
-        const chunks: Buffer[] = [];
-        res.on('data', (chunk: Buffer) => chunks.push(chunk));
-        res.on('end', () => callback(null, Buffer.concat(chunks)));
-      });
+    const response = await downloadExport(application.app, EXPORT_AUTH);
 
     const sheet = await sheetFrom(response.body as Buffer);
     expect(sheet.rowCount).toBe(1);
@@ -109,15 +93,7 @@ describe('GET /api/export/registrations.xlsx — response (AC-008-01, AC-008-09)
     await registerExternal(application.app, { email: 'first@example.org' });
     await registerStudent(application.app, { email: 'second@example.org' });
 
-    const response = await request(application.app)
-      .get(EXPORT_URL)
-      .set('Authorization', EXPORT_AUTH)
-      .buffer()
-      .parse((res, callback) => {
-        const chunks: Buffer[] = [];
-        res.on('data', (chunk: Buffer) => chunks.push(chunk));
-        res.on('end', () => callback(null, Buffer.concat(chunks)));
-      });
+    const response = await downloadExport(application.app, EXPORT_AUTH);
 
     const sheet = await sheetFrom(response.body as Buffer);
     expect(sheet.rowCount).toBe(3);
@@ -128,28 +104,12 @@ describe('GET /api/export/registrations.xlsx — response (AC-008-01, AC-008-09)
   });
 
   it('exports a registration that was accepted only moments earlier', async () => {
-    const before = await request(application.app)
-      .get(EXPORT_URL)
-      .set('Authorization', EXPORT_AUTH)
-      .buffer()
-      .parse((res, callback) => {
-        const chunks: Buffer[] = [];
-        res.on('data', (chunk: Buffer) => chunks.push(chunk));
-        res.on('end', () => callback(null, Buffer.concat(chunks)));
-      });
+    const before = await downloadExport(application.app, EXPORT_AUTH);
     expect((await sheetFrom(before.body as Buffer)).rowCount).toBe(1);
 
     await registerExternal(application.app);
 
-    const after = await request(application.app)
-      .get(EXPORT_URL)
-      .set('Authorization', EXPORT_AUTH)
-      .buffer()
-      .parse((res, callback) => {
-        const chunks: Buffer[] = [];
-        res.on('data', (chunk: Buffer) => chunks.push(chunk));
-        res.on('end', () => callback(null, Buffer.concat(chunks)));
-      });
+    const after = await downloadExport(application.app, EXPORT_AUTH);
     expect((await sheetFrom(after.body as Buffer)).rowCount).toBe(2);
   });
 });

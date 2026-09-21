@@ -72,3 +72,21 @@ export async function registerStudent(
 }
 
 export const EXPORT_AUTH = `Basic ${Buffer.from('organizer:organizer-password').toString('base64')}`;
+
+/**
+ * Download the Excel export as a Buffer.
+ *
+ * Supertest parses a response body as text by default, which corrupts a binary payload;
+ * this collects the raw chunks instead, so assertions see the real file.
+ */
+export function downloadExport(app: Express, authorization?: string): request.Test {
+  const test = request(app).get('/api/export/registrations.xlsx');
+  if (authorization !== undefined) {
+    void test.set('Authorization', authorization);
+  }
+  return test.buffer().parse((res, callback) => {
+    const chunks: Buffer[] = [];
+    res.on('data', (chunk: Buffer) => chunks.push(chunk));
+    res.on('end', () => callback(null, Buffer.concat(chunks)));
+  });
+}

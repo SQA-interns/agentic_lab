@@ -8,6 +8,7 @@
 import { readFileSync } from 'node:fs';
 
 import { ConfigurationError } from '../domain/errors.js';
+import { formatIssues } from './formatIssues.js';
 import type { OptionGroupId, RegistrationVariant } from '../domain/registration.js';
 import {
   conferenceOptionsConfigSchema,
@@ -94,22 +95,12 @@ export class OptionCatalogue {
       },
     };
   }
-
-  /**
-   * Display name for an identifier regardless of its current state, used by the export
-   * so registrations stored before a change remain readable (AC-003-07).
-   */
-  displayNameOf(optionId: string): string | null {
-    return this.byId.get(optionId)?.option.displayName ?? null;
-  }
 }
 
 export function parseOptionsConfig(raw: unknown, sourceLabel: string): OptionCatalogue {
   const parsed = conferenceOptionsConfigSchema.safeParse(raw);
   if (!parsed.success) {
-    const details = parsed.error.issues
-      .map((issue) => `  ${issue.path.join('.') || '(root)'}: ${issue.message}`)
-      .join('\n');
+    const details = formatIssues(parsed.error.issues);
     throw new ConfigurationError(`Invalid conference options configuration (${sourceLabel}):\n${details}`);
   }
   return new OptionCatalogue(parsed.data);

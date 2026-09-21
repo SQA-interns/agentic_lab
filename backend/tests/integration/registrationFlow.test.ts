@@ -128,7 +128,7 @@ describe('an accepted registration is stored twice (US-005)', () => {
   });
 });
 
-describe('a rejected registration stores nothing (AC-001-09, AC-002-09)', () => {
+describe('a rejected registration stores nothing (AC-001-09, AC-002-09, AC-006-03, AC-007-04)', () => {
   it.each([
     ['invalid email', { email: 'nope' }],
     ['missing consent', { consents: { privacy: false } }],

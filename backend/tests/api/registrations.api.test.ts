@@ -27,7 +27,7 @@ afterEach(() => {
 });
 
 describe('POST /api/registrations — success contract', () => {
-  it('returns 201 with the documented payload (AC-004-02, AC-004-03)', async () => {
+  it('returns 201 with the documented payload over REST/JSON (AC-G-01, AC-004-02, AC-004-03)', async () => {
     const response = await registerExternal(application.app);
 
     expect(response.status).toBe(201);
@@ -68,7 +68,7 @@ describe('POST /api/registrations — success contract', () => {
   });
 });
 
-describe('POST /api/registrations — validation contract (AC-G-04, AC-G-05)', () => {
+describe('POST /api/registrations — validation contract (AC-G-02, AC-G-04, AC-G-05)', () => {
   it('returns 400 VALIDATION_ERROR listing every offending field', async () => {
     const token = await obtainFormToken(application.app, 'external');
     const response = await request(application.app)
@@ -103,7 +103,7 @@ describe('POST /api/registrations — validation contract (AC-G-04, AC-G-05)', (
     expect(response.body.error.fields[0].field).toBe('consents.privacy');
   });
 
-  it('names the offending identifier for an unknown option (AC-003-05)', async () => {
+  it('names the offending identifier for an unknown option (AC-G-07, AC-003-05)', async () => {
     const token = await obtainFormToken(application.app, 'external');
     const response = await request(application.app)
       .post('/api/registrations')
@@ -117,7 +117,7 @@ describe('POST /api/registrations — validation contract (AC-G-04, AC-G-05)', (
     expect(response.body.error.fields[0].message).toContain('not-a-real-option');
   });
 
-  it('names the offending identifier for an inactive option (AC-003-04)', async () => {
+  it('names the offending identifier for an inactive option (AC-G-07, AC-003-04)', async () => {
     const token = await obtainFormToken(application.app, 'external');
     const response = await request(application.app)
       .post('/api/registrations')

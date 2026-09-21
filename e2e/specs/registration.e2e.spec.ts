@@ -188,7 +188,7 @@ test.describe('responsive layout (AC-G-12)', () => {
     expect(height).toBeGreaterThanOrEqual(40);
   });
 
-  test('the confirmation is readable without horizontal scrolling', async ({ page }) => {
+  test('the confirmation is readable without horizontal scrolling (AC-004-07)', async ({ page }) => {
     await page.goto('/');
     await fillFields(page, EXTERNAL_FIELDS);
     await page.check('#consent-privacy');

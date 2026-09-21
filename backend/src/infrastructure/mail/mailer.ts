@@ -8,7 +8,7 @@
  */
 import nodemailer, { type Transporter } from 'nodemailer';
 
-import type { MailPort, OutgoingMail } from '../../application/ports.js';
+import type { MailPort, OutgoingMail } from '../../domain/ports/mailPort.js';
 import type { AppConfig } from '../../config/env.js';
 
 export interface CapturedMail extends OutgoingMail {

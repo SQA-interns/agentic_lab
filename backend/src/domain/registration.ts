@@ -62,7 +62,3 @@ export const FIXED_FIELDS: Readonly<Record<RegistrationVariant, readonly string[
 export function isRegistrationVariant(value: unknown): value is RegistrationVariant {
   return typeof value === 'string' && (REGISTRATION_VARIANTS as readonly string[]).includes(value);
 }
-
-export function isOptionGroupId(value: unknown): value is OptionGroupId {
-  return typeof value === 'string' && (OPTION_GROUPS as readonly string[]).includes(value);
-}

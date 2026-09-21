@@ -51,7 +51,7 @@ architecture violation (AC-G-17, checked in Phase 5 with `dependency-cruiser`).
 | --- | --- | --- | --- |
 | API / delivery | `backend/src/api` | application, domain, config, infrastructure/logging | HTTP routing, request/response mapping, middleware, status codes |
 | Application | `backend/src/application` | domain, infrastructure (via ports), config | Use cases, transaction orchestration, side-effect sequencing |
-| Domain | `backend/src/domain` | *nothing* (pure) | Registration model, validation rules, normalisation, reference generation, error taxonomy |
+| Domain | `backend/src/domain` | *nothing* (pure) | Registration model, validation rules, normalisation, reference generation, error taxonomy, outbound port interfaces |
 | Infrastructure | `backend/src/infrastructure` | domain, config | SQLite access, JSON backup store, mail transport, Excel writing, logging |
 
 Rules:
@@ -60,6 +60,12 @@ Rules:
 * `infrastructure` never imports `api` or `application`.
 * `application` never imports `api`.
 * No import cycles anywhere.
+* Outbound port interfaces (currently `domain/ports/mailPort.ts`) belong to the domain layer, because both the
+  use case that calls a port and the adapter that implements it depend on it. Placing a port in the application
+  layer would force infrastructure to depend inwards, which the rules above forbid.
+
+These rules are machine-checked by `dependency-cruiser` (`backend/.dependency-cruiser.cjs`), which also forbids any
+module outside `infrastructure/db` from importing the database driver.
 
 **ADR-001 — Layered modular monolith over microservices.** The system has one bounded context, a single write
 use case and an expected volume of hundreds of registrations per conference. A layered monolith gives the lowest
@@ -110,11 +116,11 @@ can be added as an additional check without touching the registration use case.
 ```
 backend/
   src/
-    config/          env.ts  optionsConfig.ts
+    config/          env.ts  optionsConfig.ts  formatIssues.ts
     domain/          registration.ts  normalize.ts  reference.ts  errors.ts
                      schema/registrationSchema.ts  schema/optionsConfigSchema.ts
+                     ports/mailPort.ts
     application/     registrationService.ts  exportService.ts  formTokenService.ts
-                     ports.ts
     infrastructure/  db/database.ts  db/migrations.ts  db/registrationRepository.ts
                      backup/jsonBackupStore.ts
                      mail/mailer.ts  mail/templates.ts

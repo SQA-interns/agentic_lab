@@ -14,7 +14,13 @@ import ExcelJS from 'exceljs';
 import request from 'supertest';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { EXPORT_AUTH, obtainFormToken, validExternalBody, validStudentBody } from '../helpers/requests.js';
+import {
+  downloadExport,
+  EXPORT_AUTH,
+  obtainFormToken,
+  validExternalBody,
+  validStudentBody,
+} from '../helpers/requests.js';
 import {
   createTestApplication,
   DEFAULT_OPTIONS_CONFIG,
@@ -144,6 +150,41 @@ describe('US-002 — a student registers for the conference', () => {
       'studyProgramme',
     ]);
     expect(application.repository.count()).toBe(0);
+  });
+
+  it('AC-002-11: the Unicode and whitespace rules apply to the student-only fields too', async () => {
+    const response = await request(application.app)
+      .post('/api/registrations')
+      .send(
+        validStudentBody(await obtainFormToken(application.app, 'student'), {
+          firstName: '  Žan ',
+          studyInstitution: ' Univerza v Mariboru  ',
+          studyProgramme: '  Računalništvo in informacijske tehnologije ',
+          studentId: ' F1234567 ',
+        }),
+      );
+
+    expect(response.status).toBe(201);
+    const stored = application.repository.findByReference(response.body.reference as string);
+    expect(stored?.participant.firstName).toBe('Žan');
+    expect(stored?.participant.studyInstitution).toBe('Univerza v Mariboru');
+    expect(stored?.participant.studyProgramme).toBe('Računalništvo in informacijske tehnologije');
+    expect(stored?.participant.studentId).toBe('F1234567');
+  });
+
+  it('AC-002-11: a whitespace-only student field is treated as empty and rejected', async () => {
+    const response = await request(application.app)
+      .post('/api/registrations')
+      .send(
+        validStudentBody(await obtainFormToken(application.app, 'student'), {
+          studyProgramme: '   ',
+          studentId: ' ',
+        }),
+      );
+
+    expect(response.status).toBe(400);
+    const fields = (response.body.error.fields as Array<{ field: string }>).map((f) => f.field).sort();
+    expect(fields).toEqual(['studentId', 'studyProgramme']);
   });
 
   it('AC-002-08: an option reserved for external participants is refused for a student', async () => {
@@ -337,15 +378,7 @@ describe('US-008 — the organizer exports the registration list to Excel', () =
       .post('/api/registrations')
       .send(validStudentBody(await obtainFormToken(application.app, 'student')));
 
-    const response = await request(application.app)
-      .get('/api/export/registrations.xlsx')
-      .set('Authorization', EXPORT_AUTH)
-      .buffer()
-      .parse((res, callback) => {
-        const chunks: Buffer[] = [];
-        res.on('data', (chunk: Buffer) => chunks.push(chunk));
-        res.on('end', () => callback(null, Buffer.concat(chunks)));
-      });
+    const response = await downloadExport(application.app, EXPORT_AUTH);
 
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.load(response.body as ArrayBuffer);

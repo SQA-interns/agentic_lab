@@ -150,6 +150,107 @@
       "humanClarificationDetail": "None. All decisions were derivable from the User Stories, Project Constraints, FORM_SCHEMA.md and the Phase 2 specification.",
       "testsCreated": 0,
       "testsCreatedNote": "No feature test suite was created during Phase 3, as required by the process."
+    },
+    {
+      "phase": 4,
+      "name": "Tests",
+      "startedUtc": "2026-09-21T11:01:08Z",
+      "completedUtc": "2026-09-21T11:16:53Z",
+      "artefacts": [
+        "docs/test-strategy.md",
+        "backend/tests/**",
+        "frontend/tests/**",
+        "e2e/**"
+      ],
+      "commits": [
+        "15368b0",
+        "464be0a"
+      ],
+      "levelsSelected": [
+        "unit",
+        "component",
+        "integration",
+        "REST API / contract",
+        "acceptance",
+        "end-to-end",
+        "security",
+        "negative and edge case",
+        "failure and recovery",
+        "regression (the whole suite runs on every change)"
+      ],
+      "levelsRejected": [
+        "contract tests against a broker (one consumer and one provider in one repository)",
+        "load and performance tests (no stated performance requirement)",
+        "mutation testing (not requested)"
+      ],
+      "levelJustificationLocation": "docs/test-strategy.md plus a header comment in every test file stating what that level demonstrates that no cheaper level can.",
+      "firstCompleteTestRun": {
+        "timestampUtc": "2026-09-21T11:11:37Z",
+        "backend": {
+          "files": 17,
+          "tests": 271,
+          "passed": 271,
+          "failed": 0
+        },
+        "frontend": {
+          "files": 3,
+          "tests": 42,
+          "passed": 42,
+          "failed": 0
+        },
+        "total": {
+          "tests": 313,
+          "passed": 313,
+          "failed": 0
+        },
+        "note": "This is the result of the first complete run, recorded before any change was made in response to it. No test failed, so no implementation or test change was made because of this run.",
+        "blockedFirstAttempt": "An earlier attempt to run the suite failed to start with ERR_MODULE_NOT_FOUND for vitest transitive dependency \"obug\"; this was an incomplete npm install, resolved by a clean reinstall. No test executed on that attempt, so it is not counted as a test run."
+      },
+      "afterFirstRunAdditions": {
+        "reason": "The first coverage report showed the Nodemailer adapter at 0% statement coverage, because every other suite injects a recording mail port. A component suite for the adapter was added to close that gap. No existing test was changed and no implementation was changed.",
+        "file": "backend/tests/component/mailer.test.ts",
+        "testsAdded": 5
+      },
+      "finalTestRun": {
+        "backend": {
+          "files": 18,
+          "tests": 276,
+          "passed": 276,
+          "failed": 0
+        },
+        "frontend": {
+          "files": 3,
+          "tests": 42,
+          "passed": 42,
+          "failed": 0
+        },
+        "e2e": {
+          "tests": 28,
+          "passed": 28,
+          "failed": 0,
+          "viewports": [
+            "1280x900",
+            "375x812"
+          ]
+        },
+        "total": {
+          "tests": 346,
+          "passed": 346,
+          "failed": 0
+        },
+        "passRate": 1
+      },
+      "coverage": {
+        "tool": "vitest v8 coverage, backend workspace",
+        "statements": 95.07,
+        "branches": 82.03,
+        "functions": 95.42,
+        "lines": 94.98,
+        "note": "Coverage is measured for the backend workspace only; no coverage threshold was configured, and the frontend and e2e suites are not instrumented."
+      },
+      "testsModifiedToPass": 0,
+      "testsModifiedToPassNote": "No test was weakened or changed to make an implementation pass.",
+      "humanClarificationsRequired": 0
     }
   ],
   "events": [],

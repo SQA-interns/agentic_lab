@@ -126,6 +126,13 @@ export class RegistrationRepository {
     return this.selectByReference.get(reference) !== undefined;
   }
 
+  /**
+   * Number of stored registrations.
+   *
+   * No production code calls this; it exists so that tests can assert "nothing was
+   * stored" through the repository rather than by writing their own SQL, which would
+   * couple the test suite to the schema.
+   */
   count(): number {
     return (this.countAll.get() as { total: number }).total;
   }
@@ -149,6 +156,13 @@ export class RegistrationRepository {
     return rows.map((row) => toStoredRegistration(row, optionsByRegistration.get(row.id) ?? []));
   }
 
+  /**
+   * One registration by reference.
+   *
+   * Like `count`, this has no production caller: the API deliberately exposes no
+   * endpoint that returns a single registration. It exists so tests can read back what
+   * was stored without reaching into the database themselves.
+   */
   findByReference(reference: string): StoredRegistration | null {
     const row = this.selectByReference.get(reference) as RegistrationRow | undefined;
     if (row === undefined) {

@@ -14,7 +14,7 @@ import { pino } from 'pino';
 import { createApplication, type Application } from '../../src/api/app.js';
 import { loadConfig, type AppConfig } from '../../src/config/env.js';
 import { parseOptionsConfig, type OptionCatalogue } from '../../src/config/optionsConfig.js';
-import type { MailPort, OutgoingMail } from '../../src/application/ports.js';
+import type { MailPort, OutgoingMail } from '../../src/domain/ports/mailPort.js';
 
 export const TEST_SECRET = 'test-form-token-secret-value-long-enough';
 

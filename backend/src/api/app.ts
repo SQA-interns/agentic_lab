@@ -11,7 +11,7 @@ import type { Database } from 'better-sqlite3';
 import { ExportService } from '../application/exportService.js';
 import { FormTokenService } from '../application/formTokenService.js';
 import { RegistrationService } from '../application/registrationService.js';
-import type { MailPort } from '../application/ports.js';
+import type { MailPort } from '../domain/ports/mailPort.js';
 import type { AppConfig } from '../config/env.js';
 import { loadOptionsConfig, type OptionCatalogue } from '../config/optionsConfig.js';
 import { JsonBackupStore } from '../infrastructure/backup/jsonBackupStore.js';

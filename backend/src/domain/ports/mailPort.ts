@@ -1,7 +1,12 @@
 /**
- * Ports used by the application layer (specification § 2.2).
+ * Outbound mail port (specification § 2.2).
  *
- * Declaring the mail port here — rather than importing the Nodemailer type into the use
+ * The port lives in the domain layer because both sides of it point here: the use case
+ * depends on it to send, and the Nodemailer adapter depends on it to implement. Putting
+ * it in the application layer would force infrastructure to depend inwards on
+ * application, which the layering rule forbids.
+ *
+ * Declaring the port at all — rather than importing the Nodemailer type into the use
  * case — keeps the application layer free of transport detail and lets tests capture
  * messages without an SMTP server.
  */

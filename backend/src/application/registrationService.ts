@@ -21,8 +21,8 @@ import {
   composeOrganizerNotification,
   composeParticipantConfirmation,
 } from '../infrastructure/mail/templates.js';
+import type { MailPort } from '../domain/ports/mailPort.js';
 import type { FormTokenService } from './formTokenService.js';
-import type { MailPort } from './ports.js';
 
 const MAX_REFERENCE_ATTEMPTS = 5;
 

@@ -94,14 +94,9 @@ describe('parseOptionsConfig — resolution', () => {
       reason: 'not_available_for_variant',
     });
   });
-
-  it('still knows the display name of an inactive option, so old registrations stay readable (AC-003-07)', () => {
-    expect(catalogue.displayNameOf('workshop-retired')).toBe('Retired workshop');
-    expect(catalogue.displayNameOf('never-existed')).toBeNull();
-  });
 });
 
-describe('parseOptionsConfig — invalid configurations (AC-003-06)', () => {
+describe('parseOptionsConfig — invalid configurations (AC-003-01, AC-003-06)', () => {
   it.each([
     [
       'duplicate identifiers across groups',
