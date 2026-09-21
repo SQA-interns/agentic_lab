@@ -23,8 +23,8 @@
     "phase_1_start": "2026-09-21T15:56:30+02:00",
     "phase_1_end": "2026-09-21T15:58:30+02:00",
     "phase_2_start": "2026-09-21T15:59:00+02:00",
-    "phase_2_end": null,
-    "phase_3_start": null,
+    "phase_2_end": "2026-09-21T16:03:00+02:00",
+    "phase_3_start": "2026-09-21T16:03:30+02:00",
     "phase_3_first_working_registration": null,
     "phase_3_end": null,
     "phase_4_start": null,
@@ -44,6 +44,15 @@
         "experiment/run-log.json"
       ],
       "notes": "Acceptance criteria derived from User Stories, Project Constraints, and Form Schema. All criteria mapped and traceable."
+    },
+    {
+      "phase": "Phase 2 — Specification",
+      "timestamp_start": "2026-09-21T15:59:00+02:00",
+      "timestamp_end": "2026-09-21T16:03:00+02:00",
+      "artefacts_created": [
+        "docs/specification.md"
+      ],
+      "notes": "Detailed technical specification created covering architecture, data model, REST API, validation, storage, email, export, security, and container deployment with full traceability."
     }
   ],
   "metrics": {
