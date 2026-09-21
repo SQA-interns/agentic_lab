@@ -1,0 +1,23 @@
+{
+  "name": "conference-registration-system",
+  "version": "1.0.0",
+  "description": "Conference Registration System with dual persistence, email notifications, anti-bot controls, and Excel export",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "keywords": [
+    "conference",
+    "registration",
+    "sdd",
+    "sqlite"
+  ],
+  "author": "Single Agent",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16"
+  }
+}

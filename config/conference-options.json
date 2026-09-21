@@ -1,0 +1,60 @@
+{
+  "workshops": [
+    {
+      "id": "ws-cloud-native",
+      "name": "Cloud Native Architecture Masterclass",
+      "active": true
+    },
+    {
+      "id": "ws-cybersec",
+      "name": "Sodobna kibernetska varnost v praksi",
+      "active": true
+    },
+    {
+      "id": "ws-legacy-migration",
+      "name": "Legacy Systems Migration (Polno zasedeno)",
+      "active": false
+    }
+  ],
+  "events": [
+    {
+      "id": "ev-keynote",
+      "name": "Otvoritveno predavanje in plenarno zasedanje",
+      "active": true
+    },
+    {
+      "id": "ev-networking-dinner",
+      "name": "Sprejem in družabna večerja z glasbenim programom",
+      "active": true
+    }
+  ],
+  "meals": [
+    {
+      "id": "meal-standard",
+      "name": "Standardni meni (mesni)",
+      "active": true
+    },
+    {
+      "id": "meal-vegetarian",
+      "name": "Vegetarijanski meni",
+      "active": true
+    },
+    {
+      "id": "meal-vegan",
+      "name": "Veganski meni",
+      "active": true
+    }
+  ],
+  "other": [
+    {
+      "id": "act-morning-run",
+      "name": "Jutranji tek udeležencev ob reki Dravi",
+      "active": true
+    },
+    {
+      "id": "act-city-tour",
+      "name": "Voden ogled starega mestnega jedra Maribora",
+      "active": true
+    }
+  ]
+}

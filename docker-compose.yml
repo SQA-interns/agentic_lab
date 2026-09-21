@@ -1,0 +1,23 @@
+services:
+  conference-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: conference-registration-system:latest
+    container_name: conference_registration_app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOST=0.0.0.0
+      - ORGANIZER_EMAIL=organizator@konferenca.si
+      - DB_PATH=/app/data/database.sqlite
+      - BACKUP_DIR=/app/data/backups
+    volumes:
+      - conference_data:/app/data
+
+volumes:
+  conference_data:
+    driver: local

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prijava zunanjih udeležencev | Konferenca 2026</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-area">
+        <h1>Konferenca Sodobne Tehnologije 2026</h1>
+        <p>Sistem za spletno prijavo udeležencev</p>
+      </div>
+      <nav>
+        <a href="/" class="active">Zunanji udeleženec</a>
+        <a href="/student.html">Študentska prijava</a>
+        <a href="/admin.html">Pregled / Izvoz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Notification Alerts -->
+    <div id="errorAlert" class="alert alert-danger" role="alert"></div>
+    <div id="successAlert" class="alert alert-success" role="alert"></div>
+
+    <!-- Registration Form Card -->
+    <div id="formCard" class="card">
+      <div class="form-header">
+        <h2>Prijava zunanjega udeleženca</h2>
+        <p>Prosimo, izpolnite spodnji obrazec za prijavo na konferenco. Polja, označena z <span class="required-asterisk">*</span>, so obvezna.</p>
+      </div>
+
+      <form id="registrationForm" data-registration-type="external" novalidate>
+        <!-- Anti-bot Honeypot Field -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website_hp">Pustite prazno:</label>
+          <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- Section 1: Fixed Participant Fields -->
+        <div class="form-section">
+          <h3>Podatki o udeležencu</h3>
+          <div class="form-grid two-col">
+            <div class="form-group" data-field-group="firstName">
+              <label for="firstName">Ime <span class="required-asterisk">*</span></label>
+              <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="npr. Ana">
+              <span class="field-error">Vnesite ime.</span>
+            </div>
+
+            <div class="form-group" data-field-group="lastName">
+              <label for="lastName">Priimek <span class="required-asterisk">*</span></label>
+              <input type="text" id="lastName" name="lastName" required autocomplete="family-name" placeholder="npr. Novak">
+              <span class="field-error">Vnesite priimek.</span>
+            </div>
+
+            <div class="form-group" data-field-group="email">
+              <label for="email">E-poštni naslov <span class="required-asterisk">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="npr. ana.novak@podjetje.si">
+              <span class="field-error">Vnesite veljaven e-poštni naslov.</span>
+            </div>
+
+            <div class="form-group" data-field-group="organization">
+              <label for="organization">Organizacija / Ustanova <span class="required-asterisk">*</span></label>
+              <input type="text" id="organization" name="organization" required autocomplete="organization" placeholder="npr. Inštitut Jožef Stefan">
+              <span class="field-error">Vnesite organizacijo ali podjetje.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Configurable Conference Options -->
+        <div class="form-section">
+          <h3>Konferenčni program in izbire</h3>
+          <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.9rem;">Označite aktivnosti, delavnice in prehrano, ki jo želite izbrati.</p>
+          <div id="configurableOptionsContainer">
+            <!-- Loaded dynamically from /api/conference-options -->
+            <p>Nalaganje programskih možnosti...</p>
+          </div>
+        </div>
+
+        <!-- Section 3: Mandatory Consent -->
+        <div class="consent-box" data-field-group="privacyConsent">
+          <label class="checkbox-label">
+            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+            <span>
+              <strong>Soglasje za obdelavo osebnih podatkov <span class="required-asterisk">*</span></strong><br>
+              Potrjujem, da sem seznanjen s pogoji prijave in soglašam, da se moji osebni podatki obdelujejo za namene organizacije in izvedbe konference.
+            </span>
+          </label>
+          <span class="field-error" style="margin-top: 0.5rem;">Za oddajo prijave je obvezno potrditi soglasje.</span>
+        </div>
+
+        <div class="button-container">
+          <button type="submit" id="submitBtn" class="btn btn-primary">Oddaj prijavo</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Registration Confirmation View -->
+    <div id="confirmationCard" class="card confirmation-card" role="region" aria-live="polite">
+      <div class="success-badge">✓</div>
+      <h2 style="color: var(--success); margin-bottom: 0.5rem;">Prijava uspešno sprejeta!</h2>
+      <p style="color: var(--text-muted);">Vaša registracija na konferenco je bila uspešno zabeležena in shranjena.</p>
+
+      <div class="confirmation-details">
+        <p><strong>Referenčna številka prijave (ID):</strong> <code id="confRegId">-</code></p>
+        <p><strong>Udeleženec:</strong> <span id="confName">-</span></p>
+        <p><strong>E-poštni naslov:</strong> <span id="confEmail">-</span></p>
+        <p><strong>Ustanova / Organizacija:</strong> <span id="confOrg">-</span></p>
+        <p><strong>Izbrane aktivnosti:</strong></p>
+        <ul id="confOptions" style="margin-left: 1.5rem; margin-top: 0.25rem;"></ul>
+      </div>
+
+      <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Na vaš e-poštni naslov smo vam poslali uradno potrdilo o prijavi z vsemi podrobnostmi.
+      </p>
+
+      <div>
+        <a href="/" class="btn btn-primary">Nova prijava</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Konferenca Sodobne Tehnologije. Vse pravice pridržane.</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
