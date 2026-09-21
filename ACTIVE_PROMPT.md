@@ -1,0 +1,33 @@
+You are starting a fresh experimental software-development run.
+
+The following files are provided as the authoritative inputs for this experiment:
+
+USER_STORIES.md
+PROJECT_CONSTRAINTS.md
+PROMPT.md
+
+Read all three files completely before making any changes to the repository.
+
+Follow the development process defined in PROMPT.md exactly:
+
+User Stories → Acceptance Criteria → Specification → Implementation → Tests → Verification → Merge
+
+Important rules:
+
+Do not skip, reorder, combine or anticipate phases.
+Do not start implementation before the Acceptance Criteria and Specification phases are complete.
+Do not create the feature test suite before the Implementation phase is complete.
+Treat the provided User Stories and Project Constraints as immutable experiment inputs.
+Do not add functionality that is not justified by the User Stories, Project Constraints or derived Specification.
+Record the required experimental measurements and timestamps as defined in PROMPT.md.
+Do not optimize the solution specifically for the measured metrics.
+Do not fabricate unavailable measurements.
+Work autonomously whenever the requirements provide enough information.
+Ask for human clarification only when a missing decision genuinely prevents you from continuing safely or correctly.
+Use the existing repository as the starting point and do not modify unrelated functionality.
+
+Before starting Phase 1, record the experiment start state and starting Git commit as required by the experiment protocol.
+
+Then begin with Phase 1 — Acceptance Criteria.
+
+Continue through the complete process until the final verification and merge conditions defined in PROMPT.md are satisfied.
