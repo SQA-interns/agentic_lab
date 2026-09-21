@@ -1,0 +1,657 @@
+{
+  "runIdentifier": "opus5-medium-single-agent-classic-sdd-2026-09-21",
+  "process": "User Stories -> Acceptance Criteria -> Specification -> Implementation -> Tests -> Verification -> Merge",
+  "agent": {
+    "modelIdentifier": "claude-opus-5",
+    "harness": "Claude Code (Claude Agent SDK, desktop app Code tab)",
+    "harnessVersionExposed": null,
+    "harnessVersionUnavailableReason": "The environment does not expose a Claude Code version string to the agent."
+  },
+  "environment": {
+    "os": "Windows 11 Pro 10.0.26200 (win32)",
+    "shells": [
+      "PowerShell",
+      "Git Bash"
+    ],
+    "node": "v24.13.0",
+    "npm": "11.6.2",
+    "git": "2.53.0.windows.1",
+    "python": "not installed",
+    "docker": "not available on PATH in this environment",
+    "npmRegistryReachable": true
+  },
+  "startState": {
+    "timestampUtc": "2026-09-21T10:35:03Z",
+    "startingBranch": "opus5_medium_single_agent_classic_sdd",
+    "startingCommitSha": "d4a6f12668f88487c8e12ad1a4bc3b62bf9f5513",
+    "startingCommitDate": "2026-09-21T10:20:05Z",
+    "workingTreeClean": true,
+    "experimentBranch": "experiment/conference-registration-opus5",
+    "baselineFilesPresent": [
+      "USER_STORIES.md",
+      "PROJECT_CONSTRAINTS.md",
+      "PROMPT.md",
+      "FORM_SCHEMA.md",
+      "ACTIVE_PROMPT.txt",
+      "00_Documentation/README.md",
+      "00_Documentation/Brainstorming.docx"
+    ],
+    "preExistingApplicationCode": false
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Acceptance Criteria",
+      "startedUtc": "2026-09-21T10:35:22Z",
+      "completedUtc": "2026-09-21T10:36:45Z",
+      "artefacts": [
+        "docs/acceptance-criteria.md"
+      ],
+      "commit": "81d2baff0681cf222afd1c919fa65608c9e0a007",
+      "notes": "78 user-story acceptance criteria plus 17 cross-cutting criteria derived from PROJECT_CONSTRAINTS.md and FORM_SCHEMA.md. No clarification required from a human."
+    },
+    {
+      "phase": 2,
+      "name": "Specification",
+      "startedUtc": "2026-09-21T10:36:54Z",
+      "completedUtc": "2026-09-21T10:41:19Z",
+      "artefacts": [
+        "docs/specification.md"
+      ],
+      "commit": "ce8fd804e07a175ee1b450ad2e6dc3fb53aed84d",
+      "architectureDecisions": [
+        "ADR-001 layered modular monolith",
+        "ADR-002 SQLite as the relational database",
+        "ADR-003 multi-page frontend without a UI framework",
+        "ADR-004 configuration-driven conference options",
+        "ADR-005 self-contained anti-automation instead of third-party CAPTCHA"
+      ],
+      "notes": "No production code or tests written in this phase. No clarification required from a human."
+    },
+    {
+      "phase": 3,
+      "name": "Implementation",
+      "startedUtc": "2026-09-21T10:41:27Z",
+      "completedUtc": "2026-09-21T11:00:19Z",
+      "firstWorkingHappyPath": {
+        "backendApiUtc": "2026-09-21T10:52:49Z",
+        "fullStackBrowserUtc": "2026-09-21T10:59:04Z",
+        "evidence": "Backend: POST /api/registrations returned 201 with the JSON backup present on disk. Full stack: a registration submitted through a real browser at http://localhost:5173 produced reference REG-20260921-ENTRG9BAPM, a JSON backup file, and both emails dispatched (captured by the json mail transport)."
+      },
+      "commits": [
+        "c639456",
+        "366693c",
+        "bc13cfc"
+      ],
+      "filesCreated": 61,
+      "filesModified": 0,
+      "filesModifiedNote": "No pre-existing application files existed; the repository contained only experiment inputs and documentation.",
+      "dependenciesAdded": {
+        "backendRuntime": [
+          "better-sqlite3@^12",
+          "cors@^2.8",
+          "exceljs@^4.4",
+          "express@^5.1",
+          "express-rate-limit@^8.1",
+          "helmet@^8.1",
+          "nodemailer@^10.0.10",
+          "pino@^9.9",
+          "zod@^4.1"
+        ],
+        "backendDev": [
+          "@eslint/js",
+          "@types/better-sqlite3",
+          "@types/cors",
+          "@types/express",
+          "@types/node",
+          "@types/nodemailer",
+          "@types/supertest",
+          "@vitest/coverage-v8",
+          "eslint",
+          "supertest",
+          "typescript",
+          "typescript-eslint",
+          "vitest"
+        ],
+        "frontendDev": [
+          "@eslint/js",
+          "@vitest/coverage-v8",
+          "eslint",
+          "jsdom",
+          "typescript",
+          "typescript-eslint",
+          "vite",
+          "vitest"
+        ],
+        "overrides": {
+          "exceljs>uuid": "^11.1.1"
+        },
+        "rationale": "nodemailer was raised to >=10.0.10 and vitest to >=5.0.1, and exceljs transitive uuid was overridden to ^11.1.1, because npm audit reported 1 high and 5 moderate advisories on the first install. After the change npm audit reports 0 vulnerabilities."
+      },
+      "implementationDecisions": [
+        "Anti-automation runs before validation, so scripted traffic never reaches the database.",
+        "The JSON backup write happens inside the SQLite transaction: a failed file write rolls back the row and a failed commit removes the file [AC-005-04].",
+        "The backup file is written to a temporary name, fsync-ed through the writing descriptor and renamed, so an existing reference.json is always complete. The first implementation fsync-ed a read-only descriptor, which fails with EPERM on Windows; found by the Phase 3 smoke check and corrected.",
+        "Fields of the non-submitted variant are dropped during validation, so they can never be stored regardless of what the client sends [AC-001-13, AC-002-12].",
+        "Option identifiers that survive trimming are kept verbatim rather than discarded, so a malformed identifier is rejected as unknown instead of being silently ignored.",
+        "Rate limiters are mounted on exact paths, so the strict registration limit cannot throttle the configuration endpoint.",
+        "Emails are dispatched after the HTTP response and every failure is caught and logged [AC-005-05]."
+      ],
+      "developmentFeedbackChecks": {
+        "note": "Logged separately from Phase 4. These are compile, lint and type checks used as development feedback, not tests.",
+        "typeCheckBackend": "tsc --noEmit: 0 errors (5 errors on the first run, fixed)",
+        "typeCheckFrontend": "tsc --noEmit: 0 errors (1 error on the first run, fixed)",
+        "lintBackend": "eslint: 0 errors, 0 warnings (first run: 5 errors, 2 warnings, fixed)",
+        "lintFrontend": "eslint: 0 errors, 0 warnings (first run: 2 errors, 1 warning, fixed)",
+        "buildBackend": "tsc -p tsconfig.build.json: success",
+        "buildFrontend": "vite build: success, 10 modules transformed"
+      },
+      "humanClarificationsRequired": 0,
+      "humanClarificationDetail": "None. All decisions were derivable from the User Stories, Project Constraints, FORM_SCHEMA.md and the Phase 2 specification.",
+      "testsCreated": 0,
+      "testsCreatedNote": "No feature test suite was created during Phase 3, as required by the process."
+    },
+    {
+      "phase": 4,
+      "name": "Tests",
+      "startedUtc": "2026-09-21T11:01:08Z",
+      "completedUtc": "2026-09-21T11:16:53Z",
+      "artefacts": [
+        "docs/test-strategy.md",
+        "backend/tests/**",
+        "frontend/tests/**",
+        "e2e/**"
+      ],
+      "commits": [
+        "15368b0",
+        "464be0a"
+      ],
+      "levelsSelected": [
+        "unit",
+        "component",
+        "integration",
+        "REST API / contract",
+        "acceptance",
+        "end-to-end",
+        "security",
+        "negative and edge case",
+        "failure and recovery",
+        "regression (the whole suite runs on every change)"
+      ],
+      "levelsRejected": [
+        "contract tests against a broker (one consumer and one provider in one repository)",
+        "load and performance tests (no stated performance requirement)",
+        "mutation testing (not requested)"
+      ],
+      "levelJustificationLocation": "docs/test-strategy.md plus a header comment in every test file stating what that level demonstrates that no cheaper level can.",
+      "firstCompleteTestRun": {
+        "timestampUtc": "2026-09-21T11:11:37Z",
+        "backend": {
+          "files": 17,
+          "tests": 271,
+          "passed": 271,
+          "failed": 0
+        },
+        "frontend": {
+          "files": 3,
+          "tests": 42,
+          "passed": 42,
+          "failed": 0
+        },
+        "total": {
+          "tests": 313,
+          "passed": 313,
+          "failed": 0
+        },
+        "note": "This is the result of the first complete run, recorded before any change was made in response to it. No test failed, so no implementation or test change was made because of this run.",
+        "blockedFirstAttempt": "An earlier attempt to run the suite failed to start with ERR_MODULE_NOT_FOUND for vitest transitive dependency \"obug\"; this was an incomplete npm install, resolved by a clean reinstall. No test executed on that attempt, so it is not counted as a test run."
+      },
+      "afterFirstRunAdditions": {
+        "reason": "The first coverage report showed the Nodemailer adapter at 0% statement coverage, because every other suite injects a recording mail port. A component suite for the adapter was added to close that gap. No existing test was changed and no implementation was changed.",
+        "file": "backend/tests/component/mailer.test.ts",
+        "testsAdded": 5
+      },
+      "finalTestRun": {
+        "backend": {
+          "files": 18,
+          "tests": 276,
+          "passed": 276,
+          "failed": 0
+        },
+        "frontend": {
+          "files": 3,
+          "tests": 42,
+          "passed": 42,
+          "failed": 0
+        },
+        "e2e": {
+          "tests": 28,
+          "passed": 28,
+          "failed": 0,
+          "viewports": [
+            "1280x900",
+            "375x812"
+          ]
+        },
+        "total": {
+          "tests": 346,
+          "passed": 346,
+          "failed": 0
+        },
+        "passRate": 1
+      },
+      "coverage": {
+        "tool": "vitest v8 coverage, backend workspace",
+        "statements": 95.07,
+        "branches": 82.03,
+        "functions": 95.42,
+        "lines": 94.98,
+        "note": "Coverage is measured for the backend workspace only; no coverage threshold was configured, and the frontend and e2e suites are not instrumented."
+      },
+      "testsModifiedToPass": 0,
+      "testsModifiedToPassNote": "No test was weakened or changed to make an implementation pass.",
+      "humanClarificationsRequired": 0
+    },
+    {
+      "phase": 5,
+      "name": "Verification",
+      "startedUtc": "2026-09-21T11:17:31Z",
+      "completedUtc": "2026-09-21T11:28:18Z",
+      "artefacts": [
+        "docs/verification-report.md"
+      ],
+      "commits": [
+        "cd9dfcc",
+        "37cc0c7"
+      ],
+      "fixLoops": 1,
+      "fixLoopDetail": [
+        {
+          "loop": 1,
+          "findingsRaised": 5,
+          "critical": 0,
+          "major": 1,
+          "minor": 4,
+          "fixedInLoop": 5,
+          "newFindingsOnReVerification": 0,
+          "checksReExecuted": [
+            "eslint (both workspaces)",
+            "tsc --noEmit (backend, frontend, e2e)",
+            "build (backend, frontend)",
+            "vitest (backend, frontend)",
+            "playwright e2e",
+            "vitest coverage",
+            "dependency-cruiser",
+            "jscpd",
+            "npm audit"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "id": "F-01",
+          "severity": "Major",
+          "category": "architecture",
+          "affected": "specification 2.2, AC-G-17",
+          "description": "infrastructure/mail/mailer.ts imported application/ports.ts, violating the layering rule.",
+          "fix": "Mail port moved to domain/ports/mailPort.ts; specification 2.2 and 2.4 updated; dependency-cruiser added to enforce all six layering rules.",
+          "resultAfterReVerification": "0 dependency violations across 34 modules and 87 dependencies; all tests pass."
+        },
+        {
+          "id": "F-02",
+          "severity": "Minor",
+          "category": "duplication",
+          "affected": "specification 12 and 3.4",
+          "description": "The only production-code clone: 6 lines of Zod issue formatting duplicated in config/env.ts and config/optionsConfig.ts.",
+          "fix": "Extracted into config/formatIssues.ts.",
+          "resultAfterReVerification": "jscpd reports 0.00% duplication in production code."
+        },
+        {
+          "id": "F-03",
+          "severity": "Minor",
+          "category": "unrequested functionality",
+          "affected": "process rule: no unjustified functionality",
+          "description": "Three exported members had no production caller: OptionCatalogue.displayNameOf, isOptionGroupId, LATEST_SCHEMA_VERSION. The doc comment on displayNameOf also made a false claim about how AC-003-07 was satisfied.",
+          "fix": "All three removed with the one unit test that existed only to exercise displayNameOf. AC-003-07 remains covered by the acceptance test that reloads against a changed programme.",
+          "resultAfterReVerification": "277 backend tests pass; coverage rose to 95.21% statements."
+        },
+        {
+          "id": "F-04",
+          "severity": "Minor",
+          "category": "unrequested functionality",
+          "affected": "process rule: no unjustified functionality",
+          "description": "RegistrationRepository.count() and findByReference() are used only by the test suite.",
+          "fix": "Kept and documented in the source as deliberate test-support query methods; removing them would push raw SQL into the tests and weaken the assertions that prove AC-005-01 and AC-005-04.",
+          "resultAfterReVerification": "Accepted, documented trade-off. No behavioural change."
+        },
+        {
+          "id": "F-05",
+          "severity": "Minor",
+          "category": "traceability",
+          "affected": "AC-002-11, AC-003-01, AC-004-07, AC-006-03, AC-007-04, AC-G-01, AC-G-02, AC-G-07",
+          "description": "Eight acceptance criteria had no test naming them. Seven were already covered but uncited; AC-002-11 (Unicode and whitespace rules on the student-only fields) was genuinely untested.",
+          "fix": "Two new acceptance tests for AC-002-11; the other seven criteria now cited in the test names that already covered them.",
+          "resultAfterReVerification": "Every AC except AC-G-14, AC-G-16 and AC-G-17 is named by at least one automated test."
+        }
+      ],
+      "acceptanceCriteria": {
+        "total": 87,
+        "passedOnFirstEvaluation": 84,
+        "passedFinally": 85,
+        "notVerifiableInThisEnvironment": 2,
+        "notVerifiableDetail": "AC-G-14 (docker compose starts the whole system) and AC-G-16 (data survives a container restart) require Docker, which is not installed in this environment. The container definitions were written and statically reviewed; the process-level equivalent of AC-G-16 is tested.",
+        "verifiedManually": 1,
+        "verifiedManuallyDetail": "AC-G-17 (documentation completeness) verified by artefact inventory."
+      },
+      "automatedChecks": {
+        "lintErrors": 0,
+        "lintWarnings": 0,
+        "typeCheckErrors": 0,
+        "buildResult": "success (backend tsc, frontend vite)",
+        "tests": {
+          "backend": 277,
+          "frontend": 42,
+          "e2e": 28,
+          "total": 347,
+          "passed": 347,
+          "failed": 0,
+          "passRate": 1
+        },
+        "coverage": {
+          "statements": 95.21,
+          "branches": 82.82,
+          "functions": 96.02,
+          "lines": 95.12,
+          "scope": "backend workspace only"
+        },
+        "npmAudit": {
+          "critical": 0,
+          "high": 0,
+          "moderate": 0,
+          "low": 0,
+          "total": 0
+        },
+        "dependencyCruiser": {
+          "rules": 6,
+          "violations": 0,
+          "modules": 34,
+          "dependencies": 87,
+          "cycles": 0
+        }
+      },
+      "security": {
+        "totalFindings": 0,
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "resolved": 0,
+        "unresolved": 0,
+        "note": "No security defect was found in the implementation during verification. Separately, the first dependency install reported 1 high and 5 moderate third-party advisories; these were resolved during Phase 3 by version bumps and an override, before the affected code paths were written. They are recorded under phase 3 dependenciesAdded.",
+        "acceptedLimitations": [
+          "Anti-automation replay cache and rate-limit counters are per-process; more than one backend instance would weaken both until a shared store is introduced (documented in specification 11).",
+          "TLS terminates at an upstream reverse proxy; TRUST_PROXY defaults to false and must be enabled only behind a real proxy.",
+          "No third-party CAPTCHA (ADR-005); a well-resourced attacker can still script submissions."
+        ]
+      },
+      "requirements": {
+        "missingRequirements": 0,
+        "incorrectlyImplementedRequirements": 0,
+        "unrequestedFunctionality": 3,
+        "unrequestedFunctionalityDetail": "GET /api/health (justified by the container healthcheck required by the deployment constraint); the optional description field on a conference option (within FORM_SCHEMA \"at least\" wording, unused by the shipped configuration); two repository query methods used only by tests (F-04, kept and documented).",
+        "requirementViolations": 0,
+        "specificationViolations": 1,
+        "specificationViolationDetail": "F-01. The specification was also corrected in two places during this phase (port placement, and the module list), recorded in the report rather than changed silently.",
+        "regressions": 0,
+        "edgeCaseFailures": 0
+      },
+      "codeQuality": {
+        "productionLoc": 4065,
+        "productionLocScope": "backend/src and frontend/src, .ts and .css",
+        "testLoc": 4059,
+        "testLocScope": "backend/tests, frontend/tests, e2e",
+        "cyclomaticComplexity": {
+          "tool": "ESLint complexity rule with threshold 0, reporting each function value",
+          "functions": 211,
+          "total": 508,
+          "average": 2.41,
+          "max": 12,
+          "above10": 3,
+          "note": "Measured before the F-03 removals; the removed members were trivial, so the figures are a close upper bound rather than an exact post-fix value."
+        },
+        "duplication": {
+          "tool": "jscpd, min 5 lines / 50 tokens",
+          "productionClones": 0,
+          "productionDuplicatedLinesPercent": 0,
+          "testClones": 6,
+          "testDuplicatedLinesPercent": 0.74,
+          "testNote": "Remaining clones are per-file test fixtures, deliberately not shared."
+        },
+        "newDependencies": {
+          "runtime": 9,
+          "dev": 17,
+          "note": "Counted as direct declarations; see phase 3 dependenciesAdded."
+        }
+      },
+      "architecture": {
+        "moduleCount": 30,
+        "dependencyCount": 75,
+        "avgCe": 2.5,
+        "avgCa": 2.5,
+        "maxCe": 18,
+        "maxCa": 13,
+        "cycles": 0,
+        "violations": 0,
+        "rows": [
+          {
+            "module": "src/api/app.ts",
+            "Ca": 1,
+            "Ce": 18,
+            "I": 0.947
+          },
+          {
+            "module": "src/api/middleware/basicAuth.ts",
+            "Ca": 1,
+            "Ce": 1,
+            "I": 0.5
+          },
+          {
+            "module": "src/api/middleware/errorHandler.ts",
+            "Ca": 1,
+            "Ce": 2,
+            "I": 0.667
+          },
+          {
+            "module": "src/api/middleware/rateLimit.ts",
+            "Ca": 2,
+            "Ce": 1,
+            "I": 0.333
+          },
+          {
+            "module": "src/api/middleware/security.ts",
+            "Ca": 1,
+            "Ce": 1,
+            "I": 0.5
+          },
+          {
+            "module": "src/api/routes/export.ts",
+            "Ca": 1,
+            "Ce": 5,
+            "I": 0.833
+          },
+          {
+            "module": "src/api/routes/health.ts",
+            "Ca": 1,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/api/routes/registrationConfig.ts",
+            "Ca": 1,
+            "Ce": 5,
+            "I": 0.833
+          },
+          {
+            "module": "src/api/routes/registrations.ts",
+            "Ca": 1,
+            "Ce": 3,
+            "I": 0.75
+          },
+          {
+            "module": "src/application/exportService.ts",
+            "Ca": 2,
+            "Ce": 2,
+            "I": 0.5
+          },
+          {
+            "module": "src/application/formTokenService.ts",
+            "Ca": 3,
+            "Ce": 2,
+            "I": 0.4
+          },
+          {
+            "module": "src/application/registrationService.ts",
+            "Ca": 2,
+            "Ce": 11,
+            "I": 0.846
+          },
+          {
+            "module": "src/config/env.ts",
+            "Ca": 6,
+            "Ce": 1,
+            "I": 0.143
+          },
+          {
+            "module": "src/config/optionsConfig.ts",
+            "Ca": 3,
+            "Ce": 3,
+            "I": 0.5
+          },
+          {
+            "module": "src/domain/errors.ts",
+            "Ca": 13,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/domain/normalize.ts",
+            "Ca": 1,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/domain/ports/mailPort.ts",
+            "Ca": 3,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/domain/reference.ts",
+            "Ca": 2,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/domain/registration.ts",
+            "Ca": 10,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/domain/schema/optionsConfigSchema.ts",
+            "Ca": 1,
+            "Ce": 1,
+            "I": 0.5
+          },
+          {
+            "module": "src/domain/schema/registrationSchema.ts",
+            "Ca": 2,
+            "Ce": 3,
+            "I": 0.6
+          },
+          {
+            "module": "src/infrastructure/backup/jsonBackupStore.ts",
+            "Ca": 2,
+            "Ce": 3,
+            "I": 0.6
+          },
+          {
+            "module": "src/infrastructure/db/database.ts",
+            "Ca": 1,
+            "Ce": 2,
+            "I": 0.667
+          },
+          {
+            "module": "src/infrastructure/db/migrations.ts",
+            "Ca": 1,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/infrastructure/db/registrationRepository.ts",
+            "Ca": 4,
+            "Ce": 2,
+            "I": 0.333
+          },
+          {
+            "module": "src/infrastructure/excel/excelExporter.ts",
+            "Ca": 1,
+            "Ce": 2,
+            "I": 0.667
+          },
+          {
+            "module": "src/infrastructure/logging/logger.ts",
+            "Ca": 6,
+            "Ce": 0,
+            "I": 0
+          },
+          {
+            "module": "src/infrastructure/mail/mailer.ts",
+            "Ca": 1,
+            "Ce": 2,
+            "I": 0.667
+          },
+          {
+            "module": "src/infrastructure/mail/templates.ts",
+            "Ca": 1,
+            "Ce": 1,
+            "I": 0.5
+          },
+          {
+            "module": "src/server.ts",
+            "Ca": 0,
+            "Ce": 4,
+            "I": 1
+          }
+        ]
+      },
+      "architectureNote": "Coupling figures are computed from the dependency-cruiser module graph of backend/src: Ce is the number of internal modules a module imports, Ca the number that import it, and I = Ce / (Ce + Ca). Cohesion, modularity, architectural consistency and pattern consistency have no deterministic calculation defined for this run, so no numerical score is recorded for them; the raw module graph above is the observation left for external evaluation.",
+      "architectureObservations": {
+        "layers": 4,
+        "layerNames": [
+          "api",
+          "application",
+          "domain",
+          "infrastructure"
+        ],
+        "layerViolations": 0,
+        "dependencyCycles": 0,
+        "maxDependencyDepth": null,
+        "maxDependencyDepthUnavailableReason": "No depth calculation was defined for this run; dependency-cruiser was configured for rule conformance, not for path-length reporting.",
+        "apiSurfaceSize": 4,
+        "apiSurfaceDetail": "GET /api/health, GET /api/registration-config, POST /api/registrations, GET /api/export/registrations.xlsx",
+        "componentResponsibilityCount": 34,
+        "externalRuntimeDependencyCount": 9,
+        "architectureChurn": 1,
+        "architecturalRefactorings": 1,
+        "architecturalRefactoringDetail": "F-01: the mail port moved from the application layer to the domain layer.",
+        "fileMovesOrRenames": 1,
+        "dependencyStructureChanges": 2,
+        "dependencyStructureChangeDetail": "The port move (F-01) and the extraction of config/formatIssues.ts (F-02)."
+      },
+      "humanClarificationsRequired": 0
+    }
+  ],
+  "events": [],
+  "measurements": {}
+}
