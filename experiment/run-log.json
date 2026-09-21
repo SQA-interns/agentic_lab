@@ -67,6 +67,89 @@
         "ADR-005 self-contained anti-automation instead of third-party CAPTCHA"
       ],
       "notes": "No production code or tests written in this phase. No clarification required from a human."
+    },
+    {
+      "phase": 3,
+      "name": "Implementation",
+      "startedUtc": "2026-09-21T10:41:27Z",
+      "completedUtc": "2026-09-21T11:00:19Z",
+      "firstWorkingHappyPath": {
+        "backendApiUtc": "2026-09-21T10:52:49Z",
+        "fullStackBrowserUtc": "2026-09-21T10:59:04Z",
+        "evidence": "Backend: POST /api/registrations returned 201 with the JSON backup present on disk. Full stack: a registration submitted through a real browser at http://localhost:5173 produced reference REG-20260921-ENTRG9BAPM, a JSON backup file, and both emails dispatched (captured by the json mail transport)."
+      },
+      "commits": [
+        "c639456",
+        "366693c",
+        "bc13cfc"
+      ],
+      "filesCreated": 61,
+      "filesModified": 0,
+      "filesModifiedNote": "No pre-existing application files existed; the repository contained only experiment inputs and documentation.",
+      "dependenciesAdded": {
+        "backendRuntime": [
+          "better-sqlite3@^12",
+          "cors@^2.8",
+          "exceljs@^4.4",
+          "express@^5.1",
+          "express-rate-limit@^8.1",
+          "helmet@^8.1",
+          "nodemailer@^10.0.10",
+          "pino@^9.9",
+          "zod@^4.1"
+        ],
+        "backendDev": [
+          "@eslint/js",
+          "@types/better-sqlite3",
+          "@types/cors",
+          "@types/express",
+          "@types/node",
+          "@types/nodemailer",
+          "@types/supertest",
+          "@vitest/coverage-v8",
+          "eslint",
+          "supertest",
+          "typescript",
+          "typescript-eslint",
+          "vitest"
+        ],
+        "frontendDev": [
+          "@eslint/js",
+          "@vitest/coverage-v8",
+          "eslint",
+          "jsdom",
+          "typescript",
+          "typescript-eslint",
+          "vite",
+          "vitest"
+        ],
+        "overrides": {
+          "exceljs>uuid": "^11.1.1"
+        },
+        "rationale": "nodemailer was raised to >=10.0.10 and vitest to >=5.0.1, and exceljs transitive uuid was overridden to ^11.1.1, because npm audit reported 1 high and 5 moderate advisories on the first install. After the change npm audit reports 0 vulnerabilities."
+      },
+      "implementationDecisions": [
+        "Anti-automation runs before validation, so scripted traffic never reaches the database.",
+        "The JSON backup write happens inside the SQLite transaction: a failed file write rolls back the row and a failed commit removes the file [AC-005-04].",
+        "The backup file is written to a temporary name, fsync-ed through the writing descriptor and renamed, so an existing reference.json is always complete. The first implementation fsync-ed a read-only descriptor, which fails with EPERM on Windows; found by the Phase 3 smoke check and corrected.",
+        "Fields of the non-submitted variant are dropped during validation, so they can never be stored regardless of what the client sends [AC-001-13, AC-002-12].",
+        "Option identifiers that survive trimming are kept verbatim rather than discarded, so a malformed identifier is rejected as unknown instead of being silently ignored.",
+        "Rate limiters are mounted on exact paths, so the strict registration limit cannot throttle the configuration endpoint.",
+        "Emails are dispatched after the HTTP response and every failure is caught and logged [AC-005-05]."
+      ],
+      "developmentFeedbackChecks": {
+        "note": "Logged separately from Phase 4. These are compile, lint and type checks used as development feedback, not tests.",
+        "typeCheckBackend": "tsc --noEmit: 0 errors (5 errors on the first run, fixed)",
+        "typeCheckFrontend": "tsc --noEmit: 0 errors (1 error on the first run, fixed)",
+        "lintBackend": "eslint: 0 errors, 0 warnings (first run: 5 errors, 2 warnings, fixed)",
+        "lintFrontend": "eslint: 0 errors, 0 warnings (first run: 2 errors, 1 warning, fixed)",
+        "buildBackend": "tsc -p tsconfig.build.json: success",
+        "buildFrontend": "vite build: success, 10 modules transformed"
+      },
+      "humanClarificationsRequired": 0,
+      "humanClarificationDetail": "None. All decisions were derivable from the User Stories, Project Constraints, FORM_SCHEMA.md and the Phase 2 specification.",
+      "testsCreated": 0,
+      "testsCreatedNote": "No feature test suite was created during Phase 3, as required by the process."
     }
   ],
   "events": [],

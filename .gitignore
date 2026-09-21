@@ -6,3 +6,4 @@ data/
 .env.local
 *.log
 .vite/
+.e2e-data/
