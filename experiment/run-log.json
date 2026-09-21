@@ -907,7 +907,18 @@
       },
       "humanInterventions": 1,
       "humanInterventionDetail": "The human installed Docker and asked for the remaining work. No technical decision was delegated to them and no clarifying question was asked.",
-      "humanClarificationsRequired": 0
+      "humanClarificationsRequired": 0,
+      "merge": {
+        "experimentBranch": "experiment/container-verification-opus5",
+        "mergedInto": "opus5_medium_single_agent_classic_sdd",
+        "mergeStrategy": "--no-ff",
+        "commitSha": "22d32cb",
+        "mergeCommitSha": "111290f1e0dba5f8e9d91395f8981658625d585c",
+        "mergeTimestampUtc": "2026-09-21T13:42:35Z",
+        "mergeConflicts": 0,
+        "reverts": 0,
+        "baselineOverwritten": false
+      }
     }
   ],
   "events": [],
@@ -1063,6 +1074,14 @@
       "changeExperimentLocChanged": null,
       "changeExperimentTimeMinutes": null
     },
-    "crossRunMetricsNote": "Similarity, time variance, token variance, quality variance and architecture variance between runs are cross-run metrics and are deliberately not calculated here. Derived metrics such as cost per successful acceptance criterion and successful acceptance criteria per 10,000 tokens are likewise left to external calculation from the raw values above."
+    "crossRunMetricsNote": "Similarity, time variance, token variance, quality variance and architecture variance between runs are cross-run metrics and are deliberately not calculated here. Derived metrics such as cost per successful acceptance criterion and successful acceptance criteria per 10,000 tokens are likewise left to external calculation from the raw values above.",
+    "git": {
+      "commitsTotal": 17,
+      "commitsExcludingMerges": 15,
+      "mergeCommits": 2,
+      "reverts": 0,
+      "mergeConflicts": 0,
+      "note": "Counted from the baseline d4a6f12 to the final commit on opus5_medium_single_agent_classic_sdd, inclusive of the commit that records this count. Per-commit sizes are under phases[5].commitSizes."
+    }
   }
 }
