@@ -10,7 +10,8 @@ RUN ./mvnw -B -q package -DskipTests -Djacoco.skip=true \
 
 # --- runtime stage: JRE only, non-root ---
 FROM eclipse-temurin:21-jre-alpine
-RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app app \
+RUN apk upgrade --no-cache \
+    && addgroup -S -g 10001 app && adduser -S -u 10001 -G app app \
     && mkdir -p /data/backups /config && chown -R app:app /data
 WORKDIR /app
 COPY --from=build /build/app.jar app.jar

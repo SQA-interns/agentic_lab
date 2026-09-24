@@ -22,8 +22,12 @@
 		<greenmail.version>2.1.14</greenmail.version>
 		<spotbugs-annotations.version>4.10.4</spotbugs-annotations.version>
 		<jacoco.version>0.8.15</jacoco.version>
-		<!-- NVD API key is optional; without it the first dependency-check run is slow. -->
-		<nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
+		<!-- Security overrides of Boot-managed versions (Trivy findings, docs/verification-report.md V-06). -->
+		<tomcat.version>10.1.60</tomcat.version>
+		<postgresql.version>42.7.12</postgresql.version>
+		<jackson-bom.version>2.21.5</jackson-bom.version>
+		<commons-lang3.version>3.18.0</commons-lang3.version>
+		<log4j2.version>2.25.5</log4j2.version>
 	</properties>
 
 	<dependencies>
@@ -244,7 +248,8 @@
 						<format>HTML</format>
 						<format>JSON</format>
 					</formats>
-					<nvdApiKey>${nvdApiKey}</nvdApiKey>
+					<!-- Optional; read from the environment only if present (keyless updates are slow). -->
+					<nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
 					<ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
 					<suppressionFiles>
 						<suppressionFile>dependency-check-suppressions.xml</suppressionFile>

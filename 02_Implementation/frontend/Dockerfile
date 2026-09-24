@@ -8,7 +8,9 @@ COPY src ./src
 RUN npm run build
 
 # --- runtime stage: static files served by unprivileged Nginx ---
-FROM nginxinc/nginx-unprivileged:1.27-alpine
+FROM nginxinc/nginx-unprivileged:1.29-alpine
+USER root
+RUN apk upgrade --no-cache
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 COPY nginx/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /app/dist /usr/share/nginx/html
