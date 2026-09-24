@@ -1,0 +1,877 @@
+﻿START 2026-09-24T21:22:57.5966580+02:00
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.conference:registration >---------------------
+[INFO] Building registration 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ registration ---
+[INFO] surefireArgLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.15\\org.jacoco.agent-0.8.15-runtime.jar=destfile=E:\\13 - Lab Projects\\01_Single_Agent_SDD_Specific_Input\\agentic_lab\\02_Implementation\\backend\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ registration ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ registration ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ registration ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ registration ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 19 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.conference.registration.api.RateLimitFilterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.293 s -- in org.conference.registration.api.RateLimitFilterTest
+[INFO] Running org.conference.registration.config.TrimmingStringDeserializerTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.464 s -- in org.conference.registration.config.TrimmingStringDeserializerTest
+[INFO] Running org.conference.registration.service.BackupWriterTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.159 s -- in org.conference.registration.service.BackupWriterTest
+[INFO] Running org.conference.registration.service.ExcelExportServiceTest
+.\mvnw.cmd : OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap 
+classpath has been appended
+At line:1 char:625
++ ... ng utf8 "$s\backend-test-run3.log"; .\mvnw.cmd -B verify 2>&1 | Out-F ...
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (OpenJDK 64-Bit ...s been appended:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.268 s -- in org.conference.registration.service.ExcelExportServiceTest
+[INFO] Running org.conference.registration.service.FormTokenServiceTest
+21:23:10.009 [main] WARN org.conference.registration.service.FormTokenService -- APP_FORM_TOKEN_SECRET not set; using a random per-process secret
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s -- in org.conference.registration.service.FormTokenServiceTest
+[INFO] Running org.conference.registration.service.NotificationServiceTest
+21:23:10.200 [main] INFO org.conference.registration.service.NotificationService -- Confirmation email sent for registration 816ed244-1755-4e6a-8ef2-5b08c75bf242
+21:23:10.223 [main] INFO org.conference.registration.service.NotificationService -- Organizer notification sent for registration 816ed244-1755-4e6a-8ef2-5b08c75bf242
+21:23:10.283 [main] ERROR org.conference.registration.service.NotificationService -- Confirmation email failed for registration 7d496796-9456-4d86-8bf6-352127b1353d
+org.springframework.mail.MailSendException: smtp down
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101)
+	at org.conference.registration.service.NotificationService.sendParticipantConfirmation(NotificationService.java:55)
+	at org.conference.registration.service.NotificationService.onRegistrationCompleted(NotificationService.java:43)
+	at org.conference.registration.service.NotificationServiceTest.mailFailureIsSwallowedAndSecondMailIsStillAttempted(NotificationServiceTest.java:114)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithoutCancellationToken(LauncherAdapter.java:60)
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:52)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+21:23:10.298 [main] ERROR org.conference.registration.service.NotificationService -- Organizer notification failed for registration 7d496796-9456-4d86-8bf6-352127b1353d
+org.springframework.mail.MailSendException: smtp down
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101)
+	at org.conference.registration.service.NotificationService.sendOrganizerNotification(NotificationService.java:78)
+	at org.conference.registration.service.NotificationService.onRegistrationCompleted(NotificationService.java:44)
+	at org.conference.registration.service.NotificationServiceTest.mailFailureIsSwallowedAndSecondMailIsStillAttempted(NotificationServiceTest.java:114)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithoutCancellationToken(LauncherAdapter.java:60)
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:52)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.270 s -- in org.conference.registration.service.NotificationServiceTest
+[INFO] Running org.conference.registration.service.OptionCatalogTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s -- in org.conference.registration.service.OptionCatalogTest
+[INFO] Running org.conference.registration.service.RateLimiterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in org.conference.registration.service.RateLimiterTest
+[INFO] Running org.conference.registration.service.RegistrationServiceTest
+21:23:10.713 [main] INFO org.conference.registration.service.RegistrationService -- Registration 5265f126-d047-4750-b5d6-84441aed16fe stored (type EXTERNAL)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.331 s -- in org.conference.registration.service.RegistrationServiceTest
+[INFO] Running org.conference.registration.ArchitectureTest
+21:23:10.769 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.10
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.786 s -- in org.conference.registration.ArchitectureTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 55, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ registration ---
+[INFO] Loading execution data file E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend\target\jacoco.exec
+[INFO] Analyzed bundle 'registration' with 53 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ registration ---
+[INFO] Building jar: E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend\target\registration-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ registration ---
+[INFO] Replacing main artifact E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend\target\registration-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend\target\registration-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ registration ---
+[INFO] failsafeArgLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.15\\org.jacoco.agent-0.8.15-runtime.jar=destfile=E:\\13 - Lab Projects\\01_Single_Agent_SDD_Specific_Input\\agentic_lab\\02_Implementation\\backend\\target\\jacoco-it.exec"
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ registration ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.conference.registration.it.AntiAutomationIT
+21:23:17.163 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.conference.registration.it.AntiAutomationIT]: AntiAutomationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:23:17.512 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.conference.registration.RegistrationApplication for test class org.conference.registration.it.AntiAutomationIT
+21:23:17.727 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+21:23:17.732 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+21:23:17.798 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+21:23:18.214 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+21:23:18.582 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+21:23:18.583 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+21:23:18.603 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.0
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+21:23:18.704 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+21:23:19.042 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 20cd62a0a66a27bd844d92987496beca00dd77b8dec8f4e2c7b94ab36c13f828
+21:23:19.393 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.6892797S
+21:23:19.417 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+21:23:19.417 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+21:23:19.418 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+21:23:19.418 [main] INFO tc.postgres:16 -- Creating container for image: postgres:16
+21:23:19.541 [main] INFO tc.postgres:16 -- Container postgres:16 is starting: d45e2a2e03a88d264f50daf8cecd31fdcabea19893d27945fe214d76062e86f9
+21:23:21.268 [main] INFO tc.postgres:16 -- Container postgres:16 started in PT1.8495321S
+21:23:21.269 [main] INFO tc.postgres:16 -- Container is started (JDBC URL: jdbc:postgresql://localhost:63032/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-24T21:23:21.718+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.AntiAutomationIT     : Starting AntiAutomationIT using Java 21.0.10 with PID 14644 (started by sense in E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend)
+2026-09-24T21:23:21.720+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.AntiAutomationIT     : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T21:23:23.127+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T21:23:23.237+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 1 JPA repository interface.
+2026-09-24T21:23:24.166+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-24T21:23:24.354+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2a333e5d
+2026-09-24T21:23:24.356+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-24T21:23:24.391+02:00  INFO [] 14644 --- [registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63032/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-24T21:23:24.440+02:00  INFO [] 14644 --- [registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-24T21:23:24.444+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.021s)
+2026-09-24T21:23:24.465+02:00  INFO [] 14644 --- [registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-24T21:23:24.510+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-24T21:23:24.524+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - init"
+2026-09-24T21:23:24.564+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.013s)
+2026-09-24T21:23:24.689+02:00  INFO [] 14644 --- [registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-24T21:23:24.757+02:00  INFO [] 14644 --- [registration] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-24T21:23:24.798+02:00  INFO [] 14644 --- [registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-24T21:23:25.146+02:00  INFO [] 14644 --- [registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T21:23:25.253+02:00  INFO [] 14644 --- [registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T21:23:26.425+02:00  INFO [] 14644 --- [registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T21:23:26.464+02:00  INFO [] 14644 --- [registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T21:23:26.724+02:00  INFO [] 14644 --- [registration] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-24T21:23:27.993+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-24T21:23:28.112+02:00  INFO [] 14644 --- [registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerAccount
+2026-09-24T21:23:28.541+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T21:23:28.541+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T21:23:28.542+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T21:23:28.615+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.AntiAutomationIT     : Started AntiAutomationIT in 7.302 seconds (process running for 13.011)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has 
+been appended
+2026-09-24T21:23:29.322+02:00  WARN [7766c37a-52a0-4e4b-8134-47c6cd2fa2c7] 14644 --- [registration] [           main] o.c.r.api.GlobalExceptionHandler         : Submission rejected by anti-automation check: form submitted too fast
+2026-09-24T21:23:31.628+02:00  INFO [d5200cf4-081d-42c5-96dd-49b1adf581e4] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 4539c7cf-cce9-41cc-a168-41f04b6728e3 stored (type EXTERNAL)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.72 s -- in org.conference.registration.it.AntiAutomationIT
+[INFO] Running org.conference.registration.it.ExportIT
+2026-09-24T21:23:31.647+02:00  INFO [] 14644 --- [registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.conference.registration.it.ExportIT]: ExportIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T21:23:31.654+02:00  INFO [] 14644 --- [registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.conference.registration.RegistrationApplication for test class org.conference.registration.it.ExportIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-24T21:23:31.681+02:00  INFO [] 14644 --- [registration] [           main] o.conference.registration.it.ExportIT    : Starting ExportIT using Java 21.0.10 with PID 14644 (started by sense in E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend)
+2026-09-24T21:23:31.681+02:00  INFO [] 14644 --- [registration] [           main] o.conference.registration.it.ExportIT    : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T21:23:31.769+02:00  INFO [] 14644 --- [registration] [127.0.0.1:63044] c.icegreen.greenmail.user.UserManager    : Created user login ana.novak@example.si for address ana.novak@example.si with password ana.novak@example.si because it didn't exist before.
+2026-09-24T21:23:31.777+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Confirmation email sent for registration 4539c7cf-cce9-41cc-a168-41f04b6728e3
+2026-09-24T21:23:31.805+02:00  INFO [] 14644 --- [registration] [127.0.0.1:63045] c.icegreen.greenmail.user.UserManager    : Created user login organizers@conference.test for address organizers@conference.test with password organizers@conference.test because it didn't exist before.
+2026-09-24T21:23:31.815+02:00  INFO [] 14644 --- [registration] [127.0.0.1:63045] c.icegreen.greenmail.user.UserManager    : Created user login chair@conference.test for address chair@conference.test with password chair@conference.test because it didn't exist before.
+2026-09-24T21:23:31.818+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Organizer notification sent for registration 4539c7cf-cce9-41cc-a168-41f04b6728e3
+2026-09-24T21:23:31.970+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T21:23:31.984+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2026-09-24T21:23:32.055+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-24T21:23:32.069+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@79817404
+2026-09-24T21:23:32.070+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-09-24T21:23:32.072+02:00  INFO [] 14644 --- [registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63032/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-24T21:23:32.088+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.006s)
+2026-09-24T21:23:32.112+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-24T21:23:32.114+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-24T21:23:32.132+02:00  INFO [] 14644 --- [registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-24T21:23:32.134+02:00  INFO [] 14644 --- [registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-24T21:23:32.140+02:00  INFO [] 14644 --- [registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T21:23:32.146+02:00  INFO [] 14644 --- [registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T21:23:32.192+02:00  INFO [] 14644 --- [registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T21:23:32.204+02:00  INFO [] 14644 --- [registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T21:23:32.362+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-24T21:23:32.433+02:00  INFO [] 14644 --- [registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerAccount
+2026-09-24T21:23:32.496+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T21:23:32.496+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T21:23:32.496+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T21:23:32.510+02:00  INFO [] 14644 --- [registration] [           main] o.conference.registration.it.ExportIT    : Started ExportIT in 0.853 seconds (process running for 16.907)
+2026-09-24T21:23:32.562+02:00  INFO [ecbc995b-9b9e-4876-923d-f0ccfaee166d] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 763913be-7a9e-4a4d-bd9a-512c75432a66 stored (type EXTERNAL)
+2026-09-24T21:23:32.578+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Confirmation email sent for registration 763913be-7a9e-4a4d-bd9a-512c75432a66
+2026-09-24T21:23:32.595+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Organizer notification sent for registration 763913be-7a9e-4a4d-bd9a-512c75432a66
+2026-09-24T21:23:33.465+02:00  INFO [409152d0-e6e9-40c0-97ef-c41938b5fc82] 14644 --- [registration] [           main] o.c.registration.api.ExportController    : Registration export downloaded by organizer 'organizer'
+2026-09-24T21:23:33.687+02:00  INFO [48b9da84-a60a-47f6-bb9e-ef26ba0382eb] 14644 --- [registration] [           main] o.c.registration.api.ExportController    : Registration export downloaded by organizer 'organizer'
+2026-09-24T21:23:33.729+02:00  INFO [d3d2bb6b-7e0c-406d-a5c9-0a5751759bd2] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 6a6d0721-aab7-4883-b407-4f77a22c8c7b stored (type EXTERNAL)
+2026-09-24T21:23:33.738+02:00  INFO [] 14644 --- [registration] [         task-2] o.c.r.service.NotificationService        : Confirmation email sent for registration 6a6d0721-aab7-4883-b407-4f77a22c8c7b
+2026-09-24T21:23:33.753+02:00  INFO [] 14644 --- [registration] [         task-2] o.c.r.service.NotificationService        : Organizer notification sent for registration 6a6d0721-aab7-4883-b407-4f77a22c8c7b
+2026-09-24T21:23:33.828+02:00  INFO [6bee8f2c-cf6b-4e7b-8674-fd93eb042dbd] 14644 --- [registration] [           main] o.c.registration.api.ExportController    : Registration export downloaded by organizer 'organizer'
+2026-09-24T21:23:33.871+02:00  INFO [c9d194a7-d9ee-412b-9055-acf30d73e771] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration b81a9911-92db-4330-b1fd-81eb3d8ce882 stored (type STUDENT)
+2026-09-24T21:23:33.878+02:00  INFO [] 14644 --- [registration] [127.0.0.1:63060] c.icegreen.greenmail.user.UserManager    : Created user login spela.kovac@student.um.si for address spela.kovac@student.um.si with password spela.kovac@student.um.si because it didn't exist before.
+2026-09-24T21:23:33.880+02:00  INFO [] 14644 --- [registration] [         task-3] o.c.r.service.NotificationService        : Confirmation email sent for registration b81a9911-92db-4330-b1fd-81eb3d8ce882
+2026-09-24T21:23:33.895+02:00  INFO [] 14644 --- [registration] [         task-3] o.c.r.service.NotificationService        : Organizer notification sent for registration b81a9911-92db-4330-b1fd-81eb3d8ce882
+2026-09-24T21:23:33.970+02:00  INFO [98bc3b44-e93c-4fa6-979c-022e4709575c] 14644 --- [registration] [           main] o.c.registration.api.ExportController    : Registration export downloaded by organizer 'organizer'
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.414 s -- in org.conference.registration.it.ExportIT
+[INFO] Running org.conference.registration.it.FailureHandlingIT
+2026-09-24T21:23:34.065+02:00  INFO [] 14644 --- [registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.conference.registration.it.FailureHandlingIT]: FailureHandlingIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T21:23:34.075+02:00  INFO [] 14644 --- [registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.conference.registration.RegistrationApplication for test class org.conference.registration.it.FailureHandlingIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-24T21:23:34.098+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.FailureHandlingIT    : Starting FailureHandlingIT using Java 21.0.10 with PID 14644 (started by sense in E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend)
+2026-09-24T21:23:34.098+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.FailureHandlingIT    : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T21:23:34.298+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T21:23:34.310+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interface.
+2026-09-24T21:23:34.364+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-09-24T21:23:34.379+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@2fcb7f8a
+2026-09-24T21:23:34.379+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-09-24T21:23:34.381+02:00  INFO [] 14644 --- [registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63032/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-24T21:23:34.396+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.005s)
+2026-09-24T21:23:34.418+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-24T21:23:34.419+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-24T21:23:34.435+02:00  INFO [] 14644 --- [registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-24T21:23:34.437+02:00  INFO [] 14644 --- [registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-24T21:23:34.443+02:00  INFO [] 14644 --- [registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T21:23:34.449+02:00  INFO [] 14644 --- [registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T21:23:34.480+02:00  INFO [] 14644 --- [registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T21:23:34.491+02:00  INFO [] 14644 --- [registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T21:23:35.218+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-24T21:23:35.396+02:00  INFO [] 14644 --- [registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerAccount
+2026-09-24T21:23:35.654+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T21:23:35.654+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T21:23:35.655+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T21:23:35.700+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.FailureHandlingIT    : Started FailureHandlingIT in 1.623 seconds (process running for 20.096)
+2026-09-24T21:23:35.885+02:00 ERROR [543e21cd-5463-4c8b-80af-a72d36f3f2a3] 14644 --- [registration] [           main] o.c.r.api.GlobalExceptionHandler         : Unhandled error
+
+org.conference.registration.service.BackupFailedException: disk full
+	at org.conference.registration.service.BackupWriter.write(BackupWriter.java:63) ~[classes/:na]
+	at org.conference.registration.service.RegistrationService.register(RegistrationService.java:85) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.19.jar:6.2.19]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.conference.registration.service.RegistrationService$$SpringCGLIB$$0.register(<generated>) ~[classes/:na]
+	at org.conference.registration.api.RegistrationController.registerExternal(RegistrationController.java:31) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.55.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.2.19.jar:6.2.19]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.55.jar:6.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:181) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.conference.registration.api.RateLimitFilter.doFilterInternal(RateLimitFilter.java:59) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.11.jar:6.5.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.conference.registration.api.RequestIdFilter.doFilterInternal(RequestIdFilter.java:36) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.2.19.jar:6.2.19]
+	at org.conference.registration.it.AbstractIntegrationTest.postJson(AbstractIntegrationTest.java:138) ~[test-classes/:na]
+	at org.conference.registration.it.AbstractIntegrationTest.postJson(AbstractIntegrationTest.java:134) ~[test-classes/:na]
+	at org.conference.registration.it.FailureHandlingIT.backupFailureRollsBackRegistrationAndSendsNoMail(FailureHandlingIT.java:29) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775) ~[junit-platform-commons-1.12.2.jar:1.12.2]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479) ~[junit-platform-commons-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithoutCancellationToken(LauncherAdapter.java:60) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:52) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.6.jar:3.5.6]
+Caused by: java.io.IOException: disk full
+	at org.conference.registration.it.FailureHandlingIT.backupFailureRollsBackRegistrationAndSendsNoMail(FailureHandlingIT.java:23) ~[test-classes/:na]
+	... 75 common frames omitted
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.411 s -- in org.conference.registration.it.FailureHandlingIT
+[INFO] Running org.conference.registration.it.MailOutageIT
+2026-09-24T21:23:37.482+02:00  INFO [] 14644 --- [registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.conference.registration.it.MailOutageIT]: MailOutageIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T21:23:37.496+02:00  INFO [] 14644 --- [registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.conference.registration.RegistrationApplication for test class org.conference.registration.it.MailOutageIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-24T21:23:37.537+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.MailOutageIT         : Starting MailOutageIT using Java 21.0.10 with PID 14644 (started by sense in E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend)
+2026-09-24T21:23:37.538+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.MailOutageIT         : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T21:23:37.990+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T21:23:38.009+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interface.
+2026-09-24T21:23:38.139+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-09-24T21:23:38.154+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@2c584f0d
+2026-09-24T21:23:38.155+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-09-24T21:23:38.158+02:00  INFO [] 14644 --- [registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63032/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-24T21:23:38.176+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.007s)
+2026-09-24T21:23:38.201+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-24T21:23:38.203+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-24T21:23:38.227+02:00  INFO [] 14644 --- [registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-24T21:23:38.231+02:00  INFO [] 14644 --- [registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-24T21:23:38.244+02:00  INFO [] 14644 --- [registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T21:23:38.253+02:00  INFO [] 14644 --- [registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T21:23:38.319+02:00  INFO [] 14644 --- [registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T21:23:38.331+02:00  INFO [] 14644 --- [registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T21:23:38.567+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-24T21:23:38.639+02:00  INFO [] 14644 --- [registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerAccount
+2026-09-24T21:23:38.717+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T21:23:38.717+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T21:23:38.719+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-09-24T21:23:38.731+02:00  INFO [] 14644 --- [registration] [           main] o.c.registration.it.MailOutageIT         : Started MailOutageIT in 1.231 seconds (process running for 23.128)
+2026-09-24T21:23:38.788+02:00  INFO [60832752-f69b-4339-a52a-0349d03a5c85] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 636265c5-4ea3-4e19-a1a3-e18627e77f67 stored (type EXTERNAL)
+2026-09-24T21:23:38.803+02:00 ERROR [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Confirmation email failed for registration 636265c5-4ea3-4e19-a1a3-e18627e77f67
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: 127.0.0.1, 1; timeout 5000;
+  nested exception is:
+	java.net.ConnectException: Connection refused: getsockopt; message exceptions (1) are:
+Failed message 1: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: 127.0.0.1, 1; timeout 5000;
+  nested exception is:
+	java.net.ConnectException: Connection refused: getsockopt
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:350) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.conference.registration.service.NotificationService.sendParticipantConfirmation(NotificationService.java:55) ~[classes/:na]
+	at org.conference.registration.service.NotificationService.onRegistrationCompleted(NotificationService.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.19.jar:6.2.19]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: 127.0.0.1, 1; timeout 5000;
+  nested exception is:
+	java.net.ConnectException: Connection refused: getsockopt
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2243) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:729) ~[jakarta.mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:399) ~[spring-context-support-6.2.19.jar:6.2.19]
+	... 14 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:694) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:751) ~[na:na]
+	at org.eclipse.angus.mail.util.WriteTimeoutSocket.connect(WriteTimeoutSocket.java:118) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.createSocket(SocketFetcher.java:366) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.getSocket(SocketFetcher.java:243) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2193) ~[jakarta.mail-2.0.5.jar:na]
+	... 18 common frames omitted
+
+2026-09-24T21:23:38.811+02:00 ERROR [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Organizer notification failed for registration 636265c5-4ea3-4e19-a1a3-e18627e77f67
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: 127.0.0.1, 1; timeout 5000;
+  nested exception is:
+	java.net.ConnectException: Connection refused: getsockopt; message exceptions (1) are:
+Failed message 1: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: 127.0.0.1, 1; timeout 5000;
+  nested exception is:
+	java.net.ConnectException: Connection refused: getsockopt
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:350) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.conference.registration.service.NotificationService.sendOrganizerNotification(NotificationService.java:78) ~[classes/:na]
+	at org.conference.registration.service.NotificationService.onRegistrationCompleted(NotificationService.java:44) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.19.jar:6.2.19]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: 127.0.0.1, 1; timeout 5000;
+  nested exception is:
+	java.net.ConnectException: Connection refused: getsockopt
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2243) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:729) ~[jakarta.mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.2.19.jar:6.2.19]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:399) ~[spring-context-support-6.2.19.jar:6.2.19]
+	... 14 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:694) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:751) ~[na:na]
+	at org.eclipse.angus.mail.util.WriteTimeoutSocket.connect(WriteTimeoutSocket.java:118) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.createSocket(SocketFetcher.java:366) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.getSocket(SocketFetcher.java:243) ~[jakarta.mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2193) ~[jakarta.mail-2.0.5.jar:na]
+	... 18 common frames omitted
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.374 s -- in org.conference.registration.it.MailOutageIT
+[INFO] Running org.conference.registration.it.OptionsConfigurationIT
+2026-09-24T21:23:38.857+02:00  INFO [] 14644 --- [registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.conference.registration.it.OptionsConfigurationIT]: OptionsConfigurationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T21:23:38.867+02:00  INFO [] 14644 --- [registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.conference.registration.RegistrationApplication for test class org.conference.registration.it.OptionsConfigurationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-24T21:23:38.893+02:00  INFO [] 14644 --- [registration] [           main] o.c.r.it.OptionsConfigurationIT          : Starting OptionsConfigurationIT using Java 21.0.10 with PID 14644 (started by sense in E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend)
+2026-09-24T21:23:38.893+02:00  INFO [] 14644 --- [registration] [           main] o.c.r.it.OptionsConfigurationIT          : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T21:23:39.166+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T21:23:39.179+02:00  INFO [] 14644 --- [registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 1 JPA repository interface.
+2026-09-24T21:23:39.239+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-09-24T21:23:39.253+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@6d8c7b67
+2026-09-24T21:23:39.253+02:00  INFO [] 14644 --- [registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-09-24T21:23:39.255+02:00  INFO [] 14644 --- [registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63032/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-24T21:23:39.270+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.005s)
+2026-09-24T21:23:39.294+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-24T21:23:39.295+02:00  INFO [] 14644 --- [registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-24T21:23:39.313+02:00  INFO [] 14644 --- [registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-24T21:23:39.316+02:00  INFO [] 14644 --- [registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-24T21:23:39.324+02:00  INFO [] 14644 --- [registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T21:23:39.330+02:00  INFO [] 14644 --- [registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T21:23:39.381+02:00  INFO [] 14644 --- [registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T21:23:39.391+02:00  INFO [] 14644 --- [registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T21:23:39.558+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-24T21:23:39.629+02:00  INFO [] 14644 --- [registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerAccount
+2026-09-24T21:23:39.698+02:00  INFO [] 14644 --- [registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T21:23:39.698+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T21:23:39.699+02:00  INFO [] 14644 --- [registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-24T21:23:39.709+02:00  INFO [] 14644 --- [registration] [           main] o.c.r.it.OptionsConfigurationIT          : Started OptionsConfigurationIT in 0.838 seconds (process running for 24.106)
+2026-09-24T21:23:39.786+02:00  INFO [1199e61c-8705-4c6b-9d44-f9877c952d99] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 9cdd4808-31d6-450c-8ac3-2198f193c6a9 stored (type EXTERNAL)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.942 s -- in org.conference.registration.it.OptionsConfigurationIT
+[INFO] Running org.conference.registration.it.RegistrationApiIT
+2026-09-24T21:23:39.800+02:00  INFO [] 14644 --- [registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.conference.registration.it.RegistrationApiIT]: RegistrationApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T21:23:39.804+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Confirmation email sent for registration 9cdd4808-31d6-450c-8ac3-2198f193c6a9
+2026-09-24T21:23:39.811+02:00  INFO [] 14644 --- [registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.conference.registration.RegistrationApplication for test class org.conference.registration.it.RegistrationApiIT
+2026-09-24T21:23:39.822+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Organizer notification sent for registration 9cdd4808-31d6-450c-8ac3-2198f193c6a9
+2026-09-24T21:23:41.483+02:00  INFO [1ebb41e7-1f54-45bb-aa12-a2a08d8092c1] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 38119ba5-1c8a-433d-a3ea-4be82322c498 stored (type STUDENT)
+2026-09-24T21:23:41.495+02:00  INFO [] 14644 --- [registration] [         task-4] o.c.r.service.NotificationService        : Confirmation email sent for registration 38119ba5-1c8a-433d-a3ea-4be82322c498
+2026-09-24T21:23:41.512+02:00  INFO [] 14644 --- [registration] [         task-4] o.c.r.service.NotificationService        : Organizer notification sent for registration 38119ba5-1c8a-433d-a3ea-4be82322c498
+2026-09-24T21:23:41.519+02:00  INFO [f5f6ccf5-582c-43a3-9688-edcf633741de] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 9d0fd7c8-4b09-404c-a07c-9cb3430b4ef6 stored (type EXTERNAL)
+2026-09-24T21:23:41.529+02:00  INFO [] 14644 --- [registration] [         task-5] o.c.r.service.NotificationService        : Confirmation email sent for registration 9d0fd7c8-4b09-404c-a07c-9cb3430b4ef6
+2026-09-24T21:23:41.546+02:00  INFO [] 14644 --- [registration] [         task-5] o.c.r.service.NotificationService        : Organizer notification sent for registration 9d0fd7c8-4b09-404c-a07c-9cb3430b4ef6
+2026-09-24T21:23:41.619+02:00  INFO [08f8d2e3-3da8-48b3-bcee-091ffcc90055] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration ce48c984-5d34-48d6-bbc0-7a22b442f9a5 stored (type EXTERNAL)
+2026-09-24T21:23:41.631+02:00  INFO [] 14644 --- [registration] [         task-6] o.c.r.service.NotificationService        : Confirmation email sent for registration ce48c984-5d34-48d6-bbc0-7a22b442f9a5
+2026-09-24T21:23:41.640+02:00  WARN [c15ce172-3e23-4745-a36a-2e75b874b74e] 14644 --- [registration] [           main] o.c.r.api.GlobalExceptionHandler         : Submission rejected by anti-automation check: honeypot field filled
+2026-09-24T21:23:41.649+02:00  INFO [] 14644 --- [registration] [         task-6] o.c.r.service.NotificationService        : Organizer notification sent for registration ce48c984-5d34-48d6-bbc0-7a22b442f9a5
+2026-09-24T21:23:41.762+02:00  INFO [b3da253f-32f3-4250-8ee4-5c70e89ed30d] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration a96a7ad7-780e-4945-a2e9-6fd187484b4c stored (type EXTERNAL)
+2026-09-24T21:23:41.769+02:00  WARN [77b2aa92-570b-4af4-98ec-5801e5a83095] 14644 --- [registration] [           main] o.c.r.api.GlobalExceptionHandler         : Submission rejected by anti-automation check: form token already used
+2026-09-24T21:23:41.773+02:00  INFO [] 14644 --- [registration] [         task-7] o.c.r.service.NotificationService        : Confirmation email sent for registration a96a7ad7-780e-4945-a2e9-6fd187484b4c
+2026-09-24T21:23:41.789+02:00  INFO [] 14644 --- [registration] [         task-7] o.c.r.service.NotificationService        : Organizer notification sent for registration a96a7ad7-780e-4945-a2e9-6fd187484b4c
+2026-09-24T21:23:41.808+02:00  INFO [0e0f51ca-f991-423e-9620-0e0862552586] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 117f5c0a-c0b6-49af-9a57-3e9bb8cab858 stored (type EXTERNAL)
+2026-09-24T21:23:41.818+02:00  INFO [] 14644 --- [registration] [         task-8] o.c.r.service.NotificationService        : Confirmation email sent for registration 117f5c0a-c0b6-49af-9a57-3e9bb8cab858
+2026-09-24T21:23:41.832+02:00  INFO [] 14644 --- [registration] [         task-8] o.c.r.service.NotificationService        : Organizer notification sent for registration 117f5c0a-c0b6-49af-9a57-3e9bb8cab858
+2026-09-24T21:23:42.007+02:00  WARN [a1305efd-4872-4b38-8a64-918b08ef1905] 14644 --- [registration] [           main] o.c.r.api.GlobalExceptionHandler         : Submission rejected by anti-automation check: bad form token signature
+2026-09-24T21:23:42.048+02:00  INFO [6e982130-fdd7-46a0-bc36-69e537f99159] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 798e3610-778a-47cc-9e40-f0d8d7198f39 stored (type EXTERNAL)
+2026-09-24T21:23:42.060+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Confirmation email sent for registration 798e3610-778a-47cc-9e40-f0d8d7198f39
+2026-09-24T21:23:42.075+02:00  INFO [] 14644 --- [registration] [         task-1] o.c.r.service.NotificationService        : Organizer notification sent for registration 798e3610-778a-47cc-9e40-f0d8d7198f39
+2026-09-24T21:23:42.105+02:00  INFO [14e6b21d-1911-472b-aad8-03fddbdd2838] 14644 --- [registration] [           main] o.c.r.service.RegistrationService        : Registration 7f5f9e74-0941-4b88-b5de-9b1a11a4cf41 stored (type EXTERNAL)
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.312 s -- in org.conference.registration.it.RegistrationApiIT
+2026-09-24T21:23:42.113+02:00  INFO [] 14644 --- [registration] [         task-2] o.c.r.service.NotificationService        : Confirmation email sent for registration 7f5f9e74-0941-4b88-b5de-9b1a11a4cf41
+2026-09-24T21:23:42.128+02:00  INFO [] 14644 --- [registration] [         task-2] o.c.r.service.NotificationService        : Organizer notification sent for registration 7f5f9e74-0941-4b88-b5de-9b1a11a4cf41
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 38, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ registration ---
+[INFO] Loading execution data file E:\13 - Lab Projects\01_Single_Agent_SDD_Specific_Input\agentic_lab\02_Implementation\backend\target\jacoco-it.exec
+[INFO] Analyzed bundle 'registration' with 53 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ registration ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  43.534 s
+[INFO] Finished at: 2026-09-24T21:23:43+02:00
+[INFO] ------------------------------------------------------------------------
+END 2026-09-24T21:23:43.2960081+02:00 EXIT 0

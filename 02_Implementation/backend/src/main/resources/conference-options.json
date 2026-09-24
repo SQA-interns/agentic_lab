@@ -1,0 +1,16 @@
+{
+  "options": [
+    { "id": "ws-secure-coding", "category": "WORKSHOP", "name": "Workshop: Secure coding in practice", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "ws-ai-engineering", "category": "WORKSHOP", "name": "Workshop: AI-assisted software engineering", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "ws-industry-leaders", "category": "WORKSHOP", "name": "Workshop: Leading engineering teams", "active": true, "audiences": ["EXTERNAL"] },
+    { "id": "ws-legacy", "category": "WORKSHOP", "name": "Workshop: Legacy systems (cancelled)", "active": false, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "ev-opening-reception", "category": "EVENT", "name": "Opening reception", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "ev-gala-dinner", "category": "EVENT", "name": "Gala dinner", "active": true, "audiences": ["EXTERNAL"] },
+    { "id": "ev-career-fair", "category": "EVENT", "name": "Student career fair", "active": true, "audiences": ["STUDENT"] },
+    { "id": "meal-lunch-day1", "category": "MEAL", "name": "Lunch – day 1", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "meal-lunch-day2", "category": "MEAL", "name": "Lunch – day 2", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "meal-vegetarian", "category": "MEAL", "name": "Vegetarian meals", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "act-city-tour", "category": "ACTIVITY", "name": "Guided city tour", "active": true, "audiences": ["EXTERNAL", "STUDENT"] },
+    { "id": "act-certificate", "category": "ACTIVITY", "name": "Certificate of attendance", "active": true, "audiences": ["EXTERNAL", "STUDENT"] }
+  ]
+}

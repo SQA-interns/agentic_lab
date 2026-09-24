@@ -1,0 +1,91 @@
+spring:
+  application:
+    name: registration
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/registration}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      fail-on-null-for-primitives: true
+    mapper:
+      allow-coercion-of-scalars: false
+  mail:
+    host: ${SPRING_MAIL_HOST:localhost}
+    port: ${SPRING_MAIL_PORT:25}
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
+  threads:
+    virtual:
+      enabled: false
+
+server:
+  port: 8080
+  forward-headers-strategy: native
+  shutdown: graceful
+  servlet:
+    encoding:
+      charset: UTF-8
+      # Force only for requests: forcing responses would append ";charset=UTF-8" to binary
+      # downloads such as the .xlsx export.
+      force-request: true
+      force-response: false
+  error:
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+    include-exception: false
+    whitelabel:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+  health:
+    mail:
+      enabled: false
+
+logging:
+  pattern:
+    level: "%5p [%X{requestId:-}]"
+
+app:
+  conference-name: ${APP_CONFERENCE_NAME:Conference}
+  options:
+    file: ${APP_OPTIONS_FILE:classpath:conference-options.json}
+  backup:
+    dir: ${APP_BACKUP_DIR:/data/backups}
+  mail:
+    from: ${APP_MAIL_FROM:}
+    organizers: ${APP_MAIL_ORGANIZERS:}
+  admin:
+    username: ${APP_ADMIN_USERNAME:}
+    password: ${APP_ADMIN_PASSWORD:}
+  antibot:
+    form-token-secret: ${APP_FORM_TOKEN_SECRET:}
+    min-fill-seconds: ${APP_ANTIBOT_MIN_FILL_SECONDS:3}
+    max-age-seconds: ${APP_ANTIBOT_MAX_AGE_SECONDS:7200}
+  rate-limit:
+    window-seconds: ${APP_RATELIMIT_WINDOW_SECONDS:600}
+    registrations: ${APP_RATELIMIT_REGISTRATIONS:10}
+    form-tokens: ${APP_RATELIMIT_FORM_TOKENS:60}
+    admin: ${APP_RATELIMIT_ADMIN:20}

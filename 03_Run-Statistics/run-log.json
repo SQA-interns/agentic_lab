@@ -1,0 +1,143 @@
+{
+  "runId": "opus5.5_single_agent_classic_sdd_optimized_input-2026-09-24",
+  "model": "claude-opus-5-5 (Opus 5.5)",
+  "harness": "Claude Code (Claude desktop app, Code tab, Claude Agent SDK)",
+  "harnessVersion": null,
+  "harnessVersionReason": "not observable from inside the session: no `claude` CLI on PATH and the desktop app does not expose its version to the agent",
+  "startCommit": "e1b1935c5bd9182e0e9622dee3b288229b856831",
+  "finalCommit": "__MERGE_SHA__",
+  "finalCommitNote": "merge commit on branch opus5.5_single_agent_classic_sdd_optimized_input; one later record-only commit writes these merge values into this file and run-summary.md (its own SHA cannot be recorded inside itself)",
+  "workBranch": "run/opus5.5-sdd-impl",
+  "targetBranch": "opus5.5_single_agent_classic_sdd_optimized_input",
+
+  "phases": [
+    { "name": "acceptance-criteria", "start": "2026-09-24T19:48:48+02:00", "end": "2026-09-24T19:51:56+02:00" },
+    { "name": "specification", "start": "2026-09-24T19:51:56+02:00", "end": "2026-09-24T19:56:34+02:00" },
+    { "name": "implementation", "start": "2026-09-24T19:56:34+02:00", "end": "2026-09-24T21:01:24+02:00" },
+    { "name": "tests", "start": "2026-09-24T21:01:24+02:00", "end": "2026-09-24T21:25:56+02:00" },
+    { "name": "verification", "start": "2026-09-24T21:25:56+02:00", "end": "2026-09-24T22:02:04+02:00" },
+    { "name": "merge", "start": "2026-09-24T22:02:04+02:00", "end": "__MERGE_TIME__" }
+  ],
+
+  "firstWorkingHappyPathTimestamp": "2026-09-24T20:58:43+02:00",
+  "firstWorkingHappyPathNote": "server-side timestamp of the first external registration through the running containers (backup file registration-20260924T185843Z-10ec7820-...json); first client-observed 201 at 2026-09-24T20:59:14+02:00 — see 03_Run-Statistics/implementation-log.md",
+
+  "humanInterventions": [],
+  "humanInterventionsNote": "no human input after the initial prompt; no approval prompts were answered during the run as observed by the agent",
+
+  "clarifyingQuestions": 0,
+
+  "firstCompleteTestRun": {
+    "timestamp": "2026-09-24T21:15:33+02:00",
+    "backendUnit": { "run": 55, "passed": 53, "failed": 2 },
+    "backendIntegration": { "run": 38, "passed": 32, "failed": 6 },
+    "frontend": { "run": 32, "passed": 32, "failed": 0 },
+    "note": "plain `mvnw verify` at 21:13:52 stopped after unit failures; repeated unchanged with -Dmaven.test.failure.ignore=true to obtain the complete first run (raw/backend-test-run1*.log, raw/frontend-test-run1.log)"
+  },
+
+  "fixLoops": [
+    {
+      "loopNumber": 1,
+      "phase": "tests",
+      "trigger": "first complete test run: 8 failures (T1-T8)",
+      "findingIds": ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8"],
+      "change": "BackupWriter refuses to overwrite (impl); response charset not forced (impl); JavaMail saveChanges and async-mail isolation in tests (test defects)",
+      "start": "2026-09-24T21:16:33+02:00",
+      "end": "2026-09-24T21:23:43+02:00"
+    },
+    {
+      "loopNumber": 2,
+      "phase": "verification",
+      "trigger": "ESLint 2 errors, Prettier 1 file in frontend test code",
+      "findingIds": ["V-01", "V-02"],
+      "change": "test helper code rewritten; prettier --write",
+      "start": "2026-09-24T21:26:32+02:00",
+      "end": "2026-09-24T21:29:36+02:00"
+    },
+    {
+      "loopNumber": 3,
+      "phase": "verification",
+      "trigger": "OWASP Dependency-Check update failure (empty NVD key) and SpotBugs 16 bug instances",
+      "findingIds": ["V-03", "V-04"],
+      "change": "pom: nvdApiKeyEnvironmentVariable; final service classes; server-generated request id; justified SpotBugs exclusions; Trivy adopted as substitute dependency audit",
+      "start": "2026-09-24T21:26:53+02:00",
+      "end": "2026-09-24T21:34:18+02:00"
+    },
+    {
+      "loopNumber": 4,
+      "phase": "verification",
+      "trigger": "Semgrep 1 finding (nginx request-host-used)",
+      "findingIds": ["V-05"],
+      "change": "nginx.conf no longer forwards client Host",
+      "start": "2026-09-24T21:37:00+02:00",
+      "end": "2026-09-24T21:53:35+02:00"
+    },
+    {
+      "loopNumber": 5,
+      "phase": "verification",
+      "trigger": "Trivy image scan: backend 3 CRITICAL / 2 HIGH, frontend 2 CRITICAL / 36 HIGH",
+      "findingIds": ["V-06"],
+      "change": "Tomcat 10.1.60, pgjdbc 42.7.12, Jackson 2.21.5, commons-lang3 3.18.0, Log4j 2.25.5; apk upgrade; nginx-unprivileged 1.29-alpine",
+      "start": "2026-09-24T21:43:10+02:00",
+      "end": "2026-09-24T21:57:41+02:00"
+    }
+  ],
+
+  "manualCodeFixes": 0,
+  "manualCodeFixesNote": "no human edited code; all fixes were made by the agent and are listed in fixLoops",
+
+  "commits": [
+    { "sha": "f68e127834d68fb7e73b4634ca2dbbcca7d2390b", "phase": "acceptance-criteria", "message": "Phase 1: derive acceptance criteria", "filesChanged": 2, "linesAdded": 409, "linesRemoved": 0 },
+    { "sha": "ceb74c963dc92395fcefdd88453ddfb922d2076c", "phase": "specification", "message": "Phase 2: technical specification", "filesChanged": 1, "linesAdded": 343, "linesRemoved": 0 },
+    { "sha": "0ea12e9a6ab82fbf175f3e683ba52be6f9287543", "phase": "implementation", "message": "Phase 3: implement backend, frontend and container deployment", "filesChanged": 82, "linesAdded": 8375, "linesRemoved": 0 },
+    { "sha": "3fa90f848f7db267bdac45fb04094cfa4c5303a9", "phase": "tests", "message": "Phase 4: add backend unit/integration/architecture and frontend tests", "filesChanged": 29, "linesAdded": 2443, "linesRemoved": 25 },
+    { "sha": "45e151696b833336fe260f5c7661ab55a6c4186c", "phase": "tests", "message": "Fix: never overwrite backups; no charset on binary responses", "filesChanged": 2, "linesAdded": 13, "linesRemoved": 2 },
+    { "sha": "a05e92bf93e63fc6ad579c05f3daaf605b44cb3c", "phase": "verification", "message": "Verification: fix ESLint/Prettier findings in frontend tests (V-01, V-02)", "filesChanged": 2, "linesAdded": 11, "linesRemoved": 6 },
+    { "sha": "329539c64677e958aec3a394e21b6ba0fe8b8498", "phase": "verification", "message": "Verification: resolve SpotBugs findings (V-04)", "filesChanged": 5, "linesAdded": 21, "linesRemoved": 12 },
+    { "sha": "0a63982092dffdbe1d3663963514796da9ed3672", "phase": "verification", "message": "Verification: stop forwarding client Host header (Semgrep V-05)", "filesChanged": 1, "linesAdded": 1, "linesRemoved": 1 },
+    { "sha": "83f40ae206fd4a1d21b3f8f133e2cb26a2ded55e", "phase": "verification", "message": "Verification: patch vulnerable dependencies and base images (Trivy V-06)", "filesChanged": 3, "linesAdded": 13, "linesRemoved": 5 },
+    { "sha": "ae348482a598d391d085974add358df46a353e16", "phase": "verification", "message": "Verification: container smoke test, verification report, release notes", "filesChanged": 20, "linesAdded": 7153, "linesRemoved": 0 }
+  ],
+  "commitsNote": "commits listed up to the run-statistics commit; the run-statistics commit, the merge commit and the record-only commit are described in run-summary.md. The large line count of ae34848 is mostly archived raw logs under 03_Run-Statistics/raw. Verification fixes were committed together at 22:02 (one commit per finding group) rather than immediately after each fix; fix timing is taken from log-file timestamps, see docs/verification-report.md §4.",
+
+  "reverts": 0,
+  "mergeConflicts": "__MERGE_CONFLICTS__",
+
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md. Everything below is filled in afterward by external audit — see the chat guidance on token/cost, tool-call, and code-quality auditing. Leave null with a reason until the audit pass runs.",
+
+  "tokensConsumed": null,
+  "tokensConsumedReason": "external audit — Anthropic Console usage export for the run's dedicated API key, or provider-equivalent",
+
+  "estimatedCostUsd": null,
+  "estimatedCostUsdReason": "external audit — derived from tokensConsumed",
+
+  "toolCalls": null,
+  "toolCallsReason": "external audit — parsed post-run from the harness transcript",
+
+  "approvalPrompts": null,
+  "approvalPromptsReason": "external audit — counted separately from toolCalls, only meaningful if permission mode required them",
+
+  "codeQuality": {
+    "loc": null,
+    "cyclomaticComplexityAvg": null,
+    "cyclomaticComplexityMax": null,
+    "duplicationPct": null,
+    "lintErrors": null,
+    "lintWarnings": null,
+    "typeCheckErrors": null,
+    "coverageUnitPct": null,
+    "coverageIntegrationPct": null,
+    "newDependenciesRuntime": null,
+    "newDependenciesDev": null,
+    "_reason": "external audit — fixed toolchain run post-merge, see TECH_STACK.md static analysis section. The agent's own self-measured values are reported in run-summary.md §Raw metric references and docs/verification-report.md, not here."
+  },
+
+  "architecture": {
+    "couplingAvgCa": null,
+    "couplingAvgCe": null,
+    "dependencyCycles": null,
+    "dependencyDepthMax": null,
+    "layerViolations": null,
+    "_reason": "external audit — dependency-cruiser run post-merge with path-length reporting enabled (for this stack: ArchUnit; the agent's own ArchUnit run reported 0 layer violations and 0 cycles, see docs/verification-report.md)"
+  }
+}

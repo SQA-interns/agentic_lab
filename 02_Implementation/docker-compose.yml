@@ -1,0 +1,61 @@
+name: conference-registration
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/registration
+      SPRING_DATASOURCE_USERNAME: registration
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
+      SPRING_MAIL_HOST: ${SMTP_HOST:?SMTP_HOST must be set in .env}
+      SPRING_MAIL_PORT: ${SMTP_PORT:-587}
+      SPRING_MAIL_USERNAME: ${SMTP_USERNAME:-}
+      SPRING_MAIL_PASSWORD: ${SMTP_PASSWORD:-}
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: ${SMTP_AUTH:-true}
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: ${SMTP_STARTTLS:-true}
+      APP_CONFERENCE_NAME: ${CONFERENCE_NAME:-Conference}
+      APP_MAIL_FROM: ${MAIL_FROM:?MAIL_FROM must be set in .env}
+      APP_MAIL_ORGANIZERS: ${MAIL_ORGANIZERS:?MAIL_ORGANIZERS must be set in .env}
+      APP_ADMIN_USERNAME: ${ADMIN_USERNAME:?ADMIN_USERNAME must be set in .env}
+      APP_ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD must be set in .env}
+      APP_FORM_TOKEN_SECRET: ${FORM_TOKEN_SECRET:?FORM_TOKEN_SECRET must be set in .env}
+      APP_OPTIONS_FILE: file:/config/conference-options.json
+      APP_BACKUP_DIR: /data/backups
+    volumes:
+      - backups:/data/backups
+      - ./config/conference-options.json:/config/conference-options.json:ro
+    ports:
+      # Operations access (health, export) from the host only.
+      - "127.0.0.1:8081:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-8080}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  backups:
