@@ -1,0 +1,18 @@
+# Verification overlay only (not for production): routes backend mail to a local Mailpit
+# SMTP catcher so confirmation/notification emails can be inspected at http://127.0.0.1:8025.
+#   docker compose -f docker-compose.yml -f docker-compose.verify.yml up -d --build
+services:
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "127.0.0.1:8025:8025"
+
+  backend:
+    environment:
+      SPRING_MAIL_HOST: mailpit
+      SPRING_MAIL_PORT: "1025"
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: "false"
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: "false"
+    depends_on:
+      mailpit:
+        condition: service_started

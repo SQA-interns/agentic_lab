@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Justified global exclusions:
+  * EI_EXPOSE_REP / EI_EXPOSE_REP2: Spring-injected collaborators and immutable records
+    (List.copyOf / Map.copyOf) are flagged as false positives.
+  * SPRING_ENDPOINT (find-sec-bugs): informational marker for every controller method,
+    not a defect.
+-->
+<FindBugsFilter>
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+  </Match>
+  <Match>
+    <Bug pattern="SPRING_ENDPOINT"/>
+  </Match>
+</FindBugsFilter>
