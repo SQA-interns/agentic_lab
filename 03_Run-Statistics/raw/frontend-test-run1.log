@@ -1,0 +1,20 @@
+﻿START 2026-09-24T21:14:18.4535322+02:00
+
+ RUN  v5.0.1 E:/13 - Lab Projects/01_Single_Agent_SDD_Specific_Input/agentic_lab/02_Implementation/frontend
+      Coverage enabled with v8
+
+
+ Test Files  4 passed (4)
+      Tests  32 passed (32)
+   Start at  21:14:19
+   Duration  15.30s (environment 49%, tests 41%, setup 8%, transform 1%, import 1%, worker 1%)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 96.55% ( 168/174 )
+Branches     : 85.1% ( 80/94 )
+Functions    : 96.22% ( 51/53 )
+Lines        : 96.49% ( 165/171 )
+================================================================================
+END 2026-09-24T21:14:35.3054146+02:00 EXIT 0

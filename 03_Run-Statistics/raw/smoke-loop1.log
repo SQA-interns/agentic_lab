@@ -1,0 +1,53 @@
+﻿PASS  GET / serves the SPA
+PASS  GET /: security headers
+PASS  GET /: single CSP header
+PASS  server version hidden  — nginx
+PASS  GET /register/external (SPA fallback)
+PASS  GET /register/external: security headers
+PASS  GET /register/external: single CSP header
+PASS  GET /register/student (SPA fallback)
+PASS  GET /register/student: security headers
+PASS  GET /register/student: single CSP header
+PASS  GET JS asset  — /assets/index-DdVvXJY5.js
+PASS  GET asset: security headers
+PASS  GET asset: single CSP header
+PASS  GET /actuator/health  — {"status":"UP","groups":["liveness","readiness"]}
+PASS  GET /actuator/health/liveness  — {"status":"UP"}
+PASS  GET /actuator/health/readiness  — {"status":"UP"}
+PASS  actuator/env not exposed  — 401
+PASS  GET /api/options EXTERNAL  — 10 options
+PASS  GET /api/options: security headers
+PASS  GET /api/options: single CSP header
+PASS  inactive option not offered
+PASS  student-only option only for students
+PASS  too-fast submission rejected
+PASS  external registration → 201  — 65c38ee4-ce07-4c93-b58d-cd840c28da79
+PASS  POST external: security headers
+PASS  POST external: single CSP header
+PASS  student registration → 201  — 110a2077-bcf7-4423-a489-adeeea09e918
+PASS  form token replay rejected
+PASS  invalid registration → 400 with field errors  — {"privacyConsent":"You must accept the privacy statement.","email":"Please enter a valid email address."}
+PASS  malformed JSON → 400 without internals
+PASS  oversized body → 413  — 413
+PASS  backup file for 65c38ee4-ce07-4c93-b58d-cd840c28da79
+PASS  backup file for 110a2077-bcf7-4423-a489-adeeea09e918
+PASS  backup files are 0600
+PASS  backup JSON content
+PASS  external: participant confirmation email  — Registration confirmed – Informatics Conference 2026
+PASS  external: confirmation is UTF-8 plain text
+PASS  external: organizer notification to all organizers
+PASS  external: organizer JSON attachment
+PASS  student: participant confirmation email  — Registration confirmed – Informatics Conference 2026
+PASS  student: confirmation is UTF-8 plain text
+PASS  student: organizer notification to all organizers
+PASS  student: organizer JSON attachment
+PASS  export without credentials → 401
+PASS  export with wrong password → 401
+PASS  export with credentials → xlsx  — 4272 bytes, attachment; filename="registrations-20260924-194335.xlsx"
+PASS  rate limit enforced through proxy despite spoofed X-Forwarded-For
+PASS  429 has Retry-After
+PASS  429 response: security headers
+PASS  429 response: single CSP header
+
+2026-09-24T19:43:28.992Z → 2026-09-24T19:43:35.869Z: 50/50 checks passed
+registrations: external=65c38ee4-ce07-4c93-b58d-cd840c28da79 student=110a2077-bcf7-4423-a489-adeeea09e918

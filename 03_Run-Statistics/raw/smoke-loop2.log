@@ -1,0 +1,49 @@
+﻿PASS  GET / serves the SPA
+PASS  GET /: security headers
+PASS  GET /: single CSP header
+PASS  server version hidden  — nginx
+PASS  GET /register/external (SPA fallback)
+PASS  GET /register/external: security headers
+PASS  GET /register/external: single CSP header
+PASS  GET /register/student (SPA fallback)
+PASS  GET /register/student: security headers
+PASS  GET /register/student: single CSP header
+PASS  GET JS asset  — /assets/index-DdVvXJY5.js
+PASS  GET asset: security headers
+PASS  GET asset: single CSP header
+PASS  GET /actuator/health  — {"status":"UP","groups":["liveness","readiness"]}
+PASS  GET /actuator/health/liveness  — {"status":"UP"}
+PASS  GET /actuator/health/readiness  — {"status":"UP"}
+PASS  actuator/env not exposed  — 401
+PASS  GET /api/options EXTERNAL  — 10 options
+PASS  GET /api/options: security headers
+PASS  GET /api/options: single CSP header
+PASS  inactive option not offered
+PASS  student-only option only for students
+PASS  too-fast submission rejected
+PASS  external registration → 201  — 55676173-4faf-462a-9929-bacef0b41f95
+PASS  POST external: security headers
+PASS  POST external: single CSP header
+PASS  student registration → 201  — e36a5ae0-8413-4826-a5b4-040e9183415d
+PASS  form token replay rejected
+PASS  invalid registration → 400 with field errors  — {"email":"Please enter a valid email address.","privacyConsent":"You must accept the privacy statement."}
+PASS  malformed JSON → 400 without internals
+PASS  oversized body → 413  — 413
+PASS  backup file for 55676173-4faf-462a-9929-bacef0b41f95
+PASS  backup file for e36a5ae0-8413-4826-a5b4-040e9183415d
+PASS  backup files are 0600
+PASS  backup JSON content
+PASS  external: participant confirmation email  — Registration confirmed – Informatics Conference 2026
+PASS  external: confirmation is UTF-8 plain text
+PASS  external: organizer notification to all organizers
+PASS  external: organizer JSON attachment
+PASS  student: participant confirmation email  — Registration confirmed – Informatics Conference 2026
+PASS  student: confirmation is UTF-8 plain text
+PASS  student: organizer notification to all organizers
+PASS  student: organizer JSON attachment
+PASS  export without credentials → 401
+PASS  export with wrong password → 401
+PASS  export with credentials → xlsx  — 4479 bytes, attachment; filename="registrations-20260924-195243.xlsx"
+
+2026-09-24T19:52:36.600Z → 2026-09-24T19:52:43.481Z: 46/46 checks passed
+registrations: external=55676173-4faf-462a-9929-bacef0b41f95 student=e36a5ae0-8413-4826-a5b4-040e9183415d
