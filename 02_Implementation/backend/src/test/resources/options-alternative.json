@@ -1,0 +1,6 @@
+{
+  "options": [
+    { "id": "ws-new-topic", "category": "WORKSHOP", "name": "Workshop: A new topic", "active": true },
+    { "id": "ws-secure-coding", "category": "WORKSHOP", "name": "Workshop: Secure coding in practice", "active": false }
+  ]
+}
