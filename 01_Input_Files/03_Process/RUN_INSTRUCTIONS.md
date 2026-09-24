@@ -4,27 +4,39 @@ You are the only development agent responsible for this run.
 
 ## Path conventions
 
-This experiment input bundle is portable.
+This experiment package is portable.
 
-Define:
+`INPUT_ROOT` is the directory that contains this experiment input
+bundle (`01_Business/`, `02_Technical/`, `03_Process/`, `04_Skills/`).
+This file lives at `03_Process/RUN_INSTRUCTIONS.md` inside that bundle.
 
-- `INPUT_ROOT` as the `01_Input_Files/` directory containing this
-  experiment package.
-- `WORKSPACE_ROOT` as the parent directory of `INPUT_ROOT`.
-- `IMPLEMENTATION_ROOT` as `<WORKSPACE_ROOT>/02_Implementation`.
-- `STATISTICS_ROOT` as `<WORKSPACE_ROOT>/03_Run-Statistics`.
+All input paths such as:
 
-All paths inside the input bundle are relative to `INPUT_ROOT`.
+- `01_Business/...`
+- `02_Technical/...`
+- `03_Process/...`
+- `04_Skills/...`
 
-All generated application artefacts are written under
-`IMPLEMENTATION_ROOT`.
+are relative to `INPUT_ROOT`.
 
-All experimental logs and statistics are written under
-`STATISTICS_ROOT`.
+`WORKSPACE_ROOT` is the parent directory of `INPUT_ROOT`.
 
-Do not assume any repository name or absolute filesystem path.
+Generated application artefacts are written under:
 
-Example layout after copying this package into any project:
+`<WORKSPACE_ROOT>/02_Implementation/`
+
+(`IMPLEMENTATION_ROOT`)
+
+Experimental records are written under:
+
+`<WORKSPACE_ROOT>/03_Run-Statistics/`
+
+(`STATISTICS_ROOT`)
+
+Do not assume a repository name, absolute filesystem path or operating
+system-specific path.
+
+The same package may be copied into any project as:
 
 ```
 <WORKSPACE_ROOT>/
@@ -79,6 +91,24 @@ User Stories
 → Finalization
 
 Do not skip, reorder, combine or anticipate phases.
+
+## Experiment measurement
+
+Before starting Phase 1, read completely:
+
+- `03_Process/METRICS.md`
+- `03_Process/run-log.template.json`
+
+`METRICS.md` is the authoritative definition of what is measured and
+how it is measured.
+
+Do not introduce additional metrics during the run.
+
+Do not estimate values that cannot be observed.
+
+Copy `03_Process/run-log.template.json` to
+`<STATISTICS_ROOT>/run-log.json` at run start and update it during the
+run.
 
 ---
 
@@ -198,6 +228,12 @@ Finalize:
 
 `<STATISTICS_ROOT>/run-log.json`
 
+Before completing the run, ensure every metric required by
+`03_Process/METRICS.md` has either:
+
+- a measured value; or
+- `null` with an explicit reason.
+
 Record the final commit.
 
 Do not modify the shared baseline or another experiment branch.
@@ -205,16 +241,6 @@ Do not modify the shared baseline or another experiment branch.
 ---
 
 ## Logging
-
-At run start copy:
-
-`03_Process/run-log.template.json`
-
-to:
-
-`<STATISTICS_ROOT>/run-log.json`
-
-Update it during the run.
 
 Record `experimentStart` immediately when the run begins and
 `experimentEnd` when finalization completes. Phase timestamps must
