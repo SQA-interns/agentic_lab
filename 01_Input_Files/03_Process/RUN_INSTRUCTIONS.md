@@ -6,9 +6,14 @@ You are the only development agent responsible for this run.
 
 This experiment package is portable.
 
-`INPUT_ROOT` is the directory that contains this experiment input
-bundle (`01_Business/`, `02_Technical/`, `03_Process/`, `04_Skills/`,
-`05_Scaffold/`).
+`INPUT_ROOT` is the directory containing:
+
+- `01_Business/`
+- `02_Technical/`
+- `03_Process/`
+- `04_Skills/`
+- `05_Scaffold/`
+
 This file lives at `03_Process/RUN_INSTRUCTIONS.md` inside that bundle.
 
 All input paths such as:
@@ -75,11 +80,19 @@ It is part of `INPUT_ROOT` and must not be modified.
 
 ## Start-of-run setup
 
-Before Phase 1:
+Execute this sequence before Phase 1. Do not skip or reorder it.
 
-1. Copy the contents of `05_Scaffold/` to `IMPLEMENTATION_ROOT`.
-2. Copy `03_Process/run-log.template.json` to
+1. Record `experimentStart`.
+2. Confirm a clean baseline working tree.
+3. Copy `05_Scaffold/*` to `IMPLEMENTATION_ROOT/`.
+4. Copy `03_Process/run-log.template.json` to
    `<STATISTICS_ROOT>/run-log.json`.
+5. Read `03_Process/METRICS.md` completely.
+6. Begin Phase 1 — Acceptance Criteria.
+
+`experimentStart` is recorded immediately before any other run work.
+Copying the scaffold is included in total run time. The cost is
+negligible; the rule must be identical for every agent.
 
 Work only under `IMPLEMENTATION_ROOT` after the copy.
 
@@ -110,13 +123,8 @@ Do not skip, reorder, combine or anticipate phases.
 
 ## Experiment measurement
 
-Before starting Phase 1, read completely:
-
-- `03_Process/METRICS.md`
-- `03_Process/run-log.template.json`
-
 `METRICS.md` is the authoritative definition of what is measured and
-how it is measured.
+how it is measured. It is read in the start-of-run sequence above.
 
 Do not introduce additional metrics during the run.
 
