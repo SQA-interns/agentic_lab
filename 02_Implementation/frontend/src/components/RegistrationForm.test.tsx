@@ -84,12 +84,17 @@ describe('RegistrationForm – external (US-001)', () => {
     await user.click(screen.getByRole('checkbox', { name: /personal data/ }));
     await user.click(screen.getByRole('button', { name: 'Register' }));
 
-    expect(await screen.findByRole('heading', { name: 'Registration received' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: 'Registration received' }),
+    ).toBeInTheDocument();
     expect(screen.getByText(CREATED.id)).toBeInTheDocument();
-    const posts = submitCalls(calls);
-    expect(posts).toHaveLength(1);
-    expect(posts[0]?.url).toBe('/api/registrations/external');
-    expect(bodyOf(posts[0]!)).toEqual({
+    const [post, ...others] = submitCalls(calls);
+    expect(others).toHaveLength(0);
+    if (post === undefined) {
+      throw new Error('expected one POST');
+    }
+    expect(post.url).toBe('/api/registrations/external');
+    expect(bodyOf(post)).toEqual({
       firstName: 'Žiga',
       lastName: 'Čeh',
       email: 'ziga@example.si',

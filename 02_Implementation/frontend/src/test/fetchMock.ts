@@ -30,7 +30,7 @@ export function mockBackend(onSubmit: Responder, options: unknown = OPTIONS): Ca
   vi.stubGlobal(
     'fetch',
     vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
-      const url = typeof input === 'string' ? input : input.toString();
+      const url = input instanceof Request ? input.url : String(input);
       calls.push({ url, init });
       if (url.startsWith('/api/options')) {
         return Promise.resolve(jsonResponse(200, options));
