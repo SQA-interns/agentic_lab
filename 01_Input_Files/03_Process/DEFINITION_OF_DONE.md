@@ -52,7 +52,7 @@ an independent external security review.
 ## 4. Architecture
 
 Execute architecture checks that verify the architecture declared in
-`02_Implementation/docs/specification.md`.
+`<IMPLEMENTATION_ROOT>/docs/specification.md`.
 
 At minimum:
 
@@ -86,11 +86,11 @@ Passing tests alone does not establish runtime correctness.
 
 The following must exist:
 
-- `02_Implementation/docs/acceptance-criteria.md`
-- `02_Implementation/docs/specification.md`
-- `02_Implementation/docs/test-strategy.md`
-- `02_Implementation/docs/verification-report.md`
-- `02_Implementation/RELEASE_NOTES.md`
+- `<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`
+- `<IMPLEMENTATION_ROOT>/docs/specification.md`
+- `<IMPLEMENTATION_ROOT>/docs/test-strategy.md`
+- `<IMPLEMENTATION_ROOT>/docs/verification-report.md`
+- `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
 
 Unknown or unverified behaviour must be documented rather than assumed.
 
@@ -98,7 +98,7 @@ Unknown or unverified behaviour must be documented rather than assumed.
 
 The following must exist:
 
-- `03_Run-Statistics/run-log.json`
-- `03_Run-Statistics/run-summary.md`
+- `<STATISTICS_ROOT>/run-log.json`
+- `<STATISTICS_ROOT>/run-summary.md`
 
 A run without the required experimental record is incomplete.

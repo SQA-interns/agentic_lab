@@ -2,40 +2,58 @@
 
 You are the only development agent responsible for this run.
 
+## Path conventions
+
+This experiment input bundle is portable.
+
+Define:
+
+- `INPUT_ROOT` as the `01_Input_Files/` directory containing this
+  experiment package.
+- `WORKSPACE_ROOT` as the parent directory of `INPUT_ROOT`.
+- `IMPLEMENTATION_ROOT` as `<WORKSPACE_ROOT>/02_Implementation`.
+- `STATISTICS_ROOT` as `<WORKSPACE_ROOT>/03_Run-Statistics`.
+
+All paths inside the input bundle are relative to `INPUT_ROOT`.
+
+All generated application artefacts are written under
+`IMPLEMENTATION_ROOT`.
+
+All experimental logs and statistics are written under
+`STATISTICS_ROOT`.
+
+Do not assume any repository name or absolute filesystem path.
+
+Example layout after copying this package into any project:
+
+```
+<WORKSPACE_ROOT>/
+├── 01_Input_Files/          ← INPUT_ROOT
+├── 02_Implementation/       ← IMPLEMENTATION_ROOT
+└── 03_Run-Statistics/       ← STATISTICS_ROOT
+```
+
 ## Immutable inputs
 
-Everything under:
-
-`01_Input_Files/`
-
-is read-only.
+Everything under `INPUT_ROOT` is read-only.
 
 Do not create, modify or delete experiment inputs.
 
 ## Output locations
 
-Application, generated development artefacts and the frozen tooling
-scaffold:
+Required artefacts:
 
-`02_Implementation/`
+- `<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`
+- `<IMPLEMENTATION_ROOT>/docs/specification.md`
+- `<IMPLEMENTATION_ROOT>/docs/test-strategy.md`
+- `<IMPLEMENTATION_ROOT>/docs/verification-report.md`
+- `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
+- `<STATISTICS_ROOT>/run-log.json`
+- `<STATISTICS_ROOT>/run-summary.md`
 
-Experimental records:
+## Frozen tooling scaffold
 
-`03_Run-Statistics/`
-
-Required artefact paths:
-
-- `02_Implementation/docs/acceptance-criteria.md`
-- `02_Implementation/docs/specification.md`
-- `02_Implementation/docs/test-strategy.md`
-- `02_Implementation/docs/verification-report.md`
-- `02_Implementation/RELEASE_NOTES.md`
-- `03_Run-Statistics/run-log.json`
-- `03_Run-Statistics/run-summary.md`
-
-## Frozen scaffold
-
-`02_Implementation/` starts as a **tooling scaffold**, not a solution.
+`IMPLEMENTATION_ROOT` starts as a **tooling scaffold**, not a solution.
 
 The agent must implement business behaviour on top of this scaffold.
 The agent must not replace the frozen technology stack or discard the
@@ -72,9 +90,9 @@ Read:
 - `03_Process/ACCEPTANCE_CRITERIA_RULES.md`;
 - `04_Skills/derive-acceptance-criteria/SKILL.md`.
 
-Create:
+Create exactly:
 
-`02_Implementation/docs/acceptance-criteria.md`
+`<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`
 
 Do not create production code or tests.
 
@@ -91,9 +109,9 @@ Read:
 - all files under `02_Technical/`;
 - `04_Skills/write-specification/SKILL.md`.
 
-Create:
+Create exactly:
 
-`02_Implementation/docs/specification.md`
+`<IMPLEMENTATION_ROOT>/docs/specification.md`
 
 Do not create production code or tests.
 
@@ -107,7 +125,7 @@ Read:
 
 `04_Skills/implement/SKILL.md`
 
-Implement the approved Specification.
+Implement the approved Specification under `IMPLEMENTATION_ROOT`.
 
 Do not create the feature test suite.
 
@@ -131,9 +149,9 @@ Only now create the test suite.
 Record the result of the first complete test execution before repairing
 failures.
 
-Create:
+Create exactly:
 
-`02_Implementation/docs/test-strategy.md`
+`<IMPLEMENTATION_ROOT>/docs/test-strategy.md`
 
 Commit the completed phase.
 
@@ -151,9 +169,9 @@ Re-read all original requirements.
 Perform the full verification independently from the implementation
 phase.
 
-Create:
+Create exactly:
 
-`02_Implementation/docs/verification-report.md`
+`<IMPLEMENTATION_ROOT>/docs/verification-report.md`
 
 For every failure execute:
 
@@ -171,14 +189,14 @@ Read:
 
 `04_Skills/finalize-run/SKILL.md`
 
-Create:
+Create exactly:
 
-- `02_Implementation/RELEASE_NOTES.md`
-- `03_Run-Statistics/run-summary.md`
+- `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
+- `<STATISTICS_ROOT>/run-summary.md`
 
 Finalize:
 
-`03_Run-Statistics/run-log.json`
+`<STATISTICS_ROOT>/run-log.json`
 
 Record the final commit.
 
@@ -190,11 +208,11 @@ Do not modify the shared baseline or another experiment branch.
 
 At run start copy:
 
-`01_Input_Files/03_Process/run-log.template.json`
+`03_Process/run-log.template.json`
 
 to:
 
-`03_Run-Statistics/run-log.json`
+`<STATISTICS_ROOT>/run-log.json`
 
 Update it during the run.
 
@@ -208,7 +226,7 @@ Never invent unavailable measurements.
 
 ## Experimental fairness
 
-Do not read instructions from files outside the frozen experiment input
-unless they are explicitly listed by these Run Instructions.
+Do not read instructions from files outside `INPUT_ROOT` unless they
+are explicitly listed by these Run Instructions.
 
 Do not optimize the implementation for the metrics.

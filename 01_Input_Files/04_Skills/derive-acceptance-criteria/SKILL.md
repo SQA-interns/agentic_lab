@@ -25,4 +25,4 @@ Do not:
 
 Create exactly:
 
-`02_Implementation/docs/acceptance-criteria.md`
+`<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`

@@ -11,7 +11,7 @@ Requirements:
 
 - implement only justified functionality;
 - follow the frozen technology stack;
-- extend the frozen tooling scaffold in `02_Implementation/`;
+- extend the frozen tooling scaffold in `IMPLEMENTATION_ROOT`;
 - do not replace configured measurement tools;
 - do not import a pre-written layered architecture from the scaffold;
 - avoid unrelated refactoring;
@@ -31,10 +31,8 @@ Do not create the feature test suite in this phase.
 
 ## Output
 
-Implement the solution under:
-
-`02_Implementation/`
+Implement the solution under `IMPLEMENTATION_ROOT`.
 
 Record the first executable registration happy path timestamp in:
 
-`03_Run-Statistics/run-log.json`
+`<STATISTICS_ROOT>/run-log.json`

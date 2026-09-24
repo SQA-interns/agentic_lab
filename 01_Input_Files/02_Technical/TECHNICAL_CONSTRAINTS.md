@@ -57,4 +57,4 @@ The internal software architecture is intentionally not prescribed.
 
 The agent must define and justify it in:
 
-`02_Implementation/docs/specification.md`
+`<IMPLEMENTATION_ROOT>/docs/specification.md`

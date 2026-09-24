@@ -33,6 +33,6 @@ Never weaken a correct test merely to make incorrect implementation pass.
 
 ## Output
 
-Create the test suite under `02_Implementation/` and create exactly:
+Create the test suite under `IMPLEMENTATION_ROOT` and create exactly:
 
-`02_Implementation/docs/test-strategy.md`
+`<IMPLEMENTATION_ROOT>/docs/test-strategy.md`

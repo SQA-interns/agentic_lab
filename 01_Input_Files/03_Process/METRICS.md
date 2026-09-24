@@ -2,6 +2,8 @@
 
 Only metrics defined here belong to the experiment.
 
+Write run measurements to `<STATISTICS_ROOT>/run-log.json`.
+
 A metric must not be estimated.
 
 If it cannot be measured using its defined method, record `null` and

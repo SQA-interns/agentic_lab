@@ -59,6 +59,6 @@ Never renumber existing criteria during the run.
 
 Create exactly:
 
-`02_Implementation/docs/acceptance-criteria.md`
+`<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`
 
 Complete this artefact before Specification begins.

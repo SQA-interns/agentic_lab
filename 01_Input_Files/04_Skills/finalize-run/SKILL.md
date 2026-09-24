@@ -19,9 +19,9 @@ Do not claim results that were not measured or demonstrated.
 
 Create exactly:
 
-- `02_Implementation/RELEASE_NOTES.md`
-- `03_Run-Statistics/run-summary.md`
+- `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
+- `<STATISTICS_ROOT>/run-summary.md`
 
 Finalize:
 
-`03_Run-Statistics/run-log.json`
+`<STATISTICS_ROOT>/run-log.json`

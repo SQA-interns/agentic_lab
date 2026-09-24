@@ -37,4 +37,4 @@ Do not implement production code or tests.
 
 Create exactly:
 
-`02_Implementation/docs/specification.md`
+`<IMPLEMENTATION_ROOT>/docs/specification.md`

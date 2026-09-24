@@ -42,8 +42,8 @@ Record each loop separately.
 
 Create exactly:
 
-`02_Implementation/docs/verification-report.md`
+`<IMPLEMENTATION_ROOT>/docs/verification-report.md`
 
 Update fix-loop records in:
 
-`03_Run-Statistics/run-log.json`
+`<STATISTICS_ROOT>/run-log.json`
