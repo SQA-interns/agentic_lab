@@ -5,7 +5,7 @@
   "harnessVersion": null,
   "harnessVersionReason": "not observable from inside the session: no `claude` CLI on PATH and the desktop app does not expose its version to the agent",
   "startCommit": "e1b1935c5bd9182e0e9622dee3b288229b856831",
-  "finalCommit": "__MERGE_SHA__",
+  "finalCommit": "ff87b347ae89614f461fb6ad788c48b7583c161a",
   "finalCommitNote": "merge commit on branch opus5.5_single_agent_classic_sdd_optimized_input; one later record-only commit writes these merge values into this file and run-summary.md (its own SHA cannot be recorded inside itself)",
   "workBranch": "run/opus5.5-sdd-impl",
   "targetBranch": "opus5.5_single_agent_classic_sdd_optimized_input",
@@ -16,7 +16,7 @@
     { "name": "implementation", "start": "2026-09-24T19:56:34+02:00", "end": "2026-09-24T21:01:24+02:00" },
     { "name": "tests", "start": "2026-09-24T21:01:24+02:00", "end": "2026-09-24T21:25:56+02:00" },
     { "name": "verification", "start": "2026-09-24T21:25:56+02:00", "end": "2026-09-24T22:02:04+02:00" },
-    { "name": "merge", "start": "2026-09-24T22:02:04+02:00", "end": "__MERGE_TIME__" }
+    { "name": "merge", "start": "2026-09-24T22:02:04+02:00", "end": "2026-09-24T22:04:51+02:00" }
   ],
 
   "firstWorkingHappyPathTimestamp": "2026-09-24T20:58:43+02:00",
@@ -101,7 +101,7 @@
   "commitsNote": "commits listed up to the run-statistics commit; the run-statistics commit, the merge commit and the record-only commit are described in run-summary.md. The large line count of ae34848 is mostly archived raw logs under 03_Run-Statistics/raw. Verification fixes were committed together at 22:02 (one commit per finding group) rather than immediately after each fix; fix timing is taken from log-file timestamps, see docs/verification-report.md §4.",
 
   "reverts": 0,
-  "mergeConflicts": "__MERGE_CONFLICTS__",
+  "mergeConflicts": 0,
 
   "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md. Everything below is filled in afterward by external audit — see the chat guidance on token/cost, tool-call, and code-quality auditing. Leave null with a reason until the audit pass runs.",
 

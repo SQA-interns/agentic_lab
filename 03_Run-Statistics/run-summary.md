@@ -7,8 +7,8 @@
 | Tool / environment | Claude Code in the Claude desktop app (Code tab, Claude Agent SDK); harness version not observable (see run-log). Windows 11 Pro 10.0.26200, Docker 29.8.0 / Compose v5.5.1, Temurin JDK 21.0.10, Maven 3.9.16 (wrapper), Node 24.13.0 / npm 11.6.2, Git 2.53.0 |
 | Starting commit | `e1b1935c5bd9182e0e9622dee3b288229b856831` (branch `opus5.5_single_agent_classic_sdd_optimized_input`) |
 | Work branch | `run/opus5.5-sdd-impl` |
-| Final commit | `__MERGE_SHA__` (merge commit, `--no-ff`) |
-| Final merge timestamp | `__MERGE_TIME__` |
+| Final commit | `ff87b347ae89614f461fb6ad788c48b7583c161a` (merge commit, `--no-ff`) |
+| Final merge timestamp | `2026-09-24T22:04:51+02:00` |
 | Human interventions | 0 · clarifying questions 0 · manual code fixes 0 |
 
 ## Process followed
@@ -23,14 +23,19 @@ Merge, in this order, each phase committed on the work branch:
 | Implementation | 19:56:34 | 21:01:24 | `0ea12e9` (first working happy path 20:58:43) |
 | Tests | 21:01:24 | 21:25:56 | `3fa90f8`, `45e1516` |
 | Verification | 21:25:56 | 22:02:04 | `a05e92b`, `329539c`, `0a63982`, `83f40ae`, `ae34848` |
-| Merge | 22:02:04 | `__MERGE_TIME__` | run-statistics commit, merge commit, record-only commit |
+| Merge | 22:02:04 | `2026-09-24T22:04:51+02:00` | run-statistics commit, merge commit, record-only commit |
 
 First complete test run (before any fix): backend unit 55 run / 2 failed, backend integration
 38 run / 6 failed, frontend 32 run / 0 failed. Final: 55/55, 38/38, 32/32.
 
+Commits: 11 on the work branch (10 listed with sizes in `run-log.json`, plus run-statistics
+commit `04bbabd` — 2 files, +191/−9), 1 merge commit `ff87b34` (`--no-ff`, no squash, no rebase),
+and 1 record-only commit on the target branch that writes the merge values into this file and
+`run-log.json` — 13 commits after the starting commit in total.
+
 Fix loops: 5 (1 in Tests, 4 in Verification) — details in `run-log.json` and
 `02_Implementation/docs/verification-report.md` §4. Reverts: 0. Merge conflicts:
-`__MERGE_CONFLICTS__`.
+0.
 
 ## Generated artefacts
 
