@@ -68,7 +68,8 @@ checks must not depend on calling the live Google reCAPTCHA service.
 
 ## Frozen implementation scaffold
 
-`IMPLEMENTATION_ROOT` contains a tooling scaffold only:
+`05_Scaffold/` contains a tooling scaffold only. At run start it is
+copied to `IMPLEMENTATION_ROOT`:
 
 - Maven / Spring Boot bootstrap and configured analysis plugins;
 - React / Vite / TypeScript bootstrap and configured frontend tools;

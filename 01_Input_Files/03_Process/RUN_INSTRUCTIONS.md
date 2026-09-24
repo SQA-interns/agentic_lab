@@ -7,7 +7,8 @@ You are the only development agent responsible for this run.
 This experiment package is portable.
 
 `INPUT_ROOT` is the directory that contains this experiment input
-bundle (`01_Business/`, `02_Technical/`, `03_Process/`, `04_Skills/`).
+bundle (`01_Business/`, `02_Technical/`, `03_Process/`, `04_Skills/`,
+`05_Scaffold/`).
 This file lives at `03_Process/RUN_INSTRUCTIONS.md` inside that bundle.
 
 All input paths such as:
@@ -16,6 +17,7 @@ All input paths such as:
 - `02_Technical/...`
 - `03_Process/...`
 - `04_Skills/...`
+- `05_Scaffold/...`
 
 are relative to `INPUT_ROOT`.
 
@@ -65,11 +67,25 @@ Required artefacts:
 
 ## Frozen tooling scaffold
 
-`IMPLEMENTATION_ROOT` starts as a **tooling scaffold**, not a solution.
+The immutable tooling scaffold lives at:
 
-The agent must implement business behaviour on top of this scaffold.
-The agent must not replace the frozen technology stack or discard the
-configured measurement tools.
+`05_Scaffold/`
+
+It is part of `INPUT_ROOT` and must not be modified.
+
+## Start-of-run setup
+
+Before Phase 1:
+
+1. Copy the contents of `05_Scaffold/` to `IMPLEMENTATION_ROOT`.
+2. Copy `03_Process/run-log.template.json` to
+   `<STATISTICS_ROOT>/run-log.json`.
+
+Work only under `IMPLEMENTATION_ROOT` after the copy.
+
+The scaffold is tooling only. The agent must implement business
+behaviour on top of the copied scaffold. The agent must not replace the
+frozen technology stack or discard the configured measurement tools.
 
 The scaffold does **not** prescribe software architecture, package
 boundaries, REST design or persistence mapping.
@@ -106,9 +122,8 @@ Do not introduce additional metrics during the run.
 
 Do not estimate values that cannot be observed.
 
-Copy `03_Process/run-log.template.json` to
-`<STATISTICS_ROOT>/run-log.json` at run start and update it during the
-run.
+Update `<STATISTICS_ROOT>/run-log.json` during the run. It must already
+exist from the start-of-run setup.
 
 ---
 

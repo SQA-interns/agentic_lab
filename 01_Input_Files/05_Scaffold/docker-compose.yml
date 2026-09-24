@@ -11,7 +11,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   smtp:
-    image: axllent/mailpit:latest
+    image: axllent/mailpit:v1.21.8
     ports:
       - "1025:1025"
       - "8025:8025"

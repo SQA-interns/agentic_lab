@@ -1,24 +1,11 @@
-# Tooling scaffold
+# Implementation root
 
 This directory is `IMPLEMENTATION_ROOT`.
 
-It is a **frozen tooling scaffold**, not an application.
+At run start, copy the contents of:
 
-Included:
+`05_Scaffold/`
 
-- Maven / Spring Boot bootstrap and analysis plugins;
-- React / Vite / TypeScript bootstrap and frontend tools;
-- Docker Compose service placeholders;
-- Semgrep configuration stub.
+from `INPUT_ROOT` into this directory, then implement here.
 
-Not included:
-
-- domain controllers, services, repositories or entities;
-- REST endpoints;
-- database tables or Flyway domain migrations;
-- registration forms;
-- feature tests;
-- ArchUnit rules that prescribe a layered architecture.
-
-Architecture is decided during Specification. Business behaviour is
-implemented during Implementation.
+Do not modify `05_Scaffold/`.

@@ -11,7 +11,8 @@ Requirements:
 
 - implement only justified functionality;
 - follow the frozen technology stack;
-- extend the frozen tooling scaffold in `IMPLEMENTATION_ROOT`;
+- extend the copied tooling scaffold in `IMPLEMENTATION_ROOT`
+  (copied from `05_Scaffold/` at run start);
 - do not replace configured measurement tools;
 - do not import a pre-written layered architecture from the scaffold;
 - avoid unrelated refactoring;
