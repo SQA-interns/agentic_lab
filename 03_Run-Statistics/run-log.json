@@ -1,0 +1,82 @@
+{
+  "runId": "",
+  "model": "",
+  "harness": "",
+  "harnessVersion": "",
+  "startCommit": "",
+  "finalCommit": "",
+
+  "phases": [
+    { "name": "acceptance-criteria", "start": null, "end": null },
+    { "name": "specification", "start": null, "end": null },
+    { "name": "implementation", "start": null, "end": null },
+    { "name": "tests", "start": null, "end": null },
+    { "name": "verification", "start": null, "end": null },
+    { "name": "merge", "start": null, "end": null }
+  ],
+
+  "firstWorkingHappyPathTimestamp": null,
+
+  "humanInterventions": [
+    { "start": null, "end": null, "reason": "" }
+  ],
+
+  "clarifyingQuestions": 0,
+
+  "fixLoops": [
+    {
+      "loopNumber": 1,
+      "trigger": "",
+      "findingIds": [],
+      "start": null,
+      "end": null
+    }
+  ],
+
+  "manualCodeFixes": 0,
+
+  "commits": [
+    { "sha": "", "phase": "", "message": "", "filesChanged": null, "linesAdded": null, "linesRemoved": null }
+  ],
+
+  "reverts": 0,
+  "mergeConflicts": 0,
+
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md. Everything below is filled in afterward by external audit — see the chat guidance on token/cost, tool-call, and code-quality auditing. Leave null with a reason until the audit pass runs.",
+
+  "tokensConsumed": null,
+  "tokensConsumedReason": "external audit — Anthropic Console usage export for the run's dedicated API key, or provider-equivalent",
+
+  "estimatedCostUsd": null,
+  "estimatedCostUsdReason": "external audit — derived from tokensConsumed",
+
+  "toolCalls": null,
+  "toolCallsReason": "external audit — parsed post-run from the harness transcript",
+
+  "approvalPrompts": null,
+  "approvalPromptsReason": "external audit — counted separately from toolCalls, only meaningful if permission mode required them",
+
+  "codeQuality": {
+    "loc": null,
+    "cyclomaticComplexityAvg": null,
+    "cyclomaticComplexityMax": null,
+    "duplicationPct": null,
+    "lintErrors": null,
+    "lintWarnings": null,
+    "typeCheckErrors": null,
+    "coverageUnitPct": null,
+    "coverageIntegrationPct": null,
+    "newDependenciesRuntime": null,
+    "newDependenciesDev": null,
+    "_reason": "external audit — fixed toolchain run post-merge, see TECH_STACK.md static analysis section"
+  },
+
+  "architecture": {
+    "couplingAvgCa": null,
+    "couplingAvgCe": null,
+    "dependencyCycles": null,
+    "dependencyDepthMax": null,
+    "layerViolations": null,
+    "_reason": "external audit — dependency-cruiser run post-merge with path-length reporting enabled"
+  }
+}
