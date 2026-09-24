@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Justified global exclusions:
+  Justified exclusions (see docs/verification-report.md, finding V-04):
   * EI_EXPOSE_REP / EI_EXPOSE_REP2: Spring-injected collaborators and immutable records
     (List.copyOf / Map.copyOf) are flagged as false positives.
   * SPRING_ENDPOINT (find-sec-bugs): informational marker for every controller method,
     not a defect.
+  * CRLF_INJECTION_LOGS: only server-generated values are logged (UUIDs, enum names, constant
+    reason strings, the configured organizer username, validated backup file names); request
+    fields are never logged, and all request text fields reject control characters.
+  * IMPROPER_UNICODE: NFC normalisation is deliberately applied *before* validation, which is the
+    order this rule asks for; the flagged call is the normaliser itself.
 -->
 <FindBugsFilter>
   <Match>
@@ -12,5 +17,12 @@
   </Match>
   <Match>
     <Bug pattern="SPRING_ENDPOINT"/>
+  </Match>
+  <Match>
+    <Bug pattern="CRLF_INJECTION_LOGS"/>
+  </Match>
+  <Match>
+    <Class name="org.conference.registration.config.CoreConfig$TrimmingStringDeserializer"/>
+    <Bug pattern="IMPROPER_UNICODE"/>
   </Match>
 </FindBugsFilter>

@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
  * the options file. An invalid file aborts startup.
  */
 @Service
-public class OptionCatalog {
+public final class OptionCatalog {
 
   static final Pattern ID_PATTERN = Pattern.compile("^[a-z0-9][a-z0-9-]{0,63}$");
   private static final int MAX_NAME_LENGTH = 200;

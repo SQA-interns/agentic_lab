@@ -6,30 +6,27 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
-import java.util.regex.Pattern;
 import org.slf4j.MDC;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-/** Correlation id for logs: accepts a well-formed {@code X-Request-Id} or generates one. */
+/**
+ * Server-generated correlation id per request, put into the log MDC and returned as {@code
+ * X-Request-Id}. Client-supplied ids are deliberately ignored (no client data in headers or logs).
+ */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RequestIdFilter extends OncePerRequestFilter {
 
   static final String HEADER = "X-Request-Id";
-  private static final Pattern VALID = Pattern.compile("^[A-Za-z0-9-]{1,64}$");
 
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {
-    String incoming = request.getHeader(HEADER);
-    String requestId =
-        incoming != null && VALID.matcher(incoming).matches()
-            ? incoming
-            : UUID.randomUUID().toString();
+    String requestId = UUID.randomUUID().toString();
     MDC.put("requestId", requestId);
     response.setHeader(HEADER, requestId);
     try {

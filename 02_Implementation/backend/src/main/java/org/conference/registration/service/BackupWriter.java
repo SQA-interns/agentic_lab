@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 
 /** Writes one JSON backup file per registration to persistent storage (US-005). */
 @Service
-public class BackupWriter {
+public final class BackupWriter {
 
   private static final Logger LOG = LoggerFactory.getLogger(BackupWriter.class);
   private static final DateTimeFormatter STAMP =

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
  * than the minimum fill time, older than the maximum age, or was already used.
  */
 @Service
-public class FormTokenService {
+public final class FormTokenService {
 
   private static final Logger LOG = LoggerFactory.getLogger(FormTokenService.class);
   private static final String HMAC = "HmacSHA256";
