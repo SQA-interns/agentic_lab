@@ -38,7 +38,10 @@ server:
   servlet:
     encoding:
       charset: UTF-8
-      force: true
+      # Force only for requests: forcing responses would append ";charset=UTF-8" to binary
+      # downloads such as the .xlsx export.
+      force-request: true
+      force-response: false
   error:
     include-stacktrace: never
     include-message: never

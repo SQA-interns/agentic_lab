@@ -3,6 +3,7 @@ package org.conference.registration.service;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,10 +55,17 @@ public class BackupWriter {
     return "registration-" + STAMP.format(createdAt) + "-" + id + ".json";
   }
 
-  /** Writes the file atomically (temp file, fsync, atomic rename). */
+  /**
+   * Writes the file atomically (temp file, fsync, atomic rename). An existing backup is never
+   * overwritten.
+   */
   public Path write(String fileName, byte[] content) {
     Path target = resolve(fileName);
     Path temp = target.resolveSibling(fileName + ".tmp");
+    if (Files.exists(target)) {
+      throw new BackupFailedException(
+          "Backup already exists: " + fileName, new FileAlreadyExistsException(fileName));
+    }
     try {
       try (FileChannel channel =
           FileChannel.open(temp, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
