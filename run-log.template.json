@@ -1,0 +1,91 @@
+{
+  "runId": "",
+  "model": "",
+  "harness": "",
+  "harnessVersion": "",
+
+  "startCommit": "",
+  "finalCommit": "",
+
+  "experimentStart": null,
+  "experimentEnd": null,
+
+  "phases": [
+    { "name": "acceptance-criteria", "start": null, "end": null },
+    { "name": "specification", "start": null, "end": null },
+    { "name": "implementation", "start": null, "end": null },
+    { "name": "tests", "start": null, "end": null },
+    { "name": "verification", "start": null, "end": null },
+    { "name": "finalization", "start": null, "end": null }
+  ],
+
+  "firstWorkingHappyPathTimestamp": null,
+
+  "firstTestRun": {
+    "passed": null,
+    "failed": null
+  },
+
+  "finalTestRun": {
+    "passed": null,
+    "failed": null
+  },
+
+  "humanInterventions": [],
+
+  "clarifyingQuestions": 0,
+  "manualCodeFixes": 0,
+
+  "fixLoops": [],
+
+  "commits": [],
+
+  "reverts": 0,
+  "mergeConflicts": 0,
+
+  "verificationFindings": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0
+  },
+
+  "externalAudit": {
+    "tokensConsumed": null,
+    "estimatedCostUsd": null,
+    "toolCalls": null,
+    "approvalPrompts": null,
+
+    "codeQuality": {
+      "backendLoc": null,
+      "frontendLoc": null,
+
+      "backendComplexity": null,
+      "frontendComplexity": null,
+
+      "backendDuplicationPct": null,
+      "frontendDuplicationPct": null,
+
+      "lintErrors": null,
+      "lintWarnings": null,
+      "typeCheckErrors": null,
+
+      "backendUnitCoveragePct": null,
+      "backendIntegrationCoveragePct": null,
+      "frontendCoveragePct": null
+    },
+
+    "security": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+
+    "architecture": {
+      "archUnitViolations": null,
+      "dependencyCycles": null,
+      "runtimeDependenciesBackend": null,
+      "runtimeDependenciesFrontend": null
+    }
+  }
+}

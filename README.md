@@ -1,50 +1,43 @@
-# Conference registration system
+# Agent input kit
 
-The application provides external-participant and student registration forms, configurable conference activities, relational and JSON persistence, durable confirmation/organizer email jobs, and an authenticated Excel export.
+This is a compact, phase-loaded classic-SDD input
+package. It contains requirements, frozen stack, deployment and
+security constraints, experimental process, measurement rules, and scaffold.
 
-## Local development
+ Requirements that must be reasoned about together
+are consolidated, phase-local instructions are loaded only at their gate, and
+`AGENTS.md` is the small always-on entry point.
 
-Python 3.12 is required. Create a virtual environment, install `requirements-dev.txt`, then run:
+## Layout
 
-```sh
-alembic upgrade head
-uvicorn app.main:app --reload
+| File                    | Read when                  | Purpose                                             |
+| ----------------------- | -------------------------- | --------------------------------------------------- |
+| `AGENTS.md`             | Automatically / first      | Short execution contract and navigation             |
+| `01_PRODUCT.md`         | Before acceptance criteria | User stories, rules, schema, scope                  |
+| `02_ENGINEERING.md`     | Before specification       | Stack, runtime, security, deployment                |
+| `03_WORKFLOW.md`        | Before starting            | Phases, outputs, Git and measurement rules          |
+| `04_VERIFICATION.md`    | Test/verify phases         | Test layers, Definition of Done, evidence           |
+| `run-log.template.json` | Start of run               | Experimental record template                        |
+| `scaffold/`             | Implementation setup       | Frozen tooling bootstrap; copy, never edit in place |
+
+## Portable workspace
+
+```text
+WORKSPACE_ROOT/
+├── agentic-input-kit/       # this folder: immutable INPUT_ROOT
+├── 02_Implementation/       # generated implementation
+└── 03_Run-Statistics/       # generated measurements
 ```
 
-Development defaults use `data/registration.db`, `data/backups`, the checked-in example conference configuration, and a local SMTP server on port 1025. API documentation is available at `/docs` outside production. Export uses `Authorization: Bearer development-export-token` only in development.
+Do not give the agent every file as prompt context. Start it at the workspace
+root and let `AGENTS.md` direct progressively relevant reading.
 
-## Production deployment
+## Source coverage map
 
-1. Copy `.env.example` to `.env` and replace every example secret. Create `secrets/database_password.txt` with a strong database password and `secrets/database_url.txt` with the matching percent-encoded URL, for example `postgresql+psycopg://registration:PASSWORD@db/registration`. Do not commit these files.
-2. Set the public HTTPS origin, trusted host, SMTP TLS settings, sender, and organizer recipients.
-3. Run `docker compose build`, then `docker compose up -d`. The one-shot migration service finishes before web and worker start.
-4. Terminate TLS at a trusted ingress that forwards only from an explicitly permitted address. The image accepts proxy headers only from loopback by default; adjust the command to the actual ingress network deliberately.
-5. Check `/health/live` and `/health/ready`. Normal logs contain correlation IDs and outcomes but omit participant data.
-
-The root filesystem is read-only in Compose. PostgreSQL and `/data/backups` are independent persistent volumes. The processes run as a non-root user.
-
-## Conference option changes
-
-Replace `config/conference-options.json` atomically with a valid file. Stable option and consent identifiers must never be recycled for different meanings. Active options appear on the applicable variants; inactive options cannot be submitted. An invalid replacement makes readiness and registration unavailable until corrected, while existing records retain their stored snapshots.
-
-## Organizer export
-
-Request `GET /api/v1/organizer/registrations.xlsx` with the configured bearer token. Serve this only through HTTPS and rotate the token by replacing `EXPORT_TOKEN` and restarting the web service.
-
-## Email operations
-
-The worker retries transient SMTP failures with bounded exponential delay. Inspect failed jobs in the `email_outbox` table without copying participant data into logs. After correcting the cause, requeue them with:
-
-```sh
-docker compose run --rm worker python -m app.worker --requeue-failed
-```
-
-The organizer message uses and integrity-checks the correlated JSON file from persistent storage.
-
-## Backup and recovery
-
-Back up both the PostgreSQL database and `registration-backups` volume as one operational set. Database rows contain the JSON filename, size, and SHA-256 checksum. During recovery, restore both resources, run migrations, verify that referenced JSON files exist and match their checksums, and only then start web/worker traffic. A registration is acknowledged only after its database transaction and atomic JSON write complete.
-
-## Security maintenance
-
-Before release, run the documented lint, type, dependency-audit, Bandit, test, migration, and container-build checks. Rotate the challenge, network-hash, export, database, and SMTP secrets through the deployment secret store. A challenge-secret rotation invalidates outstanding forms, so perform it during a communicated maintenance window.
+| Original source area                                              | Consolidated location                      |
+| ----------------------------------------------------------------- | ------------------------------------------ |
+| Business rules, form schema, user stories                         | `01_PRODUCT.md`                            |
+| Tech stack, technical, security and deployment constraints        | `02_ENGINEERING.md`                        |
+| Run instructions, acceptance rules, six skill procedures, metrics | `03_WORKFLOW.md` + `run-log.template.json` |
+| Definition of Done and verification skill                         | `04_VERIFICATION.md`                       |
+| Tooling scaffold and pinned dependencies                          | `scaffold/` (unchanged)                    |

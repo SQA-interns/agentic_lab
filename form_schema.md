@@ -24,7 +24,7 @@ Fixed fields:
 * Study institution
 * Study programme
 * Student ID
- 
+
 Configurable conference options
 
 The following are configurable and may change without changing the fixed participant fields:
