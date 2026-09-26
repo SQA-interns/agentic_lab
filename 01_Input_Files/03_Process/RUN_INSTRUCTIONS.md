@@ -270,19 +270,41 @@ Do not modify the shared baseline or another experiment branch.
 
 ---
 
-## Logging
+## Logging — mandatory, non-negotiable
 
-Record `experimentStart` immediately when the run begins and
-`experimentEnd` when finalization completes. Phase timestamps must
-remain consistent with those two values.
+A run that finishes without a complete
+`<STATISTICS_ROOT>/run-log.json` and `<STATISTICS_ROOT>/run-summary.md`
+is not a completed run.
 
-Never reconstruct known timestamps after the fact.
+`03_Process/METRICS.md` defines the metric set.
+`03_Process/run-log.template.json` is the schema. Copy the template to
+`<STATISTICS_ROOT>/run-log.json` at the start of the run and fill it in
+as you go.
 
-Never invent unavailable measurements.
+* **Commit after every phase. Never squash, never rebase.** Each
+  commit is a timing checkpoint independent of the self-report — this
+  is what lets timing be reconstructed even if the written log is
+  incomplete.
+* Record `experimentStart` immediately when the run begins and
+  `experimentEnd` when finalization completes. Phase timestamps must
+  remain consistent with those two values.
+* Record phase start/end timestamps as each phase happens, not
+  reconstructed afterward.
+* Log every human intervention as `{start, end, reason}`, not just a
+  count.
+* Log every fix loop separately: trigger, what changed, when it
+  closed.
+* Never fabricate or estimate a value you cannot observe. Use `null`
+  and state why. A missing field is a bug; a `null` with a reason is
+  not.
+* Do not optimize the implementation for the metrics being recorded.
+
+Fields below `_selfReportNote` (tokens, cost, tool calls, approval
+prompts, code quality, security, architecture) stay `null` with a
+reason. They are filled afterward by external audit, not by the
+development agent.
 
 ## Experimental fairness
 
 Do not read instructions from files outside `INPUT_ROOT` unless they
 are explicitly listed by these Run Instructions.
-
-Do not optimize the implementation for the metrics.

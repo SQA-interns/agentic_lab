@@ -44,6 +44,6 @@ Create exactly:
 
 `<IMPLEMENTATION_ROOT>/docs/verification-report.md`
 
-Update fix-loop records in:
+Update `fixLoops` and `verificationFindings` in:
 
 `<STATISTICS_ROOT>/run-log.json`

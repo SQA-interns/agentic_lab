@@ -38,54 +38,69 @@
 
   "fixLoops": [],
 
-  "commits": [],
-
-  "reverts": 0,
-  "mergeConflicts": 0,
-
   "verificationFindings": {
     "critical": 0,
     "major": 0,
     "minor": 0
   },
 
-  "externalAudit": {
-    "tokensConsumed": null,
-    "estimatedCostUsd": null,
-    "toolCalls": null,
-    "approvalPrompts": null,
+  "commits": [],
 
-    "codeQuality": {
-      "backendLoc": null,
-      "frontendLoc": null,
+  "reverts": 0,
+  "mergeConflicts": 0,
 
-      "backendComplexity": null,
-      "frontendComplexity": null,
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit. Leave null with a reason until the audit pass runs.",
 
-      "backendDuplicationPct": null,
-      "frontendDuplicationPct": null,
+  "tokensConsumed": null,
+  "tokensConsumedReason": "external audit — provider usage export for the run",
 
-      "lintErrors": null,
-      "lintWarnings": null,
-      "typeCheckErrors": null,
+  "estimatedCostUsd": null,
+  "estimatedCostUsdReason": "external audit — derived from tokensConsumed",
 
-      "backendUnitCoveragePct": null,
-      "backendIntegrationCoveragePct": null,
-      "frontendCoveragePct": null
-    },
+  "toolCalls": null,
+  "toolCallsReason": "external audit — parsed post-run from the harness transcript",
 
-    "security": {
-      "critical": null,
-      "high": null,
-      "medium": null,
-      "low": null
-    },
+  "approvalPrompts": null,
+  "approvalPromptsReason": "external audit — counted separately from toolCalls, only meaningful if permission mode required them",
 
-    "architecture": {
-      "archUnitViolations": null,
-      "dependencyCycles": null,
-      "runtimeDependenciesBackend": null,
-      "runtimeDependenciesFrontend": null
-    }
+  "codeQuality": {
+    "backendLoc": null,
+    "frontendLoc": null,
+    "loc": null,
+    "backendComplexity": null,
+    "frontendComplexity": null,
+    "cyclomaticComplexityAvg": null,
+    "cyclomaticComplexityMax": null,
+    "backendDuplicationPct": null,
+    "frontendDuplicationPct": null,
+    "duplicationPct": null,
+    "lintErrors": null,
+    "lintWarnings": null,
+    "typeCheckErrors": null,
+    "backendUnitCoveragePct": null,
+    "backendIntegrationCoveragePct": null,
+    "frontendCoveragePct": null,
+    "newDependenciesRuntime": null,
+    "newDependenciesDev": null,
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+
+  "security": {
+    "semgrep": { "critical": null, "high": null, "medium": null, "low": null },
+    "owaspDependencyCheck": { "critical": null, "high": null, "medium": null, "low": null },
+    "npmAudit": { "critical": null, "high": null, "medium": null, "low": null },
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+
+  "architecture": {
+    "archUnitViolations": null,
+    "layerViolations": null,
+    "dependencyCycles": null,
+    "couplingAvgCa": null,
+    "couplingAvgCe": null,
+    "dependencyDepthMax": null,
+    "runtimeDependenciesBackend": null,
+    "runtimeDependenciesFrontend": null,
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
   }
 }
