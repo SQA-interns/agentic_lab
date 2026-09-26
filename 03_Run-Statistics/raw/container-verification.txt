@@ -1,0 +1,164 @@
+﻿== 1. External registration
+201 {"registrationId":"60a93ec1-cd27-46f4-ac27-f90260eb476d","type":"EXTERNAL"}
+== 2. Student registration
+201 {"registrationId":"7c0274d6-93f3-4973-987f-033624ea2e8e","type":"STUDENT"}
+== 3. PostgreSQL rows
+                  id                  | registration_type | first_name | last_name |           email            |        organization        |       study_programme        | student_id 
+--------------------------------------+-------------------+------------+-----------+----------------------------+----------------------------+------------------------------+------------
+ 60a93ec1-cd27-46f4-ac27-f90260eb476d | EXTERNAL          | ┼¢iga       | ┼áu┼íter┼íi─ì | ziga.dod@example.si        | Univerza v Ljubljani ÔÇö FRI |                              | 
+ 7c0274d6-93f3-4973-987f-033624ea2e8e | STUDENT           | Ana        | ─îe─ì       | ana.dod@student.example.si |                            | Ra─ìunalni┼ítvo in informatika | 63219876
+(2 rows)
+
+           registration_id            |    option_id    | category 
+--------------------------------------+-----------------+----------
+ 60a93ec1-cd27-46f4-ac27-f90260eb476d | meal-lunch      | MEAL
+ 60a93ec1-cd27-46f4-ac27-f90260eb476d | ws-testing      | WORKSHOP
+ 7c0274d6-93f3-4973-987f-033624ea2e8e | ev-dinner       | EVENT
+ 7c0274d6-93f3-4973-987f-033624ea2e8e | other-city-tour | OTHER
+(4 rows)
+
+           registration_id            | consent_id 
+--------------------------------------+------------
+ 60a93ec1-cd27-46f4-ac27-f90260eb476d | privacy
+ 7c0274d6-93f3-4973-987f-033624ea2e8e | privacy
+(2 rows)
+
+== 4. JSON backups
+total 8
+-rw-r--r-- 1 app app 579 Sep 26 15:43 20260926T154307Z_60a93ec1-cd27-46f4-ac27-f90260eb476d.json
+-rw-r--r-- 1 app app 621 Sep 26 15:43 20260926T154308Z_7c0274d6-93f3-4973-987f-033624ea2e8e.json
+{
+  "id" : "60a93ec1-cd27-46f4-ac27-f90260eb476d",
+  "createdAt" : "2026-09-26T15:43:07.977175Z",
+  "type" : "EXTERNAL",
+  "firstName" : "┼¢iga",
+  "lastName" : "┼áu┼íter┼íi─ì",
+  "email" : "ziga.dod@example.si",
+  "organization" : "Univerza v Ljubljani ÔÇö FRI",
+  "studyInstitution" : null,
+  "studyProgramme" : null,
+  "studentId" : null,
+  "selectedOptions" : [ {
+    "id" : "ws-testing",
+    "name" : "Workshop: Software testing",
+    "category" : "WORKSHOP"
+  }, {
+    "id" : "meal-lunch",
+    "name" : "Lunch",
+    "category" : "MEAL"
+  } ],
+  "consents" : [ "privacy" ]
+}{
+  "id" : "7c0274d6-93f3-4973-987f-033624ea2e8e",
+  "createdAt" : "2026-09-26T15:43:08.194782Z",
+  "type" : "STUDENT",
+  "firstName" : "Ana",
+  "lastName" : "─îe─ì",
+  "email" : "ana.dod@student.example.si",
+  "organization" : null,
+  "studyInstitution" : "Fakulteta za ra─ìunalni┼ítvo in informatiko",
+  "studyProgramme" : "Ra─ìunalni┼ítvo in informatika",
+  "studentId" : "63219876",
+  "selectedOptions" : [ {
+    "id" : "ev-dinner",
+    "name" : "Conference dinner",
+    "category" : "EVENT"
+  }, {
+    "id" : "other-city-tour",
+    "name" : "City tour",
+    "category" : "OTHER"
+  } ],
+  "consents" : [ "privacy" ]
+}
+== 5-7. Mailpit messages
+To=organizer@conference.local | Subject=New conference registration (Student) | Attachments=1
+   attachment: registration-7c0274d6-93f3-4973-987f-033624ea2e8e.json application/json
+   body excerpt: A new participant has registered for the conference.  Registration ID: 7c0274d6-93f3-4973-987f-033624ea2e8e Registration type: Student First name: Ana Last name: ÄeÄ
+To=ana.dod@student.example.si | Subject=Conference registration confirmation | Attachments=0
+To=organizer@conference.local | Subject=New conference registration (External participant) | Attachments=1
+   attachment: registration-60a93ec1-cd27-46f4-ac27-f90260eb476d.json application/json
+   body excerpt: A new participant has registered for the conference.  Registration ID: 60a93ec1-cd27-46f4-ac27-f90260eb476d Registration type: External participant First name: Å½iga Last name: Å uÅ¡terÅ¡iÄ
+To=ziga.dod@example.si | Subject=Conference registration confirmation | Attachments=0
+== 8. Excel export
+status=200 type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet disposition=attachment; filename="registrations-20260926-154309.xlsx" bytes=4170
+unauthenticated: 401
+== 9. Health
+123
+34
+115
+116
+97
+116
+117
+115
+34
+58
+34
+85
+80
+34
+125
+123
+34
+115
+116
+97
+116
+117
+115
+34
+58
+34
+85
+80
+34
+125
+123
+34
+115
+116
+97
+116
+117
+115
+34
+58
+34
+85
+80
+34
+44
+34
+103
+114
+111
+117
+112
+115
+34
+58
+91
+34
+108
+105
+118
+101
+110
+101
+115
+115
+34
+44
+34
+114
+101
+97
+100
+105
+110
+101
+115
+115
+34
+93
+125

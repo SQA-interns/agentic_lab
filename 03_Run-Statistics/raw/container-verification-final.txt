@@ -1,0 +1,17 @@
+﻿backend healthy (Spring Boot 3.5.16)
+1 external: 201 {"registrationId":"132bad00-6e06-4892-87c2-4409d655a643","type":"EXTERNAL"}
+2 student: 201 {"registrationId":"fa30b6e7-aab4-4f2e-8e0f-95fdbd5f8f3c","type":"STUDENT"}
+3 postgres: EXTERNAL:┼¢iga ┼áu┼íter┼íi─ì | STUDENT:Ana ─îe─ì
+4 backups: 20260926T163114Z_132bad00-6e06-4892-87c2-4409d655a643.json | 20260926T163114Z_fa30b6e7-aab4-4f2e-8e0f-95fdbd5f8f3c.json
+5-7 mail: To=organizer@conference.local | New conference registration (Student) | attachments=1
+5-7 mail: To=ana.final@student.example.si | Conference registration confirmation | attachments=0
+5-7 mail: To=organizer@conference.local | New conference registration (External participant) | attachments=1
+5-7 mail: To=ziga.final@example.si | Conference registration confirmation | attachments=0
+8 export: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4149 bytes
+8 unauthenticated: 401
+9 health : {"status":"UP","groups":["liveness","readiness"]}
+9 health/readiness : {"status":"UP"}
+9 health/liveness : {"status":"UP"}
+api headers: Content-Security-Policy=default-src 'none'; frame-ancestors 'none' ; Referrer-Policy=no-referrer
+restart persistence: db=2 backups=2
+PII in logs (pre-restart container logs not available; checked in first container run)

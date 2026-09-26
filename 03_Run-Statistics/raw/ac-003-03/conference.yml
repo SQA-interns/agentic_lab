@@ -1,0 +1,15 @@
+app:
+  conference:
+    options:
+      - id: ws-new-2027
+        name: "Workshop: Brand-new programme item"
+        category: WORKSHOP
+        active: true
+      - id: ws-testing
+        name: "Workshop: Software testing"
+        category: WORKSHOP
+        active: false
+    consents:
+      - id: privacy
+        label: "Changed consent label"
+        required: true
