@@ -1,0 +1,106 @@
+﻿{
+  "runId": "opus5.5_single_agent_classic_sdd_run-20260926T170001",
+  "model": "Claude Opus 5.5",
+  "harness": "Cursor (agent mode)",
+  "harnessVersion": "",
+
+  "startCommit": "2be8619cbd9191826ee8ddcb773a2a579c808e42",
+  "finalCommit": "",
+
+  "experimentStart": "2026-09-26T17:00:01.9411260+02:00",
+  "experimentEnd": null,
+
+  "phases": [
+    { "name": "acceptance-criteria", "start": "2026-09-26T17:00:41.3762725+02:00", "end": "2026-09-26T17:01:58.1659014+02:00" },
+    { "name": "specification", "start": null, "end": null },
+    { "name": "implementation", "start": null, "end": null },
+    { "name": "tests", "start": null, "end": null },
+    { "name": "verification", "start": null, "end": null },
+    { "name": "finalization", "start": null, "end": null }
+  ],
+
+  "firstWorkingHappyPathTimestamp": null,
+
+  "firstTestRun": {
+    "passed": null,
+    "failed": null
+  },
+
+  "finalTestRun": {
+    "passed": null,
+    "failed": null
+  },
+
+  "humanInterventions": [],
+
+  "clarifyingQuestions": 0,
+  "manualCodeFixes": 0,
+
+  "fixLoops": [],
+
+  "verificationFindings": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0
+  },
+
+  "commits": [],
+
+  "reverts": 0,
+  "mergeConflicts": 0,
+
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit. Leave null with a reason until the audit pass runs.",
+
+  "tokensConsumed": null,
+  "tokensConsumedReason": "external audit â€” provider usage export for the run",
+
+  "estimatedCostUsd": null,
+  "estimatedCostUsdReason": "external audit â€” derived from tokensConsumed",
+
+  "toolCalls": null,
+  "toolCallsReason": "external audit â€” parsed post-run from the harness transcript",
+
+  "approvalPrompts": null,
+  "approvalPromptsReason": "external audit â€” counted separately from toolCalls, only meaningful if permission mode required them",
+
+  "codeQuality": {
+    "backendLoc": null,
+    "frontendLoc": null,
+    "loc": null,
+    "backendComplexity": null,
+    "frontendComplexity": null,
+    "cyclomaticComplexityAvg": null,
+    "cyclomaticComplexityMax": null,
+    "backendDuplicationPct": null,
+    "frontendDuplicationPct": null,
+    "duplicationPct": null,
+    "lintErrors": null,
+    "lintWarnings": null,
+    "typeCheckErrors": null,
+    "backendUnitCoveragePct": null,
+    "backendIntegrationCoveragePct": null,
+    "frontendCoveragePct": null,
+    "newDependenciesRuntime": null,
+    "newDependenciesDev": null,
+    "_reason": "external audit â€” frozen toolchain after the run, see METRICS.md"
+  },
+
+  "security": {
+    "semgrep": { "critical": null, "high": null, "medium": null, "low": null },
+    "owaspDependencyCheck": { "critical": null, "high": null, "medium": null, "low": null },
+    "npmAudit": { "critical": null, "high": null, "medium": null, "low": null },
+    "_reason": "external audit â€” frozen toolchain after the run, see METRICS.md"
+  },
+
+  "architecture": {
+    "archUnitViolations": null,
+    "layerViolations": null,
+    "dependencyCycles": null,
+    "couplingAvgCa": null,
+    "couplingAvgCe": null,
+    "dependencyDepthMax": null,
+    "runtimeDependenciesBackend": null,
+    "runtimeDependenciesFrontend": null,
+    "_reason": "external audit â€” frozen toolchain after the run, see METRICS.md"
+  }
+}

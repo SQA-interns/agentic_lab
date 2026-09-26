@@ -1,12 +1,27 @@
-# Implementation root
+# Frozen tooling scaffold
 
-This directory is `IMPLEMENTATION_ROOT`.
+This directory is part of `INPUT_ROOT` and is read-only.
 
-At run start, copy only the **contents** of `<INPUT_ROOT>/05_Scaffold/`
-into this directory.
+It is a **tooling scaffold**, not an application.
 
-Expected result: `backend/`, `frontend/` and `docker-compose.yml` live
-directly here.
+At run start, copy its contents to `IMPLEMENTATION_ROOT`:
 
-Do not copy the rest of `INPUT_ROOT`. Do not create a nested
-`05_Scaffold/` folder here. Do not modify `05_Scaffold/` itself.
+`<WORKSPACE_ROOT>/02_Implementation/`
+
+Do not implement inside `05_Scaffold/`.
+
+Included:
+
+- Maven / Spring Boot bootstrap and analysis plugins;
+- React / Vite / TypeScript bootstrap and frontend tools;
+- pinned Docker Compose services;
+- Semgrep configuration stub.
+
+Not included:
+
+- domain controllers, services, repositories or entities;
+- REST endpoints;
+- database tables or Flyway domain migrations;
+- registration forms;
+- feature tests;
+- ArchUnit rules that prescribe a layered architecture.

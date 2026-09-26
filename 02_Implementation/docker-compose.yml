@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: conference
+      POSTGRES_USER: conference
+      POSTGRES_PASSWORD: conference
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  smtp:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      - postgres
+      - smtp
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/conference
+      SPRING_DATASOURCE_USERNAME: conference
+      SPRING_DATASOURCE_PASSWORD: conference
+      SPRING_MAIL_HOST: smtp
+      SPRING_MAIL_PORT: 1025
+      RECAPTCHA_TEST_MODE: "true"
+    ports:
+      - "8080:8080"
+    volumes:
+      - registration_backups:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
+  registration_backups:
