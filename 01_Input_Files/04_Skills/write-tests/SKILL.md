@@ -27,7 +27,8 @@ Include appropriate:
 ArchUnit tests, if used, must verify the architecture declared in the
 Specification. Do not introduce generic unused layering rules.
 
-Record the first complete test run before fixing failures.
+Record the first complete test run before fixing failures in
+`<STATISTICS_ROOT>/run-log.json` as `firstTestRun`.
 
 Never weaken a correct test merely to make incorrect implementation pass.
 
