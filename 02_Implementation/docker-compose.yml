@@ -4,11 +4,16 @@ services:
     environment:
       POSTGRES_DB: conference
       POSTGRES_USER: conference
-      POSTGRES_PASSWORD: conference
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-conference}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U conference -d conference"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   smtp:
     image: axllent/mailpit:v1.31.1
@@ -20,25 +25,39 @@ services:
     build:
       context: ./backend
     depends_on:
-      - postgres
-      - smtp
+      postgres:
+        condition: service_healthy
+      smtp:
+        condition: service_started
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/conference
       SPRING_DATASOURCE_USERNAME: conference
-      SPRING_DATASOURCE_PASSWORD: conference
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-conference}
       SPRING_MAIL_HOST: smtp
       SPRING_MAIL_PORT: 1025
       RECAPTCHA_TEST_MODE: "true"
+      APP_BACKUP_DIRECTORY: /app/data/registrations
+      APP_MAIL_FROM: ${APP_MAIL_FROM:-registration@conference.local}
+      APP_MAIL_ORGANIZER_RECIPIENTS: ${APP_MAIL_ORGANIZER_RECIPIENTS:-organizer@conference.local}
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:-organizer}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:-local-dev-organizer}
     ports:
       - "8080:8080"
     volumes:
       - registration_backups:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health/readiness | grep -q UP"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
 
   frontend:
     build:
       context: ./frontend
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     ports:
       - "80:80"
 

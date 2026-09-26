@@ -1,0 +1,42 @@
+# Conference programme configuration (sample values).
+# Replace these entries for each conference; restart the backend to apply.
+# An external file can override this one: APP_CONFERENCE_CONFIG=/path/conference.yml
+app:
+  conference:
+    options:
+      - id: ws-requirements
+        name: "Workshop: Requirements engineering"
+        category: WORKSHOP
+        active: true
+      - id: ws-testing
+        name: "Workshop: Software testing"
+        category: WORKSHOP
+        active: true
+      - id: ws-archived
+        name: "Workshop: Archived session"
+        category: WORKSHOP
+        active: false
+      - id: ev-reception
+        name: Welcome reception
+        category: EVENT
+        active: true
+      - id: ev-dinner
+        name: Conference dinner
+        category: EVENT
+        active: true
+      - id: meal-lunch
+        name: Lunch
+        category: MEAL
+        active: true
+      - id: meal-vegetarian
+        name: Vegetarian lunch
+        category: MEAL
+        active: true
+      - id: other-city-tour
+        name: City tour
+        category: OTHER
+        active: true
+    consents:
+      - id: privacy
+        label: "I agree to the processing of my personal data for the purpose of this conference registration."
+        required: true

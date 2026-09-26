@@ -1,6 +1,10 @@
 spring:
   application:
     name: registration-backend
+  config:
+    import:
+      - "optional:classpath:conference.yml"
+      - "optional:file:${APP_CONFERENCE_CONFIG:./config/conference.yml}"
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/conference}
     username: ${SPRING_DATASOURCE_USERNAME:conference}
@@ -11,12 +15,30 @@ spring:
     open-in-view: false
   flyway:
     enabled: true
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
   mail:
     host: ${SPRING_MAIL_HOST:localhost}
     port: ${SPRING_MAIL_PORT:1025}
+    username: ${SPRING_MAIL_USERNAME:}
+    password: ${SPRING_MAIL_PASSWORD:}
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.auth: ${SPRING_MAIL_SMTP_AUTH:false}
+      mail.smtp.starttls.enable: ${SPRING_MAIL_SMTP_STARTTLS:false}
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
 
 server:
   port: ${SERVER_PORT:8080}
+  forward-headers-strategy: native
+  error:
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+    include-exception: false
 
 management:
   endpoints:
@@ -27,9 +49,29 @@ management:
     health:
       probes:
         enabled: true
+      show-details: never
+  health:
+    mail:
+      enabled: false
 
 app:
   recaptcha:
     test-mode: ${RECAPTCHA_TEST_MODE:false}
     secret-key: ${RECAPTCHA_SECRET_KEY:}
     site-key: ${RECAPTCHA_SITE_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  mail:
+    from: ${APP_MAIL_FROM:registration@localhost}
+    organizer-recipients: ${APP_MAIL_ORGANIZER_RECIPIENTS:organizer@localhost}
+  backup:
+    directory: ${APP_BACKUP_DIRECTORY:./data/registrations}
+  organizer:
+    username: ${ORGANIZER_USERNAME:organizer}
+    password: ${ORGANIZER_PASSWORD:}
+  rate-limit:
+    max-requests: ${APP_RATE_LIMIT_MAX_REQUESTS:10}
+    window: ${APP_RATE_LIMIT_WINDOW:PT10M}
+  request:
+    max-body-bytes: ${APP_REQUEST_MAX_BODY_BYTES:16384}
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:}
