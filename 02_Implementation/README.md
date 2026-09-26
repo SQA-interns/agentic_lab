@@ -2,10 +2,11 @@
 
 This directory is `IMPLEMENTATION_ROOT`.
 
-At run start, copy the contents of:
+At run start, copy only the **contents** of `<INPUT_ROOT>/05_Scaffold/`
+into this directory.
 
-`05_Scaffold/`
+Expected result: `backend/`, `frontend/` and `docker-compose.yml` live
+directly here.
 
-from `INPUT_ROOT` into this directory, then implement here.
-
-Do not modify `05_Scaffold/`.
+Do not copy the rest of `INPUT_ROOT`. Do not create a nested
+`05_Scaffold/` folder here. Do not modify `05_Scaffold/` itself.

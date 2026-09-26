@@ -43,13 +43,16 @@ Experimental records are written under:
 Do not assume a repository name, absolute filesystem path or operating
 system-specific path.
 
-The same package may be copied into any project as:
+A human may copy the entire `01_Input_Files/` directory into another
+workspace as a setup step. That is not part of the agent's run.
+
+Expected workspace layout:
 
 ```
 <WORKSPACE_ROOT>/
-├── 01_Input_Files/          ← INPUT_ROOT
-├── 02_Implementation/       ← IMPLEMENTATION_ROOT
-└── 03_Run-Statistics/       ← STATISTICS_ROOT
+├── 01_Input_Files/          ← INPUT_ROOT (read-only)
+├── 02_Implementation/       ← IMPLEMENTATION_ROOT (work here)
+└── 03_Run-Statistics/       ← STATISTICS_ROOT (logs)
 ```
 
 ## Immutable inputs
@@ -84,7 +87,11 @@ Execute this sequence before Phase 1. Do not skip or reorder it.
 
 1. Record `experimentStart`.
 2. Confirm a clean baseline working tree.
-3. Copy `05_Scaffold/*` to `IMPLEMENTATION_ROOT/`.
+3. Copy only the contents of `05_Scaffold/` into
+   `IMPLEMENTATION_ROOT/`, so that `backend/`, `frontend/` and
+   `docker-compose.yml` appear directly under `IMPLEMENTATION_ROOT/`.
+   Do not copy `01_Business/`, `02_Technical/`, `03_Process/` or
+   `04_Skills/`. Do not create `IMPLEMENTATION_ROOT/05_Scaffold/`.
 4. Copy `03_Process/run-log.template.json` to
    `<STATISTICS_ROOT>/run-log.json`.
 5. Read `03_Process/METRICS.md` completely.
