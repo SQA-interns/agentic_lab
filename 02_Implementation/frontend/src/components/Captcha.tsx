@@ -60,18 +60,14 @@ interface CaptchaProps {
 
 export function Captcha(props: CaptchaProps) {
   return props.testMode ? (
-    <TestModeCaptcha {...props} />
+    <TestModeCaptcha key={props.resetSignal} {...props} />
   ) : (
     <RecaptchaWidget {...props} />
   );
 }
 
-function TestModeCaptcha({ resetSignal, error, onChange }: CaptchaProps) {
+function TestModeCaptcha({ error, onChange }: CaptchaProps) {
   const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    setChecked(false);
-  }, [resetSignal]);
 
   return (
     <div className="captcha">

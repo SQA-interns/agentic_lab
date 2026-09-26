@@ -1,0 +1,56 @@
+﻿
+ RUN  v3.2.7 C:/Users/tanej/Documents/LAB/agentic_lab/02_Implementation/frontend
+
+ Ô£ô src/api/client.test.ts (7 tests) 12ms
+ Ô£ô src/validation.test.ts (15 tests) 5ms
+ ÔØ» src/components/RegistrationPage.test.tsx (12 tests | 1 failed) 613ms
+   Ô£ô RegistrationPage > shows the external participant fields by default 97ms
+   Ô£ô RegistrationPage > shows the student fields after switching type 38ms
+   Ô£ô RegistrationPage > offers the configured options grouped by category 47ms
+   Ô£ô RegistrationPage > does not preselect consents 30ms
+   Ô£ô RegistrationPage > blocks submission with client-side errors and shows no confirmation 49ms
+   Ô£ô RegistrationPage > submits only the fields of the selected type and shows the confirmation 87ms
+   Ô£ô RegistrationPage > confirms an external registration only after a successful response 60ms
+   ├ù RegistrationPage > shows server validation errors and no confirmation 65ms
+     ÔåÆ expect(element).not.toBeChecked()
+
+Received element is checked:
+  <input
+  type="checkbox"
+/>
+   Ô£ô RegistrationPage > shows a general error and keeps the data when processing fails 46ms
+   Ô£ô RegistrationPage > renders user-provided text as text, not markup 46ms
+   Ô£ô RegistrationPage > offers a retry when the configuration cannot be loaded 22ms
+   Ô£ô RegistrationPage > offers no account, login, payment or edit functions 25ms
+node.exe : 
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\tanej\AppData\Roaming\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ» Failed Tests 1 ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+
+ FAIL  src/components/RegistrationPage.test.tsx > RegistrationPage > shows server validation errors and no confirmation
+Error: expect(element).not.toBeChecked()
+
+Received element is checked:
+  <input
+  type="checkbox"
+/>
+ ÔØ» src/components/RegistrationPage.test.tsx:242:59
+    240|     );
+    241|     expect(screen.queryByText("Registration received")).not.toBeInTheDÔÇª
+    242|     expect(screen.getByLabelText(/I am not a robot/)).not.toBeChecked(ÔÇª
+       |                                                           ^
+    243|   });
+    244| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1/1]ÔÄ»
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 33 passed (34)
+   Start at  17:26:18
+   Duration  17.64s (transform 232ms, setup 0ms, collect 4.27s, tests 631ms, environment 34.91s, prepare 2.27s)
+

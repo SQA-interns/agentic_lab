@@ -9,6 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
 import si.konferenca.registration.application.NormalizedRegistration.Messages;
 import si.konferenca.registration.domain.ConsentDefinition;
@@ -19,6 +20,10 @@ import si.konferenca.registration.domain.RegistrationType;
 public class RegistrationValidator {
 
   static final int MAX_OPTIONS = 50;
+
+  /** Unicode whitespace incl. no-break space and BOM, matching JavaScript {@code trim()}. */
+  private static final Pattern OUTER_WHITESPACE =
+      Pattern.compile("^[\\s\\p{Z}\\uFEFF]+|[\\s\\p{Z}\\uFEFF]+$");
 
   private static final List<String> FIELD_ORDER =
       List.of(
@@ -75,7 +80,7 @@ public class RegistrationValidator {
     if (value == null) {
       return null;
     }
-    String stripped = value.strip();
+    String stripped = OUTER_WHITESPACE.matcher(value).replaceAll("");
     return stripped.isEmpty() ? null : stripped;
   }
 

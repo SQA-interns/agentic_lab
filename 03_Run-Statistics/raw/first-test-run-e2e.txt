@@ -1,0 +1,20 @@
+﻿
+Running 6 tests using 1 worker
+
+
+
+node.exe : (node:28332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\tanej\AppData\Roaming\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:28332) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/6] e2e\registration.spec.ts:52:3 ÔÇ║ conference registration ÔÇ║ external participant registers with options and receives confirmation
+[2/6] e2e\registration.spec.ts:86:3 ÔÇ║ conference registration ÔÇ║ student registers and receives confirmation
+[3/6] e2e\registration.spec.ts:110:3 ÔÇ║ conference registration ÔÇ║ invalid input is rejected without confirmation
+[4/6] e2e\registration.spec.ts:121:3 ÔÇ║ conference registration ÔÇ║ inactive options are not offered
+[5/6] e2e\registration.spec.ts:129:3 ÔÇ║ organizer export ÔÇ║ is refused without organizer credentials
+[6/6] e2e\registration.spec.ts:134:3 ÔÇ║ organizer export ÔÇ║ returns an Excel workbook for the organizer
+  6 passed (10.3s)
