@@ -6,7 +6,7 @@
   "harnessVersionReason": "not observable by the development agent from inside the Cursor session",
 
   "startCommit": "2be8619cbd9191826ee8ddcb773a2a579c808e42",
-  "finalCommit": "",
+  "finalCommit": "8a647d139c3a96c322642b429efb5713b422eb67",
 
   "experimentStart": "2026-09-26T17:00:01.9411260+02:00",
   "experimentEnd": "2026-09-26T18:36:12.3602830+02:00",
@@ -62,7 +62,8 @@
     { "sha": "e2168892c511afb9483abf44053624e1d5f31b2b", "phase": "specification", "message": "phase 2: specification", "filesChanged": 2, "linesAdded": 686, "linesRemoved": 3 },
     { "sha": "99039be172b0bdc9cded7a6acb704e010091530f", "phase": "implementation", "message": "phase 3: implementation", "filesChanged": 66, "linesAdded": 3295, "linesRemoved": 10 },
     { "sha": "4b3eadb68bb2da6421213eed5e0ca16e46aa065e", "phase": "tests", "message": "phase 4: tests and test strategy", "filesChanged": 30, "linesAdded": 3485, "linesRemoved": 13 },
-    { "sha": "c1ca1c2caaeba6fb7e9f6894f77327e6a802fa7f", "phase": "verification", "message": "phase 5: verification (fix loops 5-9, Spring Boot 3.5.16 upgrade, verification report)", "filesChanged": 30, "linesAdded": 4118, "linesRemoved": 17 }
+    { "sha": "c1ca1c2caaeba6fb7e9f6894f77327e6a802fa7f", "phase": "verification", "message": "phase 5: verification (fix loops 5-9, Spring Boot 3.5.16 upgrade, verification report)", "filesChanged": 30, "linesAdded": 4118, "linesRemoved": 17 },
+    { "sha": "8a647d139c3a96c322642b429efb5713b422eb67", "phase": "finalization", "message": "phase 6: finalization (release notes, run summary, run log)", "filesChanged": 3, "linesAdded": 218, "linesRemoved": 4 }
   ],
 
   "reverts": 0,
