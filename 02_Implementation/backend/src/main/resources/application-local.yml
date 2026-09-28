@@ -1,0 +1,14 @@
+# Local docker-compose profile: deterministic captcha + Mailpit SMTP catcher (non-production only).
+spring:
+  mail:
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.starttls.enable: false
+      mail.smtp.starttls.required: false
+app:
+  captcha:
+    mode: test
+    test-token: ${APP_CAPTCHA_TEST_TOKEN:local-test-captcha-pass}
+  mail:
+    initial-backoff: ${APP_MAIL_INITIAL_BACKOFF:PT5S}
+    max-backoff: PT1M

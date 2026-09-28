@@ -1,0 +1,17 @@
+# Preflight 2026-09-28T15:58:10Z
+openjdk version "21.0.12.1" 2026-08-18
+OpenJDK Runtime Environment (build 21.0.12.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+
+node22: v22.23.3 (installed via nvm during preflight; system default node is v24.14.1 — NOT used for build/test per ST-03)
+npm (node22): 10.9.9
+docker client 29.5.0 server 29.3.1
+Docker Compose version v5.1.1
+Docker Desktop was inactive at start; started via 'systemctl --user start docker-desktop' at preflight
+cpus=8 mem=32803414016
+semgrep: 1.178.0 (installed via uv tool during preflight)
+maven: none on PATH; ~/.m2/wrapper cache has apache-maven-3.9.5; project will use Maven Wrapper
+NVD_API_KEY set: no
+playwright browsers: not installed at start
+2.1.283 (Claude Code)
+network: pypi/npm/maven central reachable

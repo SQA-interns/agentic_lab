@@ -1,0 +1,69 @@
+# Local orchestration (ST-09). Secrets come from .env (generate with tools/init-local-env.sh).
+# Local profile: deterministic captcha + Mailpit SMTP catcher. See compose.prod.yaml for prod.
+name: conference
+
+services:
+  postgres:
+    # postgres:16 (16.15)
+    image: postgres@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+    environment:
+      POSTGRES_DB: conference
+      POSTGRES_USER: conference
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U conference -d conference"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks: [internal]
+
+  mailpit:
+    # axllent/mailpit:v1.29 — local SMTP catcher (ST-04); UI on 127.0.0.1:8025
+    image: axllent/mailpit@sha256:757f22b56c1da03570afdb3d259effe5091018008a81bbedc8158cee7e16fdbc
+    ports:
+      - "127.0.0.1:8025:8025"
+    networks: [internal]
+
+  backend:
+    build: ./backend
+    image: conference-backend:local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-local}
+      DB_URL: jdbc:postgresql://postgres:5432/conference
+      DB_USERNAME: conference
+      DB_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
+      SMTP_HOST: ${SMTP_HOST:-mailpit}
+      SMTP_PORT: ${SMTP_PORT:-1025}
+      APP_MAIL_FROM: ${APP_MAIL_FROM:-noreply@conference.local}
+      APP_ORGANIZER_EMAILS: ${APP_ORGANIZER_EMAILS:-organizer@conference.local}
+      APP_ORGANIZER_USERNAME: ${APP_ORGANIZER_USERNAME:-organizer}
+      APP_ORGANIZER_PASSWORD: ${APP_ORGANIZER_PASSWORD:?set in .env}
+      APP_CATALOG_PATH: /config/catalog.yaml
+      APP_BACKUP_DIR: /data/backups
+      APP_RATE_LIMIT_PER_MINUTE: ${APP_RATE_LIMIT_PER_MINUTE:-20}
+    volumes:
+      - ${APP_CATALOG_FILE:-./config/catalog.yaml}:/config/catalog.yaml:ro
+      - backups:/data/backups
+    networks: [internal]
+
+  frontend:
+    build: ./frontend
+    image: conference-frontend:local
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-8088}:8080"
+    networks: [internal]
+
+volumes:
+  pgdata:
+  backups:
+
+networks:
+  internal:

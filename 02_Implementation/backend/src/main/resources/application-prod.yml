@@ -1,0 +1,4 @@
+# Production profile marker: combining with local/test fails startup (CaptchaConfiguration).
+app:
+  captcha:
+    mode: recaptcha

@@ -1,0 +1,25 @@
+# Test profile: deterministic captcha, no real SMTP dispatch unless a test enables it.
+app:
+  captcha:
+    mode: test
+    test-token: test-captcha-pass
+  organizer:
+    username: organizer
+    password: test-organizer-password
+  mail:
+    from: noreply@conference.test
+    organizer-recipients: organizer-a@conference.test,organizer-b@conference.test
+    dispatch-enabled: false
+    initial-backoff: PT1S
+    max-backoff: PT2S
+    max-attempts: 3
+  web:
+    rate-limit-per-minute: 1000
+spring:
+  mail:
+    host: localhost
+    port: 3025
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.starttls.enable: false
+      mail.smtp.starttls.required: false

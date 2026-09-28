@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "3.0",
+  "identity": {
+    "runId": "conference-registration-v3__single-agent-sdd-tjan__20260928T155535Z",
+    "taskId": "conference-registration-v3",
+    "configurationLabel": "single-agent-sdd-tjan",
+    "actorCount": 1,
+    "actors": [{"id": "agent-1", "role": "single development agent"}],
+    "model": {"value": "claude-opus-5-5", "source": "harness", "evidencePaths": [], "note": "Model ID stated in harness system prompt ('Opus 5.5', exact ID claude-opus-5-5); not inferred from folder or branch name."},
+    "harness": {"value": "Claude Code 2.1.283 (CLI)", "source": "tool", "evidencePaths": ["03_Metrics/evidence/preflight.txt"]},
+    "tools": "Claude Code built-in tools: Bash, Read, Write, Edit, Skill, Artifact etc. Agent/sub-agent tool present but not used (single-agent contract).",
+    "toolPermissions": "Harness 'auto mode' active; exact permission mode config not exposed to agent.",
+    "samplingSettings": {"value": null, "reason": "Temperature/top-p/reasoning-effort not exposed to agent by harness."},
+    "contextAndCompaction": {"value": "Harness states automatic context summarization when conversation grows long; total token budget reported by harness at start: ~15,000,000 tokens.", "source": "harness"},
+    "localInference": {"value": null, "reason": "Hosted model via Claude Code; no local runtime/quantization."},
+    "inputHashes": {
+      "algorithm": "sha256",
+      "01_Input_files/ARCHITECTURE.md": "79be6f9ed665d4cdf8200b835541596cc629b2d438a336ad241e8ed817ade7fc",
+      "01_Input_files/DEFINITION_OF_DONE.md": "cac598b69999f9a3af2c5678d143c6888f48d536d08ecc6c386fd21ec72eb7e2",
+      "01_Input_files/METRICS.md": "b3db7d8da1d5d8b77e2129c52472e15d6432281abf07b6de3b4e979243229ee5",
+      "01_Input_files/PRODUCT.md": "2f5ce15aa6d1d27b36729b50b968eac4e16e02bbe4d2f966e7627c59fe875930",
+      "01_Input_files/START_HERE.md": "7840b955d80c7eb0147f654ba9c34e2b8c2f210fa561706ac4a36ec57450eef1",
+      "01_Input_files/TECH_STACK.md": "365fe62cc2cbef37c66e5b3950c0782e4ce10fefbf77930294b303356d8cf80c",
+      "01_Input_files/WORKFLOW.md": "5e47ef2bd9f3a3f9e1274d8a77631b5819458804445c234a8755d604c366abcb"
+    },
+    "environment": {
+      "os": "Linux 7.0.0-34-generic Ubuntu 24.04 x86_64",
+      "cpu": {"value": 8, "unit": "logical CPUs (nproc)", "source": "tool"},
+      "ramBytes": {"value": 33493528576, "source": "tool", "note": "free -b total; no cgroup limits found"},
+      "diskFree": "30G free on project filesystem",
+      "python": "3.12.3", "node": "v24.14.1", "npm": "11.11.0", "uv": "0.11.8",
+      "docker": "29.5.0 client; Compose v5.1.1; daemon state recorded in preflight",
+      "git": "2.43.0",
+      "network": "pypi.org reachable (HTTP 200) at start",
+      "cache": "~/.cache/pip present; pre-existing .venv/.mypy_cache/.ruff_cache/.pytest_cache at repo root from earlier runs (not used)"
+    },
+    "budgets": {"value": null, "reason": "No explicit time/token/cost budget communicated to the agent beyond harness total-token figure (~15M)."}
+  },
+  "timestamps": {
+    "start": {"value": "2026-09-28T15:55:35.917Z", "source": "tool", "evidencePaths": ["03_Metrics/evidence/preflight.txt"]},
+    "implementationChecksFinished": null,
+    "end": null
+  },
+  "phases": [],
+  "milestones": [],
+  "outcome": {"status": "in-progress", "stories": [], "gates": []},
+  "architectureDeviations": [],
+  "repairs": [],
+  "humanInterventions": [],
+  "usage": {},
+  "checks": [],
+  "git": {"baselineRevision": "f67ba6dc713623392e6f07af25a6610da99a34d2", "branch": "opus_5.5_medium_single_agent_optimized_prompt_tjan", "note": "Working tree at start had 111 unstaged deletions + 1 modification of prior-run files outside 02/03; left untouched and never staged."},
+  "missingMeasurements": []
+}

@@ -1,0 +1,17 @@
+# P-05 / M3 demonstration: next conference's catalog. ws-open-source retired, new options added.
+conferenceName: "Example Conference 2027"
+workshops:
+  - {id: ws-data-science, name: "Workshop: Data science in practice", active: true}
+  - {id: ws-open-source, name: "Workshop: Contributing to open source", active: false}
+  - {id: ws-ai-safety, name: "Workshop: AI safety fundamentals", active: true}
+events:
+  - {id: ev-harbour-cruise, name: "Harbour cruise", active: true}
+meals:
+  - {id: meal-lunch-day1, name: "Lunch, day 1", active: true}
+  - {id: meal-vegan-dinner, name: "Vegan dinner", active: true}
+otherActivities:
+  - {id: other-mentoring, name: "Mentoring session", active: true}
+consents:
+  - id: synthetic-required-consent
+    text: "[SYNTHETIC TEST FIXTURE - not an approved legal notice] I agree to the synthetic test statement."
+    required: true

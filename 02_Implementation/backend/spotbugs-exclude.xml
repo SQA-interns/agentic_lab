@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Excludes are listed with justification; none hide application logic defects. -->
+<FindBugsFilter>
+  <!-- Spring-managed beans intentionally store injected collaborators (DI), not exposed state. -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Class name="~org\.example\.conference\..*"/>
+    <Or>
+      <Method name="&lt;init&gt;"/>
+    </Or>
+  </Match>
+</FindBugsFilter>

@@ -1,0 +1,51 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency-check:13.0.0:update-only (default-cli) @ conference-registration-backend ---
+[INFO] Checking for updates
+[INFO] NVD API Cache / Data Feed requires several updates; this could take a couple of minutes.
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2012.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2011.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2010.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2009.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2008.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2007.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2006.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2005.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2004.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2026.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2003.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2025.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2002.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2024.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2023.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2022.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2021.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2020.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2019.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2018.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2017.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2016.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2015.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2014.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2013.json.gz
+[INFO] Download Started for NVD Cache - https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-modified.json.gz
+[INFO] Begin database maintenance
+[INFO] Updated the CPE ecosystem on 153473 NVD records
+[INFO] Removed the CPE ecosystem on 5458 NVD records
+[INFO] End database maintenance (35542 ms)
+[INFO] Should skip HostedSuppressionsDataSource update since last update was within period PT2H.
+[INFO] Skipping Known Exploited Vulnerabilities update check since last check was within 24 hours.
+[INFO] Begin database defrag
+[INFO] End database defrag (17083 ms)
+[INFO] Check for updates complete (143958 ms)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:25 min
+[INFO] Finished at: 2026-09-28T18:09:43+02:00
+[INFO] ------------------------------------------------------------------------

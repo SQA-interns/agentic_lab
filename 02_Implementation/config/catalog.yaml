@@ -1,0 +1,19 @@
+# Conference option catalog (AR-07). Edit and restart the backend to apply; no rebuild needed.
+# Option ids are stable identifiers: lowercase letters, digits, hyphen. Retire an option by
+# setting active: false (keeps historical registrations meaningful) rather than reusing its id.
+# consents: none configured. Real consent wording must come from the organizer's legal review.
+conferenceName: "Example Conference 2026"
+workshops:
+  - {id: ws-data-science, name: "Workshop: Data science in practice", active: true}
+  - {id: ws-open-source, name: "Workshop: Contributing to open source", active: true}
+  - {id: ws-legacy-cobol, name: "Workshop: COBOL maintenance", active: false}
+events:
+  - {id: ev-welcome-reception, name: "Welcome reception", active: true}
+  - {id: ev-city-tour, name: "Guided city tour", active: true}
+meals:
+  - {id: meal-lunch-day1, name: "Lunch, day 1", active: true}
+  - {id: meal-lunch-day2, name: "Lunch, day 2", active: true}
+  - {id: meal-gala-dinner, name: "Gala dinner", active: true}
+otherActivities:
+  - {id: other-poster-session, name: "Poster session participation", active: true}
+consents: []

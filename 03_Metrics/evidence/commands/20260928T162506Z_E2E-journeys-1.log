@@ -1,0 +1,13 @@
+$ (cwd=frontend) npx playwright test
+# start=2026-09-28T16:25:06.418Z end=2026-09-28T16:25:11.587Z exit=0 elapsed_s=5.169
+
+
+Running 5 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/registration.spec.ts:48:3 › registration journeys (real stack) › M0: frontend loads configuration from backend (276ms)
+  ✓  2 [chromium] › e2e/registration.spec.ts:54:3 › registration journeys (real stack) › US-001: external participant registers with Unicode and NBSP (1.3s)
+  ✓  3 [chromium] › e2e/registration.spec.ts:67:3 › registration journeys (real stack) › US-001: blank and malformed input is rejected before success (281ms)
+  ✓  4 [chromium] › e2e/registration.spec.ts:79:3 › registration journeys (real stack) › US-002: student registers through the same stack (1.2s)
+  ✓  5 [chromium] › e2e/registration.spec.ts:98:3 › registration journeys (real stack) › US-002: student required fields are enforced in the UI (301ms)
+
+  5 passed (4.1s)

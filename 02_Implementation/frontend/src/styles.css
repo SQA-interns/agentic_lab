@@ -1,0 +1,93 @@
+:root {
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: #1c1c1c;
+  background: #f6f7f9;
+  line-height: 1.5;
+}
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.tabs button[aria-selected='true'] {
+  background: #1d4ed8;
+  color: #fff;
+}
+fieldset {
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  margin: 0 0 1rem;
+  padding: 1rem;
+  background: #fff;
+}
+.field {
+  margin-bottom: 0.75rem;
+}
+.field label {
+  display: block;
+  font-weight: 600;
+}
+.field input[type='text'],
+.field input[type='email'] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid #98a2b3;
+  border-radius: 6px;
+  font: inherit;
+}
+input[aria-invalid='true'] {
+  border-color: #b42318;
+}
+.checkbox {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-weight: normal;
+  margin: 0.25rem 0;
+}
+.option-group h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0 0.25rem;
+}
+.error,
+.form-error {
+  color: #b42318;
+  margin: 0.25rem 0;
+}
+.captcha {
+  margin: 1rem 0;
+}
+button {
+  font: inherit;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #1d4ed8;
+  background: #fff;
+  color: #1d4ed8;
+  cursor: pointer;
+}
+button[type='submit'] {
+  background: #1d4ed8;
+  color: #fff;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.confirmation {
+  background: #ecfdf3;
+  border: 1px solid #12b76a;
+  border-radius: 8px;
+  padding: 1rem;
+}

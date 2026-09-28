@@ -1,0 +1,19 @@
+# Production overlay: docker compose -f compose.yaml -f compose.prod.yaml up -d
+# Requires external SMTP, reCAPTCHA keys and organizer credential from the environment.
+# TLS is terminated by the external nginx (deploy/nginx-external.conf), never in these containers.
+services:
+  mailpit: !reset null
+  backend:
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SMTP_HOST: ${SMTP_HOST:?external SMTP host required}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:?required}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:?required}
+      APP_MAIL_FROM: ${APP_MAIL_FROM:?required}
+      APP_ORGANIZER_EMAILS: ${APP_ORGANIZER_EMAILS:?required}
+      APP_CAPTCHA_SITE_KEY: ${APP_CAPTCHA_SITE_KEY:?required}
+      APP_CAPTCHA_SECRET: ${APP_CAPTCHA_SECRET:?required}
+  frontend:
+    ports: !override
+      - "127.0.0.1:8088:8080"
