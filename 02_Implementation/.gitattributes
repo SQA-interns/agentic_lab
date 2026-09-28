@@ -1,4 +1,0 @@
-* text=auto eol=lf
-*.cmd text eol=crlf
-*.jar binary
-*.xlsx binary
