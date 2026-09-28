@@ -9,22 +9,46 @@ It is a self-contained, portable, read-only experiment input bundle.
 ├── 01_Business/
 ├── 02_Technical/
 ├── 03_Process/
+│   ├── RUN_INSTRUCTIONS.md
+│   ├── CONSTITUTION.md          ← non-negotiable rules, read first
+│   ├── SEVERITY_TAXONOMY.md     ← one severity scale, used everywhere
+│   ├── PREFLIGHT_CHECKLIST.md   ← human step, before experimentStart
+│   ├── HUMAN_INPUTS_MANIFEST.md ← secrets/keys this run might need
+│   ├── ACCEPTANCE_CRITERIA_RULES.md
+│   ├── DEFINITION_OF_DONE.md
+│   ├── METRICS.md
+│   └── run-log.template.json
 ├── 04_Skills/
+│   ├── derive-acceptance-criteria/
+│   ├── write-specification/
+│   ├── write-acceptance-tests/  ← NEW — before implementation, frozen
+│   ├── implement/
+│   ├── write-unit-tests/        ← renamed from write-tests — additive only
+│   ├── verify/
+│   └── finalize-run/
 └── 05_Scaffold/
+    ├── backend/ frontend/ docker-compose.yml
+    ├── VERSION_PINS.md          ← pinned versions, last verified date
+    └── .claude/                 ← enforcement hook, copied to WORKSPACE_ROOT
 ```
 
 ## Portability
 
 To reuse this experiment setup in another repository or workspace,
-copy the entire `01_Input_Files/` directory there.
+copy the entire `01_Input_Files/` directory there, and also copy
+`AGENTS.md` (at the repository root, one level above `01_Input_Files/`)
+alongside it.
 
 The workspace must also contain, or allow creation of:
 
 - `02_Implementation/`
 - `03_Run-Statistics/`
+- `04_External-Audit/` (optional at first — filled in after the run,
+  never by the agent)
 
-This portability step is a workspace setup operation. It is not part of
-the development agent's run.
+This portability step, and completing `03_Process/PREFLIGHT_CHECKLIST.md`,
+are workspace setup operations. Neither is part of the development
+agent's timed run.
 
 ## During an experimental run
 

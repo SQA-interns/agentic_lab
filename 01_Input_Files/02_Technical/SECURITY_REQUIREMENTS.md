@@ -3,6 +3,16 @@
 The system is a public-facing registration application and must apply
 appropriate production-level security controls.
 
+## Baseline
+
+Treat **OWASP ASVS 5.0, Level 1** as the baseline for "appropriate
+production-level security controls" below — it is a testable
+reference, not a synonym for "reasonable effort." Where a bullet below
+and an ASVS Level 1 requirement overlap, satisfying the ASVS
+requirement satisfies the bullet. Where this file is more specific
+than ASVS (e.g. the reCAPTCHA/anti-automation requirement), the more
+specific requirement here still applies.
+
 The Specification must address at minimum:
 
 - backend validation of all submitted input;

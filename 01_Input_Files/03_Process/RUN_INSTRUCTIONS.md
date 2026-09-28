@@ -50,16 +50,23 @@ Expected workspace layout:
 
 ```
 <WORKSPACE_ROOT>/
+├── AGENTS.md                ← read first
+├── .claude/                 ← copied from 05_Scaffold/.claude/ at setup
 ├── 01_Input_Files/          ← INPUT_ROOT (read-only)
 ├── 02_Implementation/       ← IMPLEMENTATION_ROOT (work here)
-└── 03_Run-Statistics/       ← STATISTICS_ROOT (logs)
+├── 03_Run-Statistics/       ← STATISTICS_ROOT (logs)
+└── 04_External-Audit/       ← not yours; filled in after the run
 ```
 
 ## Immutable inputs
 
 Everything under `INPUT_ROOT` is read-only.
 
-Do not create, modify or delete experiment inputs.
+Do not create, modify or delete experiment inputs. This is also
+enforced by a hook — see the start-of-run setup below — but the rule
+applies even if that hook is not active in your harness. Read
+`CONSTITUTION.md` now; it governs the whole run and is not repeated in
+full here.
 
 ## Output locations
 
@@ -67,8 +74,12 @@ Required artefacts:
 
 - `<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`
 - `<IMPLEMENTATION_ROOT>/docs/specification.md`
+- `<IMPLEMENTATION_ROOT>/docs/contracts/` (the API contract)
+- `<IMPLEMENTATION_ROOT>/docs/acceptance/MANIFEST.sha256` (the frozen
+  acceptance-test hash manifest)
 - `<IMPLEMENTATION_ROOT>/docs/test-strategy.md`
 - `<IMPLEMENTATION_ROOT>/docs/verification-report.md`
+- `<IMPLEMENTATION_ROOT>/docs/decisions-log.md`
 - `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
 - `<STATISTICS_ROOT>/run-log.json`
 - `<STATISTICS_ROOT>/run-summary.md`
@@ -81,6 +92,15 @@ The immutable tooling scaffold lives at:
 
 It is part of `INPUT_ROOT` and must not be modified.
 
+## Before start-of-run setup: preflight (human step, untimed)
+
+`03_Process/PREFLIGHT_CHECKLIST.md` must be complete, and every row of
+`03_Process/HUMAN_INPUTS_MANIFEST.md` resolved, before the sequence
+below begins. This is a human step against the workspace, not part of
+the agent's timed run — it exists so a missing prerequisite (a
+container runtime that isn't installed, a version pin that doesn't
+resolve) is caught before `experimentStart`, not discovered mid-run.
+
 ## Start-of-run setup
 
 Execute this sequence before Phase 1. Do not skip or reorder it.
@@ -92,14 +112,22 @@ Execute this sequence before Phase 1. Do not skip or reorder it.
    `docker-compose.yml` appear directly under `IMPLEMENTATION_ROOT/`.
    Do not copy `01_Business/`, `02_Technical/`, `03_Process/` or
    `04_Skills/`. Do not create `IMPLEMENTATION_ROOT/05_Scaffold/`.
-4. Copy `03_Process/run-log.template.json` to
+4. Separately, copy `05_Scaffold/.claude/` to
+   `<WORKSPACE_ROOT>/.claude/` — a sibling of `INPUT_ROOT`, not inside
+   `IMPLEMENTATION_ROOT`. This activates the input-protection and
+   acceptance-test-freeze hook (if your harness supports Claude
+   Code-style hooks) for the rest of the run.
+5. Copy `03_Process/run-log.template.json` to
    `<STATISTICS_ROOT>/run-log.json`.
-5. Read `03_Process/METRICS.md` completely.
-6. Begin Phase 1 — Acceptance Criteria.
+6. Read `03_Process/METRICS.md`, `03_Process/CONSTITUTION.md`, and
+   `03_Process/SEVERITY_TAXONOMY.md` completely.
+7. Create an empty `<IMPLEMENTATION_ROOT>/docs/decisions-log.md` with
+   just its heading — every escalation from here on gets an entry.
+8. Begin Phase 1 — Acceptance Criteria.
 
 `experimentStart` is recorded immediately before any other run work.
-Copying the scaffold is included in total run time. The cost is
-negligible; the rule must be identical for every agent.
+Copying the scaffold and the hook is included in total run time. The
+cost is negligible; the rule must be identical for every agent.
 
 Work only under `IMPLEMENTATION_ROOT` after the copy.
 
@@ -120,13 +148,17 @@ Follow exactly:
 
 User Stories
 → Acceptance Criteria
-→ Specification
-→ Implementation
-→ Tests
+→ Specification (+ API contract)
+→ Acceptance Tests (frozen, before implementation)
+→ Implementation (build until the frozen tests pass)
+→ Unit Tests (additive only)
 → Verification
 → Finalization
 
-Do not skip, reorder, combine or anticipate phases.
+Do not skip, reorder, combine or anticipate phases. The Acceptance
+Tests phase exists specifically so tests are never written by looking
+at the implementation they're meant to check — see `CONSTITUTION.md`
+§2 for why this is non-negotiable in this experiment.
 
 ## Experiment measurement
 
@@ -171,7 +203,9 @@ Read:
 
 Create exactly:
 
-`<IMPLEMENTATION_ROOT>/docs/specification.md`
+- `<IMPLEMENTATION_ROOT>/docs/specification.md`
+- `<IMPLEMENTATION_ROOT>/docs/contracts/` (the API contract — concrete
+  enough that Phase 3 can write a real HTTP test against it)
 
 Do not create production code or tests.
 
@@ -179,17 +213,43 @@ Commit the completed phase.
 
 ---
 
-## Phase 3 — Implementation
+## Phase 3 — Acceptance Tests
+
+Read:
+
+`04_Skills/write-acceptance-tests/SKILL.md`
+
+Write the acceptance-test suite from the Acceptance Criteria and the
+API contract only — production code does not exist yet beyond the
+frozen scaffold. Confirm every test fails for a behavioural reason
+(the feature doesn't exist), not a mechanical one (a compile or
+wiring error).
+
+Freeze the suite: write
+`<IMPLEMENTATION_ROOT>/docs/acceptance/MANIFEST.sha256` and commit it
+together with the tests. From this commit onward these files are
+protected by `CONSTITUTION.md` §2.
+
+Commit the completed phase.
+
+---
+
+## Phase 4 — Implementation
 
 Read:
 
 `04_Skills/implement/SKILL.md`
 
-Implement the approved Specification under `IMPLEMENTATION_ROOT`.
+Implement the approved Specification under `IMPLEMENTATION_ROOT`,
+building until the frozen acceptance-test suite from Phase 3 passes.
 
-Do not create the feature test suite.
+Do not create the unit-test suite. Do not edit anything the
+acceptance-test manifest lists — if one seems wrong, follow the
+test-defect-request procedure in `CONSTITUTION.md` §2 instead.
 
-Build, formatting, linting and type-check feedback are permitted.
+Build, formatting, linting and type-check feedback are permitted, and
+you may run the frozen acceptance tests as often as you like as a
+green/red signal.
 
 Record the first time the primary registration happy path becomes
 executable.
@@ -198,18 +258,20 @@ Commit the completed phase.
 
 ---
 
-## Phase 4 — Tests
+## Phase 5 — Unit Tests
 
 Read:
 
-`04_Skills/write-tests/SKILL.md`
+`04_Skills/write-unit-tests/SKILL.md`
 
-Only now create the test suite.
+Only now add unit and implementation-level tests, additively, on top
+of the frozen acceptance suite.
 
-Record the result of the first complete test execution before repairing
-failures.
+Record the result of the first complete test execution (acceptance +
+unit together) before repairing any failure. Classify each failure per
+`04_Skills/write-unit-tests/SKILL.md` before touching anything.
 
-Create exactly:
+Create/extend exactly:
 
 `<IMPLEMENTATION_ROOT>/docs/test-strategy.md`
 
@@ -217,33 +279,37 @@ Commit the completed phase.
 
 ---
 
-## Phase 5 — Verification
+## Phase 6 — Verification
 
 Read:
 
 - `03_Process/DEFINITION_OF_DONE.md`;
+- `03_Process/SEVERITY_TAXONOMY.md`;
 - `04_Skills/verify/SKILL.md`.
 
 Re-read all original requirements.
 
 Perform the full verification independently from the implementation
-phase.
+phase, including confirming the acceptance-test freeze held (every
+hash in the manifest still matches) and that
+`docs/decisions-log.md` accounts for every escalation raised so far.
 
 Create exactly:
 
 `<IMPLEMENTATION_ROOT>/docs/verification-report.md`
 
-For every failure execute:
+For every Critical or High finding execute:
 
 Verification → Fix → Re-verification
 
-Log every loop.
+Log every loop. Medium/Low findings are recorded and triaged but do
+not require a loop by themselves.
 
 Commit the completed phase.
 
 ---
 
-## Phase 6 — Finalization
+## Phase 7 — Finalization
 
 Read:
 
@@ -254,9 +320,12 @@ Create exactly:
 - `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
 - `<STATISTICS_ROOT>/run-summary.md`
 
+Confirm `<IMPLEMENTATION_ROOT>/docs/decisions-log.md` is complete —
+every escalation has an entry and every entry has a `resolution`.
+
 Finalize:
 
-`<STATISTICS_ROOT>/run-log.json`
+`<STATISTICS_ROOT>/run-log.json`, including its `escalations` array.
 
 Before completing the run, ensure every metric required by
 `03_Process/METRICS.md` has either:
@@ -267,6 +336,10 @@ Before completing the run, ensure every metric required by
 Record the final commit.
 
 Do not modify the shared baseline or another experiment branch.
+
+`04_External-Audit/` (a sibling of `INPUT_ROOT`) is filled in after
+this run, by a human, never by the agent — mention it exists in
+run-summary.md, but do not populate it.
 
 ---
 

@@ -44,7 +44,7 @@ Execute:
 - npm audit.
 
 There must be no unresolved Critical or High security findings before
-finalization.
+finalization, classified per `SEVERITY_TAXONOMY.md`.
 
 This remains a self-verification result and must not be represented as
 an independent external security review.
@@ -63,6 +63,23 @@ The scaffold must not supply pre-written layering rules that force a
 controller → service → repository design.
 
 Architecture violations must be recorded.
+
+## 4a. Test integrity and mutation testing
+
+- The acceptance-test freeze held: every file listed in
+  `docs/acceptance/MANIFEST.sha256` still hashes to the recorded value.
+  A mismatch is a Critical finding regardless of the reason.
+- Run a mutation-testing pass (a tool matching the frozen toolchain in
+  `02_Technical/TECH_STACK.md`, e.g. PIT for the backend, Stryker for
+  the frontend) against security- and domain-critical code — at
+  minimum, validation, authentication/anti-automation, and
+  persistence/backup logic. This is **measured and recorded**, not
+  gated on a threshold; a surviving mutant that should plausibly have
+  been caught is a finding, classified per `SEVERITY_TAXONOMY.md`, not
+  an automatic failure.
+- Coverage alone (statement/branch %) is not sufficient evidence of
+  test quality; report it alongside the mutation result, not instead
+  of it.
 
 ## 5. Container execution
 
@@ -88,9 +105,15 @@ The following must exist:
 
 - `<IMPLEMENTATION_ROOT>/docs/acceptance-criteria.md`
 - `<IMPLEMENTATION_ROOT>/docs/specification.md`
+- `<IMPLEMENTATION_ROOT>/docs/contracts/`
+- `<IMPLEMENTATION_ROOT>/docs/acceptance/MANIFEST.sha256`
 - `<IMPLEMENTATION_ROOT>/docs/test-strategy.md`
 - `<IMPLEMENTATION_ROOT>/docs/verification-report.md`
+- `<IMPLEMENTATION_ROOT>/docs/decisions-log.md`
 - `<IMPLEMENTATION_ROOT>/RELEASE_NOTES.md`
+- `<IMPLEMENTATION_ROOT>/README.md` — a run guide: how to build and run
+  the delivered system, and where to find each of the above. Verify it
+  by actually following it, not by inspection alone.
 
 Unknown or unverified behaviour must be documented rather than assumed.
 

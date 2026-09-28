@@ -13,13 +13,17 @@
   "phases": [
     { "name": "acceptance-criteria", "start": null, "end": null },
     { "name": "specification", "start": null, "end": null },
+    { "name": "acceptance-tests", "start": null, "end": null },
     { "name": "implementation", "start": null, "end": null },
-    { "name": "tests", "start": null, "end": null },
+    { "name": "unit-tests", "start": null, "end": null },
     { "name": "verification", "start": null, "end": null },
     { "name": "finalization", "start": null, "end": null }
   ],
 
   "firstWorkingHappyPathTimestamp": null,
+
+  "acceptanceTestFreezeHeld": null,
+  "acceptanceTestFreezeHeldReason": "set true/false once Phase 3 (acceptance tests) is frozen and re-checked in Verification; explain any false in docs/decisions-log.md",
 
   "firstTestRun": {
     "passed": null,
@@ -36,12 +40,15 @@
   "clarifyingQuestions": 0,
   "manualCodeFixes": 0,
 
+  "escalations": [],
+
   "fixLoops": [],
 
   "verificationFindings": {
     "critical": 0,
-    "major": 0,
-    "minor": 0
+    "high": 0,
+    "medium": 0,
+    "low": 0
   },
 
   "commits": [],
@@ -49,16 +56,20 @@
   "reverts": 0,
   "mergeConflicts": 0,
 
-  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit. Leave null with a reason until the audit pass runs.",
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit, reconciled against <WORKSPACE_ROOT>/04_External-Audit/. Leave null with a reason until the audit pass runs.",
 
   "tokensConsumed": null,
-  "tokensConsumedReason": "external audit — provider usage export for the run",
+  "tokensConsumedReason": "external audit — see 04_External-Audit/usage-report.md",
+
+  "wallTimeMinutes": null,
+  "apiTimeMinutes": null,
+  "wallTimeMinutesReason": "external audit — see 04_External-Audit/usage-report.md, if the provider separates wall time from API time",
 
   "estimatedCostUsd": null,
-  "estimatedCostUsdReason": "external audit — derived from tokensConsumed",
+  "estimatedCostUsdReason": "external audit — see 04_External-Audit/usage-report.md",
 
   "toolCalls": null,
-  "toolCallsReason": "external audit — parsed post-run from the harness transcript",
+  "toolCallsReason": "external audit — see 04_External-Audit/tool-call-count.md, parsed post-run from the harness transcript",
 
   "approvalPrompts": null,
   "approvalPromptsReason": "external audit — counted separately from toolCalls, only meaningful if permission mode required them",
@@ -80,9 +91,11 @@
     "backendUnitCoveragePct": null,
     "backendIntegrationCoveragePct": null,
     "frontendCoveragePct": null,
+    "mutationScoreBackend": null,
+    "mutationScoreFrontend": null,
     "newDependenciesRuntime": null,
     "newDependenciesDev": null,
-    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md and DEFINITION_OF_DONE.md §4a"
   },
 
   "security": {

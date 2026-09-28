@@ -45,8 +45,9 @@ checkable against the first and last phase timestamps.
 | Human-intervention duration | `humanInterventions[].start`, `humanInterventions[].end` | Sum of entry durations after the run |
 | Clarifying questions | `clarifyingQuestions` | Count |
 | Manual code fixes | `manualCodeFixes` | Count of human-edited code changes |
+| Escalations | `escalations[]` | Each entry is `{timestamp, category, trigger, proposedAlternatives, humanResponse, resolution}`, per `CONSTITUTION.md` §3; mirrors `docs/decisions-log.md` |
 
-Do not record interventions as a count only.
+Do not record interventions, or escalations, as a count only.
 
 ## Verification
 
@@ -54,7 +55,8 @@ Do not record interventions as a count only.
 | --- | --- | --- |
 | First complete test-run passed/failed | `firstTestRun.passed`, `firstTestRun.failed` | Record before repairing failures |
 | Final test passed/failed | `finalTestRun.passed`, `finalTestRun.failed` | Last complete test execution of the run |
-| Verifier findings by severity | `verificationFindings` | Counts for `critical`, `major`, `minor` |
+| Verifier findings by severity | `verificationFindings` | Counts for `critical`, `high`, `medium`, `low` — per `SEVERITY_TAXONOMY.md`, no other scale |
+| Acceptance-test freeze held | `acceptanceTestFreezeHeld` | `true` unless a hash in `docs/acceptance/MANIFEST.sha256` no longer matches, or a test-defect request was needed — either way, explain in `docs/decisions-log.md` |
 | Fix-loop count | `fixLoops[]` | One object per loop; count is the array length |
 
 Each fix loop is:
@@ -127,6 +129,15 @@ reason.
 | OWASP Dependency-Check findings by severity | `security.owaspDependencyCheck` | Counts for `critical`, `high`, `medium`, `low` |
 | npm audit findings by severity | `security.npmAudit` | Counts for `critical`, `high`, `medium`, `low` |
 
+## Test quality
+
+| Metric | Field | Method |
+| --- | --- | --- |
+| Mutation score, backend | `codeQuality.mutationScoreBackend` | Frozen mutation-testing tool (DoD §4a), scoped to security/domain-critical code |
+| Mutation score, frontend | `codeQuality.mutationScoreFrontend` | Frozen mutation-testing tool (DoD §4a) |
+
+Measured and recorded, per DoD §4a — not gated on a threshold.
+
 ## Architecture
 
 | Metric | Field | Method |
@@ -142,12 +153,17 @@ reason.
 # Harness/provider metrics
 
 Also below `_selfReportNote`. Never estimated by the development agent.
+Reconciled after the run against `<WORKSPACE_ROOT>/04_External-Audit/`
+(the harness's own usage report, saved verbatim) — a run is not
+considered audited until that folder has at least
+`usage-report.md` and, where obtainable, `tool-call-count.md`.
 
 | Metric | Field | Method |
 | --- | --- | --- |
-| Tokens consumed | `tokensConsumed` | Provider usage export |
-| Estimated provider cost | `estimatedCostUsd` | Derived from `tokensConsumed` |
-| Tool calls | `toolCalls` | Harness transcript |
+| Tokens consumed | `tokensConsumed` | Provider usage export, from `04_External-Audit/usage-report.md` |
+| Wall time / API time | `wallTimeMinutes`, `apiTimeMinutes` | Provider usage export, if it separates the two |
+| Estimated provider cost | `estimatedCostUsd` | Provider usage export |
+| Tool calls | `toolCalls` | Harness transcript, from `04_External-Audit/tool-call-count.md` |
 | Approval prompts | `approvalPrompts` | Counted separately from `toolCalls` |
 
 # Cross-run metrics
