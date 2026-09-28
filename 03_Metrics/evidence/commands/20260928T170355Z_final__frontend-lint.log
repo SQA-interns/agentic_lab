@@ -1,0 +1,7 @@
+$ (cwd=frontend) npm run lint
+# start=2026-09-28T17:03:55.138Z end=2026-09-28T17:03:57.990Z exit=0 elapsed_s=2.852
+
+
+> conference-registration-frontend@1.0.0 lint
+> eslint . --max-warnings 0
+

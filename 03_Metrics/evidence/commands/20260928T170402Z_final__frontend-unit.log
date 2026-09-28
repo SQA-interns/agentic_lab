@@ -1,0 +1,35 @@
+$ (cwd=frontend) npm run test:coverage
+# start=2026-09-28T17:04:02.277Z end=2026-09-28T17:04:09.231Z exit=0 elapsed_s=6.954
+
+
+> conference-registration-frontend@1.0.0 test:coverage
+> vitest run --coverage
+
+
+ RUN  v4.1.11 /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/frontend
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  23 passed (23)
+   Start at  19:04:02
+   Duration  6.19s (transform 393ms, setup 660ms, import 719ms, tests 4.92s, environment 1.95s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   78.61 |    75.63 |   81.63 |    77.3 |                   
+ src               |   78.23 |    75.63 |   81.25 |   76.87 |                   
+  App.tsx          |     100 |    86.66 |     100 |     100 | 25                
+  Captcha.tsx      |   11.11 |       15 |   22.22 |   11.11 | 45-92             
+  ...ationForm.tsx |   88.17 |    85.71 |   91.66 |   87.05 | 46-48,73-80,87    
+  fields.ts        |   88.23 |    83.33 |     100 |   88.23 | 86,88             
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 78.61% ( 136/173 )
+Branches     : 75.63% ( 90/119 )
+Functions    : 81.63% ( 40/49 )
+Lines        : 77.3% ( 126/163 )
+================================================================================

@@ -1,0 +1,4 @@
+$ (cwd=frontend) npm audit --audit-level=high
+# start=2026-09-28T17:04:40.283Z end=2026-09-28T17:04:40.998Z exit=0 elapsed_s=0.715
+
+found 0 vulnerabilities

@@ -5,14 +5,39 @@
     "taskId": "conference-registration-v3",
     "configurationLabel": "single-agent-sdd-tjan",
     "actorCount": 1,
-    "actors": [{"id": "agent-1", "role": "single development agent"}],
-    "model": {"value": "claude-opus-5-5", "source": "harness", "evidencePaths": [], "note": "Model ID stated in harness system prompt ('Opus 5.5', exact ID claude-opus-5-5); not inferred from folder or branch name."},
-    "harness": {"value": "Claude Code 2.1.283 (CLI)", "source": "tool", "evidencePaths": ["03_Metrics/evidence/preflight.txt"]},
-    "tools": "Claude Code built-in tools: Bash, Read, Write, Edit, Skill, Artifact etc. Agent/sub-agent tool present but not used (single-agent contract).",
+    "actors": [
+      {
+        "id": "agent-1",
+        "role": "single development agent"
+      }
+    ],
+    "model": {
+      "value": "claude-opus-5-5",
+      "source": "harness",
+      "evidencePaths": [],
+      "note": "Model ID stated in harness system prompt ('Opus 5.5', exact ID claude-opus-5-5); not inferred from folder or branch name."
+    },
+    "harness": {
+      "value": "Claude Code 2.1.283 (CLI)",
+      "source": "tool",
+      "evidencePaths": [
+        "03_Metrics/evidence/preflight.txt"
+      ]
+    },
+    "tools": "Claude Code built-in tools (Bash, Read, Write, Edit). Agent/sub-agent tools available but not used (single actor). External tools: Maven Wrapper 3.9.16, npm 10.9.9 (+ npx npm@11.11.0 once), Docker 29 / Compose v5.1.1, Playwright 1.63.0 chromium, Semgrep 1.178.0 (installed during preflight), OWASP Dependency-Check 13.0.0, Node 22.23.3 (installed via nvm during preflight).",
     "toolPermissions": "Harness 'auto mode' active; exact permission mode config not exposed to agent.",
-    "samplingSettings": {"value": null, "reason": "Temperature/top-p/reasoning-effort not exposed to agent by harness."},
-    "contextAndCompaction": {"value": "Harness states automatic context summarization when conversation grows long; total token budget reported by harness at start: ~15,000,000 tokens.", "source": "harness"},
-    "localInference": {"value": null, "reason": "Hosted model via Claude Code; no local runtime/quantization."},
+    "samplingSettings": {
+      "value": null,
+      "reason": "Temperature/top-p/reasoning-effort not exposed to agent by harness."
+    },
+    "contextAndCompaction": {
+      "value": "Harness states automatic context summarization when conversation grows long; total token budget reported by harness at start: ~15,000,000 tokens.",
+      "source": "harness"
+    },
+    "localInference": {
+      "value": null,
+      "reason": "Hosted model via Claude Code; no local runtime/quantization."
+    },
     "inputHashes": {
       "algorithm": "sha256",
       "01_Input_files/ARCHITECTURE.md": "79be6f9ed665d4cdf8200b835541596cc629b2d438a336ad241e8ed817ade7fc",
@@ -25,30 +50,1644 @@
     },
     "environment": {
       "os": "Linux 7.0.0-34-generic Ubuntu 24.04 x86_64",
-      "cpu": {"value": 8, "unit": "logical CPUs (nproc)", "source": "tool"},
-      "ramBytes": {"value": 33493528576, "source": "tool", "note": "free -b total; no cgroup limits found"},
+      "cpu": {
+        "value": 8,
+        "unit": "logical CPUs (nproc)",
+        "source": "tool"
+      },
+      "ramBytes": {
+        "value": 33493528576,
+        "source": "tool",
+        "note": "free -b total; no cgroup limits found"
+      },
       "diskFree": "30G free on project filesystem",
-      "python": "3.12.3", "node": "v24.14.1", "npm": "11.11.0", "uv": "0.11.8",
-      "docker": "29.5.0 client; Compose v5.1.1; daemon state recorded in preflight",
+      "python": "3.12.3",
+      "node": "v24.14.1",
+      "npm": "11.11.0",
+      "uv": "0.11.8",
+      "docker": "client 29.5.0, Docker Desktop server 29.3.1 (was stopped at start; started by agent via systemctl --user during preflight), Compose v5.1.1; 8 CPUs / 32.8 GB visible to Docker",
       "git": "2.43.0",
-      "network": "pypi.org reachable (HTTP 200) at start",
+      "network": "Internet available (Maven Central, npm registry, Docker Hub, semgrep registry, NVD data feeds). NVD REST API without key returned HTTP 503 (evidence: events).",
       "cache": "~/.cache/pip present; pre-existing .venv/.mypy_cache/.ruff_cache/.pytest_cache at repo root from earlier runs (not used)"
     },
-    "budgets": {"value": null, "reason": "No explicit time/token/cost budget communicated to the agent beyond harness total-token figure (~15M)."}
+    "budgets": {
+      "value": null,
+      "reason": "No explicit time/token/cost budget communicated to the agent beyond harness total-token figure (~15M)."
+    }
   },
   "timestamps": {
-    "start": {"value": "2026-09-28T15:55:35.917Z", "source": "tool", "evidencePaths": ["03_Metrics/evidence/preflight.txt"]},
-    "implementationChecksFinished": null,
-    "end": null
+    "start": {
+      "value": "2026-09-28T15:55:35.917Z",
+      "source": "tool",
+      "evidencePaths": [
+        "03_Metrics/evidence/preflight.txt",
+        "03_Metrics/events.jsonl"
+      ]
+    },
+    "timeToVerifiedExternalRegistration": {
+      "value": "2026-09-28T16:29:17.085Z",
+      "elapsedSeconds": 2021.2,
+      "source": "tool",
+      "definition": "M1 firstPassedAt (end of last M1 criterion check E2E-journeys-2) minus run start",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T162911Z_E2E-journeys-2.log"
+      ]
+    },
+    "implementationChecksFinished": {
+      "value": "2026-09-28T17:08:58.012Z",
+      "elapsedSeconds": 4402.1,
+      "source": "tool",
+      "evidencePaths": [
+        "03_Metrics/evidence/final-suite.txt",
+        "03_Metrics/evidence/checks.jsonl"
+      ]
+    },
+    "end": {
+      "value": "2026-09-28T17:12:55.694Z",
+      "elapsedSeconds": 4639.8,
+      "source": "tool",
+      "evidencePaths": [
+        "03_Metrics/events.jsonl"
+      ]
+    }
   },
-  "phases": [],
-  "milestones": [],
-  "outcome": {"status": "in-progress", "stories": [], "gates": []},
+  "phases": [
+    {
+      "name": "setup, preflight, contract reading, specification, initial backend code (overlapping NVD download)",
+      "start": "2026-09-28T15:55:35.917Z",
+      "end": "2026-09-28T16:10:26.605Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": "end = NVD update success event; spec/code writing overlapped this phase"
+    },
+    {
+      "name": "M0 foundation (backend/frontend/compose) until verified",
+      "start": "2026-09-28T16:10:26.605Z",
+      "end": "2026-09-28T16:25:11.587Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "M1 + M2 verification slices",
+      "start": "2026-09-28T16:25:11.587Z",
+      "end": "2026-09-28T16:29:17.085Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "M3 catalog/consent",
+      "start": "2026-09-28T16:29:17.085Z",
+      "end": "2026-09-28T16:33:50.859Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "M4 notifications",
+      "start": "2026-09-28T16:33:50.859Z",
+      "end": "2026-09-28T16:39:10.941Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "M5 export",
+      "start": "2026-09-28T16:39:10.941Z",
+      "end": "2026-09-28T16:40:28.902Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "M6 hardening: architecture/security tests, static-analysis repairs, verification scripts",
+      "start": "2026-09-28T16:40:28.902Z",
+      "end": "2026-09-28T16:49:48.975Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "first complete finalization suite",
+      "start": "2026-09-28T16:49:48.975Z",
+      "end": "2026-09-28T16:56:37.800Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "security triage/repairs, docs",
+      "start": "2026-09-28T16:56:37.800Z",
+      "end": "2026-09-28T17:02:19.040Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "final complete suite",
+      "start": "2026-09-28T17:02:19.040Z",
+      "end": "2026-09-28T17:08:58.012Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": null
+    },
+    {
+      "name": "reporting (run.json, run-summary.md)",
+      "start": "2026-09-28T17:08:58.012Z",
+      "end": "2026-09-28T17:12:55.694Z",
+      "source": "tool (event/check timestamps; boundaries are sequential, non-overlapping)",
+      "note": "end recorded in timestamps.end"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "M0",
+      "status": "pass",
+      "startedAt": {
+        "value": null,
+        "reason": "milestone start not logged as a separate event; work on milestones overlapped in the working tree"
+      },
+      "firstPassedAt": "2026-09-28T16:25:11.587Z",
+      "lastVerifiedAt": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T161603Z_M0-backend-it.log",
+        "03_Metrics/evidence/commands/20260928T162506Z_E2E-journeys-1.log"
+      ],
+      "note": "M1/M2 code was drafted in the tree before M0 closure; M0 criteria verified first. Commit e59fc67."
+    },
+    {
+      "id": "M1",
+      "status": "pass",
+      "startedAt": "2026-09-28T16:25:11.587Z",
+      "firstPassedAt": "2026-09-28T16:29:17.085Z",
+      "lastVerifiedAt": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T162642Z_M1-registration-api-it.log",
+        "03_Metrics/evidence/commands/20260928T162729Z_M1-storage-failure-it.log",
+        "03_Metrics/evidence/commands/20260928T162829Z_FE-unit-1.log",
+        "03_Metrics/evidence/commands/20260928T162911Z_E2E-journeys-2.log"
+      ],
+      "note": "Commit dcc7570."
+    },
+    {
+      "id": "M2",
+      "status": "pass",
+      "startedAt": "2026-09-28T16:25:11.587Z",
+      "firstPassedAt": "2026-09-28T16:29:17.085Z",
+      "lastVerifiedAt": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T162642Z_M1-registration-api-it.log",
+        "03_Metrics/evidence/commands/20260928T162911Z_E2E-journeys-2.log"
+      ],
+      "note": "Verified in same runs as M1. Commit dcc7570."
+    },
+    {
+      "id": "M3",
+      "status": "pass",
+      "startedAt": "2026-09-28T16:29:17.085Z",
+      "firstPassedAt": "2026-09-28T16:33:50.859Z",
+      "lastVerifiedAt": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/runtime/m3/catalog-switch.txt",
+        "03_Metrics/evidence/runtime/m3/playwright-catalog-changed.txt",
+        "03_Metrics/evidence/commands/20260928T163044Z_M3-catalog-tests.log",
+        "03_Metrics/evidence/commands/20260928T163345Z_E2E-journeys-3.log"
+      ],
+      "note": "Commit 448bdc6."
+    },
+    {
+      "id": "M4",
+      "status": "pass",
+      "startedAt": "2026-09-28T16:33:50.859Z",
+      "firstPassedAt": "2026-09-28T16:39:10.941Z",
+      "lastVerifiedAt": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/runtime/mail.json",
+        "03_Metrics/evidence/commands/20260928T163516Z_M4-notification-it.log",
+        "03_Metrics/evidence/commands/20260928T163834Z_M4-runtime-mail.log"
+      ],
+      "note": "Commit a00e221."
+    },
+    {
+      "id": "M5",
+      "status": "pass",
+      "startedAt": "2026-09-28T16:39:10.941Z",
+      "firstPassedAt": "2026-09-28T16:40:28.902Z",
+      "lastVerifiedAt": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/runtime/export.json",
+        "03_Metrics/evidence/commands/20260928T163948Z_M5-export-it.log"
+      ],
+      "note": "M2 evidence existed before. Commit 7c54bdb."
+    },
+    {
+      "id": "M6",
+      "status": "blocked",
+      "startedAt": "2026-09-28T16:40:28.902Z",
+      "firstPassedAt": null,
+      "lastVerifiedAt": null,
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "evidencePaths": [
+        "03_Metrics/evidence/final-suite.txt",
+        "03_Metrics/evidence/security/summary.json"
+      ],
+      "note": "All gates assessed on final revision; D-05 blocked (unavoidable Spring 6.2.19 / Spring Security 6.5.11 advisories within ST-01). No regression of M0-M5 observed."
+    }
+  ],
+  "outcome": {
+    "status": "incomplete",
+    "functionalCompletion": "complete (all 8 user stories demonstrated on final revision)",
+    "reason": "D-05 blocked",
+    "stories": [
+      {
+        "id": "US-001",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/commands/20260928T170538Z_final__e2e.log",
+          "03_Metrics/evidence/screenshots/02-external-confirmation.png"
+        ]
+      },
+      {
+        "id": "US-002",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/commands/20260928T170538Z_final__e2e.log",
+          "03_Metrics/evidence/screenshots/04-student-confirmation.png"
+        ]
+      },
+      {
+        "id": "US-003",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/m3/catalog-switch.txt",
+          "03_Metrics/evidence/runtime/m3/playwright-catalog-changed.txt"
+        ]
+      },
+      {
+        "id": "US-004",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/commands/20260928T170538Z_final__e2e.log",
+          "03_Metrics/evidence/screenshots/02-external-confirmation.png"
+        ]
+      },
+      {
+        "id": "US-005",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/recreate.json",
+          "03_Metrics/evidence/runtime/storage.json"
+        ]
+      },
+      {
+        "id": "US-006",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/mail.json",
+          "03_Metrics/evidence/screenshots/05-mailpit-inbox.png"
+        ]
+      },
+      {
+        "id": "US-007",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/mail.json"
+        ]
+      },
+      {
+        "id": "US-008",
+        "status": "pass",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/export.json"
+        ]
+      }
+    ],
+    "gates": [
+      {
+        "id": "D-01",
+        "status": "pass",
+        "reason": "All US-001..US-008 demonstrated; AC map in docs/specification.md §14",
+        "evidencePaths": [
+          "03_Metrics/evidence/final-suite.txt",
+          "03_Metrics/evidence/runtime/",
+          "03_Metrics/evidence/screenshots/"
+        ]
+      },
+      {
+        "id": "D-02",
+        "status": "pass",
+        "reason": "Backend 33 unit + 53 integration (0 fail/0 error/0 skip); frontend 23 component; Playwright 5 + 5 (after recreation) + 4 (changed catalog), 0 skipped; both production builds",
+        "evidencePaths": [
+          "03_Metrics/evidence/final-suite.txt",
+          "03_Metrics/evidence/reports/final-surefire",
+          "03_Metrics/evidence/reports/final-failsafe"
+        ]
+      },
+      {
+        "id": "D-03",
+        "status": "pass",
+        "reason": "Spotless and Prettier clean; ESLint 0; tsc 0; SpotBugs 0 bugs; PMD 0 violations (explicit ruleset, 2 style rules excluded with rationale); CPD 0 duplications; jscpd 0 clones (15 files, 1240 lines)",
+        "evidencePaths": [
+          "03_Metrics/evidence/reports/spotbugsXml.xml",
+          "03_Metrics/evidence/reports/pmd.xml",
+          "03_Metrics/evidence/reports/cpd.xml",
+          "03_Metrics/evidence/reports/final-jscpd.json"
+        ]
+      },
+      {
+        "id": "D-04",
+        "status": "pass",
+        "reason": "ArchUnit (5 rules: module matrix, cycles, export->query API only, controllers, no field injection) pass; AR-01..AR-08 and ST-01..ST-09 checklist in run-summary §6 with no unresolved violation",
+        "evidencePaths": [
+          "03_Metrics/evidence/reports/final-surefire"
+        ]
+      },
+      {
+        "id": "D-05",
+        "status": "blocked",
+        "reason": "Semgrep 1.178.0: 0 findings (93 files, registry packs p/default,p/java,p/typescript,p/react,p/secrets,p/dockerfile); npm audit: 0; OWASP Dependency-Check 13.0.0 (NVD feeds modified 2026-09-28T08:00:04-04): 7 CRITICAL + 8 HIGH unresolved in spring-core 6.2.19 and spring-security-core 6.5.11 - fixes (6.2.20/6.5.12) not publicly released for Boot 3.x; upgrade to Boot 4 forbidden by ST-01. Triage: none of the affected features are used, but not suppressed.",
+        "evidencePaths": [
+          "03_Metrics/evidence/security/summary.json",
+          "03_Metrics/evidence/security/dependency-check-report.html",
+          "03_Metrics/evidence/security/semgrep.json",
+          "03_Metrics/evidence/security/npm-audit.json"
+        ]
+      },
+      {
+        "id": "D-06",
+        "status": "pass",
+        "reason": "Containers built/started; both forms via browser; PostgreSQL rows == JSON files (sha256); Mailpit participant + organizer with attachment == JSON; export authorized/unauthorized; readiness; retained data after docker compose down/up (38 registrations and 38 JSON hashes identical before/after in final suite)",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/",
+          "03_Metrics/evidence/screenshots/",
+          "03_Metrics/evidence/final-suite.txt"
+        ]
+      },
+      {
+        "id": "D-07",
+        "status": "pass",
+        "reason": "Invalid input/options/captcha rejected (IT); prod cannot activate test captcha (4 fail-closed container startups); backup write failure and DB outage -> 503 with no partial acceptance; idempotent replay/conflict; SMTP outage retry; error/privacy controls (no value echo, no stack traces, health without details)",
+        "evidencePaths": [
+          "03_Metrics/evidence/runtime/storage.json",
+          "03_Metrics/evidence/runtime/prod-isolation.json",
+          "03_Metrics/evidence/runtime/idempotency.json",
+          "03_Metrics/evidence/runtime/mail.json"
+        ]
+      },
+      {
+        "id": "D-08",
+        "status": "pass",
+        "reason": "Specification and README match implementation; run.json, events.jsonl, run-summary.md and evidence exist; missing measurements listed with reasons (self-assessed after mechanical validation)",
+        "evidencePaths": [
+          "02_Implementation/docs/specification.md",
+          "02_Implementation/README.md",
+          "03_Metrics/run-summary.md"
+        ]
+      }
+    ]
+  },
   "architectureDeviations": [],
-  "repairs": [],
-  "humanInterventions": [],
-  "usage": {},
-  "checks": [],
-  "git": {"baselineRevision": "f67ba6dc713623392e6f07af25a6610da99a34d2", "branch": "opus_5.5_medium_single_agent_optimized_prompt_tjan", "note": "Working tree at start had 111 unstaged deletions + 1 modification of prior-run files outside 02/03; left untouched and never staged."},
-  "missingMeasurements": []
+  "repairs": [
+    {
+      "eventId": "ev-ace86d79a1",
+      "recordedAt": "2026-09-28T16:02:56.274Z",
+      "category": "environment",
+      "trigger": "update-only exit 1: Invalid API Key, length of 0",
+      "change": "remove nvdApiKeyEnvironmentVariable from pom",
+      "outcome": "rerun started",
+      "start": "2026-09-28T16:01:38Z",
+      "end": null,
+      "lateRecorded": false,
+      "description": "Dependency-Check update failed: empty NVD_API_KEY env mapping produced zero-length key; removed nvdApiKeyEnvironmentVariable and reran keyless",
+      "evidencePaths": [
+        "03_Metrics/evidence/security/dependency-check-update.log"
+      ]
+    },
+    {
+      "eventId": "ev-9e7583512d",
+      "recordedAt": "2026-09-28T16:07:16.215Z",
+      "category": "environment",
+      "trigger": "update-only exit 1 twice; curl NVD API 503",
+      "change": "pom: nvdDatafeedUrl=https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-{0}.json.gz",
+      "outcome": "rerun started",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "NVD REST API returns HTTP 503 after 125s without API key (probe); DC 13.0.0 then fails with misleading 'Invalid API Key length 0'. Switched DC to official NVD JSON 2.0 datafeeds (nvdDatafeedUrl).",
+      "evidencePaths": []
+    },
+    {
+      "eventId": "ev-cefea8f6e7",
+      "recordedAt": "2026-09-28T16:26:42.608Z",
+      "category": "implementation",
+      "trigger": "studentRequiredFieldsAreEnforced[3] expected REQUIRED but was EMAIL_INVALID",
+      "change": "ApiExceptionHandler merges errors per field",
+      "outcome": "pending rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "RegistrationApiIT: blank student email returned EMAIL_INVALID alongside REQUIRED; handler now reports one code per field preferring REQUIRED",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T162608Z_M1-registration-api-it.log"
+      ]
+    },
+    {
+      "eventId": "ev-95a6a9a1e6",
+      "recordedAt": "2026-09-28T16:30:44.566Z",
+      "category": "test",
+      "trigger": "CatalogChangeIT expected 2027 catalog, got 2026",
+      "change": "IntegrationTestBase no longer registers app.catalog.path",
+      "outcome": "pending rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "CatalogChangeIT failed: base-class DynamicPropertySource overrode subclass catalog path (test harness defect). Moved default catalog path to application-test.yml.",
+      "evidencePaths": []
+    },
+    {
+      "eventId": "ev-f26f43ec02",
+      "recordedAt": "2026-09-28T16:32:55.008Z",
+      "category": "test",
+      "trigger": "catalog-change.spec first test: First name label not found",
+      "change": "remove exact:true",
+      "outcome": "pending rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "M3 e2e selector getByLabel(exact) did not match label with required marker; switched to substring label match (test defect, assertion intent unchanged)",
+      "evidencePaths": []
+    },
+    {
+      "eventId": "ev-8477663339",
+      "recordedAt": "2026-09-28T16:35:15.959Z",
+      "category": "test",
+      "trigger": "expected organizer body to contain org name, got MimeMultipart@...",
+      "change": "recursive textOf helper",
+      "outcome": "pending rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "NotificationIT: organizer text extraction did not recurse into nested MimeMultipart (test helper defect); made it recursive",
+      "evidencePaths": []
+    },
+    {
+      "eventId": "ev-369bd04078",
+      "recordedAt": "2026-09-28T16:38:34.857Z",
+      "category": "test",
+      "trigger": "M4-runtime-mail exit 1",
+      "change": "runtime_probe.wait_for catches OSError; traceback capture",
+      "outcome": "pass on rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "Runtime mail probe failed with 'Remote end closed connection' (unhandled OSError in polling loop of verification tooling); wait_for now tolerates OSError and failures record tracebacks; rerun passed",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T163707Z_M4-runtime-mail.log"
+      ]
+    },
+    {
+      "eventId": "ev-23137742a0",
+      "recordedAt": "2026-09-28T16:42:47.417Z",
+      "category": "test",
+      "trigger": "expected {status:UP} but was {status:UP,groups:[liveness,readiness]}",
+      "change": "assert absence of components/details instead of exact body",
+      "outcome": "pending rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "SecurityIT.healthDoesNotExposeDetails: old assertion body == {status:UP}; actual body also lists probe group names. New assertion: status UP and no components/details/postgres (intent: AC-X-04/X-05 no internals leaked). Test correction, not implementation change.",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T164134Z_M6-new-tests.log"
+      ]
+    },
+    {
+      "eventId": "ev-4bf974a558",
+      "recordedAt": "2026-09-28T16:49:44.721Z",
+      "category": "implementation",
+      "trigger": "spotbugs:check/pmd:check/cpd-check failures",
+      "change": "code fixes + explicit ruleset",
+      "outcome": "static-backend-6 BUILD SUCCESS",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "Static analysis: SpotBugs 18 findings (15 EI_EXPOSE_REP, 2 NP null path, 1 CT_CONSTRUCTOR_THROW) and PMD 31 violations fixed in code (defensive immutable copies, null-safe file names, final BackupStore, cause-preserving ApiException, narrowed catches, operand assignments); PMD ruleset made explicit excluding GuardLogStatement and AvoidFieldNameMatchingMethodName (style rules, rationale in pmd-ruleset.xml); CPD duplication in form DTOs removed via composed constraints @RequiredText/@RequiredEmail. Publish failure now also discards possibly-published file.",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T164353Z_static-backend-1.log",
+        "03_Metrics/evidence/commands/20260928T164833Z_static-backend-6.log"
+      ]
+    },
+    {
+      "eventId": "ev-46490d72ed",
+      "recordedAt": "2026-09-28T16:57:04.301Z",
+      "category": "implementation",
+      "trigger": "security-summary exit 1 (30 critical/high)",
+      "change": "pom version property overrides",
+      "outcome": "pending affected rerun",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "Security triage: overrode Boot-managed versions within same lines to public patch releases fixing DC findings: tomcat 10.1.55->10.1.60, postgresql 42.7.11->42.7.13, jackson 2.21.4->2.21.7, log4j-api 2.24.3->2.25.5, commons-lang3 3.17.0->3.20.0. spring-core 6.2.19 (fix 6.2.20) and spring-security 6.5.11 (fix 6.5.12) have no public in-range release: unavoidable within ST-01.",
+      "evidencePaths": [
+        "03_Metrics/evidence/security/first-complete-summary.json"
+      ]
+    },
+    {
+      "eventId": "ev-0c96c033b2",
+      "recordedAt": "2026-09-28T17:01:24.876Z",
+      "category": "environment",
+      "trigger": "npm audit moderate x3; npm install TypeError edgesOut",
+      "change": "vitest 4.1.11; lockfile regenerated for vitest subtree via npm 11",
+      "outcome": "pass",
+      "start": null,
+      "end": null,
+      "lateRecorded": false,
+      "description": "npm audit: 3 moderate (GHSA-82fw-gwwq-j7x9 in @vitest/mocker <=4.1.10). Upgraded vitest/@vitest/coverage-v8 3.2.7 -> 4.1.11 (supports Vite 6, Node 22). npm 10.9.9 (bundled with Node 22) crashed in arborist ('edgesOut' null, optional peer set jsdom->canvas); lockfile updated once with npx npm@11.11.0 on Node 22; npm ci with npm 10 verified. Frontend format/lint/typecheck/unit(23)/build pass; npm audit 0 vulnerabilities.",
+      "evidencePaths": []
+    },
+    {
+      "eventId": "ev-d3569af830",
+      "recordedAt": "2026-09-28T17:02:40.055Z",
+      "category": "implementation",
+      "trigger": "FoundationIT context load failure x2",
+      "change": "V1 VARCHAR(64); test property toString",
+      "outcome": "pass",
+      "start": "2026-09-28T16:15:02Z",
+      "end": "2026-09-28T16:16:23Z",
+      "lateRecorded": true,
+      "description": "LATE RECORD (logged after the fact; times from check logs): M0 FoundationIT failed twice: (1) Hibernate schema validation CHAR(64) vs String -> migration columns changed to VARCHAR(64) (V1 not yet released); (2) test registered Path object for app.catalog.path -> converted to String. Third run passed.",
+      "evidencePaths": [
+        "03_Metrics/evidence/commands/20260928T161502Z_M0-backend-it.log",
+        "03_Metrics/evidence/commands/20260928T161541Z_M0-backend-it.log",
+        "03_Metrics/evidence/commands/20260928T161603Z_M0-backend-it.log"
+      ]
+    },
+    {
+      "eventId": "ev-14b79c8908",
+      "recordedAt": "2026-09-28T17:02:40.141Z",
+      "category": "implementation",
+      "trigger": "FileNotFoundError --cwd; eslint errors",
+      "change": "metrics.py argv split; fields.ts escape; api.ts json catch",
+      "outcome": "pass",
+      "start": null,
+      "end": null,
+      "lateRecorded": true,
+      "description": "LATE RECORD: instrumentation defect - metrics.py 'run' used argparse REMAINDER which swallowed --cwd (crash before any check ran, ~16:14Z, exact time unavailable, no evidence file). Fixed argument splitting on '--'. Separately, npm/eslint no-irregular-whitespace (literal U+200B in regex) and no-useless-assignment fixed during M0 frontend setup (lint output not captured to evidence).",
+      "evidencePaths": []
+    }
+  ],
+  "humanInterventions": {
+    "count": 0,
+    "source": "self-report",
+    "note": "No user messages after the initial prompt; no approvals, hints or manual edits. Harness-generated \"user has not heard from you\" reminders are not human input.",
+    "items": []
+  },
+  "usage": {
+    "inputTokens": {
+      "value": null,
+      "reason": "provider token accounting not exposed to the agent"
+    },
+    "outputTokens": {
+      "value": null,
+      "reason": "not exposed"
+    },
+    "cachedTokens": {
+      "value": null,
+      "reason": "not exposed"
+    },
+    "reasoningTokens": {
+      "value": null,
+      "reason": "not exposed"
+    },
+    "costUsd": {
+      "value": null,
+      "reason": "not exposed"
+    },
+    "modelCalls": {
+      "value": null,
+      "reason": "not exposed"
+    },
+    "toolCalls": {
+      "value": null,
+      "reason": "not counted by harness output visible to agent"
+    },
+    "harnessTokenBudgetCounter": {
+      "source": "harness",
+      "startValue": 15000000,
+      "observedValueAtReportWriting": 14631214,
+      "decrease": 368786,
+      "caveat": "Harness-displayed \"total_tokens left\" counter; semantics (context vs billed tokens) not documented; not provider accounting and not comparable to input/output tokens.",
+      "evidencePaths": []
+    },
+    "wallClockSeconds": {
+      "value": 4639.8,
+      "source": "tool",
+      "evidencePaths": [
+        "03_Metrics/events.jsonl"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "M0-backend-it",
+      "command": "./mvnw -B verify -Dit.test=FoundationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:15:02.373Z",
+      "end": "2026-09-28T16:15:25.405Z",
+      "elapsedSeconds": 23.032,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T161502Z_M0-backend-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M0-backend-it",
+      "command": "./mvnw -B verify -Dit.test=FoundationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:15:41.528Z",
+      "end": "2026-09-28T16:15:58.180Z",
+      "elapsedSeconds": 16.652,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T161541Z_M0-backend-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M0-backend-it",
+      "command": "./mvnw -B verify -Dit.test=FoundationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:16:03.760Z",
+      "end": "2026-09-28T16:16:23.835Z",
+      "elapsedSeconds": 20.075,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T161603Z_M0-backend-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "E2E-journeys-1",
+      "command": "npx playwright test",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:25:06.418Z",
+      "end": "2026-09-28T16:25:11.587Z",
+      "elapsedSeconds": 5.169,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T162506Z_E2E-journeys-1.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M1-registration-api-it",
+      "command": "./mvnw -B verify -Dit.test=RegistrationApiIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:26:08.262Z",
+      "end": "2026-09-28T16:26:30.412Z",
+      "elapsedSeconds": 22.151,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T162608Z_M1-registration-api-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M1-registration-api-it",
+      "command": "./mvnw -B verify -Dit.test=RegistrationApiIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:26:42.658Z",
+      "end": "2026-09-28T16:27:05.834Z",
+      "elapsedSeconds": 23.176,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T162642Z_M1-registration-api-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M1-storage-failure-it",
+      "command": "./mvnw -B verify -Dit.test=StorageFailureIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:27:29.584Z",
+      "end": "2026-09-28T16:27:53.375Z",
+      "elapsedSeconds": 23.791,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T162729Z_M1-storage-failure-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "FE-unit-1",
+      "command": "npm test",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:28:29.308Z",
+      "end": "2026-09-28T16:28:33.995Z",
+      "elapsedSeconds": 4.687,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T162829Z_FE-unit-1.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "E2E-journeys-2",
+      "command": "npx playwright test",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:29:11.155Z",
+      "end": "2026-09-28T16:29:17.085Z",
+      "elapsedSeconds": 5.93,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T162911Z_E2E-journeys-2.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M3-catalog-tests",
+      "command": "./mvnw -B verify -Dit.test=CatalogChangeIT -Dtest=CatalogLoaderTest",
+      "cwd": ".",
+      "start": "2026-09-28T16:30:04.396Z",
+      "end": "2026-09-28T16:30:33.080Z",
+      "elapsedSeconds": 28.683,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T163004Z_M3-catalog-tests.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M3-catalog-tests",
+      "command": "./mvnw -B verify -Dit.test=CatalogChangeIT,FoundationIT -Dtest=CatalogLoaderTest",
+      "cwd": ".",
+      "start": "2026-09-28T16:30:44.626Z",
+      "end": "2026-09-28T16:31:16.905Z",
+      "elapsedSeconds": 32.279,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T163044Z_M3-catalog-tests.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M3-runtime-catalog-restart",
+      "command": "./tools/m3-catalog-restart.sh",
+      "cwd": ".",
+      "start": "2026-09-28T16:31:55.352Z",
+      "end": "2026-09-28T16:32:42.317Z",
+      "elapsedSeconds": 46.966,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T163155Z_M3-runtime-catalog-restart.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M3-runtime-catalog-restart",
+      "command": "./tools/m3-catalog-restart.sh",
+      "cwd": ".",
+      "start": "2026-09-28T16:32:55.064Z",
+      "end": "2026-09-28T16:33:35.564Z",
+      "elapsedSeconds": 40.5,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T163255Z_M3-runtime-catalog-restart.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "E2E-journeys-3",
+      "command": "npm run e2e",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:33:45.189Z",
+      "end": "2026-09-28T16:33:50.859Z",
+      "elapsedSeconds": 5.67,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T163345Z_E2E-journeys-3.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M4-notification-it",
+      "command": "./mvnw -B verify -Dit.test=NotificationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:34:17.413Z",
+      "end": "2026-09-28T16:34:23.391Z",
+      "elapsedSeconds": 5.978,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T163417Z_M4-notification-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M4-notification-it",
+      "command": "./mvnw -B verify -Dit.test=NotificationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:34:33.560Z",
+      "end": "2026-09-28T16:35:03.329Z",
+      "elapsedSeconds": 29.769,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T163433Z_M4-notification-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M4-notification-it",
+      "command": "./mvnw -B verify -Dit.test=NotificationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:35:16.017Z",
+      "end": "2026-09-28T16:35:46.357Z",
+      "elapsedSeconds": 30.34,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T163516Z_M4-notification-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M4-runtime-mail",
+      "command": "python3 tools/runtime_probe.py mail",
+      "cwd": ".",
+      "start": "2026-09-28T16:37:07.235Z",
+      "end": "2026-09-28T16:37:27.490Z",
+      "elapsedSeconds": 20.256,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T163707Z_M4-runtime-mail.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M4-runtime-mail",
+      "command": "python3 tools/runtime_probe.py mail",
+      "cwd": ".",
+      "start": "2026-09-28T16:38:34.924Z",
+      "end": "2026-09-28T16:39:10.941Z",
+      "elapsedSeconds": 36.017,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T163834Z_M4-runtime-mail.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M5-export-it",
+      "command": "./mvnw -B verify -Dit.test=ExportIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:39:38.308Z",
+      "end": "2026-09-28T16:39:43.624Z",
+      "elapsedSeconds": 5.316,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T163938Z_M5-export-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M5-export-it",
+      "command": "./mvnw -B verify -Dit.test=ExportIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false",
+      "cwd": ".",
+      "start": "2026-09-28T16:39:48.807Z",
+      "end": "2026-09-28T16:40:22.780Z",
+      "elapsedSeconds": 33.973,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T163948Z_M5-export-it.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M5-runtime-export",
+      "command": "python3 tools/runtime_probe.py export",
+      "cwd": ".",
+      "start": "2026-09-28T16:40:26.825Z",
+      "end": "2026-09-28T16:40:28.902Z",
+      "elapsedSeconds": 2.078,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T164026Z_M5-runtime-export.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M6-new-tests",
+      "command": "./mvnw -B verify -Dit.test=SecurityIT -Dtest=ArchitectureTest,CaptchaConfigurationTest,RecaptchaVerifierTest,TextNormalizerTest,RateLimitFilterTest,OutboxBackoffTest",
+      "cwd": ".",
+      "start": "2026-09-28T16:41:34.720Z",
+      "end": "2026-09-28T16:42:33.679Z",
+      "elapsedSeconds": 58.959,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T164134Z_M6-new-tests.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "M6-new-tests",
+      "command": "./mvnw -B verify -Dit.test=SecurityIT -Dtest=ArchitectureTest",
+      "cwd": ".",
+      "start": "2026-09-28T16:42:47.497Z",
+      "end": "2026-09-28T16:43:36.613Z",
+      "elapsedSeconds": 49.116,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T164247Z_M6-new-tests.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "static-backend-1",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": ".",
+      "start": "2026-09-28T16:43:53.928Z",
+      "end": "2026-09-28T16:44:19.685Z",
+      "elapsedSeconds": 25.757,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T164353Z_static-backend-1.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "static-backend-2",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": ".",
+      "start": "2026-09-28T16:45:43.456Z",
+      "end": "2026-09-28T16:46:05.901Z",
+      "elapsedSeconds": 22.445,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T164543Z_static-backend-2.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "static-backend-3",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": ".",
+      "start": "2026-09-28T16:46:19.572Z",
+      "end": "2026-09-28T16:46:41.246Z",
+      "elapsedSeconds": 21.674,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T164619Z_static-backend-3.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "static-backend-4",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": ".",
+      "start": "2026-09-28T16:46:52.639Z",
+      "end": "2026-09-28T16:47:19.424Z",
+      "elapsedSeconds": 26.785,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T164652Z_static-backend-4.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "static-backend-5",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": ".",
+      "start": "2026-09-28T16:47:30.940Z",
+      "end": "2026-09-28T16:47:58.395Z",
+      "elapsedSeconds": 27.455,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T164730Z_static-backend-5.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "static-backend-6",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": ".",
+      "start": "2026-09-28T16:48:33.757Z",
+      "end": "2026-09-28T16:49:00.879Z",
+      "elapsedSeconds": 27.122,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T164833Z_static-backend-6.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "first-complete__backend-verify",
+      "command": "./mvnw -B clean verify",
+      "cwd": "backend",
+      "start": "2026-09-28T16:49:48.975Z",
+      "end": "2026-09-28T16:50:52.012Z",
+      "elapsedSeconds": 63.037,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T164948Z_first-complete__backend-verify.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__backend-static",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": "backend",
+      "start": "2026-09-28T16:50:52.101Z",
+      "end": "2026-09-28T16:51:20.577Z",
+      "elapsedSeconds": 28.476,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165052Z_first-complete__backend-static.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-ci",
+      "command": "npm ci --no-audit --no-fund",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:20.641Z",
+      "end": "2026-09-28T16:51:24.674Z",
+      "elapsedSeconds": 4.033,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165120Z_first-complete__frontend-ci.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-format",
+      "command": "npm run format:check",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:24.744Z",
+      "end": "2026-09-28T16:51:25.862Z",
+      "elapsedSeconds": 1.118,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165124Z_first-complete__frontend-format.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-lint",
+      "command": "npm run lint",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:25.934Z",
+      "end": "2026-09-28T16:51:28.762Z",
+      "elapsedSeconds": 2.827,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165125Z_first-complete__frontend-lint.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-typecheck",
+      "command": "npm run typecheck",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:28.835Z",
+      "end": "2026-09-28T16:51:33.604Z",
+      "elapsedSeconds": 4.769,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165128Z_first-complete__frontend-typecheck.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-unit",
+      "command": "npm run test:coverage",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:33.667Z",
+      "end": "2026-09-28T16:51:42.136Z",
+      "elapsedSeconds": 8.469,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165133Z_first-complete__frontend-unit.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-build",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:42.209Z",
+      "end": "2026-09-28T16:51:47.732Z",
+      "elapsedSeconds": 5.523,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165142Z_first-complete__frontend-build.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__frontend-jscpd",
+      "command": "npm run cpd",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:51:47.809Z",
+      "end": "2026-09-28T16:51:48.040Z",
+      "elapsedSeconds": 0.231,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165147Z_first-complete__frontend-jscpd.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__semgrep",
+      "command": "semgrep scan --metrics=off --config p/default --config p/java --config p/typescript --config p/react --config p/secrets --config p/dockerfile --json --output ../03_Metrics/evidence/security/semgrep.json backend/src frontend/src frontend/e2e backend/Dockerfile frontend/Dockerfile frontend/nginx.conf compose.yaml",
+      "cwd": ".",
+      "start": "2026-09-28T16:51:48.103Z",
+      "end": "2026-09-28T16:51:58.363Z",
+      "elapsedSeconds": 10.26,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165148Z_first-complete__semgrep.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__dependency-check",
+      "command": "./mvnw -B org.owasp:dependency-check-maven:13.0.0:check -DskipTests",
+      "cwd": "backend",
+      "start": "2026-09-28T16:51:58.435Z",
+      "end": "2026-09-28T16:52:15.246Z",
+      "elapsedSeconds": 16.811,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165158Z_first-complete__dependency-check.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__npm-audit",
+      "command": "npm audit --audit-level=high",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:52:16.977Z",
+      "end": "2026-09-28T16:52:17.835Z",
+      "elapsedSeconds": 0.857,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165216Z_first-complete__npm-audit.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__security-summary",
+      "command": "python3 tools/security_summary.py",
+      "cwd": ".",
+      "start": "2026-09-28T16:52:17.908Z",
+      "end": "2026-09-28T16:52:17.969Z",
+      "elapsedSeconds": 0.062,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T165217Z_first-complete__security-summary.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__compose-build",
+      "command": "docker compose build",
+      "cwd": ".",
+      "start": "2026-09-28T16:52:18.035Z",
+      "end": "2026-09-28T16:52:52.868Z",
+      "elapsedSeconds": 34.833,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165218Z_first-complete__compose-build.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__compose-up",
+      "command": "docker compose up -d --wait",
+      "cwd": ".",
+      "start": "2026-09-28T16:52:52.945Z",
+      "end": "2026-09-28T16:53:12.236Z",
+      "elapsedSeconds": 19.292,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165252Z_first-complete__compose-up.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__e2e",
+      "command": "npm run e2e",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:53:12.322Z",
+      "end": "2026-09-28T16:53:21.347Z",
+      "elapsedSeconds": 9.026,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165312Z_first-complete__e2e.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__m3-catalog-restart",
+      "command": "./tools/m3-catalog-restart.sh",
+      "cwd": ".",
+      "start": "2026-09-28T16:53:21.454Z",
+      "end": "2026-09-28T16:54:15.336Z",
+      "elapsedSeconds": 53.881,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165321Z_first-complete__m3-catalog-restart.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__probe-mail",
+      "command": "python3 tools/runtime_probe.py mail",
+      "cwd": ".",
+      "start": "2026-09-28T16:54:15.420Z",
+      "end": "2026-09-28T16:54:53.183Z",
+      "elapsedSeconds": 37.763,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165415Z_first-complete__probe-mail.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__probe-idempotency",
+      "command": "python3 tools/runtime_probe.py idempotency",
+      "cwd": ".",
+      "start": "2026-09-28T16:54:53.253Z",
+      "end": "2026-09-28T16:54:53.976Z",
+      "elapsedSeconds": 0.723,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165453Z_first-complete__probe-idempotency.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__probe-storage",
+      "command": "python3 tools/runtime_probe.py storage",
+      "cwd": ".",
+      "start": "2026-09-28T16:54:54.040Z",
+      "end": "2026-09-28T16:55:06.298Z",
+      "elapsedSeconds": 12.258,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165454Z_first-complete__probe-storage.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__probe-export",
+      "command": "python3 tools/runtime_probe.py export",
+      "cwd": ".",
+      "start": "2026-09-28T16:55:06.377Z",
+      "end": "2026-09-28T16:55:08.494Z",
+      "elapsedSeconds": 2.116,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165506Z_first-complete__probe-export.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__probe-prod-isolation",
+      "command": "python3 tools/runtime_probe.py prod-isolation",
+      "cwd": ".",
+      "start": "2026-09-28T16:55:08.555Z",
+      "end": "2026-09-28T16:55:59.466Z",
+      "elapsedSeconds": 50.912,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165508Z_first-complete__probe-prod-isolation.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__probe-recreate",
+      "command": "python3 tools/runtime_probe.py recreate",
+      "cwd": ".",
+      "start": "2026-09-28T16:55:59.553Z",
+      "end": "2026-09-28T16:56:30.714Z",
+      "elapsedSeconds": 31.161,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165559Z_first-complete__probe-recreate.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "first-complete__e2e-after-recreate",
+      "command": "npm run e2e",
+      "cwd": "frontend",
+      "start": "2026-09-28T16:56:30.783Z",
+      "end": "2026-09-28T16:56:37.800Z",
+      "elapsedSeconds": 7.017,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165630Z_first-complete__e2e-after-recreate.log",
+      "suite": "first-complete"
+    },
+    {
+      "id": "affected-backend-verify",
+      "command": "./mvnw -B clean verify",
+      "cwd": "backend",
+      "start": "2026-09-28T16:57:04.389Z",
+      "end": "2026-09-28T16:58:08.414Z",
+      "elapsedSeconds": 64.025,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165704Z_affected-backend-verify.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "affected-dependency-check",
+      "command": "./mvnw -B org.owasp:dependency-check-maven:13.0.0:check -DskipTests",
+      "cwd": "backend",
+      "start": "2026-09-28T16:58:08.483Z",
+      "end": "2026-09-28T16:58:26.175Z",
+      "elapsedSeconds": 17.692,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T165808Z_affected-dependency-check.log",
+      "suite": "incremental"
+    },
+    {
+      "id": "final__backend-verify",
+      "command": "./mvnw -B clean verify",
+      "cwd": "backend",
+      "start": "2026-09-28T17:02:19.040Z",
+      "end": "2026-09-28T17:03:22.241Z",
+      "elapsedSeconds": 63.201,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170219Z_final__backend-verify.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__backend-static",
+      "command": "./mvnw -B spotless:check compile spotbugs:check pmd:check pmd:cpd-check -DskipTests",
+      "cwd": "backend",
+      "start": "2026-09-28T17:03:22.323Z",
+      "end": "2026-09-28T17:03:50.019Z",
+      "elapsedSeconds": 27.696,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170322Z_final__backend-static.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-ci",
+      "command": "npm ci --no-audit --no-fund",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:03:50.080Z",
+      "end": "2026-09-28T17:03:53.841Z",
+      "elapsedSeconds": 3.762,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170350Z_final__frontend-ci.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-format",
+      "command": "npm run format:check",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:03:53.912Z",
+      "end": "2026-09-28T17:03:55.078Z",
+      "elapsedSeconds": 1.165,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170353Z_final__frontend-format.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-lint",
+      "command": "npm run lint",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:03:55.138Z",
+      "end": "2026-09-28T17:03:57.990Z",
+      "elapsedSeconds": 2.852,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170355Z_final__frontend-lint.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-typecheck",
+      "command": "npm run typecheck",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:03:58.053Z",
+      "end": "2026-09-28T17:04:02.207Z",
+      "elapsedSeconds": 4.154,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170358Z_final__frontend-typecheck.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-unit",
+      "command": "npm run test:coverage",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:04:02.277Z",
+      "end": "2026-09-28T17:04:09.231Z",
+      "elapsedSeconds": 6.954,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170402Z_final__frontend-unit.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-build",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:04:09.302Z",
+      "end": "2026-09-28T17:04:14.757Z",
+      "elapsedSeconds": 5.455,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170409Z_final__frontend-build.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__frontend-jscpd",
+      "command": "npm run cpd",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:04:14.831Z",
+      "end": "2026-09-28T17:04:15.056Z",
+      "elapsedSeconds": 0.225,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170414Z_final__frontend-jscpd.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__semgrep",
+      "command": "semgrep scan --metrics=off --config p/default --config p/java --config p/typescript --config p/react --config p/secrets --config p/dockerfile --json --output ../03_Metrics/evidence/security/semgrep.json backend/src frontend/src frontend/e2e backend/Dockerfile frontend/Dockerfile frontend/nginx.conf compose.yaml",
+      "cwd": ".",
+      "start": "2026-09-28T17:04:15.117Z",
+      "end": "2026-09-28T17:04:22.843Z",
+      "elapsedSeconds": 7.726,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170415Z_final__semgrep.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__dependency-check",
+      "command": "./mvnw -B org.owasp:dependency-check-maven:13.0.0:check -DskipTests",
+      "cwd": "backend",
+      "start": "2026-09-28T17:04:22.922Z",
+      "end": "2026-09-28T17:04:39.415Z",
+      "elapsedSeconds": 16.493,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170422Z_final__dependency-check.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__npm-audit",
+      "command": "npm audit --audit-level=high",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:04:40.283Z",
+      "end": "2026-09-28T17:04:40.998Z",
+      "elapsedSeconds": 0.715,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170440Z_final__npm-audit.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__security-summary",
+      "command": "python3 tools/security_summary.py",
+      "cwd": ".",
+      "start": "2026-09-28T17:04:41.059Z",
+      "end": "2026-09-28T17:04:41.107Z",
+      "elapsedSeconds": 0.048,
+      "exitCode": 1,
+      "evidence": "03_Metrics/evidence/commands/20260928T170441Z_final__security-summary.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__compose-build",
+      "command": "docker compose build",
+      "cwd": ".",
+      "start": "2026-09-28T17:04:41.166Z",
+      "end": "2026-09-28T17:05:18.413Z",
+      "elapsedSeconds": 37.247,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170441Z_final__compose-build.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__compose-up",
+      "command": "docker compose up -d --wait",
+      "cwd": ".",
+      "start": "2026-09-28T17:05:18.481Z",
+      "end": "2026-09-28T17:05:38.102Z",
+      "elapsedSeconds": 19.62,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170518Z_final__compose-up.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__e2e",
+      "command": "npm run e2e",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:05:38.224Z",
+      "end": "2026-09-28T17:05:45.550Z",
+      "elapsedSeconds": 7.326,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170538Z_final__e2e.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__m3-catalog-restart",
+      "command": "./tools/m3-catalog-restart.sh",
+      "cwd": ".",
+      "start": "2026-09-28T17:05:45.619Z",
+      "end": "2026-09-28T17:06:27.784Z",
+      "elapsedSeconds": 42.165,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170545Z_final__m3-catalog-restart.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__probe-mail",
+      "command": "python3 tools/runtime_probe.py mail",
+      "cwd": ".",
+      "start": "2026-09-28T17:06:27.853Z",
+      "end": "2026-09-28T17:07:05.542Z",
+      "elapsedSeconds": 37.689,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170627Z_final__probe-mail.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__probe-idempotency",
+      "command": "python3 tools/runtime_probe.py idempotency",
+      "cwd": ".",
+      "start": "2026-09-28T17:07:05.606Z",
+      "end": "2026-09-28T17:07:06.342Z",
+      "elapsedSeconds": 0.736,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170705Z_final__probe-idempotency.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__probe-storage",
+      "command": "python3 tools/runtime_probe.py storage",
+      "cwd": ".",
+      "start": "2026-09-28T17:07:06.417Z",
+      "end": "2026-09-28T17:07:18.866Z",
+      "elapsedSeconds": 12.449,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170706Z_final__probe-storage.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__probe-export",
+      "command": "python3 tools/runtime_probe.py export",
+      "cwd": ".",
+      "start": "2026-09-28T17:07:18.938Z",
+      "end": "2026-09-28T17:07:21.249Z",
+      "elapsedSeconds": 2.311,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170718Z_final__probe-export.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__probe-prod-isolation",
+      "command": "python3 tools/runtime_probe.py prod-isolation",
+      "cwd": ".",
+      "start": "2026-09-28T17:07:21.318Z",
+      "end": "2026-09-28T17:08:17.384Z",
+      "elapsedSeconds": 56.066,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170721Z_final__probe-prod-isolation.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__probe-recreate",
+      "command": "python3 tools/runtime_probe.py recreate",
+      "cwd": ".",
+      "start": "2026-09-28T17:08:17.492Z",
+      "end": "2026-09-28T17:08:50.586Z",
+      "elapsedSeconds": 33.094,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170817Z_final__probe-recreate.log",
+      "suite": "final"
+    },
+    {
+      "id": "final__e2e-after-recreate",
+      "command": "npm run e2e",
+      "cwd": "frontend",
+      "start": "2026-09-28T17:08:50.652Z",
+      "end": "2026-09-28T17:08:58.012Z",
+      "elapsedSeconds": 7.36,
+      "exitCode": 0,
+      "evidence": "03_Metrics/evidence/commands/20260928T170850Z_final__e2e-after-recreate.log",
+      "suite": "final"
+    }
+  ],
+  "git": {
+    "baselineRevision": "f67ba6dc713623392e6f07af25a6610da99a34d2",
+    "branch": "opus_5.5_medium_single_agent_optimized_prompt_tjan",
+    "finalImplementationRevision": "53b60742a81911308173efe03a367923a60de0e3",
+    "checkpoints": [
+      {
+        "sha": "e59fc67",
+        "phase": "M0"
+      },
+      {
+        "sha": "dcc7570",
+        "phase": "M1/M2"
+      },
+      {
+        "sha": "448bdc6",
+        "phase": "M3"
+      },
+      {
+        "sha": "a00e221",
+        "phase": "M4"
+      },
+      {
+        "sha": "7c54bdb",
+        "phase": "M5"
+      },
+      {
+        "sha": "2a3c99b",
+        "phase": "M6 prep"
+      },
+      {
+        "sha": "1205d23",
+        "phase": "M6 security overrides"
+      },
+      {
+        "sha": "53b6074",
+        "phase": "docs; final implementation revision"
+      }
+    ],
+    "reverts": 0,
+    "conflicts": 0,
+    "pushed": false,
+    "note": "Only 02_Implementation and 03_Metrics were ever staged; pre-existing unstaged deletions of earlier-run files were left untouched. A metrics-only commit follows the final implementation revision."
+  },
+  "missingMeasurements": [
+    {
+      "field": "usage.* provider tokens/cost/model calls",
+      "reason": "not exposed by harness/provider to the agent"
+    },
+    {
+      "field": "identity.samplingSettings",
+      "reason": "not exposed"
+    },
+    {
+      "field": "identity.budgets",
+      "reason": "no explicit runner budget communicated"
+    },
+    {
+      "field": "milestones[*].startedAt (M0)",
+      "reason": "not logged separately; work overlapped"
+    },
+    {
+      "field": "repair timing for metrics.py argparse defect and M0 eslint fixes",
+      "reason": "not logged at the time; late-recorded without times"
+    },
+    {
+      "field": "phases[0] end boundary",
+      "reason": "approximate: spec/code writing overlapped preflight NVD download"
+    }
+  ],
+  "architectureDeviationsNote": "No AR/ST rule violation observed at any time. Process note (not an AR/ST rule): M1/M2 code drafted before M0 was verified. Dependency-version overrides stayed within Spring Boot 3.x / same minor lines (recorded in docs/resolved-versions.md).",
+  "checkSummary": {
+    "firstComplete": {
+      "start": "2026-09-28T16:49:48.975Z",
+      "end": "2026-09-28T16:56:37.800Z",
+      "checks": 24,
+      "failed": [
+        "security-summary (Dependency-Check 15 CRITICAL + 15 HIGH; npm audit 3 moderate)"
+      ],
+      "tests": {
+        "backendUnit": "33 run/0 fail/0 err/0 skip",
+        "backendIT": "53/0/0/0",
+        "frontendComponent": "23 passed",
+        "playwright": "5 + 5 after recreation + 4 catalog-changed, all passed"
+      }
+    },
+    "final": {
+      "start": "2026-09-28T17:02:19.040Z",
+      "end": "2026-09-28T17:08:58.012Z",
+      "revision": "53b60742a81911308173efe03a367923a60de0e3",
+      "checks": 24,
+      "failed": [
+        "security-summary (Dependency-Check 7 CRITICAL + 8 HIGH)"
+      ],
+      "tests": {
+        "backendUnit": "33/0/0/0",
+        "backendIT": "53/0/0/0",
+        "frontendComponent": "23 passed",
+        "playwright": "5 + 5 + 4 passed, 0 skipped"
+      },
+      "coverage": {
+        "backendUnitJacoco": "lines 225/1071 (21.0%), branches 117/326",
+        "backendIntegrationJacoco": "lines 934/1071 (87.2%), branches 233/326",
+        "frontendVitestV8": "statements 78.61%, branches 75.63%, functions 81.63%, lines 77.3% (src excl. tests/main.tsx)"
+      },
+      "static": {
+        "spotbugs": 0,
+        "pmd": 0,
+        "cpd": 0,
+        "jscpd": "0 clones / 15 files",
+        "eslintErrors": 0,
+        "tscErrors": 0
+      },
+      "security": {
+        "semgrep": "0 findings, 0 errors",
+        "npmAudit": "0",
+        "dependencyCheck": {
+          "CRITICAL": 7,
+          "HIGH": 8,
+          "MEDIUM": 7,
+          "LOW": 1,
+          "unit": "vulnerability x dependency"
+        }
+      }
+    }
+  }
 }

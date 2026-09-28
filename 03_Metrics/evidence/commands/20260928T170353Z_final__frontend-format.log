@@ -1,0 +1,9 @@
+$ (cwd=frontend) npm run format:check
+# start=2026-09-28T17:03:53.912Z end=2026-09-28T17:03:55.078Z exit=0 elapsed_s=1.165
+
+
+> conference-registration-frontend@1.0.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!

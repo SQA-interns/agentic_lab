@@ -1,0 +1,7 @@
+$ (cwd=frontend) npm ci --no-audit --no-fund
+# start=2026-09-28T17:03:50.080Z end=2026-09-28T17:03:53.841Z exit=0 elapsed_s=3.762
+
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+npm warn deprecated @testing-library/jest-dom@6.10.0: Incorrect minor release with breaking changes (Node >=22 and required @testing-library/dom peer). Use 6.9.1 for the 6.x line, or upgrade to 7.0.0.
+
+added 271 packages in 4s

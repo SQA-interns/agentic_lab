@@ -1,0 +1,37 @@
+$ (cwd=.) semgrep scan --metrics=off --config p/default --config p/java --config p/typescript --config p/react --config p/secrets --config p/dockerfile --json --output ../03_Metrics/evidence/security/semgrep.json backend/src frontend/src frontend/e2e backend/Dockerfile frontend/Dockerfile frontend/nginx.conf compose.yaml
+# start=2026-09-28T17:04:15.117Z end=2026-09-28T17:04:22.843Z exit=0 elapsed_s=7.726
+
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 93 files tracked by git with 1079 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  java            118      69          Community    1079                                                                
+  <multilang>      60      62                                                                                           
+  ts              164      15                                                                                           
+  yaml             36       4                                                                                           
+  dockerfile        7       2                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 0 (0 blocking)
+ • Rules run: 382
+ • Targets scanned: 93
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Files matching .semgrepignore patterns: 19
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 382 rules on 93 files: 0 findings.
+(need more rules? `semgrep login` for additional free Semgrep Registry rules)
+
+If Semgrep missed a finding, please send us feedback to let us know!
+See https://semgrep.dev/docs/reporting-false-negatives/

@@ -1,0 +1,25 @@
+$ (cwd=.) docker compose up -d --wait
+# start=2026-09-28T17:05:18.481Z end=2026-09-28T17:05:38.102Z exit=0 elapsed_s=19.62
+
+ Container conference-mailpit-1 Running 
+ Container conference-postgres-1 Running 
+ Container conference-backend-1 Recreate 
+ Container conference-backend-1 Recreated 
+ Container conference-frontend-1 Recreate 
+ Container conference-frontend-1 Recreated 
+ Container conference-postgres-1 Waiting 
+ Container conference-postgres-1 Healthy 
+ Container conference-backend-1 Starting 
+ Container conference-backend-1 Started 
+ Container conference-backend-1 Waiting 
+ Container conference-backend-1 Healthy 
+ Container conference-frontend-1 Starting 
+ Container conference-frontend-1 Started 
+ Container conference-backend-1 Waiting 
+ Container conference-frontend-1 Waiting 
+ Container conference-postgres-1 Waiting 
+ Container conference-mailpit-1 Waiting 
+ Container conference-backend-1 Healthy 
+ Container conference-frontend-1 Healthy 
+ Container conference-mailpit-1 Healthy 
+ Container conference-postgres-1 Healthy 

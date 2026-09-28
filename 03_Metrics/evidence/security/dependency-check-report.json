@@ -25,7 +25,7 @@
     },
     "projectInfo": {
         "name": "conference-registration-backend",
-"groupID":"org.example.conference","artifactID":"conference-registration-backend","version":"1.0.0",        "reportDate": "2026-09-28T16:58:25.842956749Z",
+"groupID":"org.example.conference","artifactID":"conference-registration-backend","version":"1.0.0",        "reportDate": "2026-09-28T17:04:39.116266552Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",

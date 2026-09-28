@@ -2,7 +2,7 @@
 <pmd-cpd xmlns="https://pmd-code.org/schema/cpd-report"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          pmdVersion="7.28.0"
-         timestamp="2026-09-28T18:51:20.333378674+02:00"
+         timestamp="2026-09-28T19:03:49.768328719+02:00"
          version="1.0.0"
          xsi:schemaLocation="https://pmd-code.org/schema/cpd-report https://pmd.github.io/schema/cpd-report_1_0_0.xsd">
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/ConferenceApplication.java"

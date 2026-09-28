@@ -1,0 +1,4 @@
+$ (cwd=.) python3 tools/runtime_probe.py prod-isolation
+# start=2026-09-28T17:07:21.318Z end=2026-09-28T17:08:17.384Z exit=0 elapsed_s=56.066
+
+[pass] prod-isolation

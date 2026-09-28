@@ -153,18 +153,18 @@
     "bySeverity": {
       "info": 0,
       "low": 0,
-      "moderate": 3,
+      "moderate": 0,
       "high": 0,
       "critical": 0,
-      "total": 3
+      "total": 0
     },
     "dependencies": {
       "prod": 4,
-      "dev": 367,
-      "optional": 62,
-      "peer": 7,
+      "dev": 323,
+      "optional": 61,
+      "peer": 8,
       "peerOptional": 0,
-      "total": 370
+      "total": 326
     },
     "criticalOrHigh": 0
   },
