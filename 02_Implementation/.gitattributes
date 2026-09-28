@@ -1,6 +1,7 @@
-# Frozen acceptance tests are hashed byte-for-byte (docs/acceptance/MANIFEST.sha256);
-# keep them LF on every checkout so the hashes stay valid.
-backend/src/test/java/si/konferenca/registration/acceptance/** text eol=lf
+# Frozen acceptance tests are hashed byte-for-byte (docs/acceptance/MANIFEST.sha256).
+# The Java suite was frozen with CRLF line endings (written by Spotless on Windows), the
+# other frozen files with LF; these rules make every checkout reproduce the frozen bytes.
+backend/src/test/java/si/konferenca/registration/acceptance/** text eol=crlf
 backend/src/test/resources/docker-java.properties text eol=lf
 frontend/e2e/** text eol=lf
 frontend/playwright.config.ts text eol=lf
