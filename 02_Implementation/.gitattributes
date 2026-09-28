@@ -1,0 +1,7 @@
+# Frozen acceptance tests are hashed byte-for-byte (docs/acceptance/MANIFEST.sha256);
+# keep them LF on every checkout so the hashes stay valid.
+backend/src/test/java/si/konferenca/registration/acceptance/** text eol=lf
+backend/src/test/resources/docker-java.properties text eol=lf
+frontend/e2e/** text eol=lf
+frontend/playwright.config.ts text eol=lf
+docs/acceptance/** text eol=lf

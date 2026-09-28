@@ -20,8 +20,8 @@
     },
     {
       "name": "acceptance-tests",
-      "start": null,
-      "end": null
+      "start": "2026-09-28T23:35:31Z",
+      "end": "2026-09-28T23:52:14Z"
     },
     {
       "name": "implementation",
@@ -45,8 +45,8 @@
     }
   ],
   "firstWorkingHappyPathTimestamp": null,
-  "acceptanceTestFreezeHeld": null,
-  "acceptanceTestFreezeHeldReason": "set true/false once Phase 3 (acceptance tests) is frozen and re-checked in Verification; explain any false in docs/decisions-log.md",
+  "acceptanceTestFreezeHeld": true,
+  "acceptanceTestFreezeHeldReason": "frozen at the Phase 3 commit (docs/acceptance/MANIFEST.sha256, 18 files); to be re-checked in Verification",
   "firstTestRun": {
     "passed": null,
     "failed": null
@@ -133,6 +133,18 @@
       ],
       "humanResponse": "2026-09-28T23:30:58Z: reCAPTCHA test-mode only; SMTP local catcher only; organizer creds generated locally; NVD API key provided in session (value not recorded)",
       "resolution": "resolved by human"
+    },
+    {
+      "timestamp": "2026-09-28T23:41:28Z",
+      "category": "tool-incompatibility",
+      "trigger": "D-7: Testcontainers 1.20.6 (managed by pinned Spring Boot 3.4.4) uses Docker API 1.32; local Docker Engine 29.8.0 requires >= 1.40, so every Testcontainers-based test failed to start",
+      "proposedAlternatives": [
+        "config only: src/test/resources/docker-java.properties api.version=1.44 (chosen)",
+        "override Testcontainers version >= 1.21.4 (needs approval)",
+        "upgrade Spring Boot (needs approval)"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
     }
   ],
   "fixLoops": [],
@@ -150,6 +162,14 @@
       "filesChanged": 36,
       "linesAdded": 8325,
       "linesRemoved": 7
+    },
+    {
+      "sha": "a8e175cbc1f0692a0075aeae5022e93c8bc52823",
+      "phase": "specification",
+      "message": "phase 2: specification and API contract",
+      "filesChanged": 6,
+      "linesAdded": 1174,
+      "linesRemoved": 5
     }
   ],
   "reverts": 0,

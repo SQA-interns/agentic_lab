@@ -122,3 +122,32 @@ permits when no human is available synchronously.
   environment variable at run time). Container images: public
   registries only (every image in `docker-compose.yml` is public).
 - **resolution:** resolved by human — alternatives as answered above.
+
+## D-7 — Testcontainers cannot talk to Docker Engine 29 as shipped
+
+- **timestamp:** 2026-09-28T23:41:28Z
+- **category:** tool-incompatibility (CONSTITUTION §3: primary tool named
+  in TECH_STACK cannot be used as specified)
+- **trigger:** First acceptance red run: every test errored in class
+  initialisation with `BadRequestException: client version 1.32 is too
+  old. Minimum supported API version is 1.40`. Testcontainers 1.20.6
+  (the version managed by the pinned `spring-boot-starter-parent`
+  3.4.4) defaults its docker-java client to Docker API 1.32; this
+  machine runs Docker Engine 29.8.0 (API 1.56, minimum 1.40).
+  Testcontainers is the TECH_STACK-named tool for PostgreSQL
+  integration tests.
+- **proposedAlternatives:**
+  1. Configuration only: `backend/src/test/resources/docker-java.properties`
+     with `api.version=1.44`, so the managed Testcontainers version talks
+     a supported API. No tool, version or dependency changes.
+     *(chosen — most conservative; nothing substituted)*
+  2. Override the Testcontainers version (≥ 1.21.4) in the POM — a
+     dependency-version change; would need human approval.
+  3. Upgrade Spring Boot — a pinned-version change; would need human
+     approval.
+- **humanResponse:** none requested. The operator asked to stop for
+  tool/version/secret *substitutions*; alternative 1 substitutes
+  nothing, so it was applied and is put on the record here.
+- **resolution:** agent-default, pending human review — alternative 1.
+  Verified: with the file present, the containers start and every
+  acceptance test fails for a behavioural reason.

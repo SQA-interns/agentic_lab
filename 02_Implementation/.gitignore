@@ -5,3 +5,7 @@ frontend/coverage/
 *.log
 .idea/
 .vscode/
+frontend/test-results/
+frontend/playwright-report/
+.env
+config/local/

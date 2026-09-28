@@ -1,0 +1,90 @@
+ApiContractAcceptanceTest.clientConfigReportsTestMode | failure:  expected: 200  but was: 404
+ApiContractAcceptanceTest.unknownPropertyIsRejected | failure:  expected: 400  but was: 404
+ApiContractAcceptanceTest.controlCharactersAreRejected | failure: [status for lastName/INVALID_CHARACTERS: {"timestamp":"2026-09-28T23:50:35.760+00:00","status":404,"error":"Not Found","path":"/api/registra
+ApiContractAcceptanceTest.oversizedBodyIsRejected | failure:  expected: 413  but was: 404
+ApiContractAcceptanceTest.invalidRegistrationTypeIsRejected | failure:  expected: 400  but was: 404
+ApiContractAcceptanceTest.healthEndpointIsUp | PASS
+ApiContractAcceptanceTest.malformedJsonIsRejected | failure:  expected: 400  but was: 404
+ApiContractAcceptanceTest.missingRecaptchaTokenIsRejected | failure:  expected: 400  but was: 404
+ApiContractAcceptanceTest.nonJsonContentTypeIsRejected | failure:  expected: 415  but was: 404
+ApiContractAcceptanceTest.tooLongFieldIsRejected | failure: [status for firstName/TOO_LONG: {"timestamp":"2026-09-28T23:50:35.989+00:00","status":404,"error":"Not Found","path":"/api/registrations"}] 
+ApiContractAcceptanceTest.apiResponsesCarrySecurityHeaders | failure:  expected: "nosniff"  but was: null
+ConfigurableOptionsAcceptanceTest.ac_003_02_newlyConfiguredOptionIsOfferedAndSelectable | failure:  Expecting actual:   "{"timestamp":"2026-09-28T23:50:36.029+00:00","status":404,"error":"Not Found","path":"/api/options"}" to contain:   "w
+ConfigurableOptionsAcceptanceTest.ac_003_01_optionsAreGroupedByConfigurableSet | failure: [{"timestamp":"2026-09-28T23:50:36.045+00:00","status":404,"error":"Not Found","path":"/api/options"}]  expected: 200  but was: 404
+ConfigurableOptionsAcceptanceTest.ac_003_04_existingRegistrationsKeepTheirSelectionsAfterDeactivation | failure: [{"timestamp":"2026-09-28T23:50:36.058+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ConfigurableOptionsAcceptanceTest.ac_003_05_renamingKeepsTheAssociationByStableIdentifier | failure: [{"timestamp":"2026-09-28T23:50:36.070+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ConfigurableOptionsAcceptanceTest.ac_003_03_deactivatedOptionStopsBeingOfferedAndAccepted | failure: [{"timestamp":"2026-09-28T23:50:36.083+00:00","status":404,"error":"Not Found","path":"/api/options"}]  expected: 200  but was: 404
+ConfigurableOptionsAcceptanceTest.ac_003_03_optionRemovedFromFileStopsBeingOffered | failure: [{"timestamp":"2026-09-28T23:50:36.096+00:00","status":404,"error":"Not Found","path":"/api/options"}]  expected: 200  but was: 404
+ConfirmationAcceptanceTest.ac_004_02_rejectedSubmissionReturnsReasonsAndNoRegistration | failure:  expected: 400  but was: 404
+ConfirmationAcceptanceTest.ac_004_02_failedRecaptchaIsRejectedWithoutConfirmation | failure:  expected: 400  but was: 404
+ConfirmationAcceptanceTest.ac_004_03_noConfirmationWhenRegistrationCannotBeStored | failure: [{"timestamp":"2026-09-28T23:50:36.141+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 500  but was: 404
+ConfirmationAcceptanceTest.ac_004_01_acceptedRegistrationReturnsConfirmationData | failure: [{"timestamp":"2026-09-28T23:50:36.155+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+DurableStorageAcceptanceTest.ac_005_03_restoreRequiresOrganizerAccess | failure:  expected: 401  but was: 404
+DurableStorageAcceptanceTest.ac_005_02_rejectedSubmissionLeavesNoPartialRegistration | failure:  expected: 400  but was: 404
+DurableStorageAcceptanceTest.ac_005_03_registrationsCanBeRestoredFromBackups | failure:  expected: 201  but was: 404
+DurableStorageAcceptanceTest.ac_005_02_registrationAndOptionsAreStoredTogether | failure: [{"timestamp":"2026-09-28T23:50:36.205+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+DurableStorageAcceptanceTest.ac_005_01_acceptedRegistrationHasARawJsonBackup | failure: [{"timestamp":"2026-09-28T23:50:36.214+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+DurableStorageAcceptanceTest.ac_005_01_registrationSurvivesAnApplicationRestart | failure: [{"timestamp":"2026-09-28T23:50:36.223+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ExportAcceptanceTest.ac_008_02_exportContainsAllRegistrationDataPerType | error: No valid entries or contents found, this is not a valid OOXML (Office Open XML) file
+ExportAcceptanceTest.ac_008_05_exportWithNoRegistrationsHasOnlyHeaders | error: ERROR: relation "registration_option" does not exist   Position: 13
+ExportAcceptanceTest.ac_008_06_exportWithWrongCredentialsIsRefused | failure:  expected: 401  but was: 404
+ExportAcceptanceTest.ac_008_03_exportIsCurrent | error: No valid entries or contents found, this is not a valid OOXML (Office Open XML) file
+ExportAcceptanceTest.ac_008_01_organizerCanExportRegistrationsAsExcel | failure:  expected: 200  but was: 404
+ExportAcceptanceTest.ac_008_06_exportWithoutCredentialsIsRefused | failure:  expected: 401  but was: 404
+ExportAcceptanceTest.ac_008_02_participantTextIsWrittenAsTextNotFormula | error: No valid entries or contents found, this is not a valid OOXML (Office Open XML) file
+ExportAcceptanceTest.ac_008_04_exportPreservesUnicode | error: No valid entries or contents found, this is not a valid OOXML (Office Open XML) file
+ExternalRegistrationAcceptanceTest.ac_001_07_declinedConsentIsRejected | failure: [status for personalDataConsent/CONSENT_REQUIRED: {"timestamp":"2026-09-28T23:50:36.519+00:00","status":404,"error":"Not Found","path":"/api
+ExternalRegistrationAcceptanceTest.ac_001_02_missingRequiredFieldIsRejected(String)[1] | failure: [status for firstName/REQUIRED: {"timestamp":"2026-09-28T23:50:36.553+00:00","status":404,"error":"Not Found","path":"/api/registrations"}] 
+ExternalRegistrationAcceptanceTest.ac_001_02_missingRequiredFieldIsRejected(String)[2] | failure: [status for lastName/REQUIRED: {"timestamp":"2026-09-28T23:50:36.564+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  
+ExternalRegistrationAcceptanceTest.ac_001_02_missingRequiredFieldIsRejected(String)[3] | failure: [status for email/REQUIRED: {"timestamp":"2026-09-28T23:50:36.574+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  exp
+ExternalRegistrationAcceptanceTest.ac_001_02_missingRequiredFieldIsRejected(String)[4] | failure: [status for organization/REQUIRED: {"timestamp":"2026-09-28T23:50:36.584+00:00","status":404,"error":"Not Found","path":"/api/registrations"
+ExternalRegistrationAcceptanceTest.ac_001_11_registrationWithoutOptionsIsAccepted | failure: [{"timestamp":"2026-09-28T23:50:36.593+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ExternalRegistrationAcceptanceTest.ac_001_13_optionDeactivatedAfterFormLoadIsRejected | failure:  Expecting actual:   "{"timestamp":"2026-09-28T23:50:36.602+00:00","status":404,"error":"Not Found","path":"/api/options"}" to contain:   "w
+ExternalRegistrationAcceptanceTest.ac_001_01_validExternalRegistrationIsAccepted | failure: [{"timestamp":"2026-09-28T23:50:36.612+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ExternalRegistrationAcceptanceTest.ac_001_07_missingConsentIsRejected | failure: [status for personalDataConsent/CONSENT_REQUIRED: {"timestamp":"2026-09-28T23:50:36.620+00:00","status":404,"error":"Not Found","path":"/api
+ExternalRegistrationAcceptanceTest.ac_001_10_selectedActiveOptionsAreRecorded | failure: [{"timestamp":"2026-09-28T23:50:36.628+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ExternalRegistrationAcceptanceTest.ac_001_09_onlyActiveOptionsAreOffered | failure: [{"timestamp":"2026-09-28T23:50:36.635+00:00","status":404,"error":"Not Found","path":"/api/options"}]  expected: 200  but was: 404
+ExternalRegistrationAcceptanceTest.ac_001_05_leadingAndTrailingWhitespaceIsNotSignificant | failure: [{"timestamp":"2026-09-28T23:50:36.644+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ExternalRegistrationAcceptanceTest.ac_001_06_slovenianAndUnicodeCharactersArePreserved | failure: [{"timestamp":"2026-09-28T23:50:36.651+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ExternalRegistrationAcceptanceTest.ac_001_04_invalidEmailIsRejected(String)[1] | failure: [status for email/INVALID_EMAIL: {"timestamp":"2026-09-28T23:50:36.659+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]
+ExternalRegistrationAcceptanceTest.ac_001_04_invalidEmailIsRejected(String)[2] | failure: [status for email/INVALID_EMAIL: {"timestamp":"2026-09-28T23:50:36.667+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]
+ExternalRegistrationAcceptanceTest.ac_001_04_invalidEmailIsRejected(String)[3] | failure: [status for email/INVALID_EMAIL: {"timestamp":"2026-09-28T23:50:36.676+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]
+ExternalRegistrationAcceptanceTest.ac_001_04_invalidEmailIsRejected(String)[4] | failure: [status for email/INVALID_EMAIL: {"timestamp":"2026-09-28T23:50:36.685+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]
+ExternalRegistrationAcceptanceTest.ac_001_04_invalidEmailIsRejected(String)[5] | failure: [status for email/INVALID_EMAIL: {"timestamp":"2026-09-28T23:50:36.694+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]
+ExternalRegistrationAcceptanceTest.ac_001_12_unknownOptionIsRejected | failure: [status for optionIds[1]/UNKNOWN_OPTION: {"timestamp":"2026-09-28T23:50:36.704+00:00","status":404,"error":"Not Found","path":"/api/registra
+ExternalRegistrationAcceptanceTest.ac_001_03_whitespaceOnlyEmailCountsAsEmpty | failure: [status for email/REQUIRED: {"timestamp":"2026-09-28T23:50:36.712+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  exp
+ExternalRegistrationAcceptanceTest.ac_001_03_whitespaceOnlyValueCountsAsEmpty(String)[1] | failure: [status for firstName/REQUIRED: {"timestamp":"2026-09-28T23:50:36.721+00:00","status":404,"error":"Not Found","path":"/api/registrations"}] 
+ExternalRegistrationAcceptanceTest.ac_001_03_whitespaceOnlyValueCountsAsEmpty(String)[2] | failure: [status for lastName/REQUIRED: {"timestamp":"2026-09-28T23:50:36.729+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  
+ExternalRegistrationAcceptanceTest.ac_001_03_whitespaceOnlyValueCountsAsEmpty(String)[3] | failure: [status for organization/REQUIRED: {"timestamp":"2026-09-28T23:50:36.738+00:00","status":404,"error":"Not Found","path":"/api/registrations"
+ExternalRegistrationAcceptanceTest.ac_001_13_inactiveOptionIsRejected | failure: [status for optionIds[0]/INACTIVE_OPTION: {"timestamp":"2026-09-28T23:50:36.746+00:00","status":404,"error":"Not Found","path":"/api/registr
+MailFailureAcceptanceTest.harnessPointsTheApplicationAtAClosedSmtpPort | PASS
+MailFailureAcceptanceTest.ac_006_04_and_ac_007_03_mailFailureDoesNotUndoAcceptedRegistration | failure: [{"timestamp":"2026-09-28T23:50:37.858+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+OrganizerNotificationAcceptanceTest.ac_007_01_organizerIsNotifiedWithSubmittedDataAndJsonAttachment | failure: [{"timestamp":"2026-09-28T23:50:37.877+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+OrganizerNotificationAcceptanceTest.ac_007_02_noNotificationForRejectedSubmission | failure:  expected: 400  but was: 404
+ParticipantEmailAcceptanceTest.ac_006_02_participantTextCannotInjectMarkupOrHeaders | failure: [{"timestamp":"2026-09-28T23:50:37.904+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ParticipantEmailAcceptanceTest.ac_006_02_confirmationEmailListsNameTypeAndOptionsWithUnicode | failure: [{"timestamp":"2026-09-28T23:50:37.912+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ParticipantEmailAcceptanceTest.ac_006_01_participantReceivesConfirmationEmail | failure: [{"timestamp":"2026-09-28T23:50:37.920+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+ParticipantEmailAcceptanceTest.ac_006_02_confirmationEmailWithoutOptionsSaysSo | failure:  expected: 201  but was: 404
+ParticipantEmailAcceptanceTest.ac_006_03_noEmailForRejectedSubmission | failure:  expected: 400  but was: 404
+RateLimitAcceptanceTest.registrationsBeyondTheLimitAreRejectedWith429 | failure:  expected: 3  but was: 0
+RateLimitAcceptanceTest.organizerEndpointsAreRateLimited | failure:  expected: 429  but was: 404
+RateLimitAcceptanceTest.harnessAppliesTheLowLimits | PASS
+StudentRegistrationAcceptanceTest.ac_002_07_unknownOptionIsRejectedForStudents | failure: [status for optionIds[0]/UNKNOWN_OPTION: {"timestamp":"2026-09-28T23:50:38.867+00:00","status":404,"error":"Not Found","path":"/api/registra
+StudentRegistrationAcceptanceTest.ac_002_02_missingRequiredStudentFieldIsRejected(String)[1] | failure: [status for firstName/REQUIRED: {"timestamp":"2026-09-28T23:50:38.877+00:00","status":404,"error":"Not Found","path":"/api/registrations"}] 
+StudentRegistrationAcceptanceTest.ac_002_02_missingRequiredStudentFieldIsRejected(String)[2] | failure: [status for lastName/REQUIRED: {"timestamp":"2026-09-28T23:50:38.886+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  
+StudentRegistrationAcceptanceTest.ac_002_02_missingRequiredStudentFieldIsRejected(String)[3] | failure: [status for email/REQUIRED: {"timestamp":"2026-09-28T23:50:38.894+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  exp
+StudentRegistrationAcceptanceTest.ac_002_02_missingRequiredStudentFieldIsRejected(String)[4] | failure: [status for studyInstitution/REQUIRED: {"timestamp":"2026-09-28T23:50:38.902+00:00","status":404,"error":"Not Found","path":"/api/registrati
+StudentRegistrationAcceptanceTest.ac_002_02_missingRequiredStudentFieldIsRejected(String)[5] | failure: [status for studyProgramme/REQUIRED: {"timestamp":"2026-09-28T23:50:38.911+00:00","status":404,"error":"Not Found","path":"/api/registration
+StudentRegistrationAcceptanceTest.ac_002_02_missingRequiredStudentFieldIsRejected(String)[6] | failure: [status for studentId/REQUIRED: {"timestamp":"2026-09-28T23:50:38.921+00:00","status":404,"error":"Not Found","path":"/api/registrations"}] 
+StudentRegistrationAcceptanceTest.ac_002_08_fieldOfTheOtherTypeIsNotAccepted | failure: [status for organization/FIELD_NOT_ALLOWED: {"timestamp":"2026-09-28T23:50:38.929+00:00","status":404,"error":"Not Found","path":"/api/regis
+StudentRegistrationAcceptanceTest.ac_002_02_whitespaceOnlyStudentFieldIsRejected(String)[1] | failure: [status for studyInstitution/REQUIRED: {"timestamp":"2026-09-28T23:50:38.938+00:00","status":404,"error":"Not Found","path":"/api/registrati
+StudentRegistrationAcceptanceTest.ac_002_02_whitespaceOnlyStudentFieldIsRejected(String)[2] | failure: [status for studyProgramme/REQUIRED: {"timestamp":"2026-09-28T23:50:38.947+00:00","status":404,"error":"Not Found","path":"/api/registration
+StudentRegistrationAcceptanceTest.ac_002_02_whitespaceOnlyStudentFieldIsRejected(String)[3] | failure: [status for studentId/REQUIRED: {"timestamp":"2026-09-28T23:50:38.955+00:00","status":404,"error":"Not Found","path":"/api/registrations"}] 
+StudentRegistrationAcceptanceTest.ac_002_03_invalidEmailIsRejectedForStudents | failure: [status for email/INVALID_EMAIL: {"timestamp":"2026-09-28T23:50:38.962+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]
+StudentRegistrationAcceptanceTest.ac_002_07_inactiveOptionIsRejectedForStudents | failure: [status for optionIds[1]/INACTIVE_OPTION: {"timestamp":"2026-09-28T23:50:38.971+00:00","status":404,"error":"Not Found","path":"/api/registr
+StudentRegistrationAcceptanceTest.ac_002_04_studentValuesAreTrimmedAndUnicodePreserving | failure: [{"timestamp":"2026-09-28T23:50:38.979+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+StudentRegistrationAcceptanceTest.ac_002_08_externalRegistrationDoesNotRequireStudentFields | failure:  expected: 201  but was: 404
+StudentRegistrationAcceptanceTest.ac_002_01_validStudentRegistrationIsAccepted | failure: [{"timestamp":"2026-09-28T23:50:38.996+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+StudentRegistrationAcceptanceTest.ac_002_06_studentMaySelectActiveOptions | failure: [{"timestamp":"2026-09-28T23:50:39.004+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404
+StudentRegistrationAcceptanceTest.ac_002_05_mandatoryConsentIsRequiredForStudents | failure: [status for personalDataConsent/CONSENT_REQUIRED: {"timestamp":"2026-09-28T23:50:39.012+00:00","status":404,"error":"Not Found","path":"/api
+StudentRegistrationAcceptanceTest.ac_002_08_studentRegistrationDoesNotRequireOrganization | failure: [{"timestamp":"2026-09-28T23:50:39.019+00:00","status":404,"error":"Not Found","path":"/api/registrations"}]  expected: 201  but was: 404

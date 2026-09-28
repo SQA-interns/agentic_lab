@@ -336,10 +336,13 @@ With no registrations the workbook contains only the header row
 
 - Frontend: in production mode the reCAPTCHA v2 checkbox widget is
   rendered with the site key from `GET /api/config`; its token is sent
-  as `recaptchaToken`. The submit button is disabled until a token
-  exists. In test mode the frontend renders a local "I am not a robot"
-  checkbox that yields the token `test-pass`; no Google script is
-  loaded.
+  as `recaptchaToken`. Submitting without a token shows the field
+  message "Please confirm you are not a robot." and sends nothing
+  *(Phase 3 clarification: the earlier "submit disabled until a token
+  exists" wording would have hidden validation messages, contradicting
+  AC-004-02)*. In test mode the frontend renders a local checkbox
+  labelled "I am not a robot" that yields the token `test-pass`; no
+  Google script is loaded.
 - Backend (`integration.RecaptchaVerifier`):
   - **Production mode** (`app.recaptcha.test-mode=false`, the default):
     POST `secret`, `response` and `remoteip` form-encoded to
@@ -439,20 +442,24 @@ Verification; findings are triaged by `SEVERITY_TAXONOMY.md`.
 
 ## 9. Configuration (environment variables)
 
-| Variable | Purpose | Default |
-| --- | --- | --- |
-| `SPRING_DATASOURCE_URL`/`_USERNAME`/`_PASSWORD` | Database | local dev values from scaffold |
-| `SPRING_MAIL_HOST`, `SPRING_MAIL_PORT`, `SPRING_MAIL_USERNAME`, `SPRING_MAIL_PASSWORD`, `SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE` | SMTP | `localhost:1025`, no auth |
-| `APP_MAIL_FROM` | Sender address | `registration@localhost` |
-| `APP_ORGANIZER_EMAILS` | Comma-separated organizer notification recipients | none — required |
-| `APP_ORGANIZER_USERNAME`, `APP_ORGANIZER_PASSWORD` | Export/restore credentials | none — required |
-| `APP_OPTIONS_FILE` | Options file path | `./config/conference-options.json` |
-| `APP_BACKUP_DIR` | JSON backup directory | `./data/registrations` |
-| `APP_CONFERENCE_NAME` | Used in email bodies | `Conference` |
-| `RECAPTCHA_TEST_MODE` | Deterministic test mode | `false` |
-| `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` | reCAPTCHA keys | none — required in production mode |
-| `RECAPTCHA_VERIFY_URL` | siteverify endpoint | Google's URL |
-| `APP_RATE_LIMIT_REGISTRATION_PER_MINUTE`, `APP_RATE_LIMIT_ORGANIZER_PER_MINUTE` | Rate limits | 30, 10 |
+Spring property names (column 2) were added in Phase 3 so the
+acceptance harness can configure the application; `application.yml`
+maps each environment variable to its property explicitly.
+
+| Variable | Spring property | Purpose | Default |
+| --- | --- | --- | --- |
+| `SPRING_DATASOURCE_URL`/`_USERNAME`/`_PASSWORD` | `spring.datasource.*` | Database | local dev values from scaffold |
+| `SPRING_MAIL_HOST`, `SPRING_MAIL_PORT`, `SPRING_MAIL_USERNAME`, `SPRING_MAIL_PASSWORD`, `SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE` | `spring.mail.*` | SMTP | `localhost:1025`, no auth |
+| `APP_MAIL_FROM` | `app.mail.from` | Sender address | `registration@localhost` |
+| `APP_ORGANIZER_EMAILS` | `app.organizer.emails` | Comma-separated organizer notification recipients | none — required |
+| `APP_ORGANIZER_USERNAME`, `APP_ORGANIZER_PASSWORD` | `app.organizer.username`, `app.organizer.password` | Export/restore credentials | none — required |
+| `APP_OPTIONS_FILE` | `app.options.file` | Options file path | `./config/conference-options.json` |
+| `APP_BACKUP_DIR` | `app.backup.dir` | JSON backup directory | `./data/registrations` |
+| `APP_CONFERENCE_NAME` | `app.conference-name` | Used in email bodies | `Conference` |
+| `RECAPTCHA_TEST_MODE` | `app.recaptcha.test-mode` | Deterministic test mode | `false` |
+| `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` | `app.recaptcha.site-key`, `app.recaptcha.secret-key` | reCAPTCHA keys | none — required in production mode |
+| `RECAPTCHA_VERIFY_URL` | `app.recaptcha.verify-url` | siteverify endpoint | Google's URL |
+| `APP_RATE_LIMIT_REGISTRATION_PER_MINUTE`, `APP_RATE_LIMIT_ORGANIZER_PER_MINUTE` | `app.rate-limit.registration-per-minute`, `app.rate-limit.organizer-per-minute` | Rate limits | 30, 10 |
 
 Startup fails fast on missing required values (Spring
 `@Validated @ConfigurationProperties`).
@@ -542,6 +549,24 @@ only.
   (TECHNICAL_CONSTRAINTS).
 - Accessible labels on every input (`<label for>`), error messages
   linked with `aria-describedby`.
+
+### 12.1 UI contract (Phase 3 clarification, used by `frontend/e2e/`)
+
+The accessible names below are part of the specification so the
+end-to-end acceptance tests can address the UI without knowing its
+implementation.
+
+| Element | Accessible role / name |
+| --- | --- |
+| Type choice | radios `External participant`, `Student` (default: `External participant`) |
+| Text inputs | labels `First name`, `Last name`, `Email`, `Organization / institution`, `Study institution`, `Study programme`, `Student ID` (only the selected type's fields are rendered) |
+| Option sets | `<fieldset data-option-group>` with `<legend>` `Workshops` / `Events` / `Meals` / `Other activities` (role `group`); one checkbox per active option, labelled with its display name |
+| Consent | checkbox labelled with the §12 consent text |
+| reCAPTCHA (test mode) | checkbox `I am not a robot` |
+| Submit | button `Register` |
+| Confirmation | heading `Registration received`; shows `<first name> <last name>`, the email, the registration id and the selected option names |
+| Field error | message text next to the field, input has `aria-invalid="true"`; texts: required → `This field is required.`, email → `Enter a valid email address.`, too long → `This value is too long.`, invalid characters → `This value contains characters that are not allowed.`, consent → `You must agree to the processing of your personal data.`, reCAPTCHA → `Please confirm you are not a robot.`; for other server field codes the server's `message` is shown |
+| General failure | element with role `alert` containing `Registration could not be completed. Please try again later.` |
 
 ## 13. Error handling summary
 
