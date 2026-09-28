@@ -5,7 +5,7 @@
   "harnessVersion": null,
   "harnessVersionReason": "harness version not observable from within the session",
   "startCommit": "8d2e4f529bea095a85680ddfd799a97903cf33e4",
-  "finalCommit": "",
+  "finalCommit": "0ee9668c23927bbd5c1e42daf4b91c58dfedc262",
   "experimentStart": "2026-09-28T21:52:41Z",
   "experimentEnd": "2026-09-28T22:42:17Z",
   "phases": [
@@ -159,6 +159,14 @@
       "filesChanged": 11,
       "linesAdded": 494,
       "linesRemoved": 10
+    },
+    {
+      "sha": "0ee9668c23927bbd5c1e42daf4b91c58dfedc262",
+      "phase": "finalization",
+      "message": "phase 6: finalization (release notes, run summary, run log)",
+      "filesChanged": 3,
+      "linesAdded": 222,
+      "linesRemoved": 5
     }
   ],
   "reverts": 0,
