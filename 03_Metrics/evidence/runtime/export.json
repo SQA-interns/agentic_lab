@@ -1,0 +1,50 @@
+{
+  "probe": "export",
+  "start": "2026-09-28T16:40:26Z",
+  "result": {
+    "unauthorized": {
+      "none": {
+        "status": 401,
+        "bodyBytes": 131
+      },
+      "wrong-password": {
+        "status": 401,
+        "bodyBytes": 131
+      },
+      "wrong-user": {
+        "status": 401,
+        "bodyBytes": 131
+      }
+    },
+    "authorized": {
+      "status": 200,
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "cacheControl": "no-store",
+      "header": [
+        "Registration ID",
+        "Submitted at (UTC)",
+        "Participant type",
+        "First name",
+        "Last name",
+        "Email",
+        "Organization/institution",
+        "Study institution",
+        "Study programme",
+        "Student ID",
+        "Workshops",
+        "Events",
+        "Meals",
+        "Other activities",
+        "Consents"
+      ],
+      "rows": 18,
+      "dbRows": 18,
+      "participantTypes": [
+        "EXTERNAL",
+        "STUDENT"
+      ]
+    }
+  },
+  "status": "pass",
+  "end": "2026-09-28T16:40:28Z"
+}

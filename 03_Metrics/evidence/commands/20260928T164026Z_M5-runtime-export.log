@@ -1,0 +1,4 @@
+$ (cwd=.) python3 tools/runtime_probe.py export
+# start=2026-09-28T16:40:26.825Z end=2026-09-28T16:40:28.902Z exit=0 elapsed_s=2.078
+
+[pass] export
