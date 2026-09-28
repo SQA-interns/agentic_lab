@@ -1,0 +1,126 @@
+{
+  "runId": "opus5.5_tanej_claude_desktop-2026-09-28",
+  "model": "claude-opus-5-5",
+  "harness": "Claude Code (Claude desktop app, Code tab)",
+  "harnessVersion": null,
+  "startCommit": "8d2e4f529bea095a85680ddfd799a97903cf33e4",
+  "finalCommit": "",
+  "experimentStart": "2026-09-28T21:52:41Z",
+  "experimentEnd": null,
+  "phases": [
+    {
+      "name": "acceptance-criteria",
+      "start": "2026-09-28T21:53:00Z",
+      "end": "2026-09-28T21:54:02Z"
+    },
+    {
+      "name": "specification",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "implementation",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "tests",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "verification",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "finalization",
+      "start": null,
+      "end": null
+    }
+  ],
+  "firstWorkingHappyPathTimestamp": null,
+  "firstTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "finalTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "humanInterventions": [],
+  "clarifyingQuestions": 0,
+  "manualCodeFixes": 0,
+  "fixLoops": [],
+  "verificationFindings": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "commits": [],
+  "reverts": 0,
+  "mergeConflicts": 0,
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit. Leave null with a reason until the audit pass runs.",
+  "tokensConsumed": null,
+  "tokensConsumedReason": "external audit — provider usage export for the run",
+  "estimatedCostUsd": null,
+  "estimatedCostUsdReason": "external audit — derived from tokensConsumed",
+  "toolCalls": null,
+  "toolCallsReason": "external audit — parsed post-run from the harness transcript",
+  "approvalPrompts": null,
+  "approvalPromptsReason": "external audit — counted separately from toolCalls, only meaningful if permission mode required them",
+  "codeQuality": {
+    "backendLoc": null,
+    "frontendLoc": null,
+    "loc": null,
+    "backendComplexity": null,
+    "frontendComplexity": null,
+    "cyclomaticComplexityAvg": null,
+    "cyclomaticComplexityMax": null,
+    "backendDuplicationPct": null,
+    "frontendDuplicationPct": null,
+    "duplicationPct": null,
+    "lintErrors": null,
+    "lintWarnings": null,
+    "typeCheckErrors": null,
+    "backendUnitCoveragePct": null,
+    "backendIntegrationCoveragePct": null,
+    "frontendCoveragePct": null,
+    "newDependenciesRuntime": null,
+    "newDependenciesDev": null,
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+  "security": {
+    "semgrep": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+    "owaspDependencyCheck": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+    "npmAudit": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+  "architecture": {
+    "archUnitViolations": null,
+    "layerViolations": null,
+    "dependencyCycles": null,
+    "couplingAvgCa": null,
+    "couplingAvgCe": null,
+    "dependencyDepthMax": null,
+    "runtimeDependenciesBackend": null,
+    "runtimeDependenciesFrontend": null,
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+  "harnessVersionReason": "harness version not observable from within the session"
+}
