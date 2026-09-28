@@ -15,8 +15,8 @@
     },
     {
       "name": "specification",
-      "start": null,
-      "end": null
+      "start": "2026-09-28T21:54:08Z",
+      "end": "2026-09-28T21:57:21Z"
     },
     {
       "name": "implementation",
@@ -57,7 +57,16 @@
     "major": 0,
     "minor": 0
   },
-  "commits": [],
+  "commits": [
+    {
+      "sha": "20d0f9e5400e2adea09288b59268c556c98241aa",
+      "phase": "acceptance-criteria",
+      "message": "phase 1: acceptance criteria (scaffold initialization, run-log setup)",
+      "filesChanged": 32,
+      "linesAdded": 7953,
+      "linesRemoved": 0
+    }
+  ],
   "reverts": 0,
   "mergeConflicts": 0,
   "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit. Leave null with a reason until the audit pass runs.",
