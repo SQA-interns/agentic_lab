@@ -1,0 +1,23 @@
+## before: image and catalog
+backend image=sha256:adc566b244e517fa8afc3404eb4ff8c0295fe8599f0c4356d67ab6e608a40fc1
+{"conferenceName":"Example Conference 2026","optionGroups":{"workshops":[{"id":"ws-data-science","name":"Workshop: Data science in practice"},{"id":"ws-open-source","name":"Workshop: Contributing to open source"}],"events":[{"id":"ev-welcome-reception","name":"Welcome reception"},{"id":"ev-city-tour","name":"Guided city tour"}],"meals":[{"id":"meal-lunch-day1","name":"Lunch, day 1"},{"id":"meal-lunch-day2","name":"Lunch, day 2"},{"id":"meal-gala-dinner","name":"Gala dinner"}],"otherActivities":[{"id":"other-poster-session","name":"Poster session participation"}]},"consents":[],"captcha":{"mode":"test","siteKey":null,"testToken":"local-test-captcha-pass"}}
+## switching catalog to config/fixtures/catalog-changed.yaml and recreating backend (no build)
+ Container conference-postgres-1 Running 
+ Container conference-backend-1 Recreate 
+ Container conference-backend-1 Recreated 
+ Container conference-postgres-1 Waiting 
+ Container conference-postgres-1 Healthy 
+ Container conference-backend-1 Starting 
+ Container conference-backend-1 Started 
+backend image=sha256:adc566b244e517fa8afc3404eb4ff8c0295fe8599f0c4356d67ab6e608a40fc1
+{"conferenceName":"Example Conference 2027","optionGroups":{"workshops":[{"id":"ws-data-science","name":"Workshop: Data science in practice"},{"id":"ws-ai-safety","name":"Workshop: AI safety fundamentals"}],"events":[{"id":"ev-harbour-cruise","name":"Harbour cruise"}],"meals":[{"id":"meal-lunch-day1","name":"Lunch, day 1"},{"id":"meal-vegan-dinner","name":"Vegan dinner"}],"otherActivities":[{"id":"other-mentoring","name":"Mentoring session"}]},"consents":[{"id":"synthetic-required-consent","text":"[SYNTHETIC TEST FIXTURE - not an approved legal notice] I agree to the synthetic test statement.","required":true}],"captcha":{"mode":"test","siteKey":null,"testToken":"local-test-captcha-pass"}}
+## restoring default catalog
+ Container conference-postgres-1 Running 
+ Container conference-backend-1 Recreate 
+ Container conference-backend-1 Recreated 
+ Container conference-postgres-1 Waiting 
+ Container conference-postgres-1 Healthy 
+ Container conference-backend-1 Starting 
+ Container conference-backend-1 Started 
+backend image=sha256:adc566b244e517fa8afc3404eb4ff8c0295fe8599f0c4356d67ab6e608a40fc1
+{"conferenceName":"Example Conference 2026","optionGroups":{"workshops":[{"id":"ws-data-science","name":"Workshop: Data science in practice"},{"id":"ws-open-source","name":"Workshop: Contributing to open source"}],"events":[{"id":"ev-welcome-reception","name":"Welcome reception"},{"id":"ev-city-tour","name":"Guided city tour"}],"meals":[{"id":"meal-lunch-day1","name":"Lunch, day 1"},{"id":"meal-lunch-day2","name":"Lunch, day 2"},{"id":"meal-gala-dinner","name":"Gala dinner"}],"otherActivities":[{"id":"other-poster-session","name":"Poster session participation"}]},"consents":[],"captcha":{"mode":"test","siteKey":null,"testToken":"local-test-captcha-pass"}}

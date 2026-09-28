@@ -1,0 +1,8 @@
+$ (cwd=.) ./tools/m3-catalog-restart.sh
+# start=2026-09-28T16:31:55.352Z end=2026-09-28T16:32:42.317Z exit=1 elapsed_s=46.966
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/catalog-change.spec.ts:7:3 › @catalog-changed P-05/P-06 changed catalog and synthetic consent › new catalog is displayed; fixed fields unchanged; consent starts unchecked 
+  3 passed (9.2s)

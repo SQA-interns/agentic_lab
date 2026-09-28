@@ -16,8 +16,9 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "e2e": "playwright test",
-    "cpd": "jscpd src e2e"
+    "e2e": "playwright test --grep-invert @catalog-changed",
+    "cpd": "jscpd src e2e",
+    "e2e:catalog-changed": "playwright test --grep @catalog-changed"
   },
   "dependencies": {
     "react": "19.3.0",

@@ -1,0 +1,204 @@
+$ (cwd=.) ./mvnw -B verify -Dit.test=CatalogChangeIT,FoundationIT -Dtest=CatalogLoaderTest
+# start=2026-09-28T16:30:44.626Z end=2026-09-28T16:31:16.905Z exit=0 elapsed_s=32.279
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.catalog.CatalogLoaderTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.824 s -- in org.example.conference.catalog.CatalogLoaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ conference-registration-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.catalog.CatalogChangeIT
+18:30:56.154 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.catalog.CatalogChangeIT]: CatalogChangeIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:30:56.541 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.catalog.CatalogChangeIT
+18:30:56.895 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+18:30:56.904 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+18:30:56.952 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+18:30:58.267 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+18:30:58.271 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+18:30:58.305 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+18:30:58.540 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+18:30:58.794 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 90f4c715e4c8911077babd6d9113a5ba35c26f837e623233afc99acd300cb61b
+18:30:59.476 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.936155089S
+18:30:59.483 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+18:30:59.484 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+18:30:59.485 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+18:30:59.551 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Creating container for image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+18:30:59.672 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 is starting: 005003a2ebb062c54cd6b4350e66d58c89a9d2644ed9ee515d34bb8080d7a66a
+18:31:01.368 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 started in PT1.817571415S
+18:31:01.369 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container is started (JDBC URL: jdbc:postgresql://localhost:33933/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-28T18:31:02.284+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.conference.catalog.CatalogChangeIT   : Starting CatalogChangeIT using Java 21.0.12.1 with PID 1356581 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T18:31:02.287+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.conference.catalog.CatalogChangeIT   : The following 1 profile is active: "test"
+2026-09-28T18:31:04.135+02:00  INFO 1356581 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T18:31:04.246+02:00  INFO 1356581 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 2 JPA repository interfaces.
+2026-09-28T18:31:05.187+02:00  INFO 1356581 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T18:31:05.505+02:00  INFO 1356581 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4326a3f7
+2026-09-28T18:31:05.508+02:00  INFO 1356581 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-28T18:31:05.573+02:00  INFO 1356581 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:33933/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T18:31:05.647+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-28T18:31:05.656+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.041s)
+2026-09-28T18:31:05.688+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-28T18:31:05.772+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-28T18:31:05.804+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-09-28T18:31:05.875+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.038s)
+2026-09-28T18:31:06.056+02:00  INFO 1356581 --- [conference-registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-28T18:31:06.134+02:00  INFO 1356581 --- [conference-registration] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-28T18:31:06.200+02:00  INFO 1356581 --- [conference-registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-28T18:31:06.771+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T18:31:06.943+02:00  INFO 1356581 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T18:31:08.844+02:00  INFO 1356581 --- [conference-registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T18:31:08.905+02:00  INFO 1356581 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T18:31:09.276+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-28T18:31:10.622+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/resources/catalog-changed.yaml: 7 options (6 active), 1 consents
+2026-09-28T18:31:11.311+02:00  INFO 1356581 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T18:31:11.935+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T18:31:12.612+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T18:31:12.612+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T18:31:12.614+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-28T18:31:12.734+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.conference.catalog.CatalogChangeIT   : Started CatalogChangeIT in 11.291 seconds (process running for 18.373)
+2026-09-28T18:31:13.007+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-09-28T18:31:14.260+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration eb0e931a-85f8-4204-8f49-da2898f87f24 accepted (EXTERNAL)
+2026-09-28T18:31:14.368+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 3b01db55-bd29-4a97-972c-e7a7a09d2c46 accepted (STUDENT)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.44 s -- in org.example.conference.catalog.CatalogChangeIT
+[INFO] Running org.example.conference.FoundationIT
+2026-09-28T18:31:14.391+02:00  INFO 1356581 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.FoundationIT]: FoundationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T18:31:14.406+02:00  INFO 1356581 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.FoundationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-28T18:31:14.466+02:00  INFO 1356581 --- [conference-registration] [           main] org.example.conference.FoundationIT      : Starting FoundationIT using Java 21.0.12.1 with PID 1356581 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T18:31:14.467+02:00  INFO 1356581 --- [conference-registration] [           main] org.example.conference.FoundationIT      : The following 1 profile is active: "test"
+2026-09-28T18:31:14.924+02:00  INFO 1356581 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T18:31:14.943+02:00  INFO 1356581 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 2 JPA repository interfaces.
+2026-09-28T18:31:15.071+02:00  INFO 1356581 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-28T18:31:15.088+02:00  INFO 1356581 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@55570a68
+2026-09-28T18:31:15.088+02:00  INFO 1356581 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-09-28T18:31:15.091+02:00  INFO 1356581 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:33933/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T18:31:15.115+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.008s)
+2026-09-28T18:31:15.140+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-28T18:31:15.141+02:00  INFO 1356581 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-28T18:31:15.170+02:00  INFO 1356581 --- [conference-registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-28T18:31:15.173+02:00  INFO 1356581 --- [conference-registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-28T18:31:15.183+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T18:31:15.194+02:00  INFO 1356581 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T18:31:15.303+02:00  INFO 1356581 --- [conference-registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T18:31:15.324+02:00  INFO 1356581 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T18:31:15.464+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+2026-09-28T18:31:15.646+02:00  INFO 1356581 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T18:31:15.758+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T18:31:15.931+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T18:31:15.931+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T18:31:15.934+02:00  INFO 1356581 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2026-09-28T18:31:15.967+02:00  INFO 1356581 --- [conference-registration] [           main] org.example.conference.FoundationIT      : Started FoundationIT in 1.551 seconds (process running for 21.606)
+2026-09-28T18:31:15.985+02:00  INFO 1356581 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (2 registrations)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.812 s -- in org.example.conference.FoundationIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  30.414 s
+[INFO] Finished at: 2026-09-28T18:31:16+02:00
+[INFO] ------------------------------------------------------------------------

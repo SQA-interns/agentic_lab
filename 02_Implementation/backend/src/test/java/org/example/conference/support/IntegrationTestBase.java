@@ -60,9 +60,6 @@ public abstract class IntegrationTestBase {
     registry.add("spring.datasource.username", POSTGRES::getUsername);
     registry.add("spring.datasource.password", POSTGRES::getPassword);
     registry.add("app.backup.directory", BACKUP_DIR::toString);
-    registry.add(
-        "app.catalog.path",
-        () -> Path.of("src/test/resources/catalog-test.yaml").toAbsolutePath().toString());
   }
 
   @BeforeEach
