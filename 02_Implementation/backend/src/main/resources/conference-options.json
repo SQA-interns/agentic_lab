@@ -1,0 +1,13 @@
+{
+  "options": [
+    { "id": "ws-ai-practice", "name": "Workshop: Artificial intelligence in practice", "category": "WORKSHOP", "active": true },
+    { "id": "ws-secure-coding", "name": "Workshop: Secure coding", "category": "WORKSHOP", "active": true },
+    { "id": "ws-legacy", "name": "Workshop: Legacy systems (cancelled)", "category": "WORKSHOP", "active": false },
+    { "id": "ev-welcome-reception", "name": "Welcome reception", "category": "EVENT", "active": true },
+    { "id": "ev-conference-dinner", "name": "Conference dinner", "category": "EVENT", "active": true },
+    { "id": "meal-lunch-day1", "name": "Lunch – day 1", "category": "MEAL", "active": true },
+    { "id": "meal-lunch-day2", "name": "Lunch – day 2", "category": "MEAL", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarian meals", "category": "MEAL", "active": true },
+    { "id": "other-city-tour", "name": "Guided tour of Ljubljana", "category": "OTHER", "active": true }
+  ]
+}
