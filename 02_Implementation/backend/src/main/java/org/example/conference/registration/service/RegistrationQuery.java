@@ -34,7 +34,13 @@ public class RegistrationQuery {
       String studyProgramme,
       String studentId,
       Map<String, List<String>> selectionsByGroup,
-      List<String> consentIds) {}
+      List<String> consentIds) {
+
+    public RegistrationView {
+      selectionsByGroup = Map.copyOf(selectionsByGroup);
+      consentIds = List.copyOf(consentIds);
+    }
+  }
 
   @Transactional(readOnly = true)
   public List<RegistrationView> findAll() {

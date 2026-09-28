@@ -79,7 +79,9 @@ public class OutboxDispatcher {
         record.markFailedAttempt(describe(e), next, properties.maxAttempts());
         if (record.getStatus() == EmailStatus.FAILED) {
           LOG.error(
-              "Email {} permanently FAILED after {} attempts", record.getId(), record.getAttempts());
+              "Email {} permanently FAILED after {} attempts",
+              record.getId(),
+              record.getAttempts());
         } else {
           LOG.warn(
               "Email {} attempt {} failed ({}); retry at {}",

@@ -3,7 +3,7 @@
 FROM eclipse-temurin@sha256:d0aa6704a67ac080591815bb7734dbe56171dd7a8e9b767e9989b95dd37b3085 AS build
 WORKDIR /src
 COPY .mvn .mvn
-COPY mvnw pom.xml spotbugs-exclude.xml ./
+COPY mvnw pom.xml spotbugs-exclude.xml pmd-ruleset.xml ./
 RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline -DexcludeReactor=true || true
 COPY src src
 RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q package -DskipTests -DskipITs \

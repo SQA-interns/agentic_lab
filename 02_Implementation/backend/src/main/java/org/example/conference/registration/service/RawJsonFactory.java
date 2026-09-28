@@ -19,8 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RawJsonFactory {
 
-  private final ObjectMapper mapper =
-      new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+  private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
   public String rawJson(UUID registrationId, Instant submittedAt, ValidatedRegistration v) {
     Map<String, Object> root = new LinkedHashMap<>();
@@ -36,9 +35,7 @@ public class RawJsonFactory {
     root.put("selections", selections);
     root.put(
         "consents",
-        v.grantedConsents().stream()
-            .map(c -> orderedMap("id", c.id(), "text", c.text()))
-            .toList());
+        v.grantedConsents().stream().map(c -> orderedMap("id", c.id(), "text", c.text())).toList());
     return write(root);
   }
 

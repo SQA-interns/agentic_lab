@@ -238,9 +238,7 @@
           <printFailingErrors>true</printFailingErrors>
           <minimumTokens>80</minimumTokens>
           <rulesets>
-            <ruleset>/category/java/bestpractices.xml</ruleset>
-            <ruleset>/category/java/errorprone.xml</ruleset>
-            <ruleset>/category/java/security.xml</ruleset>
+            <ruleset>pmd-ruleset.xml</ruleset>
           </rulesets>
           <excludeRoots>
             <excludeRoot>target/generated-sources</excludeRoot>

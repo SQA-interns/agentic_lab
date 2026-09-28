@@ -102,8 +102,7 @@ class StorageFailureIT extends IntegrationTestBase {
 
     BackupReconciler.Report report = reconciler.reconcile(Duration.ZERO);
 
-    assertThat(report)
-        .isEqualTo(new BackupReconciler.Report(1, 1, 1, 1));
+    assertThat(report).isEqualTo(new BackupReconciler.Report(1, 1, 1, 1));
     assertThat(Files.exists(registrations.resolve(orphan + ".json"))).isFalse();
     assertThat(Files.exists(BACKUP_DIR.resolve("orphaned").resolve(orphan + ".json"))).isTrue();
     assertThat(Files.list(BACKUP_DIR.resolve("staging")).count()).isZero();

@@ -41,7 +41,7 @@ public class RegistrationController {
             ParticipantType.EXTERNAL,
             fields,
             request.selections() == null ? SelectionsRequest.EMPTY : request.selections(),
-            request.consents() == null ? Map.of() : request.consents(),
+            request.consents(),
             request.captchaToken()),
         http);
   }
@@ -62,7 +62,7 @@ public class RegistrationController {
             ParticipantType.STUDENT,
             fields,
             request.selections() == null ? SelectionsRequest.EMPTY : request.selections(),
-            request.consents() == null ? Map.of() : request.consents(),
+            request.consents(),
             request.captchaToken()),
         http);
   }
@@ -77,7 +77,6 @@ public class RegistrationController {
             result.submittedAt(),
             "PENDING",
             result.replayed());
-    return ResponseEntity.status(result.replayed() ? HttpStatus.OK : HttpStatus.CREATED)
-        .body(body);
+    return ResponseEntity.status(result.replayed() ? HttpStatus.OK : HttpStatus.CREATED).body(body);
   }
 }

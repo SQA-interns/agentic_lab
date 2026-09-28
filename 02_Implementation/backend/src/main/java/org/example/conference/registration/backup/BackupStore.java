@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  * quarantined files that were never accepted or were superseded.
  */
 @Component
-public class BackupStore {
+public final class BackupStore {
 
   private static final Logger LOG = LoggerFactory.getLogger(BackupStore.class);
   static final String TMP_SUFFIX = ".json.tmp";
@@ -52,6 +52,7 @@ public class BackupStore {
   public void publish(UUID id, String json) throws IOException {
     Path tmp = staging.resolve(id + TMP_SUFFIX);
     Path target = file(id);
+    boolean published = false;
     try {
       try (FileChannel channel =
           FileChannel.open(tmp, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
@@ -59,10 +60,12 @@ public class BackupStore {
         channel.force(true);
       }
       moveAtomically(tmp, target);
+      published = true;
       fsyncDirectory(registrations);
-    } catch (IOException | RuntimeException e) {
-      Files.deleteIfExists(tmp);
-      throw e;
+    } finally {
+      if (!published) {
+        Files.deleteIfExists(tmp);
+      }
     }
   }
 
@@ -94,7 +97,7 @@ public class BackupStore {
     try {
       moveAtomically(source, destination);
     } catch (IOException e) {
-      LOG.error("Quarantine of {} failed: {}", source.getFileName(), e.getClass().getSimpleName());
+      LOG.error("Quarantine of {} failed: {}", name, e.getClass().getSimpleName());
     }
   }
 

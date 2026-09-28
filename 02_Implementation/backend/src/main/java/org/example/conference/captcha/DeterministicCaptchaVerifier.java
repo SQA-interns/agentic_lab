@@ -14,8 +14,7 @@ public final class DeterministicCaptchaVerifier implements CaptchaVerifier {
 
   @Override
   public boolean verify(String token, String remoteIp) {
-    return token != null
-        && MessageDigest.isEqual(expected, token.getBytes(StandardCharsets.UTF_8));
+    return token != null && MessageDigest.isEqual(expected, token.getBytes(StandardCharsets.UTF_8));
   }
 
   @Override

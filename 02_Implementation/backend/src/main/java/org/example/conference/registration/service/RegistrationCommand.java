@@ -1,5 +1,7 @@
 package org.example.conference.registration.service;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.example.conference.registration.api.SelectionsRequest;
@@ -12,4 +14,10 @@ public record RegistrationCommand(
     Map<String, String> fields,
     SelectionsRequest selections,
     Map<String, Boolean> consents,
-    String captchaToken) {}
+    String captchaToken) {
+
+  public RegistrationCommand {
+    fields = Collections.unmodifiableMap(new LinkedHashMap<>(fields));
+    consents = Map.copyOf(consents);
+  }
+}

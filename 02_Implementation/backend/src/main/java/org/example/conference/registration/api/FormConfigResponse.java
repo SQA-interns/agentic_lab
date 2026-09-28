@@ -1,5 +1,7 @@
 package org.example.conference.registration.api;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +11,11 @@ public record FormConfigResponse(
     Map<String, List<Option>> optionGroups,
     List<Consent> consents,
     Captcha captcha) {
+
+  public FormConfigResponse {
+    optionGroups = Collections.unmodifiableMap(new LinkedHashMap<>(optionGroups));
+    consents = List.copyOf(consents);
+  }
 
   /** Active selectable option. */
   public record Option(String id, String name) {}

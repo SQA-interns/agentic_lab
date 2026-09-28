@@ -17,7 +17,7 @@ public final class Catalog {
       Map<OptionGroup, List<CatalogOption>> options,
       List<ConsentDefinition> consents) {
     this.conferenceName = conferenceName;
-    EnumMap<OptionGroup, List<CatalogOption>> copy = new EnumMap<>(OptionGroup.class);
+    Map<OptionGroup, List<CatalogOption>> copy = new EnumMap<>(OptionGroup.class);
     for (OptionGroup group : OptionGroup.values()) {
       copy.put(group, List.copyOf(options.getOrDefault(group, List.of())));
     }

@@ -1,6 +1,7 @@
 package org.example.conference.registration.service;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -73,9 +74,10 @@ public class RegistrationService {
 
     try {
       backupStore.publish(id, rawJson);
-    } catch (IOException | RuntimeException e) {
+    } catch (IOException | UncheckedIOException | SecurityException e) {
+      backupStore.discard(id);
       LOG.error("Backup publish failed for new registration {}: {}", id, e.getClass().getName());
-      throw storageUnavailable();
+      throw storageUnavailable(e);
     }
     try {
       persister.persist(id, submittedAt, fingerprint, rawJson, sha256, validated);
@@ -86,11 +88,11 @@ public class RegistrationService {
         return replayOrConflict(winner.get(), fingerprint);
       }
       LOG.error("Registration {} rejected by database constraint", id);
-      throw storageUnavailable();
+      throw storageUnavailable(e);
     } catch (DataAccessException | TransactionException e) {
       backupStore.discard(id);
       LOG.error("Database commit failed for registration {}: {}", id, e.getClass().getName());
-      throw storageUnavailable();
+      throw storageUnavailable(e);
     }
     LOG.info("Registration {} accepted ({})", id, command.participantType());
     return new RegistrationResult(id, command.participantType(), submittedAt, false);
@@ -101,7 +103,7 @@ public class RegistrationService {
       return repository.findByClientRequestId(clientRequestId);
     } catch (DataAccessException | TransactionException e) {
       LOG.error("Idempotency lookup failed: {}", e.getClass().getName());
-      throw storageUnavailable();
+      throw storageUnavailable(e);
     }
   }
 
@@ -113,7 +115,7 @@ public class RegistrationService {
         existing.getId(), existing.getParticipantType(), existing.getCreatedAt(), true);
   }
 
-  private static ApiException storageUnavailable() {
-    return new ApiException(HttpStatus.SERVICE_UNAVAILABLE, ErrorCode.STORAGE_UNAVAILABLE);
+  private static ApiException storageUnavailable(Exception cause) {
+    return new ApiException(HttpStatus.SERVICE_UNAVAILABLE, ErrorCode.STORAGE_UNAVAILABLE, cause);
   }
 }

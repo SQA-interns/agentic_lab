@@ -73,7 +73,8 @@ public class BackupReconciler {
           repository.findAllDigests().stream()
               .collect(
                   Collectors.toMap(
-                      RegistrationDigest::getId, RegistrationDigest::getRawJsonSha256,
+                      RegistrationDigest::getId,
+                      RegistrationDigest::getRawJsonSha256,
                       (a, b) -> a));
       int orphans = quarantineOrphans(digests.keySet(), cutoff);
       int[] repaired = repairMissingOrMismatched(digests);
@@ -124,8 +125,9 @@ public class BackupReconciler {
       return 0;
     }
     for (Path file : candidates) {
-      LOG.warn("Quarantining unaccepted backup file {}", file.getFileName());
-      store.quarantine(file, file.getFileName().toString());
+      String name = fileName(file);
+      LOG.warn("Quarantining unaccepted backup file {}", name);
+      store.quarantine(file, name);
     }
     return candidates.size();
   }
@@ -153,7 +155,7 @@ public class BackupReconciler {
   }
 
   private static Optional<UUID> idOf(Path file) {
-    String name = file.getFileName().toString();
+    String name = fileName(file);
     if (!name.endsWith(BackupStore.JSON_SUFFIX)) {
       return Optional.empty();
     }
@@ -165,8 +167,12 @@ public class BackupReconciler {
     }
   }
 
+  private static String fileName(Path file) {
+    Path name = file.getFileName();
+    return name == null ? "" : name.toString();
+  }
+
   private static boolean isOlderThan(Path file, Instant cutoff) throws IOException {
     return !Files.getLastModifiedTime(file).toInstant().isAfter(cutoff);
   }
-
 }

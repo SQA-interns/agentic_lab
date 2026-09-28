@@ -15,8 +15,8 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
 /**
- * P-05 / AC-003-03: a fresh application context (= restart) with the next conference's catalog
- * file displays and enforces the new catalog without code changes; fixed fields are unchanged.
+ * P-05 / AC-003-03: a fresh application context (= restart) with the next conference's catalog file
+ * displays and enforces the new catalog without code changes; fixed fields are unchanged.
  */
 class CatalogChangeIT extends IntegrationTestBase {
 

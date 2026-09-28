@@ -47,9 +47,10 @@ public class ExcelExportWriter {
         header.createCell(i).setCellValue(HEADERS.get(i));
         header.getCell(i).setCellStyle(bold);
       }
-      int rowIndex = 1;
+      int rowIndex = 0;
       for (RegistrationView r : registrations) {
-        Row row = sheet.createRow(rowIndex++);
+        rowIndex++;
+        Row row = sheet.createRow(rowIndex);
         List<String> values =
             List.of(
                 r.id().toString(),

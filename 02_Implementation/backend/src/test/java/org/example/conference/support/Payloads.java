@@ -35,8 +35,7 @@ public final class Payloads {
     body.put("studyInstitution", "Univerza v Ljubljani");
     body.put("studyProgramme", "Računalništvo");
     body.put("studentId", "S-000123");
-    body.put(
-        "selections", selections(List.of("ws-open-source"), List.of("meal-gala-dinner")));
+    body.put("selections", selections(List.of("ws-open-source"), List.of("meal-gala-dinner")));
     body.put("consents", Map.of(CONSENT_ID, true));
     body.put("captchaToken", CAPTCHA);
     return body;

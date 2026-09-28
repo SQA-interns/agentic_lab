@@ -49,8 +49,9 @@ class FoundationIT extends IntegrationTestBase {
     mockMvc
         .perform(get("/api/form-config"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.optionGroups.workshops[*].id").value(
-            org.hamcrest.Matchers.contains("ws-data-science", "ws-open-source")))
+        .andExpect(
+            jsonPath("$.optionGroups.workshops[*].id")
+                .value(org.hamcrest.Matchers.contains("ws-data-science", "ws-open-source")))
         .andExpect(jsonPath("$.optionGroups.meals.length()").value(3))
         .andExpect(jsonPath("$.consents[0].required").value(true))
         .andExpect(jsonPath("$.captcha.mode").value("test"));

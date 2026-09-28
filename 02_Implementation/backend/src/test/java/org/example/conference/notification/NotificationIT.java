@@ -58,8 +58,7 @@ class NotificationIT extends IntegrationTestBase {
 
   private static String recipients(MimeMessage message) throws Exception {
     return String.join(
-        ",",
-        Arrays.stream(message.getAllRecipients()).map(Address::toString).sorted().toList());
+        ",", Arrays.stream(message.getAllRecipients()).map(Address::toString).sorted().toList());
   }
 
   /** AC-006-01, AC-007-01. */

@@ -18,4 +18,10 @@ public record NotificationProperties(
     @Min(1) int maxAttempts,
     @Min(1) int batchSize,
     Duration initialBackoff,
-    Duration maxBackoff) {}
+    Duration maxBackoff) {
+
+  public NotificationProperties {
+    organizerRecipients =
+        List.copyOf(organizerRecipients == null ? List.of() : organizerRecipients);
+  }
+}

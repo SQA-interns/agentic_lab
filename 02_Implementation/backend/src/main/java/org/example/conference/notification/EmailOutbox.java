@@ -78,7 +78,6 @@ public class EmailOutbox {
     this.status = EmailStatus.SENT;
     this.attempts++;
     this.sentAt = now;
-    this.lastError = null;
   }
 
   void markFailedAttempt(String error, Instant nextAttempt, int maxAttempts) {

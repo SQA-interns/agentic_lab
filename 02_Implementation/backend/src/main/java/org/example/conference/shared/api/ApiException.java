@@ -23,6 +23,14 @@ public class ApiException extends RuntimeException {
     this(status, code, List.of());
   }
 
+  /** Keeps the technical cause for diagnostics; it is never serialized to clients. */
+  public ApiException(HttpStatus status, ErrorCode code, Throwable cause) {
+    super(code.name(), cause);
+    this.status = status;
+    this.code = code;
+    this.errors = List.of();
+  }
+
   public HttpStatus getStatus() {
     return status;
   }

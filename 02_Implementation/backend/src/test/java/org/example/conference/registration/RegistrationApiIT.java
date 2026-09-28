@@ -55,8 +55,7 @@ class RegistrationApiIT extends IntegrationTestBase {
   void externalRegistrationWithUnicodeAndNbspIsStoredConsistently() throws Exception {
     String id = accept(EXTERNAL, Payloads.external());
 
-    Map<String, Object> row =
-        jdbc.queryForMap("SELECT * FROM registration WHERE id = ?::uuid", id);
+    Map<String, Object> row = jdbc.queryForMap("SELECT * FROM registration WHERE id = ?::uuid", id);
     assertThat(row.get("first_name")).isEqualTo("Špela");
     assertThat(row.get("last_name")).isEqualTo("Novak Čebašek");
     assertThat(row.get("organization")).isEqualTo("Inštitut za žabe");
@@ -91,8 +90,7 @@ class RegistrationApiIT extends IntegrationTestBase {
     Map<String, Object> body = Payloads.student();
     body.put("selections", Payloads.selections(List.of("ws-data-science"), List.of()));
     String id = accept(STUDENT, body);
-    Map<String, Object> row =
-        jdbc.queryForMap("SELECT * FROM registration WHERE id = ?::uuid", id);
+    Map<String, Object> row = jdbc.queryForMap("SELECT * FROM registration WHERE id = ?::uuid", id);
     assertThat(row.get("participant_type")).isEqualTo("STUDENT");
     assertThat(row.get("study_programme")).isEqualTo("Računalništvo");
     assertThat(row.get("student_id")).isEqualTo("S-000123");
@@ -189,8 +187,7 @@ class RegistrationApiIT extends IntegrationTestBase {
 
   /** AC-003-02 (P-04): unknown, inactive, wrong-group and duplicate IDs sent directly to API. */
   @ParameterizedTest
-  @ValueSource(
-      strings = {"ws-does-not-exist", "ws-legacy-cobol", "meal-lunch-day1", "DUPLICATE"})
+  @ValueSource(strings = {"ws-does-not-exist", "ws-legacy-cobol", "meal-lunch-day1", "DUPLICATE"})
   void invalidSelectionsAreRejected(String workshopId) throws Exception {
     Map<String, Object> body = Payloads.external();
     List<String> workshops =

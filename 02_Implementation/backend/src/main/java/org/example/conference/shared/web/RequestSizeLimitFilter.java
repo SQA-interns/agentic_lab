@@ -53,6 +53,8 @@ public class RequestSizeLimitFilter extends OncePerRequestFilter {
       this.maxBytes = maxBytes;
     }
 
+    // The container owns and closes the underlying stream.
+    @SuppressWarnings("PMD.CloseResource")
     @Override
     public ServletInputStream getInputStream() throws IOException {
       ServletInputStream delegate = super.getInputStream();
@@ -62,8 +64,11 @@ public class RequestSizeLimitFilter extends OncePerRequestFilter {
         @Override
         public int read() throws IOException {
           int b = delegate.read();
-          if (b >= 0 && ++count > maxBytes) {
-            throw new IOException("Request body exceeds limit");
+          if (b >= 0) {
+            count++;
+            if (count > maxBytes) {
+              throw new IOException("Request body exceeds limit");
+            }
           }
           return b;
         }

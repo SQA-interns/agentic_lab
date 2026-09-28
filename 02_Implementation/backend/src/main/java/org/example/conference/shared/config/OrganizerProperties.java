@@ -9,7 +9,8 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @ConfigurationProperties(prefix = "app.organizer")
 public record OrganizerProperties(
-    @NotBlank @Size(max = 64) String username, @NotBlank @Size(min = 12, max = 128) String password) {
+    @NotBlank @Size(max = 64) String username,
+    @NotBlank @Size(min = 12, max = 128) String password) {
 
   @Override
   public String toString() {

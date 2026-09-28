@@ -88,6 +88,6 @@ public class SelectionValidator {
           case MEALS -> selections.meals();
           case OTHER_ACTIVITIES -> selections.otherActivities();
         };
-    return ids == null ? List.of() : ids;
+    return ids;
   }
 }

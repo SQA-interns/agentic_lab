@@ -17,8 +17,8 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * Parses and validates the YAML catalog file. Unknown top-level keys, duplicate IDs, bad ID
- * syntax, blank or control-character names are rejected so a misconfiguration fails at startup.
+ * Parses and validates the YAML catalog file. Unknown top-level keys, duplicate IDs, bad ID syntax,
+ * blank or control-character names are rejected so a misconfiguration fails at startup.
  */
 public final class CatalogLoader {
 
@@ -27,8 +27,7 @@ public final class CatalogLoader {
   private static final int MAX_NAME = 200;
   private static final int MAX_CONSENT_TEXT = 2000;
   private static final Set<String> TOP_LEVEL_KEYS =
-      Set.of(
-          "conferenceName", "workshops", "events", "meals", "otherActivities", "consents");
+      Set.of("conferenceName", "workshops", "events", "meals", "otherActivities", "consents");
 
   private CatalogLoader() {}
 
