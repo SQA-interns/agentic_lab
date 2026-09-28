@@ -1,0 +1,158 @@
+$ (cwd=.) ./mvnw -B verify -Dit.test=StorageFailureIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false
+# start=2026-09-28T16:27:29.584Z end=2026-09-28T16:27:53.375Z exit=0 elapsed_s=23.791
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 5 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ conference-registration-backend ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ conference-registration-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.registration.StorageFailureIT
+18:27:35.892 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.registration.StorageFailureIT]: StorageFailureIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:27:36.163 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.StorageFailureIT
+18:27:36.446 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+18:27:36.451 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+18:27:36.484 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+18:27:37.450 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+18:27:37.453 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+18:27:37.476 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+18:27:37.666 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+18:27:37.897 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: d2308775df141ac4fc48a2590c5ca12647834f57f044bb74a1168a3ca02d001b
+18:27:38.316 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.649712084S
+18:27:38.324 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+18:27:38.324 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+18:27:38.325 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+18:27:38.416 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Creating container for image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+18:27:38.536 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 is starting: 50a90b48d6a80b55327537283fb0da054fb9dbd104ccb4118f3f58bea0f66476
+18:27:40.095 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 started in PT1.679154874S
+18:27:40.096 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container is started (JDBC URL: jdbc:postgresql://localhost:34611/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-28T18:27:40.637+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.registration.StorageFailureIT      : Starting StorageFailureIT using Java 21.0.12.1 with PID 1352906 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T18:27:40.639+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.registration.StorageFailureIT      : The following 1 profile is active: "test"
+2026-09-28T18:27:42.046+02:00  INFO 1352906 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T18:27:42.127+02:00  INFO 1352906 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 2 JPA repository interfaces.
+2026-09-28T18:27:42.863+02:00  INFO 1352906 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T18:27:43.105+02:00  INFO 1352906 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f6f5188
+2026-09-28T18:27:43.107+02:00  INFO 1352906 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-28T18:27:43.158+02:00  INFO 1352906 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:34611/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T18:27:43.210+02:00  INFO 1352906 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-28T18:27:43.223+02:00  INFO 1352906 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.032s)
+2026-09-28T18:27:43.247+02:00  INFO 1352906 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-28T18:27:43.305+02:00  INFO 1352906 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-28T18:27:43.328+02:00  INFO 1352906 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-09-28T18:27:43.378+02:00  INFO 1352906 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.027s)
+2026-09-28T18:27:43.516+02:00  INFO 1352906 --- [conference-registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-28T18:27:43.597+02:00  INFO 1352906 --- [conference-registration] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-28T18:27:43.645+02:00  INFO 1352906 --- [conference-registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-28T18:27:44.042+02:00  INFO 1352906 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T18:27:44.155+02:00  INFO 1352906 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T18:27:45.535+02:00  INFO 1352906 --- [conference-registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T18:27:45.579+02:00  INFO 1352906 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T18:27:45.861+02:00  INFO 1352906 --- [conference-registration] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-28T18:27:46.917+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-28T18:27:48.519+02:00  INFO 1352906 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T18:27:49.534+02:00  INFO 1352906 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T18:27:50.598+02:00  INFO 1352906 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T18:27:50.598+02:00  INFO 1352906 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T18:27:50.601+02:00  INFO 1352906 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-09-28T18:27:50.774+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.registration.StorageFailureIT      : Started StorageFailureIT in 10.64 seconds (process running for 16.241)
+2026-09-28T18:27:51.138+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+2026-09-28T18:27:51.545+02:00 ERROR 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Backup publish failed for new registration f6d47625-c07f-4031-80e1-f30699cf472f: java.io.IOException
+2026-09-28T18:27:52.119+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 79ea4aab-ce75-4012-8665-d069768b5145 accepted (EXTERNAL)
+2026-09-28T18:27:52.250+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 37856206-3f05-4753-8db1-8279306fc2fa accepted (EXTERNAL)
+2026-09-28T18:27:52.299+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration c19913df-8cb4-4795-821e-0291313f99e5 accepted (EXTERNAL)
+2026-09-28T18:27:52.348+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 087cd14e-5051-4814-a7c8-88c6cdee7e32 accepted (EXTERNAL)
+2026-09-28T18:27:52.365+02:00  WARN 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Quarantining unaccepted backup file d8ff691d-4931-4da6-bf41-0ce21415dcae.json
+2026-09-28T18:27:52.388+02:00  WARN 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Re-published backup file for registration c19913df-8cb4-4795-821e-0291313f99e5 from database
+2026-09-28T18:27:52.406+02:00  WARN 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Re-published backup file for registration 087cd14e-5051-4814-a7c8-88c6cdee7e32 from database
+2026-09-28T18:27:52.407+02:00  WARN 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation performed changes: Report[tempFilesDeleted=1, orphansQuarantined=1, filesRestored=1, mismatchesRepaired=1]
+2026-09-28T18:27:52.454+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (3 registrations)
+2026-09-28T18:27:52.521+02:00 ERROR 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Database commit failed for registration 695fef4f-c193-45cc-9211-f8d1c1431a04: org.springframework.dao.DataAccessResourceFailureException
+2026-09-28T18:27:52.546+02:00 ERROR 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Database holds no registrations but 1 backup files exist; not quarantining (possible database restore scenario, operator action required)
+2026-09-28T18:27:52.546+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+2026-09-28T18:27:52.628+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration aeab33e0-af56-4c62-9073-c3271f92141c accepted (EXTERNAL)
+2026-09-28T18:27:52.635+02:00  INFO 1352906 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (1 registrations)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.92 s -- in org.example.conference.registration.StorageFailureIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.464 s
+[INFO] Finished at: 2026-09-28T18:27:53+02:00
+[INFO] ------------------------------------------------------------------------

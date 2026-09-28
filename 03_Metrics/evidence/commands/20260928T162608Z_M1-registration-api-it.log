@@ -1,0 +1,301 @@
+$ (cwd=.) ./mvnw -B verify -Dit.test=RegistrationApiIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false
+# start=2026-09-28T16:26:08.262Z end=2026-09-28T16:26:30.412Z exit=1 elapsed_s=22.151
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 4 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ conference-registration-backend ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ conference-registration-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.registration.RegistrationApiIT
+18:26:14.646 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.registration.RegistrationApiIT]: RegistrationApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:26:14.933 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.RegistrationApiIT
+18:26:15.213 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+18:26:15.219 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+18:26:15.251 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+18:26:16.177 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+18:26:16.179 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+18:26:16.202 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+18:26:16.394 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+18:26:16.639 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 1cac57762b54cdb7567511da8b0bd234df9f5fc496d3e1f1faf7c01bdf980e33
+18:26:17.132 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.737131004S
+18:26:17.137 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+18:26:17.138 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+18:26:17.139 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+18:26:17.187 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Creating container for image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+18:26:17.293 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 is starting: 7daaaf988efcb86e5c927219e0d82eadf544b667c252abd92c40b5c6f635f712
+18:26:18.959 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 started in PT1.772931257S
+18:26:18.960 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container is started (JDBC URL: jdbc:postgresql://localhost:38455/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-28T18:26:19.575+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.registration.RegistrationApiIT     : Starting RegistrationApiIT using Java 21.0.12.1 with PID 1352004 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T18:26:19.577+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.registration.RegistrationApiIT     : The following 1 profile is active: "test"
+2026-09-28T18:26:20.900+02:00  INFO 1352004 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T18:26:20.982+02:00  INFO 1352004 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 2 JPA repository interfaces.
+2026-09-28T18:26:21.711+02:00  INFO 1352004 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T18:26:22.031+02:00  INFO 1352004 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@24a99b1c
+2026-09-28T18:26:22.033+02:00  INFO 1352004 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-28T18:26:22.088+02:00  INFO 1352004 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:38455/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T18:26:22.136+02:00  INFO 1352004 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-28T18:26:22.141+02:00  INFO 1352004 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.022s)
+2026-09-28T18:26:22.160+02:00  INFO 1352004 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-28T18:26:22.214+02:00  INFO 1352004 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-28T18:26:22.236+02:00  INFO 1352004 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-09-28T18:26:22.282+02:00  INFO 1352004 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.023s)
+2026-09-28T18:26:22.414+02:00  INFO 1352004 --- [conference-registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-28T18:26:22.476+02:00  INFO 1352004 --- [conference-registration] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-28T18:26:22.518+02:00  INFO 1352004 --- [conference-registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-28T18:26:22.894+02:00  INFO 1352004 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T18:26:23.023+02:00  INFO 1352004 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T18:26:24.439+02:00  INFO 1352004 --- [conference-registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T18:26:24.486+02:00  INFO 1352004 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T18:26:24.782+02:00  INFO 1352004 --- [conference-registration] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-28T18:26:25.884+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+2026-09-28T18:26:26.415+02:00  INFO 1352004 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T18:26:26.770+02:00  INFO 1352004 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T18:26:27.222+02:00  INFO 1352004 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T18:26:27.223+02:00  INFO 1352004 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T18:26:27.224+02:00  INFO 1352004 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-28T18:26:27.318+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.registration.RegistrationApiIT     : Started RegistrationApiIT in 8.319 seconds (process running for 14.159)
+2026-09-28T18:26:27.542+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-28T18:26:28.612+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 28fde387-d600-43ce-b1e7-1b0729e589ed accepted (EXTERNAL)
+2026-09-28T18:26:28.743+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 09674cc2-ef6a-4ece-b4b6-0c4243f97155 accepted (EXTERNAL)
+2026-09-28T18:26:28.921+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 5a80bbeb-7941-4f96-aec0-872c8e781264 accepted (STUDENT)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations/student
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"389"]
+             Body = {"clientRequestId":"fb1c9678-413c-400f-9059-be8c780a2752","firstName":"Luka","lastName":"Študent","studyInstitution":"Univerza v Ljubljani","studyProgramme":"Računalništvo","studentId":"S-000123","selections":{"workshops":["ws-open-source"],"events":[],"meals":["meal-gala-dinner"],"otherActivities":[]},"consents":{"synthetic-required-consent":true},"captchaToken":"test-captcha-pass"}
+    Session Attrs = {}
+
+Handler:
+             Type = org.example.conference.registration.api.RegistrationController
+           Method = org.example.conference.registration.api.RegistrationController#student(StudentRegistrationRequest, HttpServletRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.bind.MethodArgumentNotValidException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/problem+json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/problem+json
+             Body = {"type":"about:blank","title":"VALIDATION_FAILED","status":400,"instance":"/api/registrations/student","code":"VALIDATION_FAILED","errors":[{"field":"email","code":"REQUIRED"}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations/student
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"400"]
+             Body = {"clientRequestId":"8296b4db-1fcd-4730-8d72-41fb04deab7a","firstName":"Luka","lastName":"Študent","email":"","studyInstitution":"Univerza v Ljubljani","studyProgramme":"Računalništvo","studentId":"S-000123","selections":{"workshops":["ws-open-source"],"events":[],"meals":["meal-gala-dinner"],"otherActivities":[]},"consents":{"synthetic-required-consent":true},"captchaToken":"test-captcha-pass"}
+    Session Attrs = {}
+
+Handler:
+             Type = org.example.conference.registration.api.RegistrationController
+           Method = org.example.conference.registration.api.RegistrationController#student(StudentRegistrationRequest, HttpServletRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.bind.MethodArgumentNotValidException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/problem+json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/problem+json
+             Body = {"type":"about:blank","title":"VALIDATION_FAILED","status":400,"instance":"/api/registrations/student","code":"VALIDATION_FAILED","errors":[{"field":"email","code":"EMAIL_INVALID"},{"field":"email","code":"REQUIRED"}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-09-28T18:26:29.377+02:00  INFO 1352004 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration aa61afbd-82f5-46d9-9653-8c8815384e59 accepted (EXTERNAL)
+2026-09-28T18:26:29.629+02:00  INFO 1352004 --- [conference-registration] [pool-3-thread-7] o.e.c.r.service.RegistrationService      : Registration 395179dd-251b-49bf-8e7e-a541a5684e29 accepted (STUDENT)
+2026-09-28T18:26:29.634+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.634+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.634+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.634+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.634+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.634+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.634+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+2026-09-28T18:26:29.634+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+2026-09-28T18:26:29.634+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+2026-09-28T18:26:29.634+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+2026-09-28T18:26:29.634+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+2026-09-28T18:26:29.634+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+2026-09-28T18:26:29.635+02:00  WARN 1352004 --- [conference-registration] [pool-3-thread-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:26:29.635+02:00 ERROR 1352004 --- [conference-registration] [pool-3-thread-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(6a74922d-8ff6-4ad8-85ff-3f3c6e505dad) already exists.
+[ERROR] Tests run: 32, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 15.18 s <<< FAILURE! -- in org.example.conference.registration.RegistrationApiIT
+[ERROR] org.example.conference.registration.RegistrationApiIT.studentRequiredFieldsAreEnforced(String)[3] -- Time elapsed: 0.025 s <<< FAILURE!
+java.lang.AssertionError: JSON path "$.errors[0].code" expected:<REQUIRED> but was:<EMAIL_INVALID>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:172)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:112)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at org.example.conference.registration.RegistrationApiIT.studentRequiredFieldsAreEnforced(RegistrationApiIT.java:126)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   RegistrationApiIT.studentRequiredFieldsAreEnforced:126 JSON path "$.errors[0].code" expected:<REQUIRED> but was:<EMAIL_INVALID>
+[INFO] 
+[ERROR] Tests run: 32, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.850 s
+[INFO] Finished at: 2026-09-28T18:26:30+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.6:verify (default) on project conference-registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

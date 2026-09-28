@@ -2,6 +2,8 @@ package org.example.conference.shared.api;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -44,12 +46,14 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
       HttpHeaders headers,
       HttpStatusCode status,
       WebRequest request) {
+    // One error per field; a missing/blank value reports REQUIRED rather than format errors.
+    Map<String, String> byField = new TreeMap<>();
+    for (org.springframework.validation.FieldError e : ex.getBindingResult().getFieldErrors()) {
+      String code = codeFor(e.getCode(), e.getField());
+      byField.merge(e.getField(), code, (a, b) -> "REQUIRED".equals(b) ? b : a);
+    }
     List<FieldError> errors =
-        ex.getBindingResult().getFieldErrors().stream()
-            .map(e -> new FieldError(e.getField(), codeFor(e.getCode(), e.getField())))
-            .distinct()
-            .sorted((a, b) -> a.field().compareTo(b.field()))
-            .toList();
+        byField.entrySet().stream().map(e -> new FieldError(e.getKey(), e.getValue())).toList();
     return ResponseEntity.badRequest()
         .body(Problems.of(HttpStatus.BAD_REQUEST, ErrorCode.VALIDATION_FAILED, errors));
   }

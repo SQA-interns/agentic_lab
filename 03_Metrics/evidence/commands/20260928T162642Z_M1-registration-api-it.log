@@ -1,0 +1,171 @@
+$ (cwd=.) ./mvnw -B verify -Dit.test=RegistrationApiIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false
+# start=2026-09-28T16:26:42.658Z end=2026-09-28T16:27:05.834Z exit=0 elapsed_s=23.176
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 67 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ conference-registration-backend ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ conference-registration-backend ---
+[INFO] Building jar: /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ conference-registration-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.registration.RegistrationApiIT
+18:26:50.151 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.registration.RegistrationApiIT]: RegistrationApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:26:50.423 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.RegistrationApiIT
+18:26:50.725 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+18:26:50.732 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+18:26:50.768 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+18:26:51.735 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+18:26:51.737 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+18:26:51.762 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+18:26:52.050 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+18:26:52.263 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: b16fc9bc1b9dce707af5e5bbb4628a4165f36c8afea01e98c9b2158d3e1f4902
+18:26:52.725 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.674248749S
+18:26:52.732 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+18:26:52.733 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+18:26:52.734 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+18:26:52.793 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Creating container for image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+18:26:52.904 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 is starting: 9def45ef589e4e1705a68584397ce7284f3c65c4452baf4993ea3e6ebb7ab54d
+18:26:54.493 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 started in PT1.700149122S
+18:26:54.494 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container is started (JDBC URL: jdbc:postgresql://localhost:44903/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-28T18:26:55.049+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.registration.RegistrationApiIT     : Starting RegistrationApiIT using Java 21.0.12.1 with PID 1352428 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T18:26:55.051+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.registration.RegistrationApiIT     : The following 1 profile is active: "test"
+2026-09-28T18:26:56.361+02:00  INFO 1352428 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T18:26:56.441+02:00  INFO 1352428 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2026-09-28T18:26:57.115+02:00  INFO 1352428 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T18:26:57.378+02:00  INFO 1352428 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@19b10c14
+2026-09-28T18:26:57.380+02:00  INFO 1352428 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-28T18:26:57.446+02:00  INFO 1352428 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:44903/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T18:26:57.500+02:00  INFO 1352428 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-28T18:26:57.505+02:00  INFO 1352428 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.027s)
+2026-09-28T18:26:57.527+02:00  INFO 1352428 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-28T18:26:57.581+02:00  INFO 1352428 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-28T18:26:57.604+02:00  INFO 1352428 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-09-28T18:26:57.654+02:00  INFO 1352428 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.025s)
+2026-09-28T18:26:57.786+02:00  INFO 1352428 --- [conference-registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-28T18:26:57.870+02:00  INFO 1352428 --- [conference-registration] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-28T18:26:57.918+02:00  INFO 1352428 --- [conference-registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-28T18:26:58.328+02:00  INFO 1352428 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T18:26:58.453+02:00  INFO 1352428 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T18:26:59.852+02:00  INFO 1352428 --- [conference-registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T18:26:59.900+02:00  INFO 1352428 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T18:27:00.196+02:00  INFO 1352428 --- [conference-registration] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-28T18:27:01.273+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+2026-09-28T18:27:01.810+02:00  INFO 1352428 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T18:27:02.202+02:00  INFO 1352428 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T18:27:02.657+02:00  INFO 1352428 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T18:27:02.658+02:00  INFO 1352428 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T18:27:02.659+02:00  INFO 1352428 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-28T18:27:02.745+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.registration.RegistrationApiIT     : Started RegistrationApiIT in 8.21 seconds (process running for 13.989)
+2026-09-28T18:27:02.966+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-28T18:27:04.112+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration d538752f-c767-40b9-949c-5cb0f7e076b1 accepted (EXTERNAL)
+2026-09-28T18:27:04.244+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 3c04cad3-2c1e-4230-b697-ab495c2db0cc accepted (EXTERNAL)
+2026-09-28T18:27:04.423+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 7340a12e-f20e-43c1-a633-1752c6d23a45 accepted (STUDENT)
+2026-09-28T18:27:04.864+02:00  INFO 1352428 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration a3495792-0fc6-4aca-81bd-368abde5f367 accepted (EXTERNAL)
+2026-09-28T18:27:05.082+02:00  INFO 1352428 --- [conference-registration] [pool-3-thread-1] o.e.c.r.service.RegistrationService      : Registration 81230a3d-1020-4976-b9c1-444f84495797 accepted (STUDENT)
+2026-09-28T18:27:05.087+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.087+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.087+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.087+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.088+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+2026-09-28T18:27:05.088+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+2026-09-28T18:27:05.088+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+2026-09-28T18:27:05.088+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+2026-09-28T18:27:05.089+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.089+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.089+02:00  WARN 1352428 --- [conference-registration] [pool-3-thread-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2026-09-28T18:27:05.089+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+2026-09-28T18:27:05.089+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+2026-09-28T18:27:05.089+02:00 ERROR 1352428 --- [conference-registration] [pool-3-thread-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(958dfb22-709d-410f-933f-973ed6186566) already exists.
+[INFO] Tests run: 32, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.12 s -- in org.example.conference.registration.RegistrationApiIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 32, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.831 s
+[INFO] Finished at: 2026-09-28T18:27:05+02:00
+[INFO] ------------------------------------------------------------------------

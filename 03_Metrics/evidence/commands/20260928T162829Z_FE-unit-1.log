@@ -1,0 +1,21 @@
+$ (cwd=frontend) npm test
+# start=2026-09-28T16:28:29.308Z end=2026-09-28T16:28:33.995Z exit=0 elapsed_s=4.687
+
+
+> conference-registration-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/frontend
+
+ ✓ src/__tests__/fields.test.ts (10 tests) 9ms
+ ✓ src/__tests__/App.test.tsx (2 tests) 213ms
+ ✓ src/__tests__/RegistrationForm.test.tsx (11 tests) 2777ms
+   ✓ RegistrationForm > shows success only after the backend accepts, with trimmed payload  403ms
+   ✓ RegistrationForm > reuses the request ID for an unchanged retry and renews it after an edit  334ms
+
+ Test Files  3 passed (3)
+      Tests  23 passed (23)
+   Start at  18:28:29
+   Duration  3.98s (transform 193ms, setup 403ms, collect 410ms, tests 3.00s, environment 1.52s, prepare 326ms)
+
