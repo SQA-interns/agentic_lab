@@ -114,11 +114,34 @@ public class ApiExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ErrorResponse> handleUnexpected(Exception e) {
-    LOG.error("Unexpected error while processing request", e);
+    // Exception messages may contain submitted personal data (e.g. database constraint errors
+    // echo the failing row), so only types and code locations are logged by default.
+    LOG.error("Unexpected error while processing request: {}", describeWithoutMessages(e));
+    LOG.debug("Unexpected error details", e);
     return error(
         HttpStatus.INTERNAL_SERVER_ERROR,
         "INTERNAL_ERROR",
         "The request could not be completed. Please try again later.");
+  }
+
+  /** Exception class chain with the throwing code location of each cause, without messages. */
+  static String describeWithoutMessages(Throwable throwable) {
+    StringBuilder text = new StringBuilder();
+    Throwable current = throwable;
+    int depth = 0;
+    while (current != null && depth < 10) {
+      if (depth > 0) {
+        text.append(" <- caused by ");
+      }
+      text.append(current.getClass().getName());
+      StackTraceElement[] trace = current.getStackTrace();
+      if (trace.length > 0) {
+        text.append(" at ").append(trace[0]);
+      }
+      current = current.getCause() == current ? null : current.getCause();
+      depth++;
+    }
+    return text.toString();
   }
 
   private static ResponseEntity<ErrorResponse> validationFailed(List<FieldViolation> violations) {

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Triaged OWASP Dependency-Check findings (see docs/verification-report.md, VF-06).
+
+  The fixed releases (Spring Framework 6.2.20+, Spring Security 6.5.12+) are not published
+  as open-source artifacts on Maven Central for the Spring Boot 3.x line; the next OSS
+  releases (Spring Framework 7 / Spring Security 7) require Spring Boot 4, which is outside
+  the frozen technology stack (Spring Boot 3.x).
+
+  Each CVE below affects a feature this application does not use. The absence of those
+  features is enforced by si.konferenca.registration.VulnerableFeatureGuardTest.
+  Re-evaluate whenever a new dependency or feature is added, and upgrade as soon as a
+  fixed version is available for the stack.
+-->
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes>XsltView SSRF/RCE: the application renders no views (REST/JSON only, no ViewResolver, no XsltView).</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-.*@6\.2\.19$</packageUrl>
+    <cve>CVE-2026-47884</cve>
+  </suppress>
+  <suppress>
+    <notes>Server-Sent Events with view fragments / functional web framework: no SSE and no functional endpoints are used.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-.*@6\.2\.19$</packageUrl>
+    <cve>CVE-2026-47890</cve>
+    <cve>CVE-2026-59313</cve>
+  </suppress>
+  <suppress>
+    <notes>WebFlux-only issues (Aalto XML, functional endpoint header predicates, PartEventHttpMessageReader, Jetty 12 reactive adapter, WebSocket): the application uses Spring MVC on Tomcat; WebFlux, Jetty and WebSocket are not on the classpath.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-.*@6\.2\.19$</packageUrl>
+    <cve>CVE-2026-47891</cve>
+    <cve>CVE-2026-47892</cve>
+    <cve>CVE-2026-47885</cve>
+    <cve>CVE-2026-47889</cve>
+    <cve>CVE-2026-47893</cve>
+  </suppress>
+  <suppress>
+    <notes>SpEL evaluation (SimpleEvaluationContext compiler bypass, power-operator DoS): the application evaluates no SpEL expressions, in particular none built from user input.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-.*@6\.2\.19$</packageUrl>
+    <cve>CVE-2026-59283</cve>
+    <cve>CVE-2026-47886</cve>
+  </suppress>
+  <suppress>
+    <notes>RSocket SETUP frame memory leak: RSocket is not used and not on the classpath.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-.*@6\.2\.19$</packageUrl>
+    <cve>CVE-2026-47888</cve>
+  </suppress>
+  <suppress>
+    <notes>Data binding of user-supplied property paths (DoS): request bodies are deserialized by Jackson into records (@RequestBody); no @ModelAttribute/WebDataBinder binding of request parameters onto objects is used.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-.*@6\.2\.19$</packageUrl>
+    <cve>CVE-2026-59282</cve>
+  </suppress>
+  <suppress>
+    <notes>Spring Security embedded UnboundID LDAP server, DPoP JWT decoder, WebAuthn: none of these features is used (HTTP Basic with an in-memory user only); LDAP/OAuth2/WebAuthn modules are not on the classpath.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-.*@6\.5\.11$</packageUrl>
+    <cve>CVE-2026-59270</cve>
+    <cve>CVE-2026-41707</cve>
+    <cve>CVE-2026-47841</cve>
+  </suppress>
+</suppressions>

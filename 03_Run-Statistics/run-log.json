@@ -30,8 +30,8 @@
     },
     {
       "name": "verification",
-      "start": null,
-      "end": null
+      "start": "2026-09-28T22:19:58Z",
+      "end": "2026-09-28T22:40:55Z"
     },
     {
       "name": "finalization",
@@ -45,17 +45,78 @@
     "failed": 4
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 164,
+    "failed": 0
   },
   "humanInterventions": [],
   "clarifyingQuestions": 0,
   "manualCodeFixes": 0,
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loopNumber": 1,
+      "trigger": "DoD 1 static checks: spotless:check failed on RestartAndReconfigurationIntegrationTest.java (line endings/formatting after sed edit)",
+      "findingIds": [
+        "VF-01"
+      ],
+      "change": "Ran spotless:apply (google-java-format) on the test file; no behaviour change",
+      "start": "2026-09-28T22:20:52Z",
+      "end": "2026-09-28T22:21:00Z"
+    },
+    {
+      "loopNumber": 2,
+      "trigger": "DoD 1 static checks: SpotBugs could not execute - scaffold pins com.github.spotbugs:spotbugs-maven-plugin 10.12.15, which does not exist on Maven Central (HTTP 404)",
+      "findingIds": [
+        "VF-02"
+      ],
+      "change": "Changed the plugin version in the copied backend/pom.xml to 4.10.4.1 (latest published release); SpotBugs re-run executes (36 Medium-priority findings, 0 High)",
+      "start": "2026-09-28T22:21:05Z",
+      "end": "2026-09-28T22:21:33Z"
+    },
+    {
+      "loopNumber": 3,
+      "trigger": "DoD 1 static checks: frontend formatting check (npm run format) failed on 11 files - CRLF line endings of scaffold config files in the Windows checkout, plus generated dist/ and test-results/ output being checked",
+      "findingIds": [
+        "VF-04"
+      ],
+      "change": "Added frontend/.prettierignore (build/test output, lockfile) and frontend/.gitattributes (eol=lf); normalised line endings with prettier --write; no source logic changed",
+      "start": "2026-09-28T22:22:38Z",
+      "end": "2026-09-28T22:22:46Z"
+    },
+    {
+      "loopNumber": 4,
+      "trigger": "DoD 3 security: OWASP Dependency-Check reported 22 Critical / 23 High CVEs (Tomcat 10.1.55, pgjdbc 42.7.11, Spring Framework 6.2.19, Spring Security 6.5.11) with Spring Boot 3.5.16 (latest 3.x)",
+      "findingIds": [
+        "VF-06"
+      ],
+      "change": "Upgraded tomcat.version to 10.1.60 and postgresql.version to 42.7.13 (fixed releases, still Spring Boot 3.5); triaged the 14 remaining Spring Framework/Security CVEs (fixes 6.2.20/6.5.12 not published as OSS; next OSS line needs Spring Boot 4, outside the frozen stack) as affecting unused features and recorded them in backend/dependency-check-suppressions.xml with per-CVE justification; added VulnerableFeatureGuardTest to enforce that those features are not used/on the classpath. Re-verification: 130/130 backend tests pass; Dependency-Check 0 Critical / 0 High active",
+      "start": "2026-09-28T22:30:43Z",
+      "end": "2026-09-28T22:32:36Z"
+    },
+    {
+      "loopNumber": 5,
+      "trigger": "Verification inspection (spec 7.10 personal-data logging): ApiExceptionHandler logged full exception messages for unexpected errors; database constraint errors can echo submitted personal data",
+      "findingIds": [
+        "VF-07"
+      ],
+      "change": "Unexpected errors are logged at ERROR as exception type chain plus throwing code location only (full exception at DEBUG); added ApiExceptionHandlerTest. Re-verification: targeted tests pass, log line contains no message text",
+      "start": "2026-09-28T22:33:15Z",
+      "end": "2026-09-28T22:34:09Z"
+    },
+    {
+      "loopNumber": 6,
+      "trigger": "Verification inspection (spec 7.3 / 7.9): with test mode off, a blank RECAPTCHA_SITE_KEY let the backend start while the frontend could render no captcha widget, making registration impossible",
+      "findingIds": [
+        "VF-08"
+      ],
+      "change": "RecaptchaCaptchaVerifier fails fast at startup when the site key is blank (as already done for the secret); added CaptchaVerifierTest.productionModeRequiresSiteKey. Re-verification: CaptchaVerifierTest 6/6 pass",
+      "start": "2026-09-28T22:34:19Z",
+      "end": "2026-09-28T22:34:50Z"
+    }
+  ],
   "verificationFindings": {
-    "critical": 0,
-    "major": 0,
-    "minor": 0
+    "critical": 1,
+    "major": 1,
+    "minor": 7
   },
   "commits": [
     {
@@ -81,6 +142,14 @@
       "filesChanged": 68,
       "linesAdded": 3293,
       "linesRemoved": 28
+    },
+    {
+      "sha": "46c6c8004390405e579c0f7a38f3d217011fb27d",
+      "phase": "tests",
+      "message": "phase 4: tests and test strategy (first run 153 passed / 4 failed; repairs)",
+      "filesChanged": 26,
+      "linesAdded": 3404,
+      "linesRemoved": 11
     }
   ],
   "reverts": 0,

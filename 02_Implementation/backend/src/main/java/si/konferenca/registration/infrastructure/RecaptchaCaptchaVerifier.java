@@ -43,6 +43,10 @@ public class RecaptchaCaptchaVerifier implements CaptchaVerifier {
       throw new IllegalStateException(
           "RECAPTCHA_SECRET_KEY must be set when reCAPTCHA test mode is disabled");
     }
+    if (recaptcha.siteKey() == null || recaptcha.siteKey().isBlank()) {
+      throw new IllegalStateException(
+          "RECAPTCHA_SITE_KEY must be set when reCAPTCHA test mode is disabled");
+    }
     this.restClient = restClient;
     this.secretKey = recaptcha.secretKey();
     this.siteKey = recaptcha.siteKey();

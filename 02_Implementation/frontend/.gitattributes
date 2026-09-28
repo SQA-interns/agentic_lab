@@ -1,0 +1,2 @@
+# Prettier (endOfLine: lf) requires LF line endings regardless of platform checkout settings.
+* text=auto eol=lf

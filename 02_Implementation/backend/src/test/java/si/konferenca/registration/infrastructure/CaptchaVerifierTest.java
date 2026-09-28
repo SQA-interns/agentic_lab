@@ -52,6 +52,24 @@ class CaptchaVerifierTest {
   }
 
   @Test
+  void productionModeRequiresSiteKey() {
+    AppProperties withoutSiteKey =
+        new AppProperties(
+            new AppProperties.Recaptcha(false, "s3cret", " ", VERIFY_URL),
+            new AppProperties.Mail("from@test", List.of()),
+            new AppProperties.Backup("./build"),
+            new AppProperties.Options(null),
+            new AppProperties.Organizer("organizer", null),
+            new AppProperties.RateLimit(
+                new AppProperties.Limit(10, 600), new AppProperties.Limit(30, 600)),
+            new AppProperties.Request(16384));
+
+    assertThatThrownBy(() -> new RecaptchaCaptchaVerifier(withoutSiteKey, RestClient.builder()))
+        .isInstanceOf(IllegalStateException.class)
+        .hasMessageContaining("RECAPTCHA_SITE_KEY");
+  }
+
+  @Test
   void productionModeAcceptsSuccessfulGoogleVerification() {
     RestClient.Builder builder = RestClient.builder();
     MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();
