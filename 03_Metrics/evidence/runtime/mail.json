@@ -1,0 +1,90 @@
+{
+  "probe": "mail",
+  "start": "2026-09-28T16:38:35Z",
+  "result": {
+    "steps": [
+      {
+        "normalDelivery": {
+          "recipients": [
+            "organizer@conference.local",
+            "spela.mail.fc7aed@example.org"
+          ],
+          "attachment": "registration-3ddde1a0-4d99-4e16-8f5a-d1991b9245b3.json",
+          "attachmentSha256": "2574472aa9fb17ced58a99bc817278e5a83f2eabd76d2fa4c594d4b5ab4ec366"
+        },
+        "outbox": [
+          [
+            "ORGANIZER_NOTIFICATION",
+            "SENT",
+            "1",
+            ""
+          ],
+          [
+            "PARTICIPANT_CONFIRMATION",
+            "SENT",
+            "1",
+            ""
+          ]
+        ]
+      },
+      {
+        "mailpitStoppedAt": "2026-09-28T16:38:38Z"
+      },
+      {
+        "duringOutage": {
+          "stored": {
+            "id": "c423ff10-3c52-41ef-980e-6710c65ba5f7",
+            "sha256": "07df86fd48b577fdca7ba1c1194d990238d5383867f64a3de4f2666d808bf913",
+            "dbFirstName": "Luka"
+          },
+          "outbox": [
+            [
+              "ORGANIZER_NOTIFICATION",
+              "PENDING",
+              "1",
+              "MailSendException"
+            ],
+            [
+              "PARTICIPANT_CONFIRMATION",
+              "PENDING",
+              "1",
+              "MailSendException"
+            ]
+          ]
+        }
+      },
+      {
+        "mailpitStartedAt": "2026-09-28T16:38:52Z"
+      },
+      {
+        "afterRecovery": {
+          "mail": {
+            "recipients": [
+              "luka.outage.098144@student.example.org",
+              "organizer@conference.local"
+            ],
+            "attachment": "registration-c423ff10-3c52-41ef-980e-6710c65ba5f7.json",
+            "attachmentSha256": "07df86fd48b577fdca7ba1c1194d990238d5383867f64a3de4f2666d808bf913"
+          },
+          "outbox": [
+            [
+              "ORGANIZER_NOTIFICATION",
+              "SENT",
+              "3",
+              ""
+            ],
+            [
+              "PARTICIPANT_CONFIRMATION",
+              "SENT",
+              "3",
+              ""
+            ]
+          ]
+        }
+      }
+    ],
+    "duplicateSemantics": "at-least-once: a crash between SMTP acceptance and the SENT update can resend"
+  },
+  "status": "pass",
+  "end": "2026-09-28T16:39:10Z"
+}

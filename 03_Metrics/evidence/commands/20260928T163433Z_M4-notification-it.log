@@ -1,0 +1,238 @@
+$ (cwd=.) ./mvnw -B verify -Dit.test=NotificationIT -Dtest=NoUnitTests -Dsurefire.failIfNoSpecifiedTests=false
+# start=2026-09-28T16:34:33.560Z end=2026-09-28T16:35:03.329Z exit=1 elapsed_s=29.769
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 8 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ conference-registration-backend ---
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ conference-registration-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.notification.NotificationIT
+18:34:43.227 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.notification.NotificationIT]: NotificationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:34:43.614 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.notification.NotificationIT
+18:34:44.012 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+18:34:44.018 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+18:34:44.057 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+18:34:45.434 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+18:34:45.439 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+18:34:45.478 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+18:34:45.735 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+18:34:46.064 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 0a81d95e1d3749b820a54d79de77749671abb917d42a3090482e118c1b830585
+18:34:46.770 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT1.03459508S
+18:34:46.791 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+18:34:46.792 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+18:34:46.793 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+18:34:46.913 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Creating container for image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+18:34:47.064 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 is starting: 5684ba01358ec89100d2051d1f043e82187e12db0a654160bdf789aaa18c5a35
+18:34:48.794 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 started in PT1.881103808S
+18:34:48.795 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container is started (JDBC URL: jdbc:postgresql://localhost:32997/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-09-28T18:34:49.561+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.NotificationIT        : Starting NotificationIT using Java 21.0.12.1 with PID 1359808 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T18:34:49.562+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.NotificationIT        : The following 1 profile is active: "test"
+2026-09-28T18:34:51.363+02:00  INFO 1359808 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T18:34:51.469+02:00  INFO 1359808 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 2 JPA repository interfaces.
+2026-09-28T18:34:52.539+02:00  INFO 1359808 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T18:34:52.867+02:00  INFO 1359808 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@ad19c8a
+2026-09-28T18:34:52.872+02:00  INFO 1359808 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-28T18:34:52.960+02:00  INFO 1359808 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:32997/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T18:34:53.023+02:00  INFO 1359808 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-28T18:34:53.030+02:00  INFO 1359808 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.030s)
+2026-09-28T18:34:53.061+02:00  INFO 1359808 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-28T18:34:53.131+02:00  INFO 1359808 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-28T18:34:53.158+02:00  INFO 1359808 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-09-28T18:34:53.228+02:00  INFO 1359808 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.039s)
+2026-09-28T18:34:53.414+02:00  INFO 1359808 --- [conference-registration] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-28T18:34:53.528+02:00  INFO 1359808 --- [conference-registration] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-28T18:34:53.586+02:00  INFO 1359808 --- [conference-registration] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-28T18:34:54.121+02:00  INFO 1359808 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T18:34:54.314+02:00  INFO 1359808 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T18:34:56.324+02:00  INFO 1359808 --- [conference-registration] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T18:34:56.391+02:00  INFO 1359808 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T18:34:56.830+02:00  INFO 1359808 --- [conference-registration] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-28T18:34:58.349+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+2026-09-28T18:34:59.023+02:00  INFO 1359808 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T18:34:59.493+02:00  INFO 1359808 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T18:35:00.084+02:00  INFO 1359808 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T18:35:00.085+02:00  INFO 1359808 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T18:35:00.086+02:00  INFO 1359808 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-28T18:35:00.201+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.NotificationIT        : Started NotificationIT in 11.35 seconds (process running for 19.041)
+2026-09-28T18:35:00.483+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-28T18:35:01.403+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 7558c4a9-9a78-4ba6-b4d3-9e75ea9d1462 accepted (EXTERNAL)
+2026-09-28T18:35:01.590+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 03eb84bd-596d-411c-94d4-e541f0ad535a attempt 1 failed (MailSendException); retry at 2026-09-28T16:35:02.589938174Z
+2026-09-28T18:35:01.602+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 2b053a98-3d7a-49b3-850b-d412ff2be426 attempt 1 failed (MailSendException); retry at 2026-09-28T16:35:02.602661643Z
+2026-09-28T18:35:01.605+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 33c67ba1-c55d-4bb2-a917-7eea38220a90 attempt 1 failed (MailSendException); retry at 2026-09-28T16:35:02.605671821Z
+2026-09-28T18:35:01.630+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 03eb84bd-596d-411c-94d4-e541f0ad535a attempt 2 failed (MailSendException); retry at 2026-09-28T16:35:03.629998040Z
+2026-09-28T18:35:01.633+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 2b053a98-3d7a-49b3-850b-d412ff2be426 attempt 2 failed (MailSendException); retry at 2026-09-28T16:35:03.633164461Z
+2026-09-28T18:35:01.636+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 33c67ba1-c55d-4bb2-a917-7eea38220a90 attempt 2 failed (MailSendException); retry at 2026-09-28T16:35:03.636566709Z
+2026-09-28T18:35:01.653+02:00 ERROR 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 03eb84bd-596d-411c-94d4-e541f0ad535a permanently FAILED after 3 attempts
+2026-09-28T18:35:01.655+02:00 ERROR 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 2b053a98-3d7a-49b3-850b-d412ff2be426 permanently FAILED after 3 attempts
+2026-09-28T18:35:01.659+02:00 ERROR 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 33c67ba1-c55d-4bb2-a917-7eea38220a90 permanently FAILED after 3 attempts
+2026-09-28T18:35:01.958+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 551a2a6d-5471-4cc0-b75f-23445942b4d7 accepted (EXTERNAL)
+2026-09-28T18:35:02.079+02:00  INFO 1359808 --- [conference-registration] [127.0.0.1:40650] c.icegreen.greenmail.user.UserManager    : Created user login spela.synthetic@example.org for address spela.synthetic@example.org with password spela.synthetic@example.org because it didn't exist before.
+2026-09-28T18:35:02.089+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email d891fe9e-8544-4c3f-906a-3fd580d88f39 (PARTICIPANT_CONFIRMATION) delivered to SMTP
+2026-09-28T18:35:02.142+02:00  INFO 1359808 --- [conference-registration] [127.0.0.1:40654] c.icegreen.greenmail.user.UserManager    : Created user login organizer-a@conference.test for address organizer-a@conference.test with password organizer-a@conference.test because it didn't exist before.
+2026-09-28T18:35:02.149+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 959d9571-2654-4a61-a2e9-3481d3b8f344 (ORGANIZER_NOTIFICATION) delivered to SMTP
+2026-09-28T18:35:02.201+02:00  INFO 1359808 --- [conference-registration] [127.0.0.1:40668] c.icegreen.greenmail.user.UserManager    : Created user login organizer-b@conference.test for address organizer-b@conference.test with password organizer-b@conference.test because it didn't exist before.
+2026-09-28T18:35:02.213+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email cb5f813c-022b-4d46-b10f-e623afdde552 (ORGANIZER_NOTIFICATION) delivered to SMTP
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations/external
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"377"]
+             Body = {"clientRequestId":"59504c88-f026-4a9e-a2bd-5c0018c60f88","firstName":" Špela ","lastName":"Novak Čebašek ","email":"spela.synthetic@example.org","organization":"Inštitut za žabe","selections":{"workshops":["ws-data-science"],"events":[],"meals":["meal-lunch-day1"],"otherActivities":[]},"consents":{"synthetic-required-consent":true},"captchaToken":"test-captcha-pass"}
+    Session Attrs = {}
+
+Handler:
+             Type = org.example.conference.registration.api.RegistrationController
+           Method = org.example.conference.registration.api.RegistrationController#external(ExternalRegistrationRequest, HttpServletRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"registrationId":"551a2a6d-5471-4cc0-b75f-23445942b4d7","participantType":"EXTERNAL","submittedAt":"2026-09-28T16:35:01.896Z","emailStatus":"PENDING","replayed":false}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-09-28T18:35:02.405+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 34c75e8c-96fa-405a-910c-d5adbf9a0214 accepted (EXTERNAL)
+2026-09-28T18:35:02.416+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email be571839-95b9-4ea5-a924-38f8970c9910 attempt 1 failed (MailSendException); retry at 2026-09-28T16:35:03.416115671Z
+2026-09-28T18:35:02.419+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 4a345b5f-2772-4d60-8092-4a46345de295 attempt 1 failed (MailSendException); retry at 2026-09-28T16:35:03.419318228Z
+2026-09-28T18:35:02.424+02:00  WARN 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 2c27ea6d-fce5-4e70-9305-ab0fb38168fe attempt 1 failed (MailSendException); retry at 2026-09-28T16:35:03.423964971Z
+2026-09-28T18:35:02.499+02:00  INFO 1359808 --- [conference-registration] [127.0.0.1:40708] c.icegreen.greenmail.user.UserManager    : Created user login spela.synthetic@example.org for address spela.synthetic@example.org with password spela.synthetic@example.org because it didn't exist before.
+2026-09-28T18:35:02.500+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email be571839-95b9-4ea5-a924-38f8970c9910 (PARTICIPANT_CONFIRMATION) delivered to SMTP
+2026-09-28T18:35:02.553+02:00  INFO 1359808 --- [conference-registration] [127.0.0.1:40722] c.icegreen.greenmail.user.UserManager    : Created user login organizer-a@conference.test for address organizer-a@conference.test with password organizer-a@conference.test because it didn't exist before.
+2026-09-28T18:35:02.560+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 4a345b5f-2772-4d60-8092-4a46345de295 (ORGANIZER_NOTIFICATION) delivered to SMTP
+2026-09-28T18:35:02.610+02:00  INFO 1359808 --- [conference-registration] [127.0.0.1:40730] c.icegreen.greenmail.user.UserManager    : Created user login organizer-b@conference.test for address organizer-b@conference.test with password organizer-b@conference.test because it didn't exist before.
+2026-09-28T18:35:02.616+02:00  INFO 1359808 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 2c27ea6d-fce5-4e70-9305-ab0fb38168fe (ORGANIZER_NOTIFICATION) delivered to SMTP
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 19.63 s <<< FAILURE! -- in org.example.conference.notification.NotificationIT
+[ERROR] org.example.conference.notification.NotificationIT.deliversParticipantConfirmationAndOrganizerNotificationWithJsonAttachment -- Time elapsed: 0.446 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  "jakarta.mail.internet.MimeMultipart@27120089"
+to contain:
+  "Inštitut za žabe" 
+	at org.example.conference.notification.NotificationIT.deliversParticipantConfirmationAndOrganizerNotificationWithJsonAttachment(NotificationIT.java:109)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   NotificationIT.deliversParticipantConfirmationAndOrganizerNotificationWithJsonAttachment:109 
+Expecting actual:
+  "jakarta.mail.internet.MimeMultipart@27120089"
+to contain:
+  "Inštitut za žabe" 
+[INFO] 
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.038 s
+[INFO] Finished at: 2026-09-28T18:35:03+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.6:verify (default) on project conference-registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

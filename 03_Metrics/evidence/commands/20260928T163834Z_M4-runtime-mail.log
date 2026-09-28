@@ -1,0 +1,4 @@
+$ (cwd=.) python3 tools/runtime_probe.py mail
+# start=2026-09-28T16:38:34.924Z end=2026-09-28T16:39:10.941Z exit=0 elapsed_s=36.017
+
+[pass] mail
