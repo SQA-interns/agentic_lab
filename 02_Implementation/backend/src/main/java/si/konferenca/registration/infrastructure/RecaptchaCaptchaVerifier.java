@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
@@ -31,19 +32,28 @@ public class RecaptchaCaptchaVerifier implements CaptchaVerifier {
   private final String siteKey;
   private final String verifyUrl;
 
+  @Autowired
   public RecaptchaCaptchaVerifier(AppProperties properties, RestClient.Builder builder) {
+    this(properties, builder.requestFactory(timeoutRequestFactory()).build());
+  }
+
+  RecaptchaCaptchaVerifier(AppProperties properties, RestClient restClient) {
     AppProperties.Recaptcha recaptcha = properties.recaptcha();
     if (recaptcha.secretKey() == null || recaptcha.secretKey().isBlank()) {
       throw new IllegalStateException(
           "RECAPTCHA_SECRET_KEY must be set when reCAPTCHA test mode is disabled");
     }
-    SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-    requestFactory.setConnectTimeout(TIMEOUT);
-    requestFactory.setReadTimeout(TIMEOUT);
-    this.restClient = builder.requestFactory(requestFactory).build();
+    this.restClient = restClient;
     this.secretKey = recaptcha.secretKey();
     this.siteKey = recaptcha.siteKey();
     this.verifyUrl = recaptcha.verifyUrl();
+  }
+
+  private static SimpleClientHttpRequestFactory timeoutRequestFactory() {
+    SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+    requestFactory.setConnectTimeout(TIMEOUT);
+    requestFactory.setReadTimeout(TIMEOUT);
+    return requestFactory;
   }
 
   @Override

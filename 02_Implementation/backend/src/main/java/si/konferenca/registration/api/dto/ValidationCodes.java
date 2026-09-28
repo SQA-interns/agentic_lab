@@ -24,8 +24,26 @@ public final class ValidationCodes {
 
   private ValidationCodes() {}
 
-  /** Trims leading and trailing (Unicode) whitespace; keeps {@code null}. */
+  /**
+   * Trims leading and trailing Unicode whitespace, including space separators such as the
+   * non-breaking space; keeps {@code null}.
+   */
   public static String trim(String value) {
-    return value == null ? null : value.strip();
+    if (value == null) {
+      return null;
+    }
+    int start = 0;
+    int end = value.length();
+    while (start < end && isSpace(value.charAt(start))) {
+      start++;
+    }
+    while (end > start && isSpace(value.charAt(end - 1))) {
+      end--;
+    }
+    return value.substring(start, end);
+  }
+
+  private static boolean isSpace(char c) {
+    return Character.isWhitespace(c) || Character.isSpaceChar(c) || c == '﻿';
   }
 }
