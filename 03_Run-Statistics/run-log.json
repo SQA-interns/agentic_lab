@@ -15,8 +15,8 @@
     },
     {
       "name": "specification",
-      "start": null,
-      "end": null
+      "start": "2026-09-28T23:29:31Z",
+      "end": "2026-09-28T23:35:30Z"
     },
     {
       "name": "acceptance-tests",
@@ -55,8 +55,14 @@
     "passed": null,
     "failed": null
   },
-  "humanInterventions": [],
-  "clarifyingQuestions": 0,
+  "humanInterventions": [
+    {
+      "start": "2026-09-28T23:29:46Z",
+      "end": "2026-09-28T23:30:58Z",
+      "reason": "D-6 escalation: human answered the 4-part question resolving HUMAN_INPUTS_MANIFEST rows (reCAPTCHA, SMTP, organizer credentials, NVD key)"
+    }
+  ],
+  "clarifyingQuestions": 4,
   "manualCodeFixes": 0,
   "escalations": [
     {
@@ -114,6 +120,19 @@
       ],
       "humanResponse": null,
       "resolution": "agent-default, pending human review"
+    },
+    {
+      "timestamp": "2026-09-28T23:29:46Z",
+      "category": "missing-human-input",
+      "trigger": "D-6: every HUMAN_INPUTS_MANIFEST row unresolved at Phase 2 start; no reCAPTCHA keys, SMTP creds, organizer creds or NVD key in environment",
+      "proposedAlternatives": [
+        "reCAPTCHA test-mode only / human provides keys",
+        "SMTP local catcher only / human provides creds",
+        "organizer creds generated locally into git-ignored env file / human provides",
+        "NVD key not provided (substitute scanner) / human provides key; public images only"
+      ],
+      "humanResponse": "2026-09-28T23:30:58Z: reCAPTCHA test-mode only; SMTP local catcher only; organizer creds generated locally; NVD API key provided in session (value not recorded)",
+      "resolution": "resolved by human"
     }
   ],
   "fixLoops": [],
@@ -123,7 +142,16 @@
     "medium": 0,
     "low": 0
   },
-  "commits": [],
+  "commits": [
+    {
+      "sha": "c2a106b6ab0516e0ea9d8940eab1b075163d74fc",
+      "phase": "acceptance-criteria",
+      "message": "phase 1: acceptance criteria (with scaffold/hook copy and run-log setup)",
+      "filesChanged": 36,
+      "linesAdded": 8325,
+      "linesRemoved": 7
+    }
+  ],
   "reverts": 0,
   "mergeConflicts": 0,
   "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit, reconciled against <WORKSPACE_ROOT>/04_External-Audit/. Leave null with a reason until the audit pass runs.",

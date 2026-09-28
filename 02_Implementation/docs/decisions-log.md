@@ -91,3 +91,34 @@ permits when no human is available synchronously.
   2. Reject a second registration with the same email.
 - **humanResponse:** none (autonomous run; no synchronous human)
 - **resolution:** agent-default, pending human review — alternative 1.
+
+## D-6 — Unresolved human inputs (HUMAN_INPUTS_MANIFEST.md)
+
+- **timestamp:** 2026-09-28T23:29:46Z
+- **category:** missing-human-input
+- **trigger:** At the start of Phase 2 every row of
+  `03_Process/HUMAN_INPUTS_MANIFEST.md` was still unticked, and the
+  environment held no reCAPTCHA keys, SMTP credentials, organizer
+  export credentials or NVD API key. CONSTITUTION §3 (missing required
+  secret) and the operator's instruction to stop rather than substitute
+  a secret both apply.
+- **proposedAlternatives:**
+  1. reCAPTCHA: deterministic test mode only; production-mode
+     verification exercised against a mocked siteverify endpoint in
+     Verification; production mode refuses to start with a blank key.
+     / Human provides real keys.
+  2. SMTP: local catcher only (Mailpit in compose, Mailpit container in
+     tests); external delivery an open item in RELEASE_NOTES. / Human
+     provides SMTP credentials.
+  3. Organizer export credentials: generated locally by the agent into
+     a git-ignored env file only. / Human provides them.
+  4. NVD API key: not provided, substitute scanner if needed; container
+     images public only. / Human provides key.
+- **humanResponse:** (2026-09-28T23:30:58Z, via synchronous question in
+  the session) reCAPTCHA → test-mode only; SMTP → local catcher only;
+  organizer credentials → generated locally; NVD API key → provided by
+  the human in the session (the key value is not recorded here or in
+  any committed file; it is passed to Dependency-Check only as an
+  environment variable at run time). Container images: public
+  registries only (every image in `docker-compose.yml` is public).
+- **resolution:** resolved by human — alternatives as answered above.

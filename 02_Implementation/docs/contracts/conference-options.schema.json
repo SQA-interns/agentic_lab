@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conference-options.schema.json",
+  "title": "Conference options file",
+  "description": "Organizer-edited configuration of workshops, events, meals and other activities (specification §4). Loaded at startup and re-synced whenever the file's last-modified time or size changes. Options missing from the file become inactive; options are never deleted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["options"],
+  "properties": {
+    "options": {
+      "type": "array",
+      "description": "Order within the array is the display order. Ids must be unique.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "name", "active"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$" },
+          "category": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "active": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

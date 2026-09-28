@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-backup.schema.json",
+  "title": "Raw JSON registration backup",
+  "description": "One file per accepted registration at <APP_BACKUP_DIR>/<registrationId>.json, UTF-8 (specification §10). The same bytes are attached to the organizer notification as registration-<registrationId>.json (specification §11).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registrationId",
+    "submittedAt",
+    "type",
+    "firstName",
+    "lastName",
+    "email",
+    "personalDataConsentAt",
+    "options"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "registrationId": { "type": "string", "format": "uuid" },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "type": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "email": { "type": "string" },
+    "organization": { "type": ["string", "null"] },
+    "studyInstitution": { "type": ["string", "null"] },
+    "studyProgramme": { "type": ["string", "null"] },
+    "studentId": { "type": ["string", "null"] },
+    "personalDataConsentAt": { "type": "string", "format": "date-time" },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "name"],
+        "properties": {
+          "id": { "type": "string" },
+          "category": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+          "name": { "type": "string", "description": "Display name at the time of registration" }
+        }
+      }
+    }
+  }
+}

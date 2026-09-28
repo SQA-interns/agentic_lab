@@ -1,0 +1,420 @@
+openapi: 3.1.0
+info:
+  title: Conference Registration API
+  version: 1.0.0
+  description: |
+    API contract for the conference registration system. See
+    docs/specification.md for behaviour not expressible here.
+
+    All request and response bodies are UTF-8 JSON unless stated.
+    All error responses are RFC 9457 Problem Details
+    (`application/problem+json`) using the `Problem` schema.
+servers:
+  - url: /
+tags:
+  - name: public
+  - name: organizer
+  - name: health
+
+paths:
+  /api/options:
+    get:
+      tags: [public]
+      operationId: listActiveOptions
+      summary: List currently active conference options
+      description: |
+        Returns only options whose status is active, ordered by category
+        (WORKSHOP, EVENT, MEAL, OTHER) and then by their position in the
+        options file. Reflects the current options file (spec §4).
+      responses:
+        "200":
+          description: Active options
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Option"
+              example:
+                - { id: ws-ai, category: WORKSHOP, name: "Delavnica: umetna inteligenca" }
+                - { id: lunch-day1, category: MEAL, name: "Kosilo, 1. dan" }
+
+  /api/config:
+    get:
+      tags: [public]
+      operationId: getClientConfig
+      summary: Public client configuration
+      responses:
+        "200":
+          description: Client configuration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClientConfig"
+
+  /api/registrations:
+    post:
+      tags: [public]
+      operationId: createRegistration
+      summary: Submit an external or student registration
+      description: |
+        Body at most 16 KiB. Strings are stripped of leading/trailing
+        whitespace before validation; a blank string counts as absent.
+        Validation order: size, JSON parse, reCAPTCHA, fields, options.
+        In reCAPTCHA test mode, the token `test-pass` passes and any
+        other value fails.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+            examples:
+              external:
+                value:
+                  type: EXTERNAL
+                  firstName: Živa
+                  lastName: Čepič
+                  email: ziva.cepic@example.si
+                  organization: Univerza v Ljubljani
+                  optionIds: [ws-ai]
+                  personalDataConsent: true
+                  recaptchaToken: test-pass
+              student:
+                value:
+                  type: STUDENT
+                  firstName: Luka
+                  lastName: Šinkovec
+                  email: luka@student.example.si
+                  studyInstitution: Fakulteta za računalništvo in informatiko
+                  studyProgramme: Računalništvo in informatika
+                  studentId: "63200001"
+                  optionIds: []
+                  personalDataConsent: true
+                  recaptchaToken: test-pass
+      responses:
+        "201":
+          description: Registration accepted and stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationResponse"
+        "400":
+          description: |
+            Validation failed (`code: VALIDATION_FAILED`, one `errors[]`
+            entry per failing field), reCAPTCHA failed
+            (`code: RECAPTCHA_FAILED`, errors[0].field `recaptchaToken`),
+            or malformed JSON / unknown property / wrong JSON type
+            (`code: MALFORMED_REQUEST`). Nothing is stored.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+              example:
+                type: about:blank
+                title: Validation failed
+                status: 400
+                code: VALIDATION_FAILED
+                detail: The registration contains invalid fields.
+                errors:
+                  - { field: email, code: INVALID_EMAIL, message: "Enter a valid email address." }
+                  - { field: "optionIds[0]", code: INACTIVE_OPTION, message: "This option is no longer available." }
+        "413":
+          description: Body larger than 16 KiB (`code: PAYLOAD_TOO_LARGE`)
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "415":
+          description: Content type is not application/json (`code: UNSUPPORTED_MEDIA_TYPE`)
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "429":
+          description: Rate limit exceeded (`code: RATE_LIMITED`)
+          headers:
+            Retry-After:
+              schema: { type: integer, minimum: 1 }
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "500":
+          description: |
+            Registration could not be stored (`code: REGISTRATION_NOT_SAVED`)
+            or unexpected error (`code: INTERNAL_ERROR`). No internals in
+            the body. No registration exists afterwards.
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+
+  /api/organizer/registrations/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Download all registrations as an Excel workbook
+      description: |
+        Sheet `Registrations`; row 1 headers (exact text, in order):
+        `Registration ID`, `Submitted at (UTC)`, `Type`, `First name`,
+        `Last name`, `Email`, `Organization / institution`,
+        `Study institution`, `Study programme`, `Student ID`,
+        `Workshops`, `Events`, `Meals`, `Other activities`,
+        `Personal data consent at (UTC)`.
+        One row per registration ordered by submission time. `Type` is
+        `External` or `Student`. Option columns hold selected option
+        names of that category joined by `; `. Fields not applicable to
+        the row's type are empty. All cells are string cells.
+      security:
+        - organizerBasic: []
+      responses:
+        "200":
+          description: Workbook
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment; filename="registrations-20260929-101530.xlsx"
+            Cache-Control:
+              schema: { type: string, const: no-store }
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/RateLimited"
+
+  /api/organizer/backups/restore:
+    post:
+      tags: [organizer]
+      operationId: restoreFromBackups
+      summary: Re-import registrations from the JSON backup directory
+      description: |
+        Inserts every backed-up registration whose id is not in the
+        database, preserving id, timestamps, fields and option links.
+        Idempotent. Sends no email. Requires `Content-Type:
+        application/json` with body `{}`.
+      security:
+        - organizerBasic: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        "200":
+          description: Restore summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestoreResult"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "415":
+          description: Content type is not application/json
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "429":
+          $ref: "#/components/responses/RateLimited"
+
+  /actuator/health:
+    get:
+      tags: [health]
+      operationId: health
+      responses:
+        "200":
+          description: Up
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, enum: [UP] }
+        "503":
+          description: Down
+  /actuator/health/liveness:
+    get:
+      tags: [health]
+      operationId: liveness
+      responses:
+        "200": { description: Live }
+  /actuator/health/readiness:
+    get:
+      tags: [health]
+      operationId: readiness
+      responses:
+        "200": { description: Ready (database reachable) }
+        "503": { description: Not ready }
+
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+      description: Single organizer account from APP_ORGANIZER_USERNAME / APP_ORGANIZER_PASSWORD.
+
+  responses:
+    Unauthorized:
+      description: |
+        Missing or wrong organizer credentials. Header
+        `WWW-Authenticate: Basic realm="organizer"`. Body carries
+        `code: UNAUTHORIZED` and no registration data.
+      headers:
+        WWW-Authenticate:
+          schema: { type: string, example: Basic realm="organizer" }
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    RateLimited:
+      description: Rate limit exceeded (`code: RATE_LIMITED`)
+      headers:
+        Retry-After:
+          schema: { type: integer, minimum: 1 }
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+
+  schemas:
+    OptionCategory:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+
+    Option:
+      type: object
+      additionalProperties: false
+      required: [id, category, name]
+      properties:
+        id:
+          type: string
+          pattern: "^[a-z0-9][a-z0-9_-]{0,63}$"
+        category:
+          $ref: "#/components/schemas/OptionCategory"
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+
+    ClientConfig:
+      type: object
+      additionalProperties: false
+      required: [recaptchaSiteKey, recaptchaTestMode]
+      properties:
+        recaptchaSiteKey:
+          type: string
+          description: Empty string in test mode when no key is configured.
+        recaptchaTestMode:
+          type: boolean
+
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+
+    RegistrationRequest:
+      type: object
+      additionalProperties: false
+      description: |
+        Unknown properties → 400 MALFORMED_REQUEST.
+        Field rules (after stripping; lengths in code points):
+        firstName, lastName required ≤100; email required ≤254 valid
+        format; EXTERNAL: organization required ≤200, student fields must
+        be absent/blank (FIELD_NOT_ALLOWED); STUDENT: studyInstitution,
+        studyProgramme required ≤200, studentId required ≤50,
+        organization must be absent/blank (FIELD_NOT_ALLOWED); no control
+        or format characters (INVALID_CHARACTERS); personalDataConsent
+        must be true (CONSENT_REQUIRED); optionIds ≤50 entries
+        (TOO_MANY_OPTIONS), each existing (UNKNOWN_OPTION) and active
+        (INACTIVE_OPTION); duplicates collapsed.
+      properties:
+        type: { $ref: "#/components/schemas/RegistrationType" }
+        firstName: { type: [string, "null"] }
+        lastName: { type: [string, "null"] }
+        email: { type: [string, "null"] }
+        organization: { type: [string, "null"] }
+        studyInstitution: { type: [string, "null"] }
+        studyProgramme: { type: [string, "null"] }
+        studentId: { type: [string, "null"] }
+        optionIds:
+          type: [array, "null"]
+          items: { type: string }
+        personalDataConsent: { type: [boolean, "null"] }
+        recaptchaToken: { type: [string, "null"] }
+
+    RegistrationResponse:
+      type: object
+      additionalProperties: false
+      required: [registrationId, submittedAt, type, firstName, lastName, email, options]
+      properties:
+        registrationId: { type: string, format: uuid }
+        submittedAt: { type: string, format: date-time }
+        type: { $ref: "#/components/schemas/RegistrationType" }
+        firstName: { type: string }
+        lastName: { type: string }
+        email: { type: string }
+        organization: { type: [string, "null"] }
+        studyInstitution: { type: [string, "null"] }
+        studyProgramme: { type: [string, "null"] }
+        studentId: { type: [string, "null"] }
+        options:
+          type: array
+          items: { $ref: "#/components/schemas/Option" }
+
+    RestoreResult:
+      type: object
+      additionalProperties: false
+      required: [restored, alreadyPresent, failed]
+      properties:
+        restored: { type: integer, minimum: 0 }
+        alreadyPresent: { type: integer, minimum: 0 }
+        failed: { type: integer, minimum: 0 }
+
+    FieldError:
+      type: object
+      required: [field, code, message]
+      properties:
+        field:
+          type: string
+          description: JSON property name, or `optionIds[<index>]`.
+        code:
+          type: string
+          enum:
+            - REQUIRED
+            - INVALID_EMAIL
+            - TOO_LONG
+            - INVALID_CHARACTERS
+            - CONSENT_REQUIRED
+            - UNKNOWN_OPTION
+            - INACTIVE_OPTION
+            - TOO_MANY_OPTIONS
+            - FIELD_NOT_ALLOWED
+            - INVALID_VALUE
+            - RECAPTCHA_FAILED
+        message: { type: string }
+
+    Problem:
+      type: object
+      required: [title, status, code]
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        code:
+          type: string
+          enum:
+            - VALIDATION_FAILED
+            - RECAPTCHA_FAILED
+            - MALFORMED_REQUEST
+            - PAYLOAD_TOO_LARGE
+            - UNSUPPORTED_MEDIA_TYPE
+            - RATE_LIMITED
+            - UNAUTHORIZED
+            - REGISTRATION_NOT_SAVED
+            - INTERNAL_ERROR
+            - NOT_FOUND
+        errors:
+          type: array
+          items: { $ref: "#/components/schemas/FieldError" }
