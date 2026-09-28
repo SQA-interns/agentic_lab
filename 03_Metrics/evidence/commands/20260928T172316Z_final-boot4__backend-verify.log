@@ -1,0 +1,403 @@
+$ (cwd=backend) ./mvnw -B clean verify
+# start=2026-09-28T17:23:16.700Z end=2026-09-28T17:24:14.015Z exit=0 elapsed_s=57.314
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< org.example.conference:conference-registration-backend >-------
+[INFO] Building conference-registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ conference-registration-backend ---
+[INFO] Deleting /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (prepare-unit) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 69 source files with javac [debug parameters release 21] to target/classes
+[INFO] /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/shared/web/RequestSizeLimitFilter.java: /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/shared/web/RequestSizeLimitFilter.java uses or overrides a deprecated API.
+[INFO] /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/shared/web/RequestSizeLimitFilter.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ conference-registration-backend ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ conference-registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 16 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/java/org/example/conference/notification/NotificationIT.java: Some input files use or override a deprecated API.
+[INFO] /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/java/org/example/conference/notification/NotificationIT.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.shared.RateLimitFilterTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.104 s -- in org.example.conference.shared.RateLimitFilterTest
+[INFO] Running org.example.conference.shared.TextNormalizerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in org.example.conference.shared.TextNormalizerTest
+[INFO] Running org.example.conference.catalog.CatalogLoaderTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.378 s -- in org.example.conference.catalog.CatalogLoaderTest
+[INFO] Running org.example.conference.notification.OutboxBackoffTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.380 s -- in org.example.conference.notification.OutboxBackoffTest
+[INFO] Running org.example.conference.captcha.RecaptchaVerifierTest
+19:23:30.779 [main] WARN org.example.conference.captcha.RecaptchaVerifier -- reCAPTCHA verification unavailable: InternalServerError
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.027 s -- in org.example.conference.captcha.RecaptchaVerifierTest
+[INFO] Running org.example.conference.captcha.CaptchaConfigurationTest
+19:23:33.107 [main] WARN org.springframework.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'captchaVerifier' defined in org.example.conference.captcha.CaptchaConfiguration: Failed to instantiate [org.example.conference.captcha.CaptchaVerifier]: Factory method 'captchaVerifier' threw exception with message: Profile 'prod' cannot be combined with local/test
+19:23:33.230 [main] WARN org.springframework.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'captchaVerifier' defined in org.example.conference.captcha.CaptchaConfiguration: Failed to instantiate [org.example.conference.captcha.CaptchaVerifier]: Factory method 'captchaVerifier' threw exception with message: Deterministic captcha mode requires a non-production (local/test) profile
+19:23:33.277 [main] WARN org.springframework.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'captchaVerifier' defined in org.example.conference.captcha.CaptchaConfiguration: Failed to instantiate [org.example.conference.captcha.CaptchaVerifier]: Factory method 'captchaVerifier' threw exception with message: Deterministic captcha mode requires a non-production (local/test) profile
+19:23:33.338 [main] WARN org.springframework.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'captchaVerifier' defined in org.example.conference.captcha.CaptchaConfiguration: Failed to instantiate [org.example.conference.captcha.CaptchaVerifier]: Factory method 'captchaVerifier' threw exception with message: reCAPTCHA site key and secret are required (APP_CAPTCHA_SITE_KEY/APP_CAPTCHA_SECRET)
+19:23:33.382 [main] WARN org.springframework.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'captchaVerifier' defined in org.example.conference.captcha.CaptchaConfiguration: Failed to instantiate [org.example.conference.captcha.CaptchaVerifier]: Factory method 'captchaVerifier' threw exception with message: reCAPTCHA site key and secret are required (APP_CAPTCHA_SITE_KEY/APP_CAPTCHA_SECRET)
+19:23:33.507 [main] WARN org.springframework.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'captchaVerifier' defined in org.example.conference.captcha.CaptchaConfiguration: Failed to instantiate [org.example.conference.captcha.CaptchaVerifier]: Factory method 'captchaVerifier' threw exception with message: app.captcha.test-token must be set in test mode
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.351 s -- in org.example.conference.captcha.CaptchaConfigurationTest
+[INFO] Running org.example.conference.architecture.ArchitectureTest
+19:23:33.575 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.12.1
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.547 s -- in org.example.conference.architecture.ArchitectureTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (report-unit) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ conference-registration-backend ---
+[INFO] Building jar: /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ conference-registration-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/conference-registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent-integration (prepare-it) @ conference-registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.conference.shared.SecurityIT
+19:23:42.033 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.shared.SecurityIT]: SecurityIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:23:42.377 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.shared.SecurityIT
+19:23:42.570 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.shared.SecurityIT]: SecurityIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:23:42.571 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:23:42.587 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.shared.SecurityIT
+19:23:42.738 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+19:23:42.745 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+19:23:42.793 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+19:23:44.653 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+19:23:44.654 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+19:23:44.687 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+19:23:44.912 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+19:23:45.164 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: b92de654ef6e269e54377032ae0294bac8242a42d39ed75c452a78ce235c6b9c
+19:23:45.695 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.783381259S
+19:23:45.703 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+19:23:45.703 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+19:23:45.705 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+19:23:45.771 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Creating container for image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+19:23:45.937 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 is starting: 8aee15c8b5b4b71314b0d4aa73a736ebd9352a17365cd9e2534fb25e5e91b348
+19:23:47.646 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54 started in PT1.87562969S
+19:23:47.647 [main] INFO tc.postgres:16@sha256:1a6ab3... -- Container is started (JDBC URL: jdbc:postgresql://localhost:39563/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-28T19:23:48.343+02:00  INFO 1404015 --- [conference-registration] [           main] o.example.conference.shared.SecurityIT   : Starting SecurityIT using Java 21.0.12.1 with PID 1404015 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T19:23:48.346+02:00  INFO 1404015 --- [conference-registration] [           main] o.example.conference.shared.SecurityIT   : The following 1 profile is active: "test"
+2026-09-28T19:23:50.057+02:00  INFO 1404015 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T19:23:50.150+02:00  INFO 1404015 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 2 JPA repository interfaces.
+2026-09-28T19:23:51.428+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T19:23:51.742+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@602d2058
+2026-09-28T19:23:51.746+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-28T19:23:51.825+02:00  INFO 1404015 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:39563/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T19:23:52.028+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-28T19:23:52.038+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.056s)
+2026-09-28T19:23:52.084+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-28T19:23:52.202+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-28T19:23:52.237+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-09-28T19:23:52.305+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.040s)
+2026-09-28T19:23:52.533+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-28T19:23:52.638+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-28T19:23:53.454+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T19:23:53.627+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:39563/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T19:23:55.699+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T19:23:55.791+02:00  INFO 1404015 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T19:23:55.927+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-28T19:23:58.110+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+2026-09-28T19:23:58.790+02:00  INFO 1404015 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T19:23:59.906+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T19:23:59.906+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T19:23:59.928+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T19:23:59.945+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 38 ms
+2026-09-28T19:24:00.185+02:00  INFO 1404015 --- [conference-registration] [           main] o.example.conference.shared.SecurityIT   : Started SecurityIT in 12.467 seconds (process running for 20.523)
+2026-09-28T19:24:00.491+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.89 s -- in org.example.conference.shared.SecurityIT
+[INFO] Running org.example.conference.catalog.CatalogChangeIT
+2026-09-28T19:24:01.527+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.catalog.CatalogChangeIT]: CatalogChangeIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:01.544+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.catalog.CatalogChangeIT
+2026-09-28T19:24:01.546+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.catalog.CatalogChangeIT]: CatalogChangeIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:01.546+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:01.552+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.catalog.CatalogChangeIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-28T19:24:01.609+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.conference.catalog.CatalogChangeIT   : Starting CatalogChangeIT using Java 21.0.12.1 with PID 1404015 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T19:24:01.609+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.conference.catalog.CatalogChangeIT   : The following 1 profile is active: "test"
+2026-09-28T19:24:02.110+02:00  INFO 1404015 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T19:24:02.123+02:00  INFO 1404015 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 2 JPA repository interfaces.
+2026-09-28T19:24:02.334+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-28T19:24:02.357+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@117bdcb7
+2026-09-28T19:24:02.358+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-09-28T19:24:02.360+02:00  INFO 1404015 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:39563/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T19:24:02.388+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.009s)
+2026-09-28T19:24:02.424+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-28T19:24:02.425+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-28T19:24:02.458+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-28T19:24:02.488+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T19:24:02.500+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:39563/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T19:24:02.605+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T19:24:02.626+02:00  INFO 1404015 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T19:24:02.761+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/test/resources/catalog-changed.yaml: 7 options (6 active), 1 consents
+2026-09-28T19:24:02.989+02:00  INFO 1404015 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T19:24:03.201+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T19:24:03.202+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T19:24:03.210+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T19:24:03.221+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 19 ms
+2026-09-28T19:24:03.289+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.conference.catalog.CatalogChangeIT   : Started CatalogChangeIT in 1.73 seconds (process running for 23.628)
+2026-09-28T19:24:03.298+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+2026-09-28T19:24:03.748+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 896708a4-f5e5-47f4-921e-c9d616f4b4a1 accepted (EXTERNAL)
+2026-09-28T19:24:03.804+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 0be0f76c-2a39-442c-aa28-eb6deab6a59d accepted (STUDENT)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.288 s -- in org.example.conference.catalog.CatalogChangeIT
+[INFO] Running org.example.conference.FoundationIT
+2026-09-28T19:24:03.818+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.FoundationIT]: FoundationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:03.828+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.FoundationIT
+2026-09-28T19:24:03.830+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.FoundationIT]: FoundationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:03.831+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:03.839+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.FoundationIT
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s -- in org.example.conference.FoundationIT
+[INFO] Running org.example.conference.notification.NotificationIT
+2026-09-28T19:24:03.944+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.notification.NotificationIT]: NotificationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:03.960+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.notification.NotificationIT
+2026-09-28T19:24:03.961+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.notification.NotificationIT]: NotificationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:03.961+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:03.968+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.notification.NotificationIT
+2026-09-28T19:24:04.088+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration b1bb52ce-b7d5-4c63-b122-a68607815576 accepted (EXTERNAL)
+2026-09-28T19:24:04.244+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email cb59263b-506b-4b38-ac23-8ac35c6d913a attempt 1 failed (MailSendException); retry at 2026-09-28T17:24:05.244854963Z
+2026-09-28T19:24:04.258+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 14e1a0f5-0e5d-4aab-bfb4-cfac2d588da2 attempt 1 failed (MailSendException); retry at 2026-09-28T17:24:05.258586681Z
+2026-09-28T19:24:04.261+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 98957e67-dae1-4ff8-974f-4a035cf30c7e attempt 1 failed (MailSendException); retry at 2026-09-28T17:24:05.261755370Z
+2026-09-28T19:24:04.292+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email cb59263b-506b-4b38-ac23-8ac35c6d913a attempt 2 failed (MailSendException); retry at 2026-09-28T17:24:06.292048523Z
+2026-09-28T19:24:04.294+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 14e1a0f5-0e5d-4aab-bfb4-cfac2d588da2 attempt 2 failed (MailSendException); retry at 2026-09-28T17:24:06.294673827Z
+2026-09-28T19:24:04.298+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 98957e67-dae1-4ff8-974f-4a035cf30c7e attempt 2 failed (MailSendException); retry at 2026-09-28T17:24:06.298427789Z
+2026-09-28T19:24:04.318+02:00 ERROR 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email cb59263b-506b-4b38-ac23-8ac35c6d913a permanently FAILED after 3 attempts
+2026-09-28T19:24:04.321+02:00 ERROR 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 14e1a0f5-0e5d-4aab-bfb4-cfac2d588da2 permanently FAILED after 3 attempts
+2026-09-28T19:24:04.323+02:00 ERROR 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 98957e67-dae1-4ff8-974f-4a035cf30c7e permanently FAILED after 3 attempts
+2026-09-28T19:24:04.405+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 9f734ef3-fcc7-47c4-869c-3cce5c358b44 accepted (EXTERNAL)
+2026-09-28T19:24:04.532+02:00  INFO 1404015 --- [conference-registration] [127.0.0.1:50594] c.icegreen.greenmail.user.UserManager    : Created user login spela.synthetic@example.org for address spela.synthetic@example.org with password spela.synthetic@example.org because it didn't exist before.
+2026-09-28T19:24:04.553+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 753aeed5-c472-4abb-85f5-392c99d92f65 (PARTICIPANT_CONFIRMATION) delivered to SMTP
+2026-09-28T19:24:04.611+02:00  INFO 1404015 --- [conference-registration] [127.0.0.1:50604] c.icegreen.greenmail.user.UserManager    : Created user login organizer-a@conference.test for address organizer-a@conference.test with password organizer-a@conference.test because it didn't exist before.
+2026-09-28T19:24:04.624+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email ecf28cc7-00a2-4f5c-93c7-77802fdabe98 (ORGANIZER_NOTIFICATION) delivered to SMTP
+2026-09-28T19:24:04.681+02:00  INFO 1404015 --- [conference-registration] [127.0.0.1:50610] c.icegreen.greenmail.user.UserManager    : Created user login organizer-b@conference.test for address organizer-b@conference.test with password organizer-b@conference.test because it didn't exist before.
+2026-09-28T19:24:04.689+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email dec3a192-4f38-4c6f-899c-eee9d13292da (ORGANIZER_NOTIFICATION) delivered to SMTP
+2026-09-28T19:24:04.888+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 9c367de1-4e87-40a0-9762-94be4cc176e1 accepted (EXTERNAL)
+2026-09-28T19:24:04.904+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 62f776c1-5d9f-4e5e-b986-9aeb6ffe4c2b attempt 1 failed (MailSendException); retry at 2026-09-28T17:24:05.904414637Z
+2026-09-28T19:24:04.910+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email ecd00d31-b03e-480e-9cb4-796a68b99e11 attempt 1 failed (MailSendException); retry at 2026-09-28T17:24:05.910368455Z
+2026-09-28T19:24:04.913+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email e3b5bcd2-931e-43af-8426-03af43039df8 attempt 1 failed (MailSendException); retry at 2026-09-28T17:24:05.913761123Z
+2026-09-28T19:24:04.992+02:00  INFO 1404015 --- [conference-registration] [127.0.0.1:50630] c.icegreen.greenmail.user.UserManager    : Created user login spela.synthetic@example.org for address spela.synthetic@example.org with password spela.synthetic@example.org because it didn't exist before.
+2026-09-28T19:24:04.994+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email 62f776c1-5d9f-4e5e-b986-9aeb6ffe4c2b (PARTICIPANT_CONFIRMATION) delivered to SMTP
+2026-09-28T19:24:05.042+02:00  INFO 1404015 --- [conference-registration] [127.0.0.1:50638] c.icegreen.greenmail.user.UserManager    : Created user login organizer-a@conference.test for address organizer-a@conference.test with password organizer-a@conference.test because it didn't exist before.
+2026-09-28T19:24:05.048+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email ecd00d31-b03e-480e-9cb4-796a68b99e11 (ORGANIZER_NOTIFICATION) delivered to SMTP
+2026-09-28T19:24:05.106+02:00  INFO 1404015 --- [conference-registration] [127.0.0.1:50652] c.icegreen.greenmail.user.UserManager    : Created user login organizer-b@conference.test for address organizer-b@conference.test with password organizer-b@conference.test because it didn't exist before.
+2026-09-28T19:24:05.127+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.notification.OutboxDispatcher      : Email e3b5bcd2-931e-43af-8426-03af43039df8 (ORGANIZER_NOTIFICATION) delivered to SMTP
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.225 s -- in org.example.conference.notification.NotificationIT
+[INFO] Running org.example.conference.registration.RegistrationApiIT
+2026-09-28T19:24:05.179+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.registration.RegistrationApiIT]: RegistrationApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:05.222+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.RegistrationApiIT
+2026-09-28T19:24:05.224+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.registration.RegistrationApiIT]: RegistrationApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:05.225+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:05.235+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.RegistrationApiIT
+2026-09-28T19:24:05.462+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 3df471a8-56b3-43be-9089-b67f17dd7a7f accepted (EXTERNAL)
+2026-09-28T19:24:05.523+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 0a0f35b9-531e-425b-8be9-51bb3b2360ad accepted (EXTERNAL)
+2026-09-28T19:24:05.651+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration acd3940e-7d42-4f4b-b7a6-27b53d10ebe8 accepted (STUDENT)
+2026-09-28T19:24:06.098+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 072029d4-4dcd-49dd-82d8-ca7069eac5b3 accepted (EXTERNAL)
+2026-09-28T19:24:06.301+02:00  INFO 1404015 --- [conference-registration] [ool-21-thread-5] o.e.c.r.service.RegistrationService      : Registration f22b577c-bba5-4bc3-a48c-1eaeb66b011f accepted (STUDENT)
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-2] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-6] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-7] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-4] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-1] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-8] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.308+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-3] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-2] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-6] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-7] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-4] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-1] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-8] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+2026-09-28T19:24:06.309+02:00  WARN 1404015 --- [conference-registration] [ool-21-thread-3] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_client_request"
+  Detail: Key (client_request_id)=(add08905-40f1-492e-bed9-3f942e1fe43c) already exists.
+[INFO] Tests run: 32, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.172 s -- in org.example.conference.registration.RegistrationApiIT
+[INFO] Running org.example.conference.registration.StorageFailureIT
+2026-09-28T19:24:06.355+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.registration.StorageFailureIT]: StorageFailureIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:06.370+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.StorageFailureIT
+2026-09-28T19:24:06.371+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.registration.StorageFailureIT]: StorageFailureIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:06.372+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:06.379+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.registration.StorageFailureIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-28T19:24:06.425+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.registration.StorageFailureIT      : Starting StorageFailureIT using Java 21.0.12.1 with PID 1404015 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend)
+2026-09-28T19:24:06.426+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.registration.StorageFailureIT      : The following 1 profile is active: "test"
+2026-09-28T19:24:06.633+02:00  INFO 1404015 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-28T19:24:06.644+02:00  INFO 1404015 --- [conference-registration] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 2 JPA repository interfaces.
+2026-09-28T19:24:06.825+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-09-28T19:24:06.845+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@51e8dd73
+2026-09-28T19:24:06.853+02:00  INFO 1404015 --- [conference-registration] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-09-28T19:24:06.855+02:00  INFO 1404015 --- [conference-registration] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:39563/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-28T19:24:06.883+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.007s)
+2026-09-28T19:24:06.916+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-28T19:24:06.917+02:00  INFO 1404015 --- [conference-registration] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-28T19:24:06.950+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-28T19:24:06.975+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-28T19:24:06.984+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:39563/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-28T19:24:07.075+02:00  INFO 1404015 --- [conference-registration] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-28T19:24:07.093+02:00  INFO 1404015 --- [conference-registration] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-28T19:24:07.191+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.catalog.CatalogConfiguration       : Loaded catalog from src/test/resources/catalog-test.yaml: 9 options (8 active), 1 consents
+2026-09-28T19:24:08.215+02:00  INFO 1404015 --- [conference-registration] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizerUsers
+2026-09-28T19:24:08.956+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-28T19:24:08.957+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-28T19:24:08.972+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-28T19:24:08.985+02:00  INFO 1404015 --- [conference-registration] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 28 ms
+2026-09-28T19:24:09.086+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.registration.StorageFailureIT      : Started StorageFailureIT in 2.701 seconds (process running for 29.425)
+2026-09-28T19:24:09.202+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (1 registrations)
+2026-09-28T19:24:09.367+02:00 ERROR 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Backup publish failed for new registration 451476a8-a7f0-4780-ac46-2516b92f9a4e: java.io.IOException
+2026-09-28T19:24:09.493+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 6d09f229-3f92-4aaf-8f89-bf45c594ed30 accepted (EXTERNAL)
+2026-09-28T19:24:09.618+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 5536b985-b6ec-4c02-bbfb-9dae6dcfb9a2 accepted (EXTERNAL)
+2026-09-28T19:24:09.678+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 7c82fa61-0f5f-4212-ad92-f55a3d6fca6c accepted (EXTERNAL)
+2026-09-28T19:24:09.740+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration c35eccb3-ffd6-4194-ae81-1cad60283b91 accepted (EXTERNAL)
+2026-09-28T19:24:09.752+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Quarantining unaccepted backup file 1d7a986b-8453-4fb0-8141-2890468bb4ef.json
+2026-09-28T19:24:09.773+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Re-published backup file for registration 7c82fa61-0f5f-4212-ad92-f55a3d6fca6c from database
+2026-09-28T19:24:09.792+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Re-published backup file for registration c35eccb3-ffd6-4194-ae81-1cad60283b91 from database
+2026-09-28T19:24:09.793+02:00  WARN 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation performed changes: Report[tempFilesDeleted=1, orphansQuarantined=1, filesRestored=1, mismatchesRepaired=1]
+2026-09-28T19:24:09.823+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (3 registrations)
+2026-09-28T19:24:09.871+02:00 ERROR 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Database commit failed for registration 7a965aa2-4b0a-43e9-b1b5-e91267b3f23d: org.springframework.dao.DataAccessResourceFailureException
+2026-09-28T19:24:09.902+02:00 ERROR 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Database holds no registrations but 1 backup files exist; not quarantining (possible database restore scenario, operator action required)
+2026-09-28T19:24:09.903+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (0 registrations)
+2026-09-28T19:24:09.970+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 94ff1b29-0a8d-4a14-ad3a-3dff8570b73f accepted (EXTERNAL)
+2026-09-28T19:24:09.978+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.backup.BackupReconciler          : Backup reconciliation: consistent (1 registrations)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.631 s -- in org.example.conference.registration.StorageFailureIT
+[INFO] Running org.example.conference.export.ExportIT
+2026-09-28T19:24:09.995+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.export.ExportIT]: ExportIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:10.039+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.export.ExportIT
+2026-09-28T19:24:10.041+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.export.ExportIT]: ExportIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:10.041+02:00  INFO 1404015 --- [conference-registration] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.conference.support.IntegrationTestBase]: IntegrationTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-28T19:24:10.054+02:00  INFO 1404015 --- [conference-registration] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.conference.ConferenceApplication for test class org.example.conference.export.ExportIT
+2026-09-28T19:24:10.115+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration eea12138-5e6f-48b8-acd1-a6ee3ea1ec6b accepted (EXTERNAL)
+2026-09-28T19:24:10.154+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 44f1e91c-1988-45fb-951c-5f96fea55e1d accepted (STUDENT)
+2026-09-28T19:24:13.117+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 100cd921-67ad-40c9-a526-de32bc6cf0b2 accepted (EXTERNAL)
+2026-09-28T19:24:13.155+02:00  INFO 1404015 --- [conference-registration] [           main] o.e.c.r.service.RegistrationService      : Registration 7849d5f4-9a77-45c1-94de-88982f9c34cb accepted (STUDENT)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.329 s -- in org.example.conference.export.ExportIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 53, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.15:report-integration (report-it) @ conference-registration-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-registration-backend' with 72 classes
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  55.672 s
+[INFO] Finished at: 2026-09-28T19:24:13+02:00
+[INFO] ------------------------------------------------------------------------

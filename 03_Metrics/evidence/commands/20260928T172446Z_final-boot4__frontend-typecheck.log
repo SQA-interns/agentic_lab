@@ -1,0 +1,7 @@
+$ (cwd=frontend) npm run typecheck
+# start=2026-09-28T17:24:46.297Z end=2026-09-28T17:24:50.091Z exit=0 elapsed_s=3.793
+
+
+> conference-registration-frontend@1.0.0 typecheck
+> tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json
+

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.example.conference.registration.StorageFailureIT
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.631 s -- in org.example.conference.registration.StorageFailureIT

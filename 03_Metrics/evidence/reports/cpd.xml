@@ -2,7 +2,7 @@
 <pmd-cpd xmlns="https://pmd-code.org/schema/cpd-report"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          pmdVersion="7.28.0"
-         timestamp="2026-09-28T19:03:49.768328719+02:00"
+         timestamp="2026-09-28T19:24:38.759028114+02:00"
          version="1.0.0"
          xsi:schemaLocation="https://pmd-code.org/schema/cpd-report https://pmd.github.io/schema/cpd-report_1_0_0.xsd">
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/ConferenceApplication.java"
@@ -26,7 +26,7 @@
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/catalog/CatalogConfiguration.java"
          totalNumberOfTokens="128"/>
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/catalog/CatalogLoader.java"
-         totalNumberOfTokens="852"/>
+         totalNumberOfTokens="834"/>
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/catalog/CatalogOption.java"
          totalNumberOfTokens="15"/>
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/catalog/CatalogProperties.java"
@@ -92,7 +92,7 @@
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/registration/service/Hashing.java"
          totalNumberOfTokens="85"/>
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/registration/service/RawJsonFactory.java"
-         totalNumberOfTokens="550"/>
+         totalNumberOfTokens="555"/>
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/registration/service/RegistrationCommand.java"
          totalNumberOfTokens="60"/>
    <file path="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/registration/service/RegistrationEmailComposer.java"

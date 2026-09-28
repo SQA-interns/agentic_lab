@@ -1,0 +1,6 @@
+$ (cwd=.) python3 tools/security_summary.py
+# start=2026-09-28T17:25:25.409Z end=2026-09-28T17:25:25.460Z exit=0 elapsed_s=0.051
+
+dependencyCheck: status=ok criticalOrHigh=0 bySeverity={}
+npmAudit: status=ok criticalOrHigh=0 bySeverity={'info': 0, 'low': 0, 'moderate': 0, 'high': 0, 'critical': 0, 'total': 0}
+semgrep: status=ok criticalOrHigh=0 bySeverity={}

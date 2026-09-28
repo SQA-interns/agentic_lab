@@ -1,5 +1,5 @@
 ## before: image and catalog
-backend image=sha256:747104948b1f03bbbef852f092c244a6dde25c709d53b7bcba925d0e424f91eb
+backend image=sha256:75d6357f58e2f494258cf27e5d08dda25872ab1614179287a4d593bf42014769
 {"conferenceName":"Example Conference 2026","optionGroups":{"workshops":[{"id":"ws-data-science","name":"Workshop: Data science in practice"},{"id":"ws-open-source","name":"Workshop: Contributing to open source"}],"events":[{"id":"ev-welcome-reception","name":"Welcome reception"},{"id":"ev-city-tour","name":"Guided city tour"}],"meals":[{"id":"meal-lunch-day1","name":"Lunch, day 1"},{"id":"meal-lunch-day2","name":"Lunch, day 2"},{"id":"meal-gala-dinner","name":"Gala dinner"}],"otherActivities":[{"id":"other-poster-session","name":"Poster session participation"}]},"consents":[],"captcha":{"mode":"test","siteKey":null,"testToken":"local-test-captcha-pass"}}
 ## switching catalog to config/fixtures/catalog-changed.yaml and recreating backend (no build)
  Container conference-postgres-1 Running 
@@ -9,7 +9,7 @@ backend image=sha256:747104948b1f03bbbef852f092c244a6dde25c709d53b7bcba925d0e424
  Container conference-postgres-1 Healthy 
  Container conference-backend-1 Starting 
  Container conference-backend-1 Started 
-backend image=sha256:747104948b1f03bbbef852f092c244a6dde25c709d53b7bcba925d0e424f91eb
+backend image=sha256:75d6357f58e2f494258cf27e5d08dda25872ab1614179287a4d593bf42014769
 {"conferenceName":"Example Conference 2027","optionGroups":{"workshops":[{"id":"ws-data-science","name":"Workshop: Data science in practice"},{"id":"ws-ai-safety","name":"Workshop: AI safety fundamentals"}],"events":[{"id":"ev-harbour-cruise","name":"Harbour cruise"}],"meals":[{"id":"meal-lunch-day1","name":"Lunch, day 1"},{"id":"meal-vegan-dinner","name":"Vegan dinner"}],"otherActivities":[{"id":"other-mentoring","name":"Mentoring session"}]},"consents":[{"id":"synthetic-required-consent","text":"[SYNTHETIC TEST FIXTURE - not an approved legal notice] I agree to the synthetic test statement.","required":true}],"captcha":{"mode":"test","siteKey":null,"testToken":"local-test-captcha-pass"}}
 ## restoring default catalog
  Container conference-postgres-1 Running 
@@ -19,5 +19,5 @@ backend image=sha256:747104948b1f03bbbef852f092c244a6dde25c709d53b7bcba925d0e424
  Container conference-postgres-1 Healthy 
  Container conference-backend-1 Starting 
  Container conference-backend-1 Started 
-backend image=sha256:747104948b1f03bbbef852f092c244a6dde25c709d53b7bcba925d0e424f91eb
+backend image=sha256:75d6357f58e2f494258cf27e5d08dda25872ab1614179287a4d593bf42014769
 {"conferenceName":"Example Conference 2026","optionGroups":{"workshops":[{"id":"ws-data-science","name":"Workshop: Data science in practice"},{"id":"ws-open-source","name":"Workshop: Contributing to open source"}],"events":[{"id":"ev-welcome-reception","name":"Welcome reception"},{"id":"ev-city-tour","name":"Guided city tour"}],"meals":[{"id":"meal-lunch-day1","name":"Lunch, day 1"},{"id":"meal-lunch-day2","name":"Lunch, day 2"},{"id":"meal-gala-dinner","name":"Gala dinner"}],"otherActivities":[{"id":"other-poster-session","name":"Poster session participation"}]},"consents":[],"captcha":{"mode":"test","siteKey":null,"testToken":"local-test-captcha-pass"}}

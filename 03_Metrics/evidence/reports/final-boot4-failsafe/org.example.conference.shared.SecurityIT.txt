@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.example.conference.shared.SecurityIT
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.89 s -- in org.example.conference.shared.SecurityIT

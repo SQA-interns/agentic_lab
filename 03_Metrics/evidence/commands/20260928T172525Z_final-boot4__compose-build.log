@@ -1,0 +1,161 @@
+$ (cwd=.) docker compose build
+# start=2026-09-28T17:25:25.518Z end=2026-09-28T17:26:03.634Z exit=0 elapsed_s=38.116
+
+ Image conference-backend:local Building 
+ Image conference-frontend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.14kB done
+#1 DONE 0.0s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.30kB done
+#2 DONE 0.0s
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 605B done
+#3 DONE 0.0s
+
+#4 [frontend internal] load metadata for docker.io/nginxinc/nginx-unprivileged@sha256:ed04ec1ff34502c339ee5c3ae3f855442398edc1d05591e2b98981dcbbd20b1e
+#4 ...
+
+#5 [auth] library/eclipse-temurin:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#6 [auth] nginxinc/nginx-unprivileged:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [auth] library/node:pull token for registry-1.docker.io
+#7 DONE 0.0s
+
+#8 [frontend internal] load metadata for docker.io/library/node@sha256:43ac6c60b8f89723f746e8a92ce91abd5017e627ce1ddfe4238355d3a30b772c
+#8 ...
+
+#4 [frontend internal] load metadata for docker.io/nginxinc/nginx-unprivileged@sha256:ed04ec1ff34502c339ee5c3ae3f855442398edc1d05591e2b98981dcbbd20b1e
+#4 DONE 0.8s
+
+#8 [frontend internal] load metadata for docker.io/library/node@sha256:43ac6c60b8f89723f746e8a92ce91abd5017e627ce1ddfe4238355d3a30b772c
+#8 DONE 0.8s
+
+#9 [frontend internal] load .dockerignore
+#9 transferring context: 105B 0.0s done
+#9 DONE 0.0s
+
+#10 [frontend internal] load build context
+#10 DONE 0.0s
+
+#11 [frontend stage-1 1/3] FROM docker.io/nginxinc/nginx-unprivileged@sha256:ed04ec1ff34502c339ee5c3ae3f855442398edc1d05591e2b98981dcbbd20b1e
+#11 resolve docker.io/nginxinc/nginx-unprivileged@sha256:ed04ec1ff34502c339ee5c3ae3f855442398edc1d05591e2b98981dcbbd20b1e 0.0s done
+#11 DONE 0.1s
+
+#12 [frontend build 1/6] FROM docker.io/library/node@sha256:43ac6c60b8f89723f746e8a92ce91abd5017e627ce1ddfe4238355d3a30b772c
+#12 resolve docker.io/library/node@sha256:43ac6c60b8f89723f746e8a92ce91abd5017e627ce1ddfe4238355d3a30b772c 0.0s done
+#12 DONE 0.1s
+
+#10 [frontend internal] load build context
+#10 transferring context: 1.30kB done
+#10 DONE 0.0s
+
+#13 [backend internal] load metadata for docker.io/library/eclipse-temurin@sha256:d0aa6704a67ac080591815bb7734dbe56171dd7a8e9b767e9989b95dd37b3085
+#13 DONE 1.0s
+
+#14 [backend internal] load metadata for docker.io/library/eclipse-temurin@sha256:7edbe8532195c8222735caca437e56780e1fc7db08a4b4b4af77fe188cccc15f
+#14 DONE 1.0s
+
+#15 [backend internal] load .dockerignore
+#15 transferring context: 53B done
+#15 DONE 0.0s
+
+#16 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#16 CACHED
+
+#17 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#17 CACHED
+
+#18 [frontend build 3/6] COPY package.json package-lock.json ./
+#18 CACHED
+
+#19 [frontend build 2/6] WORKDIR /src
+#19 CACHED
+
+#20 [frontend build 6/6] RUN npm run build
+#20 CACHED
+
+#21 [frontend build 5/6] COPY . .
+#21 CACHED
+
+#22 [frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html
+#22 CACHED
+
+#23 [backend internal] load build context
+#23 DONE 0.0s
+
+#24 [frontend] exporting to image
+#24 exporting layers done
+#24 exporting manifest sha256:256cb7e9bcdc80f3637920c0273095fc79800f5c99aa64fc3394364fd52e2f7c done
+#24 exporting config sha256:cf15425a76da7a4fd210242d5fb9df780bbdef66f456c4fc186d93e858c9faca done
+#24 exporting attestation manifest sha256:c59aa579e7d08baf562b73d858684c92b072af7bb5a4084e4c8ffa1d3ef836b4 0.1s done
+#24 exporting manifest list sha256:c9bbf8b83e44da3d08f6c5d397d84cb8665df17b71dc7c0943a04a515c2f9133
+#24 exporting manifest list sha256:c9bbf8b83e44da3d08f6c5d397d84cb8665df17b71dc7c0943a04a515c2f9133 0.0s done
+#24 naming to docker.io/library/conference-frontend:local done
+#24 unpacking to docker.io/library/conference-frontend:local 0.0s done
+#24 DONE 0.3s
+
+#25 [backend stage-1 1/3] FROM docker.io/library/eclipse-temurin@sha256:7edbe8532195c8222735caca437e56780e1fc7db08a4b4b4af77fe188cccc15f
+#25 resolve docker.io/library/eclipse-temurin@sha256:7edbe8532195c8222735caca437e56780e1fc7db08a4b4b4af77fe188cccc15f 0.1s done
+#25 DONE 0.1s
+
+#26 [backend build 1/7] FROM docker.io/library/eclipse-temurin@sha256:d0aa6704a67ac080591815bb7734dbe56171dd7a8e9b767e9989b95dd37b3085
+#26 resolve docker.io/library/eclipse-temurin@sha256:d0aa6704a67ac080591815bb7734dbe56171dd7a8e9b767e9989b95dd37b3085 0.1s done
+#26 DONE 0.1s
+
+#23 [backend internal] load build context
+#23 transferring context: 55.80kB 0.0s done
+#23 DONE 0.0s
+
+#27 [backend build 2/7] WORKDIR /src
+#27 CACHED
+
+#28 [backend build 3/7] COPY .mvn .mvn
+#28 CACHED
+
+#29 [backend build 4/7] COPY mvnw pom.xml spotbugs-exclude.xml pmd-ruleset.xml ./
+#29 DONE 0.1s
+
+#30 [backend build 5/7] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline -DexcludeReactor=true || true
+#30 ...
+
+#31 [frontend] resolving provenance for metadata file
+#31 DONE 0.0s
+
+#30 [backend build 5/7] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline -DexcludeReactor=true || true
+#30 DONE 20.4s
+
+#32 [backend build 6/7] COPY src src
+#32 DONE 0.1s
+
+#33 [backend build 7/7] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q package -DskipTests -DskipITs     && cp target/conference-registration-backend-*.jar /app.jar
+#33 DONE 10.3s
+
+#34 [backend stage-1 2/3] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app app     && mkdir -p /data/backups /config && chown -R app:app /data
+#34 CACHED
+
+#35 [backend stage-1 3/3] COPY --from=build /app.jar /app/app.jar
+#35 DONE 0.2s
+
+#36 [backend] exporting to image
+#36 exporting layers
+#36 exporting layers 3.9s done
+#36 exporting manifest sha256:fa54f0129360ad32317e89ecd49910555a1b36f02e01def6a1f0e9c920231f98 0.0s done
+#36 exporting config sha256:ed2bb464a8b41a513ad40443bacf7e05648b576a130686cba74f34a973bb275e 0.0s done
+#36 exporting attestation manifest sha256:6788605f326636d627f2b9dd6e2cc8d2d7643c310c399cb1fc38a7021b5d0a41 0.1s done
+#36 exporting manifest list sha256:75d6357f58e2f494258cf27e5d08dda25872ab1614179287a4d593bf42014769
+#36 exporting manifest list sha256:75d6357f58e2f494258cf27e5d08dda25872ab1614179287a4d593bf42014769 0.0s done
+#36 naming to docker.io/library/conference-backend:local done
+#36 unpacking to docker.io/library/conference-backend:local
+#36 unpacking to docker.io/library/conference-backend:local 0.5s done
+#36 DONE 4.6s
+
+#37 [backend] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image conference-backend:local Built 
+ Image conference-frontend:local Built 

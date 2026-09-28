@@ -1,0 +1,16 @@
+$ (cwd=frontend) npm run build
+# start=2026-09-28T17:24:56.702Z end=2026-09-28T17:25:01.592Z exit=0 elapsed_s=4.89
+
+
+> conference-registration-frontend@1.0.0 build
+> tsc -b && vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.27 kB
+dist/assets/index-CXejJf7D.css    1.18 kB │ gzip:  0.57 kB
+dist/assets/index-u8UF_aZv.js   233.45 kB │ gzip: 73.15 kB
+✓ built in 1.42s

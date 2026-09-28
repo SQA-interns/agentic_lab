@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.28.0" timestamp="2026-09-28T19:03:49.256">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.28.0" timestamp="2026-09-28T19:24:38.307">
 <suppressedviolation filename="/home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/backend/src/main/java/org/example/conference/shared/web/RequestSizeLimitFilter.java" suppressiontype="@suppresswarnings" msg="Ensure that resources like this ServletInputStream object are closed after use" usermsg=""></suppressedviolation>
 </pmd>

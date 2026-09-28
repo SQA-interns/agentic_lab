@@ -1,19 +1,19 @@
 {
   "probe": "export",
-  "start": "2026-09-28T17:07:19Z",
+  "start": "2026-09-28T17:27:58Z",
   "result": {
     "unauthorized": {
       "none": {
         "status": 401,
-        "bodyBytes": 131
+        "bodyBytes": 126
       },
       "wrong-password": {
         "status": 401,
-        "bodyBytes": 131
+        "bodyBytes": 126
       },
       "wrong-user": {
         "status": 401,
-        "bodyBytes": 131
+        "bodyBytes": 126
       }
     },
     "authorized": {
@@ -37,8 +37,8 @@
         "Other activities",
         "Consents"
       ],
-      "rows": 38,
-      "dbRows": 38,
+      "rows": 51,
+      "dbRows": 51,
       "participantTypes": [
         "EXTERNAL",
         "STUDENT"
@@ -46,5 +46,5 @@
     }
   },
   "status": "pass",
-  "end": "2026-09-28T17:07:21Z"
+  "end": "2026-09-28T17:28:00Z"
 }

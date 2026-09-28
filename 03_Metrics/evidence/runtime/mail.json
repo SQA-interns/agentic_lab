@@ -1,16 +1,16 @@
 {
   "probe": "mail",
-  "start": "2026-09-28T17:06:27Z",
+  "start": "2026-09-28T17:27:09Z",
   "result": {
     "steps": [
       {
         "normalDelivery": {
           "recipients": [
             "organizer@conference.local",
-            "spela.mail.cb8ee1@example.org"
+            "spela.mail.1177c1@example.org"
           ],
-          "attachment": "registration-294a26d8-4b10-4771-bb52-6f133141a023.json",
-          "attachmentSha256": "543c496e0cc7f06c1d13155a4660c53b770a419a7f60e78fc36be0933f25916a"
+          "attachment": "registration-f001a110-cf94-4755-81cc-bdc573f84c1d.json",
+          "attachmentSha256": "4d0164b0a1bb399039580bc21bcf24cf7e334bf9f9600aba45c617d7127bfaaa"
         },
         "outbox": [
           [
@@ -28,13 +28,13 @@
         ]
       },
       {
-        "mailpitStoppedAt": "2026-09-28T17:06:34Z"
+        "mailpitStoppedAt": "2026-09-28T17:27:13Z"
       },
       {
         "duringOutage": {
           "stored": {
-            "id": "1649183e-ef5a-41e4-b006-a951f4399274",
-            "sha256": "36187c8660915399ca5d97559f3906dc174bb1d5653c48f6473d6c0e836362cc",
+            "id": "bc44436e-487f-435b-a483-beee6718c013",
+            "sha256": "d8f0a3afe865abfbbfaaba60401cf25d4412b9e2e8a3f270e0105aa60bd26b75",
             "dbFirstName": "Luka"
           },
           "outbox": [
@@ -54,17 +54,17 @@
         }
       },
       {
-        "mailpitStartedAt": "2026-09-28T17:06:57Z"
+        "mailpitStartedAt": "2026-09-28T17:27:37Z"
       },
       {
         "afterRecovery": {
           "mail": {
             "recipients": [
-              "luka.outage.533929@student.example.org",
+              "luka.outage.645226@student.example.org",
               "organizer@conference.local"
             ],
-            "attachment": "registration-1649183e-ef5a-41e4-b006-a951f4399274.json",
-            "attachmentSha256": "36187c8660915399ca5d97559f3906dc174bb1d5653c48f6473d6c0e836362cc"
+            "attachment": "registration-bc44436e-487f-435b-a483-beee6718c013.json",
+            "attachmentSha256": "d8f0a3afe865abfbbfaaba60401cf25d4412b9e2e8a3f270e0105aa60bd26b75"
           },
           "outbox": [
             [
@@ -86,5 +86,5 @@
     "duplicateSemantics": "at-least-once: a crash between SMTP acceptance and the SENT update can resend"
   },
   "status": "pass",
-  "end": "2026-09-28T17:07:05Z"
+  "end": "2026-09-28T17:27:45Z"
 }

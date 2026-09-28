@@ -1,0 +1,8 @@
+$ (cwd=.) ./tools/m3-catalog-restart.sh
+# start=2026-09-28T17:26:28.854Z end=2026-09-28T17:27:09.824Z exit=0 elapsed_s=40.97
+
+  ✓  2 [chromium] › e2e/catalog-change.spec.ts:22:3 › @catalog-changed P-05/P-06 changed catalog and synthetic consent › external: consent absent blocked, present accepted (1.8s)
+  ✓  3 [chromium] › e2e/catalog-change.spec.ts:44:3 › @catalog-changed P-05/P-06 changed catalog and synthetic consent › student form works with the new catalog (587ms)
+  ✓  4 [chromium] › e2e/catalog-change.spec.ts:59:3 › @catalog-changed P-05/P-06 changed catalog and synthetic consent › backend enforces consent and retired options independently of the UI (107ms)
+
+  4 passed (3.7s)

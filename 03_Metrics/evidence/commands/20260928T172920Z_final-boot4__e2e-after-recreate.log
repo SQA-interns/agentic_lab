@@ -1,0 +1,17 @@
+$ (cwd=frontend) npm run e2e
+# start=2026-09-28T17:29:20.595Z end=2026-09-28T17:29:26.892Z exit=0 elapsed_s=6.297
+
+
+> conference-registration-frontend@1.0.0 e2e
+> playwright test --grep-invert @catalog-changed
+
+
+Running 5 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/registration.spec.ts:48:3 › registration journeys (real stack) › M0: frontend loads configuration from backend (339ms)
+  ✓  2 [chromium] › e2e/registration.spec.ts:54:3 › registration journeys (real stack) › US-001: external participant registers with Unicode and NBSP (1.9s)
+  ✓  3 [chromium] › e2e/registration.spec.ts:67:3 › registration journeys (real stack) › US-001: blank and malformed input is rejected before success (383ms)
+  ✓  4 [chromium] › e2e/registration.spec.ts:79:3 › registration journeys (real stack) › US-002: student registers through the same stack (1.4s)
+  ✓  5 [chromium] › e2e/registration.spec.ts:98:3 › registration journeys (real stack) › US-002: student required fields are enforced in the UI (391ms)
+
+  5 passed (5.3s)
