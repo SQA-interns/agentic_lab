@@ -3,10 +3,11 @@
   "model": "claude-opus-5-5",
   "harness": "Claude Code (Claude desktop app, Code tab)",
   "harnessVersion": null,
+  "harnessVersionReason": "harness version not observable from within the session",
   "startCommit": "8d2e4f529bea095a85680ddfd799a97903cf33e4",
   "finalCommit": "",
   "experimentStart": "2026-09-28T21:52:41Z",
-  "experimentEnd": null,
+  "experimentEnd": "2026-09-28T22:42:17Z",
   "phases": [
     {
       "name": "acceptance-criteria",
@@ -35,8 +36,8 @@
     },
     {
       "name": "finalization",
-      "start": null,
-      "end": null
+      "start": "2026-09-28T22:41:07Z",
+      "end": "2026-09-28T22:42:17Z"
     }
   ],
   "firstWorkingHappyPathTimestamp": "2026-09-28T22:06:33Z",
@@ -150,6 +151,14 @@
       "filesChanged": 26,
       "linesAdded": 3404,
       "linesRemoved": 11
+    },
+    {
+      "sha": "5cfe713c0f4b650831d9514300ceb03e60e3f10a",
+      "phase": "verification",
+      "message": "phase 5: verification (fix loops 1-6, dependency security patches, verification report)",
+      "filesChanged": 11,
+      "linesAdded": 494,
+      "linesRemoved": 10
     }
   ],
   "reverts": 0,
@@ -215,6 +224,5 @@
     "runtimeDependenciesBackend": null,
     "runtimeDependenciesFrontend": null,
     "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
-  },
-  "harnessVersionReason": "harness version not observable from within the session"
+  }
 }
