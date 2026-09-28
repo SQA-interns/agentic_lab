@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: registration-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/conference}
+    username: ${SPRING_DATASOURCE_USERNAME:conference}
+    password: ${SPRING_DATASOURCE_PASSWORD:conference}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  mail:
+    host: ${SPRING_MAIL_HOST:localhost}
+    port: ${SPRING_MAIL_PORT:1025}
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:false}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+    site-key: ${RECAPTCHA_SITE_KEY:}

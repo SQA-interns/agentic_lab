@@ -1,0 +1,197 @@
+{
+  "runId": "opus5.5-testrun-latest-2026-09-29",
+  "model": "claude-opus-5-5",
+  "harness": "Claude Code (Claude desktop app, Code tab)",
+  "harnessVersion": null,
+  "startCommit": "65f4ad0e90c0ea85b5f5963713186b5e3dfb0d82",
+  "finalCommit": "",
+  "experimentStart": "2026-09-28T23:27:11Z",
+  "experimentEnd": null,
+  "phases": [
+    {
+      "name": "acceptance-criteria",
+      "start": "2026-09-28T23:27:35Z",
+      "end": "2026-09-28T23:29:19Z"
+    },
+    {
+      "name": "specification",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "acceptance-tests",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "implementation",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "unit-tests",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "verification",
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "finalization",
+      "start": null,
+      "end": null
+    }
+  ],
+  "firstWorkingHappyPathTimestamp": null,
+  "acceptanceTestFreezeHeld": null,
+  "acceptanceTestFreezeHeldReason": "set true/false once Phase 3 (acceptance tests) is frozen and re-checked in Verification; explain any false in docs/decisions-log.md",
+  "firstTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "finalTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "humanInterventions": [],
+  "clarifyingQuestions": 0,
+  "manualCodeFixes": 0,
+  "escalations": [
+    {
+      "timestamp": "2026-09-28T23:28:57Z",
+      "category": "requirement-ambiguity",
+      "trigger": "D-1: US-002 \"activities available to students\" but no input defines per-type option eligibility",
+      "proposedAlternatives": [
+        "every active option available to both types (chosen)",
+        "add per-option availability attribute"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
+    },
+    {
+      "timestamp": "2026-09-28T23:28:57Z",
+      "category": "requirement-ambiguity",
+      "trigger": "D-2: FORM_SCHEMA requires mandatory consent \"where required\" without naming any",
+      "proposedAlternatives": [
+        "one mandatory non-preselected personal-data-processing consent on both forms (chosen)",
+        "no consent",
+        "several invented consents"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
+    },
+    {
+      "timestamp": "2026-09-28T23:28:57Z",
+      "category": "requirement-ambiguity",
+      "trigger": "D-3: no input says whether email/notification failure undoes a stored registration",
+      "proposedAlternatives": [
+        "registration stays accepted, failure recorded (chosen)",
+        "roll back registration"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
+    },
+    {
+      "timestamp": "2026-09-28T23:28:57Z",
+      "category": "requirement-ambiguity",
+      "trigger": "D-4: no input limits or requires option selections",
+      "proposedAlternatives": [
+        "any number including none (chosen)",
+        "per-set min/max limits"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
+    },
+    {
+      "timestamp": "2026-09-28T23:28:57Z",
+      "category": "requirement-ambiguity",
+      "trigger": "D-5: no input says whether the same email may register more than once",
+      "proposedAlternatives": [
+        "accept each valid submission (chosen)",
+        "reject duplicate email"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
+    }
+  ],
+  "fixLoops": [],
+  "verificationFindings": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "commits": [],
+  "reverts": 0,
+  "mergeConflicts": 0,
+  "_selfReportNote": "Everything above this line is filled in live by the agent during the run, per RUN_INSTRUCTIONS.md and METRICS.md. Everything below is filled in afterward by external audit, reconciled against <WORKSPACE_ROOT>/04_External-Audit/. Leave null with a reason until the audit pass runs.",
+  "tokensConsumed": null,
+  "tokensConsumedReason": "external audit — see 04_External-Audit/usage-report.md",
+  "wallTimeMinutes": null,
+  "apiTimeMinutes": null,
+  "wallTimeMinutesReason": "external audit — see 04_External-Audit/usage-report.md, if the provider separates wall time from API time",
+  "estimatedCostUsd": null,
+  "estimatedCostUsdReason": "external audit — see 04_External-Audit/usage-report.md",
+  "toolCalls": null,
+  "toolCallsReason": "external audit — see 04_External-Audit/tool-call-count.md, parsed post-run from the harness transcript",
+  "approvalPrompts": null,
+  "approvalPromptsReason": "external audit — counted separately from toolCalls, only meaningful if permission mode required them",
+  "codeQuality": {
+    "backendLoc": null,
+    "frontendLoc": null,
+    "loc": null,
+    "backendComplexity": null,
+    "frontendComplexity": null,
+    "cyclomaticComplexityAvg": null,
+    "cyclomaticComplexityMax": null,
+    "backendDuplicationPct": null,
+    "frontendDuplicationPct": null,
+    "duplicationPct": null,
+    "lintErrors": null,
+    "lintWarnings": null,
+    "typeCheckErrors": null,
+    "backendUnitCoveragePct": null,
+    "backendIntegrationCoveragePct": null,
+    "frontendCoveragePct": null,
+    "mutationScoreBackend": null,
+    "mutationScoreFrontend": null,
+    "newDependenciesRuntime": null,
+    "newDependenciesDev": null,
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md and DEFINITION_OF_DONE.md §4a"
+  },
+  "security": {
+    "semgrep": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+    "owaspDependencyCheck": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+    "npmAudit": {
+      "critical": null,
+      "high": null,
+      "medium": null,
+      "low": null
+    },
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+  "architecture": {
+    "archUnitViolations": null,
+    "layerViolations": null,
+    "dependencyCycles": null,
+    "couplingAvgCa": null,
+    "couplingAvgCe": null,
+    "dependencyDepthMax": null,
+    "runtimeDependenciesBackend": null,
+    "runtimeDependenciesFrontend": null,
+    "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
+  },
+  "harnessVersionReason": "not observable from inside the session: the claude CLI is not on PATH and the desktop app does not expose its version to the agent"
+}
