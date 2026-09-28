@@ -1,0 +1,4 @@
+$ (cwd=.) python3 tools/runtime_probe.py storage
+# start=2026-09-28T16:54:54.040Z end=2026-09-28T16:55:06.298Z exit=0 elapsed_s=12.258
+
+[pass] storage

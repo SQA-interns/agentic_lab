@@ -1,0 +1,4 @@
+$ (cwd=.) python3 tools/runtime_probe.py idempotency
+# start=2026-09-28T16:54:53.253Z end=2026-09-28T16:54:53.976Z exit=0 elapsed_s=0.723
+
+[pass] idempotency

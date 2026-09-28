@@ -1,0 +1,11 @@
+{
+  "probe": "recreate",
+  "start": "2026-09-28T16:55:59Z",
+  "result": {
+    "registrationsBefore": 27,
+    "registrationsAfter": 27,
+    "jsonFilesVerified": 27
+  },
+  "status": "pass",
+  "end": "2026-09-28T16:56:30Z"
+}

@@ -1,0 +1,45 @@
+$ (cwd=frontend) npm run test:coverage
+# start=2026-09-28T16:51:33.667Z end=2026-09-28T16:51:42.136Z exit=0 elapsed_s=8.469
+
+
+> conference-registration-frontend@1.0.0 test:coverage
+> vitest run --coverage
+
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/single_agent/02_Implementation/frontend
+      Coverage enabled with v8
+
+ ✓ src/__tests__/fields.test.ts (10 tests) 9ms
+ ✓ src/__tests__/App.test.tsx (2 tests) 376ms
+   ✓ App > loads the backend form configuration and switches between forms  354ms
+ ✓ src/__tests__/RegistrationForm.test.tsx (11 tests) 5399ms
+   ✓ RegistrationForm > shows success only after the backend accepts, with trimmed payload  763ms
+   ✓ RegistrationForm > blocks submission without the required consent and captcha  456ms
+   ✓ RegistrationForm > never shows success for HTTP 400  551ms
+   ✓ RegistrationForm > never shows success for HTTP 400  515ms
+   ✓ RegistrationForm > never shows success for HTTP 503  515ms
+   ✓ RegistrationForm > never shows success for HTTP 429  529ms
+   ✓ RegistrationForm > never shows success for HTTP 500  525ms
+   ✓ RegistrationForm > reports network failure without success  537ms
+   ✓ RegistrationForm > reuses the request ID for an unchanged retry and renews it after an edit  666ms
+
+ Test Files  3 passed (3)
+      Tests  23 passed (23)
+   Start at  18:51:34
+   Duration  7.53s (transform 267ms, setup 719ms, collect 525ms, tests 5.78s, environment 2.24s, prepare 605ms)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   89.11 |    87.27 |      92 |   89.11 |                   
+ src               |   88.47 |    87.15 |   91.66 |   88.47 |                   
+  App.tsx          |     100 |    94.11 |     100 |     100 | 25                
+  Captcha.tsx      |   29.09 |       40 |   66.66 |   29.09 | 48-93             
+  ...ationForm.tsx |   95.11 |    86.88 |    90.9 |   95.11 | 46,48,73-81       
+  api.ts           |     100 |      100 |     100 |     100 |                   
+  fields.ts        |   95.71 |       80 |     100 |   95.71 | 86,88-89          
+  types.ts         |     100 |      100 |     100 |     100 |                   
+ src/__tests__     |     100 |      100 |     100 |     100 |                   
+  fixtures.ts      |     100 |      100 |     100 |     100 |                   
+-------------------|---------|----------|---------|---------|-------------------

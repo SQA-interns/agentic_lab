@@ -1,0 +1,4 @@
+$ (cwd=.) python3 tools/runtime_probe.py recreate
+# start=2026-09-28T16:55:59.553Z end=2026-09-28T16:56:30.714Z exit=0 elapsed_s=31.161
+
+[pass] recreate

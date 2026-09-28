@@ -1,0 +1,24 @@
+{
+  "probe": "storage",
+  "start": "2026-09-28T16:54:54Z",
+  "result": {
+    "backupWriteFailure": {
+      "status": 503,
+      "readinessDuringFailure": 503,
+      "dbCountBefore": 26,
+      "dbCountAfter": 26
+    },
+    "databaseFailure": {
+      "status": 503,
+      "filesBefore": 26,
+      "filesAfter": 26
+    },
+    "afterRecovery": {
+      "id": "cdcb97ba-a128-4dbc-8762-7b5bb838f6b6",
+      "sha256": "6cb8920cbc14a5edc3fe26bc7b65daa71b25758bbed593e02fd1c5cc9a987722",
+      "dbFirstName": "Špela"
+    }
+  },
+  "status": "pass",
+  "end": "2026-09-28T16:55:06Z"
+}

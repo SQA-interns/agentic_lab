@@ -1,0 +1,25 @@
+{
+  "probe": "idempotency",
+  "start": "2026-09-28T16:54:53Z",
+  "result": {
+    "first": {
+      "registrationId": "136f8e96-49a6-49a3-a532-7b866853ddb3",
+      "participantType": "STUDENT",
+      "submittedAt": "2026-09-28T16:54:53.421Z",
+      "emailStatus": "PENDING",
+      "replayed": false
+    },
+    "replay": {
+      "registrationId": "136f8e96-49a6-49a3-a532-7b866853ddb3",
+      "participantType": "STUDENT",
+      "submittedAt": "2026-09-28T16:54:53.421Z",
+      "emailStatus": "PENDING",
+      "replayed": true
+    },
+    "conflictCode": "REQUEST_ID_CONFLICT",
+    "rowsForRequestId": "1",
+    "outboxRows": "2"
+  },
+  "status": "pass",
+  "end": "2026-09-28T16:54:53Z"
+}

@@ -31,6 +31,16 @@
     <pmd.version>7.28.0</pmd.version>
     <jacoco-plugin.version>0.8.15</jacoco-plugin.version>
     <dependency-check-plugin.version>13.0.0</dependency-check-plugin.version>
+    <!--
+      Security overrides of Boot-managed versions (same major/minor lines, still Spring Boot 3.x).
+      Reason: OWASP Dependency-Check first complete suite (2026-09-28) reported advisories fixed
+      in these public patch releases. See docs/resolved-versions.md.
+    -->
+    <tomcat.version>10.1.60</tomcat.version>
+    <postgresql.version>42.7.13</postgresql.version>
+    <jackson-bom.version>2.21.7</jackson-bom.version>
+    <log4j2.version>2.25.5</log4j2.version>
+    <commons-lang3.version>3.20.0</commons-lang3.version>
     <!-- Integration tests (Testcontainers) run in failsafe; skip with -DskipITs -->
     <skipITs>false</skipITs>
   </properties>

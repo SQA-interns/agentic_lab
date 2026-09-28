@@ -1,0 +1,181 @@
+{
+  "dependencyCheck": {
+    "status": "ok",
+    "engineVersion": "13.0.0",
+    "dataSources": [
+      {
+        "name": "NVD API Last Checked",
+        "timestamp": "2026-09-28T16:07:24Z"
+      },
+      {
+        "name": "NVD API Last Modified",
+        "timestamp": "2026-09-28T08:00:04-04"
+      },
+      {
+        "name": "NVD Cache Last Checked",
+        "timestamp": "2026-09-28T16:07:24Z"
+      },
+      {
+        "name": "NVD Cache Last Modified",
+        "timestamp": "2026-09-28T08:00:04-04"
+      }
+    ],
+    "dependenciesScanned": 64,
+    "unit": "vulnerability x dependency",
+    "bySeverity": {
+      "CRITICAL": 7,
+      "HIGH": 8,
+      "MEDIUM": 7,
+      "LOW": 1
+    },
+    "findings": [
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47884",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47890",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47891",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47892",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-59313",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-59283",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47885",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47886",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47888",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47889",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47893",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-59282",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47883",
+        "severity": "MEDIUM"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-47887",
+        "severity": "MEDIUM"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-59281",
+        "severity": "MEDIUM"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-59280",
+        "severity": "MEDIUM"
+      },
+      {
+        "dependency": "spring-core-6.2.19.jar",
+        "id": "CVE-2026-59314",
+        "severity": "LOW"
+      },
+      {
+        "dependency": "spring-data-jpa-3.5.13.jar",
+        "id": "CVE-2026-47834",
+        "severity": "MEDIUM"
+      },
+      {
+        "dependency": "spring-security-core-6.5.11.jar",
+        "id": "CVE-2026-59270",
+        "severity": "CRITICAL"
+      },
+      {
+        "dependency": "spring-security-core-6.5.11.jar",
+        "id": "CVE-2026-41707",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-security-core-6.5.11.jar",
+        "id": "CVE-2026-47841",
+        "severity": "HIGH"
+      },
+      {
+        "dependency": "spring-security-core-6.5.11.jar",
+        "id": "CVE-2026-47842",
+        "severity": "MEDIUM"
+      },
+      {
+        "dependency": "spring-security-core-6.5.11.jar",
+        "id": "CVE-2026-59276",
+        "severity": "MEDIUM"
+      }
+    ],
+    "criticalOrHigh": 15
+  },
+  "npmAudit": {
+    "status": "ok",
+    "unit": "vulnerable package",
+    "bySeverity": {
+      "info": 0,
+      "low": 0,
+      "moderate": 3,
+      "high": 0,
+      "critical": 0,
+      "total": 3
+    },
+    "dependencies": {
+      "prod": 4,
+      "dev": 367,
+      "optional": 62,
+      "peer": 7,
+      "peerOptional": 0,
+      "total": 370
+    },
+    "criticalOrHigh": 0
+  },
+  "semgrep": {
+    "status": "ok",
+    "version": "1.178.0",
+    "unit": "finding",
+    "bySeverity": {},
+    "findings": [],
+    "errors": [],
+    "rulesRun": null,
+    "criticalOrHigh": 0
+  }
+}

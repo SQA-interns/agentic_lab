@@ -1,0 +1,32 @@
+{
+  "probe": "prod-isolation",
+  "start": "2026-09-28T16:55:08Z",
+  "result": {
+    "prod-without-recaptcha-secret": {
+      "exitCode": 1,
+      "evidence": [
+        "CaptchaConfigurationException: reCAPTCHA site key and secret are required (APP_CAPTCHA_SITE_KEY/APP_CAPTCHA_SECRET)"
+      ]
+    },
+    "prod-with-test-captcha-mode": {
+      "exitCode": 1,
+      "evidence": [
+        "CaptchaConfigurationException: Deterministic captcha mode requires a non-production (local/test) profile"
+      ]
+    },
+    "prod-plus-local-profile": {
+      "exitCode": 1,
+      "evidence": [
+        "CaptchaConfigurationException: Profile 'prod' cannot be combined with local/test"
+      ]
+    },
+    "no-profile-test-mode": {
+      "exitCode": 1,
+      "evidence": [
+        "CaptchaConfigurationException: Deterministic captcha mode requires a non-production (local/test) profile"
+      ]
+    }
+  },
+  "status": "pass",
+  "end": "2026-09-28T16:55:59Z"
+}

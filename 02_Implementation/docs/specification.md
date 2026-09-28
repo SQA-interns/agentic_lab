@@ -165,12 +165,13 @@ write protocol (§5). Captcha thus precedes every durable write.
 
 ## 4. Data model (Flyway, AR-03; `spring.jpa.hibernate.ddl-auto=validate`)
 
-- `registration(id uuid PK, client_request_id uuid UNIQUE, request_fingerprint char(64),
+- `registration(id uuid PK, client_request_id uuid UNIQUE, request_fingerprint varchar(64),
   participant_type varchar(16) CHECK IN ('EXTERNAL','STUDENT'), first_name, last_name, email,
-  organization, study_institution, study_programme, student_id, raw_json text, raw_json_sha256 char(64),
+  organization, study_institution, study_programme, student_id, raw_json text, raw_json_sha256 varchar(64),
   created_at timestamptz)` + CHECK constraint requiring the type-specific columns.
-- `registration_selection(registration_id FK, option_group, option_id, option_name, PK(all three ids))` — name snapshot at submission.
-- `registration_consent(registration_id FK, consent_id, consent_text, PK)`.
+- `registration_selection(id identity PK, registration_id FK ON DELETE CASCADE, option_group, position,
+  option_id, option_name, UNIQUE(registration_id, option_group, option_id))` — name snapshot at submission.
+- `registration_consent(id identity PK, registration_id FK, consent_id, consent_text, UNIQUE(registration_id, consent_id))`.
 - `email_outbox(id uuid PK, registration_id uuid, kind PARTICIPANT_CONFIRMATION|ORGANIZER_NOTIFICATION,
   recipient, subject, body, attachment_name, attachment_content text NULL, status PENDING|SENT|FAILED,
   attempts int, next_attempt_at, last_error varchar(500), created_at, sent_at)`; index on (status, next_attempt_at).
@@ -206,7 +207,7 @@ backup; JSON files remain as raw evidence (import tooling is out of scope — fl
 Rows are written in the registration transaction. `OutboxDispatcher` (`@Scheduled`, fixed delay
 5 s) claims due `PENDING` rows via `SELECT … FOR UPDATE SKIP LOCKED LIMIT 10`, sends with
 `JavaMailSender` (connect/read timeouts 10 s), marks `SENT`; on failure increments attempts,
-stores a sanitized error class name, `next_attempt_at = now + min(30 s·2^(n-1), 30 min)`; after 12
+stores a sanitized error class name (kept after a later success as the last failure reason), `next_attempt_at = now + min(30 s·2^(n-1), 30 min)`; after 12
 attempts → `FAILED` (logged at ERROR with outbox ID only). At-least-once delivery. Organizer
 recipients: `APP_ORGANIZER_EMAILS` (comma separated). Plain-text bodies; subject contains no user data.
 Local: Mailpit SMTP catcher (compose). Production: external SMTP via `SPRING_MAIL_*` env.
@@ -271,12 +272,19 @@ application containers expose HTTP only on the internal network.
 | No router library; tabs switch forms | Two forms only |
 | `clientRequestId` regenerated when form data changes | Same payload retry ⇒ same ID; edited payload ⇒ new ID (avoids 409 on edits) |
 | Dependency-Check with NVD only, OSS Index disabled | OSS Index requires credentials not available |
+| NVD data via official NVD JSON 2.0 data feeds (`nvdDatafeedUrl`) | No NVD API key; keyless NVD REST API returned HTTP 503 during preflight |
+| Composed constraints `@RequiredText(max)` / `@RequiredEmail` | One definition of the fixed-field rules for both forms (removes CPD duplication); each composing constraint keeps its own error code |
+| Explicit PMD ruleset (bestpractices, errorprone, security minus `GuardLogStatement`, `AvoidFieldNameMatchingMethodName`) | Excluded rules are style-only: SLF4J placeholders already defer formatting; record accessors intentionally match field names |
+| Absent `selections`/`consents` normalized to empty immutable collections | Same semantics as empty; immutable request objects |
+| Frontend nginx container serves SPA + proxies `/api` | Local stand-in for the external nginx; in production the external nginx forwards to it |
+| Local credentials generated into gitignored `.env` (`tools/init-local-env.sh`) | No credential in source (AR-06), even for local use |
+| E2E/runtime checks inspect PostgreSQL and the backup volume through `docker compose exec` | Evidence comes from the real stores, not from API responses only |
 
 ## 11. Material unknowns / blockers
 
 - Legal consent wording and consent categories: not supplied → production catalog has none; blocks real deployment, not the DoD.
 - Production secrets (SMTP, reCAPTCHA keys, organizer credential, TLS domain) are environment-supplied; not tested against real Google/SMTP.
-- `NVD_API_KEY` unavailable → Dependency-Check database update is slow; blocked if it cannot complete.
+- `NVD_API_KEY` unavailable and keyless NVD REST API returned 503 → resolved by using the official NVD JSON data feeds (see §10).
 
 ## 12. Slice plan and milestone map
 
@@ -302,4 +310,36 @@ Filled in per slice; see §14 table. Commands (from `02_Implementation`):
 
 ## 14. Acceptance → verification map
 
-(completed as slices land)
+Backend tests: `backend/src/test/java/org/example/conference/**` (unit `*Test`, integration `*IT`
+on Testcontainers PostgreSQL 16). Frontend: `frontend/src/__tests__/*` (Vitest/RTL),
+`frontend/e2e/*.spec.ts` (Playwright on the compose stack). Runtime: `tools/runtime_probe.py`,
+`tools/m3-catalog-restart.sh`.
+
+| AC | Verification |
+|---|---|
+| AC-001-01, -02 (P-01) | `RegistrationApiIT.externalRegistrationWithUnicodeAndNbspIsStoredConsistently`; e2e `US-001 external participant registers with Unicode and NBSP`; `TextNormalizerTest`; `fields.test.ts` |
+| AC-001-03 (P-03) | `RegistrationApiIT.externalRequiredFieldsAreEnforced`; e2e `blank and malformed input is rejected`; `fields.test.ts` |
+| AC-001-04 (P-03) | `RegistrationApiIT.malformedEmailIsRejectedWithoutEchoingValue`; `fields.test.ts isValidEmail` |
+| AC-001-05 (P-03) | `RegistrationApiIT.invalidCaptchaIsRejected`; `RecaptchaVerifierTest`; `CaptchaConfigurationTest` |
+| AC-001-06, AC-004-01..03 | e2e `submitAndAssertOrdering` (response held until UI checked); `RegistrationForm.test.tsx` (success only after 201; 400/429/500/503/network never success) |
+| AC-002-01, -03, -04 | `RegistrationApiIT.studentRegistrationIsAccepted`; e2e `US-002 student registers through the same stack` |
+| AC-002-02 (P-02) | `RegistrationApiIT.studentRequiredFieldsAreEnforced` (6 fields × missing/empty/space/NBSP); e2e `student required fields are enforced in the UI` |
+| AC-003-01 | `FoundationIT.formConfigListsOnlyActiveOptions`; `CatalogLoaderTest` |
+| AC-003-02 (P-04) | `RegistrationApiIT.invalidSelectionsAreRejected` (unknown/inactive/wrong group/duplicate) |
+| AC-003-03 (P-05) | `CatalogChangeIT`; runtime `m3-catalog-restart.sh` + e2e `@catalog-changed` (same image digest, new catalog shown/enforced) |
+| AC-003-04 | `CatalogLoaderTest.invalidCatalogsFailFast`, `missingFileFailsFast` |
+| AC-003-05 (P-06) | `RegistrationApiIT.requiredConsentIsEnforced`; `RegistrationForm.test.tsx` (unchecked, blocked); e2e `@catalog-changed` consent tests (UI + API) |
+| AC-005-01 | `RegistrationApiIT` (DB row == file, SHA-256); runtime probes `assert_stored` |
+| AC-005-02 (P-07) | `RegistrationApiIT.repeatedRequestIdIsIdempotent`, `concurrentDuplicateRequestsCreateOneRegistration`; runtime `idempotency`; `RegistrationForm.test.tsx` request-ID reuse |
+| AC-005-03, -04 (P-07) | `StorageFailureIT` (fault injection); runtime `storage` (read-only backup dir; PostgreSQL stopped) |
+| AC-005-05 (P-07) | `StorageFailureIT.reconciliation*` |
+| AC-005-06 (P-10) | runtime `recreate` (`docker compose down` + `up`, rows and JSON hashes unchanged) + e2e after recreation |
+| AC-006-01, AC-007-01 | `NotificationIT.deliversParticipantConfirmationAndOrganizerNotificationWithJsonAttachment` (GreenMail); runtime `mail` (Mailpit, attachment == file) |
+| AC-006-02, AC-007-02 (P-08) | `NotificationIT.smtpOutageKeepsRegistrationAndRetriesAfterRecovery`, `permanentFailureIsRecorded`, `OutboxBackoffTest`; runtime `mail` (Mailpit stopped/started) |
+| AC-008-01, -02 (P-09) | `ExportIT`; runtime `export` (401 ×3 without data; workbook parsed == DB) |
+| AC-X-01 | `CaptchaConfigurationTest`; runtime `prod-isolation` (4 fail-closed startups) |
+| AC-X-02 | `OrganizerProperties` validation (startup fails without credential; exercised by runtime `prod-isolation` env) |
+| AC-X-03 | `RateLimitFilterTest`; `SecurityIT.oversizedBodyIsRejected` |
+| AC-X-04 | `SecurityIT.wrongMediaTypeAndMalformedJsonAreRejectedWithoutDetails`, `malformedEmail…WithoutEchoingValue`, `ExportIT.unauthorizedRequestsRevealNoData` |
+| AC-X-05 | `FoundationIT.readinessAndLivenessAreUp`; `SecurityIT.healthDoesNotExposeDetails`; Docker healthcheck |
+| AR-02 boundaries | `ArchitectureTest` (module matrix, no cycles, export uses query API only) |
