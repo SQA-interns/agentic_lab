@@ -1,8 +1,5 @@
 package org.example.conference.catalog;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -10,11 +7,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.dataformat.yaml.YAMLMapper;
 
 /**
  * Parses and validates the YAML catalog file. Unknown top-level keys, duplicate IDs, bad ID syntax,
@@ -33,8 +32,8 @@ public final class CatalogLoader {
 
   public static Catalog load(Path path) {
     try (InputStream in = Files.newInputStream(path)) {
-      return parse(new ObjectMapper(new YAMLFactory()).readTree(in));
-    } catch (IOException e) {
+      return parse(new YAMLMapper().readTree(in));
+    } catch (IOException | JacksonException e) {
       throw new InvalidCatalogException("Catalog file cannot be read: " + path, e);
     }
   }
@@ -43,9 +42,7 @@ public final class CatalogLoader {
     if (root == null || !root.isObject()) {
       throw new InvalidCatalogException("Catalog must be a mapping");
     }
-    Iterator<String> names = root.fieldNames();
-    while (names.hasNext()) {
-      String key = names.next();
+    for (String key : root.propertyNames()) {
       if (!TOP_LEVEL_KEYS.contains(key)) {
         throw new InvalidCatalogException("Unknown catalog key: " + key);
       }
@@ -107,18 +104,18 @@ public final class CatalogLoader {
   }
 
   private static String id(JsonNode node, String context) {
-    if (node == null || !node.isTextual() || !ID.matcher(node.asText()).matches()) {
+    if (node == null || !node.isString() || !ID.matcher(node.asString()).matches()) {
       throw new InvalidCatalogException(
           context + ": option id must match " + ID.pattern() + " (lowercase, digits, hyphen)");
     }
-    return node.asText();
+    return node.asString();
   }
 
   private static String text(JsonNode node, String context, int max) {
-    if (node == null || !node.isTextual()) {
+    if (node == null || !node.isString()) {
       throw new InvalidCatalogException(context + " must be text");
     }
-    String value = node.asText().strip();
+    String value = node.asString().strip();
     if (value.isEmpty() || value.length() > max || CONTROL.matcher(value).find()) {
       throw new InvalidCatalogException(context + " must be non-blank, <= " + max + " chars");
     }

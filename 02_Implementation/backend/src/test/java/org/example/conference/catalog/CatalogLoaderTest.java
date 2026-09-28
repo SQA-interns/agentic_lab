@@ -3,18 +3,17 @@ package org.example.conference.catalog;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import tools.jackson.dataformat.yaml.YAMLMapper;
 
 /** AC-003-01, AC-003-04: catalog parsing and fail-fast validation. */
 class CatalogLoaderTest {
 
   private static Catalog parse(String yaml) throws Exception {
-    return CatalogLoader.parse(new ObjectMapper(new YAMLFactory()).readTree(yaml));
+    return CatalogLoader.parse(new YAMLMapper().readTree(yaml));
   }
 
   @Test

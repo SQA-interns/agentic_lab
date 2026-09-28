@@ -5,7 +5,7 @@ API, data model, consistency protocol and decisions):
 
 | Path | Content |
 |---|---|
-| `backend/` | Java 21 · Spring Boot 3.5.16 · Maven Wrapper (Maven 3.9.16) · Flyway · PostgreSQL 16 |
+| `backend/` | Java 21 · Spring Boot 4.1.1 (authorized ST-01 deviation from 3.x, see spec §10) · Jackson 3 · Maven Wrapper (Maven 3.9.16) · Flyway 12 · PostgreSQL 16 |
 | `frontend/` | React 19 · TypeScript 5.9 · Vite 6 · npm lockfile · Node 22 |
 | `config/` | Option/consent catalog (`catalog.yaml`) and synthetic fixtures (`fixtures/`) |
 | `compose.yaml`, `compose.prod.yaml` | Local stack (postgres, mailpit, backend, frontend) and production overlay |

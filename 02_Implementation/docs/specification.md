@@ -8,11 +8,11 @@ This document references AR-xx / ST-xx / US-xxx / P-xx IDs instead of copying th
 
 | Item | Value |
 |---|---|
-| Active slice | M6-a (final verification and reporting) |
+| Active slice | M6-b (authorized Spring Boot 4 migration, final verification) |
 | Last verified revision | see `03_Metrics/run.json` → `git.finalImplementationRevision` |
 | Last check | final suite `tools/verify-all.sh final` (evidence `03_Metrics/evidence/final-suite.txt`) |
-| Blockers | D-05: spring-core 6.2.19 / spring-security-core 6.5.11 High/Critical advisories whose fixes (6.2.20 / 6.5.12) are not publicly released for the Spring Boot 3.x line (ST-01) |
-| Next action | none within scope; unblock requires an authorized stack change (Boot 4) or access to patched 3.x artifacts |
+| Blockers | none (D-05 blocker removed by the researcher-authorized Boot 4 migration) |
+| Next action | none |
 
 ## 1. Scope
 
@@ -271,6 +271,7 @@ application containers expose HTTP only on the internal network.
 | Runtime form-config endpoint | Frontend image independent of environment/catalog (no rebuild on catalog change) |
 | No router library; tabs switch forms | Two forms only |
 | `clientRequestId` regenerated when form data changes | Same payload retry ⇒ same ID; edited payload ⇒ new ID (avoids 409 on edits) |
+| **Authorized deviation from ST-01**: Spring Boot 3.5.16 → 4.1.1 (Spring Framework 7.0.9, Security 7.1.1, Jackson 3.1.5, Hibernate 7.4.5, Flyway 12.4, Testcontainers 2.0.5); Tomcat override 11.0.26 | Researcher authorized the stack change on 2026-09-28T17:17Z after D-05 was blocked by 3.x advisories without public fixes. Code changes: modular starters (`webmvc`, `flyway`, `restclient`, test starters), Jackson 3 packages (`tools.jackson`), actuator health API package, Testcontainers 2 artifacts. Java 21 and all other ST items unchanged. |
 | Dependency-Check with NVD only, OSS Index disabled | OSS Index requires credentials not available |
 | NVD data via official NVD JSON 2.0 data feeds (`nvdDatafeedUrl`) | No NVD API key; keyless NVD REST API returned HTTP 503 during preflight |
 | Composed constraints `@RequiredText(max)` / `@RequiredEmail` | One definition of the fixed-field rules for both forms (removes CPD duplication); each composing constraint keeps its own error code |
@@ -301,7 +302,7 @@ application containers expose HTTP only on the internal network.
 | M6-a | M6 | Static/security/architecture checks, container recreation, failure probes, README, metrics | full suite (§13) |
 
 Slice status: M0-a, M1-a…c, M2-a, M3-a, M4-a, M5-a verified (see `03_Metrics/events.jsonl`). M6-a:
-all checks pass except D-05 (blocked, see §0).
+first final suite: all checks pass except D-05 (blocked). M6-b: authorized Boot 4 migration; see run summary for the re-run.
 
 ## 13. Acceptance-to-verification mapping and commands
 

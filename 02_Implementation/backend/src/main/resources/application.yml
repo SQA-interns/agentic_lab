@@ -23,8 +23,6 @@ spring:
     deserialization:
       fail-on-unknown-properties: true
       fail-on-null-for-primitives: true
-    serialization:
-      write-dates-as-timestamps: false
   mail:
     host: ${SMTP_HOST}
     port: ${SMTP_PORT:587}

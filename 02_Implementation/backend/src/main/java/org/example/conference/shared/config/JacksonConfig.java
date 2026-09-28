@@ -1,9 +1,9 @@
 package org.example.conference.shared.config;
 
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.example.conference.shared.text.TrimmingStringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tools.jackson.databind.module.SimpleModule;
 
 /** Registers inbound trimming of Unicode whitespace for all JSON strings. */
 @Configuration(proxyBeanMethods = false)

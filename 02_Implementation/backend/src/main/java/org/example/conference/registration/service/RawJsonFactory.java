@@ -1,8 +1,5 @@
 package org.example.conference.registration.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -11,6 +8,9 @@ import java.util.UUID;
 import org.example.conference.catalog.CatalogOption;
 import org.example.conference.catalog.OptionGroup;
 import org.springframework.stereotype.Component;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Builds the canonical raw JSON representation (schemaVersion 1) and the request fingerprint. The
@@ -19,7 +19,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class RawJsonFactory {
 
-  private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+  private final JsonMapper mapper =
+      JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).build();
 
   public String rawJson(UUID registrationId, Instant submittedAt, ValidatedRegistration v) {
     Map<String, Object> root = new LinkedHashMap<>();
@@ -68,7 +69,7 @@ public class RawJsonFactory {
   private String write(Object value) {
     try {
       return mapper.writeValueAsString(value) + "\n";
-    } catch (JsonProcessingException e) {
+    } catch (JacksonException e) {
       throw new IllegalStateException("Cannot serialize registration JSON", e);
     }
   }

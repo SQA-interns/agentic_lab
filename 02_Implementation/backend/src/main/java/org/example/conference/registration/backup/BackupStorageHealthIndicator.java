@@ -1,7 +1,7 @@
 package org.example.conference.registration.backup;
 
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.boot.health.contributor.Health;
+import org.springframework.boot.health.contributor.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 /** Readiness contributor: the backup volume must be writable (AC-X-05). */

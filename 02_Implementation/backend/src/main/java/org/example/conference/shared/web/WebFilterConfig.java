@@ -1,11 +1,11 @@
 package org.example.conference.shared.web;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Clock;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import tools.jackson.databind.ObjectMapper;
 
 /** Registers request-size and rate-limit filters ahead of Spring Security. */
 @Configuration(proxyBeanMethods = false)

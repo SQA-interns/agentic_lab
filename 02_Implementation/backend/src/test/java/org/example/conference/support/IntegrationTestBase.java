@@ -2,7 +2,6 @@ package org.example.conference.support;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
@@ -11,8 +10,8 @@ import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
@@ -20,8 +19,9 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * Real PostgreSQL 16 (Testcontainers, singleton) + real filesystem backup directory. Only captcha
@@ -35,8 +35,8 @@ public abstract class IntegrationTestBase {
   public static final String POSTGRES_IMAGE =
       "postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54";
 
-  protected static final PostgreSQLContainer<?> POSTGRES =
-      new PostgreSQLContainer<>(
+  protected static final PostgreSQLContainer POSTGRES =
+      new PostgreSQLContainer(
           DockerImageName.parse(POSTGRES_IMAGE).asCompatibleSubstituteFor("postgres"));
 
   protected static final Path BACKUP_DIR;
