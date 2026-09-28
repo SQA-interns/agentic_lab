@@ -8,11 +8,11 @@ This document references AR-xx / ST-xx / US-xxx / P-xx IDs instead of copying th
 
 | Item | Value |
 |---|---|
-| Active slice | see §12 (updated at slice boundaries) |
-| Last verified revision | see §12 |
-| Last check | see §12 |
-| Blockers | see §11 |
-| Next action | see §12 |
+| Active slice | M6-a (final verification and reporting) |
+| Last verified revision | see `03_Metrics/run.json` → `git.finalImplementationRevision` |
+| Last check | final suite `tools/verify-all.sh final` (evidence `03_Metrics/evidence/final-suite.txt`) |
+| Blockers | D-05: spring-core 6.2.19 / spring-security-core 6.5.11 High/Critical advisories whose fixes (6.2.20 / 6.5.12) are not publicly released for the Spring Boot 3.x line (ST-01) |
+| Next action | none within scope; unblock requires an authorized stack change (Boot 4) or access to patched 3.x artifacts |
 
 ## 1. Scope
 
@@ -299,6 +299,9 @@ application containers expose HTTP only on the internal network.
 | M4-a | M4 | Outbox dispatcher, retry/backoff, SMTP outage | GreenMail IT; compose Mailpit stop/start probe |
 | M5-a | M5 | Excel export + Basic auth | MockMvc IT parsing XLSX; compose probe |
 | M6-a | M6 | Static/security/architecture checks, container recreation, failure probes, README, metrics | full suite (§13) |
+
+Slice status: M0-a, M1-a…c, M2-a, M3-a, M4-a, M5-a verified (see `03_Metrics/events.jsonl`). M6-a:
+all checks pass except D-05 (blocked, see §0).
 
 ## 13. Acceptance-to-verification mapping and commands
 
