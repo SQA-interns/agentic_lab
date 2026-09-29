@@ -1,46 +1,74 @@
+# Local container orchestration (specification §14). Secrets come from the git-ignored .env file
+# (copy .env.example). In production an external nginx terminates TLS and routes / and /api.
+name: conference-registration-testrun-latest
+
 services:
   postgres:
     image: postgres:16-alpine
     environment:
       POSTGRES_DB: conference
       POSTGRES_USER: conference
-      POSTGRES_PASSWORD: conference
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U conference -d conference"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
 
   smtp:
     image: axllent/mailpit:v1.31.1
     ports:
-      - "1025:1025"
-      - "8025:8025"
+      - "127.0.0.1:1025:1025"
+      - "127.0.0.1:8025:8025"
 
   backend:
     build:
       context: ./backend
     depends_on:
-      - postgres
-      - smtp
+      postgres:
+        condition: service_healthy
+      smtp:
+        condition: service_started
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/conference
       SPRING_DATASOURCE_USERNAME: conference
-      SPRING_DATASOURCE_PASSWORD: conference
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       SPRING_MAIL_HOST: smtp
       SPRING_MAIL_PORT: 1025
-      RECAPTCHA_TEST_MODE: "true"
+      APP_OPTIONS_FILE: /app/config/conference-options.json
+      APP_BACKUP_DIR: /app/data/registrations
+      APP_ORGANIZER_USERNAME: ${APP_ORGANIZER_USERNAME:?set in .env}
+      APP_ORGANIZER_PASSWORD: ${APP_ORGANIZER_PASSWORD:?set in .env}
+      APP_ORGANIZER_EMAILS: ${APP_ORGANIZER_EMAILS:?set in .env}
+      APP_MAIL_FROM: ${APP_MAIL_FROM:-registration@localhost}
+      APP_CONFERENCE_NAME: ${APP_CONFERENCE_NAME:-Conference}
+      RECAPTCHA_TEST_MODE: ${RECAPTCHA_TEST_MODE:-false}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY:-}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY:-}
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     volumes:
       - registration_backups:/app/data
+      - ./config/conference-options.json:/app/config/conference-options.json:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:8080/actuator/health/readiness || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
+      start_period: 30s
 
   frontend:
     build:
       context: ./frontend
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     ports:
-      - "80:80"
+      - "127.0.0.1:80:80"
 
 volumes:
   postgres_data:

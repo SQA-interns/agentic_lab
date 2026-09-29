@@ -1,22 +1,42 @@
+# Settings that the environment can override. Keys that Spring Boot already binds from
+# environment variables (SPRING_DATASOURCE_*, SPRING_MAIL_HOST/PORT, SERVER_PORT, APP_OPTIONS_FILE,
+# APP_BACKUP_DIR, APP_ORGANIZER_*) and the reCAPTCHA test-mode switch are deliberately absent here:
+# a value in this file would shadow properties passed programmatically. Their local-development
+# defaults live in Application.main (see specification §9).
 spring:
   application:
     name: registration-backend
-  datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/conference}
-    username: ${SPRING_DATASOURCE_USERNAME:conference}
-    password: ${SPRING_DATASOURCE_PASSWORD:conference}
   jpa:
     hibernate:
       ddl-auto: validate
     open-in-view: false
+    show-sql: false
   flyway:
     enabled: true
   mail:
-    host: ${SPRING_MAIL_HOST:localhost}
-    port: ${SPRING_MAIL_PORT:1025}
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      fail-on-null-for-primitives: true
+  servlet:
+    multipart:
+      enabled: false
 
 server:
-  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: native
+  error:
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+    include-exception: false
+  tomcat:
+    max-swallow-size: 64KB
+    max-http-form-post-size: 16KB
 
 management:
   endpoints:
@@ -27,9 +47,24 @@ management:
     health:
       probes:
         enabled: true
+      show-details: never
+  health:
+    mail:
+      enabled: false
+
+logging:
+  level:
+    org.hibernate.SQL: WARN
+    org.hibernate.orm.jdbc.bind: WARN
 
 app:
+  conference-name: ${APP_CONFERENCE_NAME:Conference}
+  mail:
+    from: ${APP_MAIL_FROM:registration@localhost}
   recaptcha:
-    test-mode: ${RECAPTCHA_TEST_MODE:false}
     secret-key: ${RECAPTCHA_SECRET_KEY:}
     site-key: ${RECAPTCHA_SITE_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  rate-limit:
+    registration-per-minute: ${APP_RATE_LIMIT_REGISTRATION_PER_MINUTE:30}
+    organizer-per-minute: ${APP_RATE_LIMIT_ORGANIZER_PER_MINUTE:10}

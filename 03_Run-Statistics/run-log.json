@@ -25,8 +25,8 @@
     },
     {
       "name": "implementation",
-      "start": null,
-      "end": null
+      "start": "2026-09-28T23:52:17Z",
+      "end": "2026-09-29T00:12:37Z"
     },
     {
       "name": "unit-tests",
@@ -44,7 +44,7 @@
       "end": null
     }
   ],
-  "firstWorkingHappyPathTimestamp": null,
+  "firstWorkingHappyPathTimestamp": "2026-09-29T00:00:19Z",
   "acceptanceTestFreezeHeld": true,
   "acceptanceTestFreezeHeldReason": "frozen at the Phase 3 commit (docs/acceptance/MANIFEST.sha256, 18 files); to be re-checked in Verification",
   "firstTestRun": {
@@ -170,6 +170,22 @@
       "filesChanged": 6,
       "linesAdded": 1174,
       "linesRemoved": 5
+    },
+    {
+      "sha": "e25089c82f5e13a718fafaae139a62e179bb3347",
+      "phase": "acceptance-tests",
+      "message": "phase 3: frozen acceptance tests (backend HTTP + e2e) with manifest and red-run evidence",
+      "filesChanged": 27,
+      "linesAdded": 2600,
+      "linesRemoved": 23
+    },
+    {
+      "sha": "7b1612631f6de54f34629b1e4caf6cba09b350c6",
+      "phase": "implementation",
+      "message": "phase 4 (prep): gitattributes so checkouts reproduce the frozen acceptance-test bytes",
+      "filesChanged": 1,
+      "linesAdded": 4,
+      "linesRemoved": 3
     }
   ],
   "reverts": 0,

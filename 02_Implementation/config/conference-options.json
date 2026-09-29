@@ -1,0 +1,11 @@
+{
+  "options": [
+    { "id": "ws-ai", "category": "WORKSHOP", "name": "Delavnica: umetna inteligenca v praksi", "active": true },
+    { "id": "ws-security", "category": "WORKSHOP", "name": "Varnost spletnih aplikacij", "active": true },
+    { "id": "ev-reception", "category": "EVENT", "name": "Sprejem dobrodošlice", "active": true },
+    { "id": "ev-dinner", "category": "EVENT", "name": "Konferenčna večerja", "active": true },
+    { "id": "meal-lunch-day1", "category": "MEAL", "name": "Kosilo, 1. dan", "active": true },
+    { "id": "meal-lunch-day2", "category": "MEAL", "name": "Kosilo, 2. dan", "active": true },
+    { "id": "other-city-tour", "category": "OTHER", "name": "Ogled Ljubljane", "active": true }
+  ]
+}

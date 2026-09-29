@@ -448,7 +448,7 @@ maps each environment variable to its property explicitly.
 
 | Variable | Spring property | Purpose | Default |
 | --- | --- | --- | --- |
-| `SPRING_DATASOURCE_URL`/`_USERNAME`/`_PASSWORD` | `spring.datasource.*` | Database | local dev values from scaffold |
+| `SPRING_DATASOURCE_URL`/`_USERNAME`/`_PASSWORD` | `spring.datasource.*` | Database | URL `jdbc:postgresql://localhost:5432/conference`; username/password none — required |
 | `SPRING_MAIL_HOST`, `SPRING_MAIL_PORT`, `SPRING_MAIL_USERNAME`, `SPRING_MAIL_PASSWORD`, `SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE` | `spring.mail.*` | SMTP | `localhost:1025`, no auth |
 | `APP_MAIL_FROM` | `app.mail.from` | Sender address | `registration@localhost` |
 | `APP_ORGANIZER_EMAILS` | `app.organizer.emails` | Comma-separated organizer notification recipients | none — required |
@@ -463,6 +463,10 @@ maps each environment variable to its property explicitly.
 
 Startup fails fast on missing required values (Spring
 `@Validated @ConfigurationProperties`).
+
+*(Phase 4 note: defaults are applied as lowest-precedence default
+properties in `Application.main`, not in `application.yml`; see
+`docs/implementation-notes.md` decision 1.)*
 
 ## 10. Persistence, backup and recovery (US-005)
 
