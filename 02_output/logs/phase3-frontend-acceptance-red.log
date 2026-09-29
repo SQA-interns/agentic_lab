@@ -1,0 +1,542 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mE:/13 - Lab Projects/04_Input_Files_Template/agentic_lab/02_output/frontend[39m
+
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-001-08 every consent checkbox starts unchecked[33m 1034[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-002-03 the fields follow the chosen registration type[33m 1015[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-003-03 active options are shown grouped by category[33m 1009[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-003-04 the options offered follow the registration type[33m 1011[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-01 an accepted registration shows the confirmation[33m 1011[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-02 backend field errors are shown next to the fields and no confirmation[33m 1008[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-02 a server error shows no confirmation[33m 1012[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 empty required fields are reported before any request is sent[33m 1010[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 an invalid email is reported before any request is sent[33m 1010[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m×[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 a missing mandatory consent is reported before any request is sent[33m 1011[2mms[22m[39m
+[31m   → Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 10 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-001-08 every consent checkbox starts unchecked
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m106:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-002-03 the fields follow the chosen registration type
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m115:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-003-03 active options are shown grouped by category
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m133:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-003-04 the options offered follow the registration type
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m148:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-01 an accepted registration shows the confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m176:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-02 backend field errors are shown next to the fields and no confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m211:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-02 a server error shows no confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m229:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 empty required fields are reported before any request is sent
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m239:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 an invalid email is reported before any request is sent
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m252:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 a missing mandatory consent is reported before any request is sent
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<h1>[31m
+      [0mConference registration[0m
+    [36m</h1>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openForm tests/acceptance/registration-form.acceptance.test.tsx:[2m81:32[22m[39m
+    [90m 79| [39masync function openForm(type: 'External participant' | 'Student' = 'Ex…
+    [90m 80| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 81| [39m  fireEvent[33m.[39m[34mclick[39m([35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m'radio'[39m[33m,[39m { name[33m:[39m type }))[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 82| [39m  await screen.findByRole('checkbox', { name: 'Workshop: Secure web de…
+    [90m 83| [39m}
+[90m [2m❯[22m tests/acceptance/registration-form.acceptance.test.tsx:[2m264:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m10 failed[39m[22m[90m (10)[39m
+[2m   Start at [22m 01:47:11
+[2m   Duration [22m 12.82s[2m (transform 51ms, setup 410ms, collect 175ms, tests 10.13s, environment 1.53s, prepare 152ms)[22m
+

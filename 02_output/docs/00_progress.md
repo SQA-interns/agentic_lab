@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: sdd
-- Current phase: 3 (test design)
-- Last gate result: phase 2 passed at 2026-09-29T23:37:03Z (every AC, SR, SB, NFR, AR mapped in 02_specification.md; contracts validated, out/logs/phase2-contract-validation.log)
-- Next step: write frozen acceptance tests (backend src/test/java/.../acceptance, frontend tests/acceptance, frontend tests/e2e), run them red, write 03_acceptance-manifest.sha256, commit
+- Current phase: 4 (build)
+- Last gate result: phase 3 passed at 2026-09-29T23:56:34Z (every AC has a test; backend 66/67, frontend 10/10, e2e 3/3 fail for behavioural reasons, D-17; manifest committed with the tests)
+- Next step: implement backend (spec §2-§10) and frontend (§11), Dockerfiles and docker-compose.yml (§12) until all frozen tests pass; do not touch files in 03_acceptance-manifest.sha256
 - Waiting for the human on: nothing

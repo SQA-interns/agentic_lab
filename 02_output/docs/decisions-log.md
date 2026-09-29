@@ -139,3 +139,21 @@
 - Options: 1. (chosen) Use @apidevtools/swagger-parser 13.1.0 (MIT), ajv 8.20.0 (MIT) and ajv-formats 3.0.1 (MIT), exact versions, installed only in a scratch directory outside the project; the script is kept as `docs/02_contracts/validate-contracts.mjs` and output in `out/logs/phase2-contract-validation.log`. They are not dependencies of any component and do not ship. 2. Add them to the frontend `package.json` (would put unlisted tools into a component manifest).
 - Human response: none
 - Resolution: option 1, pending review
+
+## D-16: @types/node added to the frontend (not listed in tech-stack.md)
+- Timestamp: 2026-09-29T23:56:19Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the frozen e2e helper (`frontend/tests/e2e/support.ts`) uses Node APIs (fs, zlib, Buffer); type checking (`tsc --noEmit`, ES-05, DoD-02) needs Node type definitions, which `tech-stack.md` does not list and no listed package pulls in.
+- Options: 1. (chosen) Add `@types/node` 24.19.0 (MIT, matches Node 24.13.0) as an exact dev dependency, locked in `package-lock.json`; build-time only, never shipped. 2. Exclude the e2e tests from type checking.
+- Human response: none
+- Resolution: option 1, pending review
+
+## D-17: One acceptance test passes on the bootstrap skeleton
+- Timestamp: 2026-09-29T23:56:19Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the phase 3 gate asks every test to fail for a behavioural reason. `OperationsAcceptanceTest.nfr04HealthAndReadiness` passes on the skeleton because Spring Boot Actuator (in the phase 0 bootstrap) already serves liveness/readiness.
+- Options: 1. (chosen) Keep it as a regression guard for NFR-04 and add `JsonCopyFailureAcceptanceTest.nfr04ReadinessReportsUnwritableCopyDirectory`, which fails on the skeleton and covers the part of NFR-04 not yet implemented. 2. Delete the passing test. 3. Weaken the skeleton to make it fail.
+- Human response: none
+- Resolution: option 1, pending review

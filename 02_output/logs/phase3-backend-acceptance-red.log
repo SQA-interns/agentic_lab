@@ -1,0 +1,1444 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=E:\\13 - Lab Projects\\04_Input_Files_Template\\agentic_lab\\02_output\\backend\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] skip non existing resourceDirectory E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest
+01:54:01.298 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+01:54:01.303 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+01:54:01.350 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+01:54:01.798 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+01:54:02.349 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+01:54:02.350 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+01:54:02.372 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.0
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+01:54:02.473 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+01:54:02.798 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 0c636b7291f2a9d686e2b0aead2dc7d582187061302e6387fa1e469f761d9d18
+01:54:03.204 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.7307494S
+01:54:03.214 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+01:54:03.214 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+01:54:03.215 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+01:54:03.216 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+01:54:03.339 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 7424e78a92b558fb266bfc2737611a67535b83eb3bc49d39e98014e66d63abd3
+01:54:05.412 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1964635S
+01:54:05.413 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF)
+01:54:05.414 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+01:54:05.531 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: d06f8135fc9cd8bb72d9e7d9f7a23ce08eb4e86954edd2877383131ac5fa5be7
+01:54:05.836 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /thirsty_hypatia: Waiting for 60 seconds for URL: http://localhost:52977/livez (where port 52977 maps to container port 8025)
+01:54:05.845 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.4312042S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:06.261+02:00  INFO 35780 --- [           main] s.k.r.a.AbuseProtectionAcceptanceTest    : Starting AbuseProtectionAcceptanceTest using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:06.263+02:00  INFO 35780 --- [           main] s.k.r.a.AbuseProtectionAcceptanceTest    : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:07.430+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:07.482+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:08.775+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:08.800+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:08.800+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:08.904+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2607 ms
+2026-09-30T01:54:09.484+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-30T01:54:09.735+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e2c656a
+2026-09-30T01:54:09.737+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-30T01:54:09.770+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:09.830+02:00  INFO 35780 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-30T01:54:09.833+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.012s)
+2026-09-30T01:54:09.834+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:09.854+02:00  INFO 35780 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-30T01:54:09.927+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:09.934+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:10.078+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:10.157+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-30T01:54:10.842+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:10.996+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:11.597+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:11.606+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:11.658+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:12.192+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7640f4fd-09ba-4a07-a6b7-6cc895eadcb3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:12.218+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:12.486+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:12.668+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 52989 (http) with context path '/'
+2026-09-30T01:54:12.677+02:00  INFO 35780 --- [           main] s.k.r.a.AbuseProtectionAcceptanceTest    : Started AbuseProtectionAcceptanceTest in 6.791 seconds (process running for 13.52)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-09-30T01:54:13.413+02:00  INFO 35780 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-30T01:54:13.414+02:00  INFO 35780 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-30T01:54:13.415+02:00  INFO 35780 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 13.39 s <<< FAILURE! -- in si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest.sr03RequestSizeLimit -- Time elapsed: 0.881 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 413
+ but was: 401
+	at si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest.sr03RequestSizeLimit(AbuseProtectionAcceptanceTest.java:97)
+
+[ERROR] si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest.sr03ExportRateLimit -- Time elapsed: 0.335 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 429
+ but was: 401
+	at si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest.sr03ExportRateLimit(AbuseProtectionAcceptanceTest.java:84)
+
+[ERROR] si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest.sr03RegistrationRateLimit -- Time elapsed: 0.017 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.AbuseProtectionAcceptanceTest.sr03RegistrationRateLimit(AbuseProtectionAcceptanceTest.java:55)
+
+[INFO] Running si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:14.093+02:00  INFO 35780 --- [           main] .k.r.a.CaptchaVerificationAcceptanceTest : Starting CaptchaVerificationAcceptanceTest using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:14.095+02:00  INFO 35780 --- [           main] .k.r.a.CaptchaVerificationAcceptanceTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:14.298+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:14.304+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:14.430+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:14.431+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:14.431+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:14.496+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 400 ms
+2026-09-30T01:54:14.584+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-30T01:54:14.600+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@7b8e73c6
+2026-09-30T01:54:14.601+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-09-30T01:54:14.603+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:14.626+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:14.626+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:14.648+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:14.650+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:14.665+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:14.690+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:14.699+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:14.722+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:14.723+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:14.736+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:14.854+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8d79eb72-2cd9-4811-97dc-37c108d1f4d5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:14.862+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:14.903+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:14.931+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56846 (http) with context path '/'
+2026-09-30T01:54:14.933+02:00  INFO 35780 --- [           main] .k.r.a.CaptchaVerificationAcceptanceTest : Started CaptchaVerificationAcceptanceTest in 0.865 seconds (process running for 15.777)
+2026-09-30T01:54:14.947+02:00  INFO 35780 --- [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-30T01:54:14.947+02:00  INFO 35780 --- [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-30T01:54:14.948+02:00  INFO 35780 --- [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.989 s <<< FAILURE! -- in si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.ar07ClientConfigurationExposesSiteKeyOnly -- Time elapsed: 0.022 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.ar07ClientConfigurationExposesSiteKeyOnly(CaptchaVerificationAcceptanceTest.java:138)
+
+[ERROR] si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr02TestModeTokenIsRefusedOutsideTestMode -- Time elapsed: 0.015 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr02TestModeTokenIsRefusedOutsideTestMode(CaptchaVerificationAcceptanceTest.java:114)
+
+[ERROR] si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr01MissingTokenIsRefused -- Time elapsed: 0.015 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr01MissingTokenIsRefused(CaptchaVerificationAcceptanceTest.java:128)
+
+[ERROR] si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr01RejectedTokenIsRefused -- Time elapsed: 0.014 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr01RejectedTokenIsRefused(CaptchaVerificationAcceptanceTest.java:101)
+
+[ERROR] si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr01ValidTokenIsVerifiedOnTheBackend -- Time elapsed: 0.014 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.CaptchaVerificationAcceptanceTest.sr01ValidTokenIsVerifiedOnTheBackend(CaptchaVerificationAcceptanceTest.java:85)
+
+[INFO] Running si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:15.065+02:00  INFO 35780 --- [           main] s.k.r.a.ConferenceOptionsAcceptanceTest  : Starting ConferenceOptionsAcceptanceTest using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:15.066+02:00  INFO 35780 --- [           main] s.k.r.a.ConferenceOptionsAcceptanceTest  : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:15.233+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:15.238+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:15.328+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:15.329+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:15.330+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:15.385+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 318 ms
+2026-09-30T01:54:15.452+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-09-30T01:54:15.464+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@546a9963
+2026-09-30T01:54:15.464+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-09-30T01:54:15.466+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:15.486+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:15.486+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:15.509+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:15.510+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:15.524+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:15.544+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:15.552+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:15.573+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:15.574+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:15.586+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:15.677+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5c7f6deb-2059-40a9-9412-7a0252acf256
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:15.684+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:15.706+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:15.731+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56861 (http) with context path '/'
+2026-09-30T01:54:15.734+02:00  INFO 35780 --- [           main] s.k.r.a.ConferenceOptionsAcceptanceTest  : Started ConferenceOptionsAcceptanceTest in 0.688 seconds (process running for 16.577)
+2026-09-30T01:54:15.750+02:00  INFO 35780 --- [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-30T01:54:15.750+02:00  INFO 35780 --- [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-30T01:54:15.752+02:00  INFO 35780 --- [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 0.864 s <<< FAILURE! -- in si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00305CategoryLimitIsEnforced -- Time elapsed: 0.028 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00305CategoryLimitIsEnforced(ConferenceOptionsAcceptanceTest.java:92)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00304RestrictedOptionIsOfferedOnlyToItsType -- Time elapsed: 0.042 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting ListN:
+  []
+to contain:
+  ["ev-gala-dinner"]
+but could not find the following element(s):
+  ["ev-gala-dinner"]
+
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00304RestrictedOptionIsOfferedOnlyToItsType(ConferenceOptionsAcceptanceTest.java:59)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00301OnlyActiveOptionsAreReturned -- Time elapsed: 0.013 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00301OnlyActiveOptionsAreReturned(ConferenceOptionsAcceptanceTest.java:22)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00304ExternalSelectingStudentOnlyOptionIsRejected -- Time elapsed: 0.013 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00304ExternalSelectingStudentOnlyOptionIsRejected(ConferenceOptionsAcceptanceTest.java:81)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00304StudentSelectingExternalOnlyOptionIsRejected -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00304StudentSelectingExternalOnlyOptionIsRejected(ConferenceOptionsAcceptanceTest.java:70)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00305CategoryLimitAllowsMaximum -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00305CategoryLimitAllowsMaximum(ConferenceOptionsAcceptanceTest.java:103)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00301UnknownTypeIsRejected -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00301UnknownTypeIsRejected(ConferenceOptionsAcceptanceTest.java:49)
+
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00305DuplicateOptionIsRejected -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac00305DuplicateOptionIsRejected(ConferenceOptionsAcceptanceTest.java:113)
+
+[INFO] Running si.konferenca.registration.acceptance.EmailAcceptanceTest
+[ERROR] Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.106 s <<< FAILURE! -- in si.konferenca.registration.acceptance.EmailAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00601ParticipantReceivesConfirmation -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00601ParticipantReceivesConfirmation(EmailAcceptanceTest.java:38)
+
+[ERROR] si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00602HeaderInjectionIsPrevented -- Time elapsed: 0.022 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00602HeaderInjectionIsPrevented(EmailAcceptanceTest.java:95)
+
+[ERROR] si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00702OrganizerEmailContainsOnlyRegistrationData -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00702OrganizerEmailContainsOnlyRegistrationData(EmailAcceptanceTest.java:165)
+
+[ERROR] si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00603MailIsRetriedAfterFailure -- Time elapsed: 0.016 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00603MailIsRetriedAfterFailure(EmailAcceptanceTest.java:112)
+
+[ERROR] si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00701OrganizersReceiveNotificationWithJsonAttachment -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00701OrganizersReceiveNotificationWithJsonAttachment(EmailAcceptanceTest.java:134)
+
+[ERROR] si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00602MarkupIsNotInterpreted -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.EmailAcceptanceTest.ac00602MarkupIsNotInterpreted(EmailAcceptanceTest.java:64)
+
+[INFO] Running si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:16.030+02:00  INFO 35780 --- [           main] s.k.r.a.JsonCopyFailureAcceptanceTest    : Starting JsonCopyFailureAcceptanceTest using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:16.030+02:00  INFO 35780 --- [           main] s.k.r.a.JsonCopyFailureAcceptanceTest    : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:16.177+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:16.182+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:16.272+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:16.273+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:16.273+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:16.338+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 307 ms
+2026-09-30T01:54:16.400+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-09-30T01:54:16.413+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@2c9125c1
+2026-09-30T01:54:16.413+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-09-30T01:54:16.415+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:16.439+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.007s)
+2026-09-30T01:54:16.439+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:16.464+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:16.465+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:16.483+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:16.519+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:16.527+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:16.547+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:16.548+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:16.560+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:16.642+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b9a4ab39-6b5f-4015-9a45-ae305d2a90c0
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:16.647+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:16.663+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:16.681+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56887 (http) with context path '/'
+2026-09-30T01:54:16.683+02:00  INFO 35780 --- [           main] s.k.r.a.JsonCopyFailureAcceptanceTest    : Started JsonCopyFailureAcceptanceTest in 0.67 seconds (process running for 17.527)
+2026-09-30T01:54:16.691+02:00  INFO 35780 --- [o-auto-4-exec-1] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-30T01:54:16.691+02:00  INFO 35780 --- [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-30T01:54:16.692+02:00  INFO 35780 --- [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.767 s <<< FAILURE! -- in si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest.nfr04ReadinessReportsUnwritableCopyDirectory -- Time elapsed: 0.070 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[{"status":"UP"}] 
+expected: 503
+ but was: 200
+	at si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest.nfr04ReadinessReportsUnwritableCopyDirectory(JsonCopyFailureAcceptanceTest.java:74)
+
+[ERROR] si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest.ac00503FailedJsonCopyRollsBack -- Time elapsed: 0.011 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  401
+to be greater than or equal to:
+  500
+
+	at si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest.ac00503FailedJsonCopyRollsBack(JsonCopyFailureAcceptanceTest.java:57)
+
+[INFO] Running si.konferenca.registration.acceptance.OperationsAcceptanceTest
+[ERROR] Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.058 s <<< FAILURE! -- in si.konferenca.registration.acceptance.OperationsAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.OperationsAcceptanceTest.sb10SecurityHeaders -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.OperationsAcceptanceTest.sb10SecurityHeaders(OperationsAcceptanceTest.java:30)
+
+[ERROR] si.konferenca.registration.acceptance.OperationsAcceptanceTest.es07MalformedRequestHasNoInternals -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.OperationsAcceptanceTest.es07MalformedRequestHasNoInternals(OperationsAcceptanceTest.java:43)
+
+[INFO] Running si.konferenca.registration.acceptance.OptionsConfigurationChangeAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:16.856+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:16.856+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:17.000+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:17.005+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:17.085+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:17.086+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:17.086+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:17.144+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 287 ms
+2026-09-30T01:54:17.202+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-09-30T01:54:17.214+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@7203ce4f
+2026-09-30T01:54:17.214+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-09-30T01:54:17.216+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:17.235+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.005s)
+2026-09-30T01:54:17.235+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:17.258+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:17.258+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:17.270+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:17.286+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:17.296+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:17.316+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:17.317+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:17.330+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:17.424+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 72156c5f-7b61-442a-8280-6942d329288d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:17.430+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:17.447+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:17.463+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56903 (http) with context path '/'
+2026-09-30T01:54:17.465+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.628 seconds (process running for 18.308)
+2026-09-30T01:54:17.470+02:00  INFO 35780 --- [o-auto-5-exec-1] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-30T01:54:17.471+02:00  INFO 35780 --- [o-auto-5-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-30T01:54:17.471+02:00  INFO 35780 --- [o-auto-5-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-09-30T01:54:17.480+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:17.488+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:17.493+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:17.495+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-09-30T01:54:17.506+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.684 s <<< FAILURE! -- in si.konferenca.registration.acceptance.OptionsConfigurationChangeAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.OptionsConfigurationChangeAcceptanceTest.ac00302ConfigurationChangeIsVisibleAfterRestart -- Time elapsed: 0.684 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.OptionsConfigurationChangeAcceptanceTest.activeOptionIds(OptionsConfigurationChangeAcceptanceTest.java:61)
+	at si.konferenca.registration.acceptance.OptionsConfigurationChangeAcceptanceTest.ac00302ConfigurationChangeIsVisibleAfterRestart(OptionsConfigurationChangeAcceptanceTest.java:45)
+
+[INFO] Running si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest
+[ERROR] Tests run: 25, Failures: 25, Errors: 0, Skipped: 0, Time elapsed: 0.361 s <<< FAILURE! -- in si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00101ValidExternalRegistrationIsAccepted -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00101ValidExternalRegistrationIsAccepted(ParticipantRegistrationAcceptanceTest.java:26)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00105UnicodeIsStoredUnchanged -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00105UnicodeIsStoredUnchanged(ParticipantRegistrationAcceptanceTest.java:106)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(String)[1] -- Time elapsed: 0.016 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:45)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(String)[2] -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:45)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(String)[3] -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:45)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(String)[4] -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:45)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(String)[1] -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(ParticipantRegistrationAcceptanceTest.java:69)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(String)[2] -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(ParticipantRegistrationAcceptanceTest.java:69)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(String)[3] -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(ParticipantRegistrationAcceptanceTest.java:69)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(String)[4] -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(ParticipantRegistrationAcceptanceTest.java:69)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(String)[5] -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected(ParticipantRegistrationAcceptanceTest.java:69)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00107MissingMandatoryConsentIsRejected -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00107MissingMandatoryConsentIsRejected(ParticipantRegistrationAcceptanceTest.java:132)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102AbsentOrganizationIsRejected -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00102AbsentOrganizationIsRejected(ParticipantRegistrationAcceptanceTest.java:57)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00106UnknownOrInactiveOptionIsRejected(String)[1] -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00106UnknownOrInactiveOptionIsRejected(ParticipantRegistrationAcceptanceTest.java:121)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00106UnknownOrInactiveOptionIsRejected(String)[2] -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00106UnknownOrInactiveOptionIsRejected(ParticipantRegistrationAcceptanceTest.java:121)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202StudentWithExternalFieldIsRejected -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202StudentWithExternalFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:192)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00104WhitespaceIsTrimmed -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00104WhitespaceIsTrimmed(ParticipantRegistrationAcceptanceTest.java:84)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00201ValidStudentRegistrationIsAccepted -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00201ValidStudentRegistrationIsAccepted(ParticipantRegistrationAcceptanceTest.java:154)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(String)[1] -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:180)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(String)[2] -- Time elapsed: 0.008 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:180)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(String)[3] -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:180)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(String)[4] -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:180)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(String)[5] -- Time elapsed: 0.008 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:180)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(String)[6] -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected(ParticipantRegistrationAcceptanceTest.java:180)
+
+[ERROR] si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00107UnknownConsentIsRejected -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[status, body: ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.support.AcceptanceTestBase.assertRejected(AcceptanceTestBase.java:89)
+	at si.konferenca.registration.acceptance.ParticipantRegistrationAcceptanceTest.ac00107UnknownConsentIsRejected(ParticipantRegistrationAcceptanceTest.java:143)
+
+[INFO] Running si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest
+[ERROR] Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.274 s <<< FAILURE! -- in si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.sr06CredentialsOverPlainHttpFromRemoteClientAreRefused -- Time elapsed: 0.206 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 403
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.sr06CredentialsOverPlainHttpFromRemoteClientAreRefused(RegistrationExportAcceptanceTest.java:179)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00803UnicodeIsExportedUnchanged -- Time elapsed: 0.008 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.register(RegistrationExportAcceptanceTest.java:186)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00803UnicodeIsExportedUnchanged(RegistrationExportAcceptanceTest.java:130)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00802ExportWithWrongCredentialsIsRefused -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.register(RegistrationExportAcceptanceTest.java:186)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00802ExportWithWrongCredentialsIsRefused(RegistrationExportAcceptanceTest.java:103)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00804WorkbookContainsOnlyRegistrationData -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.register(RegistrationExportAcceptanceTest.java:186)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00804WorkbookContainsOnlyRegistrationData(RegistrationExportAcceptanceTest.java:144)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00802ExportWithoutCredentialsIsRefused -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.register(RegistrationExportAcceptanceTest.java:186)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00802ExportWithoutCredentialsIsRefused(RegistrationExportAcceptanceTest.java:90)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00801OrganizerExportsWorkbook -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.register(RegistrationExportAcceptanceTest.java:186)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac00801OrganizerExportsWorkbook(RegistrationExportAcceptanceTest.java:58)
+
+[INFO] Running si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.030 s <<< FAILURE! -- in si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest.ac00501RegistrationIsStoredInDatabase -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest.ac00501RegistrationIsStoredInDatabase(RegistrationStorageAcceptanceTest.java:29)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest.ac00502JsonCopyIsWritten -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest.ac00502JsonCopyIsWritten(RegistrationStorageAcceptanceTest.java:59)
+
+[INFO] Running si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:18.200+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:18.200+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:18.326+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:18.331+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:18.406+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:18.407+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:18.407+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:18.467+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 266 ms
+2026-09-30T01:54:18.517+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-09-30T01:54:18.529+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@2baa298a
+2026-09-30T01:54:18.530+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-09-30T01:54:18.531+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:18.553+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:18.553+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:18.576+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:18.577+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:18.591+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:18.606+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:18.615+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:18.633+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:18.634+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:18.643+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:18.729+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 40289880-e183-4e5a-8032-ff7515c056cc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:18.735+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:18.756+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:18.777+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56944 (http) with context path '/'
+2026-09-30T01:54:18.779+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.592 seconds (process running for 19.622)
+2026-09-30T01:54:18.781+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:18.790+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:18.793+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:18.794+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-09-30T01:54:18.822+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:18.845+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:18.847+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:18.976+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:18.980+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:19.064+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:19.065+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:19.065+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:19.125+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 277 ms
+2026-09-30T01:54:19.175+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-09-30T01:54:19.188+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@362c4ee1
+2026-09-30T01:54:19.188+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2026-09-30T01:54:19.189+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:19.210+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.005s)
+2026-09-30T01:54:19.211+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:19.236+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:19.238+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:19.251+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:19.270+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:19.280+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:19.301+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:19.301+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:19.310+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:19.387+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 45c240ef-8b48-4af8-9313-d104279f714e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:19.394+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:19.417+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:19.436+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56953 (http) with context path '/'
+2026-09-30T01:54:19.438+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.606 seconds (process running for 20.281)
+2026-09-30T01:54:19.439+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:19.449+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:19.451+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:19.451+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2026-09-30T01:54:19.474+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:19.496+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:19.496+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:19.619+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:19.622+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:19.688+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:19.689+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:19.689+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:19.733+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 236 ms
+2026-09-30T01:54:19.776+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2026-09-30T01:54:19.789+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection org.postgresql.jdbc.PgConnection@5709066b
+2026-09-30T01:54:19.789+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2026-09-30T01:54:19.791+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:19.813+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:19.813+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:19.839+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:19.840+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:19.853+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:19.872+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:19.880+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:19.899+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:19.900+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:19.906+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:19.970+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 70d3ba67-1775-4462-abe0-e4930b559513
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:19.975+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:19.995+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:20.013+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56960 (http) with context path '/'
+2026-09-30T01:54:20.015+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.532 seconds (process running for 20.858)
+2026-09-30T01:54:20.016+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:20.026+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:20.027+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:20.028+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2026-09-30T01:54:20.031+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:20.053+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:20.053+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:20.164+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:20.167+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:20.226+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:20.226+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:20.227+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:20.283+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 228 ms
+2026-09-30T01:54:20.326+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2026-09-30T01:54:20.340+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection org.postgresql.jdbc.PgConnection@31f33353
+2026-09-30T01:54:20.340+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2026-09-30T01:54:20.341+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:20.363+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:20.363+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:20.387+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:20.388+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:20.403+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:20.428+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:20.437+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:20.455+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:20.456+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:20.464+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:20.532+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b787d3ba-b2a8-470b-ab9b-32bb0648aac7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:20.536+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:20.551+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:20.568+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56967 (http) with context path '/'
+2026-09-30T01:54:20.569+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.529 seconds (process running for 21.412)
+2026-09-30T01:54:20.570+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:20.578+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:20.580+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:20.580+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2026-09-30T01:54:20.589+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:20.606+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:20.607+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:20.697+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:20.701+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:20.760+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:20.761+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:20.761+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:20.811+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 203 ms
+2026-09-30T01:54:20.850+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2026-09-30T01:54:20.863+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection org.postgresql.jdbc.PgConnection@60c358d4
+2026-09-30T01:54:20.863+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2026-09-30T01:54:20.865+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:20.887+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:20.887+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:20.910+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:20.911+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:20.927+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:20.949+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:20.958+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:20.980+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:20.981+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:20.989+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:21.056+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 43677b37-f450-46a0-8f8a-34d714d4e0a3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:21.061+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:21.078+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:21.092+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56974 (http) with context path '/'
+2026-09-30T01:54:21.093+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.498 seconds (process running for 21.936)
+2026-09-30T01:54:21.098+02:00  INFO 35780 --- [-auto-10-exec-1] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-30T01:54:21.098+02:00  INFO 35780 --- [-auto-10-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-30T01:54:21.099+02:00  INFO 35780 --- [-auto-10-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-30T01:54:21.105+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:21.114+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:21.116+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:21.117+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2026-09-30T01:54:21.161+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-30T01:54:21.178+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 35780 (started by sense in E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend)
+2026-09-30T01:54:21.178+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-09-30T01:54:21.259+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-30T01:54:21.263+02:00  INFO 35780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-09-30T01:54:21.309+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-30T01:54:21.310+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-30T01:54:21.310+02:00  INFO 35780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-09-30T01:54:21.360+02:00  INFO 35780 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 181 ms
+2026-09-30T01:54:21.394+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2026-09-30T01:54:21.406+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection org.postgresql.jdbc.PgConnection@5c4b489b
+2026-09-30T01:54:21.406+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2026-09-30T01:54:21.407+02:00  INFO 35780 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF (PostgreSQL 16.15)
+2026-09-30T01:54:21.428+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-09-30T01:54:21.428+02:00  WARN 35780 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-30T01:54:21.450+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-30T01:54:21.450+02:00  INFO 35780 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-30T01:54:21.463+02:00  INFO 35780 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-30T01:54:21.479+02:00  INFO 35780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-30T01:54:21.487+02:00  INFO 35780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54706/registration?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: registration/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-30T01:54:21.502+02:00  INFO 35780 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-30T01:54:21.502+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:21.509+02:00  WARN 35780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-30T01:54:21.572+02:00  WARN 35780 --- [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: bab245db-3da9-4628-9c28-e38e2ffc41b5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-30T01:54:21.576+02:00  INFO 35780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-30T01:54:21.588+02:00  INFO 35780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-30T01:54:21.603+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 56982 (http) with context path '/'
+2026-09-30T01:54:21.605+02:00  INFO 35780 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.437 seconds (process running for 22.448)
+2026-09-30T01:54:21.606+02:00  INFO 35780 --- [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-30T01:54:21.615+02:00  INFO 35780 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-30T01:54:21.617+02:00  INFO 35780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-30T01:54:21.617+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2026-09-30T01:54:21.656+02:00  INFO 35780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+[ERROR] Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 3.479 s <<< FAILURE! -- in si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr06ProductionRefusesPlainHttpOrganizerAccess -- Time elapsed: 0.646 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr06ProductionRefusesPlainHttpOrganizerAccess(StartupSafetyAcceptanceTest.java:86)
+
+[ERROR] si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.es01MissingOrganizerPasswordRefusesStart -- Time elapsed: 0.650 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.es01MissingOrganizerPasswordRefusesStart(StartupSafetyAcceptanceTest.java:95)
+
+[ERROR] si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02ProductionRefusesEmptyKeys -- Time elapsed: 0.557 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02ProductionRefusesEmptyKeys(StartupSafetyAcceptanceTest.java:64)
+
+[ERROR] si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02TestModeIsOffByDefault -- Time elapsed: 0.556 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02TestModeIsOffByDefault(StartupSafetyAcceptanceTest.java:77)
+
+[ERROR] si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02SafeProductionConfigurationStarts -- Time elapsed: 0.572 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02SafeProductionConfigurationStarts(StartupSafetyAcceptanceTest.java:41)
+
+[ERROR] si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02ProductionRefusesTestMode -- Time elapsed: 0.495 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.acceptance.StartupSafetyAcceptanceTest.sr02ProductionRefusesTestMode(StartupSafetyAcceptanceTest.java:53)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   AbuseProtectionAcceptanceTest.sr03ExportRateLimit:84 
+expected: 429
+ but was: 401
+[ERROR]   AbuseProtectionAcceptanceTest.sr03RegistrationRateLimit:55 
+expected: 201
+ but was: 401
+[ERROR]   AbuseProtectionAcceptanceTest.sr03RequestSizeLimit:97 
+expected: 413
+ but was: 401
+[ERROR]   CaptchaVerificationAcceptanceTest.ar07ClientConfigurationExposesSiteKeyOnly:138 
+expected: 200
+ but was: 401
+[ERROR]   CaptchaVerificationAcceptanceTest.sr01MissingTokenIsRefused:128 
+expected: 400
+ but was: 401
+[ERROR]   CaptchaVerificationAcceptanceTest.sr01RejectedTokenIsRefused:101 
+expected: 400
+ but was: 401
+[ERROR]   CaptchaVerificationAcceptanceTest.sr01ValidTokenIsVerifiedOnTheBackend:85 
+expected: 201
+ but was: 401
+[ERROR]   CaptchaVerificationAcceptanceTest.sr02TestModeTokenIsRefusedOutsideTestMode:114 
+expected: 400
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00301OnlyActiveOptionsAreReturned:22 
+expected: 200
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00301UnknownTypeIsRejected:49 
+expected: 400
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00304ExternalSelectingStudentOnlyOptionIsRejected:81->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00304RestrictedOptionIsOfferedOnlyToItsType:59 
+Expecting ListN:
+  []
+to contain:
+  ["ev-gala-dinner"]
+but could not find the following element(s):
+  ["ev-gala-dinner"]
+
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00304StudentSelectingExternalOnlyOptionIsRejected:70->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00305CategoryLimitAllowsMaximum:103 
+expected: 201
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00305CategoryLimitIsEnforced:92->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ConferenceOptionsAcceptanceTest.ac00305DuplicateOptionIsRejected:113->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   EmailAcceptanceTest.ac00601ParticipantReceivesConfirmation:38 
+expected: 201
+ but was: 401
+[ERROR]   EmailAcceptanceTest.ac00602HeaderInjectionIsPrevented:95 
+expected: 400
+ but was: 401
+[ERROR]   EmailAcceptanceTest.ac00602MarkupIsNotInterpreted:64 
+expected: 201
+ but was: 401
+[ERROR]   EmailAcceptanceTest.ac00603MailIsRetriedAfterFailure:112 
+expected: 201
+ but was: 401
+[ERROR]   EmailAcceptanceTest.ac00701OrganizersReceiveNotificationWithJsonAttachment:134 
+expected: 201
+ but was: 401
+[ERROR]   EmailAcceptanceTest.ac00702OrganizerEmailContainsOnlyRegistrationData:165 
+expected: 201
+ but was: 401
+[ERROR]   JsonCopyFailureAcceptanceTest.ac00503FailedJsonCopyRollsBack:57 
+Expecting actual:
+  401
+to be greater than or equal to:
+  500
+
+[ERROR]   JsonCopyFailureAcceptanceTest.nfr04ReadinessReportsUnwritableCopyDirectory:74 [{"status":"UP"}] 
+expected: 503
+ but was: 200
+[ERROR]   OperationsAcceptanceTest.es07MalformedRequestHasNoInternals:43 
+expected: 400
+ but was: 401
+[ERROR]   OperationsAcceptanceTest.sb10SecurityHeaders:30 
+expected: 200
+ but was: 401
+[ERROR]   OptionsConfigurationChangeAcceptanceTest.ac00302ConfigurationChangeIsVisibleAfterRestart:45->activeOptionIds:61 
+expected: 200
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00101ValidExternalRegistrationIsAccepted:26 
+expected: 201
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00102AbsentOrganizationIsRejected:57->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected:45->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected:45->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected:45->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00102MissingExternalFieldIsRejected:45->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected:69->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected:69->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected:69->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected:69->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00103InvalidEmailIsRejected:69->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00104WhitespaceIsTrimmed:84 
+expected: 201
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00105UnicodeIsStoredUnchanged:106 
+expected: 201
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00106UnknownOrInactiveOptionIsRejected:121->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00106UnknownOrInactiveOptionIsRejected:121->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00107MissingMandatoryConsentIsRejected:132->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00107UnknownConsentIsRejected:143->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00201ValidStudentRegistrationIsAccepted:154 
+expected: 201
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected:180->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected:180->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected:180->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected:180->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected:180->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202MissingStudentFieldIsRejected:180->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   ParticipantRegistrationAcceptanceTest.ac00202StudentWithExternalFieldIsRejected:192->AcceptanceTestBase.assertRejected:89 [status, body: ] 
+expected: 400
+ but was: 401
+[ERROR]   RegistrationExportAcceptanceTest.ac00801OrganizerExportsWorkbook:58->register:186 
+expected: 201
+ but was: 401
+[ERROR]   RegistrationExportAcceptanceTest.ac00802ExportWithWrongCredentialsIsRefused:103->register:186 
+expected: 201
+ but was: 401
+[ERROR]   RegistrationExportAcceptanceTest.ac00802ExportWithoutCredentialsIsRefused:90->register:186 
+expected: 201
+ but was: 401
+[ERROR]   RegistrationExportAcceptanceTest.ac00803UnicodeIsExportedUnchanged:130->register:186 
+expected: 201
+ but was: 401
+[ERROR]   RegistrationExportAcceptanceTest.ac00804WorkbookContainsOnlyRegistrationData:144->register:186 
+expected: 201
+ but was: 401
+[ERROR]   RegistrationExportAcceptanceTest.sr06CredentialsOverPlainHttpFromRemoteClientAreRefused:179 
+expected: 403
+ but was: 401
+[ERROR]   RegistrationStorageAcceptanceTest.ac00501RegistrationIsStoredInDatabase:29 
+expected: 201
+ but was: 401
+[ERROR]   RegistrationStorageAcceptanceTest.ac00502JsonCopyIsWritten:59 
+expected: 201
+ but was: 401
+[ERROR]   StartupSafetyAcceptanceTest.es01MissingOrganizerPasswordRefusesStart:95 
+Expecting code to raise a throwable.
+[ERROR]   StartupSafetyAcceptanceTest.sr02ProductionRefusesEmptyKeys:64 
+Expecting code to raise a throwable.
+[ERROR]   StartupSafetyAcceptanceTest.sr02ProductionRefusesTestMode:53 
+Expecting code to raise a throwable.
+[ERROR]   StartupSafetyAcceptanceTest.sr02SafeProductionConfigurationStarts:41 
+expected: 200
+ but was: 401
+[ERROR]   StartupSafetyAcceptanceTest.sr02TestModeIsOffByDefault:77 
+Expecting code to raise a throwable.
+[ERROR]   StartupSafetyAcceptanceTest.sr06ProductionRefusesPlainHttpOrganizerAccess:86 
+Expecting code to raise a throwable.
+[INFO] 
+[ERROR] Tests run: 67, Failures: 66, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  25.624 s
+[INFO] Finished at: 2026-09-30T01:54:22+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\04_Input_Files_Template\agentic_lab\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

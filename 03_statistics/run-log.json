@@ -32,12 +32,12 @@
       "phase": 3,
       "name": "test-design",
       "start": "2026-09-29T23:37:03Z",
-      "end": null
+      "end": "2026-09-29T23:56:34Z"
     },
     {
       "phase": 4,
       "name": "build",
-      "start": null,
+      "start": "2026-09-29T23:56:34Z",
       "end": null
     },
     {
@@ -164,6 +164,18 @@
       "type": "non-blocking",
       "start": "2026-09-29T23:37:03Z",
       "end": "2026-09-29T23:37:03Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:56:19Z",
+      "end": "2026-09-29T23:56:19Z"
+    },
+    {
+      "id": "D-17",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:56:19Z",
+      "end": "2026-09-29T23:56:19Z"
     }
   ],
   "humanInterventions": [
@@ -199,6 +211,11 @@
       "sha": "65265fcecdeb8428f5c8a0655209e848471d4c63",
       "phase": 1,
       "message": "Phase 1: acceptance criteria for US-001..US-008 (D-09..D-14)"
+    },
+    {
+      "sha": "1745ee9f918e407e04beb4207901a3eaf154b92c",
+      "phase": 2,
+      "message": "Phase 2: specification and contracts (D-15)"
     }
   ],
   "usage": {
