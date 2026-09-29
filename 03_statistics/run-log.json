@@ -20,12 +20,12 @@
       "phase": 1,
       "name": "requirements",
       "start": "2026-09-29T23:31:37Z",
-      "end": null
+      "end": "2026-09-29T23:33:21Z"
     },
     {
       "phase": 2,
       "name": "design",
-      "start": null,
+      "start": "2026-09-29T23:33:21Z",
       "end": null
     },
     {
@@ -122,6 +122,42 @@
       "type": "blocking",
       "start": "2026-09-29T23:30:55Z",
       "end": "2026-09-29T23:30:55Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:33:12Z",
+      "end": "2026-09-29T23:33:12Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:33:12Z",
+      "end": "2026-09-29T23:33:12Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:33:12Z",
+      "end": "2026-09-29T23:33:12Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:33:12Z",
+      "end": "2026-09-29T23:33:12Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:33:12Z",
+      "end": "2026-09-29T23:33:12Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "start": "2026-09-29T23:33:12Z",
+      "end": "2026-09-29T23:33:12Z"
     }
   ],
   "humanInterventions": [
@@ -142,7 +178,18 @@
     "complexity": null,
     "duplicationPct": null
   },
-  "commits": [],
+  "commits": [
+    {
+      "sha": "ca8964a5098ca7cb76fc55f66f3e4985a563f4e1",
+      "phase": 0,
+      "message": "Update tech-stack.md to Spring Boot 4.1.1 (human change, D-05/D-07/D-08)"
+    },
+    {
+      "sha": "33175c2d522174233a375e3bad9101c0e38e994d",
+      "phase": 0,
+      "message": "Phase 0: preflight and bootstrap (D-01..D-08)"
+    }
+  ],
   "usage": {
     "inputTokens": null,
     "outputTokens": null,

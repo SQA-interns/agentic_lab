@@ -76,3 +76,57 @@
 - Options: 1. (chosen) Continue with the updated stack.
 - Human response: "done, tech-stack.md is updated" (2026-09-29T23:30:55Z)
 - Resolution: D-05 resolved by option 1 (Spring Boot 4.1.1 + Tomcat 11.0.26); D-07 resolved
+
+## D-09: OQ-01 options per registration type
+- Timestamp: 2026-09-29T23:33:12Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-01 (`project/02_business/scope.md`) unanswered; affects AC-003-04.
+- Options: 1. (chosen) Every active option is offered to both types; an option may be restricted to one type through an optional configuration field (default: both), so a later answer needs no code change (AR-04). 2. Hard-code availability per type. 3. Offer all options to both types with no restriction mechanism.
+- Human response: none
+- Resolution: option 1, pending review
+
+## D-10: OQ-02 mandatory consents and wording
+- Timestamp: 2026-09-29T23:33:12Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-02 unanswered; BR-05 and SB-14 need at least one consent to exist; affects AC-001-07, AC-001-08.
+- Options: 1. (chosen) Consents are defined in the options configuration file (id, wording, mandatory). The shipped configuration contains one mandatory consent: "I agree that the organizers process my personal data for conference registration and organization, as described in the privacy notice." Consent id, wording shown and timestamp are stored. 2. No consents until the product owner answers (BR-05 untestable).
+- Human response: none
+- Resolution: option 1, pending review (the product owner must confirm the wording and add further consents, e.g. photography, in configuration)
+
+## D-11: OQ-03 storage succeeds but an email fails
+- Timestamp: 2026-09-29T23:33:12Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-03 unanswered; scope priority 1 says a registration is never lost; affects AC-006-03.
+- Options: 1. (chosen) The registration stays accepted (it is stored); each email's delivery status is recorded; a scheduled job retries failed emails (every 5 minutes, at most 10 attempts) and logs, without personal data, when it gives up. 2. Reject the registration and roll back (loses a stored registration; contradicts priority 1). 3. Accept and never retry.
+- Human response: none
+- Resolution: option 1, pending review
+
+## D-12: OQ-04 options per category
+- Timestamp: 2026-09-29T23:33:12Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-04 unanswered; affects AC-003-05.
+- Options: 1. (chosen) Any number of distinct options per category, zero included; duplicates rejected; the configuration may set a maximum per category (the shipped configuration sets no maximum). 2. Exactly one per category. 3. At most one per category.
+- Human response: none
+- Resolution: option 1, pending review. Chosen because a limit the product owner did not ask for could lock out legitimate selections (a High-severity example in the severity scale).
+
+## D-13: OQ-05 second registration with the same email
+- Timestamp: 2026-09-29T23:33:12Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-05 unanswered.
+- Options: 1. (chosen) Allowed; every accepted registration is stored separately and appears in the export with its submission time, so organizers can spot duplicates. 2. Reject a second registration with the same email (tells any visitor whether an address is registered, which discloses personal data, and can lock out people sharing an address).
+- Human response: none
+- Resolution: option 1, pending review
+
+## D-14: OQ-06 retention of registrations and JSON copies
+- Timestamp: 2026-09-29T23:33:12Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-06 unanswered; SB-13 requires a retention period for every personal-data item (`project/04_security/security-requirements.md`).
+- Options: 1. (chosen) Proposed retention: 12 months after the conference ends; deletion of database rows and JSON copies is a manual operator procedure documented in the backend README (automatic deletion and an admin UI are out of scope). 2. Implement automatic deletion with a configured period (not requested; risk of deleting data the organizer still needs).
+- Human response: none
+- Resolution: option 1, pending review
