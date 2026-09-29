@@ -6,7 +6,7 @@
   "startCommit": "65f4ad0e90c0ea85b5f5963713186b5e3dfb0d82",
   "finalCommit": "",
   "experimentStart": "2026-09-28T23:27:11Z",
-  "experimentEnd": null,
+  "experimentEnd": "2026-09-29T06:55:10Z",
   "phases": [
     {
       "name": "acceptance-criteria",
@@ -40,8 +40,8 @@
     },
     {
       "name": "finalization",
-      "start": null,
-      "end": null
+      "start": "2026-09-29T06:53:58Z",
+      "end": "2026-09-29T06:55:10Z"
     }
   ],
   "firstWorkingHappyPathTimestamp": "2026-09-29T00:00:19Z",
@@ -268,6 +268,14 @@
       "filesChanged": 1,
       "linesAdded": 10,
       "linesRemoved": 1
+    },
+    {
+      "sha": "5e2aab04d5cd73a6796bb9ee48ffa8a90c82b8b9",
+      "phase": "verification",
+      "message": "phase 6: verification (fix loops 1-2, D-8/D-9, verification report, scanner and mutation evidence)",
+      "filesChanged": 22,
+      "linesAdded": 765,
+      "linesRemoved": 39
     }
   ],
   "reverts": 0,
@@ -339,5 +347,6 @@
     "runtimeDependenciesFrontend": null,
     "_reason": "external audit — frozen toolchain after the run, see METRICS.md"
   },
-  "harnessVersionReason": "not observable from inside the session: the claude CLI is not on PATH and the desktop app does not expose its version to the agent"
+  "harnessVersionReason": "not observable from inside the session: the claude CLI is not on PATH and the desktop app does not expose its version to the agent",
+  "finalCommitReason": "finalCommit is the SHA of the Phase 7 finalization commit; it is written into this file by one follow-up commit (a commit cannot contain its own SHA)"
 }
