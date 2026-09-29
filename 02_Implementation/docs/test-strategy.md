@@ -163,3 +163,78 @@ All acceptance-test files and the two harness-support files are hashed
 in `docs/acceptance/MANIFEST.sha256` (sha256sum format, paths relative
 to `02_Implementation/`) and committed with the suite. From that commit
 they are frozen (CONSTITUTION §2).
+
+## 4. Unit, component and additional integration tests (Phase 5)
+
+Written after the implementation, from the specification and the code.
+Additive only: no file listed in `docs/acceptance/MANIFEST.sha256` was
+changed (hashes re-checked after the phase).
+
+### 4.1 Backend (`backend/src/test/java`, outside `acceptance/`)
+
+| Test class | Level | What it covers and why |
+| --- | --- | --- |
+| `service.RegistrationValidatorTest` | unit | Every §6 rule at the edges the black-box suite cannot cheaply enumerate: code-point length limits (emoji), Cc/Cf rejection (NUL, ZWSP, TAB, NEL), Unicode whitespace stripping (NBSP, U+2028), email corner cases, type handling, duplicate/null option ids with indices, >50 options, error aggregation. |
+| `service.RegistrationServiceTest` | unit (Mockito) | Write-path ordering and failure semantics of §10: reCAPTCHA checked before validation/storage, nothing stored on invalid input, backup failure → rollback + backup removal, **commit failure → the already-written backup is deleted** (not reachable black-box), mail failures never undo the registration (D-3), attachment bytes = backup bytes. |
+| `service.OptionCatalogServiceTest` | unit (Mockito) | §4 sync: insert/update/deactivate-unlisted, startup failure on invalid file, no re-read without a change, invalid or unreadable file at runtime keeps the previous catalog and is not retried until the next change. |
+| `service.OrganizerServiceTest` | unit (Mockito) | Restore accounting (restored / alreadyPresent / failed), options missing from the catalog recreated **inactive**, per-entry failure isolation; empty export is a valid workbook. |
+| `integration.OptionsFileReaderTest` | unit | Options-file schema enforcement (14 invalid shapes, duplicate ids, 200-code-point name limit, missing file), change stamp. |
+| `integration.JsonBackupStoreTest` | unit | Atomic write via temp file, exact bytes, round trip, µs timestamps, unreadable/mismatched/wrong-version files reported as failed, `deleteQuietly` never throws. |
+| `integration.RecaptchaVerifierTest` | unit + local HTTP stub | Test-mode determinism; production mode posts `secret`/`response`/`remoteip` form-encoded and accepts only `success: true`; fails closed on HTTP 500, invalid JSON, unreachable provider, blank or oversized tokens. |
+| `integration.MailNotifierTest` | unit (mocked sender, real MimeMessage) | Plain-text UTF-8 bodies, fixed subjects, organizer recipients, JSON attachment name and bytes, "no options" text. |
+| `integration.ExcelExportWriterTest` | unit | Header-only workbook, per-category option columns in display order, formula-like text stays a string cell. |
+| `config.RateLimitFilterTest` | unit (mock servlet) | Per-IP and per-bucket budgets, window reset, `Retry-After` countdown, bounded key map. |
+| `config.RequestSizeLimitFilterTest` | unit (mock servlet) | Declared and undeclared (chunked) oversize bodies → 413 without passing the request on; in-limit body replayed intact; non-API paths untouched. |
+| `ArchitectureTest` | ArchUnit | Exactly the seven rules declared in specification §2.1 (no generic layering rules). |
+| `security.RecaptchaProductionModeTest` | integration (Spring Boot + Testcontainers PostgreSQL + local siteverify stub) | **Production-mode reCAPTCHA exercised end to end against a mocked verification endpoint** (HUMAN_INPUTS_MANIFEST row 1, DoD §3): provider-accepted token registers, rejected token and the test-mode token are refused; startup refuses production mode without keys, production mode is the default, short organizer password and missing recipients refuse to start. |
+| `security.HttpSecurityTest` | integration | Restore requires JSON (cross-site form POST → 415), non-empty restore body → 400, unknown path → problem without internals, only health/info actuator endpoints, 413 responses carry security headers, no session cookie for organizers, no CORS allowance, validation errors never echo input. |
+
+`support.PostgresIntegrationTest` is a small Phase 5 base class (its own
+PostgreSQL container, SMTP pointed at a closed port) so these tests do
+not depend on the frozen harness's package-private members.
+
+### 4.2 Frontend (`frontend/src/**/*.test.ts(x)`, Vitest + React Testing Library)
+
+| Test file | What it covers |
+| --- | --- |
+| `validation/validate.test.ts` | Client-side mirror of §6: per-type fields, whitespace, code-point limits, Cc/Cf characters, email rules, consent and robot check, server-code message mapping. |
+| `api/client.test.ts` | Result mapping of `POST /api/registrations` (201 / 400 with errors / 400 without / 429 / 500 / network error), request body, non-OK GET. |
+| `components/RegistrationPage.test.tsx` | Grouped options, empty groups hidden, unchecked consent, type switching, no request when client validation fails, trimmed type-specific request body, confirmation, server field-error mapping, reCAPTCHA reset after `RECAPTCHA_FAILED`, option errors shown generally with options reloaded, general failure, load failure. |
+| `components/Captcha.test.tsx` | Test mode yields `test-pass` and loads no Google script; production mode renders the widget with the site key, wires token/expiry callbacks, resets on demand, injects the explicit-render script. |
+
+`vitest.config.ts` restricts Vitest to `src/**/*.test.*` so the
+Playwright specs in `e2e/` are not picked up.
+
+## 5. First complete run (Phase 5, before any repair)
+
+Run 2026-09-29T00:18Z: `./mvnw test` (acceptance + unit), `npx vitest run`,
+`npx playwright test` (against the compose backend in test mode).
+
+| Suite | Passed | Failed |
+| --- | --- | --- |
+| Backend (90 acceptance + 117 unit/integration) | 206 | 1 |
+| Frontend unit (Vitest) | 39 | 0 |
+| E2E acceptance (Playwright) | 9 | 0 |
+| **Total** | **254** | **1** |
+
+### Failure classification
+
+| Test | Classification | Reason and action |
+| --- | --- | --- |
+| `RegistrationValidatorTest.acceptsValidExternalAndNormalizesWhitespace` | **Implementation defect** | A leading no-break space (U+00A0) was kept: `String.strip()` — named in the specification — deliberately does not treat no-break spaces as whitespace, although FORM_SCHEMA says leading/trailing whitespace is not significant and the frontend's `trim()` removes it (client and server disagreed). Fixed `RegistrationValidator.normalize` to strip `isWhitespace || isSpaceChar` code points; specification §6 wording corrected. The test was not changed. |
+
+After the first run, test sources were only reformatted (Prettier and
+Spotless) and two string literals were rewritten from literal invisible
+characters (ZWSP, NUL, NBSP, NEL, U+2028 — the editor had materialised
+the escapes) back into `\uXXXX` escapes; the tested values are identical.
+
+## 6. Final complete run (end of Phase 5)
+
+| Suite | Passed | Failed |
+| --- | --- | --- |
+| Backend (acceptance + unit/integration) | 207 | 0 |
+| Frontend unit (Vitest) | 39 | 0 |
+| E2E acceptance (Playwright) | 9 | 0 |
+| **Total** | **255** | **0** |
+
+Acceptance manifest re-checked: all 18 hashes match.

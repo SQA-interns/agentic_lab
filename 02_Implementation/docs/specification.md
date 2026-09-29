@@ -262,7 +262,8 @@ credentials) → `200 {"restored": n, "alreadyPresent": m, "failed": k}`.
 Applied in `service` after JSON binding. Normalization first:
 
 1. Every string field is stripped of leading/trailing Unicode
-   whitespace (`String.strip()`), AC-001-05, AC-002-04.
+   whitespace, including no-break spaces (Phase 5 correction: the
+   original `String.strip()` wording kept U+00A0), AC-001-05, AC-002-04.
 2. An empty string after stripping is treated as absent (AC-001-03).
 
 Rules:

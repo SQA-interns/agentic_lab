@@ -30,8 +30,8 @@
     },
     {
       "name": "unit-tests",
-      "start": null,
-      "end": null
+      "start": "2026-09-29T00:12:41Z",
+      "end": "2026-09-29T00:24:00Z"
     },
     {
       "name": "verification",
@@ -48,12 +48,12 @@
   "acceptanceTestFreezeHeld": true,
   "acceptanceTestFreezeHeldReason": "frozen at the Phase 3 commit (docs/acceptance/MANIFEST.sha256, 18 files); to be re-checked in Verification",
   "firstTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 254,
+    "failed": 1
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 255,
+    "failed": 0
   },
   "humanInterventions": [
     {
@@ -186,6 +186,14 @@
       "filesChanged": 1,
       "linesAdded": 4,
       "linesRemoved": 3
+    },
+    {
+      "sha": "768e0b5beb9194f34a4d5170fabd8af16322d1f8",
+      "phase": "implementation",
+      "message": "phase 4: implementation (backend, frontend, containers) - frozen acceptance suite green",
+      "filesChanged": 53,
+      "linesAdded": 3624,
+      "linesRemoved": 26
     }
   ],
   "reverts": 0,

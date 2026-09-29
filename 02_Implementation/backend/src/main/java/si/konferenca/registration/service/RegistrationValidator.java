@@ -75,13 +75,27 @@ public class RegistrationValidator {
         options);
   }
 
-  /** Strips leading/trailing Unicode whitespace; blank becomes {@code null} (absent). */
+  /**
+   * Strips leading/trailing Unicode whitespace, including no-break spaces (which {@link
+   * String#strip()} keeps); blank becomes {@code null} (absent).
+   */
   static String normalize(String value) {
     if (value == null) {
       return null;
     }
-    String stripped = value.strip();
-    return stripped.isEmpty() ? null : stripped;
+    int start = 0;
+    int end = value.length();
+    while (start < end && isSpace(value.codePointAt(start))) {
+      start += Character.charCount(value.codePointAt(start));
+    }
+    while (end > start && isSpace(value.codePointBefore(end))) {
+      end -= Character.charCount(value.codePointBefore(end));
+    }
+    return start == end ? null : value.substring(start, end);
+  }
+
+  private static boolean isSpace(int codePoint) {
+    return Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint);
   }
 
   static boolean hasDisallowedCharacters(String value) {
