@@ -35,12 +35,19 @@ class RateLimitFilterTest {
 
   private final RateLimitFilter filter = new RateLimitFilter(2, 1, clock);
 
+  /** Response status, or 0 when the request was passed on to the rest of the chain. */
   private MockHttpServletResponse call(String method, String path, String ip)
       throws IOException, jakarta.servlet.ServletException {
     MockHttpServletRequest request = new MockHttpServletRequest(method, path);
     request.setRemoteAddr(ip);
     MockHttpServletResponse response = new MockHttpServletResponse();
-    filter.doFilter(request, response, new MockFilterChain());
+    MockFilterChain chain = new MockFilterChain();
+    filter.doFilter(request, response, chain);
+    if (response.getStatus() == 200) {
+      assertThat(chain.getRequest()).as("allowed request is passed on").isNotNull();
+    } else {
+      assertThat(chain.getRequest()).as("limited request is not passed on").isNull();
+    }
     return response;
   }
 
@@ -90,12 +97,27 @@ class RateLimitFilterTest {
   }
 
   @Test
-  void trackedKeysAreBounded() {
-    for (int i = 0; i <= RateLimitFilter.MAX_TRACKED_KEYS + 1; i++) {
-      filter.consume("key-" + i, 5);
+  void expiredWindowsAreEvictedButLiveOnesKeepCounting() {
+    filter.consume("expiring", 1);
+    now.addAndGet(RateLimitFilter.WINDOW_MILLIS - 1);
+    // One more key than the bound: "expiring" plus MAX_TRACKED_KEYS fresh keys.
+    for (int i = 0; i < RateLimitFilter.MAX_TRACKED_KEYS; i++) {
+      filter.consume("fresh-" + i, 1);
     }
-    now.addAndGet(RateLimitFilter.WINDOW_MILLIS);
+    now.addAndGet(1);
 
-    assertThat(filter.consume("fresh", 1)).isZero();
+    // The next call evicts only the expired window; the fresh ones keep their count.
+    assertThat(filter.consume("fresh-0", 1)).isPositive();
+    assertThat(filter.consume("expiring", 1)).isZero();
+  }
+
+  @Test
+  void mapIsClearedWhenNothingCanBeEvicted() {
+    for (int i = 0; i <= RateLimitFilter.MAX_TRACKED_KEYS + 1; i++) {
+      filter.consume("key-" + i, 1);
+    }
+
+    // Every window is live, so the bound forces a full reset: the next request is allowed again.
+    assertThat(filter.consume("key-0", 1)).isZero();
   }
 }

@@ -213,6 +213,43 @@ class RegistrationValidatorTest {
   }
 
   @Test
+  void exactlyFiftyOptionsAreAllowed() {
+    List<String> ids = new ArrayList<>(Collections.nCopies(50, "ws-a"));
+
+    assertThat(errorsOf(external("a@x.si", ids))).isEmpty();
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"studyInstitution", "studyProgramme", "studentId"})
+  void eachStudentFieldIsNotAllowedOnAnExternalRegistration(String field) {
+    RegistrationCommand cmd =
+        new RegistrationCommand(
+            "EXTERNAL",
+            "A",
+            "B",
+            "a@x.si",
+            "IJS",
+            field.equals("studyInstitution") ? "x" : null,
+            field.equals("studyProgramme") ? "x" : null,
+            field.equals("studentId") ? "x" : null,
+            null,
+            true,
+            "t");
+
+    assertThat(errorsOf(cmd)).containsExactly(new FieldError(field, Code.FIELD_NOT_ALLOWED));
+  }
+
+  @Test
+  void organizationIsNotAllowedOnAStudentRegistration() {
+    RegistrationCommand cmd =
+        new RegistrationCommand(
+            "STUDENT", "A", "B", "a@x.si", "IJS", "FRI", "RI", "6320", null, true, "t");
+
+    assertThat(errorsOf(cmd))
+        .containsExactly(new FieldError("organization", Code.FIELD_NOT_ALLOWED));
+  }
+
+  @Test
   void validationExceptionListIsImmutable() {
     assertThatThrownBy(() -> validator.validate(external("bad", null), catalog))
         .isInstanceOfSatisfying(

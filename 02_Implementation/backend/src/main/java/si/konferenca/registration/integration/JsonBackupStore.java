@@ -99,7 +99,7 @@ public class JsonBackupStore {
     List<Entry> entries = new ArrayList<>();
     try (Stream<Path> files = Files.list(directory)) {
       for (Path file :
-          files.filter(p -> p.getFileName().toString().endsWith(SUFFIX)).sorted().toList()) {
+          files.filter(p -> String.valueOf(p.getFileName()).endsWith(SUFFIX)).sorted().toList()) {
         entries.add(new Entry(file, readValid(file)));
       }
     }
@@ -122,7 +122,7 @@ public class JsonBackupStore {
               && s.options() != null
               && s.options().stream()
                   .allMatch(o -> o.id() != null && o.category() != null && o.name() != null)
-              && file.getFileName().toString().equals(s.registrationId() + SUFFIX);
+              && String.valueOf(file.getFileName()).equals(s.registrationId() + SUFFIX);
       return complete ? s : null;
     } catch (IOException | RuntimeException e) {
       return null;

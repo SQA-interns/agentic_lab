@@ -35,7 +35,7 @@
     },
     {
       "name": "verification",
-      "start": null,
+      "start": "2026-09-29T00:24:03Z",
       "end": null
     },
     {
@@ -60,9 +60,14 @@
       "start": "2026-09-28T23:29:46Z",
       "end": "2026-09-28T23:30:58Z",
       "reason": "D-6 escalation: human answered the 4-part question resolving HUMAN_INPUTS_MANIFEST rows (reCAPTCHA, SMTP, organizer credentials, NVD key)"
+    },
+    {
+      "start": "2026-09-29T00:26:27Z",
+      "end": "2026-09-29T06:16:32Z",
+      "reason": "D-8 escalation: human chose how to handle Critical/High dependency CVEs (upgrade within Spring Boot 3.x + reachability triage) - end is the first timestamp observed after the answer arrived; the session waited on the human in between"
     }
   ],
-  "clarifyingQuestions": 4,
+  "clarifyingQuestions": 5,
   "manualCodeFixes": 0,
   "escalations": [
     {
@@ -145,9 +150,32 @@
       ],
       "humanResponse": null,
       "resolution": "agent-default, pending human review"
+    },
+    {
+      "timestamp": "2026-09-29T00:26:27Z",
+      "category": "pinned-version-change",
+      "trigger": "D-8: OWASP Dependency-Check: 35 Critical / 77 High CVEs in the scaffold-pinned Spring Boot 3.4.4 stack; newest Boot 3.5.16 still leaves 22 Critical / 27 High in a scratch trial; Boot 4 would break TECH_STACK",
+      "proposedAlternatives": [
+        "upgrade to Boot 3.5.16 + override managed versions with published fixes + reachability triage (chosen)",
+        "keep 3.4.4 and triage only",
+        "move to Spring Boot 4.x"
+      ],
+      "humanResponse": "answered by 2026-09-29T06:16:32Z (first observed timestamp after the answer): upgrade within 3.x + triage",
+      "resolution": "resolved by human"
     }
   ],
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loopNumber": 1,
+      "trigger": "Verification: OWASP Dependency-Check reported 35 Critical / 77 High CVEs in the scaffold-pinned Spring Boot 3.4.4 dependency set (escalated as D-8; human chose upgrade within 3.x + reachability triage)",
+      "findingIds": [
+        "V-01"
+      ],
+      "change": "spring-boot-starter-parent 3.4.4 -> 3.5.16; overrides tomcat.version 10.1.60, log4j2.version 2.26.1, commons-lang3.version 3.20.0; Tomcat, log4j, Jackson, PostgreSQL JDBC findings cleared. Remaining 16 unique CVEs (Spring Framework 6.2.19, Spring Security 6.5.11 - no newer OSS 3.x release; angus-activation 2.0.3) verified unreachable (feature absent from dependency tree and source) and reclassified per SEVERITY_TAXONOMY (15 Medium, 1 Low false positive). Re-verified: Dependency-Check re-run, full backend suite 207/207.",
+      "start": "2026-09-29T06:19:10Z",
+      "end": "2026-09-29T06:22:05Z"
+    }
+  ],
   "verificationFindings": {
     "critical": 0,
     "high": 0,
@@ -194,6 +222,14 @@
       "filesChanged": 53,
       "linesAdded": 3624,
       "linesRemoved": 26
+    },
+    {
+      "sha": "5f613f17ed0ad4690e163243c3e380873322d042",
+      "phase": "unit-tests",
+      "message": "phase 5: unit, component and additional integration tests; NBSP normalization fix",
+      "filesChanged": 25,
+      "linesAdded": 2502,
+      "linesRemoved": 10
     }
   ],
   "reverts": 0,

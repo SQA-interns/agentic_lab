@@ -151,3 +151,34 @@ permits when no human is available synchronously.
 - **resolution:** agent-default, pending human review — alternative 1.
   Verified: with the file present, the containers start and every
   acceptance test fails for a behavioural reason.
+
+## D-8 — Critical/High dependency CVEs in the pinned Spring Boot 3.4.4 stack
+
+- **timestamp:** 2026-09-29T00:26:27Z
+- **category:** pinned-version-change (CONSTITUTION §3; operator instruction
+  to stop before substituting a version)
+- **trigger:** Verification, OWASP Dependency-Check 12.1.0 (NVD data
+  updated 2026-09-28T22:17Z): 35 Critical / 77 High / 77 Medium / 10 Low
+  findings, all in libraries managed by the scaffold's pinned
+  `spring-boot-starter-parent` 3.4.4 (Spring Framework 6.2.5, Spring
+  Security 6.4.4, Tomcat 10.1.39, Jackson 2.18.3, PostgreSQL JDBC
+  42.7.5, Angus mail/activation 2.0.x) or pulled in by POI (log4j-api
+  2.24.3). DoD §3 forbids finalization with unresolved Critical/High.
+  A scratch-copy trial (product untouched) with Boot 3.5.16, the newest
+  3.x release, still showed 22 Critical / 27 High: Tomcat fixes exist
+  (10.1.58+, latest 10.1.60), but several Spring Framework/Security
+  CVEs are fixed only in 6.2.20+/7.x, which are not published on Maven
+  Central for the 3.x line; Spring Boot 4.x would violate TECH_STACK
+  "Spring Boot 3.x".
+- **proposedAlternatives:**
+  1. Upgrade the parent to 3.5.16 and override managed versions where a
+     fixed release exists (e.g. Tomcat 10.1.60, log4j-api 2.26.x), re-run
+     all tests, then triage the remainder per CVE by reachability —
+     unreachable → Medium with written justification (SEVERITY_TAXONOMY
+     example), reachable → open Critical/High escalation.
+  2. Keep 3.4.4 and triage only.
+  3. Move to Spring Boot 4.x (outside TECH_STACK).
+- **humanResponse:** answered by 2026-09-29T06:16:32Z (first timestamp observed after the answer; synchronous question in the
+  session): alternative 1, "Upgrade within 3.x + triage".
+- **resolution:** resolved by human — alternative 1; execution recorded
+  as fix loops in `docs/verification-report.md` and `run-log.json`.

@@ -6,3 +6,6 @@ backend/src/test/resources/docker-java.properties text eol=lf
 frontend/e2e/** text eol=lf
 frontend/playwright.config.ts text eol=lf
 docs/acceptance/** text eol=lf
+
+# Frontend sources are LF (Prettier endOfLine default) on every checkout, so `npm run format` passes.
+frontend/** text=auto eol=lf

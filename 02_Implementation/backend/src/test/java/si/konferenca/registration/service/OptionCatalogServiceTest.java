@@ -114,6 +114,19 @@ class OptionCatalogServiceTest {
   }
 
   @Test
+  void catalogPicksUpAChangedFile() throws IOException {
+    when(reader.stamp()).thenReturn(stamp(1));
+    when(reader.read())
+        .thenReturn(List.of(new OptionDefinition("a", OptionCategory.OTHER, "A", true)));
+    service.initialize();
+    when(reader.stamp()).thenReturn(stamp(2));
+    when(reader.read())
+        .thenReturn(List.of(new OptionDefinition("a", OptionCategory.OTHER, "A", false)));
+
+    assertThat(service.catalog().get("a").isActive()).isFalse();
+  }
+
+  @Test
   void unreadableFileAtRuntimeKeepsThePreviousCatalog() throws IOException {
     when(reader.stamp()).thenReturn(stamp(1));
     when(reader.read())

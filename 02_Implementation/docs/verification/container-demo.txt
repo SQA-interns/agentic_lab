@@ -1,0 +1,71 @@
+## 9. Backend health/readiness (from inside the backend container)
+{"status":"UP"}
+backend: Up About a minute (healthy)
+frontend: Up About a minute
+postgres: Up 6 hours (healthy)
+smtp: Up 6 hours (healthy)
+
+## 1. External registration through the frontend container (http://localhost/api)
+HTTP 201 {"registrationId":"ef085aeb-490d-4f2f-b1cd-3656ed84831b","submittedAt":"2026-09-29T06:33:17.450508Z","type":"EXTERNAL","firstName":"Živa","lastName":"Čepič","email":"demo.external.1790663596576@example.si","organization":"Univerza v Ljubljani","studyInstitution":null,"studyProgramme":null,"studentId":null,"options":[{"id":"ws-ai","category":"WORKSHOP","name":"Delavnica: umetna inteligenca v praksi"},{"id":"meal-lunch-day1","category":"MEAL","name":"Kosilo, 1. dan"}]}
+## 2. Student registration
+HTTP 201 {"registrationId":"09ffd022-ac73-41a5-b39d-82874c4294ec","submittedAt":"2026-09-29T06:33:17.661515Z","type":"STUDENT","firstName":"Luka","lastName":"Šinkovec","email":"demo.student.1790663596576@example.si","organization":null,"studyInstitution":"Fakulteta za računalništvo in informatiko","studyProgramme":"Računalništvo in informatika","studentId":"63200001","options":[{"id":"ev-dinner","category":"EVENT","name":"Konferenčna večerja"}]}
+## 3. Persistence in PostgreSQL (psql inside the postgres container)
+                  id                  |   type   | first_name | last_name |                 email                  |        options        
+--------------------------------------+----------+------------+-----------+----------------------------------------+-----------------------
+ ef085aeb-490d-4f2f-b1cd-3656ed84831b | EXTERNAL | Živa       | Čepič     | demo.external.1790663596576@example.si | meal-lunch-day1,ws-ai
+ 09ffd022-ac73-41a5-b39d-82874c4294ec | STUDENT  | Luka       | Šinkovec  | demo.student.1790663596576@example.si  | ev-dinner
+(2 rows)
+
+
+## 4. Raw JSON backups on the backup volume
+-rw-r--r-- 1 app app 611 Sep 29 06:33 /app/data/registrations/09ffd022-ac73-41a5-b39d-82874c4294ec.json
+-rw-r--r-- 1 app app 663 Sep 29 06:33 /app/data/registrations/ef085aeb-490d-4f2f-b1cd-3656ed84831b.json
+
+{
+  "schemaVersion" : 1,
+  "registrationId" : "ef085aeb-490d-4f2f-b1cd-3656ed84831b",
+  "submittedAt" : "2026-09-29T06:33:17.450508Z",
+  "type" : "EXTERNAL",
+  "firstName" : "Živa",
+  "lastName" : "Čepič",
+  "email" : "demo.external.1790663596576@example.si",
+  "organization" : "Univerza v Ljubljani",
+  "studyInstitution" : null,
+  "studyProgramme" : null,
+  "studentId" : null,
+  "personalDataConsentAt" : "2026-09-29T06:33:17.450508Z",
+  "options" : [ {
+    "id" : "ws-ai",
+    "category" : "WORKSHOP",
+    "name" : "Delavnica: umetna inteligenca v praksi"
+  }, {
+    "id" : "meal-lunch-day1",
+    "category" : "MEAL",
+    "name" : "Kosilo, 1. dan"
+  } ]
+}
+## 5./6./7. Mail captured by Mailpit
+to=organizers@conference.local | subject=New registration 09ffd022-ac73-41a5-b39d-82874c4294ec | attachments=["registration-09ffd022-ac73-41a5-b39d-82874c4294ec.json (application/json, 611 B)"]
+   body starts: "A new registration was received for Conference.\r\n\r\nRegistration ID: 09ffd022-ac73-41a5-b39d-82874c4294ec\r\nSubmitted at ("
+   attachment registration-09ffd022-ac73-41a5-b39d-82874c4294ec.json identical to backup file: true
+to=demo.student.1790663596576@example.si | subject=Registration confirmation | attachments=[]
+   body starts: "Dear Luka Šinkovec,\r\n\r\nyour registration for Conference has been received.\r\n\r\nRegistration ID: 09ffd022-ac73-41a5-b39d-8"
+to=organizers@conference.local | subject=New registration ef085aeb-490d-4f2f-b1cd-3656ed84831b | attachments=["registration-ef085aeb-490d-4f2f-b1cd-3656ed84831b.json (application/json, 663 B)"]
+   body starts: "A new registration was received for Conference.\r\n\r\nRegistration ID: ef085aeb-490d-4f2f-b1cd-3656ed84831b\r\nSubmitted at ("
+   attachment registration-ef085aeb-490d-4f2f-b1cd-3656ed84831b.json identical to backup file: true
+to=demo.external.1790663596576@example.si | subject=Registration confirmation | attachments=[]
+   body starts: "Dear Živa Čepič,\r\n\r\nyour registration for Conference has been received.\r\n\r\nRegistration ID: ef085aeb-490d-4f2f-b1cd-3656"
+## 8. Excel export through the frontend proxy (organizer Basic auth)
+HTTP 200 | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | attachment; filename="registrations-20260929-063320.xlsx" | 4705 bytes | zip magic PK
+without credentials: HTTP 401 (Basic realm="organizer")
+IDS ef085aeb-490d-4f2f-b1cd-3656ed84831b 09ffd022-ac73-41a5-b39d-82874c4294ec
+
+## Persistence across container recreation (docker compose up -d --force-recreate postgres backend)
+backend: Up 8 seconds (health: starting)
+frontend: Up About a minute
+postgres: Up 13 seconds (healthy)
+smtp: Up 6 hours (healthy)
+ef085aeb-490d-4f2f-b1cd-3656ed84831b|EXTERNAL|Čepič
+09ffd022-ac73-41a5-b39d-82874c4294ec|STUDENT|Šinkovec
+/app/data/registrations/09ffd022-ac73-41a5-b39d-82874c4294ec.json
+/app/data/registrations/ef085aeb-490d-4f2f-b1cd-3656ed84831b.json

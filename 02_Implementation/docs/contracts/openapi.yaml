@@ -120,17 +120,17 @@ paths:
                   - { field: email, code: INVALID_EMAIL, message: "Enter a valid email address." }
                   - { field: "optionIds[0]", code: INACTIVE_OPTION, message: "This option is no longer available." }
         "413":
-          description: Body larger than 16 KiB (`code: PAYLOAD_TOO_LARGE`)
+          description: "Body larger than 16 KiB (`code: PAYLOAD_TOO_LARGE`)"
           content:
             application/problem+json:
               schema: { $ref: "#/components/schemas/Problem" }
         "415":
-          description: Content type is not application/json (`code: UNSUPPORTED_MEDIA_TYPE`)
+          description: "Content type is not application/json (`code: UNSUPPORTED_MEDIA_TYPE`)"
           content:
             application/problem+json:
               schema: { $ref: "#/components/schemas/Problem" }
         "429":
-          description: Rate limit exceeded (`code: RATE_LIMITED`)
+          description: "Rate limit exceeded (`code: RATE_LIMITED`)"
           headers:
             Retry-After:
               schema: { type: integer, minimum: 1 }
@@ -270,7 +270,7 @@ components:
         application/problem+json:
           schema: { $ref: "#/components/schemas/Problem" }
     RateLimited:
-      description: Rate limit exceeded (`code: RATE_LIMITED`)
+      description: "Rate limit exceeded (`code: RATE_LIMITED`)"
       headers:
         Retry-After:
           schema: { type: integer, minimum: 1 }

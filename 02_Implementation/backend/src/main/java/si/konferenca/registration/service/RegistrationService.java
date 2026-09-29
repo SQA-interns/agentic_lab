@@ -6,6 +6,7 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,10 +76,11 @@ public class RegistrationService {
     Instant now = clock.instant().truncatedTo(ChronoUnit.MICROS);
     Stored stored;
     try {
-      stored = transactions.execute(status -> store(id, valid, now));
+      stored = Objects.requireNonNull(transactions.execute(status -> store(id, valid, now)));
     } catch (RuntimeException e) {
       backups.deleteQuietly(id);
-      LOG.error("Registration {} could not be stored", id, e);
+      // Exception type only: database messages can echo the rejected row (personal data).
+      LOG.error("Registration {} could not be stored ({})", id, e.getClass().getName());
       throw new RegistrationNotSavedException(e);
     }
     LOG.info("Registration {} accepted", id);

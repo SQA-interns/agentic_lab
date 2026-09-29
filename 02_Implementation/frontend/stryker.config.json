@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "vitest",
+  "mutate": [
+    "src/validation/validate.ts",
+    "src/api/client.ts",
+    "src/components/Captcha.tsx",
+    "src/components/RegistrationPage.tsx"
+  ],
+  "reporters": ["clear-text", "json", "html"],
+  "jsonReporter": { "fileName": "reports/mutation/mutation.json" },
+  "htmlReporter": { "fileName": "reports/mutation/mutation.html" },
+  "coverageAnalysis": "perTest",
+  "concurrency": 4,
+  "tempDirName": ".stryker-tmp"
+}

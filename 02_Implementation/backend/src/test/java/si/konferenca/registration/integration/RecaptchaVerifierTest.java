@@ -71,6 +71,7 @@ class RecaptchaVerifierTest {
         new RecaptchaVerifier(false, "secret", serve(200, "{\"success\":true}"));
 
     assertThat(verifier.verify("x".repeat(4097), null)).isFalse();
+    assertThat(verifier.verify("x".repeat(4096), null)).isTrue();
   }
 
   @Test

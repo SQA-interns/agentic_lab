@@ -112,7 +112,8 @@ public class ApiExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   ResponseEntity<ProblemDetail> unexpected(Exception e) {
-    LOG.error("Unexpected error while handling a request", e);
+    // Exception type only: messages of persistence exceptions can echo personal data.
+    LOG.error("Unexpected error while handling a request ({})", e.getClass().getName());
     return respond(
         problem(
             HttpStatus.INTERNAL_SERVER_ERROR,

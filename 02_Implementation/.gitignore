@@ -9,3 +9,5 @@ frontend/test-results/
 frontend/playwright-report/
 .env
 config/local/
+frontend/reports/
+frontend/.stryker-tmp/
