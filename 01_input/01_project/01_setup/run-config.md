@@ -4,9 +4,9 @@
 
 The only file a human fills before starting the agent; the agent checks everything else in phase 0 (`general/skills/preflight`) and asks for what is missing.
 
-- Workflow: sdd | tdd
-- Model:
+- Workflow: sdd
+- Model: claude-opus-5-5
 - Effort: medium
-- Template version:
-- Run ID:
-- Starting commit:
+- Template version: 1.0
+- Run ID: 04_conference-registration_opus5.5_sdd_template-1.0
+- Starting commit: git HEAD when the agent starts (recorded in phase 0; it must contain these filled inputs)

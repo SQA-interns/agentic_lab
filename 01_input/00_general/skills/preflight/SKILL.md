@@ -15,7 +15,7 @@ description: Check on the human's behalf that everything the run needs is presen
 3. For every environment and service in `environments.md` needed locally: confirm it is running or reachable (container runtime, registries, local substitutes).
 4. For every key in `secrets.env.example`: confirm `.env` has a value, or the key is marked test-only or not needed. Never print secret values.
 5. For every `dependencies` entry: confirm the exact version resolves from its `source`.
-6. Scan the listed dependency set with the `security-scan` tool from `tooling`; any Critical or High result is a blocking decision.
+6. Scan the listed dependency set with the `dependency-scan` tools from `tooling`; any Critical or High result is a blocking decision.
 7. Confirm the working tree is clean and on the intended starting commit.
 8. Write `docs/00_input-manifest.sha256`: SHA-256 of every file under `01_input/` and every protected root file (`README.md` sections 1 and 2), LF-normalised, `sha256sum` format.
 9. Write every result to the report. Collect all failures a human must fix into one message:
