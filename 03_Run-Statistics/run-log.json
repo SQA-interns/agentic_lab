@@ -4,7 +4,7 @@
   "harness": "Claude Code (Claude desktop app, Code tab)",
   "harnessVersion": null,
   "startCommit": "65f4ad0e90c0ea85b5f5963713186b5e3dfb0d82",
-  "finalCommit": "",
+  "finalCommit": "0f9192b70827d9f365453d7494bff713066a332d",
   "experimentStart": "2026-09-28T23:27:11Z",
   "experimentEnd": "2026-09-29T06:55:10Z",
   "phases": [
@@ -276,6 +276,14 @@
       "filesChanged": 22,
       "linesAdded": 765,
       "linesRemoved": 39
+    },
+    {
+      "sha": "0f9192b70827d9f365453d7494bff713066a332d",
+      "phase": "finalization",
+      "message": "phase 7: finalization (release notes, run summary, run log)",
+      "filesChanged": 3,
+      "linesAdded": 194,
+      "linesRemoved": 4
     }
   ],
   "reverts": 0,
