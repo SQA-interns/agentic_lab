@@ -15,7 +15,7 @@ Build manifests and lock files in `02_output/` (e.g. `pom.xml`, `package.json`, 
 
 Project licence: proprietary. Allowed dependency licences: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, PostgreSQL; EPL-2.0 for test scope only; GPL-2.0-with-classpath-exception for the Java runtime image only.
 
-Versions verified to resolve on 2026-09-29. Spring Boot 3.5.16 manages the Spring libraries; the tomcat, log4j and commons-lang3 entries override Boot-managed versions for known CVEs.
+Versions verified to resolve on 2026-09-29. Spring Boot 4.1.1 manages the Spring libraries (Framework 7.0.9, Security 7.1.1); the tomcat, log4j and commons-lang3 entries override Boot-managed versions for known CVEs.
 
 ## Platforms
 
@@ -34,24 +34,26 @@ One entry per artifact, written the way the ecosystem writes coordinates.
 ```yaml
 dependencies:
   # backend, runtime (Maven Central: https://repo.maven.apache.org/maven2)
-  - { id: org.springframework.boot:spring-boot-starter-parent, ecosystem: maven, version: 3.5.16, scope: build, component: backend, source: maven-central, purpose: parent and version management, license: Apache-2.0 }
-  - { id: org.springframework.boot:spring-boot-starter-web, ecosystem: maven, version: 3.5.16, scope: runtime, component: backend, source: maven-central, purpose: REST API, license: Apache-2.0 }
-  - { id: org.springframework.boot:spring-boot-starter-data-jpa, ecosystem: maven, version: 3.5.16, scope: runtime, component: backend, source: maven-central, purpose: persistence (Hibernate), license: Apache-2.0 }
-  - { id: org.springframework.boot:spring-boot-starter-validation, ecosystem: maven, version: 3.5.16, scope: runtime, component: backend, source: maven-central, purpose: bean validation, license: Apache-2.0 }
-  - { id: org.springframework.boot:spring-boot-starter-mail, ecosystem: maven, version: 3.5.16, scope: runtime, component: backend, source: maven-central, purpose: email, license: Apache-2.0 }
-  - { id: org.springframework.boot:spring-boot-starter-actuator, ecosystem: maven, version: 3.5.16, scope: runtime, component: backend, source: maven-central, purpose: health and readiness, license: Apache-2.0 }
-  - { id: org.springframework.boot:spring-boot-starter-security, ecosystem: maven, version: 3.5.16, scope: runtime, component: backend, source: maven-central, purpose: headers, CORS, organizer access control, license: Apache-2.0 }
-  - { id: org.flywaydb:flyway-core, ecosystem: maven, version: 11.7.2, scope: runtime, component: backend, source: maven-central, purpose: database migrations, license: Apache-2.0 }
-  - { id: org.flywaydb:flyway-database-postgresql, ecosystem: maven, version: 11.7.2, scope: runtime, component: backend, source: maven-central, purpose: Flyway PostgreSQL support, license: Apache-2.0 }
-  - { id: org.postgresql:postgresql, ecosystem: maven, version: 42.7.11, scope: runtime, component: backend, source: maven-central, purpose: JDBC driver, license: BSD-2-Clause }
+  - { id: org.springframework.boot:spring-boot-starter-parent, ecosystem: maven, version: 4.1.1, scope: build, component: backend, source: maven-central, purpose: parent and version management, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-webmvc, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: REST API, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-data-jpa, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: persistence (Hibernate), license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-validation, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: bean validation, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-mail, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: email, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-actuator, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: health and readiness, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-security, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: headers, CORS, organizer access control, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-flyway, ecosystem: maven, version: 4.1.1, scope: runtime, component: backend, source: maven-central, purpose: Flyway auto-configuration, license: Apache-2.0 }
+  - { id: org.flywaydb:flyway-core, ecosystem: maven, version: 12.4.0, scope: runtime, component: backend, source: maven-central, purpose: database migrations, license: Apache-2.0 }
+  - { id: org.flywaydb:flyway-database-postgresql, ecosystem: maven, version: 12.4.0, scope: runtime, component: backend, source: maven-central, purpose: Flyway PostgreSQL support, license: Apache-2.0 }
+  - { id: org.postgresql:postgresql, ecosystem: maven, version: 42.7.13, scope: runtime, component: backend, source: maven-central, purpose: JDBC driver, license: BSD-2-Clause }
   - { id: org.apache.poi:poi-ooxml, ecosystem: maven, version: 5.5.1, scope: runtime, component: backend, source: maven-central, purpose: Excel export, license: Apache-2.0 }
-  - { id: org.apache.tomcat.embed:tomcat-embed-core, ecosystem: maven, version: 10.1.60, scope: runtime, component: backend, source: maven-central, purpose: CVE override of the Boot-managed version, license: Apache-2.0 }
+  - { id: org.apache.tomcat.embed:tomcat-embed-core, ecosystem: maven, version: 11.0.26, scope: runtime, component: backend, source: maven-central, purpose: CVE override of the Boot-managed version, license: Apache-2.0 }
   - { id: org.apache.logging.log4j:log4j-api, ecosystem: maven, version: 2.26.1, scope: runtime, component: backend, source: maven-central, purpose: CVE override (pulled in by POI), license: Apache-2.0 }
   - { id: org.apache.commons:commons-lang3, ecosystem: maven, version: 3.20.0, scope: runtime, component: backend, source: maven-central, purpose: CVE override, license: Apache-2.0 }
   # backend, test
-  - { id: org.springframework.boot:spring-boot-starter-test, ecosystem: maven, version: 3.5.16, scope: test, component: backend, source: maven-central, purpose: JUnit 5.12.2, Mockito 5.17.0, MockMvc, AssertJ, license: Apache-2.0 }
-  - { id: org.testcontainers:junit-jupiter, ecosystem: maven, version: 1.21.4, scope: test, component: backend, source: maven-central, purpose: container-based integration tests, license: MIT }
-  - { id: org.testcontainers:postgresql, ecosystem: maven, version: 1.21.4, scope: test, component: backend, source: maven-central, purpose: PostgreSQL test container, license: MIT }
+  - { id: org.springframework.boot:spring-boot-starter-test, ecosystem: maven, version: 4.1.1, scope: test, component: backend, source: maven-central, purpose: JUnit Jupiter 6.0.3, Mockito 5.23.0, AssertJ, license: Apache-2.0 }
+  - { id: org.springframework.boot:spring-boot-starter-webmvc-test, ecosystem: maven, version: 4.1.1, scope: test, component: backend, source: maven-central, purpose: MockMvc auto-configuration, license: Apache-2.0 }
+  - { id: org.testcontainers:testcontainers-junit-jupiter, ecosystem: maven, version: 2.0.5, scope: test, component: backend, source: maven-central, purpose: container-based integration tests, license: MIT }
+  - { id: org.testcontainers:testcontainers-postgresql, ecosystem: maven, version: 2.0.5, scope: test, component: backend, source: maven-central, purpose: PostgreSQL test container, license: MIT }
   - { id: com.tngtech.archunit:archunit-junit5, ecosystem: maven, version: 1.3.2, scope: test, component: backend, source: maven-central, purpose: architecture rules (AR), license: Apache-2.0 }
   # frontend (npm registry: https://registry.npmjs.org)
   - { id: react, ecosystem: npm, version: 19.3.0, scope: runtime, component: frontend, source: npm, purpose: UI, license: MIT }
@@ -77,7 +79,7 @@ dependencies:
 tooling:
   # backend
   - { id: maven-wrapper, ecosystem: maven, version: 3.3.2, purpose: build (downloads Apache Maven 3.9.9), component: backend, source: maven-central }
-  - { id: org.springframework.boot:spring-boot-maven-plugin, ecosystem: maven, version: 3.5.16, purpose: build, component: backend, source: maven-central }
+  - { id: org.springframework.boot:spring-boot-maven-plugin, ecosystem: maven, version: 4.1.1, purpose: build, component: backend, source: maven-central }
   - { id: com.diffplug.spotless:spotless-maven-plugin, ecosystem: maven, version: 2.44.3, purpose: format (google-java-format), component: backend, source: maven-central }
   - { id: com.github.spotbugs:spotbugs-maven-plugin, ecosystem: maven, version: 4.10.4.1, purpose: static-analysis, component: backend, source: maven-central }
   - { id: org.apache.maven.plugins:maven-pmd-plugin, ecosystem: maven, version: 3.26.0, purpose: lint, static-analysis, duplication (CPD), component: backend, source: maven-central }
