@@ -73,8 +73,8 @@ paths:
               external:
                 value:
                   type: EXTERNAL
-                  firstName: Živa
-                  lastName: Čepič
+                  firstName: "Živa"
+                  lastName: "Čepič"
                   email: ziva.cepic@example.si
                   organization: Univerza v Ljubljani
                   optionIds: [ws-ai]
@@ -84,10 +84,10 @@ paths:
                 value:
                   type: STUDENT
                   firstName: Luka
-                  lastName: Šinkovec
+                  lastName: "Šinkovec"
                   email: luka@student.example.si
-                  studyInstitution: Fakulteta za računalništvo in informatiko
-                  studyProgramme: Računalništvo in informatika
+                  studyInstitution: "Fakulteta za računalništvo in informatiko"
+                  studyProgramme: "Računalništvo in informatika"
                   studentId: "63200001"
                   optionIds: []
                   personalDataConsent: true
@@ -181,6 +181,8 @@ paths:
                 format: binary
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/HttpsRequired"
         "429":
           $ref: "#/components/responses/RateLimited"
 
@@ -212,6 +214,8 @@ paths:
                 $ref: "#/components/schemas/RestoreResult"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/HttpsRequired"
         "415":
           description: Content type is not application/json
           content:
@@ -266,6 +270,15 @@ components:
       headers:
         WWW-Authenticate:
           schema: { type: string, example: Basic realm="organizer" }
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    HttpsRequired:
+      description: |
+        The request did not arrive over HTTPS (`code: HTTPS_REQUIRED`); sent
+        before authentication, so credentials over plain HTTP are never
+        checked. Loopback clients are exempt; configurable with
+        APP_ORGANIZER_REQUIRE_HTTPS (default true).
       content:
         application/problem+json:
           schema: { $ref: "#/components/schemas/Problem" }
@@ -412,6 +425,7 @@ components:
             - UNSUPPORTED_MEDIA_TYPE
             - RATE_LIMITED
             - UNAUTHORIZED
+            - HTTPS_REQUIRED
             - REGISTRATION_NOT_SAVED
             - INTERNAL_ERROR
             - NOT_FOUND

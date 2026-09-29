@@ -69,3 +69,7 @@ ef085aeb-490d-4f2f-b1cd-3656ed84831b|EXTERNAL|Čepič
 09ffd022-ac73-41a5-b39d-82874c4294ec|STUDENT|Šinkovec
 /app/data/registrations/09ffd022-ac73-41a5-b39d-82874c4294ec.json
 /app/data/registrations/ef085aeb-490d-4f2f-b1cd-3656ed84831b.json
+## Fix loop 2 re-verification (APP_ORGANIZER_REQUIRE_HTTPS=true)
+plain HTTP via frontend proxy, valid credentials:  HTTP 403{"type":"about:blank","title":"HTTPS required","status":403,"code":"HTTPS_REQUIRED","detail":"Organizer endpoints require HTTPS."}
+as if forwarded by the TLS proxy (X-Forwarded-Proto: https): HTTP 200
+public registration endpoints unaffected: GET /api/options HTTP 200

@@ -36,7 +36,7 @@
     {
       "name": "verification",
       "start": "2026-09-29T00:24:03Z",
-      "end": null
+      "end": "2026-09-29T06:53:46Z"
     },
     {
       "name": "finalization",
@@ -46,13 +46,13 @@
   ],
   "firstWorkingHappyPathTimestamp": "2026-09-29T00:00:19Z",
   "acceptanceTestFreezeHeld": true,
-  "acceptanceTestFreezeHeldReason": "frozen at the Phase 3 commit (docs/acceptance/MANIFEST.sha256, 18 files); to be re-checked in Verification",
+  "acceptanceTestFreezeHeldReason": "all 18 hashes in docs/acceptance/MANIFEST.sha256 re-checked in Verification (working tree and fresh clone): match; no test-defect request was needed",
   "firstTestRun": {
     "passed": 254,
     "failed": 1
   },
   "finalTestRun": {
-    "passed": 255,
+    "passed": 275,
     "failed": 0
   },
   "humanInterventions": [
@@ -162,6 +162,18 @@
       ],
       "humanResponse": "answered by 2026-09-29T06:16:32Z (first observed timestamp after the answer): upgrade within 3.x + triage",
       "resolution": "resolved by human"
+    },
+    {
+      "timestamp": "2026-09-29T06:46:58Z",
+      "category": "security-finding-vs-frozen-requirement",
+      "trigger": "D-9: Semgrep High (use-of-basic-authentication) on the organizer HTTP Basic scheme, which the specification and frozen acceptance tests require; OAuth2/OIDC out of scope",
+      "proposedAlternatives": [
+        "keep Basic, enforce HTTPS-only transport (fix loop 2), residual Medium with justification (chosen)",
+        "token scheme via test-defect request",
+        "mTLS at reverse proxy"
+      ],
+      "humanResponse": null,
+      "resolution": "agent-default, pending human review"
     }
   ],
   "fixLoops": [
@@ -174,13 +186,23 @@
       "change": "spring-boot-starter-parent 3.4.4 -> 3.5.16; overrides tomcat.version 10.1.60, log4j2.version 2.26.1, commons-lang3.version 3.20.0; Tomcat, log4j, Jackson, PostgreSQL JDBC findings cleared. Remaining 16 unique CVEs (Spring Framework 6.2.19, Spring Security 6.5.11 - no newer OSS 3.x release; angus-activation 2.0.3) verified unreachable (feature absent from dependency tree and source) and reclassified per SEVERITY_TAXONOMY (15 Medium, 1 Low false positive). Re-verified: Dependency-Check re-run, full backend suite 207/207.",
       "start": "2026-09-29T06:19:10Z",
       "end": "2026-09-29T06:22:05Z"
+    },
+    {
+      "loopNumber": 2,
+      "trigger": "Verification: Semgrep High - use-of-basic-authentication on organizer endpoints (credentials replayable/exposed if sent over plaintext)",
+      "findingIds": [
+        "V-02"
+      ],
+      "change": "Added config.OrganizerTransportFilter: /api/organizer/** refuses non-HTTPS requests (request.isSecure via X-Forwarded-Proto from trusted proxy) with 403 HTTPS_REQUIRED before authentication; loopback exempt; APP_ORGANIZER_REQUIRE_HTTPS default true (local compose .env false); contract 403 response; spec 8.4/9; unit tests. Re-verified: 227/227 backend tests, container check (HTTP 403 plain / 200 via TLS proxy header). Residual Basic-scheme finding reclassified Medium with justification, escalated as D-9.",
+      "start": "2026-09-29T06:44:00Z",
+      "end": "2026-09-29T06:46:58Z"
     }
   ],
   "verificationFindings": {
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0
+    "critical": 1,
+    "high": 1,
+    "medium": 5,
+    "low": 8
   },
   "commits": [
     {
@@ -230,6 +252,22 @@
       "filesChanged": 25,
       "linesAdded": 2502,
       "linesRemoved": 10
+    },
+    {
+      "sha": "a9fbaf3eacabc02a031104d3838035782e3c0413",
+      "phase": "verification",
+      "message": "phase 6 (in progress): Spring Boot 3.5.16 upgrade (D-8), verification fixes, mutation tooling, README run guide",
+      "filesChanged": 23,
+      "linesAdded": 3116,
+      "linesRemoved": 180
+    },
+    {
+      "sha": "188cb58ccf9af1302c3d0d9cd268a1c5fd9617b6",
+      "phase": "verification",
+      "message": "phase 6 (in progress): ignore generated report directories in ESLint",
+      "filesChanged": 1,
+      "linesAdded": 10,
+      "linesRemoved": 1
     }
   ],
   "reverts": 0,

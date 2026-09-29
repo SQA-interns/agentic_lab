@@ -54,3 +54,14 @@ Test-only configuration added in Phase 3: `backend/src/test/resources/docker-jav
    generated organizer password and database password for the local
    compose stack (HUMAN_INPUTS_MANIFEST row 3, "generated locally").
    `.env.example` documents the variables.
+
+## Changes made during Verification (Phase 6)
+
+| Change | Why |
+| --- | --- |
+| `spring-boot-starter-parent` 3.4.4 → **3.5.16** (scaffold pin changed) | Fix loop 1 / decision D-8 (operator-approved): Critical/High CVEs in the 3.4.4 stack |
+| Managed-version overrides `tomcat.version` 10.1.60, `log4j2.version` 2.26.1, `commons-lang3.version` 3.20.0 | Same; newest published releases containing the fixes |
+| `org.pitest:pitest-maven` 1.30.0 + `pitest-junit5-plugin` 1.2.3 (build plugin, not bound to a phase) | DoD §4a mutation testing (backend) |
+| `@stryker-mutator/core`, `@stryker-mutator/vitest-runner` 10.0.0 (npm devDependencies) | DoD §4a mutation testing (frontend) |
+| `config.OrganizerTransportFilter`, `APP_ORGANIZER_REQUIRE_HTTPS` | Fix loop 2 / decision D-9: organizer credentials never accepted over plain HTTP |
+| Exception logging reduced to exception type | V-10: persistence exception messages can contain personal data |

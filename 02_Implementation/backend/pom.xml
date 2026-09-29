@@ -171,6 +171,7 @@
                         <param>si.konferenca.registration.integration.OptionsFileReader*</param>
                         <param>si.konferenca.registration.config.RateLimitFilter*</param>
                         <param>si.konferenca.registration.config.RequestSizeLimitFilter*</param>
+                        <param>si.konferenca.registration.config.OrganizerTransportFilter*</param>
                         <param>si.konferenca.registration.config.AppProperties*</param>
                     </targetClasses>
                     <targetTests>

@@ -395,7 +395,13 @@ client IP:
   fails if either is blank or the password is shorter than 16
   characters. No default exists in source.
 - Credentials are transported only over HTTPS in production (TLS at the
-  reverse proxy, DEPLOYMENT_CONSTRAINTS).
+  reverse proxy, DEPLOYMENT_CONSTRAINTS). *(Phase 6 hardening, fix loop 2:)*
+  `config.OrganizerTransportFilter` refuses `/api/organizer/**` requests
+  that did not arrive over HTTPS (`request.isSecure()`, i.e.
+  `X-Forwarded-Proto: https` from the trusted proxy) with
+  `403 HTTPS_REQUIRED`; loopback clients are exempt. Controlled by
+  `APP_ORGANIZER_REQUIRE_HTTPS` / `app.organizer.require-https`, default
+  `true`; the local plain-HTTP compose stack sets it to `false`.
 
 ### 8.5 Error handling and logging
 
@@ -454,6 +460,7 @@ maps each environment variable to its property explicitly.
 | `APP_MAIL_FROM` | `app.mail.from` | Sender address | `registration@localhost` |
 | `APP_ORGANIZER_EMAILS` | `app.organizer.emails` | Comma-separated organizer notification recipients | none — required |
 | `APP_ORGANIZER_USERNAME`, `APP_ORGANIZER_PASSWORD` | `app.organizer.username`, `app.organizer.password` | Export/restore credentials | none — required |
+| `APP_ORGANIZER_REQUIRE_HTTPS` | `app.organizer.require-https` | Refuse organizer requests over plain HTTP (loopback exempt) | `true` |
 | `APP_OPTIONS_FILE` | `app.options.file` | Options file path | `./config/conference-options.json` |
 | `APP_BACKUP_DIR` | `app.backup.dir` | JSON backup directory | `./data/registrations` |
 | `APP_CONFERENCE_NAME` | `app.conference-name` | Used in email bodies | `Conference` |

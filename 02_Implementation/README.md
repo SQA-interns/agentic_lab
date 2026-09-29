@@ -30,6 +30,7 @@ Edit `.env` (it is git-ignored — never commit it):
 | `POSTGRES_PASSWORD` | Database password used by both the `postgres` and `backend` containers |
 | `APP_ORGANIZER_USERNAME`, `APP_ORGANIZER_PASSWORD` | Organizer login for export/restore (password ≥ 16 characters) |
 | `APP_ORGANIZER_EMAILS` | Comma-separated organizer notification recipients |
+| `APP_ORGANIZER_REQUIRE_HTTPS` | Organizer endpoints refuse plain HTTP (default `true`). Set `false` for the local plain-HTTP compose stack, otherwise the export/restore calls below get `403 HTTPS_REQUIRED` |
 | `APP_MAIL_FROM`, `APP_CONFERENCE_NAME` | Sender address and conference name used in emails |
 | `RECAPTCHA_TEST_MODE` | `true` only for local use/tests; `false` (default) in production |
 | `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` | Required when test mode is off — the backend refuses to start without them |
@@ -72,6 +73,12 @@ Stop with `docker compose down` (data volumes are kept; add `-v` only
 if you really want to delete all registrations and backups).
 
 ## 4. Organizer operations
+
+Load the organizer credentials from `.env` into your shell first:
+
+```bash
+set -a && . ./.env && set +a
+```
 
 Excel export of all registrations:
 

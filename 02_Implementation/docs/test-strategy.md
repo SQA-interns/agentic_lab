@@ -238,3 +238,31 @@ the escapes) back into `\uXXXX` escapes; the tested values are identical.
 | **Total** | **255** | **0** |
 
 Acceptance manifest re-checked: all 18 hashes match.
+
+## 7. Verification additions (Phase 6)
+
+Additive only; frozen files untouched (18/18 hashes still match).
+
+- `config.OrganizerTransportFilterTest` (unit) — HTTPS-only organizer
+  transport added in fix loop 2: remote plain HTTP → 403, HTTPS and
+  loopback allowed, non-literal addresses not exempt, other paths
+  unaffected, switchable.
+- Strengthened after the first mutation run (DoD §4a): option-count
+  boundary (50 allowed), per-field `FIELD_NOT_ALLOWED`, 4096-character
+  token boundary, rate-limiter pass-through assertions and eviction/clear
+  behaviour, catalog refresh through `catalog()`.
+- Mutation testing tooling: PIT (`pitest-maven` 1.30.0 +
+  `pitest-junit5-plugin` 1.2.3, not bound to the build lifecycle) and
+  Stryker (`@stryker-mutator/core` + `vitest-runner` 10.0.0, dev
+  dependencies, `npm run test:mutation`).
+
+## 8. Final complete run (end of Phase 6)
+
+| Suite | Passed | Failed |
+| --- | --- | --- |
+| Backend: acceptance 90, unit 112, ArchUnit 9, integration 16 | 227 | 0 |
+| Frontend unit (Vitest) | 39 | 0 |
+| E2E acceptance (Playwright) | 9 | 0 |
+| **Total** | **275** | **0** |
+
+Coverage and mutation results: `docs/verification-report.md` §2.2, §2.5.

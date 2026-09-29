@@ -29,10 +29,19 @@ public record AppProperties(
 
   public record Mail(@NotBlank String from) {}
 
+  /**
+   * @param requireHttps refuse organizer requests that did not arrive over HTTPS (default true)
+   */
   public record Organizer(
       @NotBlank String username,
       @NotBlank @Size(min = 16, message = "must be at least 16 characters") String password,
-      @NotEmpty List<@NotBlank String> emails) {}
+      @NotEmpty List<@NotBlank String> emails,
+      Boolean requireHttps) {
+
+    public boolean httpsRequired() {
+      return requireHttps == null || requireHttps;
+    }
+  }
 
   public record Options(@NotNull Path file) {}
 

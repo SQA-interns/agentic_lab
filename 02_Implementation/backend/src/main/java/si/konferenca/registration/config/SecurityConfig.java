@@ -84,7 +84,10 @@ public class SecurityConfig {
                         csp -> csp.policyDirectives("default-src 'none'; frame-ancestors 'none'"))
                     .referrerPolicy(r -> r.policy(ReferrerPolicy.NO_REFERRER)))
         .addFilterBefore(rateLimit, BasicAuthenticationFilter.class)
-        .addFilterAfter(new RequestSizeLimitFilter(MAX_BODY_BYTES), RateLimitFilter.class);
+        .addFilterAfter(
+            new OrganizerTransportFilter(properties.organizer().httpsRequired()),
+            RateLimitFilter.class)
+        .addFilterAfter(new RequestSizeLimitFilter(MAX_BODY_BYTES), OrganizerTransportFilter.class);
     return http.build();
   }
 }

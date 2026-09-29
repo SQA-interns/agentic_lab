@@ -61,6 +61,10 @@ app:
   conference-name: ${APP_CONFERENCE_NAME:Conference}
   mail:
     from: ${APP_MAIL_FROM:registration@localhost}
+  organizer:
+    # Organizer endpoints refuse non-HTTPS requests (loopback clients excepted). Set false only for
+    # local plain-HTTP setups such as the docker compose stack.
+    require-https: ${APP_ORGANIZER_REQUIRE_HTTPS:true}
   recaptcha:
     secret-key: ${RECAPTCHA_SECRET_KEY:}
     site-key: ${RECAPTCHA_SITE_KEY:}

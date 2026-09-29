@@ -182,3 +182,38 @@ permits when no human is available synchronously.
   session): alternative 1, "Upgrade within 3.x + triage".
 - **resolution:** resolved by human — alternative 1; execution recorded
   as fix loops in `docs/verification-report.md` and `run-log.json`.
+
+## D-9 — Semgrep High: HTTP Basic authentication for organizer endpoints
+
+- **timestamp:** 2026-09-29T06:46:58Z
+- **category:** security-finding-vs-frozen-requirement (CONSTITUTION §3;
+  finding cannot be removed without changing frozen artefacts)
+- **trigger:** Verification, Semgrep rule
+  `yaml.openapi.security.use-of-basic-authentication` (severity ERROR,
+  impact HIGH → **High** per SEVERITY_TAXONOMY) on
+  `docs/contracts/openapi.yaml` (`organizerBasic`). HTTP Basic is the
+  mechanism chosen in the specification (§5.2/§8.4) and is exercised by the
+  frozen acceptance tests (`ExportAcceptanceTest`,
+  `DurableStorageAcceptanceTest`, `RateLimitAcceptanceTest` send
+  `Authorization: Basic` and expect `WWW-Authenticate: Basic`). The
+  alternatives the rule suggests (OAuth2 / OpenID Connect) are
+  identity-provider integration, which BUSINESS_RULES "Scope boundaries" and
+  SECURITY_REQUIREMENTS exclude; mTLS lives at the external reverse proxy.
+- **proposedAlternatives:**
+  1. Keep HTTP Basic; harden the transport so credentials are never accepted
+     over plaintext (fix loop 2: `OrganizerTransportFilter`, 403
+     `HTTPS_REQUIRED`, default on), on top of the existing controls
+     (≥16-character password, BCrypt in memory, 10 req/min/IP organizer rate
+     limit, stateless — no session/cookie, no CORS); record the residual as
+     **Medium** ("control present but weaker than best practice") with this
+     justification. *(chosen — conservative: no frozen test or contract
+     scheme changes)*
+  2. Replace Basic with a token scheme (password exchanged once for a
+     short-lived signed token) — requires a test-defect request to regenerate
+     frozen acceptance tests; still password-based.
+  3. Require mTLS for `/api/organizer/**` at the external reverse proxy —
+     deployment-level, cannot be verified in this workspace.
+- **humanResponse:** none requested synchronously — the operator's stop
+  instruction covers tool/version/secret substitutions, and no substitution
+  is involved.
+- **resolution:** agent-default, pending human review — alternative 1.
