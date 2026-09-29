@@ -1,0 +1,17 @@
+# local configuration and secrets
+.env
+.env.*
+!.env.example
+# build output and dependencies
+backend/target/
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/reports/
+frontend/test-results/
+frontend/playwright-report/
+frontend/.stryker-tmp/
+# IDE
+.idea/
+.vscode/
+*.iml
