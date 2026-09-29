@@ -1,0 +1,7 @@
+openapi.yaml: valid OpenAPI 3.1.0, 7 paths
+registration-copy.schema.json: compiles
+options-config.schema.json: compiles
+options-config.example.json valid: true 
+sample student copy valid: true 
+student copy with organization rejected: true
+config without mandatory consent rejected: true

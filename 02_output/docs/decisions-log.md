@@ -130,3 +130,12 @@
 - Options: 1. (chosen) Proposed retention: 12 months after the conference ends; deletion of database rows and JSON copies is a manual operator procedure documented in the backend README (automatic deletion and an admin UI are out of scope). 2. Implement automatic deletion with a configured period (not requested; risk of deleting data the organizer still needs).
 - Human response: none
 - Resolution: option 1, pending review
+
+## D-15: Contract validators not listed in tech-stack.md
+- Timestamp: 2026-09-29T23:37:03Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: the phase 2 gate requires contracts to validate with a parser; `tech-stack.md` lists no OpenAPI or JSON Schema validator.
+- Options: 1. (chosen) Use @apidevtools/swagger-parser 13.1.0 (MIT), ajv 8.20.0 (MIT) and ajv-formats 3.0.1 (MIT), exact versions, installed only in a scratch directory outside the project; the script is kept as `docs/02_contracts/validate-contracts.mjs` and output in `out/logs/phase2-contract-validation.log`. They are not dependencies of any component and do not ship. 2. Add them to the frontend `package.json` (would put unlisted tools into a component manifest).
+- Human response: none
+- Resolution: option 1, pending review

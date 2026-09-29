@@ -1,0 +1,315 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >-
+    REST API between the frontend (or an organizer) and the backend (AR-01).
+    Error messages never contain internal details (ES-07).
+servers:
+  - url: /
+tags:
+  - name: public
+  - name: organizer
+  - name: operations
+paths:
+  /api/config:
+    get:
+      tags: [public]
+      operationId: getClientConfig
+      summary: Public client configuration (AR-07)
+      responses:
+        '200':
+          description: Client configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientConfig'
+  /api/options:
+    get:
+      tags: [public]
+      operationId: getOptions
+      summary: Active options and consents for a registration type (BR-04, D-09, D-10, D-12)
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/RegistrationType'
+      responses:
+        '200':
+          description: Active options for the type, consents and category limits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionsResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+  /api/registrations:
+    post:
+      tags: [public]
+      operationId: createRegistration
+      summary: Submit a registration (US-001, US-002, BR-01..BR-07, SR-01, SR-03, SR-04)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '201':
+          description: Registration accepted, stored in the database and as a JSON copy (AR-05)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationConfirmation'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '413':
+          $ref: '#/components/responses/Error'
+        '415':
+          $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/Error'
+  /api/admin/registrations/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Excel export of all registrations (US-008, BR-08, SR-06, SR-07)
+      security:
+        - organizerBasic: []
+      responses:
+        '200':
+          description: Excel workbook
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment; filename="registrations.xlsx"
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Missing or wrong organizer credentials
+        '403':
+          $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
+  /actuator/health:
+    get:
+      tags: [operations]
+      operationId: health
+      summary: Overall health (ES-09, NFR-04)
+      responses:
+        '200':
+          $ref: '#/components/responses/Health'
+        '503':
+          $ref: '#/components/responses/Health'
+  /actuator/health/liveness:
+    get:
+      tags: [operations]
+      operationId: liveness
+      responses:
+        '200':
+          $ref: '#/components/responses/Health'
+        '503':
+          $ref: '#/components/responses/Health'
+  /actuator/health/readiness:
+    get:
+      tags: [operations]
+      operationId: readiness
+      summary: Ready when the database is reachable and the JSON copy directory is writable
+      responses:
+        '200':
+          $ref: '#/components/responses/Health'
+        '503':
+          $ref: '#/components/responses/Health'
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+  responses:
+    ValidationError:
+      description: One or more fields are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Error:
+      description: Generic error without internal details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Health:
+      description: Health status
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [status]
+            properties:
+              status:
+                type: string
+                enum: [UP, DOWN, OUT_OF_SERVICE, UNKNOWN]
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+    Category:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+    ClientConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, captchaTestMode, recaptchaSiteKey]
+      properties:
+        conferenceName:
+          type: string
+        captchaTestMode:
+          type: boolean
+        recaptchaSiteKey:
+          type: string
+          description: Public site key; empty in test mode
+    Option:
+      type: object
+      additionalProperties: false
+      required: [id, name, category]
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z0-9][a-z0-9-]{0,63}$'
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+    Consent:
+      type: object
+      additionalProperties: false
+      required: [id, text, mandatory]
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z0-9][a-z0-9-]{0,63}$'
+        text:
+          type: string
+        mandatory:
+          type: boolean
+    OptionsResponse:
+      type: object
+      additionalProperties: false
+      required: [type, options, consents, categoryLimits]
+      properties:
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        options:
+          type: array
+          description: Active options available to the type, in configuration order
+          items:
+            $ref: '#/components/schemas/Option'
+        consents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Consent'
+        categoryLimits:
+          type: object
+          description: Maximum selections per category; a missing category has no limit
+          propertyNames:
+            enum: [WORKSHOP, EVENT, MEAL, OTHER]
+          additionalProperties:
+            type: integer
+            minimum: 0
+    RegistrationRequest:
+      type: object
+      additionalProperties: false
+      description: >-
+        Fields of the other registration type must be absent or empty. Text is trimmed;
+        control characters are rejected; maximum 200 characters (email 254).
+      required: [type, firstName, lastName, email, optionIds, consentIds, captchaToken]
+      properties:
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        firstName:
+          type: string
+          maxLength: 200
+        lastName:
+          type: string
+          maxLength: 200
+        email:
+          type: string
+          maxLength: 254
+        organization:
+          type: string
+          maxLength: 200
+          description: Required for EXTERNAL
+        studyInstitution:
+          type: string
+          maxLength: 200
+          description: Required for STUDENT
+        studyProgramme:
+          type: string
+          maxLength: 200
+          description: Required for STUDENT
+        studentId:
+          type: string
+          maxLength: 200
+          description: Required for STUDENT
+        optionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        consentIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        captchaToken:
+          type: string
+    RegistrationConfirmation:
+      type: object
+      additionalProperties: false
+      required: [reference, type, firstName, lastName, email, options, submittedAt]
+      properties:
+        reference:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Option'
+        submittedAt:
+          type: string
+          format: date-time
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, message]
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required: [message, errors]
+      properties:
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldError'

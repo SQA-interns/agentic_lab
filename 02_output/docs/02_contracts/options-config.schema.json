@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/schemas/options-config-v1.json",
+  "title": "Conference options configuration (US-003, AR-04, D-09, D-10, D-12)",
+  "description": "Read by the backend at startup from CONFERENCE_OPTIONS_FILE. Changing options needs an edit and a restart, never a code change. Participant fields are not configurable (BR-01).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["options", "consents"],
+  "properties": {
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "active"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$", "description": "Stable identifier; never reused for another option" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+          "active": { "type": "boolean" },
+          "registrationTypes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "enum": ["EXTERNAL", "STUDENT"] },
+            "description": "Types that may select the option; default both (D-09)"
+          }
+        }
+      }
+    },
+    "categoryLimits": {
+      "type": "object",
+      "description": "Maximum selections per category; a missing category has no limit (D-12)",
+      "propertyNames": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "consents": {
+      "type": "array",
+      "minItems": 1,
+      "contains": { "type": "object", "properties": { "mandatory": { "const": true } }, "required": ["mandatory"] },
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "mandatory"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "type": "string", "minLength": 1, "maxLength": 1000 },
+          "mandatory": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

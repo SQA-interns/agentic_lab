@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/schemas/registration-copy-v1.json",
+  "title": "Raw JSON copy of an accepted registration (BR-07, US-007 attachment)",
+  "description": "Written to JSON_COPY_DIR/<reference>.json before the success response (AR-05); the organizer email attaches the same bytes. Contains registration data only (SR-07).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "reference", "type", "submittedAt", "participant", "options", "consents"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "reference": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "type": "string", "minLength": 1 },
+        "lastName": { "type": "string", "minLength": 1 },
+        "email": { "type": "string", "minLength": 3 },
+        "organization": { "type": "string", "minLength": 1 },
+        "studyInstitution": { "type": "string", "minLength": 1 },
+        "studyProgramme": { "type": "string", "minLength": 1 },
+        "studentId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "type": "object", "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "type": "object",
+            "required": ["organization"],
+            "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] }
+          }
+        }
+      }
+    },
+    {
+      "if": { "type": "object", "properties": { "type": { "const": "STUDENT" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "type": "object",
+            "required": ["studyInstitution", "studyProgramme", "studentId"],
+            "not": { "required": ["organization"] }
+          }
+        }
+      }
+    }
+  ]
+}
