@@ -20,12 +20,12 @@
       "phase": 1,
       "name": "requirements",
       "start": "2026-09-30T10:27:34Z",
-      "end": null
+      "end": "2026-09-30T10:29:40Z"
     },
     {
       "phase": 2,
       "name": "design",
-      "start": null,
+      "start": "2026-09-30T10:29:40Z",
       "end": null
     },
     {
@@ -170,6 +170,24 @@
       "type": "non-blocking",
       "start": "2026-09-30T10:26:57Z",
       "end": null
+    },
+    {
+      "id": "D-17",
+      "type": "non-blocking",
+      "start": "2026-09-30T10:29:40Z",
+      "end": null
+    },
+    {
+      "id": "D-18",
+      "type": "non-blocking",
+      "start": "2026-09-30T10:29:40Z",
+      "end": null
+    },
+    {
+      "id": "D-19",
+      "type": "non-blocking",
+      "start": "2026-09-30T10:29:40Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -190,7 +208,13 @@
     "complexity": null,
     "duplicationPct": null
   },
-  "commits": [],
+  "commits": [
+    {
+      "sha": "08da24260659495a8f39f7d345da38ade7c1b91f",
+      "phase": 0,
+      "message": "Phase 0: preflight, input manifest, bootstrap skeletons (D-01..D-16)"
+    }
+  ],
   "usage": {
     "inputTokens": null,
     "outputTokens": null,

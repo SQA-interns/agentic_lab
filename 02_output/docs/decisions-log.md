@@ -146,3 +146,30 @@
 - Options: 1. (default) Accept for private lab use without redistribution (OQ-05); preserve notices; no repository licence added. 2. Replace components.
 - Human response: none
 - Resolution: 1, pending review
+
+## D-17: Reuse of a client request ID with different content
+- Timestamp: 2026-09-30T10:29Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: BR-06 / AR-09 require that a retried request ID never creates another accepted record, but do not say what happens when the same ID arrives with different content.
+- Options: 1. (default, conservative) Reject with 409 Conflict and store nothing (AC-004-04). 2. Silently return the original registration.
+- Human response: none
+- Resolution: 1, pending review
+
+## D-18: Meaning of "raw JSON"
+- Timestamp: 2026-09-30T10:29Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: BR-05 / BR-08 / US-005 require a "durable raw JSON" per accepted registration, attached to the organizer mail; the exact content is not defined.
+- Options: 1. (default) One canonical JSON document per accepted registration, written by the backend: registration ID, client request ID, form type, acceptance time, trimmed field values as submitted, selections and consent state. It is byte-identical to the organizer attachment. The captcha token is excluded (it is a credential, not registration data). 2. Store the verbatim HTTP request body (includes the captcha token and untrimmed values).
+- Human response: none
+- Resolution: 1, pending review
+
+## D-19: Invalid catalog configuration at startup
+- Timestamp: 2026-09-30T10:29Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: BR-10 / AR-07: the catalog is loaded at startup; the behaviour for an invalid file is not specified.
+- Options: 1. (default, conservative) Refuse to start (fail fast) with a log message naming the problem (AC-003-03). 2. Start with the valid part of the catalog.
+- Human response: none
+- Resolution: 1, pending review
