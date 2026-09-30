@@ -33,6 +33,17 @@ services:
       DATABASE_URL: jdbc:postgresql://postgres:5432/registration
       DATABASE_USER: registration
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      MAIL_FROM: registration@conference.local
+      CONFERENCE_NAME: ${CONFERENCE_NAME:-Conference 2026}
+      JSON_COPY_DIR: /data/json
+      # local only: deterministic reCAPTCHA test mode, plain HTTP on 127.0.0.1 (environments.md)
+      RECAPTCHA_TEST_MODE: "true"
+      ORGANIZER_HTTPS_ONLY: "false"
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?set ORGANIZER_USERNAME in .env}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?set ORGANIZER_PASSWORD in .env}
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?set ORGANIZER_EMAILS in .env}
     volumes:
       - jsondata:/data/json
     ports:
