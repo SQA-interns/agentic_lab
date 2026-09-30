@@ -118,6 +118,34 @@ class OptionsFileCatalogTest {
   }
 
   @Test
+  void acceptsNameOfExactlyTheMaximumLength() throws IOException {
+    String name = "n".repeat(200);
+
+    OptionsFileCatalog catalog =
+        load(
+            "{\"options\":[{\"id\":\"a\",\"name\":\""
+                + name
+                + "\",\"category\":\"meal\",\"active\":true}],"
+                + CONSENTS
+                + "}");
+
+    assertThat(catalog.find("a")).get().extracting(ConferenceOption::name).isEqualTo(name);
+  }
+
+  @ParameterizedTest
+  @ValueSource(
+      strings = {
+        "{\"options\":[],\"consents\":[{\"id\":\"p\",\"text\":\"t\"}]}",
+        "{\"options\":[],\"consents\":[{\"id\":\"p\",\"text\":\"t\",\"required\":true,\"x\":1}]}",
+        "{\"options\":[],\"consents\":[\"privacy\"]}"
+      })
+  void refusesConsentsWithWrongFields(String json) {
+    assertThatThrownBy(() -> load(json))
+        .isInstanceOf(IllegalStateException.class)
+        .hasMessageContaining("consent must");
+  }
+
+  @Test
   void refusesMissingFile() {
     assertThatThrownBy(
             () ->

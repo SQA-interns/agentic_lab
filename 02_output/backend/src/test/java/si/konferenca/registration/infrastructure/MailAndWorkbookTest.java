@@ -108,6 +108,7 @@ class MailAndWorkbookTest {
                 + "Study institution: UL\n"
                 + "Study programme: =SUM(A1)\n"
                 + "Student ID: 63\n")
+        .contains("Selected options:\n- WS (Workshop)\n- EV (Event)\n")
         .contains("Consents:\n- privacy (2026-09-30T10:00:00Z)\n- news (2026-09-30T10:00:00Z)\n")
         .doesNotContain("Organization");
     assertThat(MailTexts.organizerSubject(student()))
@@ -158,12 +159,21 @@ class MailAndWorkbookTest {
     assertThat(Arrays.stream(m.getAllRecipients()).map(Address::toString))
         .containsExactly("a@org.test", "b@org.test");
     assertThat(m.getContentType()).startsWith("multipart/mixed");
+    assertThat(m.getFrom()[0].toString()).isEqualTo("from@conference.test");
+    assertThat(m.getSubject())
+        .isEqualTo("New registration (STUDENT): aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
     Multipart root = (Multipart) m.getContent();
     List<String> fileNames = new ArrayList<>();
     byte[] attached = null;
+    String body = null;
     for (int i = 0; i < root.getCount(); i++) {
       var part = root.getBodyPart(i);
-      if (part.getFileName() != null) {
+      if (part.getFileName() == null) {
+        body =
+            part.getContent() instanceof Multipart inner
+                ? (String) inner.getBodyPart(0).getContent()
+                : (String) part.getContent();
+      } else {
         fileNames.add(part.getFileName());
         assertThat(part.getContentType()).startsWith("application/json");
         attached = part.getInputStream().readAllBytes();
@@ -171,6 +181,37 @@ class MailAndWorkbookTest {
     }
     assertThat(fileNames).containsExactly("registration-aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.json");
     assertThat(attached).isEqualTo(json);
+    assertThat(body).startsWith("Registration ID: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\n");
+  }
+
+  @Test
+  void workbookWritesOneRowPerRegistrationInOrder() throws IOException {
+    RegistrationCopy first = student();
+    RegistrationCopy second =
+        new RegistrationCopy(
+            1,
+            UUID.randomUUID(),
+            first.submittedAt(),
+            "EXTERNAL",
+            "Z",
+            "Y",
+            "z@y.si",
+            "Org",
+            null,
+            null,
+            null,
+            List.of(),
+            List.of());
+
+    byte[] bytes = new PoiWorkbookWriter().write(List.of(first, second));
+
+    try (XSSFWorkbook wb = new XSSFWorkbook(new ByteArrayInputStream(bytes))) {
+      Sheet sheet = wb.getSheet("Registrations");
+      assertThat(sheet.getPhysicalNumberOfRows()).isEqualTo(3);
+      assertThat(sheet.getRow(1).getCell(5).getStringCellValue()).isEqualTo("luka@example.si");
+      assertThat(sheet.getRow(2).getCell(5).getStringCellValue()).isEqualTo("z@y.si");
+      assertThat(sheet.getRow(2).getCell(6).getStringCellValue()).isEqualTo("Org");
+    }
   }
 
   @Test

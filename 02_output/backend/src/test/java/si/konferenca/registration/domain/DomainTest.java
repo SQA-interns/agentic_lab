@@ -61,5 +61,26 @@ class DomainTest {
     assertThat(r.getConsents().get(0).getConsentId()).isEqualTo("privacy");
     assertThat(r.getOrganization()).isEqualTo("Org");
     assertThat(r.getSubmittedAt()).isEqualTo(at);
+    assertThat(r.getEmail()).isEqualTo("a@b.si");
+    assertThat(r.getLastName()).isEqualTo("B");
+    assertThat(r.getFirstName()).isEqualTo("A");
+    assertThat(r.getType()).isEqualTo(RegistrationType.EXTERNAL);
+  }
+
+  @Test
+  void studentRegistrationKeepsStudentFields() {
+    Registration r =
+        new Registration(
+            UUID.randomUUID(),
+            Instant.parse("2026-09-30T10:00:00Z"),
+            new Registration.Details(
+                RegistrationType.STUDENT, "A", "B", "a@b.si", null, "UL", "RI", "6321"),
+            List.of(),
+            List.of());
+
+    assertThat(r.getStudyInstitution()).isEqualTo("UL");
+    assertThat(r.getStudyProgramme()).isEqualTo("RI");
+    assertThat(r.getStudentId()).isEqualTo("6321");
+    assertThat(r.getOrganization()).isNull();
   }
 }

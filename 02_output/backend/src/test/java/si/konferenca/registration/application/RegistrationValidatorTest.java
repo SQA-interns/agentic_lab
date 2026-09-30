@@ -91,6 +91,8 @@ class RegistrationValidatorTest {
 
     assertThat(valid.details().type()).isEqualTo(RegistrationType.EXTERNAL);
     assertThat(valid.details().firstName()).isEqualTo("Ana");
+    assertThat(valid.details().lastName()).isEqualTo("Novak");
+    assertThat(valid.details().email()).isEqualTo("ana@example.si");
     assertThat(valid.details().organization()).isEqualTo("IJS");
     assertThat(valid.details().studentId()).isNull();
     assertThat(valid.options()).extracting(ConferenceOption::id).containsExactly("meal", "ws");

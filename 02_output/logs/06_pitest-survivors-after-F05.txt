@@ -1,0 +1,10 @@
+application.RegistrationValidator email 117 replaced return value with &quot;&quot; for si/konferenca/re
+application.RegistrationValidator text 100 replaced return value with &quot;&quot; for si/konferenca/re
+web.RateLimitFilter acquire 80 changed conditional boundary
+web.RateLimitFilter acquire 80 negated conditional
+web.RateLimitFilter lambda$acquire$1 87 changed conditional boundary
+web.RequestSizeFilter$LimitedStream isFinished 100 replaced boolean return with true for si/konferenca/registra
+web.RequestSizeFilter$LimitedStream read 85 changed conditional boundary
+web.ErrorResponses write 20 removed call to jakarta/servlet/http/HttpServletResponse::se
+settings.AppProperties$Recaptcha toString 36 replaced return value with &quot;&quot; for si/konferenca/re
+settings.AppProperties$Organizer toString 49 replaced return value with &quot;&quot; for si/konferenca/re
