@@ -17,6 +17,8 @@ The local stack (`docker-compose.yml`) adds PostgreSQL and Mailpit (a local mail
 
 ## Quick start
 
+On Windows, clone with long paths enabled (`git -c core.longpaths=true clone …`) or into a short directory: some source paths exceed 260 characters under deep folders.
+
 Prerequisites: Docker Engine 29.8.0 with Compose 5.5.1, Temurin JDK 21.0.10+7 (to build the backend jar). Versions: `01_input/01_project/03_technical/tech-stack.md`.
 
 1. Create `.env` in the repository root from `01_input/01_project/01_setup/secrets.env.example` and fill `POSTGRES_PASSWORD`, `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD` (at least 16 characters) and `ORGANIZER_EMAILS`. reCAPTCHA and SMTP keys are not needed locally.

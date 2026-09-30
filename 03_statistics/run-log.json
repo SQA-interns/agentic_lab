@@ -331,6 +331,11 @@
       "sha": "a1ac0731608cbd7dbb842ac4acd3f7453a27d035",
       "phase": 6,
       "message": "Phase 6 gate: F-07 suppressed as false positive (D-18, D-19)"
+    },
+    {
+      "sha": "1a3cea5fcdb3614241fc00cb88752b4c287d0712",
+      "phase": 7,
+      "message": "Phase 7: READMEs and release notes (ES-05, ES-06, DoD-09)"
     }
   ],
   "usage": {

@@ -17,8 +17,8 @@ Logs referenced below are in `out/logs/`. Run date 2026-09-30 (UTC).
 | DoD-05 | Pass | No open Critical or High: F-07 lowered to Low by the human (D-18/D-19) and suppressed narrowly; re-scan 0 Critical, 0 High (`phase6-dependency-check-report-d18.json`); npm audit 0 High/Critical; Semgrep, Gitleaks, SpotBugs, PMD without Critical/High |
 | DoD-06 | Pass | Runtime demonstration below (`phase6-runtime-demo.log`, `phase6-final-e2e.log`) |
 | DoD-07 | Pass | Traceability table below: every AC has ≥ 1 test and an implementing commit |
-| DoD-08 | Phase 7 | README clone check is part of phase 7 (`phase7-clean-checkout.log`) |
-| DoD-09 | Phase 7 | `docs/release-notes.md` manual-test list is written in phase 7 |
+| DoD-08 | Pass (phase 7) | Fresh clone of commit 1a3cea5, READMEs followed exactly: backend build, test 184/184, check; frontend `npm ci`, check, test 37/37, build; stack healthy; e2e 3/3 (`phase7-clean-checkout.log`). First attempt failed on Windows path length during checkout; README now says to clone with `core.longpaths` |
+| DoD-09 | Pass (phase 7) | `docs/release-notes.md` "Must be tested manually by a human": reCAPTCHA production, SMTP delivery, TLS/reverse proxy, production export, start-up refusals, backups, accessibility, consent/retention wording |
 | DoD-10 | Pass | D-01..D-19 resolved or pending review (D-18 resolved by D-19). Input manifest matches; `git diff 33175c2 HEAD -- 01_input` empty |
 | DoD-11 | Pass | Phase 3 commit `5d68e66` contains the manifest and all 20 files it lists with matching hashes and no production code beyond the skeleton; every manifest hash still matches (`phase6-hash-check.log`) |
 | DoD-P01 | Pass | External and student registrations through the running stack → 201 (runtime demo §3; e2e tests 1 and 2 through the browser) |

@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: sdd
-- Current phase: 7 (release)
-- Last gate result: phase 6 passed at 2026-09-30T07:49:06Z (every DoD item has evidence except DoD-08/09 produced in phase 7; no open Critical/High; manifests match)
-- Next step: root README, component READMEs, release notes, clean-checkout check (DoD-08), run summary
+- Current phase: 7 (release) complete
+- Last gate result: phase 7 passed at 2026-09-30T07:56:20Z (READMEs verified from a clean checkout; manual-test list present; every decision resolved or pending review)
+- Next step: none — run finished; post-run session fills section 2 of 03_statistics/metrics.md
 - Waiting for the human on: nothing
