@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "registrationId": "7a6b5c4d-3e2f-4a1b-9c8d-7e6f5a4b3c2d",
+  "clientRequestId": "9b2f7c1a-5a8e-4b0f-8d3c-6e4f2a1b0c99",
+  "formType": "student",
+  "acceptedAt": "2026-09-30T10:16:00Z",
+  "participant": {
+    "firstName": "Čedomir",
+    "lastName": "Novak",
+    "email": "participant@example.test",
+    "studyInstitution": "Univerza v Ljubljani",
+    "studyProgramme": "Računalništvo in informatika",
+    "studentId": "6320-ČŽ/01"
+  },
+  "selections": {
+    "workshops": [],
+    "events": [{ "id": "ev-reception", "name": "Welcome reception" }],
+    "meals": [],
+    "other": []
+  },
+  "consent": { "id": "synthetic-consent-v1", "given": true }
+}

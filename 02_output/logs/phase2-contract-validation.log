@@ -1,0 +1,23 @@
+
+> conference-frontend@1.0.0 contracts
+> node scripts/validate-contracts.mjs
+
+PASS openapi.yaml is a valid OpenAPI 3.0.3 document
+PASS GET /api/catalog 200 application/json example matches schema 
+PASS POST /api/registrations/external request application/json example matches schema 
+PASS POST /api/registrations/external 400 application/problem+json example matches schema 
+PASS POST /api/registrations/student request application/json example matches schema 
+PASS POST /api/registrations/student 400 application/problem+json example matches schema 
+PASS OpenAPI contains request/response examples (5)
+PASS registration-record.schema.json and catalog-config.schema.json compile
+PASS examples/registration-record.external.json matches registration-record schema 
+PASS examples/registration-record.student.json matches registration-record schema 
+PASS registration-record schema rejects a student record with organization
+PASS /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/config/conference.local.json matches catalog-config schema 
+PASS /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/config/conference.local.json option IDs are unique across groups
+PASS every stored participant field is a request field
+PASS every export column maps to a registration-record field
+PASS catalog groups equal API group IDs (workshops, events, meals, other)
+PASS request selection groups equal API group IDs
+
+All contract checks passed

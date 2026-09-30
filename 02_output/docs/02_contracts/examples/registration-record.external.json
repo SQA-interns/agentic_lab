@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "registrationId": "0f8e7d6c-5b4a-4392-8170-6f5e4d3c2b1a",
+  "clientRequestId": "3f1c7c9e-0d5e-4d38-9d53-2a2c8f0e4b11",
+  "formType": "external",
+  "acceptedAt": "2026-09-30T10:15:30.123Z",
+  "participant": {
+    "firstName": "Žiga",
+    "lastName": "Šuštaršič",
+    "email": "participant@example.test",
+    "organization": "Inštitut za čebelarstvo"
+  },
+  "selections": {
+    "workshops": [{ "id": "ws-testing", "name": "Workshop A – Testing" }],
+    "events": [],
+    "meals": [{ "id": "meal-lunch", "name": "Lunch" }],
+    "other": []
+  },
+  "consent": { "id": "synthetic-consent-v1", "given": true }
+}

@@ -1,0 +1,24 @@
+{
+  "description": "Organizer Excel export contract (US-008, BR-09). One sheet, header row then one row per accepted registration ordered by acceptedAt ascending. Every cell is a string cell; text beginning with = + - @ TAB or CR is quote-prefixed so it is never a formula (SR-04). Selections: display names joined with '; '. Consent: 'yes', 'no' or empty when no consent is configured.",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "fileName": "registrations.xlsx",
+  "sheetName": "Registrations",
+  "columns": [
+    { "header": "Registration ID", "source": "registrationId" },
+    { "header": "Form type", "source": "formType" },
+    { "header": "Accepted at (UTC)", "source": "acceptedAt" },
+    { "header": "First name", "source": "participant.firstName" },
+    { "header": "Last name", "source": "participant.lastName" },
+    { "header": "Email", "source": "participant.email" },
+    { "header": "Organization / institution", "source": "participant.organization" },
+    { "header": "Study institution", "source": "participant.studyInstitution" },
+    { "header": "Study programme", "source": "participant.studyProgramme" },
+    { "header": "Student ID", "source": "participant.studentId" },
+    { "header": "Workshops", "source": "selections.workshops" },
+    { "header": "Events", "source": "selections.events" },
+    { "header": "Meals", "source": "selections.meals" },
+    { "header": "Other activities", "source": "selections.other" },
+    { "header": "Consent", "source": "consent.given" },
+    { "header": "Client request ID", "source": "clientRequestId" }
+  ]
+}

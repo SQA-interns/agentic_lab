@@ -1,0 +1,494 @@
+openapi: 3.0.3
+info:
+  title: Lab Conference registration API
+  version: 1.0.0
+  description: |
+    REST contract between the browser frontend and the backend (AR-01).
+    All request validation is authoritative on the backend (SB-01, BR-02).
+    Error bodies follow RFC 9457 (application/problem+json) and never contain
+    internal details (ES-07, SB-07).
+servers:
+  - url: /
+tags:
+  - name: catalog
+  - name: registration
+  - name: organizer
+  - name: operations
+paths:
+  /api/catalog:
+    get:
+      tags: [catalog]
+      operationId: getCatalog
+      summary: Active activity catalog, consent fixture and captcha mode (AC-003-01)
+      responses:
+        '200':
+          description: Catalog loaded at backend startup.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Catalog'
+              example:
+                conferenceTitle: Lab Conference
+                captcha:
+                  mode: stub
+                  siteKey: null
+                consent:
+                  id: synthetic-consent-v1
+                  text: I agree to the synthetic lab consent statement (test fixture, not a legal notice).
+                  required: true
+                groups:
+                  - id: workshops
+                    label: Workshops
+                    options:
+                      - id: ws-testing
+                        name: Workshop A – Testing
+                  - id: events
+                    label: Events
+                    options: []
+                  - id: meals
+                    label: Meals
+                    options: []
+                  - id: other
+                    label: Other activities
+                    options: []
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /api/registrations/external:
+    post:
+      tags: [registration]
+      operationId: registerExternal
+      summary: Register an external participant (US-001)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalRegistrationRequest'
+            example:
+              clientRequestId: 3f1c7c9e-0d5e-4d38-9d53-2a2c8f0e4b11
+              captchaToken: local-captcha-ok
+              firstName: Žiga
+              lastName: Šuštaršič
+              email: participant@example.test
+              organization: Inštitut za čebelarstvo
+              selections:
+                workshops: [ws-testing]
+                events: []
+                meals: [meal-lunch]
+                other: []
+              consentGiven: true
+      responses:
+        '201':
+          $ref: '#/components/responses/Accepted'
+        '200':
+          $ref: '#/components/responses/Replayed'
+        '400':
+          $ref: '#/components/responses/ValidationFailed'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '503':
+          $ref: '#/components/responses/Unavailable'
+  /api/registrations/student:
+    post:
+      tags: [registration]
+      operationId: registerStudent
+      summary: Register a student (US-002)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentRegistrationRequest'
+            example:
+              clientRequestId: 9b2f7c1a-5a8e-4b0f-8d3c-6e4f2a1b0c99
+              captchaToken: local-captcha-ok
+              firstName: Čedomir
+              lastName: Novak
+              email: participant@example.test
+              studyInstitution: Univerza v Ljubljani
+              studyProgramme: Računalništvo in informatika
+              studentId: 6320-ČŽ/01
+              selections:
+                workshops: []
+                events: [ev-reception]
+                meals: []
+                other: []
+              consentGiven: true
+      responses:
+        '201':
+          $ref: '#/components/responses/Accepted'
+        '200':
+          $ref: '#/components/responses/Replayed'
+        '400':
+          $ref: '#/components/responses/ValidationFailed'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '503':
+          $ref: '#/components/responses/Unavailable'
+  /api/organizer/export.xlsx:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Excel export of all accepted registrations (US-008)
+      security:
+        - organizerBasic: []
+      responses:
+        '200':
+          description: Workbook with the columns defined in export-workbook.json.
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+              example: attachment; filename="registrations.xlsx"
+            Cache-Control:
+              schema:
+                type: string
+              example: no-store
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Missing or wrong organizer credentials; no data returned.
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+              example: Basic realm="Lab Conference organizer"
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /actuator/health/liveness:
+    get:
+      tags: [operations]
+      operationId: liveness
+      summary: Liveness probe (ES-09); not routed by the public proxy
+      responses:
+        '200':
+          $ref: '#/components/responses/Health'
+        '503':
+          $ref: '#/components/responses/Health'
+  /actuator/health/readiness:
+    get:
+      tags: [operations]
+      operationId: readiness
+      summary: Readiness probe (ES-09) including database; not routed by the public proxy
+      responses:
+        '200':
+          $ref: '#/components/responses/Health'
+        '503':
+          $ref: '#/components/responses/Health'
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+      description: Configured organizer username and salted slow password hash (AR-06); HTTPS outside localhost.
+  responses:
+    Accepted:
+      description: Stored in the database and as durable JSON; notifications queued (BR-05).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationAccepted'
+    Replayed:
+      description: Same clientRequestId and same content as an earlier accepted request; nothing new stored (BR-06).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationAccepted'
+    ValidationFailed:
+      description: Rejected by validation, captcha or consent; nothing stored.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ValidationProblem'
+          example:
+            type: about:blank
+            title: Validation failed
+            status: 400
+            errors:
+              - field: email
+                code: INVALID_EMAIL
+                message: Enter a valid email address.
+    Forbidden:
+      description: Request Origin is not an allowed origin; nothing stored.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    Conflict:
+      description: clientRequestId already used with different content; nothing stored (D-17).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    PayloadTooLarge:
+      description: Request body larger than 16384 bytes; nothing stored.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    UnsupportedMediaType:
+      description: Body is not application/json; nothing stored.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    TooManyRequests:
+      description: Rate limit exceeded (SB-06, SR-03).
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    Unavailable:
+      description: Storage failed; the registration was NOT accepted and may be retried with the same clientRequestId.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    Health:
+      description: Spring Boot Actuator health status without details.
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [status]
+            properties:
+              status:
+                type: string
+                enum: [UP, DOWN, OUT_OF_SERVICE, UNKNOWN]
+  schemas:
+    OptionId:
+      type: string
+      pattern: '^[a-z0-9][a-z0-9-]{0,63}$'
+    GroupId:
+      type: string
+      enum: [workshops, events, meals, other]
+    Catalog:
+      type: object
+      additionalProperties: false
+      required: [conferenceTitle, captcha, consent, groups]
+      properties:
+        conferenceTitle:
+          type: string
+        captcha:
+          type: object
+          additionalProperties: false
+          required: [mode, siteKey]
+          properties:
+            mode:
+              type: string
+              enum: [stub, recaptcha]
+            siteKey:
+              type: string
+              nullable: true
+        consent:
+          $ref: '#/components/schemas/ConsentFixture'
+        groups:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items:
+            $ref: '#/components/schemas/CatalogGroup'
+    ConsentFixture:
+      type: object
+      nullable: true
+      additionalProperties: false
+      required: [id, text, required]
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        required:
+          type: boolean
+    CatalogGroup:
+      type: object
+      additionalProperties: false
+      required: [id, label, options]
+      properties:
+        id:
+          $ref: '#/components/schemas/GroupId'
+        label:
+          type: string
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogOption'
+    CatalogOption:
+      type: object
+      additionalProperties: false
+      required: [id, name]
+      properties:
+        id:
+          $ref: '#/components/schemas/OptionId'
+        name:
+          type: string
+    Selections:
+      type: object
+      additionalProperties: false
+      description: Zero or more distinct active option IDs per group (BR-03, OQ-04). A missing group means none.
+      properties:
+        workshops:
+          $ref: '#/components/schemas/SelectionList'
+        events:
+          $ref: '#/components/schemas/SelectionList'
+        meals:
+          $ref: '#/components/schemas/SelectionList'
+        other:
+          $ref: '#/components/schemas/SelectionList'
+    SelectionList:
+      type: array
+      maxItems: 50
+      uniqueItems: true
+      items:
+        $ref: '#/components/schemas/OptionId'
+    RegistrationCommon:
+      type: object
+      required: [clientRequestId, captchaToken, firstName, lastName, email, selections, consentGiven]
+      properties:
+        clientRequestId:
+          type: string
+          format: uuid
+          description: Generated by the client once per submission and reused for retries (AR-09).
+        captchaToken:
+          type: string
+          minLength: 1
+          maxLength: 4096
+        firstName:
+          $ref: '#/components/schemas/Name'
+        lastName:
+          $ref: '#/components/schemas/Name'
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        selections:
+          $ref: '#/components/schemas/Selections'
+        consentGiven:
+          type: boolean
+    Name:
+      type: string
+      minLength: 1
+      maxLength: 100
+      description: Trimmed of Unicode whitespace including NBSP; no control characters; length in code points.
+    Text200:
+      type: string
+      minLength: 1
+      maxLength: 200
+    ExternalRegistrationRequest:
+      allOf:
+        - $ref: '#/components/schemas/RegistrationCommon'
+        - type: object
+          required: [organization]
+          properties:
+            organization:
+              $ref: '#/components/schemas/Text200'
+    StudentRegistrationRequest:
+      allOf:
+        - $ref: '#/components/schemas/RegistrationCommon'
+        - type: object
+          required: [studyInstitution, studyProgramme, studentId]
+          properties:
+            studyInstitution:
+              $ref: '#/components/schemas/Text200'
+            studyProgramme:
+              $ref: '#/components/schemas/Text200'
+            studentId:
+              type: string
+              minLength: 1
+              maxLength: 64
+              description: Free text; no institutional format rule.
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [registrationId, clientRequestId, formType, status, acceptedAt]
+      properties:
+        registrationId:
+          type: string
+          format: uuid
+        clientRequestId:
+          type: string
+          format: uuid
+        formType:
+          type: string
+          enum: [external, student]
+        status:
+          type: string
+          enum: [ACCEPTED]
+        acceptedAt:
+          type: string
+          format: date-time
+    Problem:
+      type: object
+      required: [title, status]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+    ValidationProblem:
+      allOf:
+        - $ref: '#/components/schemas/Problem'
+        - type: object
+          required: [errors]
+          properties:
+            errors:
+              type: array
+              minItems: 1
+              items:
+                $ref: '#/components/schemas/FieldError'
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, code, message]
+      properties:
+        field:
+          type: string
+          description: Request property path, e.g. firstName, selections.workshops, consentGiven, captchaToken, body.
+        code:
+          type: string
+          enum:
+            - REQUIRED
+            - INVALID_EMAIL
+            - TOO_LONG
+            - INVALID_CHARACTERS
+            - INVALID_FORMAT
+            - UNKNOWN_OPTION
+            - DUPLICATE_OPTION
+            - TOO_MANY_OPTIONS
+            - CONSENT_REQUIRED
+            - CAPTCHA_FAILED
+            - UNKNOWN_FIELD
+            - MALFORMED_REQUEST
+        message:
+          type: string

@@ -1,0 +1,30 @@
+{
+  "conferenceTitle": "Lab Conference",
+  "consent": {
+    "id": "synthetic-consent-v1",
+    "text": "I agree to the synthetic lab consent statement (test fixture for local verification, not a legal notice).",
+    "required": true
+  },
+  "groups": {
+    "workshops": [
+      { "id": "ws-testing", "name": "Workshop A – Testing", "active": true },
+      { "id": "ws-security", "name": "Workshop B – Secure coding", "active": true },
+      { "id": "ws-retired", "name": "Workshop C – Retired topic", "active": false }
+    ],
+    "events": [
+      { "id": "ev-reception", "name": "Welcome reception", "active": true },
+      { "id": "ev-city-tour", "name": "Ljubljana city tour", "active": true },
+      { "id": "ev-cancelled", "name": "Cancelled boat trip", "active": false }
+    ],
+    "meals": [
+      { "id": "meal-lunch", "name": "Lunch", "active": true },
+      { "id": "meal-dinner", "name": "Conference dinner", "active": true },
+      { "id": "meal-breakfast", "name": "Breakfast (not offered)", "active": false }
+    ],
+    "other": [
+      { "id": "other-poster", "name": "Poster session", "active": true },
+      { "id": "other-mentoring", "name": "Mentoring slot", "active": true },
+      { "id": "other-closed", "name": "Closed hackathon", "active": false }
+    ]
+  }
+}

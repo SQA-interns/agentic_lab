@@ -26,12 +26,12 @@
       "phase": 2,
       "name": "design",
       "start": "2026-09-30T10:29:40Z",
-      "end": null
+      "end": "2026-09-30T10:34:05Z"
     },
     {
       "phase": 3,
       "name": "test-design",
-      "start": null,
+      "start": "2026-09-30T10:34:05Z",
       "end": null
     },
     {
@@ -188,6 +188,12 @@
       "type": "non-blocking",
       "start": "2026-09-30T10:29:40Z",
       "end": null
+    },
+    {
+      "id": "D-20",
+      "type": "non-blocking",
+      "start": "2026-09-30T10:34:05Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -213,6 +219,11 @@
       "sha": "08da24260659495a8f39f7d345da38ade7c1b91f",
       "phase": 0,
       "message": "Phase 0: preflight, input manifest, bootstrap skeletons (D-01..D-16)"
+    },
+    {
+      "sha": "2476e0c431968334455da5acd69154fda2f0edab",
+      "phase": 1,
+      "message": "Phase 1: acceptance criteria for US-001..US-008 (D-17..D-19)"
     }
   ],
   "usage": {

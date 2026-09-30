@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lab-conference:registration-record:1",
+  "title": "Durable registration JSON (one file per accepted registration)",
+  "description": "Stored as <REGISTRATION_JSON_DIR>/registrations/<registrationId>.json and attached byte-identically to the organizer mail as registration-<registrationId>.json (BR-05, BR-08, D-18). UTF-8, no BOM.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registrationId",
+    "clientRequestId",
+    "formType",
+    "acceptedAt",
+    "participant",
+    "selections",
+    "consent"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "registrationId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "clientRequestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "formType": {
+      "enum": [
+        "external",
+        "student"
+      ]
+    },
+    "acceptedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "firstName",
+        "lastName",
+        "email"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "lastName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 254
+        },
+        "organization": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "studyInstitution": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "studyProgramme": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "studentId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    },
+    "selections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workshops",
+        "events",
+        "meals",
+        "other"
+      ],
+      "properties": {
+        "workshops": {
+          "$ref": "#/$defs/selectedOptions"
+        },
+        "events": {
+          "$ref": "#/$defs/selectedOptions"
+        },
+        "meals": {
+          "$ref": "#/$defs/selectedOptions"
+        },
+        "other": {
+          "$ref": "#/$defs/selectedOptions"
+        }
+      }
+    },
+    "consent": {
+      "description": "Consent state for the configured fixture; null when the catalog defines no consent.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "given"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "given": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "formType"
+        ],
+        "properties": {
+          "formType": {
+            "const": "external"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "participant": {
+            "type": "object",
+            "required": [
+              "organization"
+            ],
+            "not": {
+              "type": "object",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "studyInstitution"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "studyProgramme"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "studentId"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "formType"
+        ],
+        "properties": {
+          "formType": {
+            "const": "student"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "participant": {
+            "type": "object",
+            "required": [
+              "studyInstitution",
+              "studyProgramme",
+              "studentId"
+            ],
+            "not": {
+              "type": "object",
+              "required": [
+                "organization"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "selectedOptions": {
+      "type": "array",
+      "maxItems": 50,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name at acceptance time"
+          }
+        }
+      }
+    }
+  }
+}

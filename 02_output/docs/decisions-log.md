@@ -173,3 +173,12 @@
 - Options: 1. (default, conservative) Refuse to start (fail fast) with a log message naming the problem (AC-003-03). 2. Start with the valid part of the catalog.
 - Human response: none
 - Resolution: 1, pending review
+
+## D-20: Contract validation tooling
+- Timestamp: 2026-09-30T10:34Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: the phase 2 gate requires contracts to validate with a parser; tech-stack.md lists no OpenAPI/JSON Schema validator.
+- Options: 1. (default) Frontend devDependencies @apidevtools/swagger-parser 13.1.0, openapi-types 12.1.3 (peer), ajv 8.20.0 (≥ 8.18.0, which fixes GHSA-2g4f-4pwh-qvx6), ajv-formats 3.0.1, all MIT, exact pins; npm audit unchanged (0 Critical/High). Also reused by the e2e tests for response-schema checks. 2. Hand-written structural checks only.
+- Human response: none
+- Resolution: 1, pending review
