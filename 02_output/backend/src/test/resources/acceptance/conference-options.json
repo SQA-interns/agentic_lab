@@ -1,0 +1,18 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Delavnica umetne inteligence", "category": "workshop", "active": true },
+    { "id": "ws-retired", "name": "Retired workshop", "category": "workshop", "active": false },
+    { "id": "ev-dinner", "name": "Conference dinner", "category": "event", "active": true },
+    { "id": "meal-lunch", "name": "Kosilo, dan 1", "category": "meal", "active": true },
+    { "id": "meal-closed", "name": "Closed breakfast", "category": "meal", "active": false },
+    { "id": "other-tour", "name": "Ogled Ljubljane", "category": "other", "active": true }
+  ],
+  "consents": [
+    {
+      "id": "privacy",
+      "text": "I agree that the organizer processes my personal data to organise the conference.",
+      "required": true
+    },
+    { "id": "newsletter", "text": "Send me news about future conferences.", "required": false }
+  ]
+}
