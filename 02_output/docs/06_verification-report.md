@@ -137,6 +137,7 @@ Severities as found (general severity scale; tool mappings as in `severity-scale
 | F-09 | Low | runtime demo | API responses through nginx carried two CSP headers and duplicate nosniff | Fixed `0ea751e`; re-verified: one header each |
 | F-10 | Low | PIT / Stryker | Surviving mutants in security/validation/persistence code (68 survivors + NO_COVERAGE at first) | Tests added (`f390f47`): PIT 72% → 84%; every remaining survivor classified individually (`logs/phase6-mutant-classification.md`); none indicates a defect |
 | F-11 | Low | gitleaks (full history) | 11 `generic-api-key` hits in commits made before this run (paths of another project) | Open item for the repository owner; out of run scope; no history rewrite |
+| F-13 | Low | agent self-check (phase 7) | The traced clean-checkout log committed in `a22ab2c` recorded the throwaway organizer password and hash of the temporary clone stack (ES-02/ES-07) | Fixed forward (log redacted); the clone stack and its volumes were destroyed before the commit, so the credential is dead; history is not rewritten |
 | F-12 | Low | preflight | Docker Engine/Compose run on 29.3.1/v5.1.1, not the pinned 28.1.1/2.35.1 | Accepted deviation D-03 (approved); Compose file uses only features available in 2.35.1 |
 
 ## Fix loops
@@ -150,6 +151,7 @@ Severities as found (general severity scale; tool mappings as in `severity-scale
 | 5 | F-01 (High) | none possible (intended secret store); blocking decision D-24 | approved; raw report kept |
 | 6 | F-02 (Critical/High) | Tomcat override in phase 0; ArchUnit feature guard | dependency-check re-scan: the approved set only |
 | 7 | final-run check failure: Prettier flagged the new `frontend/README.md` | formatted | `npm run check` exit 0 |
+| 8 | F-13 | redacted `logs/phase7-clean-checkout.log` | grep for credential patterns in `logs/`: none |
 
 ## Measures
 

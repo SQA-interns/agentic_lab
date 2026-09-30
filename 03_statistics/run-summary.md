@@ -40,9 +40,9 @@ Wall-clock from `run-log.json`. "Agent time" subtracts the recorded human-wait i
 | Final run (phase 6) | 339 passed / 0 failed: 165 backend unit, 109 acceptance, 5 integration, 41 frontend unit, 19 e2e |
 | Coverage | backend unit line 83.2% / branch 88.6%; backend integration + acceptance 85.4% / 67.9%; frontend unit 100% / 98.0% |
 | Mutation | PIT 84% (72% before fix loop 4); Stryker 79.6% |
-| Findings as found | Critical 1, High 1, Medium 3, Low 7 |
+| Findings as found | Critical 1, High 1, Medium 3, Low 8 |
 | Critical/High resolution | F-02 accepted under D-11 (not reachable, human-approved); F-01 downgraded under D-24 (human-approved) |
-| Fix loops | 7 (see `docs/06_verification-report.md`) |
+| Fix loops | 8 (see `docs/06_verification-report.md`) |
 | Frozen-test changes | 1 approved harness-only fix (D-22); manifest otherwise unchanged |
 | Clean checkout | all READMEs verified from a fresh clone with fresh volumes |
 | Code size | backend 2 680 production / 4 421 test lines; frontend 698 / 1 124 |

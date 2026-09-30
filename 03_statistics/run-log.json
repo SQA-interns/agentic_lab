@@ -71,7 +71,7 @@
     "critical": 1,
     "high": 1,
     "medium": 3,
-    "low": 7
+    "low": 8
   },
   "fixLoops": [
     {
@@ -135,6 +135,15 @@
         "final-run Prettier check on frontend/README.md"
       ],
       "change": "formatted",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 8,
+      "findings": [
+        "F-13"
+      ],
+      "change": "redacted logs/phase7-clean-checkout.log",
       "start": null,
       "end": null
     }
@@ -418,6 +427,11 @@
       "sha": "29e26f8e5e9919ae2918e45a273ed3aa8724a5b3",
       "phase": 6,
       "message": "Phase 6: verification report, final run, scanner and runtime evidence (DoD-01..DoD-11, DoD-P01..DoD-P06, D-24)"
+    },
+    {
+      "sha": "a22ab2c914b21b340ef08b4e1b6aeef052b9c5e5",
+      "phase": 7,
+      "message": "Phase 7: release notes, clean-checkout verification, run summary (DoD-08, DoD-09, DoD-10)"
     }
   ],
   "usage": {

@@ -1,13 +1,13 @@
 +(eval):2> cp ../01_input/01_project/01_setup/secrets.env.example .env
 +(eval):3> PW=+(eval):3> openssl rand -hex 12
-+(eval):3> PW=clean-9a2763ebcc48887cf932d3e9 
++(eval):3> PW=<redacted F-13> 
 +(eval):3> mkdir -p .local
 +(eval):3> umask 077
-+(eval):3> printf %s clean-9a2763ebcc48887cf932d3e9
-+(eval):4> HASH=+(eval):4> printf '%s\n' clean-9a2763ebcc48887cf932d3e9
++(eval):3> printf %s <redacted F-13>
++(eval):4> HASH=+(eval):4> printf '%s\n' <redacted F-13>
 +(eval):4> HASH=+(eval):4> tools/hash-password.sh
-+(eval):4> HASH='{bcrypt}$2a$12$L.wmyuQqLM3T.YO2kl1VAuARoC468s51mKRkm7m0Hn807O4kLkCkK' 
-+(eval):5> python3 - '{bcrypt}$2a$12$L.wmyuQqLM3T.YO2kl1VAuARoC468s51mKRkm7m0Hn807O4kLkCkK'
++(eval):4> HASH='{bcrypt}<redacted F-13>' 
++(eval):5> python3 - '{bcrypt}<redacted F-13>'
 +(eval):13> awk '-F=' '/^[A-Z_]+=/{print $1, (length($2)>0?"SET":"EMPTY")}' .env
 DB_PASSWORD SET
 ORGANIZER_USERNAME SET
