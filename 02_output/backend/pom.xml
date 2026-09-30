@@ -247,6 +247,8 @@
         <version>${dependency-check.version}</version>
         <configuration>
           <nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
+          <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+          <failBuildOnCVSS>7</failBuildOnCVSS>
           <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
           <nodeAnalyzerEnabled>false</nodeAnalyzerEnabled>
           <nodeAuditAnalyzerEnabled>false</nodeAuditAnalyzerEnabled>
