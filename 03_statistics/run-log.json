@@ -6,9 +6,9 @@
   "templateVersion": "1.0",
   "transcript": "/home/tjan-kazar/.claude/projects/-home-tjan-kazar-storage-Work-lab-agentic-lab/257f106d-b679-40d9-82ff-5205eee578b5.jsonl",
   "startCommit": "52eb3eda302372a75e2178e5e347d85aeaa39b19",
-  "finalCommit": null,
+  "finalCommit": "9b1d3cf581a7e2c432a5a68579d0779e1460c365",
   "start": "2026-09-30T09:46:53Z",
-  "end": null,
+  "end": "2026-09-30T20:31:31Z",
   "phases": [
     {
       "phase": 0,
@@ -56,7 +56,7 @@
       "phase": 7,
       "name": "release",
       "start": "2026-09-30T20:20:28Z",
-      "end": null
+      "end": "2026-09-30T20:31:31Z"
     }
   ],
   "firstTestRun": {
@@ -432,6 +432,11 @@
       "sha": "a22ab2c914b21b340ef08b4e1b6aeef052b9c5e5",
       "phase": 7,
       "message": "Phase 7: release notes, clean-checkout verification, run summary (DoD-08, DoD-09, DoD-10)"
+    },
+    {
+      "sha": "9b1d3cf581a7e2c432a5a68579d0779e1460c365",
+      "phase": 7,
+      "message": "F-13: redact throwaway clone credentials from the phase 7 clean-checkout log (ES-02, ES-07)"
     }
   ],
   "usage": {
