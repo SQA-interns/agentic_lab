@@ -4,4 +4,10 @@
   <Match>
     <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
   </Match>
+  <!-- HttpSecurity.build() is declared by Spring Security to throw Exception. -->
+  <Match>
+    <Class name="si.konferenca.registration.config.SecurityConfig"/>
+    <Method name="securityFilterChain"/>
+    <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
+  </Match>
 </FindBugsFilter>

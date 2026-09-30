@@ -1,0 +1,21 @@
+{
+  "options": [
+    { "id": "ws-secure-web", "name": "Workshop: Secure web development", "category": "WORKSHOP", "active": true },
+    { "id": "ws-data-science", "name": "Workshop: Data science in practice", "category": "WORKSHOP", "active": true },
+    { "id": "ws-legacy", "name": "Workshop: Legacy systems", "category": "WORKSHOP", "active": false },
+    { "id": "ev-welcome", "name": "Welcome reception", "category": "EVENT", "active": true },
+    { "id": "ev-gala-dinner", "name": "Gala dinner", "category": "EVENT", "active": true, "registrationTypes": ["EXTERNAL"] },
+    { "id": "ev-career-fair", "name": "Student career fair", "category": "EVENT", "active": true, "registrationTypes": ["STUDENT"] },
+    { "id": "meal-lunch-day1", "name": "Lunch, day 1", "category": "MEAL", "active": true },
+    { "id": "meal-lunch-day2", "name": "Lunch, day 2", "category": "MEAL", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarian meals", "category": "MEAL", "active": true },
+    { "id": "other-city-tour", "name": "Ljubljana city tour", "category": "OTHER", "active": true }
+  ],
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree that the organizers process my personal data for conference registration and organization, as described in the privacy notice.",
+      "mandatory": true
+    }
+  ]
+}

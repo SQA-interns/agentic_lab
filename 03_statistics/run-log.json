@@ -216,6 +216,11 @@
       "sha": "1745ee9f918e407e04beb4207901a3eaf154b92c",
       "phase": 2,
       "message": "Phase 2: specification and contracts (D-15)"
+    },
+    {
+      "sha": "5d68e663f5f43f6b37a18bc5158140745b017f26",
+      "phase": 3,
+      "message": "Phase 3: frozen acceptance and e2e tests with manifest (AC-001..AC-008, SR, NFR; D-16, D-17)"
     }
   ],
   "usage": {
