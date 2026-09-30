@@ -157,3 +157,12 @@
 - Options: 1. (chosen) Keep it as a regression guard for NFR-04 and add `JsonCopyFailureAcceptanceTest.nfr04ReadinessReportsUnwritableCopyDirectory`, which fails on the skeleton and covers the part of NFR-04 not yet implemented. 2. Delete the passing test. 3. Weaken the skeleton to make it fail.
 - Human response: none
 - Resolution: option 1, pending review
+
+## D-18: Lower F-07 (CVE-2025-7962 on angus-activation) from High to Low as a false positive
+- Timestamp: 2026-09-30T00:44:49Z
+- Phase: 6
+- Type: blocking
+- Trigger: `docs/06_verification-report.md` F-07. Dependency-Check reports CVE-2025-7962 (CVSS 7.5 → High per `general/quality/severity-scale.md`) on `angus-activation-2.0.3.jar`, identified as `cpe:2.3:a:eclipse:angus_mail:2.0.3`. Evidence it is not exploitable: (1) the CVE affects the SMTP implementation Angus Mail < 2.0.4 / Jakarta Mail < 2.0.2; the shipped SMTP implementation is `org.eclipse.angus:angus-mail:2.0.5` and `jakarta.mail:jakarta.mail-api:2.1.5` (`out/logs/phase0-backend-dependency-tree.log`); (2) `angus-activation` is the Jakarta Activation implementation and contains no SMTP code, so the match is a CPE mis-identification; (3) defence in depth: every text field rejects CR/LF and control characters and no user input is placed in mail headers (AC-006-02, SR-05 tests). No GA `angus-activation` newer than 2.0.3 exists (only 2.1.0-M1). Lowering a High needs a human decision (`severity-scale.md`, `working-rules.md`).
+- Options: 1. (proposed default) Approve lowering F-07 to Low as a false positive; the agent adds a Dependency-Check suppression for this CVE on `angus-activation` only, with the justification above, re-runs the scan and completes phase 6. 2. Override `angus-activation` to 2.1.0-M1 (a milestone; not recommended) as a new tech-stack entry. 3. Keep F-07 open and do not release.
+- Human response: none
+- Resolution: pending

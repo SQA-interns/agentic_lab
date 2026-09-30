@@ -230,4 +230,26 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <!-- Code metrics only (phase 6): reports every method's cyclomatic complexity. -->
+    <profile>
+      <id>complexity</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <configuration>
+              <rulesets>
+                <ruleset>pmd-complexity.xml</ruleset>
+              </rulesets>
+              <format>xml</format>
+              <targetDirectory>${project.build.directory}/complexity</targetDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

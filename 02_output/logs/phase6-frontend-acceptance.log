@@ -1,0 +1,25 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mE:/13 - Lab Projects/04_Input_Files_Template/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 2282[2mms[22m[39m
+   [33m[2m✓[22m[39m registration form (frozen acceptance tests)[2m > [22mAC-004-03 empty required fields are reported before any request is sent [33m 321[2mms[22m[39m
+   [33m[2m✓[22m[39m registration form (frozen acceptance tests)[2m > [22mAC-004-03 an invalid email is reported before any request is sent [33m 316[2mms[22m[39m
+   [33m[2m✓[22m[39m registration form (frozen acceptance tests)[2m > [22mAC-004-03 a missing mandatory consent is reported before any request is sent [33m 361[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m10 passed[39m[22m[90m (10)[39m
+[2m   Start at [22m 02:25:56
+[2m   Duration [22m 4.50s[2m (transform 94ms, setup 148ms, collect 242ms, tests 2.28s, environment 678ms, prepare 198ms)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+---------------|---------|----------|---------|---------|-----------------------
+File           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+---------------|---------|----------|---------|---------|-----------------------
+All files      |   87.07 |    78.46 |   90.47 |   87.07 |                       
+ App.tsx       |   96.62 |    89.65 |     100 |   96.62 | ...41,213-215,296-298 
+ Captcha.tsx   |   51.85 |    28.57 |   66.66 |   51.85 | 44-63,68-69,87,90-92  
+ api.ts        |   85.36 |    58.33 |     100 |   85.36 | 74-75,95-96,108-109   
+ main.tsx      |       0 |        0 |       0 |       0 | 1-10                  
+ validation.ts |    87.5 |    81.25 |     100 |    87.5 | 46,48-49,58-59        
+---------------|---------|----------|---------|---------|-----------------------

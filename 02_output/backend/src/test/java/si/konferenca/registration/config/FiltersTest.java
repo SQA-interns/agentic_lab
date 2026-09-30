@@ -133,6 +133,38 @@ class FiltersTest {
   }
 
   @Test
+  void purgeKeepsWindowsThatAreStillActive() {
+    MutableClock clock = new MutableClock();
+    RateLimitFilter.Rule rule =
+        new RateLimitFilter.Rule("r", HttpMethod.POST, "/x", 1, Duration.ofSeconds(10));
+    RateLimitFilter filter = new RateLimitFilter(List.of(rule), clock);
+    assertThat(filter.allow(rule, "attacker")).isTrue();
+    for (int i = 1; i < RateLimitFilter.MAX_TRACKED; i++) {
+      filter.allow(rule, "c" + i);
+    }
+    clock.advance(Duration.ofSeconds(9));
+
+    assertThat(filter.allow(rule, "attacker")).as("window still active after purge").isFalse();
+
+    clock.advance(Duration.ofSeconds(1));
+    assertThat(filter.allow(rule, "attacker")).as("window expires exactly at its length").isTrue();
+  }
+
+  @Test
+  void errorResponsesAreJsonWithoutSniffingOrCaching() throws Exception {
+    MockHttpServletResponse r =
+        run(new RequestSizeFilter(1), post("/api/registrations", "1.1.1.1", new byte[2]));
+
+    assertThat(r.getContentType()).startsWith("application/json");
+    assertThat(r.getCharacterEncoding()).isEqualToIgnoringCase("UTF-8");
+    assertThat(r.getHeader("X-Content-Type-Options")).isEqualTo("nosniff");
+    assertThat(r.getHeader("Cache-Control")).isEqualTo("no-store");
+    assertThat(run(new RequestSizeFilter(1), post("/x", "1.1.1.1", new byte[0])).getStatus())
+        .as("empty body with declared length 0")
+        .isEqualTo(299);
+  }
+
+  @Test
   void organizerTransportFilter() throws Exception {
     OrganizerTransportFilter filter = new OrganizerTransportFilter(true);
     MockHttpServletRequest remotePlain = new MockHttpServletRequest("GET", "/api/admin/x");

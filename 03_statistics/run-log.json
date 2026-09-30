@@ -44,12 +44,12 @@
       "phase": 5,
       "name": "unit-tests",
       "start": "2026-09-30T00:15:17Z",
-      "end": null
+      "end": "2026-09-30T00:22:42Z"
     },
     {
       "phase": 6,
       "name": "verify",
-      "start": null,
+      "start": "2026-09-30T00:22:42Z",
       "end": null
     },
     {
@@ -65,16 +65,45 @@
     "failedReason": "Backend test sources did not compile (defect in the non-frozen unit test NotificationServiceTest: final FakeStore subclassed); backend suite not executed. Frontend unit+acceptance 36/36 passed, e2e 3/3 passed."
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 224,
+    "failed": 0
   },
   "findings": {
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0
+    "high": 1,
+    "medium": 4,
+    "low": 3
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-02"
+      ],
+      "change": "Added backend unit tests for strict email parsing, other-type field rejection, single-rule options-file violations and limits, rate-limit purge of active windows and exact expiry, filter error headers, JSON copy fields and temp-file cleanup, organizer mail lines, workbook organization column, mail attempts boundary",
+      "start": "2026-09-30T00:28:21Z",
+      "end": "2026-09-30T00:30:27Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-05",
+        "F-02"
+      ],
+      "change": "nginx no longer forwards the client Host header; frontend validation tests for the anchored email pattern and multi-level domains",
+      "start": "2026-09-30T00:32:46Z",
+      "end": "2026-09-30T00:43:34Z"
+    },
+    {
+      "loop": 3,
+      "findings": [
+        "F-01"
+      ],
+      "change": "Redacted Spring Boot generated skeleton passwords in the phase 3 log (working tree); Gitleaks dir scan clean",
+      "start": "2026-09-30T00:43:19Z",
+      "end": "2026-09-30T00:43:34Z"
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -177,6 +206,12 @@
       "type": "non-blocking",
       "start": "2026-09-29T23:56:19Z",
       "end": "2026-09-29T23:56:19Z"
+    },
+    {
+      "id": "D-18",
+      "type": "blocking",
+      "start": "2026-09-30T00:44:49Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -189,13 +224,42 @@
       "start": "2026-09-29T23:24:18Z",
       "end": "2026-09-29T23:30:55Z",
       "reason": "D-05: Critical/High vulnerabilities in tech-stack backend dependencies (phase 0 preflight)"
+    },
+    {
+      "start": "2026-09-30T00:44:49Z",
+      "end": null,
+      "reason": "D-18: lower false-positive High F-07 (CVE-2025-7962 on angus-activation)"
     }
   ],
   "cycles": [],
   "codeMetrics": {
-    "components": [],
-    "complexity": null,
-    "duplicationPct": null
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2312,
+        "testLoc": 3343,
+        "tool": "aldanial/cloc:2.10 (reports 1.98)"
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 657,
+        "testLoc": 810,
+        "tool": "aldanial/cloc:2.10 (reports 1.98)"
+      }
+    ],
+    "complexity": {
+      "backend": {
+        "methods": 196,
+        "averageCyclomatic": 1.66,
+        "maxCyclomatic": 14,
+        "tool": "PMD CyclomaticComplexity"
+      }
+    },
+    "duplicationPct": {
+      "backend": 0,
+      "frontend": 0,
+      "tools": "PMD CPD (100 tokens), jscpd (50 tokens)"
+    }
   },
   "commits": [
     {
@@ -237,6 +301,11 @@
       "sha": "18df076448c5d0cae18b94424cafee78470868e6",
       "phase": 4,
       "message": "Phase 4 gate: progress and run log"
+    },
+    {
+      "sha": "4fcfbb665b159d0506dcf152cc7ab01827af64ab",
+      "phase": 5,
+      "message": "Phase 5: unit and integration tests, ArchUnit rules A-1..A-7, first complete run recorded"
     }
   ],
   "usage": {

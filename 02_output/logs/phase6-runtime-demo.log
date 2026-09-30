@@ -1,0 +1,88 @@
+## 1 Health (NFR-04, ES-09)
+backend: Up About a minute (healthy)
+frontend: Up 53 seconds (healthy)
+mailpit: Up 23 minutes (healthy)
+postgres: Up 23 minutes (healthy)
+backend liveness: {"status":"UP"}
+backend readiness: {"status":"UP"}
+frontend /healthz: ok
+
+## 2 Security headers (SB-10)
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-s
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self'; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+
+## 3 Registrations through the frontend proxy (DoD-P01)
+external: HTTP 201 reference 5cfc6b56-60bf-437e-a9da-51d0edbb91aa
+student:  HTTP 201 reference 110c89a7-92a1-4f3e-bff7-e34a44ad80b4
+invalid:  HTTP 400 {"message":"Please correct the marked fields.","errors":[{"field":"email","message":"Enter a valid email address."},{"field":"consentIds","message":"Please give the required consent."}]}
+
+## 4 Database rows (DoD-P02)
+5cfc6b56-60bf-437e-a9da-51d0edbb91aa | EXTERNAL | Špela | Čučnik-Žagar | Zavod Škofja Loka | SENT | SENT
+110c89a7-92a1-4f3e-bff7-e34a44ad80b4 | STUDENT | Luka | Kovač | Univerza v Ljubljani | SENT | SENT
+EXTERNAL | ev-gala-dinner | EVENT
+EXTERNAL | meal-lunch-day1 | MEAL
+EXTERNAL | ws-secure-web | WORKSHOP
+STUDENT | ev-career-fair | EVENT
+STUDENT | meal-vegetarian | MEAL
+1|create registration|t
+
+## 5 JSON copies (DoD-P02)
+-rw------- 1 app app 881 Sep 30 00:38 110c89a7-92a1-4f3e-bff7-e34a44ad80b4.json
+-rw------- 1 app app 900 Sep 30 00:38 5cfc6b56-60bf-437e-a9da-51d0edbb91aa.json
+{
+  "schemaVersion" : 1,
+  "reference" : "5cfc6b56-60bf-437e-a9da-51d0edbb91aa",
+  "type" : "EXTERNAL",
+  "submittedAt" : "2026-09-30T00:38:03.998051279Z",
+  "participant" : {
+    "firstName" : "Špela",
+    "lastName" : "Čučnik-Žagar",
+    "email" : "demo-ext-1790728683@example.si",
+    "organization" : "Zavod Škofja Loka"
+  },
+  "options" : [ {
+
+## 6 Emails in Mailpit (DoD-P03)
+participant mail to demo-ext-1790728683@example.si | Registration confirmed – Konferenca 2026
+participant mail to demo-stu-1790728683@example.si | Registration confirmed – Konferenca 2026
+organizer mail | New registration – Konferenca 2026 | recipients 1 | attachments 1
+organizer mail | New registration – Konferenca 2026 | recipients 1 | attachments 1
+
+## 7 Export (DoD-P04)
+with organizer credentials: HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4858 bytes
+without credentials: HTTP 401
+wrong password: HTTP 401
+
+## 8 Personal data in backend logs (ES-07, SB-07)
+occurrences of a demo value in backend log: 0
+occurrences of a demo value in backend log: 0
+occurrences of a demo value in backend log: 0
+occurrences of a demo value in backend log: 0
+occurrences of a demo value in backend log: 0
+
+## 7b Exported workbook opened with Apache POI (DoD-P04)
+workbook opened: sheets=1 sheet=Registrations dataRows=8
+header: Reference | Submitted at | Type | First name | Last name | Email | Organization | Study institution | Study programme | Student ID | Workshops | Events | Meals | Other | Consents | 
+row: EXTERNAL | Špela | Čučnik-Žagar | Workshop: Secure web development | Gala dinner | Lunch, day 1
+row: STUDENT | Luka | Kovač |  | Student career fair | Vegetarian meals
+
+## 9 Persistence across container recreation (NFR-02)
+before: rows=8 copies=8
+docker compose down: containers remaining=0; volumes: conference-registration_db-data conference-registration_registration-copies 
+after up: backend=healthy frontend=healthy mailpit=healthy postgres=healthy 
+after: rows=8 copies=8
+5cfc6b56-60bf-437e-a9da-51d0edbb91aa | EXTERNAL | Čučnik-Žagar
+110c89a7-92a1-4f3e-bff7-e34a44ad80b4 | STUDENT | Kovač
+/data/registrations/110c89a7-92a1-4f3e-bff7-e34a44ad80b4.json
+/data/registrations/5cfc6b56-60bf-437e-a9da-51d0edbb91aa.json
+
+## 10 Container users (SB-11)
+backend uid: 10001  frontend uid: 101  frontend user: nginx

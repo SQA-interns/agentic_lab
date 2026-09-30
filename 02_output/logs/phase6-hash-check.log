@@ -1,0 +1,9 @@
+== acceptance manifest (paths relative to 02_output)
+MATCH: 20 files
+== input manifest
+MATCH: 32 files
+== files now under 01_input not in manifest
+== git: input changes since phase-0 commit
+== phase 3 commit contents check
+no production code in phase 3 commit
+phase-3 commit: 20 files match manifest, 0 mismatch

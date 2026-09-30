@@ -1,0 +1,25 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mE:/13 - Lab Projects/04_Input_Files_Template/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/validation.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/api.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/Captcha.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 111[2mms[22m[39m
+ [32m✓[39m src/App.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 571[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m26 passed[39m[22m[90m (26)[39m
+[2m   Start at [22m 02:25:51
+[2m   Duration [22m 2.26s[2m (transform 172ms, setup 442ms, collect 485ms, tests 701ms, environment 2.41s, prepare 536ms)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+---------------|---------|----------|---------|---------|-----------------------
+File           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+---------------|---------|----------|---------|---------|-----------------------
+All files      |   92.29 |     87.5 |   95.45 |   92.29 |                       
+ App.tsx       |   91.89 |    81.92 |     100 |   91.89 | ...11,324-326,343-345 
+ Captcha.tsx   |     100 |    91.66 |     100 |     100 | 45,87                 
+ api.ts        |     100 |      100 |     100 |     100 |                       
+ main.tsx      |       0 |        0 |       0 |       0 | 1-10                  
+ validation.ts |     100 |      100 |     100 |     100 |                       
+---------------|---------|----------|---------|---------|-----------------------

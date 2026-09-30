@@ -67,6 +67,13 @@ describe('validate', () => {
     },
   );
 
+  it('anchors the whole address and allows multi-level domains', () => {
+    const check = (email: string) =>
+      validate('EXTERNAL', { ...external, email }, CONSENTS, new Set(['dp']), 'tok').email;
+    expect(check('ana@example.si x')).toBe('Enter a valid email address.');
+    expect(check('ana@mail.example.si')).toBeUndefined();
+  });
+
   it('accepts trimmed email and Slovenian letters', () => {
     const values = { ...external, email: ' ana@example.si ', lastName: 'Čučnik-Žagar' };
     expect(validate('EXTERNAL', values, CONSENTS, new Set(['dp']), 'tok')).toEqual({});

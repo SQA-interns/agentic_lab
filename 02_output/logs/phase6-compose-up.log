@@ -1,0 +1,166 @@
+ Image conference-registration-backend:1.0.0 Building 
+ Image conference-registration-frontend:1.0.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.23kB done
+#1 DONE 0.0s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 775B done
+#2 DONE 0.0s
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 446B done
+#3 DONE 0.0s
+
+#4 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#4 DONE 0.1s
+
+#5 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#5 DONE 0.1s
+
+#6 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#6 DONE 0.1s
+
+#7 [backend internal] load .dockerignore
+#7 transferring context: 102B done
+#7 DONE 0.0s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 130B done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [backend internal] load build context
+#10 ...
+
+#11 [backend 1/5] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#11 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#11 DONE 0.1s
+
+#12 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#12 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#12 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 transferring context: 18.86kB done
+#9 DONE 0.0s
+
+#13 [frontend build 2/6] WORKDIR /src
+#13 CACHED
+
+#14 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#14 CACHED
+
+#15 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#15 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#15 CACHED
+
+#16 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#16 CACHED
+
+#10 [backend internal] load build context
+#10 ...
+
+#17 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#17 DONE 0.1s
+
+#18 [frontend build 5/6] COPY . .
+#18 DONE 0.1s
+
+#10 [backend internal] load build context
+#10 transferring context: 80.25MB 3.4s done
+#10 DONE 3.5s
+
+#19 [backend 2/5] RUN addgroup -S -g 10001 app     && adduser -S -u 10001 -G app -H -h /app app     && mkdir -p /app/config /data/registrations     && chown -R app:app /data
+#19 CACHED
+
+#20 [backend 3/5] WORKDIR /app
+#20 CACHED
+
+#21 [backend 4/5] COPY --chown=root:root target/registration-backend-1.0.0.jar /app/app.jar
+#21 DONE 0.2s
+
+#22 [frontend build 6/6] RUN npm run build
+#22 0.595 
+#22 0.595 > registration-frontend@1.0.0 build
+#22 0.595 > tsc --noEmit && vite build
+#22 0.595 
+#22 ...
+
+#23 [backend 5/5] COPY --chown=root:root config/options.json /app/config/options.json
+#23 DONE 0.1s
+
+#24 [backend] exporting to image
+#24 exporting layers
+#24 ...
+
+#22 [frontend build 6/6] RUN npm run build
+#22 3.805 vite v6.4.3 building for production...
+#22 3.881 transforming...
+#22 4.867 ✓ 32 modules transformed.
+#22 5.008 rendering chunks...
+#22 5.017 computing gzip size...
+#22 5.027 dist/index.html                   0.41 kB │ gzip:  0.27 kB
+#22 5.027 dist/assets/index-BLPRbXkI.css    1.05 kB │ gzip:  0.54 kB
+#22 5.027 dist/assets/index-BKDhkMc-.js   232.24 kB │ gzip: 72.62 kB
+#22 5.027 ✓ built in 1.19s
+#22 DONE 5.1s
+
+#24 [backend] exporting to image
+#24 exporting layers 2.0s done
+#24 exporting manifest sha256:bb53d79d8263569b5f0e0de04c007fb060351ce146c805c46ed2c66d876c4299 0.0s done
+#24 exporting config sha256:3bb6c56f3bb3fc111cd1b03a4158239d6f3cb03810a7079415cee8a6dfb86ffa 0.0s done
+#24 exporting attestation manifest sha256:bf9d582e6cf8db5bf859bd4ab34f7c68960bf6e27164ef2ae84997412f1d90c1 0.0s done
+#24 exporting manifest list sha256:c260100d433111e9b1bc7f95902a3c71b8e217633065c2b77c5b07496a40e2da
+#24 exporting manifest list sha256:c260100d433111e9b1bc7f95902a3c71b8e217633065c2b77c5b07496a40e2da 0.0s done
+#24 naming to docker.io/library/conference-registration-backend:1.0.0 done
+#24 unpacking to docker.io/library/conference-registration-backend:1.0.0
+#24 ...
+
+#25 [frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html
+#25 DONE 0.2s
+
+#24 [backend] exporting to image
+#24 unpacking to docker.io/library/conference-registration-backend:1.0.0 0.5s done
+#24 DONE 2.7s
+
+#26 [frontend] exporting to image
+#26 exporting layers 0.4s done
+#26 exporting manifest sha256:dea2f16fd9ca522944fdeb0fc27dc45f565a43e1d304543e7eeb04ec3e6b52a5 0.0s done
+#26 exporting config sha256:88770399aa0cbdebd70cb31fefcdd5f48928fa2a267d31e1c217dbf334008e43 0.0s done
+#26 exporting attestation manifest sha256:9f317157c390efb7bb3b3f88109c999c354747e6d19dc0356b0899cb929fd1d8
+#26 ...
+
+#27 [backend] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#26 [frontend] exporting to image
+#26 exporting attestation manifest sha256:9f317157c390efb7bb3b3f88109c999c354747e6d19dc0356b0899cb929fd1d8 0.1s done
+#26 exporting manifest list sha256:45c65a89470339f54fd93358704d955099743f37e85db9e7be283b4a0306e7af 0.0s done
+#26 naming to docker.io/library/conference-registration-frontend:1.0.0
+#26 naming to docker.io/library/conference-registration-frontend:1.0.0 done
+#26 unpacking to docker.io/library/conference-registration-frontend:1.0.0 0.1s done
+#26 DONE 0.7s
+
+#28 [frontend] resolving provenance for metadata file
+#28 DONE 0.0s
+ Image conference-registration-backend:1.0.0 Built 
+ Image conference-registration-frontend:1.0.0 Built 
+ Container conference-registration-postgres-1 Running 
+ Container conference-registration-mailpit-1 Running 
+ Container conference-registration-backend-1 Recreate 
+ Container conference-registration-backend-1 Recreated 
+ Container conference-registration-frontend-1 Recreate 
+ Container conference-registration-frontend-1 Recreated 
+ Container conference-registration-postgres-1 Waiting 
+ Container conference-registration-mailpit-1 Waiting 
+ Container conference-registration-postgres-1 Healthy 
+ Container conference-registration-mailpit-1 Healthy 
+ Container conference-registration-backend-1 Starting 
+ Container conference-registration-backend-1 Started 
+ Container conference-registration-backend-1 Waiting 
+ Container conference-registration-backend-1 Healthy 
+ Container conference-registration-frontend-1 Starting 
+ Container conference-registration-frontend-1 Started 

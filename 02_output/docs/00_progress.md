@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: sdd
-- Current phase: 5 (unit tests)
-- Last gate result: phase 4 passed at 2026-09-30T00:15:17Z (frozen tests: backend 67/67, frontend 10/10, e2e 3/3 against the compose stack; format, lint, type checks clean)
-- Next step: write unit/integration tests (ArchUnit rules A-1..A-7, validator, options loader, filters, workbook, mail composer; frontend validation/api), record first full run, then make the full suite pass
-- Waiting for the human on: nothing
+- Current phase: 6 (verify)
+- Last gate result: phase 6 not yet passed: all DoD items have evidence except DoD-05/DoD-10 (F-07 High open, D-18); DoD-08/09 are produced in phase 7
+- Next step: apply the human's D-18 answer (option 1: add Dependency-Check suppression for CVE-2025-7962 on angus-activation, re-run the scan, close F-07), mark phase 6 passed, then phase 7 (READMEs, release notes, clean-checkout check, run summary)
+- Waiting for the human on: D-18

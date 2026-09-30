@@ -1,0 +1,2 @@
+methods 196 avg 1.66 max 14 over10 1
+top [{"m":"problems(AppProperties)","c":14},{"m":"options(List&lt;FieldError&gt;, RegistrationType, List&lt;String&gt;)","c":10},{"m":"validate(RegistrationSubmission)","c":7},{"m":"consents(List&lt;FieldError&gt;, List&lt;String&gt;)","c":7},{"m":"deliver(Registration)","c":6}]

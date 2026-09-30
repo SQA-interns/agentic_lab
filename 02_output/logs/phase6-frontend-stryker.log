@@ -1,0 +1,1237 @@
+[32m02:26:15 (40924) INFO ProjectReader[39m Found 4 of 59 file(s) to be mutated.
+[32m02:26:16 (40924) INFO Instrumenter[39m Instrumented 4 source file(s) with 420 mutant(s)
+[32m02:26:16 (40924) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m02:26:17 (40924) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m02:26:18 (40924) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m02:26:24 (40924) INFO DryRunExecutor[39m Initial test run succeeded. Ran 36 tests in 6 seconds (net 1581.4802000000032 ms, overhead 4939.519799999996 ms).
+Mutation testing 2% (elapsed: <1m, remaining: ~5m) 14/420 tested (3 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~5m) 34/420 tested (4 survived, 0 timed out)
+Mutation testing 6% (elapsed: <1m, remaining: ~6m) 51/420 tested (9 survived, 0 timed out)
+Mutation testing 10% (elapsed: <1m, remaining: ~5m) 60/420 tested (16 survived, 0 timed out)
+Mutation testing 13% (elapsed: <1m, remaining: ~5m) 71/420 tested (21 survived, 0 timed out)
+Mutation testing 16% (elapsed: ~1m, remaining: ~4m) 86/420 tested (23 survived, 0 timed out)
+Mutation testing 21% (elapsed: ~1m, remaining: ~4m) 98/420 tested (25 survived, 0 timed out)
+Mutation testing 27% (elapsed: ~1m, remaining: ~3m) 117/420 tested (30 survived, 0 timed out)
+Mutation testing 32% (elapsed: ~1m, remaining: ~3m) 131/420 tested (33 survived, 0 timed out)
+Mutation testing 34% (elapsed: ~1m, remaining: ~3m) 142/420 tested (37 survived, 0 timed out)
+Mutation testing 37% (elapsed: ~1m, remaining: ~3m) 160/420 tested (41 survived, 0 timed out)
+Mutation testing 38% (elapsed: ~2m, remaining: ~3m) 173/420 tested (46 survived, 0 timed out)
+Mutation testing 40% (elapsed: ~2m, remaining: ~3m) 190/420 tested (56 survived, 0 timed out)
+Mutation testing 43% (elapsed: ~2m, remaining: ~2m) 203/420 tested (58 survived, 0 timed out)
+Mutation testing 49% (elapsed: ~2m, remaining: ~2m) 222/420 tested (62 survived, 0 timed out)
+Mutation testing 53% (elapsed: ~2m, remaining: ~2m) 236/420 tested (70 survived, 0 timed out)
+Mutation testing 56% (elapsed: ~2m, remaining: ~2m) 246/420 tested (75 survived, 0 timed out)
+Mutation testing 60% (elapsed: ~3m, remaining: ~1m) 259/420 tested (80 survived, 0 timed out)
+Mutation testing 62% (elapsed: ~3m, remaining: ~1m) 279/420 tested (87 survived, 0 timed out)
+Mutation testing 64% (elapsed: ~3m, remaining: ~1m) 294/420 tested (91 survived, 0 timed out)
+Mutation testing 66% (elapsed: ~3m, remaining: ~1m) 304/420 tested (98 survived, 0 timed out)
+Mutation testing 71% (elapsed: ~3m, remaining: ~1m) 320/420 tested (99 survived, 0 timed out)
+Mutation testing 75% (elapsed: ~3m, remaining: ~1m) 333/420 tested (99 survived, 0 timed out)
+Mutation testing 80% (elapsed: ~4m, remaining: <1m) 364/420 tested (99 survived, 0 timed out)
+Mutation testing 86% (elapsed: ~4m, remaining: <1m) 387/420 tested (99 survived, 0 timed out)
+Mutation testing 92% (elapsed: ~4m, remaining: <1m) 401/420 tested (103 survived, 0 timed out)
+Mutation testing 98% (elapsed: ~4m, remaining: <1m) 417/420 tested (108 survived, 0 timed out)
+
+All tests
+  src
+    api.test.ts
+      ✓ api loads configuration and options from /api (killed 1)
+      ✓ api rejects when loading fails (killed 1)
+      ✓ api posts JSON and returns the confirmation on 201 (killed 2)
+      ✓ api returns field errors from a 400 (killed 2)
+      ✓ api falls back to a generic message for unusable error bodies (killed 7)
+      ✓ api reports a network failure as status 0 (killed 3)
+    App.test.tsx
+      ✓ App shows the conference name and a category limit hint (killed 16)
+      ✓ App reports a configuration load failure (killed 7)
+      ✓ App sends only the student fields, trimmed, and shows no options when none were chosen (killed 18)
+      ✓ App marks options and the captcha when the backend rejects them (killed 12)
+      ✓ App drops selections the new type does not offer (killed 6)
+    Captcha.test.tsx
+      ✓ Captcha test mode yields the fixed token and clears it again (killed 5)
+      ✓ Captcha shows its error next to the checkbox (killed 4)
+      ✓ Captcha loads the Google script once and renders the widget with the site key (killed 17)
+      ✓ Captcha renders immediately when the script is loaded and resets on request (killed 11)
+    validation.test.ts
+      ✓ validate accepts a complete external registration (killed 21)
+      ✓ validate requires only the fields of the chosen type (killed 2)
+      ✓ validate treats whitespace-only values as empty (killed 1)
+      ✓ validate rejects the email ana (killed 4)
+      ~ validate rejects the email ana@ (covered 46)
+      ~ validate rejects the email @example.si (covered 46)
+      ✓ validate rejects the email ana novak@example.si (killed 1)
+      ~ validate rejects the email ana@example (covered 46)
+      ✓ validate accepts trimmed email and Slovenian letters (killed 1)
+      ✓ validate limits lengths and control characters (killed 11)
+      ✓ validate requires mandatory consents only, and the captcha (killed 9)
+  tests/acceptance/registration-form.acceptance.test.tsx
+    ✓ registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked (killed 31)
+    ✓ registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type (killed 16)
+    ✓ registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category (killed 10)
+    ~ registration form (frozen acceptance tests) AC-003-04 the options offered follow the registration type (covered 166)
+    ✓ registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation (killed 58)
+    ✓ registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation (killed 10)
+    ✓ registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation (killed 11)
+    ✓ registration form (frozen acceptance tests) AC-004-03 empty required fields are reported before any request is sent (killed 5)
+    ~ registration form (frozen acceptance tests) AC-004-03 an invalid email is reported before any request is sent (covered 229)
+    ✓ registration form (frozen acceptance tests) AC-004-03 a missing mandatory consent is reported before any request is sent (killed 4)
+
+[Survived] StringLiteral
+src/api.ts:72:58
+-     const response = await fetch(url, { headers: { Accept: 'application/json' } });
++     const response = await fetch(url, { headers: { Accept: "" } });
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 14 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:72:48
+-     const response = await fetch(url, { headers: { Accept: 'application/json' } });
++     const response = await fetch(url, { headers: {} });
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 14 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:72:37
+-     const response = await fetch(url, { headers: { Accept: 'application/json' } });
++     const response = await fetch(url, {});
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:91:16
+-         message: typeof body.message === 'string' && body.message ? body.message : GENERIC_ERROR,
++         message: true && body.message ? body.message : GENERIC_ERROR,
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+    App marks options and the captcha when the backend rejects them
+  and 2 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:104:16
+-         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++         headers: {},
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:104:34
+-         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++         headers: { 'Content-Type': "", Accept: 'application/json' },
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:104:62
+-         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++         headers: { 'Content-Type': 'application/json', Accept: "" },
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 6 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:108:43
+-       return { ok: false, status: 0, error: { message: GENERIC_ERROR, errors: [] } };
++       return { ok: false, status: 0, error: {} };
+Tests ran:
+    api reports a network failure as status 0
+
+
+[Survived] ArrayDeclaration
+src/api.ts:108:77
+-       return { ok: false, status: 0, error: { message: GENERIC_ERROR, errors: [] } };
++       return { ok: false, status: 0, error: { message: GENERIC_ERROR, errors: ["Stryker was here"] } };
+Tests ran:
+    api reports a network failure as status 0
+
+
+[NoCoverage] BlockStatement
+src/App.tsx:139:20
+-         .catch(() => {
+-           if (current)
+-             setLoadError('The registration form could not be loaded. Please try again later.');
+-         });
++         .catch(() => {});
+
+[NoCoverage] ConditionalExpression
+src/App.tsx:140:13
+-           if (current)
++           if (true)
+
+[NoCoverage] ConditionalExpression
+src/App.tsx:140:13
+-           if (current)
++           if (false)
+
+[NoCoverage] StringLiteral
+src/App.tsx:141:24
+-             setLoadError('The registration form could not be loaded. Please try again later.');
++             setLoadError("");
+
+[Survived] ConditionalExpression
+src/App.tsx:65:15
+-           type={name === 'email' ? 'email' : 'text'}
++           type={false ? 'email' : 'text'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:65:15
+-           type={name === 'email' ? 'email' : 'text'}
++           type={true ? 'email' : 'text'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:65:15
+-           type={name === 'email' ? 'email' : 'text'}
++           type={name !== 'email' ? 'email' : 'text'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:65:24
+-           type={name === 'email' ? 'email' : 'text'}
++           type={name === "" ? 'email' : 'text'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:65:34
+-           type={name === 'email' ? 'email' : 'text'}
++           type={name === 'email' ? "" : 'text'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:65:44
+-           type={name === 'email' ? 'email' : 'text'}
++           type={name === 'email' ? 'email' : ""}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:66:23
+-           autoComplete={name === 'email' ? 'email' : 'off'}
++           autoComplete={true ? 'email' : 'off'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:66:23
+-           autoComplete={name === 'email' ? 'email' : 'off'}
++           autoComplete={false ? 'email' : 'off'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:66:23
+-           autoComplete={name === 'email' ? 'email' : 'off'}
++           autoComplete={name !== 'email' ? 'email' : 'off'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:66:32
+-           autoComplete={name === 'email' ? 'email' : 'off'}
++           autoComplete={name === "" ? 'email' : 'off'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:66:42
+-           autoComplete={name === 'email' ? 'email' : 'off'}
++           autoComplete={name === 'email' ? "" : 'off'}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:66:52
+-           autoComplete={name === 'email' ? 'email' : 'off'}
++           autoComplete={name === 'email' ? 'email' : ""}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:87:101
+-           Thank you, {confirmation.firstName} {confirmation.lastName}. Your registration reference is{' '}
++           Thank you, {confirmation.firstName} {confirmation.lastName}. Your registration reference is{""}
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    App sends only the student fields, trimmed, and shows no options when none were chosen
+
+
+[Survived] StringLiteral
+src/App.tsx:114:52
+-     const [captchaToken, setCaptchaToken] = useState('');
++     const [captchaToken, setCaptchaToken] = useState("Stryker was here!");
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:128:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:134:13
+-           if (!current) return;
++           if (false) return;
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:143:18
+-       return () => {
+-         current = false;
+-       };
++       return () => {};
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:144:17
+-         current = false;
++         current = true;
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ObjectLiteral
+src/App.tsx:150:23
+-       setErrors((e) => ({ ...e, captchaToken: undefined }));
++       setErrors((e) => ({}));
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:151:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] MethodExpression
+src/App.tsx:155:7
+-         CATEGORIES.map(({ category, label }) => ({
+-           category,
+-           label,
+-           limit: catalog?.categoryLimits[category],
+-           options: catalog?.options.filter((o) => o.category === category) ?? [],
+-         })).filter((g) => g.options.length > 0),
++         CATEGORIES.map(({
++     category,
++     label
++   }) => ({
++     category,
++     label,
++     limit: catalog?.categoryLimits[category],
++     options: catalog?.options.filter(o => o.category === category) ?? []
++   })),
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:159:77
+-           options: catalog?.options.filter((o) => o.category === category) ?? [],
++           options: catalog?.options.filter((o) => o.category === category) ?? ["Stryker was here"],
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:160:25
+-         })).filter((g) => g.options.length > 0),
++         })).filter((g) => true),
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:160:25
+-         })).filter((g) => g.options.length > 0),
++         })).filter((g) => g.options.length >= 0),
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ObjectLiteral
+src/App.tsx:166:23
+-       setErrors((e) => ({ ...e, [name]: undefined }));
++       setErrors((e) => ({}));
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] CallExpression
+src/App.tsx:177:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:178:9
+-       if (!catalog || submitting) return;
++       if (false) return;
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:178:9
+-       if (!catalog || submitting) return;
++       if (!catalog && submitting) return;
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:179:21
+-       setGeneralError('');
++       setGeneralError("Stryker was here!");
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:190:18
+-         firstName: '',
++         firstName: "Stryker was here!",
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:191:17
+-         lastName: '',
++         lastName: "Stryker was here!",
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:192:14
+-         email: '',
++         email: "Stryker was here!",
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 2 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:197:19
+-       setSubmitting(true);
++       setSubmitting(false);
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 2 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:199:19
+-       setSubmitting(false);
++       setSubmitting(true);
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:209:9
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (true) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] LogicalOperator
+src/App.tsx:209:9
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (result.error.errors.length === 0 && result.status >= 500) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] ConditionalExpression
+src/App.tsx:209:9
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (false || result.status >= 500) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] EqualityOperator
+src/App.tsx:209:9
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (result.error.errors.length !== 0 || result.status >= 500) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] ConditionalExpression
+src/App.tsx:209:45
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (result.error.errors.length === 0 || false) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] EqualityOperator
+src/App.tsx:209:45
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (result.error.errors.length === 0 || result.status > 500) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] EqualityOperator
+src/App.tsx:209:45
+-       if (result.error.errors.length === 0 || result.status >= 500) {
++       if (result.error.errors.length === 0 || result.status < 500) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] ConditionalExpression
+src/App.tsx:212:9
+-       if (fieldErrors.captchaToken || !config?.captchaTestMode) {
++       if (true) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] BooleanLiteral
+src/App.tsx:212:37
+-       if (fieldErrors.captchaToken || !config?.captchaTestMode) {
++       if (fieldErrors.captchaToken || config?.captchaTestMode) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+
+
+[Survived] OptionalChaining
+src/App.tsx:212:38
+-       if (fieldErrors.captchaToken || !config?.captchaTestMode) {
++       if (fieldErrors.captchaToken || !config.captchaTestMode) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+
+
+[Survived] StringLiteral
+src/App.tsx:213:23
+-         setCaptchaToken('');
++         setCaptchaToken("Stryker was here!");
+Tests ran:
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] ArrowFunction
+src/App.tsx:214:24
+-         setCaptchaResets((n) => n + 1);
++         setCaptchaResets(() => undefined);
+Tests ran:
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] ArithmeticOperator
+src/App.tsx:214:31
+-         setCaptchaResets((n) => n + 1);
++         setCaptchaResets((n) => n - 1);
+Tests ran:
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] StringLiteral
+src/App.tsx:218:86
+-     const title = config?.conferenceName ? `${config.conferenceName} – registration` : 'Registration';
++     const title = config?.conferenceName ? `${config.conferenceName} – registration` : "";
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:250:26
+-                   checked={type === value}
++                   checked={false}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] CallExpression
+src/App.tsx:253:19
+-                     setErrors({});
++                     ;
+Tests ran:
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-04 the options offered follow the registration type
+    App sends only the student fields, trimmed, and shows no options when none were chosen
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:277:14
+-               {group.limit !== undefined && <p className="hint">Choose at most {group.limit}.</p>}
++               {true && <p className="hint">Choose at most {group.limit}.</p>}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:284:52
+-                     aria-describedby={optionsError ? 'optionIds-error' : undefined}
++                     aria-describedby={optionsError ? "" : undefined}
+Tests ran:
+    App marks options and the captcha when the backend rejects them
+
+
+[Survived] ObjectLiteral
+src/App.tsx:287:39
+-                       setErrors((e) => ({ ...e, optionIds: undefined }));
++                       setErrors((e) => ({}));
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:295:10
+-           {optionsError && (
+-             <p className="error" id="optionIds-error">
+-               {optionsError}
+-             </p>
+-           )}
++           {optionsError || <p className="error" id="optionIds-error">
++               {optionsError}
++             </p>}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:301:21
+-           {catalog && catalog.consents.length > 0 && (
++           {catalog && true && (
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:301:21
+-           {catalog && catalog.consents.length > 0 && (
++           {catalog && catalog.consents.length >= 0 && (
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:305:57
+-                 const invalid = Boolean(consentError) && (c.mandatory || !consents.has(c.id));
++                 const invalid = Boolean(consentError) && (true);
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-03 a missing mandatory consent is reported before any request is sent
+
+
+[Survived] ConditionalExpression
+src/App.tsx:305:31
+-                 const invalid = Boolean(consentError) && (c.mandatory || !consents.has(c.id));
++                 const invalid = true;
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:305:57
+-                 const invalid = Boolean(consentError) && (c.mandatory || !consents.has(c.id));
++                 const invalid = Boolean(consentError) && (c.mandatory && !consents.has(c.id));
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-03 a missing mandatory consent is reported before any request is sent
+
+
+[Survived] BooleanLiteral
+src/App.tsx:305:72
+-                 const invalid = Boolean(consentError) && (c.mandatory || !consents.has(c.id));
++                 const invalid = Boolean(consentError) && (c.mandatory || consents.has(c.id));
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-03 a missing mandatory consent is reported before any request is sent
+
+
+[Survived] LogicalOperator
+src/App.tsx:305:31
+-                 const invalid = Boolean(consentError) && (c.mandatory || !consents.has(c.id));
++                 const invalid = Boolean(consentError) || c.mandatory || !consents.has(c.id);
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:312:49
+-                       aria-describedby={invalid ? 'consentIds-error' : undefined}
++                       aria-describedby={invalid ? "" : undefined}
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-03 a missing mandatory consent is reported before any request is sent
+
+
+[Survived] ObjectLiteral
+src/App.tsx:315:41
+-                         setErrors((e) => ({ ...e, consentIds: undefined }));
++                         setErrors((e) => ({}));
+Tests ran:
+    registration form (frozen acceptance tests) AC-004-01 an accepted registration shows the confirmation
+    registration form (frozen acceptance tests) AC-004-02 backend field errors are shown next to the fields and no confirmation
+    registration form (frozen acceptance tests) AC-004-02 a server error shows no confirmation
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:319:20
+-                     {c.mandatory && <span className="required"> (required)</span>}
++                     {true}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:319:20
+-                     {c.mandatory && <span className="required"> (required)</span>}
++                     {false}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:319:20
+-                     {c.mandatory && <span className="required"> (required)</span>}
++                     {c.mandatory || <span className="required"> (required)</span>}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:323:14
+-               {consentError && (
+-                 <p className="error" id="consentIds-error">
+-                   {consentError}
+-                 </p>
+-               )}
++               {true}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:323:14
+-               {consentError && (
+-                 <p className="error" id="consentIds-error">
+-                   {consentError}
+-                 </p>
+-               )}
++               {false}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:323:14
+-               {consentError && (
+-                 <p className="error" id="consentIds-error">
+-                   {consentError}
+-                 </p>
+-               )}
++               {consentError || <p className="error" id="consentIds-error">
++                   {consentError}
++                 </p>}
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:348:41
+-           <button type="submit" disabled={submitting || !catalog}>
++           <button type="submit" disabled={false}>
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:348:41
+-           <button type="submit" disabled={submitting || !catalog}>
++           <button type="submit" disabled={submitting && !catalog}>
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 12 more tests!
+
+
+[Survived] ObjectLiteral
+src/App.tsx:39:27
+-   const EMPTY: FormValues = {
+-     firstName: '',
+-     lastName: '',
+-     email: '',
+-     organization: '',
+-     studyInstitution: '',
+-     studyProgramme: '',
+-     studentId: '',
+-   };
++   const EMPTY: FormValues = {};
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:40:14
+-     firstName: '',
++     firstName: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:41:13
+-     lastName: '',
++     lastName: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:42:10
+-     email: '',
++     email: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:43:17
+-     organization: '',
++     organization: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:44:21
+-     studyInstitution: '',
++     studyInstitution: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:45:19
+-     studyProgramme: '',
++     studyProgramme: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:46:14
+-     studentId: '',
++     studentId: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:43:9
+-       if (testMode || !siteKey) return;
++       if (false) return;
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:43:9
+-       if (testMode || !siteKey) return;
++       if (testMode && !siteKey) return;
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:45:11
+-         if (!container.current || !window.grecaptcha || widget.current !== null) return;
++         if (false) return;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha renders immediately when the script is loaded and resets on request
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:45:11
+-         if (!container.current || !window.grecaptcha || widget.current !== null) return;
++         if ((!container.current || !window.grecaptcha) && widget.current !== null) return;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha renders immediately when the script is loaded and resets on request
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:45:11
+-         if (!container.current || !window.grecaptcha || widget.current !== null) return;
++         if (false || widget.current !== null) return;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha renders immediately when the script is loaded and resets on request
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:45:11
+-         if (!container.current || !window.grecaptcha || widget.current !== null) return;
++         if (!container.current && !window.grecaptcha || widget.current !== null) return;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha renders immediately when the script is loaded and resets on request
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:45:55
+-         if (!container.current || !window.grecaptcha || widget.current !== null) return;
++         if (!container.current || !window.grecaptcha || false) return;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha renders immediately when the script is loaded and resets on request
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:54:16
+-       } else if (!document.getElementById(SCRIPT_ID)) {
++       } else if (true) {
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:60:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:61:22
+-         script.defer = true;
++         script.defer = false;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+
+
+[Survived] ArrayDeclaration
+src/Captcha.tsx:64:6
+-     }, [testMode, siteKey, onToken]);
++     }, []);
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:67:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount > 0 && widget.current !== null || window.grecaptcha) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:67:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (true && window.grecaptcha) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:67:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount > 0 || widget.current !== null && window.grecaptcha) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:67:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (true && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] EqualityOperator
+src/Captcha.tsx:67:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount >= 0 && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] EqualityOperator
+src/Captcha.tsx:67:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount <= 0 && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    registration form (frozen acceptance tests) AC-001-08 every consent checkbox starts unchecked
+    registration form (frozen acceptance tests) AC-002-03 the fields follow the chosen registration type
+    registration form (frozen acceptance tests) AC-003-03 active options are shown grouped by category
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:67:27
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount > 0 && true && window.grecaptcha) {
+Tests ran:
+    App marks options and the captcha when the backend rejects them
+    Captcha renders immediately when the script is loaded and resets on request
+
+
+[Survived] StringLiteral
+src/Captcha.tsx:80:35
+-               aria-invalid={error ? 'true' : undefined}
++               aria-invalid={error ? "" : undefined}
+Tests ran:
+    App marks options and the captcha when the backend rejects them
+    Captcha shows its error next to the checkbox
+
+
+[Survived] Regex
+src/validation.ts:21:15
+-   const EMAIL = /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)+$/;
++   const EMAIL = /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)+/;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:21:15
+-   const EMAIL = /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)+$/;
++   const EMAIL = /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)$/;
+Ran all tests for this mutant.
+
+Ran 4.86 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  73.10 |   73.80 |      307 |         0 |        109 |        4 |        0 |
+ api.ts        |  81.25 |   81.25 |       39 |         0 |          9 |        0 |        0 |
+ App.tsx       |  65.42 |   66.53 |      157 |         0 |         79 |        4 |        0 |
+ Captcha.tsx   |  67.80 |   67.80 |       40 |         0 |         19 |        0 |        0 |
+ validation.ts |  97.26 |   97.26 |       71 |         0 |          2 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m02:30:57 (40924) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/04_Input_Files_Template/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m02:30:58 (40924) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/04_Input_Files_Template/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m02:30:58 (40924) INFO MutationTestExecutor[39m Done in 4 minutes and 43 seconds.

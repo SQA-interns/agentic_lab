@@ -39,6 +39,13 @@ class MailComposerTest {
 
     assertThat(mail.subject()).isEqualTo("New registration – K");
     assertThat(mail.text())
+        .contains("Reference: " + r.reference() + "\n")
+        .contains("Submitted at (UTC): " + r.submittedAt() + "\n")
+        .contains("First name: Luka\n")
+        .contains("Last name: Kovač\n")
+        .contains("Email: l@example.si\n")
+        .contains("- Workshops: Workshop A\n");
+    assertThat(mail.text())
         .contains("Type: Student")
         .contains("Study institution: UL")
         .contains("Study programme: RI")

@@ -1,0 +1,105 @@
+application.ExportService                          killed 0 / 1  survived 0  no-coverage 1
+application.MailComposer                           killed 22 / 22  survived 0  no-coverage 0
+application.NotificationService                    killed 12 / 14  survived 2  no-coverage 0
+application.OutgoingMail                           killed 3 / 3  survived 0  no-coverage 0
+application.RegistrationRejectedException          killed 1 / 1  survived 0  no-coverage 0
+application.RegistrationService$1                  killed 2 / 2  survived 0  no-coverage 0
+application.RegistrationService                    killed 5 / 5  survived 0  no-coverage 0
+config.AppProperties$Cors                          killed 3 / 3  survived 0  no-coverage 0
+config.AppProperties$Organizer                     killed 4 / 5  survived 1  no-coverage 0
+config.AppProperties$Recaptcha                     killed 0 / 1  survived 1  no-coverage 0
+config.AppProperties                               killed 2 / 2  survived 0  no-coverage 0
+config.ApplicationConfig$MailRetryJob              killed 0 / 1  survived 0  no-coverage 1
+config.ApplicationConfig                           killed 0 / 13  survived 0  no-coverage 13
+config.EnvironmentAliases                          killed 4 / 7  survived 0  no-coverage 3
+config.JsonErrors                                  killed 5 / 6  survived 1  no-coverage 0
+config.OrganizerTransportFilter                    killed 19 / 20  survived 0  no-coverage 1
+config.RateLimitFilter                             killed 22 / 24  survived 2  no-coverage 0
+config.RequestSizeFilter                           killed 12 / 12  survived 0  no-coverage 0
+config.SecurityConfig                              killed 0 / 15  survived 0  no-coverage 15
+config.StartupChecks                               killed 20 / 20  survived 0  no-coverage 0
+domain.ConferenceOption                            killed 3 / 3  survived 0  no-coverage 0
+domain.MailStatus                                  killed 3 / 3  survived 0  no-coverage 0
+domain.OptionsCatalog                              killed 10 / 10  survived 0  no-coverage 0
+domain.Registration                                killed 27 / 28  survived 0  no-coverage 1
+domain.RegistrationConsent                         killed 3 / 3  survived 0  no-coverage 0
+domain.RegistrationOption                          killed 3 / 3  survived 0  no-coverage 0
+domain.RegistrationSubmission                      killed 2 / 2  survived 0  no-coverage 0
+domain.RegistrationType                            killed 2 / 2  survived 0  no-coverage 0
+domain.RegistrationValidator                       killed 47 / 53  survived 6  no-coverage 0
+domain.ValidationResult                            killed 2 / 2  survived 0  no-coverage 0
+infrastructure.FileJsonCopyStore                   killed 17 / 18  survived 1  no-coverage 0
+infrastructure.JpaRegistrationStore                killed 0 / 4  survived 0  no-coverage 4
+infrastructure.JsonCopyDirectoryHealthIndicator    killed 0 / 2  survived 0  no-coverage 2
+infrastructure.OptionsFileLoader                   killed 47 / 52  survived 5  no-coverage 0
+infrastructure.PoiWorkbookWriter                   killed 15 / 18  survived 3  no-coverage 0
+infrastructure.RecaptchaVerifier                   killed 10 / 12  survived 0  no-coverage 2
+infrastructure.SmtpMailer                          killed 9 / 9  survived 0  no-coverage 0
+infrastructure.TestModeCaptchaVerifier             killed 3 / 3  survived 0  no-coverage 0
+TOTAL killed 339 / 404 = 83.9%
+--- survived / no coverage
+SURVIVED    domain.RegistrationValidator email:98 | replaced return value with &quot;&quot; for si/konferenca/registration/domain/RegistrationValidator::email
+SURVIVED    domain.RegistrationValidator email:102 | replaced return value with &quot;&quot; for si/konferenca/registration/domain/RegistrationValidator::email
+SURVIVED    domain.RegistrationValidator parsesStrictly:110 | removed call to jakarta/mail/internet/InternetAddress::validate
+SURVIVED    domain.RegistrationValidator parsesStrictly:111 | replaced boolean return with true for si/konferenca/registration/domain/RegistrationValidator::parsesStrictly
+SURVIVED    domain.RegistrationValidator required:82 | replaced return value with &quot;&quot; for si/konferenca/registration/domain/RegistrationValidator::required
+SURVIVED    domain.RegistrationValidator required:90 | replaced return value with &quot;&quot; for si/konferenca/registration/domain/RegistrationValidator::required
+SURVIVED    infrastructure.OptionsFileLoader consents:113 | removed call to si/konferenca/registration/infrastructure/OptionsFileLoader::require
+SURVIVED    infrastructure.OptionsFileLoader consents:117 | removed call to si/konferenca/registration/infrastructure/OptionsFileLoader::require
+SURVIVED    infrastructure.OptionsFileLoader limits:99 | replaced return value with Collections.emptyMap for si/konferenca/registration/infrastructure/OptionsFileLoader::limits
+SURVIVED    infrastructure.OptionsFileLoader load:44 | removed call to si/konferenca/registration/infrastructure/OptionsFileLoader::require
+SURVIVED    infrastructure.OptionsFileLoader options:54 | removed call to si/konferenca/registration/infrastructure/OptionsFileLoader::require
+NO_COVERAGE domain.Registration id:137 | replaced Long return value with 0L for si/konferenca/registration/domain/Registration::id
+SURVIVED    config.RateLimitFilter allow:61 | changed conditional boundary
+SURVIVED    config.RateLimitFilter lambda$allow$0:62 | changed conditional boundary
+NO_COVERAGE config.OrganizerTransportFilter isLoopback:47 | replaced boolean return with true for si/konferenca/registration/config/OrganizerTransportFilter::isLoopback
+SURVIVED    infrastructure.PoiWorkbookWriter write:50 | changed conditional boundary
+SURVIVED    infrastructure.PoiWorkbookWriter write:50 | negated conditional
+SURVIVED    infrastructure.PoiWorkbookWriter write:51 | removed call to org/apache/poi/ss/usermodel/Sheet::setColumnWidth
+SURVIVED    infrastructure.FileJsonCopyStore writable:70 | replaced boolean return with true for si/konferenca/registration/infrastructure/FileJsonCopyStore::writable
+NO_COVERAGE config.SecurityConfig corsSource:114 | negated conditional
+NO_COVERAGE config.SecurityConfig corsSource:116 | removed call to org/springframework/web/cors/CorsConfiguration::setAllowedOrigins
+NO_COVERAGE config.SecurityConfig corsSource:117 | removed call to org/springframework/web/cors/CorsConfiguration::setAllowedMethods
+NO_COVERAGE config.SecurityConfig corsSource:118 | removed call to org/springframework/web/cors/CorsConfiguration::setAllowedHeaders
+NO_COVERAGE config.SecurityConfig corsSource:119 | removed call to org/springframework/web/cors/UrlBasedCorsConfigurationSource::registerCorsConfiguration
+NO_COVERAGE config.SecurityConfig corsSource:121 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::corsSource
+NO_COVERAGE config.SecurityConfig organizerAccount:63 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::organizerAccount
+NO_COVERAGE config.SecurityConfig organizerTransportFilter:107 | removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setOrder
+NO_COVERAGE config.SecurityConfig organizerTransportFilter:108 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::organizerTransportFilter
+NO_COVERAGE config.SecurityConfig passwordEncoder:58 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::passwordEncoder
+NO_COVERAGE config.SecurityConfig rateLimitFilter:97 | removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setOrder
+NO_COVERAGE config.SecurityConfig rateLimitFilter:98 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::rateLimitFilter
+NO_COVERAGE config.SecurityConfig requestSizeFilter:74 | removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setOrder
+NO_COVERAGE config.SecurityConfig requestSizeFilter:75 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::requestSizeFilter
+NO_COVERAGE config.SecurityConfig securityFilterChain:53 | replaced return value with null for si/konferenca/registration/config/SecurityConfig::securityFilterChain
+SURVIVED    application.NotificationService deliver:77 | negated conditional
+SURVIVED    application.NotificationService deliver:78 | negated conditional
+NO_COVERAGE config.ApplicationConfig &lt;init&gt;:39 | removed call to si/konferenca/registration/config/StartupChecks::verify
+NO_COVERAGE config.ApplicationConfig captchaVerifier:65 | negated conditional
+NO_COVERAGE config.ApplicationConfig captchaVerifier:65 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::captchaVerifier
+NO_COVERAGE config.ApplicationConfig clock:45 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::clock
+NO_COVERAGE config.ApplicationConfig conferenceSettings:58 | negated conditional
+NO_COVERAGE config.ApplicationConfig conferenceSettings:55 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::conferenceSettings
+NO_COVERAGE config.ApplicationConfig jsonCopyDirectoryHealthIndicator:92 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::jsonCopyDirectoryHealthIndicator
+NO_COVERAGE config.ApplicationConfig jsonCopyStore:77 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::jsonCopyStore
+NO_COVERAGE config.ApplicationConfig mailRetryJob:97 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::mailRetryJob
+NO_COVERAGE config.ApplicationConfig mailer:82 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::mailer
+NO_COVERAGE config.ApplicationConfig optionsCatalog:50 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::optionsCatalog
+NO_COVERAGE config.ApplicationConfig registrationStore:72 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::registrationStore
+NO_COVERAGE config.ApplicationConfig workbookWriter:87 | replaced return value with null for si/konferenca/registration/config/ApplicationConfig::workbookWriter
+NO_COVERAGE infrastructure.RecaptchaVerifier verify:57 | removed call to java/lang/Thread::interrupt
+NO_COVERAGE infrastructure.RecaptchaVerifier verify:58 | replaced boolean return with true for si/konferenca/registration/infrastructure/RecaptchaVerifier::verify
+NO_COVERAGE config.EnvironmentAliases postProcessEnvironment:62 | negated conditional
+NO_COVERAGE config.EnvironmentAliases postProcessEnvironment:63 | removed call to org/springframework/core/env/MutablePropertySources::addAfter
+NO_COVERAGE config.EnvironmentAliases postProcessEnvironment:65 | removed call to org/springframework/core/env/MutablePropertySources::addLast
+SURVIVED    config.JsonErrors write:15 | removed call to jakarta/servlet/http/HttpServletResponse::setCharacterEncoding
+SURVIVED    config.AppProperties$Organizer toString:46 | replaced return value with &quot;&quot; for si/konferenca/registration/config/AppProperties$Organizer::toString
+NO_COVERAGE infrastructure.JpaRegistrationStore findAllOldestFirst:33 | replaced return value with Collections.emptyList for si/konferenca/registration/infrastructure/JpaRegistrationStore::findAllOldestFirst
+NO_COVERAGE infrastructure.JpaRegistrationStore findByReference:28 | replaced return value with Optional.empty for si/konferenca/registration/infrastructure/JpaRegistrationStore::findByReference
+NO_COVERAGE infrastructure.JpaRegistrationStore findNeedingMail:38 | replaced return value with Collections.emptyList for si/konferenca/registration/infrastructure/JpaRegistrationStore::findNeedingMail
+NO_COVERAGE infrastructure.JpaRegistrationStore insert:23 | replaced return value with null for si/konferenca/registration/infrastructure/JpaRegistrationStore::insert
+NO_COVERAGE infrastructure.JsonCopyDirectoryHealthIndicator health:18 | negated conditional
+NO_COVERAGE infrastructure.JsonCopyDirectoryHealthIndicator health:18 | replaced return value with null for si/konferenca/registration/infrastructure/JsonCopyDirectoryHealthIndicator::health
+SURVIVED    config.AppProperties$Recaptcha toString:59 | replaced return value with &quot;&quot; for si/konferenca/registration/config/AppProperties$Recaptcha::toString
+NO_COVERAGE config.ApplicationConfig$MailRetryJob retry:113 | removed call to si/konferenca/registration/application/NotificationService::retryDue
+NO_COVERAGE application.ExportService exportWorkbook:20 | replaced return value with null for si/konferenca/registration/application/ExportService::exportWorkbook

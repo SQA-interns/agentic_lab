@@ -244,6 +244,29 @@ class RegistrationValidatorTest {
             "t");
 
     assertThat(errorFields(s)).containsExactlyInAnyOrder("studyInstitution", "studentId");
+
+    RegistrationSubmission programmeOnly =
+        new RegistrationSubmission(
+            "EXTERNAL",
+            "Ana",
+            "Novak",
+            "a@example.si",
+            "IJS",
+            null,
+            "RI",
+            null,
+            List.of(),
+            List.of("data-processing"),
+            "t");
+    assertThat(errorFields(programmeOnly)).containsExactly("studyProgramme");
+  }
+
+  @ParameterizedTest
+  @ValueSource(
+      strings = {"ana<b@example.si", "a,b@example.si", "a\"b@example.si", "a(b)@example.si"})
+  void strictAddressParsingRejectsWhatThePatternLetsThrough(String email) {
+    assertThat(errorFields(external("Ana", email, List.of(), List.of("data-processing"))))
+        .containsExactly("email");
   }
 
   @Test

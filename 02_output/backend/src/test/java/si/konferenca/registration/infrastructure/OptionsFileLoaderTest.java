@@ -115,6 +115,42 @@ class OptionsFileLoaderTest {
     assertThatThrownBy(() -> OptionsFileLoader.load(f)).isInstanceOf(IllegalStateException.class);
   }
 
+  @ParameterizedTest
+  @ValueSource(
+      strings = {
+        "{\"options\":[1]," + CONSENTS + "}",
+        "{\"options\":[],\"consents\":[1,{\"id\":\"dp\",\"text\":\"t\",\"mandatory\":true}]}",
+        "{\"options\":[],\"consents\":[{\"id\":\"dp\",\"text\":\"t\",\"mandatory\":true,\"x\":1}]}",
+        "{\"options\":[],\"consents\":[{\"id\":\"DP\",\"text\":\"t\",\"mandatory\":true}]}",
+        "{\"options\":[],\"consents\":[{\"id\":\"dp\",\"text\":\"t\",\"mandatory\":true},"
+            + "{\"id\":\"ph\",\"text\":\"u\",\"mandatory\":\"no\"}]}",
+        "{\"options\":[],\"consents\":{\"id\":\"dp\"}}",
+        "5"
+      })
+  void rejectsASingleViolatedConsentOrOptionRule(String json) throws IOException {
+    Path f = file(json);
+
+    assertThatThrownBy(() -> OptionsFileLoader.load(f))
+        .isInstanceOf(IllegalStateException.class)
+        .hasMessageStartingWith("Invalid options file");
+  }
+
+  @Test
+  void acceptsValuesExactlyAtTheLimits() throws IOException {
+    OptionsCatalog c =
+        OptionsFileLoader.load(
+            file(
+                "{\"options\":[{\"id\":\"a\",\"name\":\""
+                    + "n".repeat(200)
+                    + "\",\"category\":\"MEAL\",\"active\":true}],\"categoryLimits\":{\"MEAL\":0},"
+                    + "\"consents\":[{\"id\":\"dp\",\"text\":\""
+                    + "t".repeat(1000)
+                    + "\",\"mandatory\":true}]}"));
+
+    assertThat(c.limit(Category.MEAL)).contains(0);
+    assertThat(c.option("a").orElseThrow().name()).hasSize(200);
+  }
+
   @Test
   void rejectsMissingFile() {
     assertThatThrownBy(() -> OptionsFileLoader.load(dir.resolve("missing.json")))

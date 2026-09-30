@@ -63,12 +63,52 @@ class FileJsonCopyStoreTest {
             "consents");
     assertThat(json.path("participant").path("firstName").asString()).isEqualTo("Žiga");
     assertThat(json.path("participant").has("organization")).isFalse();
+    assertThat(json.path("participant").path("studyInstitution").asString()).isEqualTo("UL");
+    assertThat(json.path("participant").path("studyProgramme").asString()).isEqualTo("RI");
+    assertThat(json.path("participant").path("studentId").asString()).isEqualTo("6320");
+    assertThat(json.path("options").get(0).path("id").asString()).isEqualTo("meal");
     assertThat(json.path("options").get(0).path("category").asString()).isEqualTo("MEAL");
     assertThat(json.path("consents").get(0).path("givenAt").asString())
         .isEqualTo("2026-09-30T10:00:00Z");
     assertThat(new String(bytes, StandardCharsets.UTF_8)).contains("Čeč");
     try (Stream<Path> files = Files.list(dir.resolve("copies"))) {
       assertThat(files).hasSize(1);
+    }
+  }
+
+  @Test
+  void externalCopyHasTheOrganizationOnly() {
+    FileJsonCopyStore store = new FileJsonCopyStore(dir);
+    Registration r =
+        Registration.accept(
+            UUID.randomUUID(),
+            new ParticipantDetails(
+                RegistrationType.EXTERNAL, "Ana", "Novak", "a@x.si", "IJS", null, null, null),
+            List.of(),
+            List.of(),
+            Instant.parse("2026-09-30T10:00:00Z"));
+
+    store.write(r);
+
+    JsonNode participant =
+        JsonMapper.builder().build().readTree(store.read(r.reference())).path("participant");
+    assertThat(participant.propertyNames())
+        .containsExactly("firstName", "lastName", "email", "organization");
+    assertThat(participant.path("organization").asString()).isEqualTo("IJS");
+  }
+
+  @Test
+  void aFailedMoveLeavesNoTemporaryFile() throws IOException {
+    FileJsonCopyStore store = new FileJsonCopyStore(dir);
+    Registration r = student();
+    Path blocking = Files.createDirectories(dir.resolve(r.reference() + ".json"));
+    Files.writeString(blocking.resolve("occupied"), "x");
+
+    assertThatThrownBy(() -> store.write(r)).isInstanceOf(StorageException.class);
+
+    try (Stream<Path> files = Files.list(dir)) {
+      assertThat(files.map(p -> p.getFileName().toString()))
+          .containsExactly(r.reference() + ".json");
     }
   }
 

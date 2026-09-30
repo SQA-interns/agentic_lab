@@ -99,6 +99,24 @@ class StartupChecksTest {
   }
 
   @Test
+  void oneMailAttemptIsEnough() {
+    AppProperties p =
+        new AppProperties(
+            "local",
+            "Conf",
+            "/o.json",
+            "/data",
+            16384,
+            new AppProperties.Mail("from@x.si", true, Duration.ofMinutes(5), 1),
+            new AppProperties.Organizer("u", "p".repeat(16), "o@x.si", true),
+            new AppProperties.Recaptcha(true, "", "", "https://verify"),
+            new AppProperties.Cors(""),
+            new AppProperties.RateLimit(20, 10));
+
+    assertThat(StartupChecks.problems(p)).isEmpty();
+  }
+
+  @Test
   void verifyThrowsWithoutRevealingValues() {
     AppProperties p = props("production", true, "site-value", "secret-value", true);
 

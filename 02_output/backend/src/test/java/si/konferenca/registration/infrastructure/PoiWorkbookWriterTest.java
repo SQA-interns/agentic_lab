@@ -57,6 +57,7 @@ class PoiWorkbookWriterTest {
       Row row = sheet.getRow(1);
       assertThat(row.getCell(2).getStringCellValue()).isEqualTo("EXTERNAL");
       assertThat(row.getCell(1).getStringCellValue()).isEqualTo("2026-09-30T10:00:00Z");
+      assertThat(row.getCell(6).getStringCellValue()).isEqualTo("IJS");
       assertThat(row.getCell(7).getStringCellValue()).isEmpty();
       assertThat(row.getCell(10).getStringCellValue()).isEqualTo("W one; W two");
       assertThat(row.getCell(11).getStringCellValue()).isEqualTo("Event");

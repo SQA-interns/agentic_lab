@@ -91,3 +91,14 @@ Re-run after the fix: backend 167 passed, 0 failed (67 frozen acceptance, 100 un
 | frontend | `validation.test.ts`, `api.test.ts`, `Captcha.test.tsx`, `App.test.tsx` | client rules (NFR-03), error handling, reCAPTCHA widget loading/reset, type switching |
 
 ## Final run (phase 6)
+
+| Suite | Passed | Failed | Log |
+|---|---|---|---|
+| Backend: frozen acceptance | 67 | 0 | `out/logs/phase6-final-backend.log` |
+| Backend: unit and integration (incl. ArchUnit A-1..A-7) | 117 | 0 | same |
+| Frontend: frozen acceptance | 10 | 0 | `out/logs/phase6-final-frontend-test.log` |
+| Frontend: unit | 27 | 0 | same |
+| End-to-end (compose stack) | 3 | 0 | `out/logs/phase6-final-e2e.log` |
+| **Total** | **224** | **0** | |
+
+Frozen test hashes match `docs/03_acceptance-manifest.sha256` (`out/logs/phase6-hash-check.log`). Coverage (unit and integration separately) and mutation scores: `docs/06_verification-report.md`, Measures.
