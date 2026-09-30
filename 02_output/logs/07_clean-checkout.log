@@ -1,0 +1,35 @@
+
+=== git clone (branch kyuhi/single-agent/sdd/v002, commit 54b1a75)
+cloned
+untracked build output present: 0
+
+=== Quick start 1: .env from secrets.env.example with generated test values
+keys filled: 4
+.env ignored by git: yes
+
+=== Backend README: build, check, test
+build: exit 0 (target/registration-backend-1.0.0.jar)
+check: exit 0
+test: exit 0 ([INFO] Tests run: 228, Failures: 0, Errors: 0, Skipped: 0)
+
+=== Frontend README: npm ci, check, test, build
+npm ci: exit 0
+check: exit 0
+test: exit 0 ( Tests 45 passed (45))
+build: exit 0
+
+=== Quick start 3: docker compose up (project name registration-clean so existing volumes are untouched)
+up: exit 0
+backend: Up 23 seconds (healthy)
+frontend: Up 12 seconds (healthy)
+mailpit: Up 29 seconds (healthy)
+postgres: Up 28 seconds (healthy)
+form: HTTP 200
+mailpit: HTTP 200
+readiness: {"status":"UP"}
+
+=== Frontend README: e2e against the stack
+e2e: exit 0 ( 8 passed (4.6s))
+
+=== Quick start 5: stop and remove the clean-checkout stack and its volumes
+down -v: exit 0
