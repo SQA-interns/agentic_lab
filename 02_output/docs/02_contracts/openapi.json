@@ -1,0 +1,282 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Conference registration API",
+    "version": "1.0.0",
+    "description": "REST API between the frontend or organizer and the backend (architecture.md, Interfaces). All paths are under /api. Every error response uses the Error schema. Every response carries the security headers listed in 02_specification.md section 7."
+  },
+  "servers": [{ "url": "/api" }],
+  "paths": {
+    "/options": {
+      "get": {
+        "operationId": "getOptions",
+        "summary": "Active conference options and consents (AC-003-01, AC-003-02)",
+        "responses": {
+          "200": {
+            "description": "Active options only, in configuration order; all configured consents",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OptionsResponse" } } }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/config": {
+      "get": {
+        "operationId": "getClientConfig",
+        "summary": "Public client configuration: reCAPTCHA site key and test mode (AR-07)",
+        "responses": {
+          "200": {
+            "description": "Client configuration",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ClientConfig" } } }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/registrations": {
+      "post": {
+        "operationId": "createRegistration",
+        "summary": "Submit a registration (US-001, US-002, US-005, US-006, US-007)",
+        "description": "Accepted only after the database row and the JSON copy are both written (AR-05). Emails are sent after storage; an email failure does not change the response (D-08).",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationRequest" } } }
+        },
+        "responses": {
+          "201": {
+            "description": "Registration accepted and stored",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Registration" } } }
+          },
+          "400": { "$ref": "#/components/responses/ValidationFailed" },
+          "409": { "$ref": "#/components/responses/Duplicate" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "415": { "$ref": "#/components/responses/ValidationFailed" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/organizer/registrations.xlsx": {
+      "get": {
+        "operationId": "exportRegistrations",
+        "summary": "Excel export of all registrations for organizers (US-008)",
+        "security": [{ "organizerBasic": [] }],
+        "responses": {
+          "200": {
+            "description": "Workbook with sheet 'Registrations' (columns: 02_specification.md section 5.4)",
+            "headers": {
+              "Content-Disposition": { "schema": { "type": "string", "const": "attachment; filename=\"registrations.xlsx\"" } },
+              "Cache-Control": { "schema": { "type": "string", "const": "no-store" } }
+            },
+            "content": {
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "summary": "Aggregate health (ES-09, NFR-04)",
+        "responses": {
+          "200": { "description": "UP", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } },
+          "503": { "description": "DOWN", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } }
+        }
+      }
+    },
+    "/health/liveness": {
+      "get": {
+        "operationId": "liveness",
+        "responses": {
+          "200": { "description": "UP", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } }
+        }
+      }
+    },
+    "/health/readiness": {
+      "get": {
+        "operationId": "readiness",
+        "responses": {
+          "200": { "description": "UP", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } },
+          "503": { "description": "not ready", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "organizerBasic": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "ORGANIZER_USERNAME / ORGANIZER_PASSWORD. Refused with 403 over plain HTTP while organizer HTTPS-only access is on (SR-06)."
+      }
+    },
+    "responses": {
+      "ValidationFailed": {
+        "description": "Invalid request; fieldErrors names each offending field",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "Duplicate": {
+        "description": "A registration with this email already exists (D-10); fieldErrors contains email",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "PayloadTooLarge": {
+        "description": "Request body larger than the configured limit",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "RateLimited": {
+        "description": "Too many requests from this client in the current minute",
+        "headers": { "Retry-After": { "schema": { "type": "integer" } } },
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "Unauthorized": {
+        "description": "Missing or wrong organizer credentials",
+        "headers": { "WWW-Authenticate": { "schema": { "type": "string" } } },
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "Forbidden": {
+        "description": "Organizer access over plain HTTP while HTTPS-only access is on",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "InternalError": {
+        "description": "Generic failure; no internal details",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      }
+    },
+    "schemas": {
+      "Category": { "type": "string", "enum": ["workshop", "event", "meal", "other"] },
+      "RegistrationType": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+      "Option": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/Category" }
+        }
+      },
+      "Consent": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "required"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "required": { "type": "boolean" }
+        }
+      },
+      "OptionsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["options", "consents"],
+        "properties": {
+          "options": { "type": "array", "items": { "$ref": "#/components/schemas/Option" } },
+          "consents": { "type": "array", "items": { "$ref": "#/components/schemas/Consent" } }
+        }
+      },
+      "ClientConfig": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["recaptchaSiteKey", "recaptchaTestMode", "conferenceName"],
+        "properties": {
+          "recaptchaSiteKey": { "type": "string", "description": "Empty in test mode" },
+          "recaptchaTestMode": { "type": "boolean" },
+          "conferenceName": { "type": "string" }
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Unknown properties give 400. Text is trimmed; after trimming, required text must be non-empty, within maxLength and contain no control characters (CR, LF, tab, other C0/C1). Fields that do not belong to the type must be absent or null (AC-001-14, AC-002-02).",
+        "required": ["type", "firstName", "lastName", "email", "optionIds", "consents", "recaptchaToken"],
+        "properties": {
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "firstName": { "type": "string", "maxLength": 100 },
+          "lastName": { "type": "string", "maxLength": 100 },
+          "email": { "type": "string", "maxLength": 254, "description": "local@domain.tld; no whitespace; compared case-insensitively for duplicates" },
+          "organization": { "type": ["string", "null"], "maxLength": 200, "description": "EXTERNAL only, required there" },
+          "studyInstitution": { "type": ["string", "null"], "maxLength": 200, "description": "STUDENT only, required there" },
+          "studyProgramme": { "type": ["string", "null"], "maxLength": 200, "description": "STUDENT only, required there" },
+          "studentId": { "type": ["string", "null"], "maxLength": 50, "description": "STUDENT only, required there" },
+          "optionIds": {
+            "type": "array",
+            "maxItems": 100,
+            "uniqueItems": true,
+            "items": { "type": "string" },
+            "description": "Active option ids; may be empty (D-09)"
+          },
+          "consents": {
+            "type": "array",
+            "maxItems": 20,
+            "uniqueItems": true,
+            "items": { "type": "string" },
+            "description": "Ids of the consents the participant gave; must include every required consent"
+          },
+          "recaptchaToken": { "type": "string", "maxLength": 4000 }
+        }
+      },
+      "GivenConsent": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Registration": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "submittedAt", "firstName", "lastName", "email", "options", "consents"],
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "submittedAt": { "type": "string", "format": "date-time" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "email": { "type": "string" },
+          "organization": { "type": "string" },
+          "studyInstitution": { "type": "string" },
+          "studyProgramme": { "type": "string" },
+          "studentId": { "type": "string" },
+          "options": { "type": "array", "items": { "$ref": "#/components/schemas/Option" } },
+          "consents": { "type": "array", "items": { "$ref": "#/components/schemas/GivenConsent" } }
+        }
+      },
+      "FieldError": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "message"],
+        "properties": {
+          "field": { "type": "string", "description": "Request property name, e.g. email, optionIds, consents, recaptchaToken" },
+          "message": { "type": "string" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["status", "error", "message", "fieldErrors"],
+        "properties": {
+          "status": { "type": "integer" },
+          "error": {
+            "type": "string",
+            "enum": ["validation_failed", "duplicate_registration", "payload_too_large", "unsupported_media_type", "rate_limited", "unauthorized", "forbidden", "not_found", "internal_error"]
+          },
+          "message": { "type": "string", "description": "Human-readable, no internal details" },
+          "fieldErrors": { "type": "array", "items": { "$ref": "#/components/schemas/FieldError" } }
+        }
+      },
+      "Health": {
+        "type": "object",
+        "required": ["status"],
+        "properties": { "status": { "type": "string", "enum": ["UP", "DOWN", "OUT_OF_SERVICE", "UNKNOWN"] } }
+      }
+    }
+  }
+}
