@@ -135,7 +135,7 @@
 2026-09-30T12:46:07.811+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:09.107+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 7c1240ca-e6be-4bd6-a1ee-f918546840c8
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -211,7 +211,7 @@ expected: 201
 2026-09-30T12:46:26.237+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:26.514+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 7000a409-24e3-431e-a71e-b42c1c4a7170
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -336,7 +336,7 @@ expected: 201
 2026-09-30T12:46:27.890+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:28.126+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 787bb654-2b41-41c0-b30c-a351a9a4cbf8
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -3094,7 +3094,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" doe
 2026-09-30T12:46:30.711+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:30.902+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: e5becab5-0502-4807-af5f-edf3edd56ce2
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -3154,7 +3154,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:32.755+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:32.937+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 1fa7edcc-4c23-4c08-84ad-5258becebda6
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -3215,7 +3215,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:40.689+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:40.855+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 2f4c13f1-be8f-49bc-998f-1a647dc71f11
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -3270,7 +3270,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:42.602+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:42.735+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: d726cd8a-15a9-4d2c-88ea-f5ecf7f143c1
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -3383,7 +3383,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" doe
 2026-09-30T12:46:43.568+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:43.703+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 59c6f54d-4ae6-4199-a6f7-d9ec46e9c83a
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -4949,7 +4949,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" doe
 2026-09-30T12:46:45.442+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:45.605+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 55edd987-0e59-4543-9700-bf7c4f67fcec
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5009,7 +5009,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:46.632+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:46.846+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 5f6cb5aa-340f-421e-8d8a-bbf64aa9b209
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5091,7 +5091,7 @@ expected: 429
 2026-09-30T12:46:48.251+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:48.388+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 7fbd8434-3e21-457d-af98-3a8bd5a4b1cc
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5197,7 +5197,7 @@ expected: 201
 2026-09-30T12:46:52.193+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:52.308+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 8656f568-61ce-4605-a080-12e11fe69ee5
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5272,7 +5272,7 @@ to be greater than or equal to:
 2026-09-30T12:46:53.999+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:54.169+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 660045a3-de01-4de6-9428-8b5391b7be4e
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5376,7 +5376,7 @@ expected: 200
 2026-09-30T12:46:55.461+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:55.627+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 25a1bd17-0ac9-468c-9ad6-c5b9d1616966
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5433,7 +5433,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:56.699+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:56.954+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 393844d6-075c-4308-9954-0b7a9bd864ca
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5490,7 +5490,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:57.968+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:58.152+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 5c73c265-7b19-42d7-aa52-b8a1d7a5f51f
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5547,7 +5547,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:46:59.142+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:46:59.286+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 60103e89-d365-4496-8745-41ac24c163f0
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5604,7 +5604,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:47:00.287+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:47:00.456+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 02ccec7b-dbf1-4b6b-a47d-e31b0b3462a5
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5664,7 +5664,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:47:01.856+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:47:02.119+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 9420c1aa-7943-4df1-ae9f-bb6b7ff3b453
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5721,7 +5721,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:47:06.557+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:47:06.694+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 9461c3c6-4e0e-4077-8976-53af1eba228a
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
@@ -5781,7 +5781,7 @@ This generated password is for development use only. Your security configuration
 2026-09-30T12:47:10.236+02:00  INFO 1817604 --- [conference-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2026-09-30T12:47:10.977+02:00  WARN 1817604 --- [conference-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 507f8f81-83f8-4f79-a27b-4eb1e651dd0f
+Using generated security password: <redacted by agent, F-03>
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
