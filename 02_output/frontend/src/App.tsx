@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchConfig, fetchOptions } from "./api";
+import { Confirmation } from "./Confirmation";
 import { RegistrationForm } from "./RegistrationForm";
 import type { ClientConfig, OptionsResponse, Registration } from "./types";
 
@@ -38,7 +39,7 @@ export function App() {
     <main>
       <h1>Registration: {loaded.config.conferenceName}</h1>
       {registration ? (
-        <p role="status">Registration received.</p>
+        <Confirmation registration={registration} />
       ) : (
         <RegistrationForm
           config={loaded.config}
