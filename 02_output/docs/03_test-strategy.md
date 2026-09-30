@@ -72,3 +72,23 @@ Classification: no failures, so nothing to classify. Earlier, during phase 4, on
 Unit test scope (phase 5): validation rules (all field, option, consent and token branches), the registration use case with mocked ports (order of storage, copy, commit and emails; rollback and copy removal on failure; email failures swallowed), options file validation (17 invalid variants), JSON copy writing, Google verifier against a local HTTP stub (encoding, failure modes), email building (headers, charset, attachment bytes), workbook cells, rate-limit windows, request-size stream counting, HTTPS filter, error mapping, startup checks, and ArchUnit rules A1 to A6. Frontend: validation, API client status mapping, and each component (options, consents, reCAPTCHA both modes, form, confirmation, app loading).
 
 ## Final run (phase 6)
+
+Run on 2026-09-30 after the phase 6 fix loops (F-01, F-05, F-06, F-09): **281 passed, 0 failed**.
+
+| Level | Passed | Failed | Log |
+|---|---|---|---|
+| Backend acceptance (frozen) | 105 | 0 | `logs/06_final-run-backend.log` |
+| Backend unit, integration and architecture | 123 | 0 | `logs/06_final-run-backend.log` |
+| Frontend unit and component | 45 | 0 | `logs/06_final-run-frontend.log` |
+| End-to-end (frozen) | 8 | 0 | `logs/06_final-run-e2e.log` |
+
+Measures:
+
+| Measure | Backend | Frontend |
+|---|---|---|
+| Line / branch coverage, unit (and integration) tests | 81.7 % / 92.7 % | 92.4 % / 99.2 % |
+| Line / branch coverage, acceptance tests | 91.3 % / 77.2 % | e2e not instrumented |
+| Line / branch coverage, all backend tests | 96.6 % / 95.9 % | — |
+| Mutation score (unit tests; validation, security, persistence and business-rule code included) | 84 % (PIT, 273/325, test strength 96 %) | 84.2 % (Stryker) |
+
+Changes to non-frozen tests in phase 6: unit tests strengthened for F-05 and F-06 (no assertion weakened); one integration test added for F-09.
