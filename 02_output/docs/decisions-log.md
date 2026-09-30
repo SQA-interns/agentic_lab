@@ -107,5 +107,5 @@
 - Type: blocking
 - Trigger: `backend/src/test/java/si/konferenca/registration/acceptance/StorageAcceptanceTest.java` (frozen, `03_acceptance-manifest.sha256`) line 46 and the consent loop cast `row.get("submitted_at")` and `c.get("given_at")` to `java.time.OffsetDateTime`. The support class `Database` reads values with `ResultSet.getObject(int)`, for which the PostgreSQL JDBC driver (42.7.13) returns `java.sql.Timestamp` for `TIMESTAMPTZ` columns. The test therefore fails with `ClassCastException` whatever the implementation does; the schema contract (`database-schema.sql`) requires `TIMESTAMPTZ`. All other assertions of AC-005-01 are reached only after the cast.
 - Options: 1. correct the test: replace the three casts with a conversion `((java.sql.Timestamp) value).toInstant().atOffset(ZoneOffset.UTC)` (same assertions, no weakening), then regenerate the manifest line for this file in a separate commit that names D-12 (default); 2. leave the test failing and release with AC-005-01 unverified by its acceptance test; 3. other
-- Human response: none
-- Resolution: pending (waiting for the human)
+- Human response: option 1 approved ("Fix the cast"), 2026-09-30T15:13:22Z
+- Resolution: 1 (two casts replaced by a Timestamp conversion; manifest line updated in its own commit)
