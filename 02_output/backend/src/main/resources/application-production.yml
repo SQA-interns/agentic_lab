@@ -1,0 +1,10 @@
+# Production: no local defaults for environment-specific settings (02_contracts/configuration.md).
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+app:
+  options-file: ${OPTIONS_FILE}

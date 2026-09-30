@@ -31,7 +31,7 @@ public class SecurityConfig {
             auth ->
                 auth.requestMatchers("/api/health", "/api/health/**", "/error")
                     .permitAll()
-                    .requestMatchers(HttpMethod.GET, "/api/options")
+                    .requestMatchers(HttpMethod.GET, "/api/options", "/api/config")
                     .permitAll()
                     .anyRequest()
                     .denyAll());
