@@ -326,6 +326,11 @@
       "sha": "283c6c26ccb67a0ebc86582a7b269125a5931d00",
       "phase": 6,
       "message": "Phase 6: verification report, fix loops 1-3 (F-01, F-02, F-05), D-18 raised"
+    },
+    {
+      "sha": "a1ac0731608cbd7dbb842ac4acd3f7453a27d035",
+      "phase": 6,
+      "message": "Phase 6 gate: F-07 suppressed as false positive (D-18, D-19)"
     }
   ],
   "usage": {
