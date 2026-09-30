@@ -60,8 +60,9 @@
     }
   ],
   "firstTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 39,
+    "failed": null,
+    "failedReason": "Backend test sources did not compile (defect in the non-frozen unit test NotificationServiceTest: final FakeStore subclassed); backend suite not executed. Frontend unit+acceptance 36/36 passed, e2e 3/3 passed."
   },
   "finalTestRun": {
     "passed": null,
@@ -231,6 +232,11 @@
       "sha": "3af26d767568114d087024deab1d78c3684a9c8e",
       "phase": 4,
       "message": "Frontend form, container images and local compose stack (AC-001-08, AC-002-03, AC-003-03, AC-004-01..03, NFR-03, NFR-04, SB-10, SB-11)"
+    },
+    {
+      "sha": "18df076448c5d0cae18b94424cafee78470868e6",
+      "phase": 4,
+      "message": "Phase 4 gate: progress and run log"
     }
   ],
   "usage": {

@@ -67,4 +67,27 @@ Before freezing, the e2e export test was changed from "refused without credentia
 
 ## First complete run (before any fix)
 
+Phase 5, all levels together, before any fix (logs: `out/logs/phase5-first-run-backend.log`, `phase5-first-run-frontend.log`, `phase5-first-run-e2e.log`).
+
+| Suite | Result | Failure class |
+|---|---|---|
+| Backend (unit, ArchUnit, frozen acceptance) | not executed: test sources did not compile | Defect in a non-frozen test: `NotificationServiceTest.FakeStore` was declared `final` but subclassed in `unknownReferenceAndStoreErrorsNeverThrow`. Fixed the test (removed `final`); no production code changed. |
+| Frontend (unit and frozen acceptance, Vitest) | 36 passed, 0 failed | — |
+| End-to-end (Playwright against the compose stack) | 3 passed, 0 failed | — |
+
+Re-run after the fix: backend 167 passed, 0 failed (67 frozen acceptance, 100 unit/integration including 8 ArchUnit rules). The frontend type check then flagged an untyped mock in the non-frozen `src/api.test.ts` (defect in a non-frozen test, fixed by typing `vi.fn`); tests unchanged at 36 passed. No implementation defect and no frozen test was involved.
+
+### Unit and integration tests written in phase 5
+
+| Component | Tests | Covers |
+|---|---|---|
+| backend | `ArchitectureTest` | A-1 to A-7 (AR-02, AR-03, ES-01, DoD-04) |
+| backend | `RegistrationValidatorTest`, `RegistrationTest` | validation rules BR-01..BR-05, SR-04, SR-05; mail status and abandonment (D-11) |
+| backend | `OptionsFileLoaderTest` | options configuration and its rejection rules (AR-04, S-5) |
+| backend | `FileJsonCopyStoreTest`, `PoiWorkbookWriterTest` | JSON copy shape, atomic write and cleanup; workbook columns, string cells (formula-like input) |
+| backend | `StartupChecksTest`, `FiltersTest`, `EnvironmentAliasesTest` | S-1..S-4, request size, rate limit windows, SR-06 loopback rule, environment mapping |
+| backend | `RegistrationServiceTest`, `NotificationServiceTest`, `MailComposerTest` | AR-05 ordering and rollback cleanup, captcha last, retry/abandon, mail content (SR-05, SR-07) |
+| backend | `RecaptchaVerifierTest`, `SmtpMailerTest` | SR-01 adapter edge cases (non-200, bad JSON, unreachable), MIME structure |
+| frontend | `validation.test.ts`, `api.test.ts`, `Captcha.test.tsx`, `App.test.tsx` | client rules (NFR-03), error handling, reCAPTCHA widget loading/reset, type switching |
+
 ## Final run (phase 6)
