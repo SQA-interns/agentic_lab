@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import si.konferenca.registration.settings.AppProperties;
+import si.konferenca.registration.web.OrganizerHttpsFilter;
 import si.konferenca.registration.web.RateLimitFilter;
 import si.konferenca.registration.web.RequestSizeFilter;
 
@@ -27,6 +28,16 @@ public class FilterConfig {
         new FilterRegistrationBean<>(new RequestSizeFilter(properties.maxRequestBytes()));
     bean.addUrlPatterns("/api/*");
     bean.setOrder(-250);
+    return bean;
+  }
+
+  @Bean
+  FilterRegistrationBean<OrganizerHttpsFilter> organizerHttpsFilter(AppProperties properties) {
+    FilterRegistrationBean<OrganizerHttpsFilter> bean =
+        new FilterRegistrationBean<>(new OrganizerHttpsFilter());
+    bean.addUrlPatterns("/api/organizer/*");
+    bean.setOrder(-200);
+    bean.setEnabled(properties.organizer().httpsOnly());
     return bean;
   }
 }
