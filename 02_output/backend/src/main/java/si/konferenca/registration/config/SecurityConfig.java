@@ -33,6 +33,8 @@ public class SecurityConfig {
                     .permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/options", "/api/config")
                     .permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/registrations")
+                    .permitAll()
                     .anyRequest()
                     .denyAll());
     return http.build();

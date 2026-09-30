@@ -10,17 +10,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.OrderColumn;
+import jakarta.persistence.PostLoad;
+import jakarta.persistence.PostPersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.data.domain.Persistable;
 
 /** An accepted registration (BR-07); personal data per security-requirements.md. */
 @Entity
 @Table(name = "registration")
-public class Registration {
+public class Registration implements Persistable<UUID> {
 
   @Id private UUID id;
 
@@ -66,6 +70,8 @@ public class Registration {
   @OrderBy("consentId")
   private List<GivenConsent> consents = new ArrayList<>();
 
+  @Transient private boolean fresh = true;
+
   protected Registration() {}
 
   /** Participant details; exactly the fields of the registration type are non-null. */
@@ -99,8 +105,21 @@ public class Registration {
     this.consents = new ArrayList<>(consents);
   }
 
+  @Override
   public UUID getId() {
     return id;
+  }
+
+  /** New until persisted or loaded, so saving inserts without a prior select. */
+  @Override
+  public boolean isNew() {
+    return fresh;
+  }
+
+  @PostPersist
+  @PostLoad
+  void markStored() {
+    fresh = false;
   }
 
   public RegistrationType getType() {

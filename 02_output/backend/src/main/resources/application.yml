@@ -5,6 +5,9 @@ spring:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/registration}
     username: ${DATABASE_USER:registration}
     password: ${POSTGRES_PASSWORD:}
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
   jpa:
     open-in-view: false
     hibernate:
