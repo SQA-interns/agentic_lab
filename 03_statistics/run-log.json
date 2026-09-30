@@ -6,9 +6,9 @@
   "templateVersion": "1.0",
   "transcript": "C:/Users/sense/.claude/projects/E--13---Lab-Projects-04-Input-Files-Template-agentic-lab/8de1b212-9421-4e25-a934-639d495eff4c.jsonl",
   "startCommit": "8b50617e02984c25f0918a04f27dfb560c4695c6",
-  "finalCommit": null,
+  "finalCommit": "9f0023349201860685b7c1fd843483b7fdc3f63a",
   "start": "2026-09-29T23:10:30Z",
-  "end": null,
+  "end": "2026-09-30T07:56:29Z",
   "phases": [
     {
       "phase": 0,
@@ -56,7 +56,7 @@
       "phase": 7,
       "name": "release",
       "start": "2026-09-30T07:49:06Z",
-      "end": null
+      "end": "2026-09-30T07:56:29Z"
     }
   ],
   "firstTestRun": {
@@ -336,6 +336,11 @@
       "sha": "1a3cea5fcdb3614241fc00cb88752b4c287d0712",
       "phase": 7,
       "message": "Phase 7: READMEs and release notes (ES-05, ES-06, DoD-09)"
+    },
+    {
+      "sha": "9f0023349201860685b7c1fd843483b7fdc3f63a",
+      "phase": 7,
+      "message": "Phase 7: clean-checkout check (DoD-08), README long-path note, gate passed"
     }
   ],
   "usage": {
