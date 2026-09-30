@@ -25,7 +25,7 @@ Run `conference-single-sdd-001`, branch `run/single-sdd/conference-001`, 2026-09
 | DoD-P02 Catalog restart; unchecked mandatory synthetic consent; absent rejected, given accepted | PASS | AC-003-02 (restart with edited file), AC-001-07/AC-002-07, e2e "unchecked consent", runtime demo catalog change |
 | DoD-P03 Persistence/duplicate/SMTP failures recover; authorized Excel covers both forms; unauthorized reveals none | PASS | AC-005-02/03/04/05, AC-004-03/04, AC-006-02/AC-007-02 (real Mailpit on the recovered port), AC-008-01…05 (parsed workbook), runtime demo (outbox PENDING → SENT after Mailpit restart) |
 | DoD-P04 Contracts validate semantically; protected helpers/config and executed cases cannot bypass frozen tests | PASS | `npm run contracts` (OpenAPI validity, examples, schema cross-checks); e2e `api-contract.spec.ts` validates live responses against the schemas; acceptance support classes, test resources and `playwright.config.ts` are in the manifest; inventory as in DoD-11 |
-| DoD-P05 Scoped commits with AC/check IDs; history preserved | PASS | 21 commits on the run branch, none rewritten (see Traceability); fixes carry F/D IDs |
+| DoD-P05 Scoped commits with AC/check IDs; history preserved | PASS | Scoped commits per phase document set, feature slice and fix (`git log 52eb3ed..run/single-sdd/conference-001`), none rewritten; fixes carry F/D IDs, features carry AC IDs |
 | DoD-P06 Guides distinguish local substitutes from real TLS/captcha/SMTP | PASS | `README.md` "Local substitutes vs production"; backend README configuration table; release notes manual checklist; clean-checkout run |
 
 ## Security review (SB / SR)
