@@ -1,0 +1,13 @@
+Duplications detection: Found 0 exact clones with 0(0%) duplicated lines in 25 (4 formats) files.
+│ tsx        │ 9              │ 769         │ 8028         │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ css        │ 1              │ 60          │ 310          │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ Total:     │ 25             │ 1631        │ 16653        │ 0            │ 0 (0%)           │ 0 (0%)            │
+└────────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+Found 0 clones.
+time: 134.719ms
+
+💡 Auto-refactor with AI: npx skills add kucherenko/jscpd
+🎩 New: Gangsta Agents — discipline your AI coding → gangsta.page
+💖 Support jscpd project → https://opencollective.com/jscpd

@@ -1,0 +1,54 @@
+RegistrationForm.tsx:80 NoCoverage StringLiteral => ""
+RegistrationForm.tsx:28 Survived ArrowFunction => () => undefined
+RegistrationForm.tsx:28 Survived ConditionalExpression => false
+RegistrationForm.tsx:42 Survived ArrayDeclaration => ["Stryker was here"]
+RegistrationForm.tsx:34 Survived ArrayDeclaration => ["Stryker was here"]
+RegistrationForm.tsx:48 Survived CallExpression => ;
+RegistrationForm.tsx:47 Survived CallExpression => ;
+RegistrationForm.tsx:67 Survived ArrowFunction => () => undefined
+RegistrationForm.tsx:67 Survived ArithmeticOperator => n - 1
+RegistrationForm.tsx:79 Survived ConditionalExpression => false
+RegistrationForm.tsx:79 Survived ConditionalExpression => true
+RegistrationForm.tsx:79 Survived EqualityOperator => type !== "EXTERNAL"
+RegistrationForm.tsx:80 Survived ArrowFunction => () => undefined
+RegistrationForm.tsx:79 Survived StringLiteral => ""
+RegistrationForm.tsx:89 Survived ConditionalExpression => false
+RegistrationForm.tsx:89 Survived StringLiteral => ""
+api.ts:8 Survived ObjectLiteral => {}
+api.ts:8 Survived ObjectLiteral => {}
+api.ts:8 Survived StringLiteral => ""
+api.ts:34 Survived StringLiteral => ""
+api.ts:43 Survived ConditionalExpression => false
+App.tsx:18 Survived ArrayDeclaration => ["Stryker was here"]
+ConsentList.tsx:14 Survived StringLiteral => ""
+Recaptcha.tsx:41 Survived LogicalOperator => container.current && window.grecaptcha || widgetId.current === null
+Recaptcha.tsx:41 Survived LogicalOperator => container.current || window.grecaptcha
+Recaptcha.tsx:41 Survived ConditionalExpression => true
+Recaptcha.tsx:41 Survived ConditionalExpression => true
+Recaptcha.tsx:41 Survived ConditionalExpression => true
+Recaptcha.tsx:51 Survived ConditionalExpression => true
+Recaptcha.tsx:57 Survived BooleanLiteral => false
+Recaptcha.tsx:70 Survived StringLiteral => ""
+Recaptcha.tsx:63 Survived ConditionalExpression => true
+Recaptcha.tsx:63 Survived LogicalOperator => resetCount > 0 || !testMode
+Recaptcha.tsx:63 Survived LogicalOperator => resetCount > 0 && !testMode || window.grecaptcha
+Recaptcha.tsx:60 Survived ArrayDeclaration => []
+Recaptcha.tsx:65 Survived StringLiteral => "Stryker was here!"
+Recaptcha.tsx:63 Survived LogicalOperator => resetCount > 0 && !testMode && window.grecaptcha || widgetId.current !
+Recaptcha.tsx:63 Survived ConditionalExpression => true
+Recaptcha.tsx:63 Survived ConditionalExpression => true
+Recaptcha.tsx:63 Survived ConditionalExpression => true
+Recaptcha.tsx:63 Survived EqualityOperator => resetCount >= 0
+TextField.tsx:20 Survived LogicalOperator => field.inputType && "text"
+TextField.tsx:20 Survived StringLiteral => ""
+validation.ts:13 Survived Regex => /^[^\s@]+@[^\s@]+\.[^\s@]+/
+categories.ts:6 Survived StringLiteral => ""
+categories.ts:6 Survived StringLiteral => ""
+categories.ts:6 Survived ObjectLiteral => {}
+fields.ts:23 Survived StringLiteral => ""
+fields.ts:25 Survived StringLiteral => ""
+fields.ts:24 Survived StringLiteral => ""
+fields.ts:25 Survived StringLiteral => ""
+fields.ts:35 Survived StringLiteral => ""
+fields.ts:41 Survived StringLiteral => ""
+fields.ts:40 Survived StringLiteral => ""

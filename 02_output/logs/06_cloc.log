@@ -1,0 +1,12 @@
+backend production (src/main/java)
+46,Java,315,147,1815
+46,SUM,315,147,1815
+backend tests (src/test/java)
+41,Java,591,76,3534
+41,SUM,591,76,3534
+frontend production (src, excluding tests)
+13,TypeScript,69,13,565
+14,SUM,79,13,615
+frontend tests (src/*.test.*, e2e)
+8,TypeScript,130,7,813
+8,SUM,130,7,813

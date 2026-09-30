@@ -1,0 +1,21 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mE:/13 - Lab Projects/01_Runs/05_Optimized_Input_Template/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/validation.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/api.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/components.test.tsx [2m([22m[2m18 tests[22m[2m)[22m[33m 702[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m43 passed[39m[22m[90m (43)[39m
+[2m   Start at [22m 17:27:18
+[2m   Duration [22m 2.21s[2m (transform 131ms, setup 317ms, collect 342ms, tests 723ms, environment 1.70s, prepare 401ms)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 92.4% ( 426/461 )
+Branches     : 99.16% ( 119/120 )
+Functions    : 92.85% ( 26/28 )
+Lines        : 92.4% ( 426/461 )
+================================================================================

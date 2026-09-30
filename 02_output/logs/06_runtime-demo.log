@@ -1,0 +1,184 @@
+
+=== 1. Containers and health (NFR-04, ES-09)
+backend: Up About a minute (healthy)
+frontend: Up 55 seconds (healthy)
+mailpit: Up About a minute (healthy)
+postgres: Up About a minute (healthy)
+backend health: healthy
+frontend health: healthy
+postgres health: healthy
+GET /api/health (via frontend proxy): {"groups":["liveness","readiness"],"status":"UP"} HTTP 200
+GET /api/health/liveness (via frontend proxy): {"status":"UP"} HTTP 200
+GET /api/health/readiness (via frontend proxy): {"status":"UP"} HTTP 200
+backend user: app
+frontend user: nginx
+
+=== 2. Security headers (SB-10)
+-- frontend /
+Server: nginx
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+-- backend /api/options
+X-Content-Type-Options: nosniff
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+=== 3. Options and client config
+{"options":[{"id":"ws-ai","name":"Workshop: applied AI","category":"workshop"},{"id":"ws-security","name":"Workshop: secure web development","category":"workshop"},{"id":"ev-reception","name":"Welcome reception","category":"event"},{"id":"ev-dinner","name":"Conference dinner","category":"event"},{"id":"meal-lunch-1","name":"Lunch, day 1","category":"meal"},{"id":"meal-lunch-2","name":"Lunch, day 2","category":"meal"},{"id":"meal-vegetarian","name":"Vegetarian meals","category":"meal"},{"id":"other-tour","name":"Ljubljana city tour","category":"other"}],"consents":[{"id":"privacy","text":"I agree that the organizer processes my personal data to organise the conference, as described in the privacy notice.","required":true}]}
+{"recaptchaSiteKey":"","recaptchaTestMode":true,"conferenceName":"Conference 2026"}
+
+=== 4. External registration through the frontend proxy (DoD-P01, NFR-01)
+{"id":"eb690f83-fff2-4982-a84f-7f5d4504c04f","type":"EXTERNAL","submittedAt":"2026-09-30T15:41:56.969Z","firstName":"Čedomir","lastName":"Šuštar Žagar","email":"demo-ext-1790782913@participants.test","organization":"Društvo ŠČŽ","options":[{"id":"ws-ai","name":"Workshop: applied AI","category":"workshop"},{"id":"meal-lunch-1","name":"Lunch, day 1","category":"meal"}],"consents":[{"id":"privacy","givenAt":"2026-09-30T15:41:56.969Z"}]} HTTP 201
+
+=== 5. Student registration (DoD-P01)
+{"id":"3381410d-a7e1-45f6-a07c-3bd95aa380d6","type":"STUDENT","submittedAt":"2026-09-30T15:41:57.182Z","firstName":"Špela","lastName":"Kovač","email":"demo-stu-1790782913@participants.test","studyInstitution":"Univerza v Ljubljani","studyProgramme":"Računalništvo","studentId":"63219999","options":[{"id":"ev-dinner","name":"Conference dinner","category":"event"},{"id":"other-tour","name":"Ljubljana city tour","category":"other"}],"consents":[{"id":"privacy","givenAt":"2026-09-30T15:41:57.182Z"}]} HTTP 201
+
+=== 6. Rejections (SR-01, SR-03, D-10, BR-04)
+wrong token: {"status":400,"error":"validation_failed","message":"Please correct the marked fields.","fieldErrors":[{"field":"recaptchaToken","message":"The anti-robot check failed. Please try again."}]} HTTP 400
+duplicate:   {"status":409,"error":"duplicate_registration","message":"A registration with this email address already exists.","fieldErrors":[{"field":"email","message":"A registration with this email address already exists."}]} HTTP 409
+inactive:    {"status":400,"error":"validation_failed","message":"Please correct the marked fields.","fieldErrors":[{"field":"optionIds","message":"An option is not available: choose again."}]} HTTP 400
+70 kB body via nginx: <html>
+<head><title>413 Request Entity Too Large</title></head>
+<body>
+<center><h1>413 Request Entity Too Large</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+HTTP 413
+20 kB body direct to backend: {"status":413,"error":"payload_too_large","message":"The request is too large.","fieldErrors":[]} HTTP 413
+
+=== 7. Database rows (DoD-P02)
+                  id                  |   type   | first_name |  last_name   |                 email                 | organization |  study_institution   | study_programme | student_id |        submitted_at        
+--------------------------------------+----------+------------+--------------+---------------------------------------+--------------+----------------------+-----------------+------------+----------------------------
+ eb690f83-fff2-4982-a84f-7f5d4504c04f | EXTERNAL | Čedomir    | Šuštar Žagar | demo-ext-1790782913@participants.test | Društvo ŠČŽ  |                      |                 |            | 2026-09-30 15:41:56.969+00
+ 3381410d-a7e1-45f6-a07c-3bd95aa380d6 | STUDENT  | Špela      | Kovač        | demo-stu-1790782913@participants.test |              | Univerza v Ljubljani | Računalništvo   | 63219999   | 2026-09-30 15:41:57.182+00
+(2 rows)
+
+           registration_id            |  option_id   |     option_name      | category | position 
+--------------------------------------+--------------+----------------------+----------+----------
+ 3381410d-a7e1-45f6-a07c-3bd95aa380d6 | ev-dinner    | Conference dinner    | event    |        0
+ 3381410d-a7e1-45f6-a07c-3bd95aa380d6 | other-tour   | Ljubljana city tour  | other    |        1
+ eb690f83-fff2-4982-a84f-7f5d4504c04f | ws-ai        | Workshop: applied AI | workshop |        0
+ eb690f83-fff2-4982-a84f-7f5d4504c04f | meal-lunch-1 | Lunch, day 1         | meal     |        1
+(4 rows)
+
+           registration_id            | consent_id |          given_at          
+--------------------------------------+------------+----------------------------
+ eb690f83-fff2-4982-a84f-7f5d4504c04f | privacy    | 2026-09-30 15:41:56.969+00
+ 3381410d-a7e1-45f6-a07c-3bd95aa380d6 | privacy    | 2026-09-30 15:41:57.182+00
+(2 rows)
+
+ version |     description     | success 
+---------+---------------------+---------
+ 1       | create registration | t
+(1 row)
+
+
+=== 8. JSON copies on the volume (DoD-P02)
+-rw------- 1 app app 653 Sep 30 15:41 /data/json/3381410d-a7e1-45f6-a07c-3bd95aa380d6.json
+-rw------- 1 app app 584 Sep 30 15:41 /data/json/eb690f83-fff2-4982-a84f-7f5d4504c04f.json
+{
+  "schemaVersion" : 1,
+  "id" : "eb690f83-fff2-4982-a84f-7f5d4504c04f",
+  "submittedAt" : "2026-09-30T15:41:56.969Z",
+  "type" : "EXTERNAL",
+  "firstName" : "Čedomir",
+  "lastName" : "Šuštar Žagar",
+  "email" : "demo-ext-1790782913@participants.test",
+  "organization" : "Društvo ŠČŽ",
+  "options" : [ {
+    "id" : "ws-ai",
+    "name" : "Workshop: applied AI",
+    "category" : "workshop"
+  }, {
+    "id" : "meal-lunch-1",
+    "name" : "Lunch, day 1",
+    "category" : "meal"
+  } ],
+  "consents" : [ {
+    "id" : "privacy",
+    "givenAt" : "2026-09-30T15:41:56.969Z"
+  } ]
+}
+
+=== 9. Emails in Mailpit (DoD-P03)
+participant mail: Registration confirmed: Conference 2026 | to demo-ext-1790782913@participants.test | attachments 0
+participant mail: Registration confirmed: Conference 2026 | to demo-stu-1790782913@participants.test | attachments 0
+organizer mail: New registration (EXTERNAL): eb690f83-fff2-4982-a84f-7f5d4504c04f | to 1 addresses | attachment registration-eb690f83-fff2-4982-a84f-7f5d4504c04f.json application/json
+organizer mail: New registration (STUDENT): 3381410d-a7e1-45f6-a07c-3bd95aa380d6 | to 1 addresses | attachment registration-3381410d-a7e1-45f6-a07c-3bd95aa380d6.json application/json
+
+=== 10. Export (DoD-P04)
+without credentials: HTTP 401
+wrong password:      HTTP 401
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Disposition: attachment; filename="registrations.xlsx"
+Cache-Control: no-store
+workbook entries: xl/worksheets/sheet1.xml
+rows (including header): 18
+header: Registration ID | Submitted at (UTC) | Type | First name | Last name | Email | Organization / institution | Study institution | Study programme | Student ID | Workshops | Events | Meals | Other activities | Consents
+row: eb690f83-fff2-4982-a84f-7f5d4504c04f | 2026-09-30T15:41:56.969Z | EXTERNAL | Čedomir | Šuštar Žagar | demo-ext-1790782913@participants.test | Društvo ŠČŽ |  |  |  | Workshop: applied AI |  | Lunch, day 1 |  | privacy (2026-09-30T15:41:56.969Z)
+row: 3381410d-a7e1-45f6-a07c-3bd95aa380d6 | 2026-09-30T15:41:57.182Z | STUDENT | Špela | Kovač | demo-stu-1790782913@participants.test |  | Univerza v Ljubljani | Računalništvo | 63219999 |  | Conference dinner |  | Ljubljana city tour | privacy (2026-09-30T15:41:57.182Z)
+
+=== 11. Logs contain no personal data or secrets (ES-07, SB-07)
+backend log lines: 53
+participant emails/names in backend log: 0
+.env values in backend log: 0
+backend-1  | 2026-09-30T15:41:57.039Z  INFO 1 --- [registration-backend] [nio-8080-exec-7] s.k.r.application.RegistrationService    : Registration eb690f83-fff2-4982-a84f-7f5d4504c04f accepted
+backend-1  | 2026-09-30T15:41:57.188Z  INFO 1 --- [registration-backend] [nio-8080-exec-8] s.k.r.application.RegistrationService    : Registration 3381410d-a7e1-45f6-a07c-3bd95aa380d6 accepted
+
+=== 12. Persistence across container recreation (NFR-02)
+ Container registration-frontend-1 Stopping 
+ Container registration-frontend-1 Stopped 
+ Container registration-frontend-1 Removing 
+ Container registration-frontend-1 Removed 
+ Container registration-backend-1 Stopping 
+ Container registration-backend-1 Stopped 
+ Container registration-backend-1 Removing 
+ Container registration-backend-1 Removed 
+ Container registration-postgres-1 Stopping 
+ Container registration-mailpit-1 Stopping 
+ Container registration-postgres-1 Stopped 
+ Container registration-postgres-1 Removing 
+ Container registration-postgres-1 Removed 
+ Container registration-mailpit-1 Stopped 
+ Container registration-mailpit-1 Removing 
+ Container registration-mailpit-1 Removed 
+ Network registration_default Removing 
+ Network registration_default Removed 
+ Network registration_default Creating 
+ Network registration_default Creating 
+ Network registration_default Created 
+ Network registration_default Created 
+ Container registration-postgres-1 Creating 
+ Container registration-mailpit-1 Creating 
+ Container registration-mailpit-1 Created 
+ Container registration-postgres-1 Created 
+ Container registration-backend-1 Creating 
+ Container registration-backend-1 Created 
+ Container registration-frontend-1 Creating 
+ Container registration-frontend-1 Created 
+ Container registration-postgres-1 Starting 
+ Container registration-mailpit-1 Starting 
+ Container registration-postgres-1 Started 
+ Container registration-mailpit-1 Started 
+ Container registration-postgres-1 Waiting 
+ Container registration-postgres-1 Healthy 
+ Container registration-backend-1 Starting 
+ Container registration-backend-1 Started 
+ Container registration-backend-1 Waiting 
+ Container registration-backend-1 Healthy 
+ Container registration-frontend-1 Starting 
+ Container registration-frontend-1 Started 
+     2
+
+/data/json/3381410d-a7e1-45f6-a07c-3bd95aa380d6.json
+/data/json/eb690f83-fff2-4982-a84f-7f5d4504c04f.json
+readiness after restart: {"status":"UP"}

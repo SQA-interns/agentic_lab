@@ -1,0 +1,29 @@
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m3:30PM[0m [32mINF[0m [1m175 commits scanned.[0m
+[90m3:30PM[0m [32mINF[0m [1mscanned ~52344790 bytes (52.34 MB) in 8.47s[0m
+[90m3:30PM[0m [33mWRN[0m [1mleaks found: 54[0m
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m3:30PM[0m [32mINF[0m [1mscanned ~7036773 bytes (7.04 MB) in 1.9s[0m
+[90m3:30PM[0m [33mWRN[0m [1mleaks found: 24[0m
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m3:31PM[0m [32mINF[0m [1m57 commits scanned.[0m
+[90m3:31PM[0m [32mINF[0m [1mscanned ~1802544 bytes (1.80 MB) in 3.62s[0m
+[90m3:31PM[0m [33mWRN[0m [1mleaks found: 22[0m

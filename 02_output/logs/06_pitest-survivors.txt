@@ -1,0 +1,64 @@
+{ KILLED: 262, SURVIVED: 21, NO_COVERAGE: 42 }
+SURVIVED application.RegistrationValidator email 117 replaced return value with &quot;&quot; for si/konferenca/registration/application/RegistrationValidator::email
+SURVIVED application.RegistrationValidator text 100 replaced return value with &quot;&quot; for si/konferenca/registration/application/RegistrationValidator::text
+SURVIVED web.RateLimitFilter acquire 80 changed conditional boundary
+SURVIVED web.RateLimitFilter acquire 80 negated conditional
+NO_COVERAGE web.RateLimitFilter lambda$acquire$0 81 changed conditional boundary
+NO_COVERAGE web.RateLimitFilter lambda$acquire$0 81 Replaced long subtraction with addition
+NO_COVERAGE web.RateLimitFilter lambda$acquire$0 81 negated conditional
+NO_COVERAGE web.RateLimitFilter lambda$acquire$0 81 replaced boolean return with true for si/konferenca/registration/web/RateLimitFilter::lambda$acquire$0
+SURVIVED web.RateLimitFilter lambda$acquire$1 87 changed conditional boundary
+SURVIVED infrastructure.OptionsFileCatalog parseConsents 100 removed call to si/konferenca/registration/infrastructure/OptionsFileCatalog::requireFields
+SURVIVED infrastructure.OptionsFileCatalog text 141 changed conditional boundary
+SURVIVED infrastructure.MailTexts organizerBody 57 removed call to si/konferenca/registration/infrastructure/MailTexts::appendOptions
+SURVIVED web.RequestSizeFilter$LimitedStream isFinished 100 replaced boolean return with true for si/konferenca/registration/web/RequestSizeFilter$LimitedStream::isFinished
+NO_COVERAGE web.RequestSizeFilter$LimitedStream isReady 105 replaced boolean return with false for si/konferenca/registration/web/RequestSizeFilter$LimitedStream::isReady
+NO_COVERAGE web.RequestSizeFilter$LimitedStream isReady 105 replaced boolean return with true for si/konferenca/registration/web/RequestSizeFilter$LimitedStream::isReady
+SURVIVED web.RequestSizeFilter$LimitedStream read 85 changed conditional boundary
+NO_COVERAGE web.RequestSizeFilter$LimitedStream setReadListener 110 removed call to jakarta/servlet/ServletInputStream::setReadListener
+SURVIVED infrastructure.PoiWorkbookWriter write 49 Changed increment from 1 to -1
+SURVIVED domain.Registration getEmail 142 replaced return value with &quot;&quot; for si/konferenca/registration/domain/Registration::getEmail
+SURVIVED domain.Registration getLastName 138 replaced return value with &quot;&quot; for si/konferenca/registration/domain/Registration::getLastName
+SURVIVED domain.Registration getStudentId 158 replaced return value with &quot;&quot; for si/konferenca/registration/domain/Registration::getStudentId
+SURVIVED domain.Registration getStudyProgramme 154 replaced return value with &quot;&quot; for si/konferenca/registration/domain/Registration::getStudyProgramme
+NO_COVERAGE config.SecurityConfig corsConfigurationSource 101 negated conditional
+NO_COVERAGE config.SecurityConfig corsConfigurationSource 103 removed call to org/springframework/web/cors/CorsConfiguration::setAllowedOrigins
+NO_COVERAGE config.SecurityConfig corsConfigurationSource 104 removed call to org/springframework/web/cors/CorsConfiguration::setAllowedMethods
+NO_COVERAGE config.SecurityConfig corsConfigurationSource 105 removed call to org/springframework/web/cors/CorsConfiguration::setAllowedHeaders
+NO_COVERAGE config.SecurityConfig corsConfigurationSource 106 removed call to org/springframework/web/cors/UrlBasedCorsConfigurationSource::registerCorsConfiguration
+NO_COVERAGE config.SecurityConfig corsConfigurationSource 108 replaced return value with null for si/konferenca/registration/config/SecurityConfig::corsConfigurationSource
+NO_COVERAGE config.SecurityConfig lambda$securityFilterChain$5 53 removed call to jakarta/servlet/http/HttpServletResponse::setHeader
+NO_COVERAGE config.SecurityConfig lambda$securityFilterChain$5 54 removed call to si/konferenca/registration/web/ErrorResponses::write
+NO_COVERAGE config.SecurityConfig lambda$securityFilterChain$7 62 removed call to si/konferenca/registration/web/ErrorResponses::write
+NO_COVERAGE config.SecurityConfig organizerAccount 89 replaced return value with null for si/konferenca/registration/config/SecurityConfig::organizerAccount
+NO_COVERAGE config.SecurityConfig passwordEncoder 81 replaced return value with null for si/konferenca/registration/config/SecurityConfig::passwordEncoder
+NO_COVERAGE config.SecurityConfig securityFilterChain 76 replaced return value with null for si/konferenca/registration/config/SecurityConfig::securityFilterChain
+SURVIVED infrastructure.SmtpNotificationSender sendOrganizerNotification 48 removed call to org/springframework/mail/javamail/MimeMessageHelper::setFrom
+SURVIVED infrastructure.SmtpNotificationSender sendOrganizerNotification 51 removed call to org/springframework/mail/javamail/MimeMessageHelper::setSubject
+SURVIVED infrastructure.SmtpNotificationSender sendOrganizerNotification 52 removed call to org/springframework/mail/javamail/MimeMessageHelper::setText
+NO_COVERAGE infrastructure.GoogleCaptchaVerifier verify 64 removed call to java/lang/Thread::interrupt
+NO_COVERAGE infrastructure.GoogleCaptchaVerifier verify 65 replaced boolean return with true for si/konferenca/registration/infrastructure/GoogleCaptchaVerifier::verify
+NO_COVERAGE config.FilterConfig organizerHttpsFilter 38 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::addUrlPatterns
+NO_COVERAGE config.FilterConfig organizerHttpsFilter 39 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setOrder
+NO_COVERAGE config.FilterConfig organizerHttpsFilter 40 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setEnabled
+NO_COVERAGE config.FilterConfig organizerHttpsFilter 41 replaced return value with null for si/konferenca/registration/config/FilterConfig::organizerHttpsFilter
+NO_COVERAGE config.FilterConfig rateLimitFilter 20 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::addUrlPatterns
+NO_COVERAGE config.FilterConfig rateLimitFilter 21 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setOrder
+NO_COVERAGE config.FilterConfig rateLimitFilter 22 replaced return value with null for si/konferenca/registration/config/FilterConfig::rateLimitFilter
+NO_COVERAGE config.FilterConfig requestSizeFilter 29 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::addUrlPatterns
+NO_COVERAGE config.FilterConfig requestSizeFilter 30 removed call to org/springframework/boot/web/servlet/FilterRegistrationBean::setOrder
+NO_COVERAGE config.FilterConfig requestSizeFilter 31 replaced return value with null for si/konferenca/registration/config/FilterConfig::requestSizeFilter
+SURVIVED web.ErrorResponses write 20 removed call to jakarta/servlet/http/HttpServletResponse::setCharacterEncoding
+NO_COVERAGE config.CaptchaConfig captchaVerifier 17 negated conditional
+NO_COVERAGE config.CaptchaConfig captchaVerifier 18 replaced return value with null for si/konferenca/registration/config/CaptchaConfig::captchaVerifier
+NO_COVERAGE config.CaptchaConfig captchaVerifier 20 replaced return value with null for si/konferenca/registration/config/CaptchaConfig::captchaVerifier
+NO_COVERAGE web.RegistrationController register 96 replaced return value with null for si/konferenca/registration/web/RegistrationController::register
+NO_COVERAGE web.OptionsController options 39 replaced return value with null for si/konferenca/registration/web/OptionsController::options
+NO_COVERAGE web.OptionsController$OptionView of 23 replaced return value with null for si/konferenca/registration/web/OptionsController$OptionView::of
+NO_COVERAGE web.OptionsController$ConsentView of 30 replaced return value with null for si/konferenca/registration/web/OptionsController$ConsentView::of
+NO_COVERAGE web.RegistrationController$RegistrationRequest toCommand 43 replaced return value with null for si/konferenca/registration/web/RegistrationController$RegistrationRequest::toCommand
+NO_COVERAGE web.ExportController export 26 replaced return value with null for si/konferenca/registration/web/ExportController::export
+SURVIVED settings.AppProperties$Recaptcha toString 36 replaced return value with &quot;&quot; for si/konferenca/registration/settings/AppProperties$Recaptcha::toString
+SURVIVED settings.AppProperties$Organizer toString 49 replaced return value with &quot;&quot; for si/konferenca/registration/settings/AppProperties$Organizer::toString
+NO_COVERAGE web.RegistrationController$RegistrationResponse of 75 replaced return value with null for si/konferenca/registration/web/RegistrationController$RegistrationResponse::of
+NO_COVERAGE config.ClockConfig clock 13 replaced return value with null for si/konferenca/registration/config/ClockConfig::clock

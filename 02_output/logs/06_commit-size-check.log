@@ -1,0 +1,10 @@
+b2e5768 files=10 lines=746 build: add backend skeleton with Maven wrapper and check plu
+878bfeb files=16 lines=223 build: add frontend skeleton with pinned npm toolchain (ES-0
+00cbfb9 files=15 lines=1099 test: add black-box acceptance and e2e test harness
+fd1c085 files=6 lines=712 test: add acceptance tests for external registration (US-001
+b7de8df files=13 lines=478 feat: load configurable options and serve GET /api/options (
+87eb3d4 files=10 lines=434 feat: add registration schema, entities and JSON copy store 
+25cfd61 files=11 lines=514 feat: validate and store registrations via POST /api/registr
+fecf1af files=13 lines=663 feat: add registration form with types, options and consents
+a2766a4 files=4 lines=621 test: add domain and application unit tests
+9bf6add files=5 lines=544 test: add infrastructure adapter unit tests
