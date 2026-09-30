@@ -32,6 +32,8 @@ Prerequisites: Docker Engine with Docker Compose, JDK 21 (Temurin), Node.js 24 w
 4. Open http://127.0.0.1:8081 for the form and http://127.0.0.1:8025 for the emails (Mailpit). The organizer export is http://127.0.0.1:8081/api/organizer/registrations.xlsx (the browser asks for the organizer login).
 5. Stop with `docker compose --env-file ../.env down`; data stays in the named volumes `pgdata` and `jsondata` (add `-v` to delete them).
 
+On Windows, clone into a short path (for example `C:\src\registration`): some test paths are long, and checkout fails beyond the 260-character path limit.
+
 Locally, reCAPTCHA runs in its deterministic test mode and organizer access is allowed over plain HTTP on 127.0.0.1. Production needs real reCAPTCHA keys, HTTPS through a reverse proxy and an SMTP server: see the component READMEs and `docs/release-notes.md`.
 
 ## Documentation
