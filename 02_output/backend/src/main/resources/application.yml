@@ -1,20 +1,40 @@
 # Environment names are the configuration contract (docs/02_specification.md section 10).
+# Secrets have no defaults (ES-01).
 spring:
   application:
     name: conference-backend
+  main:
+    banner-mode: off
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 3000
+      maximum-pool-size: 10
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: validate
-  mail:
-    host: ${SMTP_HOST}
-    port: ${SMTP_PORT:25}
+  flyway:
+    enabled: true
+  mvc:
+    problemdetails:
+      enabled: false
 server:
   port: ${SERVER_PORT:8080}
+  forward-headers-strategy: native
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-exception: false
+  tomcat:
+    max-swallow-size: 64KB
+    remoteip:
+      internal-proxies: ${TRUSTED_PROXIES:^$}
+      remote-ip-header: X-Forwarded-For
+      protocol-header: X-Forwarded-Proto
 management:
   endpoints:
     web:
@@ -25,3 +45,35 @@ management:
       probes:
         enabled: true
       show-details: never
+      group:
+        readiness:
+          include: readinessState,db
+app:
+  profile: ${APP_PROFILE:}
+  catalog-path: ${CONFERENCE_CONFIG_PATH:}
+  json-dir: ${REGISTRATION_JSON_DIR:}
+  captcha:
+    mode: ${CAPTCHA_MODE:}
+    site-key: ${RECAPTCHA_SITE_KEY:}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+  mail:
+    host: ${SMTP_HOST:}
+    port: ${SMTP_PORT:25}
+    tls-enabled: ${SMTP_TLS_ENABLED:true}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    from: ${MAIL_FROM:}
+    organizer-emails: ${ORGANIZER_EMAILS:}
+  organizer:
+    username: ${ORGANIZER_USERNAME:}
+    password-hash: ${ORGANIZER_PASSWORD_HASH:}
+  allowed-origins: ${ALLOWED_ORIGINS:}
+  rate-limit:
+    registration-per-minute: ${REGISTRATION_RATE_LIMIT_PER_MINUTE:20}
+    export-per-minute: ${EXPORT_RATE_LIMIT_PER_MINUTE:10}
+  notify-poll-interval: ${NOTIFY_POLL_INTERVAL:PT5S}
+  reconcile-interval: ${RECONCILE_INTERVAL:PT5M}
+  reconcile-grace: ${RECONCILE_GRACE:PT2M}
+logging:
+  level:
+    org.hibernate.SQL: warn
