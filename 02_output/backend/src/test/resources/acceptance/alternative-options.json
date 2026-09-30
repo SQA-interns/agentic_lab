@@ -1,0 +1,10 @@
+{
+  "options": [
+    { "id": "ws-cloud", "name": "Cloud workshop", "category": "workshop", "active": true },
+    { "id": "ws-ai", "name": "Delavnica umetne inteligence", "category": "workshop", "active": false },
+    { "id": "meal-gala", "name": "Gala večerja", "category": "meal", "active": true }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "Alternative privacy wording.", "required": true }
+  ]
+}

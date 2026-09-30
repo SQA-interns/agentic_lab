@@ -1,0 +1,4 @@
+{
+  "options": [{ "id": "ws-ai", "category": "workshop", "active": true }],
+  "consents": [{ "id": "privacy", "text": "Privacy.", "required": true }]
+}

@@ -1,0 +1,7 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "First", "category": "workshop", "active": true },
+    { "id": "ws-ai", "name": "Second", "category": "event", "active": true }
+  ],
+  "consents": [{ "id": "privacy", "text": "Privacy.", "required": true }]
+}
