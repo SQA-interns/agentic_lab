@@ -12,7 +12,7 @@ ac9b5b3af7584935aab95c80aa07450045fe129d1189da50c5a5042c86cc4178  backend/src/te
 65bd8e8f51cfaf71afe63a4549e8fdfe1abff9ae7f0bebc289123166651d6bc0  backend/src/test/java/lab/conference/acceptance/support/AppInstance.java
 aafd71bdf51e932a461a5354bc75931c10a4231a1acdc59bb3c8fe1b5ee21d48  backend/src/test/java/lab/conference/acceptance/support/Catalogs.java
 7be642a61df5b903a492f977a244a2a8780da94bb2743781d98af1e9f6641d24  backend/src/test/java/lab/conference/acceptance/support/Checks.java
-ce344f3822baea2ec62dd345db2342f4013a6b724f317288e26780d87e0bb439  backend/src/test/java/lab/conference/acceptance/support/Infra.java
+51d9ab163914d14ba56e29698d1ac2f6e7d7b937fe04cfd45733bcb8b9bdf582  backend/src/test/java/lab/conference/acceptance/support/Infra.java
 4c37c7fa39ccbbb05d7e4df76bf2367441b733ebc2a7b70822c8328d23a1ff3e  backend/src/test/java/lab/conference/acceptance/support/Mailpit.java
 81a83a7ca8b43781e75f114acbcef46e9b814d585c4bcb6a6d23d5f89afc705a  backend/src/test/java/lab/conference/acceptance/support/Payloads.java
 16cc97073020136ffc75b2847dfb3d7eb7823ecac7459a2b9a0e71c79c592236  backend/src/test/java/lab/conference/acceptance/support/Store.java

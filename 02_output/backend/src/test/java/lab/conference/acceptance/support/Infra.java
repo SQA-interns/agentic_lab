@@ -85,6 +85,12 @@ public final class Infra {
           bindings.bind(
               ExposedPort.tcp(containerPort),
               new Ports.Binding("127.0.0.1", String.valueOf(hostPort)));
+          // D-22: keep random host bindings for the other exposed ports (e.g. Mailpit HTTP API).
+          for (ExposedPort p : cmd.getExposedPorts()) {
+            if (p.getPort() != containerPort) {
+              bindings.bind(p, Ports.Binding.empty());
+            }
+          }
           cmd.getHostConfig().withPortBindings(bindings);
         });
   }
