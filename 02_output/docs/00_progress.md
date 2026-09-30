@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
-- Current phase: 7 (release)
-- Last gate result: phase 6 passed (report 911fb5e: 0 Critical/High, hashes match, no secret leak, final run 281/281)
-- Next step: write root and component READMEs, release notes, run summary; verify READMEs from a clean checkout
+- Current phase: finished (all phases 0–7 complete)
+- Last gate result: phase 7 passed (READMEs verified from a clean checkout; release notes list manual tests; every decision resolved or pending review)
+- Next step: none for the agent; human: manual tests and pending-review decisions in docs/release-notes.md; post-run usage session (03_statistics/metrics.md section 2)
 - Waiting for the human on: nothing
