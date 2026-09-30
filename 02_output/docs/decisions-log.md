@@ -100,3 +100,12 @@
 - Options: 1. no automatic deletion is built; the retention period is documented as "until the organizer deletes them after the conference, at most 12 months after it", and the component README describes manual deletion of database rows and JSON copies (default); 2. build scheduled deletion with a configurable period
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-12: Frozen test casts timestamptz to OffsetDateTime (AC-005-01)
+- Timestamp: 2026-09-30T14:55:08Z
+- Phase: 4
+- Type: blocking
+- Trigger: `backend/src/test/java/si/konferenca/registration/acceptance/StorageAcceptanceTest.java` (frozen, `03_acceptance-manifest.sha256`) line 46 and the consent loop cast `row.get("submitted_at")` and `c.get("given_at")` to `java.time.OffsetDateTime`. The support class `Database` reads values with `ResultSet.getObject(int)`, for which the PostgreSQL JDBC driver (42.7.13) returns `java.sql.Timestamp` for `TIMESTAMPTZ` columns. The test therefore fails with `ClassCastException` whatever the implementation does; the schema contract (`database-schema.sql`) requires `TIMESTAMPTZ`. All other assertions of AC-005-01 are reached only after the cast.
+- Options: 1. correct the test: replace the three casts with a conversion `((java.sql.Timestamp) value).toInstant().atOffset(ZoneOffset.UTC)` (same assertions, no weakening), then regenerate the manifest line for this file in a separate commit that names D-12 (default); 2. leave the test failing and release with AC-005-01 unverified by its acceptance test; 3. other
+- Human response: none
+- Resolution: pending (waiting for the human)

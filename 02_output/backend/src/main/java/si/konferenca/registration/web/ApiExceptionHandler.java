@@ -50,6 +50,11 @@ public class ApiExceptionHandler {
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
   ResponseEntity<ErrorBody> unreadable(HttpMessageNotReadableException e) {
+    for (Throwable t = e; t != null; t = t.getCause()) {
+      if (t instanceof RequestSizeFilter.PayloadTooLargeException) {
+        return ErrorResponses.payloadTooLarge();
+      }
+    }
     return ResponseEntity.badRequest()
         .body(ErrorBody.of(400, "validation_failed", "The request body is not valid."));
   }
