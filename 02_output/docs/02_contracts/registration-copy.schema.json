@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Written by the backend to <JSON_COPY_DIR>/<id>.json before the success response (BR-07, AR-05) and attached unchanged to the organizer email as registration-<id>.json (AC-007-01). UTF-8, no BOM. Contains only registration data (SR-07): no reCAPTCHA token, database key or other system data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "submittedAt", "type", "firstName", "lastName", "email", "options", "consents"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "submittedAt": { "type": "string", "format": "date-time", "description": "UTC, ISO-8601 with Z" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "firstName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "lastName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+    "organization": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studyInstitution": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studyProgramme": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studentId": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["workshop", "event", "meal", "other"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": { "type": { "const": "EXTERNAL" } },
+      "required": ["organization"],
+      "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] }
+    },
+    {
+      "properties": { "type": { "const": "STUDENT" } },
+      "required": ["studyInstitution", "studyProgramme", "studentId"],
+      "not": { "required": ["organization"] }
+    }
+  ]
+}
