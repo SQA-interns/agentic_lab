@@ -1,0 +1,133 @@
+SURV registration.RegistrationValidator groupSelection L209 ConditionalsBoundaryMutator | changed conditional boundary
+SURV registration.RegistrationValidator groupSelection L203 EmptyObjectReturnValsMutator | replaced return value with Optional.empty for lab/conference/registrat
+SURV registration.RegistrationValidator optionMessage L239 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+SURV registration.RegistrationValidator selections L185 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyMap for lab/conference/reg
+SURV options.CatalogLoader consent L91 VoidMethodCallMutator | removed call to lab/conference/options/CatalogLoader::requireObject
+SURV options.CatalogLoader consent L92 VoidMethodCallMutator | removed call to lab/conference/options/CatalogLoader::onlyFields
+NO_C options.CatalogLoader lambda$parse$0 L59 NullReturnValsMutator | replaced return value with null for lab/conference/options/CatalogLoad
+SURV options.CatalogLoader options L76 VoidMethodCallMutator | removed call to lab/conference/options/CatalogLoader::requireObject
+SURV options.CatalogLoader parse L47 VoidMethodCallMutator | removed call to lab/conference/options/CatalogLoader::requireObject
+SURV options.CatalogLoader text L121 ConditionalsBoundaryMutator | changed conditional boundary
+SURV registration.TextRules isEmail L63 ConditionalsBoundaryMutator | changed conditional boundary
+SURV platform.TokenBucketLimiter$Bucket isFull L73 ConditionalsBoundaryMutator | changed conditional boundary
+SURV platform.TokenBucketLimiter$Bucket isFull L73 NegateConditionalsMutator | negated conditional
+SURV platform.TokenBucketLimiter$Bucket isFull L72 VoidMethodCallMutator | removed call to lab/conference/platform/TokenBucketLimiter$Bucket::ref
+SURV platform.TokenBucketLimiter$Bucket isFull L75 VoidMethodCallMutator | removed call to java/util/concurrent/locks/ReentrantLock::unlock
+SURV platform.TokenBucketLimiter$Bucket isFull L73 BooleanFalseReturnValsMutator | replaced boolean return with false for lab/conference/platform/TokenBu
+SURV platform.TokenBucketLimiter$Bucket isFull L73 BooleanTrueReturnValsMutator | replaced boolean return with true for lab/conference/platform/TokenBuc
+SURV platform.TokenBucketLimiter$Bucket take L65 VoidMethodCallMutator | removed call to java/util/concurrent/locks/ReentrantLock::unlock
+SURV platform.TokenBucketLimiter$Bucket take L59 PrimitiveReturnsMutator | replaced long return with 0 for lab/conference/platform/TokenBucketLim
+NO_C registration.JsonStore fsyncDirectory L162 NegateConditionalsMutator | negated conditional
+SURV registration.JsonStore fsyncDirectory L159 VoidMethodCallMutator | removed call to java/nio/channels/FileChannel::force
+SURV registration.JsonStore publish L66 VoidMethodCallMutator | removed call to java/nio/channels/FileChannel::force
+SURV registration.JsonStore publish L73 VoidMethodCallMutator | removed call to lab/conference/registration/JsonStore::fsyncDirectory
+SURV notifications.NotificationDispatcher backoff L66 ConditionalsBoundaryMutator | changed conditional boundary
+SURV notifications.NotificationDispatcher dispatchBatch L91 IncrementsMutator | Changed increment from 1 to -1
+SURV notifications.NotificationDispatcher dispatchBatch L104 PrimitiveReturnsMutator | replaced int return with 0 for lab/conference/notifications/Notificati
+SURV notifications.NotificationDispatcher dispatchDue L75 NegateConditionalsMutator | negated conditional
+NO_C notifications.NotificationDispatcher dispatchDue L76 VoidMethodCallMutator | removed call to lab/conference/notifications/NotificationDispatcher::d
+SURV notifications.NotificationDispatcher lambda$dispatchDue$0 L74 EmptyObjectReturnValsMutator | replaced Integer return value with 0 for lab/conference/notifications/
+SURV notifications.NotificationDispatcher send L119 VoidMethodCallMutator | removed call to org/springframework/mail/javamail/MimeMessageHelper::s
+SURV notifications.NotificationDispatcher send L122 VoidMethodCallMutator | removed call to org/springframework/mail/javamail/MimeMessageHelper::s
+SURV registration.RegistrationEntity <init> L88 NegateConditionalsMutator | negated conditional
+SURV registration.RegistrationEntity <init> L95 VoidMethodCallMutator | removed call to java/util/Map::forEach
+SURV registration.RegistrationEntity acceptedAt L186 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+SURV registration.RegistrationEntity clientRequestId L138 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+NO_C registration.RegistrationEntity consentGiven L178 BooleanFalseReturnValsMutator | replaced Boolean return with False for lab/conference/registration/Reg
+NO_C registration.RegistrationEntity consentGiven L178 BooleanTrueReturnValsMutator | replaced Boolean return with True for lab/conference/registration/Regi
+NO_C registration.RegistrationEntity email L158 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity firstName L150 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+SURV registration.RegistrationEntity id L134 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+SURV registration.RegistrationEntity jsonSha256 L182 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+SURV registration.RegistrationEntity lambda$new$1 L97 VoidMethodCallMutator | removed call to java/util/List::forEach
+NO_C registration.RegistrationEntity lastName L154 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity organization L162 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity selections L190 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyList for lab/conference/re
+NO_C registration.RegistrationEntity studentId L174 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity studyInstitution L166 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity studyProgramme L170 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+SURV platform.RequestGuardFilter doFilterInternal L54 VoidMethodCallMutator | removed call to jakarta/servlet/FilterChain::doFilter
+NO_C platform.SecurityConfig lambda$securityFilterChain$1 L53 VoidMethodCallMutator | removed call to jakarta/servlet/http/HttpServletResponse::setHeader
+NO_C platform.SecurityConfig lambda$securityFilterChain$1 L56 VoidMethodCallMutator | removed call to lab/conference/platform/Problems::write
+SURV platform.SecurityConfig organizer L86 VoidMethodCallMutator | removed call to lab/conference/platform/SecurityConfig::requireSlowHas
+NO_C platform.SecurityConfig passwordEncoder L77 NullReturnValsMutator | replaced return value with null for lab/conference/platform/SecurityCo
+NO_C platform.SecurityConfig requestGuardFilter L113 VoidMethodCallMutator | removed call to org/springframework/boot/web/servlet/FilterRegistratio
+NO_C platform.SecurityConfig requestGuardFilter L114 VoidMethodCallMutator | removed call to org/springframework/boot/web/servlet/FilterRegistratio
+NO_C platform.SecurityConfig requestGuardFilter L115 NullReturnValsMutator | replaced return value with null for lab/conference/platform/SecurityCo
+NO_C platform.SecurityConfig securityFilterChain L72 NullReturnValsMutator | replaced return value with null for lab/conference/platform/SecurityCo
+SURV notifications.MailConfig mailSender L20 VoidMethodCallMutator | removed call to org/springframework/mail/javamail/JavaMailSenderImpl::
+SURV notifications.MailConfig mailSender L21 VoidMethodCallMutator | removed call to org/springframework/mail/javamail/JavaMailSenderImpl::
+SURV notifications.MailConfig mailSender L22 VoidMethodCallMutator | removed call to org/springframework/mail/javamail/JavaMailSenderImpl::
+SURV notifications.MailConfig mailSender L26 VoidMethodCallMutator | removed call to org/springframework/mail/javamail/JavaMailSenderImpl::
+SURV registration.RegistrationConfig captchaVerifier L37 NegateConditionalsMutator | negated conditional
+SURV registration.RegistrationConfig captchaVerifier L37 NegateConditionalsMutator | negated conditional
+NO_C registration.RegistrationConfig captchaVerifier L38 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+NO_C registration.RegistrationConfig jsonStore L22 NegateConditionalsMutator | negated conditional
+NO_C registration.RegistrationConfig jsonStore L22 NegateConditionalsMutator | negated conditional
+NO_C registration.RegistrationConfig jsonStore L25 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+NO_C registration.RegistrationConfig organizerRecipients L30 NegateConditionalsMutator | negated conditional
+NO_C registration.RegistrationConfig organizerRecipients L30 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+NO_C registration.RegistrationConfig registrationValidator L17 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+NO_C platform.RequestGuardFilter$LimitedBodyRequest$1 isFinished L109 BooleanFalseReturnValsMutator | replaced boolean return with false for lab/conference/platform/Request
+NO_C platform.RequestGuardFilter$LimitedBodyRequest$1 isFinished L109 BooleanTrueReturnValsMutator | replaced boolean return with true for lab/conference/platform/RequestG
+NO_C platform.RequestGuardFilter$LimitedBodyRequest$1 isReady L114 BooleanFalseReturnValsMutator | replaced boolean return with false for lab/conference/platform/Request
+NO_C platform.RequestGuardFilter$LimitedBodyRequest$1 isReady L114 BooleanTrueReturnValsMutator | replaced boolean return with true for lab/conference/platform/RequestG
+SURV platform.RequestGuardFilter$LimitedBodyRequest$1 read L88 ConditionalsBoundaryMutator | changed conditional boundary
+SURV platform.RequestGuardFilter$LimitedBodyRequest$1 read L88 NegateConditionalsMutator | negated conditional
+SURV platform.RequestGuardFilter$LimitedBodyRequest$1 read L92 PrimitiveReturnsMutator | replaced int return with 0 for lab/conference/platform/RequestGuardFil
+SURV platform.RequestGuardFilter$LimitedBodyRequest$1 read L98 ConditionalsBoundaryMutator | changed conditional boundary
+NO_C platform.RequestGuardFilter$LimitedBodyRequest$1 setReadListener L119 VoidMethodCallMutator | removed call to jakarta/servlet/ServletInputStream::setReadListener
+SURV notifications.OutboxEntry bodyText L124 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/notifications/OutboxE
+SURV notifications.OutboxEntry id L104 EmptyObjectReturnValsMutator | replaced Long return value with 0L for lab/conference/notifications/Ou
+SURV notifications.OutboxEntry registrationId L108 NullReturnValsMutator | replaced return value with null for lab/conference/notifications/Outbo
+SURV registration.Reconciler atStartup L40 VoidMethodCallMutator | removed call to lab/conference/registration/Reconciler::run
+SURV registration.Reconciler atStartup L41 VoidMethodCallMutator | removed call to lab/conference/registration/Reconciler::verifyAccepted
+SURV registration.Reconciler run L59 ConditionalsBoundaryMutator | changed conditional boundary
+SURV registration.Reconciler run L54 IncrementsMutator | Changed increment from 1 to -1
+SURV registration.Reconciler run L59 MathMutator | Replaced integer addition with subtraction
+SURV registration.Reconciler run L59 NegateConditionalsMutator | negated conditional
+SURV registration.Reconciler verifyAcceptedFiles L83 ConditionalsBoundaryMutator | changed conditional boundary
+SURV registration.Reconciler verifyAcceptedFiles L75 IncrementsMutator | Changed increment from 1 to -1
+SURV registration.Reconciler verifyAcceptedFiles L79 IncrementsMutator | Changed increment from 1 to -1
+SURV registration.Reconciler verifyAcceptedFiles L74 NegateConditionalsMutator | negated conditional
+SURV registration.Reconciler verifyAcceptedFiles L83 NegateConditionalsMutator | negated conditional
+NO_C registration.RecaptchaVerifier verify L73 VoidMethodCallMutator | removed call to java/lang/Thread::interrupt
+NO_C registration.RecaptchaVerifier verify L74 BooleanTrueReturnValsMutator | replaced boolean return with true for lab/conference/registration/Reca
+SURV platform.TokenBucketLimiter lambda$tryAcquire$0 L33 BooleanFalseReturnValsMutator | replaced boolean return with false for lab/conference/platform/TokenBu
+SURV platform.TokenBucketLimiter lambda$tryAcquire$0 L33 BooleanTrueReturnValsMutator | replaced boolean return with true for lab/conference/platform/TokenBuc
+SURV platform.TokenBucketLimiter nanos L40 MathMutator | Replaced long addition with subtraction
+SURV platform.TokenBucketLimiter tryAcquire L32 ConditionalsBoundaryMutator | changed conditional boundary
+NO_C platform.ProblemHandler api L25 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler mediaType L30 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler notFound L55 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler respond L66 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler tooLarge L50 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler unexpected L61 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler unreadable L36 NegateConditionalsMutator | negated conditional
+NO_C platform.ProblemHandler unreadable L37 NegateConditionalsMutator | negated conditional
+NO_C platform.ProblemHandler unreadable L38 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ProblemHandler unreadable L41 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ProblemHan
+NO_C platform.ApiException title L53 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/platform/ApiException
+NO_C platform.ApiException unavailable L40 NullReturnValsMutator | replaced return value with null for lab/conference/platform/ApiExcepti
+SURV platform.Problems write L36 VoidMethodCallMutator | removed call to jakarta/servlet/http/HttpServletResponse::setCharacter
+SURV platform.Problems write L37 VoidMethodCallMutator | removed call to com/fasterxml/jackson/databind/ObjectMapper::writeValu
+NO_C registration.StubCaptchaVerifier siteKey L15 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/StubCapt
+NO_C options.OptionsConfig catalog L14 NegateConditionalsMutator | negated conditional
+NO_C options.OptionsConfig catalog L14 NegateConditionalsMutator | negated conditional
+NO_C options.OptionsConfig catalog L17 NullReturnValsMutator | replaced return value with null for lab/conference/options/OptionsConf
+NO_C registration.CatalogController catalog L56 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyMap for lab/conference/reg
+NO_C registration.CatalogController lambda$new$0 L35 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyMap for lab/conference/reg
+NO_C registration.CatalogController lambda$new$1 L46 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyMap for lab/conference/reg
+NO_C registration.RegistrationEntity$Selection groupId L121 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity$Selection optionId L125 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationEntity$Selection optionName L129 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/registration/Registra
+NO_C registration.RegistrationController register L57 NegateConditionalsMutator | negated conditional
+NO_C registration.RegistrationController register L57 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist
+NO_C registration.RegistrationQueries allAccepted L51 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyList for lab/conference/re
+NO_C registration.RegistrationQueries lambda$allAccepted$0 L39 EmptyObjectReturnValsMutator | replaced return value with Collections.emptyList for lab/conference/re
+NO_C platform.PlatformConfig appProfile L22 NullReturnValsMutator | replaced return value with null for lab/conference/platform/PlatformCo
+NO_C platform.PlatformConfig clock L17 NullReturnValsMutator | replaced return value with null for lab/conference/platform/PlatformCo
+NO_C export.ExportController export L33 NullReturnValsMutator | replaced return value with null for lab/conference/export/ExportContro
+NO_C notifications.NotificationService lambda$enqueue$0 L24 NullReturnValsMutator | replaced return value with null for lab/conference/notifications/Notif
+SURV notifications.Hashes sha256 L14 EmptyObjectReturnValsMutator | replaced return value with "" for lab/conference/notifications/Hashes:
+NO_C registration.RegistrationAttachments load L20 NullReturnValsMutator | replaced return value with null for lab/conference/registration/Regist

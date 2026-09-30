@@ -1,0 +1,75 @@
+NoCoverage src/components/RegistrationForm.tsx L91 BooleanLiteral true
+NoCoverage src/components/RegistrationForm.tsx L106 StringLiteral "Stryker was here!"
+Survived src/components/RegistrationForm.tsx L42 ArrayDeclaration ["Stryker was here"]
+Survived src/components/RegistrationForm.tsx L43 StringLiteral "Stryker was here!"
+Survived src/components/RegistrationForm.tsx L47 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L50 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L50 LogicalOperator attempt > 0 || hasSummary
+Survived src/components/RegistrationForm.tsx L50 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L50 EqualityOperator attempt >= 0
+Survived src/components/RegistrationForm.tsx L50 OptionalChaining summaryRef.current.focus
+Survived src/components/RegistrationForm.tsx L60 MethodExpression s[group]
+Survived src/components/RegistrationForm.tsx L60 ArrowFunction () => undefined
+Survived src/components/RegistrationForm.tsx L55 ArrayDeclaration ["Stryker was here"]
+Survived src/components/RegistrationForm.tsx L60 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L60 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L60 EqualityOperator x === id
+Survived src/components/RegistrationForm.tsx L66 ArrayDeclaration ["Stryker was here"]
+Survived src/components/RegistrationForm.tsx L72 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L72 LogicalOperator e.field === 'consentGiven' && e.field === 'captcha
+Survived src/components/RegistrationForm.tsx L72 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L72 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L72 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L72 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L74 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L74 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L86 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L91 LogicalOperator catalog.consent?.required && false
+Survived src/components/RegistrationForm.tsx L91 OptionalChaining catalog.consent.required
+Survived src/components/RegistrationForm.tsx L107 BooleanLiteral false
+Survived src/components/RegistrationForm.tsx L116 ArrowFunction () => undefined
+Survived src/components/RegistrationForm.tsx L116 ArithmeticOperator a - 1
+Survived src/components/RegistrationForm.tsx L141 UnaryOperator +1
+Survived src/components/RegistrationForm.tsx L163 LogicalOperator f.type && 'text'
+Survived src/components/RegistrationForm.tsx L163 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L164 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L164 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L164 EqualityOperator f.type !== 'email'
+Survived src/components/RegistrationForm.tsx L164 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L164 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L164 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L211 BooleanLiteral false
+Survived src/components/RegistrationForm.tsx L185 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L212 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L218 ConditionalExpression true
+Survived src/components/RegistrationForm.tsx L218 ConditionalExpression false
+Survived src/components/RegistrationForm.tsx L218 LogicalOperator errors.consentGiven || <p id="consentGiven-error" 
+Survived src/components/RegistrationForm.tsx L240 StringLiteral ""
+Survived src/components/RegistrationForm.tsx L21 StringLiteral ""
+Survived src/api.ts L46 ObjectLiteral {}
+Survived src/api.ts L46 ObjectLiteral {}
+Survived src/api.ts L46 StringLiteral ""
+Survived src/api.ts L63 ObjectLiteral {}
+Survived src/api.ts L63 StringLiteral ""
+Survived src/api.ts L63 StringLiteral ""
+Survived src/api.ts L72 BlockStatement {}
+Survived src/api.ts L80 BlockStatement {}
+Survived src/components/Captcha.tsx L30 ConditionalExpression false
+Survived src/components/Captcha.tsx L30 LogicalOperator (mode !== 'recaptcha' || !siteKey) && !widget.curr
+Survived src/components/Captcha.tsx L30 LogicalOperator mode !== 'recaptcha' && !siteKey
+Survived src/components/Captcha.tsx L30 ConditionalExpression false
+Survived src/components/Captcha.tsx L30 ConditionalExpression false
+Survived src/components/Captcha.tsx L33 OptionalChaining window.grecaptcha.render
+Survived src/components/Captcha.tsx L50 BooleanLiteral false
+Survived src/components/Captcha.tsx L59 LogicalOperator error || <p id="captchaToken-error" className="err
+Survived src/components/Captcha.tsx L52 ArrayDeclaration []
+Survived src/validation.ts L35 EqualityOperator at >= 0
+Survived src/validation.ts L35 ConditionalExpression true
+Survived src/validation.ts L57 EqualityOperator codePointLength(value) >= field.max
+Survived src/validation.ts L64 StringLiteral ""
+Survived src/validation.ts L17 StringLiteral ""
+Survived src/validation.ts L18 StringLiteral ""
+Survived src/validation.ts L18 StringLiteral ""
+Survived src/validation.ts L26 Regex /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%
+Survived src/validation.ts L26 Regex /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%
+Survived src/validation.ts L26 Regex /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%

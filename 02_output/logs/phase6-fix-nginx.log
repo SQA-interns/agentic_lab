@@ -1,0 +1,374 @@
+ Image agenticlab-frontend:local Building 
+ Image agenticlab-backend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.11kB done
+#1 DONE 0.0s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.49kB done
+#2 DONE 0.0s
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 819B done
+#3 DONE 0.0s
+
+#4 [frontend] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 DONE 0.7s
+
+#5 [backend] docker-image://docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
+#5 resolve docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32 0.1s done
+#5 CACHED
+
+#6 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#6 DONE 0.1s
+
+#7 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#7 DONE 0.1s
+
+#8 [frontend internal] load metadata for docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#8 DONE 0.1s
+
+#9 [frontend internal] load metadata for docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#9 DONE 0.1s
+
+#10 [backend internal] load .dockerignore
+#10 transferring context:
+#10 transferring context: 61B done
+#10 DONE 0.0s
+
+#11 [frontend internal] load .dockerignore
+#11 transferring context: 126B done
+#11 DONE 0.0s
+
+#12 [backend internal] load build context
+#12 DONE 0.0s
+
+#13 [frontend internal] load build context
+#13 DONE 0.0s
+
+#14 [backend build 1/8] FROM docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#14 resolve docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d 0.1s done
+#14 DONE 0.1s
+
+#15 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#15 resolve docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#15 resolve docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609 0.1s done
+#15 CACHED
+
+#16 [backend stage-1 1/4] FROM docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#16 resolve docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f 0.1s done
+#16 DONE 0.1s
+
+#17 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#17 resolve docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7 0.1s done
+#17 DONE 0.1s
+
+#12 [backend internal] load build context
+#12 transferring context: 9.43kB done
+#12 DONE 0.0s
+
+#18 [backend stage-1 3/4] WORKDIR /app
+#18 CACHED
+
+#19 [backend stage-1 2/4] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#19 CACHED
+
+#20 [backend build 7/8] COPY src/ src/
+#20 CACHED
+
+#21 [backend build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#21 CACHED
+
+#22 [backend build 8/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q -DskipTests package     && cp target/conference-backend-1.0.0.jar /workspace/app.jar
+#22 CACHED
+
+#23 [backend build 3/8] WORKDIR /workspace
+#23 CACHED
+
+#24 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#24 CACHED
+
+#25 [backend build 4/8] COPY .mvn/ .mvn/
+#25 CACHED
+
+#26 [backend build 5/8] COPY mvnw pom.xml ./
+#26 CACHED
+
+#27 [backend stage-1 4/4] COPY --from=build /workspace/app.jar /app/app.jar
+#27 CACHED
+
+#13 [frontend internal] load build context
+#13 transferring context: 4.21kB done
+#13 DONE 0.0s
+
+#28 [frontend build 2/6] WORKDIR /app
+#28 CACHED
+
+#29 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#29 CACHED
+
+#30 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#30 CACHED
+
+#31 [backend] exporting to image
+#31 exporting layers done
+#31 exporting manifest sha256:62df8a248c449376f300ebbd8cc183a3836044fc7f029b6221c6ac277ae51339 done
+#31 exporting config sha256:aca9778f823b53379332dba0f7a34161b596f5afd63e8222fce827c2a652a929 done
+#31 exporting attestation manifest sha256:f4497369706108533893fd03a7d1a9d37336f74359d1243b6467cd06abdbd4e3
+#31 ...
+
+#32 [frontend stage-1 2/4] COPY nginx/nginx.conf /etc/nginx/nginx.conf
+#32 DONE 0.1s
+
+#33 [frontend build 5/6] COPY . .
+#33 DONE 0.1s
+
+#31 [backend] exporting to image
+#31 exporting attestation manifest sha256:f4497369706108533893fd03a7d1a9d37336f74359d1243b6467cd06abdbd4e3 0.1s done
+#31 exporting manifest list sha256:85a31b2236dd4e71b74ba55a76d29e1fe31ac9478c1b2b9ea9bc58670a46c5cd 0.1s done
+#31 naming to docker.io/library/agenticlab-backend:local
+#31 naming to docker.io/library/agenticlab-backend:local done
+#31 unpacking to docker.io/library/agenticlab-backend:local 0.0s done
+#31 DONE 0.3s
+
+#34 [frontend build 6/6] RUN npm run build
+#34 ...
+
+#35 [backend] resolving provenance for metadata file
+#35 DONE 0.0s
+
+#34 [frontend build 6/6] RUN npm run build
+#34 0.573 
+#34 0.573 > conference-frontend@1.0.0 build
+#34 0.573 > tsc -b && vite build
+#34 0.573 
+#34 4.324 vite v6.4.3 building for production...
+#34 4.411 transforming...
+#34 5.391 ✓ 35 modules transformed.
+#34 5.543 rendering chunks...
+#34 5.551 computing gzip size...
+#34 5.559 dist/index.html                   0.41 kB │ gzip:  0.28 kB
+#34 5.559 dist/assets/index-4IxLQT_O.css    1.44 kB │ gzip:  0.66 kB
+#34 5.559 dist/assets/index-DKQ2NDLk.js   204.38 kB │ gzip: 64.32 kB
+#34 5.559 ✓ built in 1.20s
+#34 DONE 5.6s
+
+#36 [frontend stage-1 3/4] COPY --from=build /app/dist /usr/share/nginx/html
+#36 DONE 0.1s
+
+#37 [frontend stage-1 4/4] RUN mkdir -p /tmp/nginx && chown -R nginx:nginx /tmp/nginx /var/cache/nginx
+#37 DONE 0.3s
+
+#38 [frontend] exporting to image
+#38 exporting layers
+#38 exporting layers 0.2s done
+#38 exporting manifest sha256:b7acff9b2cffd562115494d9f820b5001a4ae7995810ca5691052c898db95c00 0.0s done
+#38 exporting config sha256:12539e4b9ead658e88407734745c79ff877bc8dc6692408db72897cb4906c21d 0.0s done
+#38 exporting attestation manifest sha256:86ec3e49eafd1041f815e40fad9cdd8a99729042070d4e95317a05383a48d535 0.0s done
+#38 exporting manifest list sha256:40fbdf16887cdce80cfb745feaaf663052cca4beafdee3c3791a42be5f8a46e9
+#38 exporting manifest list sha256:40fbdf16887cdce80cfb745feaaf663052cca4beafdee3c3791a42be5f8a46e9 0.0s done
+#38 naming to docker.io/library/agenticlab-frontend:local done
+#38 unpacking to docker.io/library/agenticlab-frontend:local 0.1s done
+#38 DONE 0.5s
+
+#39 [frontend] resolving provenance for metadata file
+#39 DONE 0.0s
+ Image agenticlab-backend:local Built 
+ Image agenticlab-frontend:local Built 
+ Container agenticlab-mailpit-1 Running 
+ Container agenticlab-postgres-1 Running 
+ Container agenticlab-backend-1 Recreate 
+ Container agenticlab-backend-1 Recreated 
+ Container agenticlab-frontend-1 Recreate 
+ Container agenticlab-frontend-1 Recreated 
+ Container agenticlab-postgres-1 Waiting 
+ Container agenticlab-postgres-1 Healthy 
+ Container agenticlab-backend-1 Starting 
+ Container agenticlab-backend-1 Started 
+ Container agenticlab-frontend-1 Starting 
+ Container agenticlab-frontend-1 Started 
+ Image agenticlab-frontend:local Building 
+ Image agenticlab-backend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.11kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 819B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.49kB done
+#3 DONE 0.0s
+
+#4 [backend] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 DONE 0.6s
+
+#5 [backend] docker-image://docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
+#5 resolve docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32 0.0s done
+#5 CACHED
+
+#6 [frontend internal] load metadata for docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#6 DONE 0.1s
+
+#7 [frontend internal] load metadata for docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#7 DONE 0.1s
+
+#8 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#8 DONE 0.1s
+
+#9 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#9 DONE 0.1s
+
+#10 [frontend internal] load .dockerignore
+#10 transferring context: 126B done
+#10 DONE 0.0s
+
+#11 [backend internal] load .dockerignore
+#11 transferring context: 61B done
+#11 DONE 0.0s
+
+#12 [backend build 1/8] FROM docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#12 resolve docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d 0.1s done
+#12 DONE 0.1s
+
+#13 [backend stage-1 1/4] FROM docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#13 resolve docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f 0.1s done
+#13 DONE 0.1s
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 resolve docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7 0.1s done
+#14 DONE 0.1s
+
+#15 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#15 resolve docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609 0.1s done
+#15 DONE 0.1s
+
+#16 [backend internal] load build context
+#16 transferring context: 9.43kB done
+#16 DONE 0.0s
+
+#17 [frontend internal] load build context
+#17 transferring context: 4.26kB done
+#17 DONE 0.0s
+
+#18 [backend stage-1 2/4] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#18 CACHED
+
+#19 [backend build 8/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q -DskipTests package     && cp target/conference-backend-1.0.0.jar /workspace/app.jar
+#19 CACHED
+
+#20 [backend build 7/8] COPY src/ src/
+#20 CACHED
+
+#21 [backend build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#21 CACHED
+
+#22 [backend build 4/8] COPY .mvn/ .mvn/
+#22 CACHED
+
+#23 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#23 CACHED
+
+#24 [backend build 5/8] COPY mvnw pom.xml ./
+#24 CACHED
+
+#25 [backend build 3/8] WORKDIR /workspace
+#25 CACHED
+
+#26 [backend stage-1 3/4] WORKDIR /app
+#26 CACHED
+
+#27 [backend stage-1 4/4] COPY --from=build /workspace/app.jar /app/app.jar
+#27 CACHED
+
+#15 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#15 CACHED
+
+#28 [frontend build 2/6] WORKDIR /app
+#28 CACHED
+
+#29 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#29 CACHED
+
+#30 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#30 CACHED
+
+#31 [backend] exporting to image
+#31 exporting layers 0.0s done
+#31 exporting manifest sha256:62df8a248c449376f300ebbd8cc183a3836044fc7f029b6221c6ac277ae51339 0.0s done
+#31 exporting config sha256:aca9778f823b53379332dba0f7a34161b596f5afd63e8222fce827c2a652a929 0.0s done
+#31 exporting attestation manifest sha256:83190e462cf0eccf66137a37c5024676a118ec57d383debe5cf676a697bde5f0
+#31 ...
+
+#32 [frontend stage-1 2/4] COPY nginx/nginx.conf /etc/nginx/nginx.conf
+#32 DONE 0.1s
+
+#33 [frontend build 5/6] COPY . .
+#33 DONE 0.2s
+
+#31 [backend] exporting to image
+#31 exporting attestation manifest sha256:83190e462cf0eccf66137a37c5024676a118ec57d383debe5cf676a697bde5f0 0.1s done
+#31 exporting manifest list sha256:ba42c0a11267c748cce597e4c0d0d80e0fb36ed977cd67aa32e3d1ef89fca4fb
+#31 exporting manifest list sha256:ba42c0a11267c748cce597e4c0d0d80e0fb36ed977cd67aa32e3d1ef89fca4fb 0.0s done
+#31 naming to docker.io/library/agenticlab-backend:local done
+#31 unpacking to docker.io/library/agenticlab-backend:local 0.0s done
+#31 DONE 0.4s
+
+#34 [frontend build 6/6] RUN npm run build
+#34 ...
+
+#35 [backend] resolving provenance for metadata file
+#35 DONE 0.0s
+
+#34 [frontend build 6/6] RUN npm run build
+#34 0.562 
+#34 0.562 > conference-frontend@1.0.0 build
+#34 0.562 > tsc -b && vite build
+#34 0.562 
+#34 4.268 vite v6.4.3 building for production...
+#34 4.353 transforming...
+#34 5.353 ✓ 35 modules transformed.
+#34 5.519 rendering chunks...
+#34 5.535 computing gzip size...
+#34 5.544 dist/index.html                   0.41 kB │ gzip:  0.28 kB
+#34 5.544 dist/assets/index-4IxLQT_O.css    1.44 kB │ gzip:  0.66 kB
+#34 5.544 dist/assets/index-DKQ2NDLk.js   204.38 kB │ gzip: 64.32 kB
+#34 5.545 ✓ built in 1.24s
+#34 DONE 5.6s
+
+#36 [frontend stage-1 3/4] COPY --from=build /app/dist /usr/share/nginx/html
+#36 DONE 0.1s
+
+#37 [frontend stage-1 4/4] RUN mkdir -p /tmp/nginx && chown -R nginx:nginx /tmp/nginx /var/cache/nginx
+#37 DONE 0.6s
+
+#38 [frontend] exporting to image
+#38 exporting layers
+#38 exporting layers 0.4s done
+#38 exporting manifest sha256:70b09e37203354d2acc5052808bb9d29cf57cdee68f04e30ff56fa86cfebdee5 0.0s done
+#38 exporting config sha256:c273d5d825cf7fbab6d4fc6e30856e8c910dbfb45c522942d6522c721899b5e8 0.0s done
+#38 exporting attestation manifest sha256:c578a10dce6320c567c752cf075734fcbea942a7e29b3d1c859bcc96dba76656 0.1s done
+#38 exporting manifest list sha256:857364e735fbcaf5682f0de8dba461c68eeb9057e8680009cb4ecf83a684247d
+#38 exporting manifest list sha256:857364e735fbcaf5682f0de8dba461c68eeb9057e8680009cb4ecf83a684247d 0.0s done
+#38 naming to docker.io/library/agenticlab-frontend:local done
+#38 unpacking to docker.io/library/agenticlab-frontend:local
+#38 unpacking to docker.io/library/agenticlab-frontend:local 0.2s done
+#38 DONE 0.9s
+
+#39 [frontend] resolving provenance for metadata file
+#39 DONE 0.0s
+ Image agenticlab-backend:local Built 
+ Image agenticlab-frontend:local Built 
+ Container agenticlab-mailpit-1 Running 
+ Container agenticlab-postgres-1 Running 
+ Container agenticlab-backend-1 Recreate 
+ Container agenticlab-backend-1 Recreated 
+ Container agenticlab-frontend-1 Recreate 
+ Container agenticlab-frontend-1 Recreated 
+ Container agenticlab-postgres-1 Waiting 
+ Container agenticlab-postgres-1 Healthy 
+ Container agenticlab-backend-1 Starting 
+ Container agenticlab-backend-1 Started 
+ Container agenticlab-frontend-1 Starting 
+ Container agenticlab-frontend-1 Started 

@@ -76,3 +76,26 @@ Classification:
 No frozen test failed.
 
 ## Final run (phase 6)
+
+After the last code change (password-hash CLI, D-23) and all phase 6 fixes; stack rebuilt. Logs: `logs/phase6-final-run2-*.log`.
+
+| Suite | Level | Tests | Passed | Failed | Skipped |
+|---|---|---|---|---|---|
+| Backend Surefire | unit (incl. ArchitectureTest) | 165 | 165 | 0 | 0 |
+| Backend Failsafe | acceptance (frozen) | 109 | 109 | 0 | 0 |
+| Backend Failsafe | integration (`*IT`) | 5 | 5 | 0 | 0 |
+| Frontend Vitest | unit | 41 | 41 | 0 | 0 |
+| Playwright | e2e (frozen) | 19 | 19 | 0 | 0 |
+| **Total** | | **339** | **339** | **0** | **0** |
+
+Coverage:
+- backend unit: line 83.2%, branch 88.6%;
+- backend integration + acceptance: line 85.4%, branch 67.9%;
+- frontend unit: lines 100%, branches 98.0%.
+
+Mutation:
+- PIT: 84% (397/472), up from 72% after 22 unit tests were added for the F-10 survivors;
+- Stryker: 79.6%;
+- every survivor is classified in `logs/phase6-mutant-classification.md`.
+
+Changes to non-frozen tests after the first run: two `RequestGuardFilterTest` corrections (see above) and 22 new unit tests (F-10). No frozen test was changed except the approved D-22 harness fix.

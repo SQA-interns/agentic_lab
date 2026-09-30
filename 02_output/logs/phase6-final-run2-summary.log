@@ -1,0 +1,6 @@
+backend-exit=0
+check-exit=1
+vitest-exit=0
+e2e-exit=0
+03_acceptance-manifest.sha256: 37 entries, 0 problem(s)
+00_input-manifest.sha256: 32 entries, 0 problem(s)

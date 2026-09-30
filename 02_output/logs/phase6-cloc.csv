@@ -1,0 +1,5 @@
+component,files,language,blank,comment,code
+backend-prod,55,SUM,390,146,2680
+backend-test,46,SUM,543,64,4421
+frontend-prod,9,SUM,74,11,698
+frontend-test,18,SUM,92,9,1124

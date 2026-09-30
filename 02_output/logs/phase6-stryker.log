@@ -1,0 +1,801 @@
+[32m14:07:41 (1847803) INFO ProjectReader[39m Found 4 of 66 file(s) to be mutated.
+[32m14:07:42 (1847803) INFO Instrumenter[39m Instrumented 4 source file(s) with 367 mutant(s)
+[32m14:07:43 (1847803) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m14:07:45 (1847803) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m14:07:56 (1847803) INFO DryRunExecutor[39m Initial test run succeeded. Ran 41 tests in 11 seconds (net 3959.158279000002 ms, overhead 7588.841720999998 ms).
+
+All tests
+  components
+    Captcha.test.tsx
+      ✓ Captcha stub checkbox toggles the deterministic token (killed 10)
+      ✓ Captcha loads the Google widget script in recaptcha mode (killed 14)
+      ✓ Captcha renders the widget when the library is present and forwards tokens (killed 7)
+    RegistrationForm.test.tsx
+      ✓ RegistrationForm renders groups, unchecked consent and no student fields for the external form (killed 14)
+      ✓ RegistrationForm shows a focused summary and linked field errors without sending (killed 42)
+      ✓ RegistrationForm submits trimmed values with selections and reports acceptance (killed 51)
+      ✓ RegistrationForm maps server field errors and general errors (killed 27)
+      ✓ RegistrationForm shows a save error for status 503 and keeps the data (killed 12)
+      ✓ RegistrationForm shows a save error for status 409 and keeps the data (killed 4)
+      ✓ RegistrationForm shows a save error for status 429 and keeps the data (killed 6)
+      ✓ RegistrationForm reuses the client request ID when retrying after a failure (killed 1)
+      ✓ RegistrationForm renders student fields and hides consent when the catalog has none (killed 4)
+  api.test.ts
+    ✓ api loads the catalog (killed 1)
+    ✓ api fails when the catalog is unavailable (killed 2)
+    ✓ api posts JSON and maps acceptance and replay (killed 12)
+    ✓ api maps status 400 (killed 5)
+    ✓ api maps status 409 (killed 3)
+    ✓ api maps status 429 (killed 1)
+    ✓ api maps status 503 (killed 2)
+    ~ api maps status 500 (covered 26)
+    ✓ api treats network errors and unreadable bodies as not saved (killed 8)
+  App.test.tsx
+    ✓ App routing home lists both forms and the organizer page (killed 3)
+    ✘ App routing organizer page links the export without fetching (covered 0)
+    ✘ App routing unknown paths show not found (covered 0)
+    ✓ App routing catalog failure shows an alert (killed 1)
+    ✓ App routing shows the confirmation only after acceptance (killed 2)
+  validation.test.ts
+    ~ validation trims NBSP and other Unicode spaces (covered 2)
+    ✓ validation accepts a@example.test (killed 10)
+    ✓ validation accepts first.last+x@sub.example.co (killed 3)
+    ~ validation accepts o'reilly@example.test (covered 13)
+    ✓ validation rejects (killed 1)
+    ~ validation rejects plain (covered 10)
+    ✓ validation rejects a@localhost (killed 1)
+    ✓ validation rejects a..b@example.test (killed 1)
+    ~ validation rejects .a@example.test (covered 13)
+    ~ validation rejects a@-x.test (covered 13)
+    ~ validation rejects a b@x.test (covered 13)
+    ✓ validation limits the local part to 64 characters (killed 5)
+    ✓ validation counts code points, not UTF-16 units (killed 1)
+    ✓ validation reports every missing field with its label, consent and captcha (killed 23)
+    ✓ validation checks length and email format and passes valid input (killed 15)
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:30:9
+-       if (mode !== 'recaptcha' || !siteKey || !widget.current) return;
++       if (false) return;
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:30:9
+-       if (mode !== 'recaptcha' || !siteKey || !widget.current) return;
++       if ((mode !== 'recaptcha' || !siteKey) && !widget.current) return;
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:30:9
+-       if (mode !== 'recaptcha' || !siteKey || !widget.current) return;
++       if (mode !== 'recaptcha' && !siteKey || !widget.current) return;
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:30:9
+-       if (mode !== 'recaptcha' || !siteKey || !widget.current) return;
++       if (false || !widget.current) return;
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:30:9
+-       if (mode !== 'recaptcha' || !siteKey || !widget.current) return;
++       if (false || !siteKey || !widget.current) return;
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 10 more tests!
+
+
+[Survived] OptionalChaining
+src/components/Captcha.tsx:33:7
+-         window.grecaptcha?.render(target, {
++         window.grecaptcha.render(target, {
+Tests ran:
+    Captcha renders the widget when the library is present and forwards tokens
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:50:20
+-       script.async = true;
++       script.async = false;
+Tests ran:
+    Captcha loads the Google widget script in recaptcha mode
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:59:10
+-           {error && (
+-             <p id="captchaToken-error" className="error">
+-               {error}
+-             </p>
+-           )}
++           {error || <p id="captchaToken-error" className="error">
++               {error}
++             </p>}
+Tests ran:
+    Captcha loads the Google widget script in recaptcha mode
+    Captcha renders the widget when the library is present and forwards tokens
+
+
+[Survived] ArrayDeclaration
+src/components/Captcha.tsx:52:6
+-     }, [mode, siteKey, onToken]);
++     }, []);
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 10 more tests!
+
+
+[NoCoverage] BooleanLiteral
+src/components/RegistrationForm.tsx:91:53
+-         consentRequired: catalog.consent?.required ?? false,
++         consentRequired: catalog.consent?.required ?? true,
+
+[NoCoverage] StringLiteral
+src/components/RegistrationForm.tsx:106:75
+-       for (const f of fields) payload[f.name] = trimValue(values[f.name] ?? '');
++       for (const f of fields) payload[f.name] = trimValue(values[f.name] ?? "Stryker was here!");
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:42:64
+-     const [generalErrors, setGeneralErrors] = useState<string[]>([]);
++     const [generalErrors, setGeneralErrors] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:43:50
+-     const [submitError, setSubmitError] = useState('');
++     const [submitError, setSubmitError] = useState("Stryker was here!");
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:47:56
+-     const hasSummary = Object.keys(errors).length > 0 || generalErrors.length > 0;
++     const hasSummary = Object.keys(errors).length > 0 || false;
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:50:9
+-       if (attempt > 0 && hasSummary) summaryRef.current?.focus();
++       if (true) summaryRef.current?.focus();
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:50:9
+-       if (attempt > 0 && hasSummary) summaryRef.current?.focus();
++       if (attempt > 0 || hasSummary) summaryRef.current?.focus();
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:50:9
+-       if (attempt > 0 && hasSummary) summaryRef.current?.focus();
++       if (true && hasSummary) summaryRef.current?.focus();
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:50:9
+-       if (attempt > 0 && hasSummary) summaryRef.current?.focus();
++       if (attempt >= 0 && hasSummary) summaryRef.current?.focus();
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] OptionalChaining
+src/components/RegistrationForm.tsx:50:36
+-       if (attempt > 0 && hasSummary) summaryRef.current?.focus();
++       if (attempt > 0 && hasSummary) summaryRef.current.focus();
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:60:46
+-         [group]: checked ? [...s[group], id] : s[group].filter((x) => x !== id),
++         [group]: checked ? [...s[group], id] : s[group],
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:60:62
+-         [group]: checked ? [...s[group], id] : s[group].filter((x) => x !== id),
++         [group]: checked ? [...s[group], id] : s[group].filter(() => undefined),
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:55:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:60:69
+-         [group]: checked ? [...s[group], id] : s[group].filter((x) => x !== id),
++         [group]: checked ? [...s[group], id] : s[group].filter((x) => true),
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:60:69
+-         [group]: checked ? [...s[group], id] : s[group].filter((x) => x !== id),
++         [group]: checked ? [...s[group], id] : s[group].filter((x) => false),
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:60:69
+-         [group]: checked ? [...s[group], id] : s[group].filter((x) => x !== id),
++         [group]: checked ? [...s[group], id] : s[group].filter((x) => x === id),
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:66:31
+-       const general: string[] = [];
++       const general: string[] = ["Stryker was here"];
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:72:18
+-         } else if (e.field === 'consentGiven' || e.field === 'captchaToken') {
++         } else if (false) {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:72:18
+-         } else if (e.field === 'consentGiven' || e.field === 'captchaToken') {
++         } else if (e.field === 'consentGiven' && e.field === 'captchaToken') {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:72:18
+-         } else if (e.field === 'consentGiven' || e.field === 'captchaToken') {
++         } else if (false || e.field === 'captchaToken') {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:72:30
+-         } else if (e.field === 'consentGiven' || e.field === 'captchaToken') {
++         } else if (e.field === "" || e.field === 'captchaToken') {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:72:48
+-         } else if (e.field === 'consentGiven' || e.field === 'captchaToken') {
++         } else if (e.field === 'consentGiven' || false) {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:72:60
+-         } else if (e.field === 'consentGiven' || e.field === 'captchaToken') {
++         } else if (e.field === 'consentGiven' || e.field === "") {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:74:18
+-         } else if (e.field.startsWith('selections')) {
++         } else if (true) {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:74:37
+-         } else if (e.field.startsWith('selections')) {
++         } else if (e.field.startsWith("")) {
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:86:9
+-       if (submitting) return;
++       if (false) return;
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+  and 5 more tests!
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:91:24
+-         consentRequired: catalog.consent?.required ?? false,
++         consentRequired: catalog.consent?.required && false,
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+  and 5 more tests!
+
+
+[Survived] OptionalChaining
+src/components/RegistrationForm.tsx:91:24
+-         consentRequired: catalog.consent?.required ?? false,
++         consentRequired: catalog.consent.required ?? false,
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+  and 5 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:107:19
+-       setSubmitting(true);
++       setSubmitting(false);
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 4 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:116:20
+-           setAttempt((a) => a + 1);
++           setAttempt(() => undefined);
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] ArithmeticOperator
+src/components/RegistrationForm.tsx:116:27
+-           setAttempt((a) => a + 1);
++           setAttempt((a) => a - 1);
+Tests ran:
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] UnaryOperator
+src/components/RegistrationForm.tsx:141:21
+-             tabIndex={-1}
++             tabIndex={+1}
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm maps server field errors and general errors
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:163:21
+-                 type={f.type ?? 'text'}
++                 type={f.type && 'text'}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:163:31
+-                 type={f.type ?? 'text'}
++                 type={f.type ?? ""}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:164:29
+-                 autoComplete={f.type === 'email' ? 'email' : 'off'}
++                 autoComplete={true ? 'email' : 'off'}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:164:29
+-                 autoComplete={f.type === 'email' ? 'email' : 'off'}
++                 autoComplete={false ? 'email' : 'off'}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:164:29
+-                 autoComplete={f.type === 'email' ? 'email' : 'off'}
++                 autoComplete={f.type !== 'email' ? 'email' : 'off'}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:164:50
+-                 autoComplete={f.type === 'email' ? 'email' : 'off'}
++                 autoComplete={f.type === 'email' ? "" : 'off'}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:164:40
+-                 autoComplete={f.type === 'email' ? 'email' : 'off'}
++                 autoComplete={f.type === "" ? 'email' : 'off'}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:164:60
+-                 autoComplete={f.type === 'email' ? 'email' : 'off'}
++                 autoComplete={f.type === 'email' ? 'email' : ""}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:211:51
+-                 aria-invalid={errors.consentGiven ? true : undefined}
++                 aria-invalid={errors.consentGiven ? false : undefined}
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:185:14
+-               {group.options.length === 0 && <p className="hint">No options available.</p>}
++               {true && <p className="hint">No options available.</p>}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:212:45
+-                 aria-describedby={describedBy('consentGiven')}
++                 aria-describedby={describedBy("")}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:218:14
+-               {errors.consentGiven && (
+-                 <p id="consentGiven-error" className="error">
+-                   {errors.consentGiven}
+-                 </p>
+-               )}
++               {true}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:218:14
+-               {errors.consentGiven && (
+-                 <p id="consentGiven-error" className="error">
+-                   {errors.consentGiven}
+-                 </p>
+-               )}
++               {false}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 6 more tests!
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:218:14
+-               {errors.consentGiven && (
+-                 <p id="consentGiven-error" className="error">
+-                   {errors.consentGiven}
+-                 </p>
+-               )}
++               {errors.consentGiven || <p id="consentGiven-error" className="error">
++                   {errors.consentGiven}
++                 </p>}
+Tests ran:
+    RegistrationForm renders groups, unchecked consent and no student fields for the external form
+    RegistrationForm shows a focused summary and linked field errors without sending
+    RegistrationForm submits trimmed values with selections and reports acceptance
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:240:25
+-             {submitting ? 'Submitting…' : 'Submit registration'}
++             {submitting ? "" : 'Submit registration'}
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:21:12
+-     student: 'Student registration',
++     student: "",
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/api.ts:46:63
+-     const response = await fetchImpl('/api/catalog', { headers: { Accept: 'application/json' } });
++     const response = await fetchImpl('/api/catalog', { headers: {} });
+Tests ran:
+    App routing home lists both forms and the organizer page
+    App routing catalog failure shows an alert
+    App routing shows the confirmation only after acceptance
+  and 2 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:46:52
+-     const response = await fetchImpl('/api/catalog', { headers: { Accept: 'application/json' } });
++     const response = await fetchImpl('/api/catalog', {});
+Tests ran:
+    App routing home lists both forms and the organizer page
+    App routing catalog failure shows an alert
+    App routing shows the confirmation only after acceptance
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:46:73
+-     const response = await fetchImpl('/api/catalog', { headers: { Accept: 'application/json' } });
++     const response = await fetchImpl('/api/catalog', { headers: { Accept: "" } });
+Tests ran:
+    App routing home lists both forms and the organizer page
+    App routing catalog failure shows an alert
+    App routing shows the confirmation only after acceptance
+  and 2 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:63:16
+-         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++         headers: {},
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:63:34
+-         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++         headers: { 'Content-Type': "", Accept: 'application/json' },
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:63:62
+-         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++         headers: { 'Content-Type': 'application/json', Accept: "" },
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 11 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:72:13
+-       } catch {
+-         return { kind: 'not-saved' };
+-       }
++       } catch {}
+Tests ran:
+    api treats network errors and unreadable bodies as not saved
+
+
+[Survived] BlockStatement
+src/api.ts:80:13
+-       } catch {
+-         return { kind: 'not-saved' };
+-       }
++       } catch {}
+Tests ran:
+    api treats network errors and unreadable bodies as not saved
+
+
+[Survived] EqualityOperator
+src/validation.ts:35:10
+-     return at > 0 && at <= 64 && EMAIL.test(value);
++     return at >= 0 && at <= 64 && EMAIL.test(value);
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 16 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:35:10
+-     return at > 0 && at <= 64 && EMAIL.test(value);
++     return true && at <= 64 && EMAIL.test(value);
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 16 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:57:16
+-       } else if (codePointLength(value) > field.max) {
++       } else if (codePointLength(value) >= field.max) {
+Tests ran:
+    RegistrationForm submits trimmed values with selections and reports acceptance
+    RegistrationForm maps server field errors and general errors
+    RegistrationForm shows a save error for status 503 and keeps the data
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:64:27
+-       errors.consentGiven = 'Consent is required: please accept the consent statement.';
++       errors.consentGiven = "";
+Tests ran:
+    RegistrationForm shows a focused summary and linked field errors without sending
+    validation reports every missing field with its label, consent and captcha
+
+
+[Survived] StringLiteral
+src/validation.ts:17:32
+-       { name: 'lastName', label: 'Last name', max: 100 },
++       { name: 'lastName', label: "", max: 100 },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:18:29
+-       { name: 'email', label: 'Email', max: 254, type: 'email' },
++       { name: 'email', label: "", max: 254, type: 'email' },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:18:54
+-       { name: 'email', label: 'Email', max: 254, type: 'email' },
++       { name: 'email', label: 'Email', max: 254, type: "" },
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:26:3
+-     /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
++     /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+/;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:26:3
+-     /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
++     /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:26:3
+-     /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
++     /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9]))+$/;
+Ran all tests for this mutant.
+
+Ran 4.89 tests per mutant on average.
+-----------------------|------------------|----------|-----------|------------|----------|----------|
+                       | % Mutation score |          |           |            |          |          |
+File                   |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files              |  79.56 |   80.00 |      292 |         0 |         73 |        2 |        0 |
+ components            |  71.78 |   72.50 |      145 |         0 |         55 |        2 |        0 |
+  Captcha.tsx          |  80.00 |   80.00 |       36 |         0 |          9 |        0 |        0 |
+  RegistrationForm.tsx |  69.43 |   70.32 |      109 |         0 |         46 |        2 |        0 |
+ api.ts                |  86.44 |   86.44 |       51 |         0 |          8 |        0 |        0 |
+ validation.ts         |  90.57 |   90.57 |       96 |         0 |         10 |        0 |        0 |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m14:13:32 (1847803) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m14:13:32 (1847803) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/index.html
+[32m14:13:32 (1847803) INFO MutationTestExecutor[39m Done in 5 minutes 51 seconds.

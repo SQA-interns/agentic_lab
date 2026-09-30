@@ -1,0 +1,5 @@
+frozen acceptance test methods declared: 46; executed: 46; executed cases (incl. parameterised): 109; skipped: 0; failed: 0
+declared but not executed: none
+executed but not declared: none
+e2e listed: 19  executed(final run): 19 passed  skipped markers in e2e sources: 0
+disabled/assumption markers in frozen java tests: 0

@@ -1,0 +1,7 @@
+backend-prod backend/src/main 
+backend-test backend/src/test 
+frontend-prod frontend/src --not-match-f=\.test\.tsx?$ --exclude-dir=test 
+frontend-test frontend/e2e frontend/src/test frontend/src --match-f=(\.test\.tsx?|fixtures\.ts|setup\.ts|\.spec\.ts|global-setup\.ts|env\.ts|forms\.ts|mailpit\.ts|contract\.ts)$ 
+backend cyclomatic complexity total=505 methods=287 avg=1.76
+frontend cyclomatic complexity functions>1=20 max=11 avg(>1)=5.05
+│ Total:     │ 67             │ 3957        │ 36739        │ 0            │ 0 (0%)           │ 0 (0%)            │

@@ -1,0 +1,30 @@
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ✓ src/validation.test.ts (15 tests) 10ms
+ ✓ src/api.test.ts (9 tests) 25ms
+ ✓ src/components/Captcha.test.tsx (3 tests) 208ms
+ ✓ src/App.test.tsx (5 tests) 636ms
+   ✓ App routing > shows the confirmation only after acceptance  419ms
+ ✓ src/components/RegistrationForm.test.tsx (9 tests) 2841ms
+   ✓ RegistrationForm > submits trimmed values with selections and reports acceptance  500ms
+   ✓ RegistrationForm > maps server field errors and general errors  415ms
+   ✓ RegistrationForm > shows a save error for status 503 and keeps the data  403ms
+   ✓ RegistrationForm > shows a save error for status 409 and keeps the data  387ms
+   ✓ RegistrationForm > shows a save error for status 429 and keeps the data  386ms
+   ✓ RegistrationForm > reuses the client request ID when retrying after a failure  398ms
+
+ Test Files  5 passed (5)
+      Tests  41 passed (41)
+   Start at  22:19:14
+   Duration  4.44s (transform 281ms, setup 556ms, collect 880ms, tests 3.72s, environment 2.85s, prepare 720ms)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 465/465 )
+Branches     : 98.03% ( 150/153 )
+Functions    : 100% ( 25/25 )
+Lines        : 100% ( 465/465 )
+================================================================================

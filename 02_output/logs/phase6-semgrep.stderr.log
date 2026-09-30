@@ -1,0 +1,42 @@
+METRICS: Using configs from the Registry (like --config=p/ci) reports pseudonymous rule metrics to semgrep.dev.
+To disable Registry rule metrics, use "--metrics=off".
+Using configs only from local files (like --config=xyz.yml) does not enable metrics.
+
+More information: https://semgrep.dev/docs/metrics
+
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 127 files tracked by git with 1079 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      76      85          Community    1079                                                                
+  java            118      52                                                                                           
+  ts              164      26                                                                                           
+  json              4      12                                                                                           
+  yaml             36       3                                                                                           
+  js              154       2                                                                                           
+  dockerfile        7       2                                                                                           
+  bash              4       2                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 2 (2 blocking)
+ • Rules run: 405
+ • Targets scanned: 127
+ • Parsed lines: ~99.9%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 6
+   ◦ Files matching .semgrepignore patterns: 4
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 405 rules on 127 files: 2 findings.
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading

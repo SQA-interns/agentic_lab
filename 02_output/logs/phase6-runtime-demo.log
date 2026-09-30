@@ -1,0 +1,79 @@
+
+== Headers through the proxy
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+HTTP/1.1 200 
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Frame-Options: DENY
+actuator via proxy: 200
+
+== Catalog (US-003)
+Lab Conference {'mode': 'stub', 'siteKey': None} [('workshops', ['ws-testing', 'ws-security']), ('events', ['ev-reception', 'ev-city-tour']), ('meals', ['meal-lunch', 'meal-dinner']), ('other', ['other-poster', 'other-mentoring'])]
+
+== External registration (US-001, US-004, US-005)
+201 {"registrationId":"6d4a8c15-7843-4622-8dad-c2c7d8c9b821","clientRequestId":"eed88fdd-97d9-4fb4-9e44-5536f976178a","formType":"external","status":"ACCEPTED","acceptedAt":"2026-09-30T12:15:25.931Z"}
+replay:
+200 {"registrationId":"6d4a8c15-7843-4622-8dad-c2c7d8c9b821","clientRequestId":"eed88fdd-97d9-4fb4-9e44-5536f976178a","formType":"external","status":"ACCEPTED","acceptedAt":"2026-09-30T12:15:25.931Z"}
+same id, different content:
+409 {"type":"about:blank","title":"This client request ID was already used for different content.","status":409}
+
+== Student registration (US-002)
+201 {"registrationId":"2756cf45-e81c-4c47-89a6-64d3c2f668cc","clientRequestId":"90c7d197-ca4f-4ea6-b187-605e8796c139","formType":"student","status":"ACCEPTED","acceptedAt":"2026-09-30T12:15:26.235Z"}
+
+== Rejections store nothing
+400 {"type":"about:blank","title":"Validation failed","status":400,"errors":[{"field":"selections.workshops","code":"UNKNOWN_OPTION","message":"A selected option is not available."},{"field":"consentGiven","code":"CONSENT_REQUIRED","message":"Consent is required: please accept the consent statement."}]}
+400 {"type":"about:blank","title":"Validation failed","status":400,"errors":[{"field":"captchaToken","code":"CAPTCHA_FAILED","message":"Captcha verification failed. Please try again."}]}
+foreign origin: 403
+
+== Mail through the SMTP catcher (US-006, US-007)
+mails to demo-ext-1790770525@example.test: 1
+mails to demo-stu-1790770525@example.test: 1
+organizer mail: New registration 6d4a8c15-7843-4622-8dad-c2c7d8c9b821 to ['organizer@example.test'] attachments 1
+reject mail count: 0
+
+== JSON store (US-005)
+23
+file-for-6d4a8c15-7843-4622-8dad-c2c7d8c9b821-present
+10001
+
+== Export (US-008)
+no credentials: 401
+wrong password: 401
+200
+export data rows: 23
+
+== Restart backend and recreate all containers with retained volumes (NFR-02)
+ Container agenticlab-backend-1 Restarting 
+ Container agenticlab-backend-1 Started 
+200
+export data rows: 23
+200
+export data rows: 23
+rows before=23 after recreate=23
+json-survived-recreate
+
+== SMTP outage and recovery (AC-006-02, AC-007-02, NFR-02)
+ Container agenticlab-mailpit-1 Stopping 
+ Container agenticlab-mailpit-1 Stopped 
+201 {"registrationId":"c199237a-fd5f-43da-9903-dd26ff15082a","clientRequestId":"fc0e5fc0-0dd2-44fa-b4ea-eefe95d1f2cc","formType":"external","status":"ACCEPTED","acceptedAt":"2026-09-30T12:16:24.497Z"}
+ORGANIZER|PENDING|2
+PARTICIPANT|PENDING|2
+ Container agenticlab-mailpit-1 Starting 
+ Container agenticlab-mailpit-1 Started 
+mails to demo-outage-1790770525@example.test: 1
+organizer mail after recovery, attachments: 1
+ORGANIZER|SENT|3
+PARTICIPANT|SENT|3
+
+== Catalog change with restart, no rebuild (AC-003-02)
+workshops now: ['ws-security', 'ws-demo-new']
+400 {"type":"about:blank","title":"Validation failed","status":400,"errors":[{"field":"selections.workshops","code":"UNKNOWN_OPTION","message":"A selected option is not available."}]}
+workshops restored: ['ws-testing', 'ws-security']
+
+== done

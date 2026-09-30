@@ -50,12 +50,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-09-30T12:02:19Z",
-      "end": null
+      "end": "2026-09-30T20:20:28Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-09-30T20:20:28Z",
       "end": null
     }
   ],
@@ -64,16 +64,81 @@
     "failed": 3
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 339,
+    "failed": 0
   },
   "findings": {
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0
+    "critical": 1,
+    "high": 1,
+    "medium": 3,
+    "low": 7
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "phase5 first-run defect: Retry-After rounding"
+      ],
+      "change": "9a1a315",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-09"
+      ],
+      "change": "0ea751e nginx header inheritance",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 3,
+      "findings": [
+        "F-03",
+        "F-04"
+      ],
+      "change": "d2483f8 log redaction, d454f77 script variable",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 4,
+      "findings": [
+        "F-10"
+      ],
+      "change": "f390f47 22 unit tests",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 5,
+      "findings": [
+        "F-01"
+      ],
+      "change": "none; blocking decision D-24 approved",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 6,
+      "findings": [
+        "F-02"
+      ],
+      "change": "Tomcat override (phase 0) + ArchUnit feature guard; D-11",
+      "start": null,
+      "end": null
+    },
+    {
+      "loop": 7,
+      "findings": [
+        "final-run Prettier check on frontend/README.md"
+      ],
+      "change": "formatted",
+      "start": null,
+      "end": null
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -206,6 +271,18 @@
       "type": "blocking",
       "start": "2026-09-30T11:25:27Z",
       "end": "2026-09-30T11:31:29Z"
+    },
+    {
+      "id": "D-23",
+      "type": "non-blocking",
+      "start": "2026-09-30T12:27:14Z",
+      "end": null
+    },
+    {
+      "id": "D-24",
+      "type": "blocking",
+      "start": "2026-09-30T12:27:14Z",
+      "end": "2026-09-30T20:12:29Z"
     }
   ],
   "humanInterventions": [
@@ -223,13 +300,38 @@
       "start": "2026-09-30T11:25:27Z",
       "end": "2026-09-30T11:31:29Z",
       "reason": "D-22 frozen acceptance helper Infra.bindFixedPort drops Mailpit HTTP port binding"
+    },
+    {
+      "start": "2026-09-30T12:27:14Z",
+      "end": "2026-09-30T20:12:29Z",
+      "reason": "D-24 downgrade of semgrep High on git-ignored .env"
     }
   ],
   "cycles": [],
   "codeMetrics": {
-    "components": [],
-    "complexity": null,
-    "duplicationPct": null
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2680,
+        "testLoc": 4421,
+        "tool": "cloc 2.04 (code lines, all languages under src/main and src/test)"
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 698,
+        "testLoc": 1124,
+        "tool": "cloc 2.04 (code lines; tests = *.test.*, e2e, fixtures/setup)"
+      }
+    ],
+    "complexity": {
+      "backendCyclomaticTotal": 505,
+      "backendMethods": 287,
+      "backendAvgPerMethod": 1.76,
+      "frontendMaxFunction": 11,
+      "source": "JaCoCo counters (backend), ESLint complexity rule (frontend)"
+    },
+    "duplicationPct": 0.0,
+    "duplicationSource": "jscpd 4.0.5 over backend/src/main/java + frontend/src (min 50 tokens); PMD CPD 0 blocks >= 100 tokens"
   },
   "commits": [
     {
@@ -281,6 +383,36 @@
       "sha": "f5d6339bd7e9dac6683b09dadb22b4a5961b09b2",
       "phase": 5,
       "message": "Phase 5: backend unit/integration tests, ArchUnit rules, frontend unit tests"
+    },
+    {
+      "sha": "64c70f471a5c43b738c9d54d91c93a5c6a845801",
+      "phase": 5,
+      "message": "Phase 5: first-run record and progress (gate passed)"
+    },
+    {
+      "sha": "0ea751eb5f4d59b696c31c77dabc966b6e42fb1b",
+      "phase": 6,
+      "message": "F-09: one CSP and nosniff header per proxied API response (SB-10)"
+    },
+    {
+      "sha": "d2483f8f87a2ed05f99e42dd2cf7a0615e235288",
+      "phase": 6,
+      "message": "F-03: redact ephemeral generated skeleton passwords from the phase 3 log (ES-07, SB-09)"
+    },
+    {
+      "sha": "f390f4724788cc084f3f8c49cf2445dbd0bb5cbc",
+      "phase": 6,
+      "message": "F-10: tests for surviving mutants in security, validation and persistence code"
+    },
+    {
+      "sha": "d454f778c579efd53e4633452e96219cdcbd3172",
+      "phase": 6,
+      "message": "D-23: organizer password-hash tool and runtime demonstration script (SB-03, NFR-05, DoD-06)"
+    },
+    {
+      "sha": "412305afa8ca7a6e1da561a93fb5c9b6d193c01d",
+      "phase": 6,
+      "message": "Application and component READMEs (ES-05, ES-06, DoD-P06; prepared before verification)"
     }
   ],
   "usage": {
@@ -295,5 +427,6 @@
     },
     "costUsd": null,
     "priceTableDate": null
-  }
+  },
+  "fixLoopsReason": "Per-loop start/end timestamps were not captured while the loops ran; left null rather than estimated (metrics.md: never estimate)."
 }

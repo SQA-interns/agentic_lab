@@ -200,3 +200,21 @@
 - Options: 1. (default) Allow a minimal harness-only fix in Infra.bindFixedPort: keep the fixed binding and add a random host binding (`Ports.Binding.empty()`) for every other exposed port. No assertion or test case changes. Then update the one manifest line for Infra.java and record the change in 03_test-strategy.md. 2. The human edits Infra.java and the manifest themselves. 3. Leave the test failing: AC-006-02/AC-007-02 stay without passing acceptance evidence (DoD-01 fails; the run cannot finish).
 - Human response: approved option 1 (2026-09-30T11:31:29Z)
 - Resolution: option 1 (approved): Infra.bindFixedPort binds the other exposed ports to random host ports; the manifest line for Infra.java was updated with the approval; no assertion changed
+
+## D-23: Password-hash helper for operators
+- Timestamp: 2026-09-30T12:27Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: NFR-05 / DoD-08 require the READMEs to work from a clean checkout. ORGANIZER_PASSWORD_HASH needs a bcrypt hash, and the host cannot be assumed to have a bcrypt tool.
+- Options: 1. (default) Small `PasswordHashCli` in the backend jar (reads stdin, prints `{bcrypt}` cost 12) plus `tools/hash-password.sh`, which runs it in the built backend image; no new dependency. 2. Tell operators to install a tool themselves.
+- Human response: none
+- Resolution: 1, pending review
+
+## D-24: Semgrep ERROR (High) on the git-ignored local .env
+- Timestamp: 2026-09-30T12:27Z
+- Phase: 6
+- Type: blocking
+- Trigger: semgrep 1.120.0 (`logs/phase6-semgrep.json`) reports `generic.secrets.security.detected-bcrypt-hash` (ERROR → High per the severity-scale tool mapping) in `02_output/.env` line 4. Evidence: the file is the ES-02 secret store required by secrets.env.example; it is git-ignored (`git check-ignore`); it appears in no commit on any branch (`git log --all -- 02_output/.env` is empty); gitleaks over this run's commits and all tracked files reports no leaks (`logs/phase6-gitleaks-tracked-files-after-fix.json`); it holds synthetic local values only; the hash is a salted bcrypt (cost 12). The scanner ran on the working directory, which includes ignored local files.
+- Options: 1. (default) Classify F-01 as Low (false positive for shipped source: the finding is the intended local secret store, never committed); keep the raw report unchanged (SR-06); scan tracked files in future runs. 2. Keep it High: the run cannot finish (Critical/High block release).
+- Human response: approved option 1 (2026-09-30T20:12:29Z)
+- Resolution: option 1 (approved): F-01 classified Low (false positive for shipped source); raw report unchanged
