@@ -35,8 +35,8 @@
 - Type: blocking
 - Trigger: preflight step 6; Dependency-Check matched `org.eclipse.angus:angus-activation:2.0.3` (transitive via `spring-boot-starter-mail`) to CPE `eclipse:angus_mail < 2.0.4` for CVE-2025-7962 (SMTP injection through CR/LF). Evidence it is a false positive: (a) the vulnerable product is Angus Mail; the build uses `org.eclipse.angus:angus-mail:2.0.5`, which is not flagged; (b) `angus-activation-2.0.3.jar` contains only `org.eclipse.angus.activation` classes and no SMTP code (checked with `unzip -l`). SR-05 additionally rejects CR/LF in every value used in email headers. Lowering a High needs human approval (severity-scale.md).
 - Options: 1. treat as false positive: add a Dependency-Check suppression for CVE-2025-7962 on `angus-activation` only, with this evidence, and continue (default); 2. add `org.eclipse.angus:angus-activation` at a newer exact version to tech-stack via a human-approved change; 3. other
-- Human response: none
-- Resolution: pending (waiting for the human)
+- Human response: option 1 approved ("False positive"), 2026-09-30T14:23:14Z
+- Resolution: 1 (suppression in `backend/dependency-check-suppressions.xml`)
 
 ## D-05: CVE-2025-15104 (Medium) reported on hibernate-validator 9.1.3.Final
 - Timestamp: 2026-09-30T14:20:00Z

@@ -13,12 +13,12 @@
       "phase": 0,
       "name": "preflight-and-bootstrap",
       "start": "2026-09-30T14:10:00Z",
-      "end": null
+      "end": "2026-09-30T14:23:43Z"
     },
     {
       "phase": 1,
       "name": "requirements",
-      "start": null,
+      "start": "2026-09-30T14:23:43Z",
       "end": null
     },
     {
@@ -96,7 +96,7 @@
       "id": "D-04",
       "type": "blocking",
       "start": "2026-09-30T14:20:00Z",
-      "end": null
+      "end": "2026-09-30T14:23:14Z"
     },
     {
       "id": "D-05",
@@ -107,8 +107,8 @@
   ],
   "humanInterventions": [
     {
-      "start": "2026-09-30T14:22:28Z",
-      "end": null,
+      "start": "2026-09-30T14:22:00Z",
+      "end": "2026-09-30T14:23:14Z",
       "reason": "D-04: approve CVE-2025-7962 on angus-activation as false positive"
     }
   ],
