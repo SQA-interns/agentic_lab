@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conference-options.schema.json",
+  "title": "Conference options configuration",
+  "description": "File read by the backend at startup from OPTIONS_FILE (AR-04, US-003). Changing options needs only this file and a restart. Option ids and consent ids must each be unique; a file that violates this schema or the uniqueness rule stops the backend from starting (AC-003-03). Inactive options stay in the file so stored registrations keep their names. The participant fields are fixed in code (BR-01) and cannot be configured here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["options", "consents"],
+  "properties": {
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "active"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$", "description": "Stable identifier; never reuse for another option" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["workshop", "event", "meal", "other"] },
+          "active": { "type": "boolean" }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "required"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "type": "string", "minLength": 1, "maxLength": 1000 },
+          "required": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "options": [
+        { "id": "ws-intro", "name": "Uvodna delavnica", "category": "workshop", "active": true },
+        { "id": "ev-dinner", "name": "Conference dinner", "category": "event", "active": true },
+        { "id": "meal-lunch-1", "name": "Lunch, day 1", "category": "meal", "active": true },
+        { "id": "other-tour", "name": "City tour", "category": "other", "active": false }
+      ],
+      "consents": [
+        { "id": "privacy", "text": "I agree that the organizer processes my personal data to organise the conference, as described in the privacy notice.", "required": true }
+      ]
+    }
+  ]
+}
