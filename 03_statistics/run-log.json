@@ -37,12 +37,12 @@
       "phase": 4,
       "name": "build",
       "start": "2026-09-30T14:43:17Z",
-      "end": null
+      "end": "2026-09-30T15:15:09Z"
     },
     {
       "phase": 5,
       "name": "unit-tests",
-      "start": null,
+      "start": "2026-09-30T15:15:09Z",
       "end": null
     },
     {
@@ -144,7 +144,7 @@
       "id": "D-12",
       "type": "blocking",
       "start": "2026-09-30T14:55:08Z",
-      "end": null
+      "end": "2026-09-30T15:13:22Z"
     }
   ],
   "humanInterventions": [
@@ -155,7 +155,7 @@
     },
     {
       "start": "2026-09-30T15:07:51Z",
-      "end": null,
+      "end": "2026-09-30T15:13:22Z",
       "reason": "D-12: frozen StorageAcceptanceTest casts timestamptz to OffsetDateTime"
     }
   ],

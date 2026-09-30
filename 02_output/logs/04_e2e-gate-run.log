@@ -1,0 +1,13 @@
+
+Running 8 tests using 1 worker
+
+  ok 1 [chromium] › e2e\us001-external-form.e2e.spec.ts:15:1 › AC-001-12 the external form shows exactly its four fields and unchecked consents (258ms)
+  ok 2 [chromium] › e2e\us001-external-form.e2e.spec.ts:42:1 › AC-001-13 NFR-01 Slovenian characters survive form, emails, JSON copy and export (484ms)
+  ok 3 [chromium] › e2e\us002-student-form.e2e.spec.ts:6:1 › AC-002-03 the student form shows exactly its six fields and unchecked consents (221ms)
+  ok 4 [chromium] › e2e\us002-student-form.e2e.spec.ts:33:1 › AC-002-03 switching type keeps the common fields (218ms)
+  ok 5 [chromium] › e2e\us003-options.e2e.spec.ts:13:1 › AC-003-04 active options are grouped under the four category headings (197ms)
+  ok 6 [chromium] › e2e\us004-confirmation.e2e.spec.ts:13:1 › AC-004-01 an accepted registration replaces the form with a confirmation (404ms)
+  ok 7 [chromium] › e2e\us004-confirmation.e2e.spec.ts:44:1 › AC-004-02 a rejected registration shows the field error and keeps the values (329ms)
+  ok 8 [chromium] › e2e\us004-confirmation.e2e.spec.ts:87:1 › AC-004-03 invalid input is reported next to the fields and nothing is sent (225ms)
+
+  8 passed (3.2s)
