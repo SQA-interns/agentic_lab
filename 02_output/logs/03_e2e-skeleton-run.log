@@ -1,0 +1,268 @@
+
+Running 8 tests using 1 worker
+
+  x  1 [chromium] › e2e\us001-external-form.e2e.spec.ts:15:1 › AC-001-12 the external form shows exactly its four fields and unchecked consents (212ms)
+  x  2 [chromium] › e2e\us001-external-form.e2e.spec.ts:42:1 › AC-001-13 NFR-01 Slovenian characters survive form, emails, JSON copy and export (160ms)
+  x  3 [chromium] › e2e\us002-student-form.e2e.spec.ts:6:1 › AC-002-03 the student form shows exactly its six fields and unchecked consents (159ms)
+  x  4 [chromium] › e2e\us002-student-form.e2e.spec.ts:33:1 › AC-002-03 switching type keeps the common fields (5.2s)
+  x  5 [chromium] › e2e\us003-options.e2e.spec.ts:13:1 › AC-003-04 active options are grouped under the four category headings (159ms)
+  x  6 [chromium] › e2e\us004-confirmation.e2e.spec.ts:13:1 › AC-004-01 an accepted registration replaces the form with a confirmation (156ms)
+  x  7 [chromium] › e2e\us004-confirmation.e2e.spec.ts:44:1 › AC-004-02 a rejected registration shows the field error and keeps the values (161ms)
+  x  8 [chromium] › e2e\us004-confirmation.e2e.spec.ts:87:1 › AC-004-03 invalid input is reported next to the fields and nothing is sent (5.2s)
+
+
+  1) [chromium] › e2e\us001-external-form.e2e.spec.ts:15:1 › AC-001-12 the external form shows exactly its four fields and unchecked consents 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 403
+
+       at support.ts:20
+
+      18 | ): Promise<{ options: ApiOption[]; consents: ApiConsent[] }> {
+      19 |   const response = await request.get("/api/options");
+    > 20 |   expect(response.status()).toBe(200);
+         |                             ^
+      21 |   return response.json();
+      22 | }
+      23 |
+        at fetchOptions (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:20:29)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us001-external-form.e2e.spec.ts:19:24
+
+    Error Context: test-results\us001-external-form.e2e-AC-eb1ea-elds-and-unchecked-consents-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us001-external-form.e2e-AC-eb1ea-elds-and-unchecked-consents-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us001-external-form.e2e-AC-eb1ea-elds-and-unchecked-consents-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e\us001-external-form.e2e.spec.ts:42:1 › AC-001-13 NFR-01 Slovenian characters survive form, emails, JSON copy and export 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 403
+
+       at support.ts:20
+
+      18 | ): Promise<{ options: ApiOption[]; consents: ApiConsent[] }> {
+      19 |   const response = await request.get("/api/options");
+    > 20 |   expect(response.status()).toBe(200);
+         |                             ^
+      21 |   return response.json();
+      22 | }
+      23 |
+        at fetchOptions (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:20:29)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us001-external-form.e2e.spec.ts:51:24
+
+    Error Context: test-results\us001-external-form.e2e-AC-7fa0f-emails-JSON-copy-and-export-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us001-external-form.e2e-AC-7fa0f-emails-JSON-copy-and-export-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us001-external-form.e2e-AC-7fa0f-emails-JSON-copy-and-export-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e\us002-student-form.e2e.spec.ts:6:1 › AC-002-03 the student form shows exactly its six fields and unchecked consents 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 403
+
+       at support.ts:20
+
+      18 | ): Promise<{ options: ApiOption[]; consents: ApiConsent[] }> {
+      19 |   const response = await request.get("/api/options");
+    > 20 |   expect(response.status()).toBe(200);
+         |                             ^
+      21 |   return response.json();
+      22 | }
+      23 |
+        at fetchOptions (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:20:29)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us002-student-form.e2e.spec.ts:10:24
+
+    Error Context: test-results\us002-student-form.e2e-AC--c5e7f-elds-and-unchecked-consents-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us002-student-form.e2e-AC--c5e7f-elds-and-unchecked-consents-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us002-student-form.e2e-AC--c5e7f-elds-and-unchecked-consents-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e\us002-student-form.e2e.spec.ts:33:1 › AC-002-03 switching type keeps the common fields 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page): Promise<void> {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function fillExternal(
+        at openForm (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:26:64)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us002-student-form.e2e.spec.ts:34:3
+
+    Error Context: test-results\us002-student-form.e2e-AC--d7a93-ype-keeps-the-common-fields-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us002-student-form.e2e-AC--d7a93-ype-keeps-the-common-fields-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us002-student-form.e2e-AC--d7a93-ype-keeps-the-common-fields-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › e2e\us003-options.e2e.spec.ts:13:1 › AC-003-04 active options are grouped under the four category headings 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 403
+
+       at support.ts:20
+
+      18 | ): Promise<{ options: ApiOption[]; consents: ApiConsent[] }> {
+      19 |   const response = await request.get("/api/options");
+    > 20 |   expect(response.status()).toBe(200);
+         |                             ^
+      21 |   return response.json();
+      22 | }
+      23 |
+        at fetchOptions (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:20:29)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us003-options.e2e.spec.ts:17:23
+
+    Error Context: test-results\us003-options.e2e-AC-003-0-9bd8e--the-four-category-headings-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us003-options.e2e-AC-003-0-9bd8e--the-four-category-headings-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us003-options.e2e-AC-003-0-9bd8e--the-four-category-headings-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › e2e\us004-confirmation.e2e.spec.ts:13:1 › AC-004-01 an accepted registration replaces the form with a confirmation 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 403
+
+       at support.ts:20
+
+      18 | ): Promise<{ options: ApiOption[]; consents: ApiConsent[] }> {
+      19 |   const response = await request.get("/api/options");
+    > 20 |   expect(response.status()).toBe(200);
+         |                             ^
+      21 |   return response.json();
+      22 | }
+      23 |
+        at fetchOptions (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:20:29)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us004-confirmation.e2e.spec.ts:17:33
+
+    Error Context: test-results\us004-confirmation.e2e-AC--d8143-he-form-with-a-confirmation-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us004-confirmation.e2e-AC--d8143-he-form-with-a-confirmation-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us004-confirmation.e2e-AC--d8143-he-form-with-a-confirmation-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › e2e\us004-confirmation.e2e.spec.ts:44:1 › AC-004-02 a rejected registration shows the field error and keeps the values 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 403
+
+       at support.ts:20
+
+      18 | ): Promise<{ options: ApiOption[]; consents: ApiConsent[] }> {
+      19 |   const response = await request.get("/api/options");
+    > 20 |   expect(response.status()).toBe(200);
+         |                             ^
+      21 |   return response.json();
+      22 | }
+      23 |
+        at fetchOptions (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:20:29)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us004-confirmation.e2e.spec.ts:48:24
+
+    Error Context: test-results\us004-confirmation.e2e-AC--fee20--error-and-keeps-the-values-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us004-confirmation.e2e-AC--fee20--error-and-keeps-the-values-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us004-confirmation.e2e-AC--fee20--error-and-keeps-the-values-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › e2e\us004-confirmation.e2e.spec.ts:87:1 › AC-004-03 invalid input is reported next to the fields and nothing is sent 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page): Promise<void> {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function fillExternal(
+        at openForm (E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\support.ts:26:64)
+        at E:\13 - Lab Projects\01_Runs\05_Optimized_Input_Template\agentic_lab\02_output\frontend\e2e\us004-confirmation.e2e.spec.ts:95:3
+
+    Error Context: test-results\us004-confirmation.e2e-AC--b93bb--fields-and-nothing-is-sent-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us004-confirmation.e2e-AC--b93bb--fields-and-nothing-is-sent-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us004-confirmation.e2e-AC--b93bb--fields-and-nothing-is-sent-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8 failed
+    [chromium] › e2e\us001-external-form.e2e.spec.ts:15:1 › AC-001-12 the external form shows exactly its four fields and unchecked consents 
+    [chromium] › e2e\us001-external-form.e2e.spec.ts:42:1 › AC-001-13 NFR-01 Slovenian characters survive form, emails, JSON copy and export 
+    [chromium] › e2e\us002-student-form.e2e.spec.ts:6:1 › AC-002-03 the student form shows exactly its six fields and unchecked consents 
+    [chromium] › e2e\us002-student-form.e2e.spec.ts:33:1 › AC-002-03 switching type keeps the common fields 
+    [chromium] › e2e\us003-options.e2e.spec.ts:13:1 › AC-003-04 active options are grouped under the four category headings 
+    [chromium] › e2e\us004-confirmation.e2e.spec.ts:13:1 › AC-004-01 an accepted registration replaces the form with a confirmation 
+    [chromium] › e2e\us004-confirmation.e2e.spec.ts:44:1 › AC-004-02 a rejected registration shows the field error and keeps the values 
+    [chromium] › e2e\us004-confirmation.e2e.spec.ts:87:1 › AC-004-03 invalid input is reported next to the fields and nothing is sent 
