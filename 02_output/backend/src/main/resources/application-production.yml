@@ -6,5 +6,9 @@ spring:
   mail:
     host: ${SMTP_HOST}
     port: ${SMTP_PORT}
+    properties:
+      # TLS to the SMTP server unless explicitly switched off (SB-04)
+      mail.smtp.starttls.enable: ${SMTP_TLS:true}
+      mail.smtp.starttls.required: ${SMTP_TLS:true}
 app:
   options-file: ${OPTIONS_FILE}
