@@ -73,6 +73,10 @@ public class RegistrationService {
     LOG.info("Registration {} accepted", registration.getId());
     sendSafely(
         "participant", registration.getId(), () -> notifications.sendParticipantConfirmation(copy));
+    sendSafely(
+        "organizer",
+        registration.getId(),
+        () -> notifications.sendOrganizerNotification(copy, json));
     return new Accepted(copy, json);
   }
 

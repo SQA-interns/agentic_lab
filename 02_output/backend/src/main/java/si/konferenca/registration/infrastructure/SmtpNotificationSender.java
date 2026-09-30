@@ -3,6 +3,7 @@ package si.konferenca.registration.infrastructure;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,27 @@ public class SmtpNotificationSender implements NotificationSender {
       helper.setText(MailTexts.participantBody(registration, properties.conferenceName()), false);
     } catch (MessagingException e) {
       throw new IllegalStateException("Participant email could not be built", e);
+    }
+    mailSender.send(message);
+  }
+
+  @Override
+  public void sendOrganizerNotification(RegistrationCopy registration, byte[] jsonCopy) {
+    MimeMessage message = mailSender.createMimeMessage();
+    try {
+      MimeMessageHelper helper =
+          new MimeMessageHelper(message, true, StandardCharsets.UTF_8.name());
+      helper.setFrom(properties.mail().from());
+      helper.setTo(
+          properties.organizer().emails().stream().map(String::strip).toArray(String[]::new));
+      helper.setSubject(MailTexts.organizerSubject(registration));
+      helper.setText(MailTexts.organizerBody(registration), false);
+      helper.addAttachment(
+          "registration-" + registration.id() + ".json",
+          new ByteArrayResource(jsonCopy),
+          "application/json");
+    } catch (MessagingException e) {
+      throw new IllegalStateException("Organizer email could not be built", e);
     }
     mailSender.send(message);
   }
