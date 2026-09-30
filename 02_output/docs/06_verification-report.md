@@ -14,12 +14,12 @@ Logs referenced below are in `out/logs/`. Run date 2026-09-30 (UTC).
 | DoD-02 | Pass | Backend `spotless:check pmd:check pmd:cpd-check spotbugs:check` BUILD SUCCESS (`phase6-final-backend-check.log`); frontend `prettier --check`, `eslint`, `tsc --noEmit` clean (`phase6-final-frontend-check.log`); Semgrep: 2 Medium accepted (F-03, F-04) |
 | DoD-03 | Pass (record only) | Coverage and mutation under "Measures" below; no project thresholds (`quality-requirements.md`) |
 | DoD-04 | Pass | `ArchitectureTest` A-1..A-7 incl. slice cycle check (AR-02, AR-03) in the unit suite; AR-01 by design (frontend calls only `/api`, `api.ts`); AR-05 `JsonCopyFailureAcceptanceTest`; AR-06 Flyway `V1` + `ddl-auto=validate`; AR-07 `ar07ClientConfigurationExposesSiteKeyOnly`; AR-04 `OptionsConfigurationChangeAcceptanceTest` |
-| DoD-05 | **Open → D-18** | One High (F-07, CVSS 7.5 false positive) awaits the human's decision; no other Critical/High from Dependency-Check, npm audit, Semgrep, Gitleaks, SpotBugs, PMD |
+| DoD-05 | Pass | No open Critical or High: F-07 lowered to Low by the human (D-18/D-19) and suppressed narrowly; re-scan 0 Critical, 0 High (`phase6-dependency-check-report-d18.json`); npm audit 0 High/Critical; Semgrep, Gitleaks, SpotBugs, PMD without Critical/High |
 | DoD-06 | Pass | Runtime demonstration below (`phase6-runtime-demo.log`, `phase6-final-e2e.log`) |
 | DoD-07 | Pass | Traceability table below: every AC has ≥ 1 test and an implementing commit |
 | DoD-08 | Phase 7 | README clone check is part of phase 7 (`phase7-clean-checkout.log`) |
 | DoD-09 | Phase 7 | `docs/release-notes.md` manual-test list is written in phase 7 |
-| DoD-10 | Pass except D-18 | D-01..D-17 resolved or pending review; D-18 open (blocking). Input manifest matches; `git diff 33175c2 HEAD -- 01_input` empty |
+| DoD-10 | Pass | D-01..D-19 resolved or pending review (D-18 resolved by D-19). Input manifest matches; `git diff 33175c2 HEAD -- 01_input` empty |
 | DoD-11 | Pass | Phase 3 commit `5d68e66` contains the manifest and all 20 files it lists with matching hashes and no production code beyond the skeleton; every manifest hash still matches (`phase6-hash-check.log`) |
 | DoD-P01 | Pass | External and student registrations through the running stack → 201 (runtime demo §3; e2e tests 1 and 2 through the browser) |
 | DoD-P02 | Pass | Both rows in PostgreSQL with options; both JSON copies on the volume (runtime demo §4, §5) |
@@ -130,7 +130,7 @@ Surviving mutants after the fix loops, classified individually (security, valida
 
 | F | Severity | Source | Finding | Resolution |
 |---|---|---|---|---|
-| F-07 | **High** (CVSS 7.5 per tool mapping) | Dependency-Check | CVE-2025-7962 (Jakarta/Angus Mail SMTP injection, affects Angus Mail < 2.0.4) reported on `angus-activation-2.0.3.jar`, identified as `cpe:…:angus_mail:2.0.3`. The shipped SMTP implementation is `angus-mail` 2.0.5 (fixed) with `jakarta.mail-api` 2.1.5; `angus-activation` contains no SMTP code; user input with CR/LF is rejected and never reaches headers (SR-05 tests). No GA `angus-activation` > 2.0.3 exists (only 2.1.0-M1). Phase 0 had recorded this CVE as Medium from the tool's label instead of the CVSS mapping. | **Open → D-18** (proposed: lower to Low as a false positive, suppress in Dependency-Check with this justification) |
+| F-07 | High → Low (D-18/D-19) | Dependency-Check | CVE-2025-7962 (Jakarta/Angus Mail SMTP injection, affects Angus Mail < 2.0.4) reported on `angus-activation-2.0.3.jar`, identified as `cpe:…:angus_mail:2.0.3`. The shipped SMTP implementation is `angus-mail` 2.0.5 (fixed) with `jakarta.mail-api` 2.1.5; `angus-activation` contains no SMTP code; user input with CR/LF is rejected and never reaches headers (SR-05 tests). No GA `angus-activation` > 2.0.3 exists (only 2.1.0-M1). Phase 0 had recorded this CVE as Medium from the tool's label instead of the CVSS mapping. | Lowered to Low as a false positive by the human (D-19); suppressed for `angus-activation` only in `backend/dependency-check-suppressions.xml`; re-scan confirms (loop 4) |
 | F-08 | Medium | Dependency-Check | CVE-2025-15104 (Nu Html Checker SSRF) matched to `hibernate-validator` 9.1.3 via `cpe:…:validator:validator`; CVSS 5.3 | Accepted: false positive (different product); pending review |
 | F-03 | Medium | Semgrep | `.npmrc` sets no `min-release-age` | Accepted: needs npm ≥ 11.10, npm 11.6.2 is pinned (tech-stack change); mitigated by exact versions, committed lock file with integrity hashes and `npm ci`; listed for human review |
 | F-04 | Medium | Semgrep | nginx `/api/` location with `proxy_pass` lacks `internal` (SSRF pattern) | Accepted: false positive — upstream is the constant `http://backend:8080`; `internal` would make the public API unreachable |
@@ -148,3 +148,4 @@ Informational (not part of this deliverable): the Gitleaks history scan also rep
 | 1 | F-02 | backend unit tests added (validator, options loader, filters, JSON copy store, mail composer, workbook, startup checks) | unit 117/117; PIT 83.9 % (`phase6-pit-summary-loop1.txt`) |
 | 2 | F-05, F-02 | nginx: client `Host` not forwarded; frontend validation tests | Semgrep re-run (`phase6-semgrep-loop2.json`): rule gone; Stryker `validation.ts` 100 %; e2e 3/3 on the rebuilt stack |
 | 3 | F-01 | redacted generated passwords in agent logs | Gitleaks dir scan: no leaks (`phase6-gitleaks-dir-loop3.log`) |
+| 4 | F-07 | human-approved suppression (D-19) | Dependency-Check re-run: 0 Critical, 0 High, 1 Medium (`phase6-dependency-check-d18.log`) |

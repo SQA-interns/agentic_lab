@@ -166,3 +166,12 @@
 - Options: 1. (proposed default) Approve lowering F-07 to Low as a false positive; the agent adds a Dependency-Check suppression for this CVE on `angus-activation` only, with the justification above, re-runs the scan and completes phase 6. 2. Override `angus-activation` to 2.1.0-M1 (a milestone; not recommended) as a new tech-stack entry. 3. Keep F-07 open and do not release.
 - Human response: none
 - Resolution: pending
+
+## D-19: Follow-up to D-18 (human approved lowering F-07)
+- Timestamp: 2026-09-30T07:49:06Z
+- Phase: 6
+- Type: blocking
+- Trigger: follow-up to D-18. The human chose option 1.
+- Options: 1. (chosen) Lower F-07 to Low (false positive); add `backend/dependency-check-suppressions.xml` suppressing CVE-2025-7962 for `pkg:maven/org.eclipse.angus/angus-activation` only, with the D-18 justification.
+- Human response: "go with option 1" (2026-09-30T07:49:06Z)
+- Resolution: D-18 resolved by option 1. Re-scan (`out/logs/phase6-dependency-check-report-d18.json`): 0 Critical, 0 High, 1 Medium (F-08), CVE-2025-7962 listed as suppressed.
