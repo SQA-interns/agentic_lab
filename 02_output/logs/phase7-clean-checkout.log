@@ -1,0 +1,324 @@
++(eval):2> cp ../01_input/01_project/01_setup/secrets.env.example .env
++(eval):3> PW=+(eval):3> openssl rand -hex 12
++(eval):3> PW=clean-9a2763ebcc48887cf932d3e9 
++(eval):3> mkdir -p .local
++(eval):3> umask 077
++(eval):3> printf %s clean-9a2763ebcc48887cf932d3e9
++(eval):4> HASH=+(eval):4> printf '%s\n' clean-9a2763ebcc48887cf932d3e9
++(eval):4> HASH=+(eval):4> tools/hash-password.sh
++(eval):4> HASH='{bcrypt}$2a$12$L.wmyuQqLM3T.YO2kl1VAuARoC468s51mKRkm7m0Hn807O4kLkCkK' 
++(eval):5> python3 - '{bcrypt}$2a$12$L.wmyuQqLM3T.YO2kl1VAuARoC468s51mKRkm7m0Hn807O4kLkCkK'
++(eval):13> awk '-F=' '/^[A-Z_]+=/{print $1, (length($2)>0?"SET":"EMPTY")}' .env
+DB_PASSWORD SET
+ORGANIZER_USERNAME SET
+ORGANIZER_PASSWORD_HASH SET
+RECAPTCHA_SITE_KEY EMPTY
+RECAPTCHA_SECRET_KEY EMPTY
+SMTP_USERNAME EMPTY
+SMTP_PASSWORD EMPTY
+NVD_API_KEY EMPTY
++(eval):14> git -C .. status --short
++(eval):15> docker compose up -d --build
+ Image agenticlab-backend:local Building 
+ Image agenticlab-frontend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.42kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 819B 0.0s done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.49kB 0.0s done
+#3 DONE 0.1s
+
+#4 [backend] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 DONE 0.3s
+
+#5 [backend] docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#5 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done
+#5 CACHED
+
+#6 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#6 DONE 0.1s
+
+#7 [frontend internal] load metadata for docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#7 DONE 0.1s
+
+#8 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#8 DONE 0.1s
+
+#9 [frontend internal] load metadata for docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#9 DONE 0.1s
+
+#10 [backend internal] load .dockerignore
+#10 transferring context: 61B 0.0s done
+#10 DONE 0.1s
+
+#11 [frontend internal] load .dockerignore
+#11 transferring context: 126B 0.0s done
+#11 DONE 0.0s
+
+#12 [backend internal] load build context
+#12 DONE 0.0s
+
+#13 [frontend internal] load build context
+#13 DONE 0.0s
+
+#14 [backend build 1/8] FROM docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#14 resolve docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d 0.1s done
+#14 DONE 0.1s
+
+#15 [backend stage-1 1/4] FROM docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#15 resolve docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f 0.2s done
+#15 DONE 0.2s
+
+#16 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#16 resolve docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7 0.2s done
+#16 DONE 0.2s
+
+#17 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#17 resolve docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609 0.2s done
+#17 DONE 0.2s
+
+#12 [backend internal] load build context
+#12 transferring context: 9.59kB 0.0s done
+#12 DONE 0.1s
+
+#18 [backend build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#18 CACHED
+
+#19 [backend stage-1 2/4] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#19 CACHED
+
+#20 [backend build 3/8] WORKDIR /workspace
+#20 CACHED
+
+#21 [backend build 7/8] COPY src/ src/
+#21 CACHED
+
+#22 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#22 CACHED
+
+#23 [backend stage-1 3/4] WORKDIR /app
+#23 CACHED
+
+#24 [backend build 8/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q -DskipTests package     && cp target/conference-backend-1.0.0.jar /workspace/app.jar
+#24 CACHED
+
+#25 [backend build 4/8] COPY .mvn/ .mvn/
+#25 CACHED
+
+#26 [backend build 5/8] COPY mvnw pom.xml ./
+#26 CACHED
+
+#27 [backend stage-1 4/4] COPY --from=build /workspace/app.jar /app/app.jar
+#27 CACHED
+
+#13 [frontend internal] load build context
+#13 transferring context: 372.72kB 0.0s done
+#13 DONE 0.0s
+
+#28 [frontend build 2/6] WORKDIR /app
+#28 CACHED
+
+#29 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#29 CACHED
+
+#30 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#30 CACHED
+
+#31 [backend] exporting to image
+#31 exporting layers done
+#31 exporting manifest sha256:acb23a56391ba3d9f4b53b4e835004a807bbbbda85427833ce47ad3c9ccfccb9 0.0s done
+#31 exporting config sha256:34017a6d739e58cfb4bfc10036c4f05de6f3bcc17ea495ef17aa2aa0c0f99963
+#31 ...
+
+#32 [frontend build 5/6] COPY . .
+#32 DONE 0.1s
+
+#31 [backend] exporting to image
+#31 exporting config sha256:34017a6d739e58cfb4bfc10036c4f05de6f3bcc17ea495ef17aa2aa0c0f99963 0.0s done
+#31 exporting attestation manifest sha256:1a73a2c920ddab4c0a0f2a83f9b0c7f97aeec6eb83d3b107f395f80e02f72a6f
+#31 exporting attestation manifest sha256:1a73a2c920ddab4c0a0f2a83f9b0c7f97aeec6eb83d3b107f395f80e02f72a6f 0.1s done
+#31 exporting manifest list sha256:b3bbb75aa87da7d5b6541be4db39e6edb2ae1b90d14e88a1d8e0a7501473a233 0.1s done
+#31 naming to docker.io/library/agenticlab-backend:local
+#31 naming to docker.io/library/agenticlab-backend:local 0.0s done
+#31 unpacking to docker.io/library/agenticlab-backend:local 0.0s done
+#31 DONE 0.4s
+
+#33 [frontend build 6/6] RUN npm run build
+#33 ...
+
+#34 [backend] resolving provenance for metadata file
+#34 DONE 0.0s
+
+#33 [frontend build 6/6] RUN npm run build
+#33 0.574 
+#33 0.574 > conference-frontend@1.0.0 build
+#33 0.574 > tsc -b && vite build
+#33 0.574 
+#33 3.986 vite v6.4.3 building for production...
+#33 4.071 transforming...
+#33 4.977 ✓ 35 modules transformed.
+#33 5.125 rendering chunks...
+#33 5.134 computing gzip size...
+#33 5.142 dist/index.html                   0.41 kB │ gzip:  0.28 kB
+#33 5.142 dist/assets/index-4IxLQT_O.css    1.44 kB │ gzip:  0.66 kB
+#33 5.142 dist/assets/index-DKQ2NDLk.js   204.38 kB │ gzip: 64.32 kB
+#33 5.142 ✓ built in 1.12s
+#33 DONE 5.2s
+
+#35 [frontend stage-1 2/4] COPY nginx/nginx.conf /etc/nginx/nginx.conf
+#35 CACHED
+
+#36 [frontend stage-1 3/4] COPY --from=build /app/dist /usr/share/nginx/html
+#36 CACHED
+
+#37 [frontend stage-1 4/4] RUN mkdir -p /tmp/nginx && chown -R nginx:nginx /tmp/nginx /var/cache/nginx
+#37 CACHED
+
+#38 [frontend] exporting to image
+#38 exporting layers done
+#38 exporting manifest sha256:70b09e37203354d2acc5052808bb9d29cf57cdee68f04e30ff56fa86cfebdee5 done
+#38 exporting config sha256:c273d5d825cf7fbab6d4fc6e30856e8c910dbfb45c522942d6522c721899b5e8 done
+#38 exporting attestation manifest sha256:2349613cb7cfd3a1372c9e3d5c02b8810d41d61d192376c82da96e2b37ff5166 0.1s done
+#38 exporting manifest list sha256:edf8e215580987e0912d20a2b79eda4f083da1e17363d6f327483ef71d3a52e5
+#38 exporting manifest list sha256:edf8e215580987e0912d20a2b79eda4f083da1e17363d6f327483ef71d3a52e5 0.0s done
+#38 naming to docker.io/library/agenticlab-frontend:local done
+#38 unpacking to docker.io/library/agenticlab-frontend:local 0.1s done
+#38 DONE 0.4s
+
+#39 [frontend] resolving provenance for metadata file
+#39 DONE 0.0s
+ Image agenticlab-backend:local Built 
+ Image agenticlab-frontend:local Built 
+ Network agenticlab_default Creating 
+ Network agenticlab_default Created 
+ Volume agenticlab_pgdata Creating 
+ Volume agenticlab_pgdata Created 
+ Volume agenticlab_jsondata Creating 
+ Volume agenticlab_jsondata Created 
+ Container agenticlab-postgres-1 Creating 
+ Container agenticlab-mailpit-1 Creating 
+ Container agenticlab-mailpit-1 Created 
+ Container agenticlab-postgres-1 Created 
+ Container agenticlab-backend-1 Creating 
+ Container agenticlab-backend-1 Created 
+ Container agenticlab-frontend-1 Creating 
+ Container agenticlab-frontend-1 Created 
+ Container agenticlab-postgres-1 Starting 
+ Container agenticlab-mailpit-1 Starting 
+ Container agenticlab-mailpit-1 Started 
+ Container agenticlab-postgres-1 Started 
+ Container agenticlab-postgres-1 Waiting 
+ Container agenticlab-postgres-1 Healthy 
+ Container agenticlab-backend-1 Starting 
+ Container agenticlab-backend-1 Started 
+ Container agenticlab-frontend-1 Starting 
+ Container agenticlab-frontend-1 Started 
++(eval):16> docker compose ps backend --format '{{.Health}}'
++(eval):16> [ starting '=' healthy ']'
++(eval):16> sleep 3
++(eval):16> docker compose ps backend --format '{{.Health}}'
++(eval):16> [ starting '=' healthy ']'
++(eval):16> sleep 3
++(eval):16> docker compose ps backend --format '{{.Health}}'
++(eval):16> [ starting '=' healthy ']'
++(eval):16> sleep 3
++(eval):16> docker compose ps backend --format '{{.Health}}'
++(eval):16> [ starting '=' healthy ']'
++(eval):16> sleep 3
++(eval):16> docker compose ps backend --format '{{.Health}}'
++(eval):16> [ healthy '=' healthy ']'
++(eval):16> docker compose ps frontend --format '{{.Health}}'
++(eval):16> [ healthy '=' healthy ']'
++(eval):17> docker compose ps --format '{{.Service}} {{.State}} {{.Health}}'
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
++(eval):18> curl -s -o /dev/null -w 'app: %{http_code}\n' http://127.0.0.1:18080/
+app: 200
++(eval):19> curl -s -o /dev/null -w 'mailpit: %{http_code}\n' http://127.0.0.1:18025/
+mailpit: 200
++(eval):20> tools/runtime-demo.sh
+
+== Headers through the proxy
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+HTTP/1.1 200 
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+actuator via proxy: 200
+
+== Catalog (US-003)
+Lab Conference {'mode': 'stub', 'siteKey': None} [('workshops', ['ws-testing', 'ws-security']), ('events', ['ev-reception', 'ev-city-tour']), ('meals', ['meal-lunch', 'meal-dinner']), ('other', ['other-poster', 'other-mentoring'])]
+
+== External registration (US-001, US-004, US-005)
+201 {"registrationId":"1954faf4-48ee-4cd6-a1e7-e0dbfa024c87","clientRequestId":"85a9149b-9db0-47b9-abaf-9a1622b9a12e","formType":"external","status":"ACCEPTED","acceptedAt":"2026-09-30T20:21:52.248Z"}
+replay:
+200 {"registrationId":"1954faf4-48ee-4cd6-a1e7-e0dbfa024c87","clientRequestId":"85a9149b-9db0-47b9-abaf-9a1622b9a12e","formType":"external","status":"ACCEPTED","acceptedAt":"2026-09-30T20:21:52.248Z"}
+same id, different content:
+409 {"type":"about:blank","title":"This client request ID was already used for different content.","status":409}
+
+== Student registration (US-002)
+201 {"registrationId":"23ec2b2d-7c4e-4056-aad5-fc4c6a853ace","clientRequestId":"5bdd29b7-1dc1-403a-8c57-91711e98ccd1","formType":"student","status":"ACCEPTED","acceptedAt":"2026-09-30T20:21:52.546Z"}
+
+== Rejections store nothing
+400 {"type":"about:blank","title":"Validation failed","status":400,"errors":[{"field":"selections.workshops","code":"UNKNOWN_OPTION","message":"A selected option is not available."},{"field":"consentGiven","code":"CONSENT_REQUIRED","message":"Consent is required: please accept the consent statement."}]}
+400 {"type":"about:blank","title":"Validation failed","status":400,"errors":[{"field":"captchaToken","code":"CAPTCHA_FAILED","message":"Captcha verification failed. Please try again."}]}
+foreign origin: 403
+
+== Mail through the SMTP catcher (US-006, US-007)
+mails to demo-ext-1790799712@example.test: 1
+mails to demo-stu-1790799712@example.test: 1
+organizer mail: New registration 1954faf4-48ee-4cd6-a1e7-e0dbfa024c87 to ['organizer@example.test'] attachments 1
+reject mail count: 0
+
+== JSON store (US-005)
+2
+file-for-1954faf4-48ee-4cd6-a1e7-e0dbfa024c87-present
+10001
+
+== Export (US-008)
+no credentials: 401
+wrong password: 401
+200
+export data rows: 2
+
+== Restart backend and recreate all containers with retained volumes (NFR-02)
+ Container agenticlab-backend-1 Restarting 
+ Container agenticlab-backend-1 Started 
+200
+export data rows: 2
+200
+export data rows: 2
+rows before=2 after recreate=2
+json-survived-recreate
+
+== SMTP outage and recovery (AC-006-02, AC-007-02, NFR-02)
+ Container agenticlab-mailpit-1 Stopping 
+ Container agenticlab-mailpit-1 Stopped 
+201 {"registrationId":"cd5a64a6-49c7-420c-b7c0-773b8568f59d","clientRequestId":"fe33c9b3-e68c-404d-8ddb-a33556b32d23","formType":"external","status":"ACCEPTED","acceptedAt":"2026-09-30T20:22:37.726Z"}
+ORGANIZER|PENDING|2
+PARTICIPANT|PENDING|2
+ Container agenticlab-mailpit-1 Starting 
+ Container agenticlab-mailpit-1 Started 
+mails to demo-outage-1790799712@example.test: 1
+organizer mail after recovery, attachments: 1
+ORGANIZER|SENT|3
+PARTICIPANT|SENT|3
+
+== Catalog change with restart, no rebuild (AC-003-02)
+workshops now: ['ws-security', 'ws-demo-new']
+400 {"type":"about:blank","title":"Validation failed","status":400,"errors":[{"field":"selections.workshops","code":"UNKNOWN_OPTION","message":"A selected option is not available."}]}
+workshops restored: ['ws-testing', 'ws-security']
+
+== done
++(eval):21> set +x

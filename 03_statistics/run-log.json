@@ -413,6 +413,11 @@
       "sha": "412305afa8ca7a6e1da561a93fb5c9b6d193c01d",
       "phase": 6,
       "message": "Application and component READMEs (ES-05, ES-06, DoD-P06; prepared before verification)"
+    },
+    {
+      "sha": "29e26f8e5e9919ae2918e45a273ed3aa8724a5b3",
+      "phase": 6,
+      "message": "Phase 6: verification report, final run, scanner and runtime evidence (DoD-01..DoD-11, DoD-P01..DoD-P06, D-24)"
     }
   ],
   "usage": {
