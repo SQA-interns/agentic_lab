@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,11 @@ import tools.jackson.databind.JsonNode;
 
 /** US-005 every accepted registration is stored in the database and as a JSON copy. */
 class StorageAcceptanceTest extends AcceptanceTest {
+
+  /** D-12: the JDBC driver returns TIMESTAMPTZ values as java.sql.Timestamp. */
+  private static OffsetDateTime timestamp(Object value) {
+    return ((java.sql.Timestamp) value).toInstant().atOffset(ZoneOffset.UTC);
+  }
 
   @Test
   @DisplayName("AC-005-01 the database holds every field, the options and the timed consents")
@@ -43,7 +49,7 @@ class StorageAcceptanceTest extends AcceptanceTest {
     assertThat(row.get("last_name")).isEqualTo("Novak");
     assertThat(row.get("email")).isEqualTo(email);
     assertThat(row.get("organization")).isEqualTo("Institut Jožef Stefan");
-    assertThat((OffsetDateTime) row.get("submitted_at")).isAfter(before);
+    assertThat(timestamp(row.get("submitted_at"))).isAfter(before);
 
     List<String> options = new ArrayList<>();
     Database.options(row.get("id"))
@@ -60,7 +66,7 @@ class StorageAcceptanceTest extends AcceptanceTest {
         .extracting(c -> c.get("consent_id"))
         .containsExactly("newsletter", "privacy");
     for (Map<String, Object> c : consents) {
-      assertThat((OffsetDateTime) c.get("given_at")).isAfter(before);
+      assertThat(timestamp(c.get("given_at"))).isAfter(before);
     }
   }
 
