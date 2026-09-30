@@ -1,0 +1,98 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< lab.conference:conference-backend >------------------
+[INFO] Building conference-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-unit) @ conference-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 52 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-backend ---
+[INFO] Copying 6 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 35 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running lab.conference.notifications.NotificationDispatcherTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+13:56:55.507 [main] WARN lab.conference.notifications.NotificationDispatcher -- Notification PARTICIPANT for registration 479dfbcb-ac8f-4a28-ac9a-1b2962c1bf7b failed (attempt 1, MailSendException)
+13:56:55.528 [main] WARN lab.conference.notifications.NotificationDispatcher -- Notification PARTICIPANT for registration 479dfbcb-ac8f-4a28-ac9a-1b2962c1bf7b failed (attempt 2, MailSendException)
+13:56:55.949 [main] WARN lab.conference.notifications.NotificationDispatcher -- Notification dispatch skipped (QueryTimeoutException)
+13:56:56.007 [main] WARN lab.conference.notifications.NotificationDispatcher -- Notification ORGANIZER for registration 0e6d897d-cdea-496e-a50f-67345701661b failed (attempt 1, IOException)
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.405 s -- in lab.conference.notifications.NotificationDispatcherTest
+[INFO] Running lab.conference.platform.RequestGuardFilterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.523 s -- in lab.conference.platform.RequestGuardFilterTest
+[INFO] Running lab.conference.platform.TokenBucketLimiterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.146 s -- in lab.conference.platform.TokenBucketLimiterTest
+[INFO] Running lab.conference.platform.GuardsTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.195 s -- in lab.conference.platform.GuardsTest
+[INFO] Running lab.conference.options.CatalogLoaderTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.213 s -- in lab.conference.options.CatalogLoaderTest
+[INFO] Running lab.conference.registration.RegistrationServiceTest
+13:56:57.434 [main] INFO lab.conference.registration.RegistrationService -- Registration aacc4338-8aaa-4c1d-82cc-ddbb3706193f accepted (external)
+13:56:57.442 [main] ERROR lab.conference.registration.RegistrationService -- Database commit failed for registration 5a0c3885-2063-4eae-ab66-dfb12ddc396d (CannotCreateTransactionException)
+13:56:57.787 [main] ERROR lab.conference.registration.RegistrationService -- JSON store write failed for registration cb16cea9-494d-4899-8616-b76834c8697e (IOException)
+13:56:57.792 [main] ERROR lab.conference.registration.RegistrationService -- Database unavailable during replay check (CannotCreateTransactionException)
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.673 s -- in lab.conference.registration.RegistrationServiceTest
+[INFO] Running lab.conference.registration.JsonStoreTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.090 s -- in lab.conference.registration.JsonStoreTest
+[INFO] Running lab.conference.registration.RecordAndMailTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in lab.conference.registration.RecordAndMailTest
+[INFO] Running lab.conference.registration.RegistrationValidatorTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s -- in lab.conference.registration.RegistrationValidatorTest
+[INFO] Running lab.conference.registration.RecaptchaVerifierTest
+13:56:58.228 [main] WARN lab.conference.registration.RecaptchaVerifier -- Captcha verification unavailable (JsonParseException)
+13:56:58.238 [main] WARN lab.conference.registration.RecaptchaVerifier -- Captcha verification unavailable (ConnectException)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.228 s -- in lab.conference.registration.RecaptchaVerifierTest
+[INFO] Running lab.conference.registration.TextRulesTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s -- in lab.conference.registration.TextRulesTest
+[INFO] Running lab.conference.registration.ReconcilerTest
+13:56:58.377 [main] ERROR lab.conference.registration.Reconciler -- JSON for registration b669262c-10cd-4962-8de6-a4c970e28ef3 does not match its database hash
+13:56:58.377 [main] ERROR lab.conference.registration.Reconciler -- JSON for registration 77704934-a881-4c4a-b5ab-c8a25dff7e4d is missing
+13:56:58.385 [main] ERROR lab.conference.registration.Reconciler -- 2 accepted registration(s) need recovery from backup
+13:56:58.413 [main] WARN lab.conference.registration.Reconciler -- Moved JSON without database registration to orphaned/: 95cbcc0a-b2d7-4324-bd02-9f3c82c751ab
+13:56:58.413 [main] INFO lab.conference.registration.Reconciler -- Reconciliation: 1 orphaned, 0 staging files removed
+13:56:58.426 [main] WARN lab.conference.registration.Reconciler -- Reconciliation skipped (QueryTimeoutException)
+13:56:58.427 [main] WARN lab.conference.registration.Reconciler -- JSON verification skipped (QueryTimeoutException)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 s -- in lab.conference.registration.ReconcilerTest
+[INFO] Running lab.conference.ArchitectureTest
+13:56:58.460 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.12
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.639 s -- in lab.conference.ArchitectureTest
+[INFO] Running lab.conference.export.WorkbookWriterTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.302 s -- in lab.conference.export.WorkbookWriterTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 141, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report-unit) @ conference-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'conference-backend' with 60 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.370 s
+[INFO] Finished at: 2026-09-30T13:57:03+02:00
+[INFO] ------------------------------------------------------------------------

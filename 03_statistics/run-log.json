@@ -44,12 +44,12 @@
       "phase": 5,
       "name": "unit-tests",
       "start": "2026-09-30T11:44:34Z",
-      "end": null
+      "end": "2026-09-30T12:02:19Z"
     },
     {
       "phase": 6,
       "name": "verify",
-      "start": null,
+      "start": "2026-09-30T12:02:19Z",
       "end": null
     },
     {
@@ -60,8 +60,8 @@
     }
   ],
   "firstTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 312,
+    "failed": 3
   },
   "finalTestRun": {
     "passed": null,
@@ -266,6 +266,21 @@
       "sha": "3bcf5531811b1b33ec6bf0280af99fbe1b8884ed",
       "phase": 4,
       "message": "Phase 4: frontend forms, confirmation and organizer page"
+    },
+    {
+      "sha": "b6dec02d40f2e092408ee160aad0c09267dd5553",
+      "phase": 4,
+      "message": "Phase 4: compose settings, spec refinements, logs and progress (gate passed)"
+    },
+    {
+      "sha": "9a1a31569aed25adb1e9d1ec8ecb909088f578b3",
+      "phase": 5,
+      "message": "Fix Retry-After rounding in rate limiter (AC-001-10, AC-008-05, SB-06)"
+    },
+    {
+      "sha": "f5d6339bd7e9dac6683b09dadb22b4a5961b09b2",
+      "phase": 5,
+      "message": "Phase 5: backend unit/integration tests, ArchUnit rules, frontend unit tests"
     }
   ],
   "usage": {

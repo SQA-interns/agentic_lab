@@ -55,4 +55,24 @@ Format and lint before freezing: Spotless (google-java-format 1.25.2) applied to
 
 ## First complete run (before any fix)
 
+Phase 5, 2026-09-30, after the unit and integration tests were written and before any fix. Logs: `logs/phase5-first-full-run-{backend,frontend,e2e}.log`.
+
+| Suite | Level | Tests | Passed | Failed |
+|---|---|---|---|---|
+| Backend Surefire | unit | 141 | 138 | 3 |
+| Backend Failsafe | acceptance (109) + integration (5) | 114 | 114 | 0 |
+| Frontend Vitest | unit | 41 | 41 | 0 |
+| Playwright | e2e | 19 | 19 | 0 |
+| **Total** | | **315** | **312** | **3** |
+
+Classification:
+
+| Failing test | Class | Reason | Action |
+|---|---|---|---|
+| `RequestGuardFilterTest.registrationPostsAreRateLimitedPerAddress` | Defect in a non-frozen test | The exact content-type comparison missed the `;charset=UTF-8` suffix that the filter correctly adds | Test changed to check the media type prefix |
+| `RequestGuardFilterTest.declaredOversizedBodyIsRejectedAndStreamedBodyIsCapped` | Defect in a non-frozen test | The byte-by-byte check reused a mock stream the first read had already drained past the limit | Test uses a fresh request for each read style |
+| `TokenBucketLimiterTest.allowsBurstThenLimitsAndRefills` | Implementation defect | `Retry-After` was computed with `ceil` on a floating-point value and reported 2 s where 1 s was due (`ceil(1.0000000000000009)`) | `TokenBucketLimiter` rounds with a 1 µs tolerance |
+
+No frozen test failed.
+
 ## Final run (phase 6)
