@@ -182,3 +182,12 @@
 - Options: 1. (default) Frontend devDependencies @apidevtools/swagger-parser 13.1.0, openapi-types 12.1.3 (peer), ajv 8.20.0 (≥ 8.18.0, which fixes GHSA-2g4f-4pwh-qvx6), ajv-formats 3.0.1, all MIT, exact pins; npm audit unchanged (0 Critical/High). Also reused by the e2e tests for response-schema checks. 2. Hand-written structural checks only.
 - Human response: none
 - Resolution: 1, pending review
+
+## D-21: Startable bootstrap skeleton for red acceptance tests
+- Timestamp: 2026-09-30T10:36Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the phase 3 gate needs every test to fail for a behavioural reason. The phase 0 skeleton cannot start because it has no datasource/mail configuration (a setup error), and Compose waits for backend health that the default security blocks.
+- Options: 1. (default) Complete the skeleton with configuration only: application.yml maps the documented environment names (spec section 10) to Spring properties and exposes the health probes. Compose starts the frontend once the backend has started (service_started). No Java behaviour is added; all endpoints still return the Spring defaults. 2. Leave the skeleton unstartable (the tests would fail on setup, violating the gate).
+- Human response: none
+- Resolution: 1, pending review

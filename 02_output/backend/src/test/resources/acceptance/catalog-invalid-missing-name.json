@@ -1,0 +1,9 @@
+{
+  "conferenceTitle": "Lab Conference",
+  "groups": {
+    "workshops": [{ "id": "ws-alpha", "active": true }],
+    "events": [],
+    "meals": [],
+    "other": []
+  }
+}

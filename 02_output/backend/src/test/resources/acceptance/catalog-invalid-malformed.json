@@ -1,0 +1,1 @@
+{ "conferenceTitle": "Lab Conference", "groups": { "workshops": [ { "id": "ws-alpha", "name": "Alpha", "active": true }

@@ -1,0 +1,567 @@
+
+Running 19 tests using 1 worker
+
+  ✘   1 [chromium] › e2e/api-contract.spec.ts:7:3 › REST contract conformance › AC-003-01 catalog response matches the Catalog schema and hides inactive options (79ms)
+  ✘   2 [chromium] › e2e/api-contract.spec.ts:17:3 › REST contract conformance › AC-001-01 AC-004-03 accepted and replayed responses match RegistrationAccepted (92ms)
+  ✘   3 [chromium] › e2e/api-contract.spec.ts:42:3 › REST contract conformance › AC-002-02 validation failure matches ValidationProblem (86ms)
+  ✘   4 [chromium] › e2e/confirmation.spec.ts:18:3 › US-004 confirmation only after backend acceptance › AC-004-01 confirmation appears only after the acceptance response (15.5s)
+  ✘   5 [chromium] › e2e/confirmation.spec.ts:38:3 › US-004 confirmation only after backend acceptance › AC-004-02 server failure shows no confirmation, keeps data, and retry reuses the request ID (15.5s)
+  ✘   6 [chromium] › e2e/confirmation.spec.ts:79:3 › US-004 confirmation only after backend acceptance › AC-004-02 network error shows no confirmation (15.5s)
+  ✘   7 [chromium] › e2e/confirmation.spec.ts:91:3 › US-004 confirmation only after backend acceptance › AC-004-02 backend field errors are shown next to their fields (15.4s)
+  ✘   8 [chromium] › e2e/external-form.spec.ts:29:3 › US-001 external participant form › AC-001-09 AC-003-01 form shows labelled fields, active grouped options and unchecked consent (15.4s)
+  ✘   9 [chromium] › e2e/external-form.spec.ts:56:3 › US-001 external participant form › AC-001-09 AC-001-04 AC-004-01 keyboard-only submission with Unicode values reaches confirmation (10.5s)
+  ✘  10 [chromium] › e2e/external-form.spec.ts:101:3 › US-001 external participant form › AC-001-09 empty submission shows associated field errors and an error summary (15.4s)
+  ✘  11 [chromium] › e2e/external-form.spec.ts:116:3 › US-001 external participant form › AC-001-09 AC-001-03 invalid email and missing consent are reported before sending (15.5s)
+  ✘  12 [chromium] › e2e/external-form.spec.ts:140:3 › US-001 external participant form › AC-001-01 AC-001-07 valid external registration through the UI is accepted (15.5s)
+  ✘  13 [chromium] › e2e/notifications.spec.ts:6:1 › AC-006-01 AC-007-01 UI registration produces participant and organizer mail with JSON attachment (15.5s)
+  ✘  14 [chromium] › e2e/organizer-export.spec.ts:5:3 › US-008 organizer export › AC-008-06 organizer page offers the Excel download link (15.4s)
+  ✘  15 [chromium] › e2e/organizer-export.spec.ts:13:3 › US-008 organizer export › AC-008-02 AC-008-06 download requires organizer credentials (531ms)
+  ✘  16 [chromium] › e2e/student-form.spec.ts:15:3 › US-002 student form › AC-002-08 student form shows study fields, grouped options and unchecked consent (15.4s)
+  ✘  17 [chromium] › e2e/student-form.spec.ts:38:3 › US-002 student form › AC-002-08 empty student submission shows every required field error (15.4s)
+  ✘  18 [chromium] › e2e/student-form.spec.ts:58:3 › US-002 student form › AC-002-01 AC-002-04 AC-004-01 student registration with Unicode study details is accepted (15.5s)
+  ✘  19 [chromium] › e2e/student-form.spec.ts:84:3 › US-002 student form › AC-002-06 unchecked stub captcha is reported and nothing is sent (15.4s)
+
+
+  1) [chromium] › e2e/api-contract.spec.ts:7:3 › REST contract conformance › AC-003-01 catalog response matches the Catalog schema and hides inactive options 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m200[39m
+    Received: [31m401[39m
+
+       9 |   }) => {
+      10 |     const response = await request.get('/api/catalog');
+    > 11 |     expect(response.status()).toBe(200);
+         |                               ^
+      12 |     const body: unknown = await response.json();
+      13 |     expect(await schemaErrors('Catalog', body)).toEqual([]);
+      14 |     expect(JSON.stringify(body)).not.toContain('ws-retired');
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/api-contract.spec.ts:11:31
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/api-contract-REST-contract-17e5a--and-hides-inactive-options-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/api-contract-REST-contract-17e5a--and-hides-inactive-options-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/api-contract.spec.ts:17:3 › REST contract conformance › AC-001-01 AC-004-03 accepted and replayed responses match RegistrationAccepted 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m401[39m
+
+      29 |     };
+      30 |     const created = await request.post('/api/registrations/external', { data: payload });
+    > 31 |     expect(created.status()).toBe(201);
+         |                              ^
+      32 |     const body: unknown = await created.json();
+      33 |     expect(await schemaErrors('RegistrationAccepted', body)).toEqual([]);
+      34 |
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/api-contract.spec.ts:31:30
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/api-contract-REST-contract-bff4d--match-RegistrationAccepted-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/api-contract-REST-contract-bff4d--match-RegistrationAccepted-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e/api-contract.spec.ts:42:3 › REST contract conformance › AC-002-02 validation failure matches ValidationProblem 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m400[39m
+    Received: [31m401[39m
+
+      54 |       },
+      55 |     });
+    > 56 |     expect(response.status()).toBe(400);
+         |                               ^
+      57 |     expect(response.headers()['content-type']).toContain('application/problem+json');
+      58 |     const body = (await response.json()) as { errors: { field: string; code: string }[] };
+      59 |     expect(await schemaErrors('ValidationProblem', body)).toEqual([]);
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/api-contract.spec.ts:56:31
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/api-contract-REST-contract-464c1-e-matches-ValidationProblem-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/api-contract-REST-contract-464c1-e-matches-ValidationProblem-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e/confirmation.spec.ts:18:3 › US-004 confirmation only after backend acceptance › AC-004-01 confirmation appears only after the acceptance response 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/confirmation.spec.ts:28:11
+
+    Error Context: test-results/confirmation-US-004-confir-082f2-ter-the-acceptance-response-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/confirmation-US-004-confir-082f2-ter-the-acceptance-response-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/confirmation-US-004-confir-082f2-ter-the-acceptance-response-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › e2e/confirmation.spec.ts:38:3 › US-004 confirmation only after backend acceptance › AC-004-02 server failure shows no confirmation, keeps data, and retry reuses the request ID 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/confirmation.spec.ts:57:11
+
+    Error Context: test-results/confirmation-US-004-confir-c76c5-retry-reuses-the-request-ID-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/confirmation-US-004-confir-c76c5-retry-reuses-the-request-ID-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/confirmation-US-004-confir-c76c5-retry-reuses-the-request-ID-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › e2e/confirmation.spec.ts:79:3 › US-004 confirmation only after backend acceptance › AC-004-02 network error shows no confirmation 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/confirmation.spec.ts:82:11
+
+    Error Context: test-results/confirmation-US-004-confir-b839a-error-shows-no-confirmation-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/confirmation-US-004-confir-b839a-error-shows-no-confirmation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/confirmation-US-004-confir-b839a-error-shows-no-confirmation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › e2e/confirmation.spec.ts:91:3 › US-004 confirmation only after backend acceptance › AC-004-02 backend field errors are shown next to their fields 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/confirmation.spec.ts:94:11
+
+    Error Context: test-results/confirmation-US-004-confir-961ba--shown-next-to-their-fields-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/confirmation-US-004-confir-961ba--shown-next-to-their-fields-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/confirmation-US-004-confir-961ba--shown-next-to-their-fields-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › e2e/external-form.spec.ts:29:3 › US-001 external participant form › AC-001-09 AC-003-01 form shows labelled fields, active grouped options and unchecked consent 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'External participant registration' })[22m
+
+
+      31 |   }) => {
+      32 |     await page.goto('/');
+    > 33 |     await page.getByRole('link', { name: 'External participant registration' }).click();
+         |                                                                                 ^
+      34 |     await expect(
+      35 |       page.getByRole('heading', { name: 'External participant registration' }),
+      36 |     ).toBeVisible();
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/external-form.spec.ts:33:81
+
+    Error Context: test-results/external-form-US-001-exter-a62d1-tions-and-unchecked-consent-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/external-form-US-001-exter-a62d1-tions-and-unchecked-consent-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/external-form-US-001-exter-a62d1-tions-and-unchecked-consent-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › e2e/external-form.spec.ts:56:3 › US-001 external participant form › AC-001-09 AC-001-04 AC-004-01 keyboard-only submission with Unicode values reaches confirmation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  getByLabel('First name')
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+      60 |     const email = uniqueEmail('e2e-keyboard');
+      61 |     await page.goto('/register/external');
+    > 62 |     await expect(page.getByLabel('First name')).toBeVisible();
+         |                                                 ^
+      63 |
+      64 |     const typeInto = async (label: string, text: string) => {
+      65 |       const field = page.getByLabel(label, { exact: true });
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/external-form.spec.ts:62:49
+
+    Error Context: test-results/external-form-US-001-exter-8018e-values-reaches-confirmation-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/external-form-US-001-exter-8018e-values-reaches-confirmation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/external-form-US-001-exter-8018e-values-reaches-confirmation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › e2e/external-form.spec.ts:101:3 › US-001 external participant form › AC-001-09 empty submission shows associated field errors and an error summary 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Submit registration' })[22m
+
+
+      103 |   }) => {
+      104 |     await page.goto('/register/external');
+    > 105 |     await page.getByRole('button', { name: 'Submit registration' }).click();
+          |                                                                     ^
+      106 |
+      107 |     const summary = page.getByRole('alert').filter({ hasText: 'Please correct the following' });
+      108 |     await expect(summary).toBeVisible();
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/external-form.spec.ts:105:69
+
+    Error Context: test-results/external-form-US-001-exter-c07a7-errors-and-an-error-summary-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/external-form-US-001-exter-c07a7-errors-and-an-error-summary-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/external-form-US-001-exter-c07a7-errors-and-an-error-summary-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › e2e/external-form.spec.ts:116:3 › US-001 external participant form › AC-001-09 AC-001-03 invalid email and missing consent are reported before sending 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/external-form.spec.ts:120:11
+
+    Error Context: test-results/external-form-US-001-exter-8bdee-are-reported-before-sending-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/external-form-US-001-exter-8bdee-are-reported-before-sending-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/external-form-US-001-exter-8bdee-are-reported-before-sending-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium] › e2e/external-form.spec.ts:140:3 › US-001 external participant form › AC-001-01 AC-001-07 valid external registration through the UI is accepted 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/external-form.spec.ts:144:11
+
+    Error Context: test-results/external-form-US-001-exter-87a8a--through-the-UI-is-accepted-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/external-form-US-001-exter-87a8a--through-the-UI-is-accepted-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/external-form-US-001-exter-87a8a--through-the-UI-is-accepted-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [chromium] › e2e/notifications.spec.ts:6:1 › AC-006-01 AC-007-01 UI registration produces participant and organizer mail with JSON attachment 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:38
+
+      36 |
+      37 | export async function fillExternal(page: Page, v: ExternalValues): Promise<void> {
+    > 38 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      39 |   await page.getByLabel('Last name').fill(v.lastName);
+      40 |   await page.getByLabel('Email').fill(v.email);
+      41 |   await page.getByLabel('Organization / institution').fill(v.organization);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:38:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/notifications.spec.ts:12:9
+
+    Error Context: test-results/notifications-AC-006-01-AC-15879-r-mail-with-JSON-attachment-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/notifications-AC-006-01-AC-15879-r-mail-with-JSON-attachment-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/notifications-AC-006-01-AC-15879-r-mail-with-JSON-attachment-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [chromium] › e2e/organizer-export.spec.ts:5:3 › US-008 organizer export › AC-008-06 organizer page offers the Excel download link 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'Organizer export' })[22m
+
+
+       5 |   test('AC-008-06 organizer page offers the Excel download link', async ({ page }) => {
+       6 |     await page.goto('/');
+    >  7 |     await page.getByRole('link', { name: 'Organizer export' }).click();
+         |                                                                ^
+       8 |     await expect(page.getByRole('heading', { name: 'Organizer export' })).toBeVisible();
+       9 |     const link = page.getByRole('link', { name: 'Download Excel export' });
+      10 |     await expect(link).toHaveAttribute('href', '/api/organizer/export.xlsx');
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/organizer-export.spec.ts:7:64
+
+    Error Context: test-results/organizer-export-US-008-or-1180c-ers-the-Excel-download-link-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/organizer-export-US-008-or-1180c-ers-the-Excel-download-link-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/organizer-export-US-008-or-1180c-ers-the-Excel-download-link-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [chromium] › e2e/organizer-export.spec.ts:13:3 › US-008 organizer export › AC-008-02 AC-008-06 download requires organizer credentials 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m200[39m
+    Received: [31m401[39m
+
+      32 |     });
+      33 |     const ok = await organizer.get('/api/organizer/export.xlsx');
+    > 34 |     expect(ok.status()).toBe(200);
+         |                         ^
+      35 |     expect(ok.headers()['content-type']).toContain(
+      36 |       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      37 |     );
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/organizer-export.spec.ts:34:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/organizer-export-US-008-or-0b8f0-uires-organizer-credentials-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/organizer-export-US-008-or-0b8f0-uires-organizer-credentials-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [chromium] › e2e/student-form.spec.ts:15:3 › US-002 student form › AC-002-08 student form shows study fields, grouped options and unchecked consent 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'Student registration' })[22m
+
+
+      17 |   }) => {
+      18 |     await page.goto('/');
+    > 19 |     await page.getByRole('link', { name: 'Student registration' }).click();
+         |                                                                    ^
+      20 |     await expect(page.getByRole('heading', { name: 'Student registration' })).toBeVisible();
+      21 |     for (const label of [
+      22 |       'First name',
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/student-form.spec.ts:19:68
+
+    Error Context: test-results/student-form-US-002-studen-e23eb-tions-and-unchecked-consent-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-form-US-002-studen-e23eb-tions-and-unchecked-consent-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-form-US-002-studen-e23eb-tions-and-unchecked-consent-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [chromium] › e2e/student-form.spec.ts:38:3 › US-002 student form › AC-002-08 empty student submission shows every required field error 
+
+    TimeoutError: locator.evaluate: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Submit registration' })[22m
+
+
+       at support/forms.ts:24
+
+      22 | export async function tabTo(page: Page, target: Locator, maxTabs = 80): Promise<void> {
+      23 |   for (let i = 0; i < maxTabs; i += 1) {
+    > 24 |     if (await target.evaluate((el) => el === document.activeElement)) return;
+         |                      ^
+      25 |     await page.keyboard.press('Tab');
+      26 |   }
+      27 |   throw new Error('element not reachable with Tab');
+        at tabTo (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:24:22)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/student-form.spec.ts:41:11
+
+    Error Context: test-results/student-form-US-002-studen-c794f--every-required-field-error-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-form-US-002-studen-c794f--every-required-field-error-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-form-US-002-studen-c794f--every-required-field-error-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [chromium] › e2e/student-form.spec.ts:58:3 › US-002 student form › AC-002-01 AC-002-04 AC-004-01 student registration with Unicode study details is accepted 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:45
+
+      43 |
+      44 | export async function fillStudent(page: Page, v: StudentValues): Promise<void> {
+    > 45 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      46 |   await page.getByLabel('Last name').fill(v.lastName);
+      47 |   await page.getByLabel('Email').fill(v.email);
+      48 |   await page.getByLabel('Study institution').fill(v.studyInstitution);
+        at fillStudent (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:45:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/student-form.spec.ts:64:11
+
+    Error Context: test-results/student-form-US-002-studen-7775e-e-study-details-is-accepted-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-form-US-002-studen-7775e-e-study-details-is-accepted-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-form-US-002-studen-7775e-e-study-details-is-accepted-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [chromium] › e2e/student-form.spec.ts:84:3 › US-002 student form › AC-002-06 unchecked stub captcha is reported and nothing is sent 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('First name')[22m
+
+
+       at support/forms.ts:45
+
+      43 |
+      44 | export async function fillStudent(page: Page, v: StudentValues): Promise<void> {
+    > 45 |   await page.getByLabel('First name').fill(v.firstName);
+         |                                       ^
+      46 |   await page.getByLabel('Last name').fill(v.lastName);
+      47 |   await page.getByLabel('Email').fill(v.email);
+      48 |   await page.getByLabel('Study institution').fill(v.studyInstitution);
+        at fillStudent (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/forms.ts:45:39)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/student-form.spec.ts:86:11
+
+    Error Context: test-results/student-form-US-002-studen-16709-eported-and-nothing-is-sent-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-form-US-002-studen-16709-eported-and-nothing-is-sent-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-form-US-002-studen-16709-eported-and-nothing-is-sent-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19 failed
+    [chromium] › e2e/api-contract.spec.ts:7:3 › REST contract conformance › AC-003-01 catalog response matches the Catalog schema and hides inactive options 
+    [chromium] › e2e/api-contract.spec.ts:17:3 › REST contract conformance › AC-001-01 AC-004-03 accepted and replayed responses match RegistrationAccepted 
+    [chromium] › e2e/api-contract.spec.ts:42:3 › REST contract conformance › AC-002-02 validation failure matches ValidationProblem 
+    [chromium] › e2e/confirmation.spec.ts:18:3 › US-004 confirmation only after backend acceptance › AC-004-01 confirmation appears only after the acceptance response 
+    [chromium] › e2e/confirmation.spec.ts:38:3 › US-004 confirmation only after backend acceptance › AC-004-02 server failure shows no confirmation, keeps data, and retry reuses the request ID 
+    [chromium] › e2e/confirmation.spec.ts:79:3 › US-004 confirmation only after backend acceptance › AC-004-02 network error shows no confirmation 
+    [chromium] › e2e/confirmation.spec.ts:91:3 › US-004 confirmation only after backend acceptance › AC-004-02 backend field errors are shown next to their fields 
+    [chromium] › e2e/external-form.spec.ts:29:3 › US-001 external participant form › AC-001-09 AC-003-01 form shows labelled fields, active grouped options and unchecked consent 
+    [chromium] › e2e/external-form.spec.ts:56:3 › US-001 external participant form › AC-001-09 AC-001-04 AC-004-01 keyboard-only submission with Unicode values reaches confirmation 
+    [chromium] › e2e/external-form.spec.ts:101:3 › US-001 external participant form › AC-001-09 empty submission shows associated field errors and an error summary 
+    [chromium] › e2e/external-form.spec.ts:116:3 › US-001 external participant form › AC-001-09 AC-001-03 invalid email and missing consent are reported before sending 
+    [chromium] › e2e/external-form.spec.ts:140:3 › US-001 external participant form › AC-001-01 AC-001-07 valid external registration through the UI is accepted 
+    [chromium] › e2e/notifications.spec.ts:6:1 › AC-006-01 AC-007-01 UI registration produces participant and organizer mail with JSON attachment 
+    [chromium] › e2e/organizer-export.spec.ts:5:3 › US-008 organizer export › AC-008-06 organizer page offers the Excel download link 
+    [chromium] › e2e/organizer-export.spec.ts:13:3 › US-008 organizer export › AC-008-02 AC-008-06 download requires organizer credentials 
+    [chromium] › e2e/student-form.spec.ts:15:3 › US-002 student form › AC-002-08 student form shows study fields, grouped options and unchecked consent 
+    [chromium] › e2e/student-form.spec.ts:38:3 › US-002 student form › AC-002-08 empty student submission shows every required field error 
+    [chromium] › e2e/student-form.spec.ts:58:3 › US-002 student form › AC-002-01 AC-002-04 AC-004-01 student registration with Unicode study details is accepted 
+    [chromium] › e2e/student-form.spec.ts:84:3 › US-002 student form › AC-002-06 unchecked stub captcha is reported and nothing is sent 

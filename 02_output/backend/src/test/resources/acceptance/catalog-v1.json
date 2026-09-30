@@ -1,0 +1,27 @@
+{
+  "conferenceTitle": "Lab Conference",
+  "consent": {
+    "id": "test-consent",
+    "text": "I agree to the synthetic test consent statement (fixture, not a legal notice).",
+    "required": true
+  },
+  "groups": {
+    "workshops": [
+      { "id": "ws-alpha", "name": "Workshop Alpha – Čebelarstvo", "active": true },
+      { "id": "ws-beta", "name": "Workshop Beta", "active": true },
+      { "id": "ws-inactive", "name": "Workshop Retired", "active": false }
+    ],
+    "events": [
+      { "id": "ev-gala", "name": "Gala evening", "active": true },
+      { "id": "ev-off", "name": "Cancelled event", "active": false }
+    ],
+    "meals": [
+      { "id": "meal-veg", "name": "Vegetarian lunch", "active": true },
+      { "id": "meal-off", "name": "Breakfast (not offered)", "active": false }
+    ],
+    "other": [
+      { "id": "oth-poster", "name": "Poster session", "active": true },
+      { "id": "oth-off", "name": "Closed hackathon", "active": false }
+    ]
+  }
+}

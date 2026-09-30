@@ -61,7 +61,7 @@ services:
     image: agenticlab-frontend:local
     depends_on:
       backend:
-        condition: service_healthy
+        condition: service_started
     ports:
       - "127.0.0.1:${APP_PORT:-18080}:8080"
 

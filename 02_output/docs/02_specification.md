@@ -129,6 +129,22 @@ Flyway migrations in `backend/src/main/resources/db/migration`; Hibernate `ddl-a
 - Visible focus outline on all interactive elements; everything is keyboard reachable.
 - The organizer page is a link to `/api/organizer/export.xlsx`; the browser's native Basic authentication dialog is used, and the frontend never handles credentials.
 
+UI contract (accessible names used by the e2e tests):
+
+| Element | Accessible name / text |
+|---|---|
+| Home links | "External participant registration", "Student registration", "Organizer export" |
+| Form headings | "External participant registration", "Student registration" |
+| Text inputs | "First name", "Last name", "Email", "Organization / institution" (external); "Study institution", "Study programme", "Student ID" (student) |
+| Activity groups (fieldset legends) | "Workshops", "Events", "Meals", "Other activities"; one checkbox per active option labelled with its display name |
+| Consent | checkbox labelled with the catalog consent text |
+| Stub captcha | checkbox "Local test captcha: I am not a robot" |
+| Submit | button "Submit registration" |
+| Error summary | `role="alert"` region with heading "Please correct the following"; each field error text contains the field label |
+| Save failure | `role="alert"` text containing "Your registration was not saved" |
+| Success | heading "Registration received"; registration ID in an element with `data-testid="registration-id"` |
+| Organizer page | heading "Organizer export"; link "Download Excel export" |
+
 ## 12. Deployment (AR-08, SB-11, NFR-05)
 
 The Compose project `agenticlab` uses named volumes `pgdata` and `jsondata` and mounts the catalog read-only. Only `127.0.0.1:18080` (app) and `127.0.0.1:18025` (Mailpit UI) are published. The backend runs as UID 10001 and the frontend as the `nginx` user (non-root). The JSON volume is mounted only into the backend; nginx serves only the built SPA, so JSON files cannot be reached through static hosting (SR-02). In production, an external nginx with TLS routes `/` to the frontend and `/api/` to the backend, and sets `X-Forwarded-For`, which `TRUSTED_PROXIES` must match.

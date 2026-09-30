@@ -32,12 +32,12 @@
       "phase": 3,
       "name": "test-design",
       "start": "2026-09-30T10:34:05Z",
-      "end": null
+      "end": "2026-09-30T11:02:49Z"
     },
     {
       "phase": 4,
       "name": "build",
-      "start": null,
+      "start": "2026-09-30T11:02:49Z",
       "end": null
     },
     {
@@ -194,6 +194,12 @@
       "type": "non-blocking",
       "start": "2026-09-30T10:34:05Z",
       "end": null
+    },
+    {
+      "id": "D-21",
+      "type": "non-blocking",
+      "start": "2026-09-30T10:36:25Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -224,6 +230,11 @@
       "sha": "2476e0c431968334455da5acd69154fda2f0edab",
       "phase": 1,
       "message": "Phase 1: acceptance criteria for US-001..US-008 (D-17..D-19)"
+    },
+    {
+      "sha": "aade092c3f6dd0bdb10ff8cd832fd88bdb29f57f",
+      "phase": 2,
+      "message": "Phase 2: specification, contracts and contract validator (D-20)"
     }
   ],
   "usage": {

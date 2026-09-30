@@ -1,0 +1,9 @@
+{
+  "conferenceTitle": "Lab Conference",
+  "groups": {
+    "workshops": [{ "id": "dup-id", "name": "Workshop", "active": true }],
+    "events": [{ "id": "dup-id", "name": "Event", "active": true }],
+    "meals": [],
+    "other": []
+  }
+}

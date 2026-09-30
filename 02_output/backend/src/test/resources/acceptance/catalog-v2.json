@@ -1,0 +1,26 @@
+{
+  "conferenceTitle": "Lab Conference",
+  "consent": {
+    "id": "test-consent",
+    "text": "I agree to the synthetic test consent statement (fixture, not a legal notice).",
+    "required": true
+  },
+  "groups": {
+    "workshops": [
+      { "id": "ws-alpha", "name": "Workshop Alpha (renamed)", "active": true },
+      { "id": "ws-beta", "name": "Workshop Beta", "active": false },
+      { "id": "ws-gamma", "name": "Workshop Gamma – new", "active": true }
+    ],
+    "events": [
+      { "id": "ev-gala", "name": "Gala evening", "active": true },
+      { "id": "ev-off", "name": "Cancelled event", "active": false }
+    ],
+    "meals": [
+      { "id": "meal-veg", "name": "Vegetarian lunch", "active": true },
+      { "id": "meal-fish", "name": "Fish lunch", "active": true }
+    ],
+    "other": [
+      { "id": "oth-poster", "name": "Poster session", "active": true }
+    ]
+  }
+}
