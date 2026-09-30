@@ -58,4 +58,17 @@ End-to-end (`logs/03_e2e-skeleton-run.log`, stack from `docker compose up` with 
 
 ## First complete run (before any fix)
 
+Run on 2026-09-30 after phase 5 tests were written, before any fix; all levels together: **272 passed, 0 failed**.
+
+| Level | Tests | Passed | Failed | Log |
+|---|---|---|---|---|
+| Backend acceptance (frozen) | 105 | 105 | 0 |  |
+| Backend unit and architecture (, , , , ,  test packages) | 116 | 116 | 0 |  |
+| Frontend unit and component (Vitest) | 43 | 43 | 0 |  |
+| End-to-end (frozen, Playwright) | 8 | 8 | 0 |  |
+
+Classification: no failures, so nothing to classify. Earlier, during phase 4, one frozen test was found wrong (D-12, human-approved correction of a JDBC type cast); no other frozen or non-frozen test was changed.
+
+Unit test scope (phase 5): validation rules (all field, option, consent and token branches), the registration use case with mocked ports (order of storage, copy, commit and emails; rollback and copy removal on failure; email failures swallowed), options file validation (17 invalid variants), JSON copy writing, Google verifier against a local HTTP stub (encoding, failure modes), email building (headers, charset, attachment bytes), workbook cells, rate-limit windows, request-size stream counting, HTTPS filter, error mapping, startup checks, and ArchUnit rules A1 to A6. Frontend: validation, API client status mapping, and each component (options, consents, reCAPTCHA both modes, form, confirmation, app loading).
+
 ## Final run (phase 6)

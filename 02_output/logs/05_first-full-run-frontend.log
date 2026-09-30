@@ -1,0 +1,12 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mE:/13 - Lab Projects/01_Runs/05_Optimized_Input_Template/agentic_lab/02_output/frontend[39m
+
+ [32m✓[39m src/api.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/validation.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m src/components.test.tsx [2m([22m[2m18 tests[22m[2m)[22m[33m 497[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m43 passed[39m[22m[90m (43)[39m
+[2m   Start at [22m 17:21:01
+[2m   Duration [22m 3.35s[2m (transform 142ms, setup 1.20s, collect 354ms, tests 515ms, environment 5.21s, prepare 419ms)[22m
+
