@@ -62,10 +62,10 @@ Run on 2026-09-30 after phase 5 tests were written, before any fix; all levels t
 
 | Level | Tests | Passed | Failed | Log |
 |---|---|---|---|---|
-| Backend acceptance (frozen) | 105 | 105 | 0 |  |
-| Backend unit and architecture (, , , , ,  test packages) | 116 | 116 | 0 |  |
-| Frontend unit and component (Vitest) | 43 | 43 | 0 |  |
-| End-to-end (frozen, Playwright) | 8 | 8 | 0 |  |
+| Backend acceptance (frozen) | 105 | 105 | 0 | `logs/05_first-full-run-backend.log` |
+| Backend unit and architecture (`application`, `domain`, `infrastructure`, `web`, `config`, `architecture` test packages) | 116 | 116 | 0 | `logs/05_first-full-run-backend.log` |
+| Frontend unit and component (Vitest) | 43 | 43 | 0 | `logs/05_first-full-run-frontend.log` |
+| End-to-end (frozen, Playwright) | 8 | 8 | 0 | `logs/05_first-full-run-e2e.log` |
 
 Classification: no failures, so nothing to classify. Earlier, during phase 4, one frozen test was found wrong (D-12, human-approved correction of a JDBC type cast); no other frozen or non-frozen test was changed.
 
