@@ -1,0 +1,20 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Workshop: applied AI", "category": "workshop", "active": true },
+    { "id": "ws-security", "name": "Workshop: secure web development", "category": "workshop", "active": true },
+    { "id": "ev-reception", "name": "Welcome reception", "category": "event", "active": true },
+    { "id": "ev-dinner", "name": "Conference dinner", "category": "event", "active": true },
+    { "id": "meal-lunch-1", "name": "Lunch, day 1", "category": "meal", "active": true },
+    { "id": "meal-lunch-2", "name": "Lunch, day 2", "category": "meal", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarian meals", "category": "meal", "active": true },
+    { "id": "other-tour", "name": "Ljubljana city tour", "category": "other", "active": true },
+    { "id": "other-boat", "name": "Boat trip", "category": "other", "active": false }
+  ],
+  "consents": [
+    {
+      "id": "privacy",
+      "text": "I agree that the organizer processes my personal data to organise the conference, as described in the privacy notice.",
+      "required": true
+    }
+  ]
+}
