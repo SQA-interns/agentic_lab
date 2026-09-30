@@ -2,7 +2,7 @@
 
 > Owner: Security officer · Read in: phases 0, 2, 6 · Agent: read-only
 
-Applies to every project. Project requirements (`SR-nn`) and the chosen standard level are in `project/04_security/security-requirements.md`.
+Applies to every project. Project requirements (`SR-nn`) and the chosen standard level are in `project/02_design/security-requirements.md`.
 
 ## Verification standard by component type
 

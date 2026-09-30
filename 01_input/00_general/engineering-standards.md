@@ -7,7 +7,7 @@ Apply to every component of every project.
 | ID | Standard |
 |---|---|
 | ES-01 | Every value that differs between environments comes from configuration; secrets have no default in code. |
-| ES-02 | Secrets are never committed; `.env` is ignored by git; `project/01_setup/secrets.env.example` lists every key. |
+| ES-02 | Secrets are never committed; `.env` is ignored by git; `project/00_setup/secrets.env.example` lists every key. |
 | ES-03 | The repository has `.gitattributes` normalising text files to LF and `.gitignore` excluding build output, dependencies and local config. |
 | ES-04 | Dependency versions are exact and lock files are committed. |
 | ES-05 | Each component offers one command each to build, test, check (format, lint, type check) and run; its README lists them. |

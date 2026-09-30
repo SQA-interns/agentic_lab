@@ -10,7 +10,7 @@ Phase 0, first action: copy `run-log.template.json` to `run-log.json`.
 
 | Field | When | How |
 |---|---|---|
-| `runId`, `model`, `effort`, `templateVersion` | phase 0 | copied from `project/01_setup/run-config.md` |
+| `runId`, `model`, `effort`, `templateVersion` | phase 0 | copied from `project/00_setup/run-config.md` |
 | `startCommit`, `start` | phase 0, first action | git HEAD, UTC timestamp |
 | `transcript` | phase 0 | path of this session's transcript file, if the harness keeps one (Claude Code: newest `*.jsonl` in `~/.claude/projects/<escaped project path>/`) |
 | `phases[].start`, `phases[].end` | each phase boundary | UTC timestamp |

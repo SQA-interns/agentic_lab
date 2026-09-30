@@ -5,7 +5,7 @@ description: Write and freeze the black-box acceptance tests from the acceptance
 
 > Owner: QA lead · Read in: phase 3 · Agent: read-only
 
-- Reads: `docs/01_acceptance-criteria.md`, `docs/02_contracts/`, `general/quality/test-strategy.md`, `general/phase-rules.md`
+- Reads: `docs/01_acceptance-criteria.md`, `docs/02_contracts/`, `general/quality/test-strategy.md`, `general/phases.md`
 - Writes: acceptance and end-to-end tests, `docs/03_acceptance-manifest.sha256`, `docs/03_test-strategy.md`
 - Does not read: production source code
 

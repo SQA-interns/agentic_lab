@@ -14,7 +14,7 @@ Persistent data (database and JSON copies) lives on named volumes and survives c
 
 ## Configuration
 
-Settings that differ between environments (ES-01). Secrets are listed in `project/01_setup/secrets.env.example`, not here.
+Settings that differ between environments (ES-01). Secrets are listed in `project/00_setup/secrets.env.example`, not here.
 
 | Setting | Environments | Default allowed? |
 |---|---|---|

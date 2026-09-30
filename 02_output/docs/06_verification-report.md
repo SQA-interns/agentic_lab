@@ -1,6 +1,6 @@
 # Verification report
 
-> Written in: phase 6 · Source: `general/quality/*`, `general/security/*`, `project/04_security/*`, `project/05_quality/*` · Procedure: `general/skills/verify-release`, `general/skills/security-review` · Agent: writes
+> Written in: phase 6 · Source: `general/quality/*`, `general/security/*`, `project/02_design/*` · Procedure: `general/skills/verify-release` · Agent: writes
 
 This is a self-check by the development agent, not an independent review.
 

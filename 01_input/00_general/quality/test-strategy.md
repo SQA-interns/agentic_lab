@@ -2,12 +2,12 @@
 
 > Owner: QA lead · Read in: every phase that writes or runs tests · Agent: read-only
 
-When each test level is written and whether it is frozen is defined in `general/phase-rules.md`. Project thresholds are in `project/05_quality/quality-requirements.md`.
+When each test level is written and whether it is frozen is defined in `general/phases.md`. Project thresholds are in `project/02_design/quality-requirements.md`.
 
 ## Constraints
 
 - Do not test acceptance behaviour through internals; use the component's public interface (API, UI, CLI, messages).
-- Do not depend on live external services in automated tests; use the local substitutes in `project/03_technical/environments.md` and list the real services in the release notes for manual testing.
+- Do not depend on live external services in automated tests; use the local substitutes in `project/00_setup/environments.md` and list the real services in the release notes for manual testing.
 - Do not leave flaky, skipped or disabled tests; fix them or record a decision.
 - Do not weaken an assertion to make an incorrect implementation pass.
 - Test names contain the AC id they verify.

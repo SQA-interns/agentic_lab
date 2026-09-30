@@ -23,7 +23,7 @@
 ## Priorities
 
 1. A registration is never lost: storage (BR-07) comes before any notification.
-2. Security and privacy (`project/04_security/`) come before convenience.
+2. Security and privacy (`project/02_design/security-requirements.md`) come before convenience.
 3. The participant flow (US-001 to US-006) comes before organizer features (US-007, US-008).
 
 ## Open questions
