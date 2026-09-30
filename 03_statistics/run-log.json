@@ -49,12 +49,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-09-30T15:21:49Z",
-      "end": null
+      "end": "2026-09-30T15:46:28Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-09-30T15:46:28Z",
       "end": null
     }
   ],
@@ -63,16 +63,53 @@
     "failed": 0
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 281,
+    "failed": 0
   },
   "findings": {
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0
+    "medium": 6,
+    "low": 4
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "change": "nginx: stop forwarding client Host header (e27d899)",
+      "start": "2026-09-30T15:33:40Z",
+      "end": "2026-09-30T15:34:45Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-09"
+      ],
+      "change": "production profile: SMTP STARTTLS on by default + integration test (b1cf717)",
+      "start": "2026-09-30T15:34:45Z",
+      "end": "2026-09-30T15:35:41Z"
+    },
+    {
+      "loop": 3,
+      "findings": [
+        "F-05"
+      ],
+      "change": "stronger backend unit tests (6610957)",
+      "start": "2026-09-30T15:35:41Z",
+      "end": "2026-09-30T15:37:30Z"
+    },
+    {
+      "loop": 4,
+      "findings": [
+        "F-06"
+      ],
+      "change": "frontend email anchor tests (45d1ce3)",
+      "start": "2026-09-30T15:37:30Z",
+      "end": "2026-09-30T15:38:42Z"
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -160,9 +197,26 @@
     }
   ],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 1815,
+        "testLoc": 3534,
+        "language": "Java",
+        "tool": "aldanial/cloc:2.10 (reports 1.98)"
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 565,
+        "testLoc": 813,
+        "language": "TypeScript",
+        "tool": "aldanial/cloc:2.10 (reports 1.98)"
+      }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "no complexity tool listed in tech-stack.md tooling; PMD default rules report no violation",
+    "duplicationPct": 0,
+    "duplicationNote": "PMD CPD (>=100 tokens) and jscpd report no clones"
   },
   "commits": [],
   "usage": {
