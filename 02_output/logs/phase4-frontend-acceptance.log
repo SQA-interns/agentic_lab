@@ -1,0 +1,19 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mE:/13 - Lab Projects/04_Input_Files_Template/agentic_lab/02_output/frontend[39m
+
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-001-08 every consent checkbox starts unchecked[32m 115[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-002-03 the fields follow the chosen registration type[32m 66[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-003-03 active options are shown grouped by category[32m 57[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-003-04 the options offered follow the registration type[32m 76[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-01 an accepted registration shows the confirmation[32m 108[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-02 backend field errors are shown next to the fields and no confirmation[32m 107[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-02 a server error shows no confirmation[32m 110[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 empty required fields are reported before any request is sent[32m 109[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 an invalid email is reported before any request is sent[32m 93[2mms[22m[39m
+ [32m✓[39m tests/acceptance/registration-form.acceptance.test.tsx[2m > [22mregistration form (frozen acceptance tests)[2m > [22mAC-004-03 a missing mandatory consent is reported before any request is sent[32m 107[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m10 passed[39m[22m[90m (10)[39m
+[2m   Start at [22m 02:12:44
+[2m   Duration [22m 2.27s[2m (transform 72ms, setup 99ms, collect 183ms, tests 951ms, environment 514ms, prepare 118ms)[22m
+

@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ok 1 [chromium] › tests\e2e\registration.e2e.spec.ts:38:1 › NFR-01 AC-001-01 AC-006-01 AC-007-01 AC-008-03 Slovenian characters survive form, emails and export (1.5s)
+  ok 2 [chromium] › tests\e2e\registration.e2e.spec.ts:79:1 › AC-002-01 AC-004-01 a student registers through the form (531ms)
+  ok 3 [chromium] › tests\e2e\registration.e2e.spec.ts:96:1 › AC-008-01 AC-008-02 DoD-P04 the organizer gets a workbook; without credentials the same request is refused (135ms)
+
+  3 passed (2.8s)
