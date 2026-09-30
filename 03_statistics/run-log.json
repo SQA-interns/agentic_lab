@@ -139,6 +139,12 @@
       "type": "non-blocking",
       "start": "2026-09-30T14:26:12Z",
       "end": null
+    },
+    {
+      "id": "D-12",
+      "type": "blocking",
+      "start": "2026-09-30T14:55:08Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -146,6 +152,11 @@
       "start": "2026-09-30T14:22:00Z",
       "end": "2026-09-30T14:23:14Z",
       "reason": "D-04: approve CVE-2025-7962 on angus-activation as false positive"
+    },
+    {
+      "start": "2026-09-30T15:07:51Z",
+      "end": null,
+      "reason": "D-12: frozen StorageAcceptanceTest casts timestamptz to OffsetDateTime"
     }
   ],
   "codeMetrics": {
