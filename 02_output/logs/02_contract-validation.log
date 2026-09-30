@@ -1,0 +1,7 @@
+Phase 2 contract validation, 2026-09-30
+node JSON.parse + local $ref resolution:
+openapi.json parsed; refs 35 unresolved 0
+registration-copy.schema.json parsed; refs 0 unresolved 0
+conference-options.schema.json parsed; refs 0 unresolved 0
+database-schema.sql: applied with psql -v ON_ERROR_STOP=1 to postgres:16.15-alpine -> success
+Markdown contracts (emails.md, configuration.md, recaptcha.md, ui.md): prose, no parser applies

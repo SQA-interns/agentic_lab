@@ -25,12 +25,12 @@
       "phase": 2,
       "name": "design",
       "start": "2026-09-30T14:26:12Z",
-      "end": null
+      "end": "2026-09-30T14:30:27Z"
     },
     {
       "phase": 3,
       "name": "test-design",
-      "start": null,
+      "start": "2026-09-30T14:30:27Z",
       "end": null
     },
     {
