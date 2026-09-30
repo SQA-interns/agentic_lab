@@ -20,7 +20,8 @@ import si.konferenca.registration.domain.SelectedOption;
 
 /**
  * The registration use case (02_specification.md 4.1): validate, verify reCAPTCHA, reject
- * duplicates, then store the database row and the JSON copy together (AR-05, BR-07).
+ * duplicates, store the database row and the JSON copy together (AR-05, BR-07), then send the
+ * emails.
  */
 @Service
 public class RegistrationService {
@@ -31,6 +32,7 @@ public class RegistrationService {
   private final CaptchaVerifier captcha;
   private final RegistrationRepository repository;
   private final JsonCopyStore copies;
+  private final NotificationSender notifications;
   private final TransactionTemplate transaction;
   private final Clock clock;
 
@@ -39,12 +41,14 @@ public class RegistrationService {
       CaptchaVerifier captcha,
       RegistrationRepository repository,
       JsonCopyStore copies,
+      NotificationSender notifications,
       PlatformTransactionManager transactionManager,
       Clock clock) {
     this.validator = validator;
     this.captcha = captcha;
     this.repository = repository;
     this.copies = copies;
+    this.notifications = notifications;
     this.transaction = new TransactionTemplate(transactionManager);
     this.clock = clock;
   }
@@ -67,6 +71,8 @@ public class RegistrationService {
     RegistrationCopy copy = RegistrationCopy.of(registration);
     byte[] json = store(registration, copy);
     LOG.info("Registration {} accepted", registration.getId());
+    sendSafely(
+        "participant", registration.getId(), () -> notifications.sendParticipantConfirmation(copy));
     return new Accepted(copy, json);
   }
 
@@ -94,6 +100,15 @@ public class RegistrationService {
     } catch (RuntimeException e) {
       copies.delete(registration.getId());
       throw e;
+    }
+  }
+
+  /** Emails never undo an accepted registration (D-08); failures are logged by id only. */
+  private static void sendSafely(String kind, UUID id, Runnable send) {
+    try {
+      send.run();
+    } catch (RuntimeException e) {
+      LOG.error("Email {} failed for registration {} ({})", kind, id, e.getClass().getSimpleName());
     }
   }
 }
