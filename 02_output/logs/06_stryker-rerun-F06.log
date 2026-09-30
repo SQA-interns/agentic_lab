@@ -1,0 +1,570 @@
+[32m17:37:51 (26292) INFO ProjectReader[39m Found 12 of 63 file(s) to be mutated.
+[32m17:37:52 (26292) INFO Instrumenter[39m Instrumented 12 source file(s) with 336 mutant(s)
+[32m17:37:52 (26292) INFO ConcurrencyTokenProvider[39m Creating 31 test runner process(es).
+[32m17:37:54 (26292) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m17:37:57 (26292) INFO DryRunExecutor[39m Initial test run succeeded. Ran 45 tests in 3 seconds (net 513.0363 ms, overhead 2717.9637000000002 ms).
+
+All tests
+  api.test.ts
+    ~ reading loads config and options from /api (covered 11)
+    ✓ reading fails on an error status (killed 4)
+    ✓ submitRegistration posts JSON and returns the registration on 201 (killed 8)
+    ✓ submitRegistration maps field errors of 400 and 409, first message per field (killed 10)
+    ✓ submitRegistration uses a generic message for 400 without field errors (killed 5)
+    ✓ submitRegistration explains rate limiting (killed 7)
+    ✓ submitRegistration uses a generic message for 413 (killed 3)
+    ~ submitRegistration uses a generic message for 500 (covered 23)
+    ~ submitRegistration uses a generic message for 503 (covered 23)
+    ✓ submitRegistration handles network failures and unreadable error bodies (killed 3)
+  components.test.tsx
+    ✓ OptionGroups groups options under category headings and skips empty categories (killed 25)
+    ✓ OptionGroups shows an option error linked to the group (killed 4)
+    ✓ ConsentList renders unchecked consents and marks required ones (killed 7)
+    ✓ Recaptcha emits the pass token in test mode and loads nothing (killed 6)
+    ✓ Recaptcha loads the Google script once outside test mode and renders the widget (killed 24)
+    ✓ Recaptcha renders at once when the script is already loaded (killed 6)
+    ✓ RegistrationForm shows the external fields by default and the student fields after switching (killed 26)
+    ✓ RegistrationForm validates before sending and links errors to fields (killed 39)
+    ✓ RegistrationForm requires a reCAPTCHA token outside test mode (killed 8)
+    ✓ RegistrationForm submits the external form with options in display order (killed 38)
+    ✓ RegistrationForm unchecking an option removes it (killed 3)
+    ✓ RegistrationForm shows server field errors next to the field and keeps the values (killed 6)
+    ✓ RegistrationForm shows a general alert for other failures (killed 6)
+    ✓ RegistrationForm disables the button while submitting (killed 2)
+    ✓ Confirmation shows name, id, options and email (killed 5)
+    ✓ Confirmation says when no options were selected (killed 1)
+    ✓ App loads configuration and options, then shows the confirmation after acceptance (killed 17)
+    ✓ App explains when the form cannot be loaded (killed 4)
+  validation.test.ts
+    ✓ validate requires every field of the external form and the required consent (killed 2)
+    ✓ validate requires the student fields and ignores organization (killed 8)
+    ✓ validate treats whitespace as empty and checks the email format (killed 1)
+    ✓ validate accepts a complete external form (killed 1)
+    ~ isValidEmail accepts a@b.si (covered 2)
+    ~ isValidEmail accepts č@š.si (covered 2)
+    ✓ isValidEmail accepts  a@b.si (killed 1)
+    ~ isValidEmail rejects (covered 2)
+    ~ isValidEmail rejects a (covered 2)
+    ~ isValidEmail rejects a@b (covered 2)
+    ✓ isValidEmail rejects a b@c.si (killed 1)
+    ~ isValidEmail rejects @c.si (covered 2)
+    ~ isValidEmail rejects a@b. (covered 2)
+    ✓ isValidEmail rejects a@b.si x (killed 1)
+    ~ isValidEmail rejects x a@b.si (covered 2)
+    ✓ toRequestBody sends only the fields of the selected type, trimmed (killed 1)
+    ✘ toRequestBody defines four external and six student fields (covered 0)
+
+[Survived] ObjectLiteral
+src/api.ts:8:49
+-     const response = await fetch(path, { headers: { Accept: "application/json" } });
++     const response = await fetch(path, { headers: {} });
+Tests ran:
+    App loads configuration and options, then shows the confirmation after acceptance
+    App explains when the form cannot be loaded
+    reading loads config and options from /api
+  and 1 more test!
+
+
+[Survived] ObjectLiteral
+src/api.ts:8:38
+-     const response = await fetch(path, { headers: { Accept: "application/json" } });
++     const response = await fetch(path, {});
+Tests ran:
+    App loads configuration and options, then shows the confirmation after acceptance
+    App explains when the form cannot be loaded
+    reading loads config and options from /api
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/api.ts:8:59
+-     const response = await fetch(path, { headers: { Accept: "application/json" } });
++     const response = await fetch(path, { headers: { Accept: "" } });
+Tests ran:
+    App loads configuration and options, then shows the confirmation after acceptance
+    App explains when the form cannot be loaded
+    reading loads config and options from /api
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/api.ts:34:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    RegistrationForm submits the external form with options in display order
+    RegistrationForm unchecking an option removes it
+    RegistrationForm shows server field errors next to the field and keeps the values
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:43:7
+-     if (response.status === 400 || response.status === 409) {
++     if (false || response.status === 409) {
+Tests ran:
+    RegistrationForm shows server field errors next to the field and keeps the values
+    RegistrationForm shows a general alert for other failures
+    submitRegistration maps field errors of 400 and 409, first message per field
+  and 6 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:18:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    App loads configuration and options, then shows the confirmation after acceptance
+    App explains when the form cannot be loaded
+
+
+[Survived] ObjectLiteral
+src/categories.ts:6:3
+-     { category: "event", heading: "Events" },
++     {},
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/categories.ts:6:33
+-     { category: "event", heading: "Events" },
++     { category: "event", heading: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/categories.ts:6:15
+-     { category: "event", heading: "Events" },
++     { category: "", heading: "Events" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/ConsentList.tsx:14:41
+-       <fieldset aria-describedby={error ? "consents-error" : undefined}>
++       <fieldset aria-describedby={error ? "" : undefined}>
+Tests ran:
+    RegistrationForm validates before sending and links errors to fields
+
+
+[Survived] StringLiteral
+src/fields.ts:23:75
+-     { name: "firstName", label: "First name", maxLength: 100, autoComplete: "given-name" },
++     { name: "firstName", label: "First name", maxLength: 100, autoComplete: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/fields.ts:24:73
+-     { name: "lastName", label: "Last name", maxLength: 100, autoComplete: "family-name" },
++     { name: "lastName", label: "Last name", maxLength: 100, autoComplete: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/fields.ts:25:86
+-     { name: "email", label: "Email", maxLength: 254, inputType: "email", autoComplete: "email" },
++     { name: "email", label: "Email", maxLength: 254, inputType: "email", autoComplete: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/fields.ts:25:63
+-     { name: "email", label: "Email", maxLength: 254, inputType: "email", autoComplete: "email" },
++     { name: "email", label: "Email", maxLength: 254, inputType: "", autoComplete: "email" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/fields.ts:35:21
+-         autoComplete: "organization",
++         autoComplete: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/fields.ts:41:38
+-       { name: "studyProgramme", label: "Study programme", maxLength: 200 },
++       { name: "studyProgramme", label: "", maxLength: 200 },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/fields.ts:40:40
+-       { name: "studyInstitution", label: "Study institution", maxLength: 200 },
++       { name: "studyInstitution", label: "", maxLength: 200 },
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:41:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (true) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+    RegistrationForm requires a reCAPTCHA token outside test mode
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:41:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current || window.grecaptcha && widgetId.current === null) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+    RegistrationForm requires a reCAPTCHA token outside test mode
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:41:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (true && widgetId.current === null) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+    RegistrationForm requires a reCAPTCHA token outside test mode
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:41:53
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current && window.grecaptcha && true) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+    RegistrationForm requires a reCAPTCHA token outside test mode
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:41:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current && window.grecaptcha || widgetId.current === null) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+    RegistrationForm requires a reCAPTCHA token outside test mode
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:51:16
+-       } else if (!document.getElementById(SCRIPT_ID)) {
++       } else if (true) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+
+
+[Survived] BooleanLiteral
+src/Recaptcha.tsx:57:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:63:61
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (resetCount > 0 && !testMode && window.grecaptcha && true) {
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (resetCount > 0 && !testMode && window.grecaptcha || widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (true && widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (true && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/Recaptcha.tsx:70:58
+-       <div className="recaptcha" aria-describedby={error ? "recaptchaToken-error" : undefined}>
++       <div className="recaptcha" aria-describedby={error ? "" : undefined}>
+Tests ran:
+    Recaptcha renders at once when the script is already loaded
+    RegistrationForm requires a reCAPTCHA token outside test mode
+
+
+[Survived] ArrayDeclaration
+src/Recaptcha.tsx:60:6
+-     }, [siteKey, testMode, onToken]);
++     }, []);
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (true && !testMode && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (resetCount > 0 && !testMode || window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/Recaptcha.tsx:65:15
+-         onToken("");
++         onToken("Stryker was here!");
+Tests ran:
+    Recaptcha loads the Google script once outside test mode and renders the widget
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (resetCount > 0 || !testMode && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[Survived] EqualityOperator
+src/Recaptcha.tsx:63:9
+-       if (resetCount > 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
++       if (resetCount >= 0 && !testMode && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    Recaptcha emits the pass token in test mode and loads nothing
+    Recaptcha loads the Google script once outside test mode and renders the widget
+    Recaptcha renders at once when the script is already loaded
+  and 9 more tests!
+
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:80:37
+-               onChange={() => setType("EXTERNAL")}
++               onChange={() => setType("")}
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:28:49
+-     return list.includes(id) ? list.filter((x) => x !== id) : [...list, id];
++     return list.includes(id) ? list.filter((x) => false) : [...list, id];
+Tests ran:
+    RegistrationForm unchecking an option removes it
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:28:42
+-     return list.includes(id) ? list.filter((x) => x !== id) : [...list, id];
++     return list.includes(id) ? list.filter(() => undefined) : [...list, id];
+Tests ran:
+    RegistrationForm unchecking an option removes it
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:34:56
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
++     const [optionIds, setOptionIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:42:59
+-     const onToken = useCallback((t: string) => setToken(t), []);
++     const onToken = useCallback((t: string) => setToken(t), ["Stryker was here"]);
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:48:5
+-       setAlert(undefined);
++       ;
+Tests ran:
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+    RegistrationForm submits the external form with options in display order
+  and 5 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:47:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+    RegistrationForm submits the external form with options in display order
+  and 5 more tests!
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:67:26
+-       setResetCount((n) => n + 1);
++       setResetCount((n) => n - 1);
+Tests ran:
+    RegistrationForm shows server field errors next to the field and keeps the values
+    RegistrationForm shows a general alert for other failures
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:67:19
+-       setResetCount((n) => n + 1);
++       setResetCount(() => undefined);
+Tests ran:
+    RegistrationForm shows server field errors next to the field and keeps the values
+    RegistrationForm shows a general alert for other failures
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:79:22
+-               checked={type === "EXTERNAL"}
++               checked={true}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:79:22
+-               checked={type === "EXTERNAL"}
++               checked={false}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:79:22
+-               checked={type === "EXTERNAL"}
++               checked={type !== "EXTERNAL"}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:79:31
+-               checked={type === "EXTERNAL"}
++               checked={type === ""}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:80:23
+-               onChange={() => setType("EXTERNAL")}
++               onChange={() => undefined}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:89:31
+-               checked={type === "STUDENT"}
++               checked={type === ""}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:89:22
+-               checked={type === "STUDENT"}
++               checked={false}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] LogicalOperator
+src/TextField.tsx:20:15
+-           type={field.inputType ?? "text"}
++           type={field.inputType && "text"}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/TextField.tsx:20:34
+-           type={field.inputType ?? "text"}
++           type={field.inputType ?? ""}
+Tests ran:
+    RegistrationForm shows the external fields by default and the student fields after switching
+    RegistrationForm validates before sending and links errors to fields
+    RegistrationForm requires a reCAPTCHA token outside test mode
+  and 6 more tests!
+
+
+Ran 4.32 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  84.23 |   84.48 |      283 |         0 |         52 |        1 |        0 |
+ api.ts               |  91.67 |   91.67 |       55 |         0 |          5 |        0 |        0 |
+ App.tsx              |  93.75 |   93.75 |       15 |         0 |          1 |        0 |        0 |
+ categories.ts        |  76.92 |   76.92 |       10 |         0 |          3 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        6 |         0 |          0 |        0 |        0 |
+ ConsentList.tsx      |  90.91 |   90.91 |       10 |         0 |          1 |        0 |        0 |
+ fields.ts            |  81.58 |   81.58 |       31 |         0 |          7 |        0 |        0 |
+ OptionGroups.tsx     | 100.00 |  100.00 |       19 |         0 |          0 |        0 |        0 |
+ Recaptcha.tsx        |  67.27 |   67.27 |       37 |         0 |         18 |        0 |        0 |
+ RegistrationForm.tsx |  76.12 |   77.27 |       51 |         0 |         15 |        1 |        0 |
+ TextField.tsx        |  77.78 |   77.78 |        7 |         0 |          2 |        0 |        0 |
+ validation.ts        | 100.00 |  100.00 |       42 |         0 |          0 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m17:38:33 (26292) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/05_Optimized_Input_Template/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m17:38:34 (26292) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/05_Optimized_Input_Template/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m17:38:34 (26292) INFO MutationTestExecutor[39m Done in 43 seconds.

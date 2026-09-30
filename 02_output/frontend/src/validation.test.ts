@@ -67,9 +67,12 @@ describe("isValidEmail", () => {
     expect(isValidEmail(email)).toBe(true);
   });
 
-  it.each(["", "a", "a@b", "a b@c.si", "@c.si", "a@b."])("rejects %s", (email) => {
-    expect(isValidEmail(email)).toBe(false);
-  });
+  it.each(["", "a", "a@b", "a b@c.si", "@c.si", "a@b.", "a@b.si x", "x a@b.si"])(
+    "rejects %s",
+    (email) => {
+      expect(isValidEmail(email)).toBe(false);
+    },
+  );
 });
 
 describe("toRequestBody", () => {
