@@ -38,12 +38,12 @@
       "phase": 4,
       "name": "build",
       "start": "2026-09-29T23:56:34Z",
-      "end": null
+      "end": "2026-09-30T00:15:17Z"
     },
     {
       "phase": 5,
       "name": "unit-tests",
-      "start": null,
+      "start": "2026-09-30T00:15:17Z",
       "end": null
     },
     {
@@ -221,6 +221,16 @@
       "sha": "5d68e663f5f43f6b37a18bc5158140745b017f26",
       "phase": 3,
       "message": "Phase 3: frozen acceptance and e2e tests with manifest (AC-001..AC-008, SR, NFR; D-16, D-17)"
+    },
+    {
+      "sha": "deeb6bf1ad530889fc5e8e7ca8e2d41c008fb3f4",
+      "phase": 4,
+      "message": "Backend: registration API, storage, JSON copy, emails, export (US-001..US-008, AC-001..AC-008, SR-01..SR-07, NFR-04)"
+    },
+    {
+      "sha": "3af26d767568114d087024deab1d78c3684a9c8e",
+      "phase": 4,
+      "message": "Frontend form, container images and local compose stack (AC-001-08, AC-002-03, AC-003-03, AC-004-01..03, NFR-03, NFR-04, SB-10, SB-11)"
     }
   ],
   "usage": {
