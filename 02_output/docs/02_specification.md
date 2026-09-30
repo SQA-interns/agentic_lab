@@ -40,14 +40,15 @@ Applied on the backend in this order; any failure means nothing is written:
 6. Email: `local@domain`, local part ≤ 64 characters from the RFC 5322 atext set plus dots (no leading, trailing or double dots), and a domain of ≥ 2 DNS labels (`INVALID_EMAIL`).
 7. Selections: only the groups `workshops`, `events`, `meals` and `other`; ≤ 50 IDs per group; no duplicates (`DUPLICATE_OPTION`); each ID must be an active option **of that group** in the loaded catalog. Unknown, inactive and wrong-group IDs give the same `UNKNOWN_OPTION` error (BR-03). There are no capacity rules and no student-only rules (OQ-04).
 8. Consent: if the catalog consent is `required`, `consentGiven` must be `true` (`CONSENT_REQUIRED`) (BR-04).
-9. Captcha, verified last so that cheap checks fail first (`CAPTCHA_FAILED`) (SR-01).
+9. Captcha, verified last, after the replay check of section 4 step 2, so that cheap checks fail first (`CAPTCHA_FAILED`) (SR-01). A missing or blank token is `REQUIRED` and is reported with the other field errors.
 
 All field errors from steps 2–8 are returned together. The frontend repeats rules 3, 5, 6 and 8 for usability only (BR-02).
 
 ## 4. Acceptance flow and durability (AR-04, AR-09, BR-05, BR-06, NFR-01)
 
-1. Validate (section 3). No writes before this point.
-2. Look up `client_request_id`. If it exists with the same request fingerprint (SHA-256 of the canonical normalised content), return 200 with the original result. If the fingerprint differs, return 409.
+1. Validate the fields (section 3, rules 1–8). No writes before this point.
+2. Look up `client_request_id`. If it exists with the same request fingerprint (SHA-256 of the canonical normalised content), return 200 with the original result. If the fingerprint differs, return 409. This happens before captcha verification because real captcha tokens are single-use, and a retry must still be recognised as a replay; a replay writes nothing.
+2a. Verify the captcha (section 3, rule 9).
 3. The server generates `registrationId` (UUID v4) and builds the canonical registration JSON (`registration-record.schema.json`, UTF-8).
 4. Publish the JSON atomically: write `staging/<id>.json.tmp`, `fsync` it, `ATOMIC_MOVE` it to `registrations/<id>.json`, then `fsync` the directory. Paths come only from the generated UUID (SR-02). On failure, delete the temp file and return 503.
 5. In one database transaction, insert the registration, its selections, the JSON SHA-256 and the notification intents (1 participant + 1 per organizer address). Commit.

@@ -38,12 +38,12 @@
       "phase": 4,
       "name": "build",
       "start": "2026-09-30T11:02:49Z",
-      "end": null
+      "end": "2026-09-30T11:44:34Z"
     },
     {
       "phase": 5,
       "name": "unit-tests",
-      "start": null,
+      "start": "2026-09-30T11:44:34Z",
       "end": null
     },
     {
@@ -200,6 +200,12 @@
       "type": "non-blocking",
       "start": "2026-09-30T10:36:25Z",
       "end": null
+    },
+    {
+      "id": "D-22",
+      "type": "blocking",
+      "start": "2026-09-30T11:25:27Z",
+      "end": "2026-09-30T11:31:29Z"
     }
   ],
   "humanInterventions": [
@@ -212,6 +218,11 @@
       "start": "2026-09-30T10:09:18Z",
       "end": "2026-09-30T10:13:29Z",
       "reason": "D-11 backend dependency Critical/High CVEs in Spring Boot 3.5.16 graph"
+    },
+    {
+      "start": "2026-09-30T11:25:27Z",
+      "end": "2026-09-30T11:31:29Z",
+      "reason": "D-22 frozen acceptance helper Infra.bindFixedPort drops Mailpit HTTP port binding"
     }
   ],
   "cycles": [],
@@ -235,6 +246,26 @@
       "sha": "aade092c3f6dd0bdb10ff8cd832fd88bdb29f57f",
       "phase": 2,
       "message": "Phase 2: specification, contracts and contract validator (D-20)"
+    },
+    {
+      "sha": "d714ce8b7daf48fe67c55c401fb4c5919b83f344",
+      "phase": 3,
+      "message": "Phase 3: frozen acceptance and e2e tests, acceptance manifest (AC-001-01..AC-008-06, D-21)"
+    },
+    {
+      "sha": "2025fe0585a8aa075b1decd14fbb1bddfd56d9a5",
+      "phase": 4,
+      "message": "D-22: approved harness fix in frozen Infra.bindFixedPort (AC-006-02, AC-007-02)"
+    },
+    {
+      "sha": "f71914408a0a0af48ac34fe3e7cff6831c05fb9a",
+      "phase": 4,
+      "message": "Phase 4: backend registration, catalog, durable storage, notifications and export"
+    },
+    {
+      "sha": "3bcf5531811b1b33ec6bf0280af99fbe1b8884ed",
+      "phase": 4,
+      "message": "Phase 4: frontend forms, confirmation and organizer page"
     }
   ],
   "usage": {

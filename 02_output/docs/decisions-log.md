@@ -191,3 +191,12 @@
 - Options: 1. (default) Complete the skeleton with configuration only: application.yml maps the documented environment names (spec section 10) to Spring properties and exposes the health probes. Compose starts the frontend once the backend has started (service_started). No Java behaviour is added; all endpoints still return the Spring defaults. 2. Leave the skeleton unstartable (the tests would fail on setup, violating the gate).
 - Human response: none
 - Resolution: 1, pending review
+
+## D-22: Frozen acceptance helper cannot start the recovery Mailpit container
+- Timestamp: 2026-09-30T11:25Z
+- Phase: 4
+- Type: blocking
+- Trigger: phase 4 run 1 (`logs/phase4-acceptance-run1.log`): 108/109 acceptance tests and 19/19 e2e tests pass. `SmtpOutageAcceptanceTest.ac_006_02_and_ac_007_02_mailsAreDeliveredAfterSmtpRecovers` errors with ContainerLaunchException before any product assertion. Cause (from the container inspect in the failsafe report): the frozen helper `backend/src/test/java/lab/conference/acceptance/support/Infra.java` `bindFixedPort` calls `withPortBindings(...)` with only the fixed SMTP binding (1025), which removes the random host binding of the exposed HTTP port 8025. The Testcontainers wait strategy `forPort(8025)` can never succeed. The application cannot influence this; the test assertions themselves are not wrong. The same helper works for PostgreSQL because that container exposes a single port.
+- Options: 1. (default) Allow a minimal harness-only fix in Infra.bindFixedPort: keep the fixed binding and add a random host binding (`Ports.Binding.empty()`) for every other exposed port. No assertion or test case changes. Then update the one manifest line for Infra.java and record the change in 03_test-strategy.md. 2. The human edits Infra.java and the manifest themselves. 3. Leave the test failing: AC-006-02/AC-007-02 stay without passing acceptance evidence (DoD-01 fails; the run cannot finish).
+- Human response: approved option 1 (2026-09-30T11:31:29Z)
+- Resolution: option 1 (approved): Infra.bindFixedPort binds the other exposed ports to random host ports; the manifest line for Infra.java was updated with the approval; no assertion changed

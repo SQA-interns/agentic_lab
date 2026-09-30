@@ -1,0 +1,125 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< lab.conference:conference-backend >------------------
+[INFO] Building conference-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-unit) @ conference-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ conference-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ conference-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 52 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ conference-backend ---
+[INFO] Copying 6 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ conference-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 19 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ conference-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report-unit) @ conference-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'conference-backend' with 60 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ conference-backend ---
+[INFO] Building jar: /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/conference-backend-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ conference-backend ---
+[INFO] Replacing main artifact /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/conference-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/conference-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent-integration (prepare-integration) @ conference-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ conference-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.13:report-integration (report-integration) @ conference-backend ---
+[INFO] Loading execution data file /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'conference-backend' with 60 classes
+[WARNING] Classes in bundle 'conference-backend' do not match with execution data. For report generation the same class files must be used as at runtime.
+[WARNING] Execution data for class lab/conference/notifications/NotificationDispatcher does not match.
+[WARNING] Execution data for class lab/conference/platform/FieldError does not match.
+[WARNING] Execution data for class lab/conference/platform/ApiException does not match.
+[WARNING] Execution data for class lab/conference/registration/JsonStore does not match.
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ conference-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- spotless:2.44.3:check (spotless-check) @ conference-backend ---
+[INFO] Spotless.Java is keeping 71 files clean - 0 needs changes to be clean, 0 were already clean, 71 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] >>> spotbugs:4.9.3.0:check (spotbugs-check) > :spotbugs @ conference-backend >>>
+[INFO] 
+[INFO] --- spotbugs:4.9.3.0:spotbugs (spotbugs) @ conference-backend ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< spotbugs:4.9.3.0:check (spotbugs-check) < :spotbugs @ conference-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs:4.9.3.0:check (spotbugs-check) @ conference-backend ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
+[INFO] 
+[INFO] >>> pmd:3.26.0:check (pmd-check) > :pmd @ conference-backend >>>
+[INFO] 
+[INFO] --- pmd:3.26.0:pmd (pmd) @ conference-backend ---
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[INFO] PMD version: 7.7.0
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< pmd:3.26.0:check (pmd-check) < :pmd @ conference-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.26.0:check (pmd-check) @ conference-backend ---
+[WARNING] PMD Failure: lab.conference.notifications.MailConfig:17 Rule:CyclomaticComplexity Priority:3 The method 'mailSender(AppProperties, AppProfile)' has a cyclomatic complexity of 12..
+[WARNING] PMD Failure: lab.conference.notifications.OutboxEntry:94 Rule:NullAssignment Priority:3 Assigning an Object to null is a code smell.  Consider refactoring..
+[WARNING] PMD Failure: lab.conference.options.CatalogLoader:25 Rule:AvoidDuplicateLiterals Priority:3 The String literal "consent" appears 5 times in this file; the first occurrence is on line 25.
+[WARNING] PMD Failure: lab.conference.platform.LimitedBodyRequest:78 Rule:CloseResource Priority:3 Ensure that resources like this ServletInputStream object are closed after use.
+[WARNING] PMD Failure: lab/conference/platform/RequestGuardFilter.java:85 Rule:AssignmentInOperand Priority:3 Avoid assignments in operands.
+[WARNING] PMD Failure: lab.conference.platform.Bucket:49 Rule:AvoidSynchronizedAtMethodLevel Priority:3 Use block level locking rather than method level synchronization.
+[WARNING] PMD Failure: lab.conference.platform.Bucket:59 Rule:AvoidSynchronizedAtMethodLevel Priority:3 Use block level locking rather than method level synchronization.
+[WARNING] PMD Failure: lab.conference.registration.JsonStore:86 Rule:EmptyCatchBlock Priority:3 Avoid empty catch blocks.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationConfig:35 Rule:CyclomaticComplexity Priority:3 The method 'captchaVerifier(AppProperties, AppProfile)' has a cyclomatic complexity of 11..
+[WARNING] PMD Failure: lab.conference.registration.RegistrationController:43 Rule:PreserveStackTrace Priority:3 Thrown exception does not preserve the stack trace of exception 'e' on all code paths.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationService:82 Rule:PreserveStackTrace Priority:3 Thrown exception does not preserve the stack trace of exception 'e' on all code paths.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationService:101 Rule:PreserveStackTrace Priority:3 Thrown exception does not preserve the stack trace of exception 'e' on all code paths.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationService:111 Rule:PreserveStackTrace Priority:3 Thrown exception does not preserve the stack trace of exception 'e' on all code paths.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:31 Rule:AvoidDuplicateLiterals Priority:3 The String literal "firstName" appears 4 times in this file; the first occurrence is on line 31.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:32 Rule:AvoidDuplicateLiterals Priority:3 The String literal "lastName" appears 4 times in this file; the first occurrence is on line 32.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:33 Rule:AvoidDuplicateLiterals Priority:3 The String literal "email" appears 7 times in this file; the first occurrence is on line 33.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:38 Rule:AvoidDuplicateLiterals Priority:3 The String literal "captchaToken" appears 5 times in this file; the first occurrence is on line 38.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:52 Rule:AvoidDuplicateLiterals Priority:3 The String literal "clientRequestId" appears 4 times in this file; the first occurrence is on line 52.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:58 Rule:AvoidDuplicateLiterals Priority:3 The String literal "consentGiven" appears 4 times in this file; the first occurrence is on line 58.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:114 Rule:EmptyCatchBlock Priority:3 Avoid empty catch blocks.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:119 Rule:AvoidDuplicateLiterals Priority:3 The String literal "INVALID_FORMAT" appears 6 times in this file; the first occurrence is on line 119.
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:178 Rule:CyclomaticComplexity Priority:3 The method 'groupSelection(GroupId, String, JsonNode, List<FieldError>)' has a cyclomatic complexity of 10..
+[WARNING] PMD Failure: lab.conference.registration.RegistrationValidator:178 Rule:NPathComplexity Priority:3 The method 'groupSelection(GroupId, String, JsonNode, List<FieldError>)' has an NPath complexity of 360, current threshold is 200.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.047 s
+[INFO] Finished at: 2026-09-30T13:33:40+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-pmd-plugin:3.26.0:check (pmd-check) on project conference-backend: PMD 7.7.0 has found 23 violations. For more details see: /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/pmd.xml -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,24 @@
+
+Running 19 tests using 1 worker
+
+  ✓   1 [chromium] › e2e/api-contract.spec.ts:7:3 › REST contract conformance › AC-003-01 catalog response matches the Catalog schema and hides inactive options (188ms)
+  ✓   2 [chromium] › e2e/api-contract.spec.ts:17:3 › REST contract conformance › AC-001-01 AC-004-03 accepted and replayed responses match RegistrationAccepted (366ms)
+  ✓   3 [chromium] › e2e/api-contract.spec.ts:42:3 › REST contract conformance › AC-002-02 validation failure matches ValidationProblem (79ms)
+  ✓   4 [chromium] › e2e/confirmation.spec.ts:18:3 › US-004 confirmation only after backend acceptance › AC-004-01 confirmation appears only after the acceptance response (2.7s)
+  ✓   5 [chromium] › e2e/confirmation.spec.ts:38:3 › US-004 confirmation only after backend acceptance › AC-004-02 server failure shows no confirmation, keeps data, and retry reuses the request ID (1.3s)
+  ✓   6 [chromium] › e2e/confirmation.spec.ts:79:3 › US-004 confirmation only after backend acceptance › AC-004-02 network error shows no confirmation (1.1s)
+  ✓   7 [chromium] › e2e/confirmation.spec.ts:91:3 › US-004 confirmation only after backend acceptance › AC-004-02 backend field errors are shown next to their fields (950ms)
+  ✓   8 [chromium] › e2e/external-form.spec.ts:29:3 › US-001 external participant form › AC-001-09 AC-003-01 form shows labelled fields, active grouped options and unchecked consent (1.3s)
+  ✓   9 [chromium] › e2e/external-form.spec.ts:56:3 › US-001 external participant form › AC-001-09 AC-001-04 AC-004-01 keyboard-only submission with Unicode values reaches confirmation (3.6s)
+  ✓  10 [chromium] › e2e/external-form.spec.ts:101:3 › US-001 external participant form › AC-001-09 empty submission shows associated field errors and an error summary (673ms)
+  ✓  11 [chromium] › e2e/external-form.spec.ts:116:3 › US-001 external participant form › AC-001-09 AC-001-03 invalid email and missing consent are reported before sending (860ms)
+  ✓  12 [chromium] › e2e/external-form.spec.ts:140:3 › US-001 external participant form › AC-001-01 AC-001-07 valid external registration through the UI is accepted (1.3s)
+  ✓  13 [chromium] › e2e/notifications.spec.ts:6:1 › AC-006-01 AC-007-01 UI registration produces participant and organizer mail with JSON attachment (2.2s)
+  ✓  14 [chromium] › e2e/organizer-export.spec.ts:5:3 › US-008 organizer export › AC-008-06 organizer page offers the Excel download link (564ms)
+  ✓  15 [chromium] › e2e/organizer-export.spec.ts:13:3 › US-008 organizer export › AC-008-02 AC-008-06 download requires organizer credentials (2.1s)
+  ✓  16 [chromium] › e2e/student-form.spec.ts:15:3 › US-002 student form › AC-002-08 student form shows study fields, grouped options and unchecked consent (579ms)
+  ✓  17 [chromium] › e2e/student-form.spec.ts:38:3 › US-002 student form › AC-002-08 empty student submission shows every required field error (1.6s)
+  ✓  18 [chromium] › e2e/student-form.spec.ts:58:3 › US-002 student form › AC-002-01 AC-002-04 AC-004-01 student registration with Unicode study details is accepted (4.9s)
+  ✓  19 [chromium] › e2e/student-form.spec.ts:84:3 › US-002 student form › AC-002-06 unchecked stub captcha is reported and nothing is sent (654ms)
+
+  19 passed (29.5s)
