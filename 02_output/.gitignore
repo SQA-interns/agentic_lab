@@ -1,0 +1,17 @@
+# Local configuration and secrets (ES-02)
+.env
+.local/
+# Build output and dependencies (ES-03)
+backend/target/
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/reports/
+frontend/test-results/
+frontend/playwright-report/
+frontend/.stryker-tmp/
+# Editor / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store

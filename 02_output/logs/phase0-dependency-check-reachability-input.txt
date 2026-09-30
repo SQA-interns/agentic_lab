@@ -1,0 +1,328 @@
+CVE-2026-34479 7.5 MEDIUM log4j-api-2.24.3.jar
+  The Log4j1XmlLayout from the Apache Log4j 1-to-Log4j 2 bridge fails to escape characters forbidden by the XML 1.0 standard, producing malformed XML output. Conforming XML parsers are required to reject documents containing such characters with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.
+
+Two groups of users are affected:
+
+  *  Those using Log4j1XmlLayout directly in a Log4j Core 2 configuration file.
+  *  Those using the Log4j 1 configuration compatibility layer with org.apache.log4j.xml.XMLLayout specified as the layout class.
+
+
+
+
+CVE-2026-54291 5.9 HIGH postgresql-42.7.11.jar
+  pgjdbc is an open source postgresql JDBC Driver. In releases 42.7.4 through 42.7.11, channelBinding=require connections can be silently downgraded from SCRAM-SHA-256-PLUS with channel binding to plain SCRAM-SHA-256 without it, losing the man-in-the-middle protection the setting is meant to guarantee. An attacker who can intercept the TLS connection can trigger the downgrade with a certificate whose signature algorithm has no tls-server-end-point channel-binding hash, because the bundled com.ongres.scram:scram-client returns an empty byte array instead of failing and pgJDBC ScramAuthenticator c
+
+CVE-2026-47884 9.8 CRITICAL spring-core-6.2.19.jar
+  Use of XsltView in a Spring MVC application can result in SSRF and RCE attack if the application has an "/**" mapping that results in view rendering, and where the view name is not explicitly specified.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.25.RELEASE and earlier
+
+CVE-2026-47890 9.8 CRITICAL spring-core-6.2.19.jar
+  Spring MVC and WebFlux applications are vulnerable to stream corruption when using Server-Sent Events (SSE) with view fragments.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+
+CVE-2026-47891 9.8 CRITICAL spring-core-6.2.19.jar
+  A Spring WebFlux application that relies on the Aalto XML processor to parse XML input does not correctly enforce the maxInMemorySize limit.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.25.RELEASE and earlier
+
+CVE-2026-47892 9.8 CRITICAL spring-core-6.2.19.jar
+  A WebFlux application using functional endpoints and deployed with DispatcherServlet may be vulnerable to a header predicate bypass in a pre-flight request.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.5.RELEASE - 5.2.25.RELEASE
+
+CVE-2026-59313 9.8 CRITICAL spring-core-6.2.19.jar
+  Spring MVC applications using the functional web framework are vulnerable to stream corruption when using Server-Sent Events (SSE).
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+
+CVE-2026-59283 9.1 CRITICAL spring-core-6.2.19.jar
+  Applications that evaluate Spring Expression Language (SpEL) expressions using SimpleEvaluationContext may be vulnerable to a safety guard bypass when the SpEL expression compiler is active.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.25.RELEASE and earlier
+
+CVE-2026-47885 7.5 HIGH spring-core-6.2.19.jar
+  The PartEventHttpMessageReader in Spring WebFlux does not enforce the maxPartSize limit when maxInMemorySize is set to -1.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+
+CVE-2026-47886 7.5 HIGH spring-core-6.2.19.jar
+  Applications that evaluate user-supplied Spring Expression Language (SpEL) expressions may be vulnerable to a Denial of Service (DoS) attack when the power operator (^) is used with a BigDecimal or BigInteger operand and a large exponent value.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.25.RELEASE and earlier
+
+CVE-2026-47888 7.5 HIGH spring-core-6.2.19.jar
+  A Spring RSocket application is exposed to a memory leak via a malformed SETUP frame.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.0.RELEASE - 5.2.25.RELEASE
+
+CVE-2026-47889 7.5 HIGH spring-core-6.2.19.jar
+  A WebFlux application running on the Jetty 12 Core reactive adapter serializes response cookies without the sameSite attribute.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+
+CVE-2026-47893 7.5 HIGH spring-core-6.2.19.jar
+  A Spring WebFlux application that supports WebSocket connections may expose indirectly sensitive user information by including request headers in an exception reason.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.25.RELEASE and earlier
+
+CVE-2026-59282 7.5 HIGH spring-core-6.2.19.jar
+  Spring Framework applications that use Spring's data binding infrastructure to apply user-supplied property paths onto a target object may be vulnerable to a Denial of Service (DoS) attack.
+Spring Framework 7.0.0 - 7.0.8
+Spring Framework 6.2.0 - 6.2.19
+Spring Framework 6.1.0 - 6.1.28
+Spring Framework 6.0.0 - 6.0.30
+Spring Framework 5.3.0 - 5.3.49
+Spring Framework 5.2.25.RELEASE and earlier
+
+CVE-2026-59270 9.1 CRITICAL spring-security-core-6.5.11.jar
+  Spring Security's embedded UnboundID LDAP server (UnboundIdContainer) unconditionally registers an administrative credential and binds its listener to all available network interfaces.
+Spring Security 7.1.0
+Spring Security 7.0.0 - 7.0.6
+Spring Security 6.5.0 - 6.5.11
+Spring Security 6.4.0 - 6.4.18
+Spring Security 5.8.0 - 5.8.27
+Spring Security 5.7.0 - 5.7.25
+
+CVE-2026-41707 7.4 HIGH spring-security-core-6.5.11.jar
+  Authentication Bypass by Capture-replay vulnerability in Spring Spring Security allows Spring Security's DPoPProofJwtDecoderFactory contains a cache-based replay attack vulnerability. The internal cache storing JWT ID claims has a strict size limit, allowing attackers to evict legitimate entries by flooding the server with dummy requests, then replay intercepted valid DPoP proofs.
+
+This issue affects Spring Security: 7.1.0, from 7.0.0 through 7.0.6, and from 6.5.0 through 6.5.11.
+
+CVE-2026-47841 7.4 HIGH spring-security-core-6.5.11.jar
+  An application using Spring Security's WebAuthn support may be vulnerable to user verification bypass when using a distributed HTTP session store.
+Spring Security 7.1.0
+Spring Security 7.0.0 - 7.0.6
+Spring Security 6.5.0 - 6.5.11
+Spring Security 6.4.0 - 6.4.18
+
+CVE-2026-65637 9.8 CRITICAL tomcat-embed-core-10.1.55.jar
+  Improper Input Validation vulnerability in Apache Tomcat due to incomplete fix for CVE-2026-32990.
+
+
+
+This issue affects Apache Tomcat: from 11.0.20 through 11.0.24, from 10.1.53 through 10.1.57, from 9.0.115 through 9.0.120.
+
+
+
+Users are recommended to upgrade to version 11.0.25, 10.1.58 or 9.0.121, which fix the issue.
+
+CVE-2026-65905 9.8 CRITICAL tomcat-embed-core-10.1.55.jar
+  Authentication Bypass by Capture-replay vulnerability in Apache Tomcat's DIGEST authenticator. If, before windowSize requests have been made, a client makes a DIGEST 
+authenticated request with a nonceCount on the upper boundary of the 
+replay window then that request is replayable once only while the 
+associated nonceCount remains within the replay window.
+
+
+
+ 
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.0.M1 through 9.0.120.
+
+
+
+The following versions were EOL at the time the CVE was created but are 
+known to be affected: from 8.
+
+CVE-2026-53434 9.1 CRITICAL tomcat-embed-core-10.1.55.jar
+  Detection of Error Condition Without Action vulnerability in Apache Tomcat when configuring CRLs for a FFM based connector.
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.22, from 10.1.0-M7 through 10.1.55, from 9.0.83 through 9.0.118.
+
+Users are recommended to upgrade to version 11.0.23, 10.1.56 or 9.0.119, which fixes the issue.
+
+CVE-2026-55276 9.1 CRITICAL tomcat-embed-core-10.1.55.jar
+  Always-Incorrect Control Flow Implementation vulnerability in Apache Tomcat meant that special roles and empty authorisation constraints were not included when the effective web.xml was logged.
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.22, from 10.1.0-M1 through 10.1.55, from 9.0.0.M1 through 9.0.118, from 8.5.0 through 8.5.100. Other versions that have reached end of support may also be affected.
+
+Users are recommended to upgrade to version 11.0.23, 10.1.56 or 9.0.119 which fixes the issue.
+
+CVE-2026-59083 9.1 CRITICAL tomcat-embed-core-10.1.55.jar
+  Improper Handling of URL Encoding (Hex Encoding) vulnerability in Apache Tomcat's rewrite valve allowed security constraint bypass for some configurations.
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.23, from 10.1.0-M1 through 10.1.56, from 9.0.0.M1 through 9.0.119, from 8.5.0 through 8.5.100. Other versions that have reached end of support may also be affected.
+
+Users are recommended to upgrade to version 11.0.24, 10.1.57 or 9.0.120, which fix the issue.
+
+CVE-2026-59084 9.1 CRITICAL tomcat-embed-core-10.1.55.jar
+  Insufficient Technical Documentation vulnerability in Apache Tomcat since the requirements to securely configure the EncryptInterceptor were not clearly documented.
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.23, from 10.1.0-M1 through 10.1.56, from 9.0.13 through 9.0.119, from 8.5.38 through 8.5.100, from 7.0.100 through 7.0.109. Other versions that have reached end of support may also be affected.
+
+Users are recommended to upgrade to version 11.0.24, 10.1.57 or 9.0.120 which fix the issue.
+
+CVE-2026-65182 9.1 CRITICAL tomcat-embed-core-10.1.55.jar
+  Improper Access Control, Incorrect Authorization vulnerability in Apache Tomcat leads to security constraint bypass if a constraint for a longer path is specified before a more restrictive constraint for a shorter sub-path.
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.0.M1 through 9.0.120, from 8.5.0 through 8.5.100, from 7.0.0 through 7.0.109.
+
+
+
+Users are recommended to upgrade to version 11.0.25, 10.1.58, 9.0.121, which fixes the issue.
+
+CVE-2026-68525 9.1 CRITICAL tomcat-embed-core-10.1.55.jar
+  Incorrect Authorization vulnerability in Apache Tomcat's FORM authentication process allows the bypassing of a security constraint that limits user has access to a resource POST but not GET.
+
+
+
+
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.0.M1 through 9.0.120.
+
+
+
+
+
+
+
+The following versions were EOL at the time the CVE was created but are 
+known to be affected: from 8.5.0 through 8.5.100, from 7.0.0 through 7.0.109. Other unsupported versions may also be affected.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Users are recommended to upgrade to version 11.0.25
+
+CVE-2026-65183 8.1 HIGH tomcat-embed-core-10.1.55.jar
+  Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in Apache Tomcat when creating unix domain sockets allows an unauthorised local user to access the unix domain socket.
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.42 through 9.0.120.
+
+
+
+Users are recommended to upgrade to version 11.0.25, 10.1.58, 9.0.121, which fixes the issue.
+
+CVE-2026-66422 8.1 HIGH tomcat-embed-core-10.1.55.jar
+  Improper Authorization vulnerability in Apache Tomcat cause by security-role-ref definitions being incorrectly used as role aliases within the Realm in additional to the correct usage with Request.isUserInRole().
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.25 through 9.0.120.
+
+
+
+The following versions were EOL at the time the CVE was created but are 
+known to be affected: from 8.5.46 through 8.5.100, from 7.0.97 through 7.0.109. Other unsupported versions may also be affected.
+
+
+
+Users are recommended to upgrade to version 11.0.
+
+CVE-2026-68569 8.1 HIGH tomcat-embed-core-10.1.55.jar
+  Improper Authentication vulnerability in Apache Tomcat meant that in some circumstances (e.g. CLIENT-CERT, SPNEGO) that a user would be authenticated even if the user did not exist in the DataSourceRealm.
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.0.M1 through 9.0.120.
+
+
+
+
+
+
+
+The following versions were EOL at the time the CVE was created but are 
+known to be affected: from 8.5.0 through 8.5.100, from 7.0.0 through 7.0.109. Other unsupported versions may also be affected.
+
+
+
+
+
+
+
+Users are recommended to upgrade to version 11.0.
+
+CVE-2026-65927 7.5 HIGH tomcat-embed-core-10.1.55.jar
+  Off-by-one Error vulnerability in Apache Tomcat impacting the [N] flag on the rewrite valves causes rewrite processing to restart at the second rule rather than the first rule.
+
+
+
+
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.0.M1 through 9.0.120.
+
+
+
+The following versions were EOL at the time the CVE was created but are 
+known to be affected: from 8.5.0 through 8.5.100. Other unsupported versions may also be affected.
+
+
+
+Users are recommended to upgrade to version 11.0.25, 10.1.58 or 9.0.121 which fix the issue.
+
+CVE-2026-68763 7.5 HIGH tomcat-embed-core-10.1.55.jar
+  Uncontrolled Resource Consumption vulnerability in Apache Tomcat via an allocation leak in the HTTP/2 backlog tracking when a stream is reset
+
+
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.24, from 10.1.0-M1 through 10.1.57, from 9.0.39 through 9.0.120.
+
+
+
+The following versions were EOL at the time the CVE was created but are 
+known to be affected: from 8.5.59 through 8.5.100. Other unsupported versions may also be affected.
+
+
+
+Users are recommended to upgrade to version 11.0.25, 10.1.58 or 9.0.121, which fix the issue.
+
+CVE-2026-53404 7.3 HIGH tomcat-embed-core-10.1.55.jar
+  Always-Incorrect Control Flow Implementation vulnerability in Apache Tomcat's rewrite valve meant that if the first condition in an OR chain matched, subsequent non-OR conditions were skipped.
+
+This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.22, from 10.1.0-M1 through 10.1.55, from 9.0.0.M1 through 9.0.118, from 8.5.0 through 8.5.100. Other versions that have reached end of support may also be affected.
+
+Users are recommended to upgrade to version 11.0.23, 10.1.56 or 9.0.119, which fix the issue.
+

@@ -1,0 +1,303 @@
+ Image agenticlab-backend:local Building 
+ Image agenticlab-frontend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.11kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 819B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.49kB done
+#3 DONE 0.0s
+
+#4 [backend] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 DONE 0.3s
+
+#5 [frontend] docker-image://docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
+#5 resolve docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32 0.1s done
+#5 CACHED
+
+#6 [frontend internal] load metadata for docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#6 ...
+
+#7 [frontend internal] load metadata for docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#7 DONE 0.2s
+
+#8 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#8 DONE 0.2s
+
+#6 [frontend internal] load metadata for docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#6 DONE 0.2s
+
+#9 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#9 DONE 0.2s
+
+#10 [frontend internal] load .dockerignore
+#10 transferring context: 126B done
+#10 DONE 0.0s
+
+#11 [backend internal] load .dockerignore
+#11 transferring context: 61B done
+#11 DONE 0.0s
+
+#12 [frontend internal] load build context
+#12 DONE 0.0s
+
+#13 [backend internal] load build context
+#13 DONE 0.0s
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 resolve docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7 0.1s done
+#14 DONE 0.1s
+
+#15 [backend stage-1 1/4] FROM docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#15 resolve docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f
+#15 resolve docker.io/library/eclipse-temurin:21.0.12_8-jre@sha256:49e21e16e3c86eb7816a44a67549910ed090fbeb40c29c525d58bf5e02e91b0f 0.1s done
+#15 DONE 0.1s
+
+#16 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609
+#16 resolve docker.io/library/nginx:1.28.0@sha256:552e7481ca93ffccd046aa658dbbed22caefbc09c66fa7cd247cbb90b8a5c609 0.1s done
+#16 DONE 0.1s
+
+#17 [backend build 1/8] FROM docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d
+#17 resolve docker.io/library/eclipse-temurin:21.0.12_8-jdk@sha256:92a2a4d7a928d057e7bd999c418d66c26a34eb9a0442f3ab67721c3f88110b2d 0.1s done
+#17 CACHED
+
+#18 [backend stage-1 2/4] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#18 CACHED
+
+#19 [backend stage-1 3/4] WORKDIR /app
+#19 CACHED
+
+#13 [backend internal] load build context
+#13 transferring context: 1.08kB 0.0s done
+#13 DONE 0.0s
+
+#12 [frontend internal] load build context
+#12 transferring context: 707B done
+#12 DONE 0.0s
+
+#20 [frontend stage-1 2/4] COPY nginx/nginx.conf /etc/nginx/nginx.conf
+#20 CACHED
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 178.26MB / 211.71MB 0.2s
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 180.36MB / 211.71MB 5.3s
+#14 ...
+
+#21 [backend build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#21 0.960 Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+#21 0.994 Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+#21 1.261 Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+#21 1.713 Get:4 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [232 kB]
+#21 1.793 Get:5 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+#21 1.949 Get:6 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
+#21 2.031 Get:7 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [667 kB]
+#21 2.074 Get:8 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
+#21 3.027 Get:9 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [13.6 kB]
+#21 3.033 Get:10 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [547 kB]
+#21 ...
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 183.50MB / 211.71MB 10.4s
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 185.60MB / 211.71MB 15.5s
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 196.08MB / 211.71MB 20.6s
+#14 ...
+
+#21 [backend build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#21 13.85 Get:11 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
+#21 13.91 Get:12 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1,874 kB]
+#21 14.94 Get:13 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [392 kB]
+#21 15.16 Get:14 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [14.9 kB]
+#21 15.16 Get:15 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [563 kB]
+#21 15.61 Get:16 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [841 kB]
+#21 16.02 Get:17 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3,306 B]
+#21 16.16 Fetched 26.4 MB in 15s (1,711 kB/s)
+#21 16.16 Reading package lists...
+#21 17.22 Reading package lists...
+#21 18.29 Building dependency tree...
+#21 18.48 Reading state information...
+#21 18.54 Solving dependencies...
+#21 18.78 Suggested packages:
+#21 18.78   zip
+#21 18.87 The following NEW packages will be installed:
+#21 18.87   unzip
+#21 19.04 0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
+#21 19.04 Need to get 180 kB of archives.
+#21 19.04 After this operation, 426 kB of additional disk space will be used.
+#21 19.04 Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 unzip amd64 6.0-29ubuntu1 [180 kB]
+#21 19.74 debconf: unable to initialize frontend: Dialog
+#21 19.74 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#21 19.74 debconf: falling back to frontend: Readline
+#21 19.74 debconf: unable to initialize frontend: Readline
+#21 19.74 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 1.)
+#21 19.74 debconf: falling back to frontend: Teletype
+#21 19.75 debconf: unable to initialize frontend: Teletype
+#21 19.75 debconf: (This frontend requires a controlling tty.)
+#21 19.75 debconf: falling back to frontend: Noninteractive
+#21 20.87 Fetched 180 kB in 0s (371 kB/s)
+#21 20.91 Selecting previously unselected package unzip.
+#21 20.91 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 10374 files and directories currently installed.)
+#21 20.92 Preparing to unpack .../unzip_6.0-29ubuntu1_amd64.deb ...
+#21 20.93 Unpacking unzip (6.0-29ubuntu1) ...
+#21 21.07 Setting up unzip (6.0-29ubuntu1) ...
+#21 DONE 21.3s
+
+#22 [backend build 3/8] WORKDIR /workspace
+#22 DONE 0.1s
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 ...
+
+#23 [backend build 4/8] COPY .mvn/ .mvn/
+#23 DONE 0.1s
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 ...
+
+#24 [backend build 5/8] COPY mvnw pom.xml ./
+#24 DONE 0.1s
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 204.47MB / 211.71MB 25.7s
+#14 sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 211.71MB / 211.71MB 30.2s done
+#14 extracting sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a
+#14 ...
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 extracting sha256:de9e8d0a007171cac57d643a3982902d45431cd860400eea55e18df75fc0b12a 5.5s done
+#14 DONE 36.3s
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 extracting sha256:b92563fa790f8dd92d7adfdd88dfe3682717345457c18ae480cb81faeb8a78f2 0.0s done
+#14 extracting sha256:0d48f423dff09aa1ec458c0ccc8e3d690ca8a9a302fd7233adb9493cdc0d0600
+#14 extracting sha256:0d48f423dff09aa1ec458c0ccc8e3d690ca8a9a302fd7233adb9493cdc0d0600 2.5s done
+#14 DONE 38.8s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#14 [frontend build 1/6] FROM docker.io/library/node:22.23.3@sha256:363e1587494626837fa7f9a23bdb453d13b0ff3c67c705c2805cfc69c2d2fad7
+#14 extracting sha256:105754cf457c052e3214fc88da72777f5e777d7b6c0a2c287cfcffa03d5d3a0a 0.1s done
+#14 extracting sha256:0c06829c34adf939f5d8cae866bdbab1519529e3d355e3bfe8d2517a8562ebcf 0.0s done
+#14 DONE 38.9s
+
+#26 [frontend build 2/6] WORKDIR /app
+#26 DONE 1.4s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#27 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#27 DONE 0.2s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#28 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#28 2.464 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+#28 8.106 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#28 10.24 npm warn deprecated eslint@9.25.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+#28 15.70 npm warn deprecated @babel/plugin-proposal-explicit-resource-management@7.27.4: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-explicit-resource-management instead.
+#28 21.76 
+#28 21.76 added 518 packages in 21s
+#28 21.76 npm notice
+#28 21.76 npm notice New major version of npm available! 10.9.9 -> 12.1.0
+#28 21.76 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0
+#28 21.76 npm notice To update run: npm install -g npm@12.1.0
+#28 21.76 npm notice
+#28 DONE 23.0s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#29 [frontend build 5/6] COPY . .
+#29 DONE 0.3s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#30 [frontend build 6/6] RUN npm run build
+#30 0.698 
+#30 0.698 > conference-frontend@1.0.0 build
+#30 0.698 > tsc -b && vite build
+#30 0.698 
+#30 3.173 vite v6.4.3 building for production...
+#30 3.254 transforming...
+#30 4.195 ✓ 28 modules transformed.
+#30 4.352 rendering chunks...
+#30 4.360 computing gzip size...
+#30 4.368 dist/index.html                  0.34 kB │ gzip:  0.24 kB
+#30 4.368 dist/assets/index-VyJR5OHq.js  194.55 kB │ gzip: 60.83 kB
+#30 4.368 ✓ built in 1.16s
+#30 DONE 4.4s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#31 [frontend stage-1 3/4] COPY --from=build /app/dist /usr/share/nginx/html
+#31 DONE 0.1s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#32 [frontend stage-1 4/4] RUN mkdir -p /tmp/nginx && chown -R nginx:nginx /tmp/nginx /var/cache/nginx
+#32 DONE 0.3s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#33 [frontend] exporting to image
+#33 exporting layers
+#33 exporting layers 0.4s done
+#33 exporting manifest sha256:649d2b0e35a526f3cd45b2f63255c138dfd0075b2c85e15698fbe85e710e0660 0.0s done
+#33 exporting config sha256:9e4b2218114c1f58033cd99c57676af8e5db38e27ea512e3eb9bae43400c8732 0.0s done
+#33 exporting attestation manifest sha256:4f63c928f73f8cb598d1d26da857b7c6ee46e749e1049e851a59555c743fe427
+#33 exporting attestation manifest sha256:4f63c928f73f8cb598d1d26da857b7c6ee46e749e1049e851a59555c743fe427 0.1s done
+#33 exporting manifest list sha256:3b4ded594f63b0cb5d670edd4ea1ef8ac89365ed245110808e65e5bc0bd6af1b 0.0s done
+#33 naming to docker.io/library/agenticlab-frontend:local done
+#33 unpacking to docker.io/library/agenticlab-frontend:local
+#33 unpacking to docker.io/library/agenticlab-frontend:local 0.2s done
+#33 DONE 0.9s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 ...
+
+#34 [frontend] resolving provenance for metadata file
+#34 DONE 0.0s
+
+#25 [backend build 6/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q dependency:go-offline
+#25 DONE 109.9s
+
+#35 [backend build 7/8] COPY src/ src/
+#35 DONE 0.1s
+
+#36 [backend build 8/8] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -q -DskipTests package     && cp target/conference-backend-1.0.0.jar /workspace/app.jar
+#36 DONE 6.3s
+
+#37 [backend stage-1 4/4] COPY --from=build /workspace/app.jar /app/app.jar
+#37 DONE 0.3s
+
+#38 [backend] exporting to image
+#38 exporting layers
+#38 exporting layers 3.8s done
+#38 exporting manifest sha256:ff431571106aaa46725c9b58404c8d0fc5c830441a25897847fcf0a69c177b55 0.0s done
+#38 exporting config sha256:45a0b7633783e1aa3cf9fa3c22e65fd0259b0e8a354d30b792a5b69f577da874 0.0s done
+#38 exporting attestation manifest sha256:c2d51bb09683a16946b40a2f9a5ef73787c2b8cbc41cb3133b78ebd209e1df02
+#38 exporting attestation manifest sha256:c2d51bb09683a16946b40a2f9a5ef73787c2b8cbc41cb3133b78ebd209e1df02 0.1s done
+#38 exporting manifest list sha256:11137c0d88b10c44bf6e3e54c95c831f43ffa5b43e12b50560734c63c919928c 0.0s done
+#38 naming to docker.io/library/agenticlab-backend:local
+#38 naming to docker.io/library/agenticlab-backend:local done
+#38 unpacking to docker.io/library/agenticlab-backend:local
+#38 unpacking to docker.io/library/agenticlab-backend:local 0.6s done
+#38 DONE 4.7s
+
+#39 [backend] resolving provenance for metadata file
+#39 DONE 0.0s
+ Image agenticlab-frontend:local Built 
+ Image agenticlab-backend:local Built 

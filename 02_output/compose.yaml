@@ -1,0 +1,70 @@
+# Local synthetic environment (environments.md "local"). Project name avoids clashing with
+# other stacks on the host (D-10). Secrets come from the git-ignored .env (D-06, D-12).
+name: agenticlab
+
+services:
+  postgres:
+    image: postgres:16.14@sha256:95206741a5b214807675e14165369d05b93a9cf692223b616d07cca227e74b0b
+    environment:
+      POSTGRES_DB: conference
+      POSTGRES_USER: conference
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U conference -d conference"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.24.1@sha256:4873e5a441ed368f1e98a832f61257a033859f5e829542cd03fb772d2282ea4e
+    ports:
+      - "127.0.0.1:${MAILPIT_UI_PORT:-18025}:8025"
+
+  backend:
+    build: ./backend
+    image: agenticlab-backend:local
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    environment:
+      APP_PROFILE: local
+      DB_URL: jdbc:postgresql://postgres:5432/conference
+      DB_USERNAME: conference
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?ORGANIZER_USERNAME must be set in .env}
+      ORGANIZER_PASSWORD_HASH: ${ORGANIZER_PASSWORD_HASH:?ORGANIZER_PASSWORD_HASH must be set in .env}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_TLS_ENABLED: "false"
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      MAIL_FROM: registrations@example.test
+      ORGANIZER_EMAILS: organizer@example.test
+      CAPTCHA_MODE: stub
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY:-}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY:-}
+      CONFERENCE_CONFIG_PATH: /config/conference.json
+      REGISTRATION_JSON_DIR: /data/registrations
+      PUBLIC_BASE_URL: http://localhost:${APP_PORT:-18080}
+      ALLOWED_ORIGINS: http://localhost:${APP_PORT:-18080},http://127.0.0.1:${APP_PORT:-18080}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-172\.(1[6-9]|2[0-9]|3[0-1])\.\d{1,3}\.\d{1,3}}
+    volumes:
+      - jsondata:/data/registrations
+      - ${CONFERENCE_CONFIG_FILE:-./config/conference.local.json}:/config/conference.json:ro
+
+  frontend:
+    build: ./frontend
+    image: agenticlab-frontend:local
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${APP_PORT:-18080}:8080"
+
+volumes:
+  pgdata:
+  jsondata:
