@@ -13,6 +13,7 @@ public final class TokenBucketLimiter {
 
   private static final long MINUTE_NANOS = 60_000_000_000L;
   private static final int PRUNE_THRESHOLD = 10_000;
+  private static final double ROUNDING_TOLERANCE_SECONDS = 1e-6;
   private final int perMinute;
   private final Clock clock;
   private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
@@ -58,7 +59,8 @@ public final class TokenBucketLimiter {
           return 0;
         }
         double nanosPerToken = (double) MINUTE_NANOS / perMinute;
-        return Math.max(1, (long) Math.ceil((1 - tokens) * nanosPerToken / 1_000_000_000d));
+        double seconds = (1 - tokens) * nanosPerToken / 1_000_000_000d;
+        return Math.max(1, (long) Math.ceil(seconds - ROUNDING_TOLERANCE_SECONDS));
       } finally {
         lock.unlock();
       }
