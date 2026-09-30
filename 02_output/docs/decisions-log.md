@@ -46,3 +46,57 @@
 - Options: 1. record as a Low false positive and suppress it with this reason (default); 2. keep it open
 - Human response: none
 - Resolution: 1
+
+## D-06: OQ-01 option availability for students
+- Timestamp: 2026-09-30T14:26:04Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-01 is unanswered; US-002 mentions "activities available to students" but no rule restricts any option.
+- Options: 1. every active option is available to both registration types; no audience field is invented (default); 2. add a per-option audience field to the options configuration
+- Human response: none
+- Resolution: pending review (option 1 implemented; AC-002-01)
+
+## D-07: OQ-02 mandatory consents and wording
+- Timestamp: 2026-09-30T14:26:04Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-02 and `business-rules.md` (Consent) are unanswered.
+- Options: 1. consents are defined in the options configuration file (id, wording, required); the shipped configuration has one mandatory consent `privacy` ("I agree that the organizer processes my personal data to organise the conference, as described in the privacy notice."); each given consent is stored with its timestamp (default); 2. hard-code consents
+- Human response: none
+- Resolution: pending review (option 1; the product owner must supply the final wording)
+
+## D-08: OQ-03 email failure after successful storage
+- Timestamp: 2026-09-30T14:26:04Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-03 is unanswered; priority 1 in `scope.md` says a registration is never lost.
+- Options: 1. the registration stays accepted (201, stored, JSON copy written); the failed email is logged with the registration id only (no personal data) and not retried automatically (default); 2. reject the registration; 3. add a retry queue
+- Human response: none
+- Resolution: pending review (option 1; AC-006-03)
+
+## D-09: OQ-04 number of options per category
+- Timestamp: 2026-09-30T14:26:04Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-04 is unanswered.
+- Options: 1. no per-category limit: any set of distinct active options, each at most once (default, invents no limit that could lock out legitimate participants); 2. at most one option per category
+- Human response: none
+- Resolution: pending review (option 1; duplicates rejected by AC-001-05)
+
+## D-10: OQ-05 second registration with the same email
+- Timestamp: 2026-09-30T14:26:04Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-05 is unanswered; editing a registration is out of scope, so duplicates could not be corrected by participants.
+- Options: 1. reject a second registration with the same email, compared case-insensitively, with 409 (default, conservative: no duplicate records to reconcile); 2. allow duplicates
+- Human response: none
+- Resolution: pending review (option 1; AC-001-09). Side effect: the 409 reveals that an address is registered (accepted for ASVS level 1; listed in release notes).
+
+## D-11: OQ-06 retention of registrations and JSON copies
+- Timestamp: 2026-09-30T14:26:04Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-06 and the retention column in `security-requirements.md` are unanswered (SB-13).
+- Options: 1. no automatic deletion is built; the retention period is documented as "until the organizer deletes them after the conference, at most 12 months after it", and the component README describes manual deletion of database rows and JSON copies (default); 2. build scheduled deletion with a configurable period
+- Human response: none
+- Resolution: pending review (option 1)
