@@ -12,7 +12,7 @@ One page at `/`. Language of the labels: English (the configured option names an
    - External participant: `First name`, `Last name`, `Email`, `Organization / institution`
    - Student: `First name`, `Last name`, `Email`, `Study institution`, `Study programme`, `Student ID`
    Switching type keeps the common fields' values and hides the others; hidden fields are not sent.
-4. Fieldset with legend `Options`, one sub-group per category that has active options, in this order and with these headings (level 2): `Workshops`, `Events`, `Meals`, `Other activities`. Each active option is a checkbox labelled with its name. Only options from `/api/options` are shown (active only).
+4. Fieldset with legend `Options`, one sub-group per category that has active options, in this order and with these headings (level 2): `Workshops`, `Events`, `Meals`, `Other activities`. Each sub-group is a `<section>` labelled by its heading (role `region`). Each active option is a checkbox labelled with its name. Only options from `/api/options` are shown (active only).
 5. Fieldset with legend `Consents`: one checkbox per consent, labelled with its text, never pre-checked (BR-05, SB-14). Required consents are marked `(required)`.
 6. reCAPTCHA area: the Google widget, or the text `reCAPTCHA test mode` in test mode.
 7. Submit button `Register`. While a request is running it is disabled and reads `Submitting…`.
@@ -29,5 +29,5 @@ Shown only after a 201 response; it replaces the form:
 
 - Heading (level 2) `Registration received`.
 - Text `Thank you, <firstName> <lastName>. Your registration ID is <id>.`
-- A list headed `Selected options` with each selected option name, or `No options selected.`
+- A list labelled by its heading `Selected options` (`aria-labelledby`) with each selected option name, or `No options selected.`
 - Text `A confirmation email has been sent to <email>.`
