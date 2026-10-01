@@ -4,7 +4,6 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Workflow:
 - Current phase:
 - Last gate result:
 - Next step:

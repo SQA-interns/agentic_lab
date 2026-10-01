@@ -1,6 +1,6 @@
 # Preflight report
 
-> Written in: phase 0 · Source: `project/00_setup/*` · Procedure: `general/skills/preflight` · Agent: writes
+> Written in: phase 0 · Source: `project/00_setup/*` · Procedure: `general/phases/0-preflight.md` · Agent: writes
 
 | Check | Source of truth | Result |
 |---|---|---|

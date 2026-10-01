@@ -2,7 +2,7 @@
 
 > Owner: Security officer · Read in: phases 2, 6 · Agent: read-only
 
-Adds to `general/security/security-baseline.md` (SB-01 … SB-14); do not repeat those here.
+Adds to `general/standards.md`, "Security baseline" (SB-01 … SB-14); do not repeat those here.
 
 ## Verification standard
 

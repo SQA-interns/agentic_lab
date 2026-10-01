@@ -2,7 +2,7 @@
 
 > Owner: QA lead · Read in: phases 2, 6, 7 · Agent: read-only
 
-Adds to `general/quality/` (definition of done, test strategy, severity scale); do not repeat those here.
+Adds to `general/standards.md` (definition of done, tests, severity scale); do not repeat those here.
 
 ## Non-functional requirements
 

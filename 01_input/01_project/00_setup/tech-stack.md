@@ -8,12 +8,12 @@ Build manifests and lock files in `02_output/` (e.g. `pom.xml`, `package.json`, 
 ## Rules
 
 - Exact versions only: no ranges, wildcards, `latest` or floating tags.
-- Changing any entry below is a blocking decision (`general/working-rules.md`). The human's approval in the decision record replaces the entry; nobody edits this file mid-run.
+- Changing any entry below is a blocking decision (`general/rules.md`). The human's approval in the decision record replaces the entry; nobody edits this file mid-run.
 - A pin that resolves and runs but whose tool reports another version (for example an image tag) is a non-blocking decision; the listed pin stays authoritative. A pin that does not resolve or run is blocking.
 - A dependency or tool not listed here may be added only with an exact version and a non-blocking decision record; it is scanned in phase 6 like any other.
 - Every dependency's licence must be compatible with the project's licence.
 - A `platforms` or `tooling` entry may carry `version_check` (a command whose output contains the version) and, for `tooling`, `options` (flags, analysers or rule sets to enable or disable, for example analysers that need credentials not listed in `secrets.env.example`). Preflight uses them.
-- `tooling` must include at least one tool for each purpose required by `general/quality/` and `general/security/`: build, format, lint, type check (if the language has one), test, coverage, mutation, static analysis, dependency scan, secret scan.
+- `tooling` must include at least one tool for each purpose required by `general/standards.md`: build, format, lint, type check (if the language has one), test, coverage, mutation, static analysis, dependency scan, secret scan.
 
 Project licence: proprietary. Allowed dependency licences: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, PostgreSQL; EPL-2.0 for test scope only; GPL-2.0-with-classpath-exception for the Java runtime image only.
 

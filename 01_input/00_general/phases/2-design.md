@@ -1,0 +1,31 @@
+# Phase 2: Design
+
+> Owner: Architect · Read in: phase 2 · Agent: read-only
+
+- Read: `docs/01_acceptance-criteria.md`, `project/00_setup/tech-stack.md`, `project/00_setup/environments.md`, `project/02_design/*`, `general/standards.md` ("Security baseline")
+- Write: `docs/02_specification.md`, `docs/02_contracts/`
+
+## Do
+
+1. Define every interface listed in `architecture.md` as a contract in `docs/02_contracts/`, in a format a parser can validate (for example OpenAPI, JSON Schema, SQL).
+2. Validate every contract with a parser; save the output to `out/logs/`.
+3. Write the specification: components and their responsibilities, the declared internal architecture (AR), configuration, security controls, error behaviour, and every choice the inputs leave open, each with a one-line reason.
+4. End with the traceability table: every AC, SR, SB, NFR, AR and KP maps to a section or a contract.
+
+## Do not
+
+- Do not repeat a contract's content in the specification; link to it.
+- Do not write production code or tests.
+
+## Size
+
+Specification: at most about 250 lines.
+
+## Gate
+
+- Every AC, SR, SB, NFR, AR and KP maps to the specification or a contract.
+- Every contract validates with a parser.
+
+## Commits
+
+One for the specification; one per contract.
