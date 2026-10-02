@@ -3,6 +3,11 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: "127.0.0.1",
+    // Development only: /api goes to the local compose stack (README, "Commands").
+    proxy: { "/api": "http://127.0.0.1:8080" },
+  },
   test: {
     environment: "jsdom",
     include: ["src/**/*.test.{ts,tsx}"],
