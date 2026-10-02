@@ -233,4 +233,19 @@ class RegistrationValidatorTest {
     assertThat(validator.validate(input(texts, List.of())).values())
         .doesNotContainKey(TextField.STUDENT_ID);
   }
+
+  @Test
+  void captchaTokenOfExactlyTheLimitIsNotTooLong() {
+    RegistrationInput input =
+        new RegistrationInput(
+            RegistrationType.EXTERNAL,
+            externalTexts(),
+            List.of(),
+            true,
+            "t".repeat(RegistrationValidator.MAX_CAPTCHA_TOKEN_LENGTH),
+            List.of(),
+            Set.of());
+
+    assertThat(validator.validate(input).values()).hasSize(4);
+  }
 }

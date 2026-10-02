@@ -140,4 +140,14 @@ class PoiRegistrationExporterTest {
   void exportWithoutRegistrationsHasOnlyTheHeadingRow() throws IOException {
     assertThat(cells(exporter.export(List.of()))).hasSize(1);
   }
+
+  @Test
+  void everyRegistrationGetsItsOwnRowInTheGivenOrder() throws IOException {
+    List<List<Cell>> rows =
+        cells(exporter.export(List.of(student("Prvi"), student("Drugi"), student("Tretji"))));
+
+    assertThat(rows).hasSize(4);
+    assertThat(rows.stream().skip(1).map(row -> row.get(3).getStringCellValue()))
+        .containsExactly("Prvi", "Drugi", "Tretji");
+  }
 }

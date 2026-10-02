@@ -142,4 +142,57 @@ class StartupChecksTest {
     assertThat(StartupChecks.violations(properties))
         .containsExactly("rate limits and MAX_REQUEST_BYTES must be positive");
   }
+
+  private static AppProperties withLimits(RateLimit rateLimit, int maxRequestBytes) {
+    return new AppProperties(
+        "local",
+        "from@example.org",
+        "Konferenca",
+        "a@example.org",
+        "/config/options.json",
+        "Soglašam.",
+        "/data",
+        new Recaptcha(true, "", "", "u"),
+        organizer(false),
+        "",
+        rateLimit,
+        maxRequestBytes,
+        false);
+  }
+
+  @Test
+  void theSmallestPositiveLimitsAreAccepted() {
+    assertThat(StartupChecks.violations(withLimits(new RateLimit(1, 1, 1), 1))).isEmpty();
+  }
+
+  @Test
+  void eachLimitOfZeroIsRefused() {
+    for (AppProperties properties :
+        new AppProperties[] {
+          withLimits(new RateLimit(0, 1, 1), 1),
+          withLimits(new RateLimit(1, 0, 1), 1),
+          withLimits(new RateLimit(1, 1, 0), 1),
+          withLimits(new RateLimit(1, 1, 1), 0)
+        }) {
+      assertThat(StartupChecks.violations(properties))
+          .containsExactly("rate limits and MAX_REQUEST_BYTES must be positive");
+    }
+  }
+
+  @Test
+  void withoutTestModeEachMissingKeyIsRefusedOutsideProductionToo() {
+    for (Recaptcha recaptcha :
+        new Recaptcha[] {
+          new Recaptcha(false, "", "secret-key", "u"), new Recaptcha(false, "site-key", "", "u")
+        }) {
+      assertThat(
+              StartupChecks.violations(
+                  properties("local", recaptcha, organizer(false), "a@example.org")))
+          .containsExactly("without RECAPTCHA_TEST_MODE the reCAPTCHA keys must be set");
+    }
+    assertThat(
+            StartupChecks.violations(
+                properties("local", liveKeys(), organizer(false), "a@example.org")))
+        .isEmpty();
+  }
 }

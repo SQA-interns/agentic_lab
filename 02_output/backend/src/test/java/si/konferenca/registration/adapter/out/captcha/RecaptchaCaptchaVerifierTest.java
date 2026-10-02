@@ -69,4 +69,21 @@ class RecaptchaCaptchaVerifierTest {
         .isInstanceOf(CaptchaUnavailableException.class)
         .hasMessageNotContaining(SECRET);
   }
+
+  @Test
+  void everySuccessStatusUpTo299IsRead() {
+    endpoint.answer(299, "{\"success\":true}");
+
+    assertThat(verifier.verify("token")).isTrue();
+  }
+
+  @Test
+  void sr02_testModeAcceptsExactlyThePassingToken() {
+    TestModeCaptchaVerifier testMode = new TestModeCaptchaVerifier();
+
+    assertThat(testMode.verify("test-pass")).isTrue();
+    assertThat(testMode.verify("test-pass ")).isFalse();
+    assertThat(testMode.verify("")).isFalse();
+    assertThat(testMode.verify(null)).isFalse();
+  }
 }

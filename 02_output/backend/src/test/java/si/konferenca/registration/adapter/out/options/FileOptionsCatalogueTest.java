@@ -79,4 +79,36 @@ class FileOptionsCatalogueTest {
     assertThatThrownBy(() -> FileOptionsCatalogue.load(file))
         .isInstanceOf(IllegalStateException.class);
   }
+
+  private static String options(int count, String name) {
+    StringBuilder json = new StringBuilder("{\"options\":[");
+    for (int i = 0; i < count; i++) {
+      json.append(i == 0 ? "" : ",")
+          .append("{\"id\":\"o")
+          .append(i)
+          .append("\",\"name\":\"")
+          .append(name)
+          .append("\",\"category\":\"other\",\"active\":true}");
+    }
+    return json.append("]}").toString();
+  }
+
+  @Test
+  void twoHundredOptionsAreAllowedAndOneMoreIsNot() throws IOException {
+    assertThat(FileOptionsCatalogue.load(file(options(200, "A"))).activeOptions()).hasSize(200);
+
+    Path tooMany = file(options(201, "A"));
+    assertThatThrownBy(() -> FileOptionsCatalogue.load(tooMany))
+        .isInstanceOf(IllegalStateException.class);
+  }
+
+  @Test
+  void optionNameOfTwoHundredCharactersIsAllowedAndOneMoreIsNot() throws IOException {
+    assertThat(FileOptionsCatalogue.load(file(options(1, "n".repeat(200)))).activeOptions())
+        .hasSize(1);
+
+    Path tooLong = file(options(1, "n".repeat(201)));
+    assertThatThrownBy(() -> FileOptionsCatalogue.load(tooLong))
+        .isInstanceOf(IllegalStateException.class);
+  }
 }
