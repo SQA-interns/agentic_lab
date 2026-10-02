@@ -121,7 +121,9 @@ class RegistrationValidatorTest {
         "ana@.example.org",
         "ana@example..org",
         "ana@exa mple.org",
-        "a@b@c.org"
+        "a@b@c.org",
+        "ana novak@example.org",
+        "ana@exa mple.org"
       })
   void emailWithAMalformedDomainIsRejected(String email) {
     Map<TextField, String> texts = externalTexts();
