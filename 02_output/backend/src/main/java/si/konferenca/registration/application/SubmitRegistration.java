@@ -1,5 +1,7 @@
 package si.konferenca.registration.application;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -8,6 +10,7 @@ import java.util.UUID;
 import si.konferenca.registration.domain.CaptchaVerifier;
 import si.konferenca.registration.domain.FieldError;
 import si.konferenca.registration.domain.JsonCopyStore;
+import si.konferenca.registration.domain.MailNotifier;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.Registration.Consent;
 import si.konferenca.registration.domain.RegistrationInput;
@@ -23,6 +26,8 @@ import si.konferenca.registration.domain.ValidationFailedException;
  */
 public class SubmitRegistration {
 
+  private static final Logger LOG = System.getLogger(SubmitRegistration.class.getName());
+
   /** The consent every registration must give (D-09). */
   public record ConsentTerms(String id, String text) {}
 
@@ -31,6 +36,7 @@ public class SubmitRegistration {
   private final UnitOfWork unitOfWork;
   private final RegistrationStore store;
   private final JsonCopyStore jsonCopies;
+  private final MailNotifier mailNotifier;
   private final ConsentTerms consentTerms;
   private final Clock clock;
 
@@ -40,6 +46,7 @@ public class SubmitRegistration {
       UnitOfWork unitOfWork,
       RegistrationStore store,
       JsonCopyStore jsonCopies,
+      MailNotifier mailNotifier,
       ConsentTerms consentTerms,
       Clock clock) {
     this.validator = validator;
@@ -47,6 +54,7 @@ public class SubmitRegistration {
     this.unitOfWork = unitOfWork;
     this.store = store;
     this.jsonCopies = jsonCopies;
+    this.mailNotifier = mailNotifier;
     this.consentTerms = consentTerms;
     this.clock = clock;
   }
@@ -75,7 +83,33 @@ public class SubmitRegistration {
             validated.options(),
             new Consent(consentTerms.id(), consentTerms.text(), acceptedAt));
     store(registration);
+    notify(registration);
     return registration;
+  }
+
+  /**
+   * Emails come after storage and never undo it (D-10). A failure is logged with the registration
+   * id and the kind of failure only, never with participant data (ES-07).
+   */
+  private void notify(Registration registration) {
+    try {
+      mailNotifier.sendParticipantConfirmation(registration);
+    } catch (RuntimeException e) {
+      LOG.log(
+          Level.WARNING,
+          "participant confirmation of registration {0} not sent: {1}",
+          registration.id(),
+          e.getClass().getName());
+    }
+    try {
+      mailNotifier.sendOrganizerNotification(registration, jsonCopies.read(registration.id()));
+    } catch (RuntimeException e) {
+      LOG.log(
+          Level.WARNING,
+          "organizer notification of registration {0} not sent: {1}",
+          registration.id(),
+          e.getClass().getName());
+    }
   }
 
   /**

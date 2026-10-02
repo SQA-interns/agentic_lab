@@ -2,9 +2,12 @@ package si.konferenca.registration.config;
 
 import java.nio.file.Path;
 import java.time.Clock;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.PlatformTransactionManager;
 import si.konferenca.registration.adapter.in.web.FormController.CaptchaResponse;
 import si.konferenca.registration.adapter.in.web.FormController.ConsentResponse;
@@ -13,6 +16,7 @@ import si.konferenca.registration.adapter.in.web.RegistrationController.RequestL
 import si.konferenca.registration.adapter.out.captcha.RecaptchaCaptchaVerifier;
 import si.konferenca.registration.adapter.out.captcha.TestModeCaptchaVerifier;
 import si.konferenca.registration.adapter.out.jsoncopy.FileJsonCopyStore;
+import si.konferenca.registration.adapter.out.mail.SmtpMailNotifier;
 import si.konferenca.registration.adapter.out.options.FileOptionsCatalogue;
 import si.konferenca.registration.adapter.out.persistence.JpaRegistrationStore;
 import si.konferenca.registration.adapter.out.persistence.TransactionalUnitOfWork;
@@ -21,6 +25,7 @@ import si.konferenca.registration.application.SubmitRegistration;
 import si.konferenca.registration.application.SubmitRegistration.ConsentTerms;
 import si.konferenca.registration.domain.CaptchaVerifier;
 import si.konferenca.registration.domain.JsonCopyStore;
+import si.konferenca.registration.domain.MailNotifier;
 import si.konferenca.registration.domain.OptionsCatalogue;
 import si.konferenca.registration.domain.RegistrationStore;
 import si.konferenca.registration.domain.RegistrationValidator;
@@ -79,6 +84,26 @@ public class ApplicationConfig {
   }
 
   @Bean
+  MailNotifier mailNotifier(JavaMailSenderImpl sender, AppProperties properties) {
+    // An SMTP account is used only when one is configured (specification section 5).
+    String username = sender.getUsername();
+    boolean authenticate = username != null && !username.isBlank();
+    sender.getJavaMailProperties().setProperty("mail.smtp.auth", String.valueOf(authenticate));
+    return new SmtpMailNotifier(
+        sender,
+        properties.mailFrom(),
+        organizerRecipients(properties),
+        properties.conferenceName());
+  }
+
+  static List<String> organizerRecipients(AppProperties properties) {
+    return Arrays.stream(properties.organizerEmails().split(","))
+        .map(String::strip)
+        .filter(address -> !address.isEmpty())
+        .toList();
+  }
+
+  @Bean
   UnitOfWork unitOfWork(PlatformTransactionManager transactionManager) {
     return new TransactionalUnitOfWork(transactionManager);
   }
@@ -90,6 +115,7 @@ public class ApplicationConfig {
       UnitOfWork unitOfWork,
       RegistrationStore store,
       JsonCopyStore jsonCopies,
+      MailNotifier mailNotifier,
       AppProperties properties,
       Clock clock) {
     return new SubmitRegistration(
@@ -98,6 +124,7 @@ public class ApplicationConfig {
         unitOfWork,
         store,
         jsonCopies,
+        mailNotifier,
         new ConsentTerms(CONSENT_ID, properties.consentText()),
         clock);
   }

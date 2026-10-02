@@ -13,6 +13,9 @@ import si.konferenca.registration.domain.JsonCopyStore;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.Registration.SelectedOption;
 import si.konferenca.registration.domain.TextField;
+import tools.jackson.core.util.DefaultIndenter;
+import tools.jackson.core.util.DefaultPrettyPrinter;
+import tools.jackson.databind.ObjectWriter;
 import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.node.ArrayNode;
 import tools.jackson.databind.node.ObjectNode;
@@ -28,6 +31,13 @@ public class FileJsonCopyStore implements JsonCopyStore {
 
   private final Path directory;
   private final JsonMapper json = JsonMapper.builder().build();
+  // Line feeds on every platform, so a copy has the same bytes wherever it is written.
+  private final ObjectWriter writer =
+      json.writer()
+          .with(
+              new DefaultPrettyPrinter()
+                  .withObjectIndenter(new DefaultIndenter("  ", "\n"))
+                  .withArrayIndenter(new DefaultIndenter("  ", "\n")));
 
   private FileJsonCopyStore(Path directory) {
     this.directory = directory;
@@ -45,7 +55,7 @@ public class FileJsonCopyStore implements JsonCopyStore {
 
   @Override
   public void write(Registration registration) {
-    byte[] content = json.writerWithDefaultPrettyPrinter().writeValueAsBytes(toJson(registration));
+    byte[] content = writer.writeValueAsBytes(toJson(registration));
     Path target = file(registration.id());
     Path temporary = temporaryFile(registration.id());
     try {
