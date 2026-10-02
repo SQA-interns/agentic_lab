@@ -1,0 +1,21 @@
+
+> registration-frontend@0.1.0 test
+> vitest run --coverage
+
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+No test files found, exiting with code 0
+
+[2minclude: [22m[33msrc/**/*.test.{ts,tsx}[39m
+[2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/dist/**[2m, [22m**/cypress/**[2m, [22m**/.{idea,git,cache,output,temp}/**[2m, [22m**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*[39m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 0% ( 0/14 )
+Branches     : 0% ( 0/2 )
+Functions    : 0% ( 0/2 )
+Lines        : 0% ( 0/14 )
+================================================================================

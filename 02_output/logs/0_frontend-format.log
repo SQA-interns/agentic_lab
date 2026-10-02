@@ -1,0 +1,13 @@
+
+> registration-frontend@0.1.0 format
+> prettier --write .
+
+[90m.prettierrc.json[39m 19ms (unchanged)
+[90meslint.config.js[39m 12ms (unchanged)
+[90mindex.html[39m 20ms (unchanged)
+[90mpackage.json[39m 2ms (unchanged)
+README.md 24ms
+[90msrc/App.tsx[39m 24ms (unchanged)
+[90msrc/main.tsx[39m 7ms (unchanged)
+[90mtsconfig.json[39m 2ms (unchanged)
+[90mvite.config.ts[39m 6ms (unchanged)

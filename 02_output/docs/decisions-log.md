@@ -6,5 +6,21 @@
 
 | D | Timestamp | Phase | Trigger | Choice | Status |
 |---|---|---|---|---|---|
+| D-01 | 2026-10-02T10:23:22Z | 0 | `tech-stack.md` platform `java` pins Eclipse Temurin 21.0.10+7; `java -version` on the host reports Oracle JDK 21.0.11+9-LTS (no Temurin installation found under `Program Files`). Backend builds and runs its tools with it (`logs/0_backend-*.log`). | Continue with the host JDK 21.0.11; the pin stays authoritative and the container image `eclipse-temurin:21.0.10_7-jre-alpine` is used unchanged. | pending review |
+| D-02 | 2026-10-02T10:23:22Z | 0 | `tech-stack.md` platform `node` pins Node.js 24.13.0; `node --version` reports v24.10.0. `npm install` prints `EBADENGINE` for 37 transitive packages that require `>=24.11.0` (`logs/0_frontend-install.log`); build, check and test still pass. | Continue with the host Node 24.10.0; the pin stays authoritative and the image `node:24.13.0-alpine` is used for the container build. Re-check if a tool fails on the engine. | pending review |
+| D-03 | 2026-10-02T10:23:22Z | 0 | `tech-stack.md` pins npm 11.6.2 (platform `node`, tooling `npm audit`); `npm --version` reports 10.9.4. `package-lock.json` is lockfileVersion 3 in both; all 23 direct versions equal the pins. | Continue with npm 10.9.4 for install and `npm audit`; the pin stays authoritative. | pending review |
+| D-04 | 2026-10-02T10:23:22Z | 0 | gitleaks v8.30.1 over all refs reports 54 matches (`generic-api-key` 53, `curl-auth-user` 1), all in commits of other branches (e.g. `origin/kyuhi/single-agent/sdd/v002`) that are not ancestors of this run's HEAD; files such as `02_output/logs/03_backend-acceptance-run.log`, `03_Run-Statistics/raw/…`, `03_statistics/claude-desktop-transcript.md`. None is in this branch. | `verify.sh` scans the history of the current branch only (`--log-opts=HEAD`): 0 leaks. The other branches are outside this run and their history is not rewritten; listed for human review. | pending review |
 
 ## Blocking
+
+## D-05: `.env` presence check and NVD dependency scan could not be run
+
+- Timestamp: 2026-10-02T10:23:22Z
+- Phase: 0
+- Trigger: preflight check 4 (`0-preflight.md`): the command that tests each key of `secrets.env.example` for a non-empty value in `.env` was refused by the harness permission classifier, so it was not retried in any other form. Check 6 for the backend (`verify.sh 0 backend-depscan`, OWASP Dependency-Check, needs `NVD_API_KEY` from `.env`) was therefore not started either. Everything else in phase 0 is done.
+- Options:
+  1. (proposed default) The human allows the two commands (answer "D-05: 1", approving the permission prompt or adding a Bash permission rule); the agent runs check 4 exactly as written on the card and then `verify.sh 0 backend-depscan`.
+  2. The human runs check 4 and `bash 02_output/scripts/verify.sh 0 backend-depscan` in their own terminal and reports only pass/fail per key and the summary line; the agent classifies the scan results from `logs/0_backend-depscan.log`.
+  3. The human confirms the five provided keys are filled and waives the automated check; the agent runs only the scan.
+- Human response: none
+- Resolution:
