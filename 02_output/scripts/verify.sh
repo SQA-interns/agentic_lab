@@ -34,7 +34,7 @@ mvnw() { (cd "$OUT/backend" && ./mvnw -B -ntp "$@"); }
 npmr() { (cd "$OUT/frontend" && npm "$@"); }
 
 # Last line of the log that matches the pattern, or "-".
-key() { grep -E "$1" "$2" | tail -n 1 | tr -s ' ' | cut -c1-110 | grep . || echo "-"; }
+key() { sed 's/\[[0-9;]*m//g' "$2" | grep -E "$1" | tail -n 1 | tr -s ' ' | cut -c1-110 | grep . || echo "-"; }
 
 run_tool() {
   local tool="$1" log="$LOGS/${PHASE}_$1.log" rc=0 numbers="-"
