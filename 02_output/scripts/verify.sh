@@ -46,8 +46,9 @@ run_tool() {
       mvnw compile spotless:check pmd:check spotbugs:check >"$log" 2>&1 || rc=$?
       numbers="$(key 'BUILD (SUCCESS|FAILURE)|BugInstance size|PMD Failure' "$log")" ;;
     backend-test)
-      mvnw verify >"$log" 2>&1 || rc=$?
-      numbers="$(key 'Tests run:.*Fail|No tests to run' "$log")" ;;
+      # TEST_FILTER limits the run to matching test classes (per-story runs in phase 4).
+      mvnw verify ${TEST_FILTER:+-Dtest="$TEST_FILTER" -Dsurefire.failIfNoSpecifiedTests=false} >"$log" 2>&1 || rc=$?
+      numbers="$(grep -E 'Tests run:.*Fail|No tests to run' "$log" | tail -n 1 | tr -s ' ' | cut -c1-110)" ;;
     backend-deps)
       mvnw dependency:list -DincludeScope=test -Dsort=true >"$log" 2>&1 || rc=$?
       numbers="artifacts=$(grep -cE ':(compile|runtime|test|provided)' "$log")" ;;
