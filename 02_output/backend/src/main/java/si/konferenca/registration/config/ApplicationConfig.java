@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.time.Clock;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +41,12 @@ public class ApplicationConfig {
 
   /** The identifier of the one mandatory consent (D-09). */
   public static final String CONSENT_ID = "personal-data";
+
+  /** Refuses to start with settings the specification forbids (SR-02, SR-06). */
+  @Bean
+  InitializingBean settingsVerified(AppProperties properties) {
+    return () -> StartupChecks.verify(properties);
+  }
 
   @Bean
   ExportRegistrations exportRegistrations(RegistrationStore store) {

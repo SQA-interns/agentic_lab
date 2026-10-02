@@ -1,5 +1,6 @@
 package si.konferenca.registration.config;
 
+import java.time.Clock;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ import si.konferenca.registration.adapter.in.web.ClientRequests;
 import si.konferenca.registration.adapter.in.web.ExportController;
 import si.konferenca.registration.adapter.in.web.HttpsRequiredFilter;
 import si.konferenca.registration.adapter.in.web.ProblemWriter;
+import si.konferenca.registration.adapter.in.web.RateLimitFilter;
 
 /** Security controls of the specification (section 6). */
 @Configuration
@@ -51,7 +53,16 @@ public class SecurityConfig {
 
   @Bean
   SecurityFilterChain securityFilterChain(
-      HttpSecurity http, AppProperties properties, ClientRequests clientRequests) throws Exception {
+      HttpSecurity http, AppProperties properties, ClientRequests clientRequests, Clock clock)
+      throws Exception {
+    RateLimitFilter rateLimitFilter =
+        new RateLimitFilter(
+            new RateLimitFilter.Limits(
+                properties.rateLimit().registration(),
+                properties.rateLimit().export(),
+                properties.rateLimit().read()),
+            clientRequests,
+            clock);
     AuthenticationEntryPoint organizerLoginRequired =
         (request, response, exception) -> {
           response.setHeader("WWW-Authenticate", "Basic realm=\"organizer\", charset=\"UTF-8\"");
@@ -80,6 +91,8 @@ public class SecurityConfig {
         .httpBasic(basic -> basic.authenticationEntryPoint(organizerLoginRequired))
         .exceptionHandling(
             exceptions -> exceptions.authenticationEntryPoint(organizerLoginRequired))
+        // Order: rate limit, then the HTTPS rule, then the credentials.
+        .addFilterBefore(rateLimitFilter, BasicAuthenticationFilter.class)
         .addFilterBefore(
             new HttpsRequiredFilter(properties.organizer().requireHttps(), clientRequests),
             BasicAuthenticationFilter.class);
