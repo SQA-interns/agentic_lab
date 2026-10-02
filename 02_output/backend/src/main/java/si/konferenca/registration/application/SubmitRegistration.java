@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 import si.konferenca.registration.domain.CaptchaVerifier;
 import si.konferenca.registration.domain.FieldError;
+import si.konferenca.registration.domain.JsonCopyStore;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.Registration.Consent;
 import si.konferenca.registration.domain.RegistrationInput;
@@ -29,6 +30,7 @@ public class SubmitRegistration {
   private final CaptchaVerifier captchaVerifier;
   private final UnitOfWork unitOfWork;
   private final RegistrationStore store;
+  private final JsonCopyStore jsonCopies;
   private final ConsentTerms consentTerms;
   private final Clock clock;
 
@@ -37,12 +39,14 @@ public class SubmitRegistration {
       CaptchaVerifier captchaVerifier,
       UnitOfWork unitOfWork,
       RegistrationStore store,
+      JsonCopyStore jsonCopies,
       ConsentTerms consentTerms,
       Clock clock) {
     this.validator = validator;
     this.captchaVerifier = captchaVerifier;
     this.unitOfWork = unitOfWork;
     this.store = store;
+    this.jsonCopies = jsonCopies;
     this.consentTerms = consentTerms;
     this.clock = clock;
   }
@@ -74,10 +78,19 @@ public class SubmitRegistration {
     return registration;
   }
 
+  /**
+   * Database row and JSON copy together (AR-05): the row is written first, the copy inside the same
+   * transaction, and the commit comes last. Whatever fails, neither remains.
+   */
   private void store(Registration registration) {
     try {
-      unitOfWork.run(() -> store.insert(registration));
+      unitOfWork.run(
+          () -> {
+            store.insert(registration);
+            jsonCopies.write(registration);
+          });
     } catch (RuntimeException e) {
+      jsonCopies.delete(registration.id());
       throw new StorageFailedException("registration " + registration.id() + " not stored", e);
     }
   }

@@ -12,6 +12,7 @@ import si.konferenca.registration.adapter.in.web.FormController.FormConfigRespon
 import si.konferenca.registration.adapter.in.web.RegistrationController.RequestLimits;
 import si.konferenca.registration.adapter.out.captcha.RecaptchaCaptchaVerifier;
 import si.konferenca.registration.adapter.out.captcha.TestModeCaptchaVerifier;
+import si.konferenca.registration.adapter.out.jsoncopy.FileJsonCopyStore;
 import si.konferenca.registration.adapter.out.options.FileOptionsCatalogue;
 import si.konferenca.registration.adapter.out.persistence.JpaRegistrationStore;
 import si.konferenca.registration.adapter.out.persistence.TransactionalUnitOfWork;
@@ -19,6 +20,7 @@ import si.konferenca.registration.application.FormQueries;
 import si.konferenca.registration.application.SubmitRegistration;
 import si.konferenca.registration.application.SubmitRegistration.ConsentTerms;
 import si.konferenca.registration.domain.CaptchaVerifier;
+import si.konferenca.registration.domain.JsonCopyStore;
 import si.konferenca.registration.domain.OptionsCatalogue;
 import si.konferenca.registration.domain.RegistrationStore;
 import si.konferenca.registration.domain.RegistrationValidator;
@@ -72,6 +74,11 @@ public class ApplicationConfig {
   }
 
   @Bean
+  JsonCopyStore jsonCopyStore(AppProperties properties) {
+    return FileJsonCopyStore.open(Path.of(properties.jsonCopyDir()));
+  }
+
+  @Bean
   UnitOfWork unitOfWork(PlatformTransactionManager transactionManager) {
     return new TransactionalUnitOfWork(transactionManager);
   }
@@ -82,6 +89,7 @@ public class ApplicationConfig {
       CaptchaVerifier captchaVerifier,
       UnitOfWork unitOfWork,
       RegistrationStore store,
+      JsonCopyStore jsonCopies,
       AppProperties properties,
       Clock clock) {
     return new SubmitRegistration(
@@ -89,6 +97,7 @@ public class ApplicationConfig {
         captchaVerifier,
         unitOfWork,
         store,
+        jsonCopies,
         new ConsentTerms(CONSENT_ID, properties.consentText()),
         clock);
   }
