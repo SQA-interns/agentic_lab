@@ -1,0 +1,26 @@
+# ES-02, ES-03: secrets and local configuration
+.env
+.env.*
+.claude/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Build output
+target/
+dist/
+build/
+*.class
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+
+# Tool reports and caches (full tool output is kept in 02_output/logs/)
+coverage/
+reports/
+playwright-report/
+test-results/
+.stryker-tmp/
+.eslintcache
