@@ -91,6 +91,16 @@ run_tool() {
         MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output/docs/02_contracts:/c:ro" "$POSTGRES_IMAGE"           su postgres -c 'initdb -D /tmp/pg >/dev/null && pg_ctl -D /tmp/pg -w -o "-c listen_addresses=" start >/dev/null             && psql -v ON_ERROR_STOP=1 -q -f /c/registration-schema.sql && echo "sql tables=$(psql -At -c "select count(*) from pg_tables where schemaname = current_schema()")"' || rc=1
       } >"$log" 2>&1
       numbers="$(grep -cE 'Woohoo|is valid' "$log") openapi ok; $(key 'json contracts:' "$log"); $(key 'sql tables=' "$log")" ;;
+    stack-up)
+      # Not in ALL_TOOLS. Builds both images and starts the local stack; waits until healthy.
+      # The secrets are read by docker compose itself and are not shown (rules.md, "Secrets").
+      { mvnw -DskipTests package           && docker compose --env-file "$ROOT/.env" -f "$OUT/docker-compose.yml" up -d --build --wait           && docker compose --env-file "$ROOT/.env" -f "$OUT/docker-compose.yml" ps --format '{{.Service}} {{.State}} {{.Health}}'
+      } >"$log" 2>&1 || rc=$?
+      numbers="healthy=$(grep -c ' running healthy' "$log") running=$(grep -c ' running' "$log")" ;;
+    stack-down)
+      # Not in ALL_TOOLS. Stops the local stack; the named volumes are kept.
+      docker compose --env-file "$ROOT/.env" -f "$OUT/docker-compose.yml" down >"$log" 2>&1 || rc=$?
+      numbers="-" ;;
     e2e)
       # Not in ALL_TOOLS: needs the running local stack. Playwright runs in its own container on
       # the network of the stack (D-15); the organizer credentials are passed without being
