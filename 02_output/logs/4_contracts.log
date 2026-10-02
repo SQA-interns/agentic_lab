@@ -1,0 +1,28 @@
+== openapi (redocly lint)
+No configurations were provided -- using built in recommended configuration by default.
+
+validating openapi.yaml...
+openapi.yaml: validated in 261ms
+
+Woohoo! Your API description is valid. 🎉
+
+== json (ajv)
+schema ok      registration-copy.schema.json
+document ok    examples/registration-copy.external.json
+document ok    examples/registration-copy.student.json
+schema ok      conference-options.schema.json
+document ok    examples/conference-options.json
+schema ok      email-messages.schema.json
+document ok    examples/email.participant-confirmation.json
+document ok    examples/email.organizer-notification.json
+schema ok      recaptcha-verify.schema.json
+document ok    examples/recaptcha-verify.json
+schema ok      ui-form.schema.json
+document ok    registration-form.ui.json
+json contracts: schemas=5 documents=7 failures=0
+== sql (postgres)
+sh: locale: not found
+2026-10-02 12:32:32.265 UTC [12] WARNING:  no usable system locales were found
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+sql tables=2

@@ -1,0 +1,68 @@
+Finding:     ... generated security password: [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      generic-api-key
+Entropy:     3.731746
+File:        02_output/logs/3_backend-test.log
+Line:        117
+Commit:      7dec4b8fef2061b262ce33074678a957af221d28
+Author:      Tanejb
+Email:       tanej.buhin@student.um.si
+Date:        2026-10-02T11:23:03Z
+Fingerprint: 7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:117
+Link:        https://github.com/SQA-interns/agentic_lab/blob/7dec4b8fef2061b262ce33074678a957af221d28/02_output/logs/3_backend-test.log#L117
+
+Finding:     ... generated security password: [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      generic-api-key
+Entropy:     3.773684
+File:        02_output/logs/3_backend-test.log
+Line:        589
+Commit:      7dec4b8fef2061b262ce33074678a957af221d28
+Author:      Tanejb
+Email:       tanej.buhin@student.um.si
+Date:        2026-10-02T11:23:03Z
+Fingerprint: 7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:589
+Link:        https://github.com/SQA-interns/agentic_lab/blob/7dec4b8fef2061b262ce33074678a957af221d28/02_output/logs/3_backend-test.log#L589
+
+Finding:     ... generated security password: [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      generic-api-key
+Entropy:     3.763559
+File:        02_output/logs/3_backend-test.log
+Line:        702
+Commit:      7dec4b8fef2061b262ce33074678a957af221d28
+Author:      Tanejb
+Email:       tanej.buhin@student.um.si
+Date:        2026-10-02T11:23:03Z
+Fingerprint: 7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:702
+Link:        https://github.com/SQA-interns/agentic_lab/blob/7dec4b8fef2061b262ce33074678a957af221d28/02_output/logs/3_backend-test.log#L702
+
+Finding:     ... generated security password: [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      generic-api-key
+Entropy:     3.861052
+File:        02_output/logs/3_backend-test.log
+Line:        765
+Commit:      7dec4b8fef2061b262ce33074678a957af221d28
+Author:      Tanejb
+Email:       tanej.buhin@student.um.si
+Date:        2026-10-02T11:23:03Z
+Fingerprint: 7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:765
+Link:        https://github.com/SQA-interns/agentic_lab/blob/7dec4b8fef2061b262ce33074678a957af221d28/02_output/logs/3_backend-test.log#L765
+
+Finding:     ... generated security password: [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      generic-api-key
+Entropy:     3.547526
+File:        02_output/logs/3_backend-test.log
+Line:        893
+Commit:      7dec4b8fef2061b262ce33074678a957af221d28
+Author:      Tanejb
+Email:       tanej.buhin@student.um.si
+Date:        2026-10-02T11:23:03Z
+Fingerprint: 7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:893
+Link:        https://github.com/SQA-interns/agentic_lab/blob/7dec4b8fef2061b262ce33074678a957af221d28/02_output/logs/3_backend-test.log#L893
+
+[90m12:31PM[0m [32mINF[0m [1m68 commits scanned.[0m
+[90m12:31PM[0m [32mINF[0m [1mscanned ~2073510 bytes (2.07 MB) in 26.8s[0m
+[90m12:31PM[0m [33mWRN[0m [1mleaks found: 5[0m

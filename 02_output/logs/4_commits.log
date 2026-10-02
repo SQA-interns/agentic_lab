@@ -1,0 +1,23 @@
+a78fa04 docs: correct start-up checks and proxy host in the specification (D-18)
+f8fe2ca build: pass an ignore file with accepted false positives to gitleaks (D-17, F-03)
+df66494 fix: forward /api to a fixed backend host in nginx (F-02)
+f652bb5 build: add local compose stack with named volumes (NFR-02, NFR-04, US-005)
+f08da67 build: add frontend container image served by nginx with security headers (SB-10, SB-11)
+d60471c build: add backend container image, non-root with health check (NFR-04, SB-11)
+2724c41 build: add stack-up and stack-down to verify.sh
+8eb1a4b build: write the escape code in verify.sh as text
+76614a6 feat: load the form and show the confirmation after acceptance (US-004, AC-004-01)
+52d848d feat: render the registration form with configured options (US-001, US-002, US-003)
+a4533a8 feat: add form texts, API client and client-side checks (US-001, US-002, NFR-03)
+3d04ead build: strip colour codes from verify.sh summaries
+d5738b4 feat: rate limit the API and refuse forbidden settings at start-up (US-001, SR-02, SR-03)
+9470019 feat: export registrations as a workbook for the organizer only (US-008, AC-008-01..AC-008-06)
+0e72241 feat: send participant confirmation and organizer notification after storage (US-006, US-007)
+fff964c feat: write the JSON copy with the database row or neither (US-005, AC-005-02, AC-005-03, AC-004-03)
+1539cfe feat: accept student registrations (US-002, AC-002-01, AC-003-03)
+2cb41bd feat: accept external registrations over the API and store them (US-001, AC-001-01)
+df15882 feat: add registration rules and submit use case (US-001, AC-001-03..AC-001-12)
+0cc1c33 build: exclude constructor-injection pattern from SpotBugs
+82c33f0 feat: serve active options and form configuration (US-003, AC-003-01, AC-003-02)
+a57e446 build: add test filter to verify.sh
+02dae53 docs: record phase 3 gate
