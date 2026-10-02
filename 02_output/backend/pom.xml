@@ -199,6 +199,34 @@
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
         <version>${pitest.version}</version>
+        <configuration>
+          <!-- Mutation testing runs the unit tests only; the acceptance and integration tests
+               start containers and a whole backend per test class and are far too slow for it.
+               So only classes that have unit tests are mutated. -->
+          <targetClasses>
+            <param>si.konferenca.registration.domain.*</param>
+            <param>si.konferenca.registration.application.*</param>
+            <param>si.konferenca.registration.adapter.in.web.RegistrationRequestParser*</param>
+            <param>si.konferenca.registration.adapter.in.web.RateLimitFilter*</param>
+            <param>si.konferenca.registration.adapter.in.web.ClientRequests*</param>
+            <param>si.konferenca.registration.adapter.out.options.*</param>
+            <param>si.konferenca.registration.adapter.out.jsoncopy.*</param>
+            <param>si.konferenca.registration.adapter.out.excel.*</param>
+            <param>si.konferenca.registration.adapter.out.captcha.*</param>
+            <param>si.konferenca.registration.config.StartupChecks*</param>
+          </targetClasses>
+          <targetTests>
+            <param>si.konferenca.registration.domain.*Test</param>
+            <param>si.konferenca.registration.application.*Test</param>
+            <param>si.konferenca.registration.adapter.*Test</param>
+            <param>si.konferenca.registration.config.*Test</param>
+          </targetTests>
+          <outputFormats>
+            <param>HTML</param>
+            <param>XML</param>
+          </outputFormats>
+          <timestampedReports>false</timestampedReports>
+        </configuration>
         <dependencies>
           <dependency>
             <groupId>org.pitest</groupId>

@@ -49,6 +49,69 @@ run_tool() {
       # TEST_FILTER limits the run to matching test classes (per-story runs in phase 4).
       mvnw verify ${TEST_FILTER:+-Dtest="$TEST_FILTER" -Dsurefire.failIfNoSpecifiedTests=false} >"$log" 2>&1 || rc=$?
       numbers="$(grep -E 'Tests run:.*Fail|No tests to run' "$log" | tail -n 1 | tr -s ' ' | cut -c1-110)" ;;
+    backend-coverage)
+      # Reads the JaCoCo report that backend-test wrote; run backend-test first.
+      awk -F, 'NR > 1 { bm += $6; bc += $7; lm += $8; lc += $9 }
+               END { if (lm + lc == 0) exit 1
+                     printf "lines covered=%d missed=%d (%.1f%%)\n", lc, lm, 100 * lc / (lc + lm)
+                     printf "branches covered=%d missed=%d (%.1f%%)\n", bc, bm, (bc + bm) ? 100 * bc / (bc + bm) : 100 }' \
+        "$OUT/backend/target/site/jacoco/jacoco.csv" >"$log" 2>&1 || rc=$?
+      numbers="$(tr '\n' ';' <"$log" | cut -c1-110)" ;;
+    backend-mutation)
+      # PIT over the classes that have unit tests (pom.xml); container-based tests are excluded.
+      mvnw test-compile org.pitest:pitest-maven:mutationCoverage >"$log" 2>&1 || rc=$?
+      numbers="$(key 'Generated [0-9]+ mutations|BUILD FAILURE' "$log")" ;;
+    backend-duplication)
+      mvnw pmd:cpd-check >"$log" 2>&1 || rc=$?
+      numbers="$(key 'BUILD (SUCCESS|FAILURE)|CPD Failure' "$log")" ;;
+    frontend-mutation)
+      (cd "$OUT/frontend" && npx stryker run) >"$log" 2>&1 || rc=$?
+      numbers="$(key 'All files|Mutation score|error' "$log")" ;;
+    frontend-duplication)
+      (cd "$OUT/frontend" && npx jscpd src e2e --min-lines 8 --min-tokens 70 --reporters console \
+        --ignore "**/acceptance/**,**/e2e/**" --threshold 5) >"$log" 2>&1 || rc=$?
+      numbers="$(key 'Found [0-9]+ clones|Total:|duplicat' "$log")" ;;
+    metrics)
+      # Lines of code per component, production and test separately (run-log codeMetrics).
+      {
+        for part in backend/src/main backend/src/test frontend/src:prod frontend/src:test frontend/e2e; do
+          dir="${part%%:*}"; kind="${part##*:}"; opts=""
+          [ "$kind" = prod ] && opts='--not-match-f=\.test\.tsx?$ --exclude-dir=acceptance'
+          [ "$kind" = test ] && opts='--match-f=(\.test\.tsx?|harness\.tsx)$'
+          echo "== $part"
+          # shellcheck disable=SC2086
+          MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output:/tmp" "$CLOC_IMAGE" --quiet $opts "$dir" \
+            | grep -E '^(SUM|Language|Java|TypeScript|CSS|JSON|SQL|Properties|XML)' || rc=1
+        done
+      } >"$log" 2>&1
+      numbers="$(grep -c '^== ' "$log") parts" ;;
+    env-leak)
+      # Phase 6 card, step 5: no .env value in any file or commit message. Prints file names and a
+      # count only, never a value (rules.md, "Secrets").
+      {
+        echo "== files containing an .env value (none expected):"
+        (cd "$ROOT" && git ls-files -co --exclude-standard -z \
+          | xargs -0 grep -lF -f <(sed -n 's/^[A-Z_]*=//p' .env | tr -d '\r "'"'"'' | awk 'length>=6')) && rc=1
+        echo "== commit message lines containing an .env value (0 expected):"
+        count="$(cd "$ROOT" && git log --all --format=%B \
+          | grep -cF -f <(sed -n 's/^[A-Z_]*=//p' .env | tr -d '\r "'"'"'' | awk 'length>=6'))"
+        echo "$count"
+        [ "$count" = 0 ] || rc=1
+      } >"$log" 2>&1
+      numbers="files=$(sed -n '/^== files/,/^== commit/p' "$log" | grep -vc '^==') commit-lines=$(tail -n 1 "$log")" ;;
+    manifests)
+      # Recomputes every hash of the input and acceptance manifests (LF-normalised).
+      {
+        check() { # manifest file, base directory
+          while read -r hash file; do
+            [ "$(tr -d '\r' <"$2/$file" | sha256sum | cut -d' ' -f1)" = "$hash" ] || { echo "MISMATCH $file"; rc=1; }
+          done <"$1"
+          echo "$(wc -l <"$1" | tr -d ' ') hashes checked in $(basename "$1")"
+        }
+        check "$OUT/docs/00_input-manifest.sha256" "$ROOT"
+        check "$OUT/docs/03_acceptance-manifest.sha256" "$OUT"
+      } >"$log" 2>&1
+      numbers="checked=$(awk '/hashes checked/ { n += $1 } END { print n }' "$log") mismatches=$(grep -c MISMATCH "$log")" ;;
     backend-deps)
       mvnw dependency:list -DincludeScope=test -Dsort=true >"$log" 2>&1 || rc=$?
       numbers="artifacts=$(grep -cE ':(compile|runtime|test|provided)' "$log")" ;;
