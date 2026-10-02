@@ -19,6 +19,7 @@
 | D-11 | 2026-10-02T10:44:03Z | 1 | OQ-04 unanswered. | No limit per category is invented: zero or more active options may be selected, each at most once; a submission that repeats an option is rejected. AC-001-10, AC-001-11. | pending review |
 | D-12 | 2026-10-02T10:44:03Z | 1 | OQ-05 unanswered; priorities 1 and 2 in `scope.md`. | A second registration with the same email is accepted and stored as a separate registration: nothing submitted is lost, and the form does not reveal whether an email is already registered. Duplicates are visible to the organizer in the export. AC-001-13. | pending review |
 | D-13 | 2026-10-02T10:44:03Z | 1 | OQ-06 unanswered; SB-13. | The system never deletes registrations or JSON copies by itself; they are kept until the organizer removes them. The retention period is stated for human confirmation in phase 2 with the personal-data list. No acceptance criterion. | pending review |
+| D-14 | 2026-10-02T10:49:30Z | 2 | Phase 2 card: every contract validates with a parser; `tech-stack.md` lists no OpenAPI or JSON Schema validator. | Dev-only tooling added under the `tech-stack.md` rule: container `redocly/cli:2.57.0` (OpenAPI lint, nothing installed on the host) and `ajv` 8.20.0, already in `frontend/package-lock.json` as a transitive development dependency (JSON Schema 2020-12). The SQL contract is parsed by the pinned `postgres:16.15-alpine`. Neither tool is shipped. | pending review |
 
 ## Blocking
 

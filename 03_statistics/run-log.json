@@ -25,12 +25,12 @@
       "phase": 2,
       "name": "design",
       "start": "2026-10-02T10:44:49Z",
-      "end": null
+      "end": "2026-10-02T10:50:51Z"
     },
     {
       "phase": 3,
       "name": "test-design",
-      "start": null,
+      "start": "2026-10-02T10:50:51Z",
       "end": null
     },
     {
@@ -151,6 +151,12 @@
       "type": "non-blocking",
       "start": "2026-10-02T10:44:03Z",
       "end": "2026-10-02T10:44:03Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:49:30Z",
+      "end": "2026-10-02T10:49:30Z"
     }
   ],
   "humanInterventions": [
