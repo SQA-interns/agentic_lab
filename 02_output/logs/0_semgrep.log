@@ -3,11 +3,11 @@
 ┌─────────────┐
 │ Scan Status │
 └─────────────┘
-  Scanning 28 files tracked by git with 1074 Code rules:
+  Scanning 30 files tracked by git with 1074 Code rules:
                                                                                                                         
   Language      Rules   Files          Origin      Rules                                                                
  ─────────────────────────────        ───────────────────                                                               
-  <multilang>      61      28          Community    1074                                                                
+  <multilang>      61      30          Community    1074                                                                
   json              4       4                                                                                           
   ts              163       3                                                                                           
   bash              4       2                                                                                           
@@ -23,12 +23,12 @@
 ✅ Scan completed successfully.
  • Findings: 0 (0 blocking)
  • Rules run: 348
- • Targets scanned: 28
+ • Targets scanned: 30
  • Parsed lines: ~99.9%
  • Scan skipped: 
    ◦ Matching --exclude patterns: 5
  • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
-Ran 348 rules on 28 files: 0 findings.
+Ran 348 rules on 30 files: 0 findings.
 (need more rules? `semgrep login` for additional free Semgrep Registry rules)
 
 

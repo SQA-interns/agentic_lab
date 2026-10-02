@@ -1,42 +1,18 @@
-Unable to find image 'aldanial/cloc:2.10' locally
-2.10: Pulling from aldanial/cloc
-f3f713d3e926: Pulling fs layer
-c664ddecbf17: Pulling fs layer
-46662a772259: Pulling fs layer
-0ac0076110ec: Pulling fs layer
-025c56f98b67: Pulling fs layer
-e52fe41d146a: Pulling fs layer
-ed766c8416d6: Pulling fs layer
-f3f713d3e926: Download complete
-ed766c8416d6: Download complete
-e52fe41d146a: Download complete
-46662a772259: Download complete
-c664ddecbf17: Download complete
-0ac0076110ec: Download complete
-025c56f98b67: Download complete
-e52fe41d146a: Pull complete
-025c56f98b67: Pull complete
-c664ddecbf17: Pull complete
-0ac0076110ec: Pull complete
-ed766c8416d6: Pull complete
-46662a772259: Pull complete
-f3f713d3e926: Pull complete
-Digest: sha256:54d1304dc3b80eec8efb2d9bb96d41e508987405f2eff8c1818ddf461e943597
-Status: Downloaded newer image for aldanial/cloc:2.10
-github.com/AlDanial/cloc v 1.98  T=0.43 s (44.3 files/s, 22474.5 lines/s)
+github.com/AlDanial/cloc v 1.98  T=0.38 s (52.3 files/s, 25285.3 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 JSON                             4              0              0           8792
-Bourne Shell                     2             35             58            258
-Maven                            1              9              4            208
+Bourne Shell                     2             35             59            258
+Maven                            1              9              5            212
 DOS Batch                        1             15              0            134
 Markdown                         3             19              2             30
 TypeScript                       3              2              1             29
 JavaScript                       1              1              0             24
+XML                              1              0              0             21
 HTML                             1              0              0             12
 Java                             1              3              1              9
 Properties                       2              0              0              4
 -------------------------------------------------------------------------------
-SUM:                            19             84             66           9500
+SUM:                            20             84             68           9525
 -------------------------------------------------------------------------------

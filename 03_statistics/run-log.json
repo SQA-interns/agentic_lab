@@ -13,12 +13,12 @@
       "phase": 0,
       "name": "preflight-and-bootstrap",
       "start": "2026-10-02T10:09:55Z",
-      "end": null
+      "end": "2026-10-02T10:43:27Z"
     },
     {
       "phase": 1,
       "name": "requirements",
-      "start": null,
+      "start": "2026-10-02T10:43:27Z",
       "end": null
     },
     {
@@ -102,13 +102,25 @@
       "id": "D-05",
       "type": "blocking",
       "start": "2026-10-02T10:23:22Z",
-      "end": null
+      "end": "2026-10-02T10:37:13Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:40:01Z",
+      "end": "2026-10-02T10:40:01Z"
+    },
+    {
+      "id": "D-07",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:40:01Z",
+      "end": "2026-10-02T10:40:01Z"
     }
   ],
   "humanInterventions": [
     {
       "start": "2026-10-02T10:24:13Z",
-      "end": null,
+      "end": "2026-10-02T10:37:13Z",
       "reason": "D-05: permission for the .env presence check and the NVD dependency scan"
     }
   ],

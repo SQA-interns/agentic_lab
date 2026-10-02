@@ -16,8 +16,7 @@
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- spotless:2.44.3:check (default-cli) @ registration ---
-[INFO] Index file does not exist. Fallback to an empty index
-[INFO] Spotless.Java is keeping 1 files clean - 0 needs changes to be clean, 1 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] Spotless.Java is keeping 1 files clean - 0 needs changes to be clean, 0 were already clean, 1 were skipped because caching determined they were already clean
 [INFO] 
 [INFO] >>> pmd:3.26.0:check (default-cli) > :pmd @ registration >>>
 [INFO] 
@@ -47,6 +46,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  13.631 s
-[INFO] Finished at: 2026-10-02T12:15:23+02:00
+[INFO] Total time:  13.381 s
+[INFO] Finished at: 2026-10-02T12:40:48+02:00
 [INFO] ------------------------------------------------------------------------
