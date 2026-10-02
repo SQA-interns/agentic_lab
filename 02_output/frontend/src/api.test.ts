@@ -118,3 +118,27 @@ describe("loading the form", () => {
     await expect(loadOptions()).rejects.toThrow("503");
   });
 });
+
+describe("submitRegistration, strictness of what counts as a rejection", () => {
+  it("keeps only entries that have both a field and a code", async () => {
+    answer(400, {
+      errors: [
+        { code: "required", message: "no field" },
+        { field: "email", message: "no code" },
+        { field: 5, code: "required" },
+        { field: "consent", code: "consent_required", message: "m" },
+      ],
+    });
+
+    expect(await submitRegistration(REQUEST)).toEqual({
+      kind: "rejected",
+      errors: [{ field: "consent", code: "consent_required", message: "m" }],
+    });
+  });
+
+  it("does not read field errors from an answer that is not a 400", async () => {
+    answer(500, { errors: [{ field: "email", code: "required", message: "m" }] });
+
+    expect(await submitRegistration(REQUEST)).toEqual({ kind: "notReceived" });
+  });
+});

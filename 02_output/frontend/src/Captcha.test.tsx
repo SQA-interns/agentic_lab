@@ -154,3 +154,61 @@ describe("Captcha in reCAPTCHA mode", () => {
     expect(recaptcha.render).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("Captcha in reCAPTCHA mode, lifecycle", () => {
+  const props = {
+    captcha: { mode: "recaptcha" as const, siteKey: "site-key" },
+    token: "",
+    resetSignal: 0,
+    errorId: undefined,
+  };
+
+  function recaptchaWithCallback() {
+    let tokenCallback: (token: string) => void = () => undefined;
+    const recaptcha = {
+      ready: vi.fn((callback: () => void) => callback()),
+      render: vi.fn((_container: HTMLElement, options: { callback: (token: string) => void }) => {
+        tokenCallback = options.callback;
+        return 3;
+      }),
+      reset: vi.fn(),
+    };
+    window.grecaptcha = recaptcha as unknown as Window["grecaptcha"];
+    return { recaptcha, send: (token: string) => tokenCallback(token) };
+  }
+
+  it("passes the token to the handler of the latest render", () => {
+    const { send } = recaptchaWithCallback();
+    const first = vi.fn();
+    const second = vi.fn();
+    const { rerender } = render(<Captcha {...props} onToken={first} />);
+
+    rerender(<Captcha {...props} onToken={second} />);
+    send("token");
+
+    expect(second).toHaveBeenCalledWith("token");
+    expect(first).not.toHaveBeenCalled();
+  });
+
+  it("does not render the widget after the control was removed before the script loaded", () => {
+    const { unmount } = render(<Captcha {...props} onToken={() => undefined} />);
+    const script = document.head.querySelector("script");
+    expect(script?.async).toBe(true);
+    unmount();
+
+    const { recaptcha } = recaptchaWithCallback();
+    script?.dispatchEvent(new Event("load"));
+
+    expect(recaptcha.render).not.toHaveBeenCalled();
+  });
+
+  it("does not ask for a new check before a token was used, and renders the widget once", () => {
+    const { recaptcha } = recaptchaWithCallback();
+    const { rerender } = render(<Captcha {...props} onToken={() => undefined} />);
+
+    rerender(<Captcha {...props} onToken={() => undefined} />);
+
+    expect(recaptcha.render).toHaveBeenCalledTimes(1);
+    expect(recaptcha.reset).not.toHaveBeenCalled();
+  });
+});
