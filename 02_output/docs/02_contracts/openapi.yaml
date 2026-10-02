@@ -1,0 +1,393 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >-
+    Interface "Options, registration, export" between the frontend or the organizer and the
+    backend (architecture.md). Field error messages are in Slovenian; clients match on `code`.
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: /
+    description: Same origin as the frontend; the reverse proxy forwards /api to the backend.
+tags:
+  - name: form
+    description: Public data the registration form needs.
+  - name: registration
+    description: Public registration submission.
+  - name: export
+    description: Organizer-only export.
+security: []
+paths:
+  /api/form-config:
+    get:
+      tags: [form]
+      operationId: getFormConfig
+      summary: Conference name, consent wording and anti-automation settings.
+      responses:
+        "200":
+          description: Form configuration.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FormConfig"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/options:
+    get:
+      tags: [form]
+      operationId: getOptions
+      summary: Active conference options, in configuration order.
+      responses:
+        "200":
+          description: Active options only; inactive options are never returned.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OptionList"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/registrations:
+    post:
+      tags: [registration]
+      operationId: createRegistration
+      summary: Submit a registration.
+      description: >-
+        Answers 201 only after the database row and the JSON copy are both written (AR-05).
+        Emails are sent afterwards; an email failure does not change the answer (D-10).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+      responses:
+        "201":
+          description: Accepted and stored.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationAccepted"
+        "400":
+          description: Rejected; nothing was stored and no email was sent.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ValidationProblem"
+        "413":
+          description: Request body larger than the configured limit.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "415":
+          description: Content type is not application/json.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "503":
+          description: >-
+            The registration could not be stored, or the anti-automation service could not be
+            reached. Nothing was stored; the registration was not received.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+  /api/registrations/export:
+    get:
+      tags: [export]
+      operationId: exportRegistrations
+      summary: All current registrations as an Excel workbook.
+      security:
+        - organizerBasic: []
+      responses:
+        "200":
+          description: Workbook with one row per registration, oldest first.
+          headers:
+            Content-Disposition:
+              description: attachment with a file name ending in .xlsx
+              schema:
+                type: string
+            Cache-Control:
+              description: Always no-store.
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        "401":
+          description: Missing or wrong organizer credentials; no registration data.
+          headers:
+            WWW-Authenticate:
+              description: Basic challenge.
+              schema:
+                type: string
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "403":
+          description: >-
+            Organizer access requires HTTPS and the request arrived over plain HTTP (SR-06).
+            Credentials are not evaluated.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+      description: The single organizer account (ORGANIZER_USERNAME, ORGANIZER_PASSWORD).
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded for this client.
+      headers:
+        Retry-After:
+          description: Seconds until the next request is allowed.
+          schema:
+            type: integer
+            minimum: 1
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+  schemas:
+    FormConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, consent, captcha]
+      properties:
+        conferenceName:
+          type: string
+          minLength: 1
+        consent:
+          type: object
+          additionalProperties: false
+          required: [id, text]
+          properties:
+            id:
+              type: string
+              const: personal-data
+            text:
+              type: string
+              minLength: 1
+        captcha:
+          type: object
+          additionalProperties: false
+          required: [mode, siteKey]
+          properties:
+            mode:
+              type: string
+              enum: [recaptcha, test]
+              description: test = deterministic test mode, no call to Google (SR-02).
+            siteKey:
+              type: string
+              description: reCAPTCHA v2 site key; empty in test mode (AR-07).
+    OptionCategory:
+      type: string
+      enum: [workshop, event, meal, other]
+    Option:
+      type: object
+      additionalProperties: false
+      required: [id, name, category]
+      properties:
+        id:
+          type: string
+          pattern: "^[a-z0-9][a-z0-9-]{0,63}$"
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        category:
+          $ref: "#/components/schemas/OptionCategory"
+    OptionList:
+      type: object
+      additionalProperties: false
+      required: [options]
+      properties:
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/Option"
+    RegistrationRequest:
+      oneOf:
+        - $ref: "#/components/schemas/ExternalRegistrationRequest"
+        - $ref: "#/components/schemas/StudentRegistrationRequest"
+      discriminator:
+        propertyName: type
+        mapping:
+          EXTERNAL: "#/components/schemas/ExternalRegistrationRequest"
+          STUDENT: "#/components/schemas/StudentRegistrationRequest"
+    ExternalRegistrationRequest:
+      type: object
+      additionalProperties: false
+      required: [type, firstName, lastName, email, organization, optionIds, consent, captchaToken]
+      properties:
+        type:
+          type: string
+          const: EXTERNAL
+        firstName:
+          $ref: "#/components/schemas/Text100"
+        lastName:
+          $ref: "#/components/schemas/Text100"
+        email:
+          $ref: "#/components/schemas/Email"
+        organization:
+          $ref: "#/components/schemas/Text200"
+        optionIds:
+          $ref: "#/components/schemas/OptionIds"
+        consent:
+          $ref: "#/components/schemas/Consent"
+        captchaToken:
+          $ref: "#/components/schemas/CaptchaToken"
+    StudentRegistrationRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - type
+        - firstName
+        - lastName
+        - email
+        - studyInstitution
+        - studyProgramme
+        - studentId
+        - optionIds
+        - consent
+        - captchaToken
+      properties:
+        type:
+          type: string
+          const: STUDENT
+        firstName:
+          $ref: "#/components/schemas/Text100"
+        lastName:
+          $ref: "#/components/schemas/Text100"
+        email:
+          $ref: "#/components/schemas/Email"
+        studyInstitution:
+          $ref: "#/components/schemas/Text200"
+        studyProgramme:
+          $ref: "#/components/schemas/Text200"
+        studentId:
+          type: string
+          maxLength: 50
+          description: Required; trimmed; not blank; no control characters.
+        optionIds:
+          $ref: "#/components/schemas/OptionIds"
+        consent:
+          $ref: "#/components/schemas/Consent"
+        captchaToken:
+          $ref: "#/components/schemas/CaptchaToken"
+    Text100:
+      type: string
+      maxLength: 100
+      description: >-
+        Required; leading and trailing whitespace is removed before validation and storage;
+        not blank after trimming; Unicode allowed; no control characters (including CR, LF).
+    Text200:
+      type: string
+      maxLength: 200
+      description: Same rules as Text100 with a longer limit.
+    Email:
+      type: string
+      maxLength: 254
+      description: Trimmed; one address in local@domain form with a dot in the domain; no control characters.
+    OptionIds:
+      type: array
+      maxItems: 50
+      description: >-
+        Identifiers of the selected options; may be empty (D-11). Every identifier must be an
+        active configured option (SR-04) and may appear only once.
+      items:
+        type: string
+        maxLength: 64
+    Consent:
+      type: boolean
+      description: Must be true; the form never preselects it (BR-05).
+    CaptchaToken:
+      type: string
+      maxLength: 4096
+      description: reCAPTCHA v2 response token, verified by the backend (SR-01).
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [id, acceptedAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        acceptedAt:
+          type: string
+          format: date-time
+    Problem:
+      type: object
+      description: RFC 9457 problem details; never contains internal details (ES-07).
+      required: [type, title, status]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, code, message]
+      properties:
+        field:
+          type: string
+          enum:
+            - type
+            - firstName
+            - lastName
+            - email
+            - organization
+            - studyInstitution
+            - studyProgramme
+            - studentId
+            - optionIds
+            - consent
+            - captchaToken
+            - body
+        code:
+          type: string
+          enum:
+            - required
+            - too_long
+            - invalid_format
+            - invalid_characters
+            - invalid_type
+            - option_not_selectable
+            - option_duplicate
+            - too_many
+            - consent_required
+            - captcha_failed
+            - unknown_field
+            - malformed
+        message:
+          type: string
+          description: Slovenian text shown next to the field (NFR-03).
+    ValidationProblem:
+      allOf:
+        - $ref: "#/components/schemas/Problem"
+        - type: object
+          required: [errors]
+          properties:
+            errors:
+              type: array
+              minItems: 1
+              items:
+                $ref: "#/components/schemas/FieldError"
