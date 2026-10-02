@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui-form.schema.json",
+  "title": "Format of the registration form UI contract",
+  "type": "object",
+  "required": ["language", "pageTitle", "typeSelector", "forms", "optionGroups", "consent", "captcha", "submit", "views", "messages"],
+  "properties": {
+    "language": { "const": "sl" },
+    "pageTitle": { "$ref": "#/$defs/label" },
+    "typeSelector": {
+      "type": "object",
+      "required": ["role", "legend", "choices", "preselected"],
+      "properties": {
+        "role": { "const": "radiogroup" },
+        "legend": { "$ref": "#/$defs/label" },
+        "preselected": { "const": null },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["value", "label"],
+            "properties": { "value": { "enum": ["EXTERNAL", "STUDENT"] }, "label": { "$ref": "#/$defs/label" } },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "forms": {
+      "type": "object",
+      "required": ["EXTERNAL", "STUDENT"],
+      "properties": {
+        "EXTERNAL": { "$ref": "#/$defs/fields" },
+        "STUDENT": { "$ref": "#/$defs/fields" }
+      },
+      "additionalProperties": false
+    },
+    "optionGroups": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["category", "legend", "control"],
+        "properties": {
+          "category": { "enum": ["workshop", "event", "meal", "other"] },
+          "legend": { "$ref": "#/$defs/label" },
+          "control": { "const": "checkbox" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "consent": {
+      "type": "object",
+      "required": ["control", "labelSource", "preselected", "errorField"],
+      "properties": {
+        "control": { "const": "checkbox" },
+        "labelSource": { "const": "form-config.consent.text" },
+        "preselected": { "const": false },
+        "errorField": { "const": "consent" }
+      },
+      "additionalProperties": false
+    },
+    "captcha": {
+      "type": "object",
+      "required": ["recaptcha", "test", "errorField"],
+      "properties": {
+        "recaptcha": { "type": "string" },
+        "test": {
+          "type": "object",
+          "required": ["control", "label", "preselected"],
+          "properties": {
+            "control": { "const": "checkbox" },
+            "label": { "$ref": "#/$defs/label" },
+            "preselected": { "const": false }
+          },
+          "additionalProperties": false
+        },
+        "errorField": { "const": "captchaToken" }
+      },
+      "additionalProperties": false
+    },
+    "submit": {
+      "type": "object",
+      "required": ["role", "label"],
+      "properties": { "role": { "const": "button" }, "label": { "$ref": "#/$defs/label" } },
+      "additionalProperties": false
+    },
+    "views": {
+      "type": "object",
+      "required": ["form", "confirmation", "failure"],
+      "properties": {
+        "form": { "type": "string" },
+        "confirmation": {
+          "type": "object",
+          "required": ["role", "heading", "text"],
+          "properties": {
+            "role": { "const": "status" },
+            "heading": { "$ref": "#/$defs/label" },
+            "text": { "$ref": "#/$defs/label" }
+          },
+          "additionalProperties": false
+        },
+        "failure": {
+          "type": "object",
+          "required": ["role", "notReceived", "tooManyRequests", "loadFailed"],
+          "properties": {
+            "role": { "const": "alert" },
+            "notReceived": { "$ref": "#/$defs/label" },
+            "tooManyRequests": { "$ref": "#/$defs/label" },
+            "loadFailed": { "$ref": "#/$defs/label" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "messages": {
+      "description": "Text shown next to a field, by error code of the API contract.",
+      "type": "object",
+      "required": ["required", "too_long", "invalid_format", "invalid_characters", "option_not_selectable", "option_duplicate", "consent_required", "captcha_failed"],
+      "additionalProperties": { "$ref": "#/$defs/label" }
+    },
+    "rules": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "label": { "type": "string", "minLength": 1 },
+    "fields": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["name", "label", "control", "maxLength", "required"],
+        "properties": {
+          "name": {
+            "enum": ["firstName", "lastName", "email", "organization", "studyInstitution", "studyProgramme", "studentId"]
+          },
+          "label": { "$ref": "#/$defs/label" },
+          "control": { "enum": ["text", "email"] },
+          "maxLength": { "type": "integer", "minimum": 1 },
+          "required": { "const": true },
+          "autocomplete": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

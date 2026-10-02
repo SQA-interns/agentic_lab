@@ -1,0 +1,81 @@
+{
+  "language": "sl",
+  "pageTitle": "Prijava na konferenco",
+  "typeSelector": {
+    "role": "radiogroup",
+    "legend": "Vrsta prijave",
+    "preselected": null,
+    "choices": [
+      { "value": "EXTERNAL", "label": "Zunanji udeleženec" },
+      { "value": "STUDENT", "label": "Študent" }
+    ]
+  },
+  "forms": {
+    "EXTERNAL": [
+      { "name": "firstName", "label": "Ime", "control": "text", "maxLength": 100, "required": true, "autocomplete": "given-name" },
+      { "name": "lastName", "label": "Priimek", "control": "text", "maxLength": 100, "required": true, "autocomplete": "family-name" },
+      { "name": "email", "label": "E-pošta", "control": "email", "maxLength": 254, "required": true, "autocomplete": "email" },
+      { "name": "organization", "label": "Organizacija / ustanova", "control": "text", "maxLength": 200, "required": true, "autocomplete": "organization" }
+    ],
+    "STUDENT": [
+      { "name": "firstName", "label": "Ime", "control": "text", "maxLength": 100, "required": true, "autocomplete": "given-name" },
+      { "name": "lastName", "label": "Priimek", "control": "text", "maxLength": 100, "required": true, "autocomplete": "family-name" },
+      { "name": "email", "label": "E-pošta", "control": "email", "maxLength": 254, "required": true, "autocomplete": "email" },
+      { "name": "studyInstitution", "label": "Izobraževalna ustanova", "control": "text", "maxLength": 200, "required": true },
+      { "name": "studyProgramme", "label": "Študijski program", "control": "text", "maxLength": 200, "required": true },
+      { "name": "studentId", "label": "Vpisna številka", "control": "text", "maxLength": 50, "required": true }
+    ]
+  },
+  "optionGroups": [
+    { "category": "workshop", "legend": "Delavnice", "control": "checkbox" },
+    { "category": "event", "legend": "Dogodki", "control": "checkbox" },
+    { "category": "meal", "legend": "Obroki", "control": "checkbox" },
+    { "category": "other", "legend": "Druge aktivnosti", "control": "checkbox" }
+  ],
+  "consent": {
+    "control": "checkbox",
+    "labelSource": "form-config.consent.text",
+    "preselected": false,
+    "errorField": "consent"
+  },
+  "captcha": {
+    "recaptcha": "Google reCAPTCHA v2 checkbox widget rendered with the site key of form-config",
+    "test": { "control": "checkbox", "label": "Nisem robot (testni način)", "preselected": false },
+    "errorField": "captchaToken"
+  },
+  "submit": { "role": "button", "label": "Oddaj prijavo" },
+  "views": {
+    "form": "Type selector first; the fields, options, consent, anti-automation check and submit button appear once a type is chosen.",
+    "confirmation": {
+      "role": "status",
+      "heading": "Prijava je sprejeta",
+      "text": "Vašo prijavo smo prejeli. Potrditev smo poslali na vaš e-poštni naslov."
+    },
+    "failure": {
+      "role": "alert",
+      "notReceived": "Prijave nismo prejeli. Poskusite znova pozneje.",
+      "tooManyRequests": "Preveč poskusov. Počakajte trenutek in poskusite znova.",
+      "loadFailed": "Obrazca ni bilo mogoče naložiti. Osvežite stran."
+    }
+  },
+  "messages": {
+    "required": "To polje je obvezno.",
+    "too_long": "Vnos je predolg.",
+    "invalid_format": "Vnesite veljaven e-poštni naslov.",
+    "invalid_characters": "Vnos vsebuje nedovoljene znake.",
+    "option_not_selectable": "Izbrana možnost ni na voljo.",
+    "option_duplicate": "Možnost je izbrana večkrat.",
+    "consent_required": "Za prijavo je potrebno soglasje.",
+    "captcha_failed": "Potrdite, da niste robot."
+  },
+  "rules": [
+    "Every control is reachable by its label (accessible name); every option checkbox is labelled with the option's display name.",
+    "A group in optionGroups is shown only when it has at least one active option; groups keep the order above.",
+    "On submit the frontend checks required, maxLength and email format first and sends nothing while a check fails (NFR-03).",
+    "A field error is shown directly after its control, linked with aria-describedby, and the control has aria-invalid=true.",
+    "Backend field errors (400) are shown at the control named by `field`; entered values stay in the form.",
+    "The confirmation view replaces the form only after the API answered 201 (BR-06).",
+    "Any answer other than 201, 400 and 429, or no answer, shows failure.notReceived and keeps the form.",
+    "The frontend calls only paths under /api (AR-01) and holds no key except the reCAPTCHA site key from form-config (AR-07)."
+  ]
+}
