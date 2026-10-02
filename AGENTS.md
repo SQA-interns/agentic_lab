@@ -12,7 +12,7 @@ Humans start at `README.md`.
 4. `01_input/00_general/working-rules.md` and `01_input/00_general/workflows/<wf>/rules.md`
 
 If `02_output/docs/00_progress.md` shows work in progress, resume from it instead of starting over.
-Do not read the other workflow's folder.
+Do not read the other workflow's folder. 
 
 ## Never
 
