@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conference-options.schema.json",
+  "title": "Conference options configuration",
+  "description": "Contract \"Conference options\" between configuration and the backend (US-003, AR-04). One UTF-8 JSON file whose path is a setting; it is read at start-up. The backend refuses to start when the file is missing, invalid or has two options with the same id. The order of the file is the order on the form.",
+  "type": "object",
+  "required": ["options"],
+  "properties": {
+    "options": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category", "active"],
+        "properties": {
+          "id": {
+            "description": "Stable identifier; never reused for another activity.",
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200, "pattern": "\\S" },
+          "category": { "enum": ["workshop", "event", "meal", "other"] },
+          "active": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
