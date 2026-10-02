@@ -15,11 +15,13 @@ import si.konferenca.registration.adapter.in.web.FormController.FormConfigRespon
 import si.konferenca.registration.adapter.in.web.RegistrationController.RequestLimits;
 import si.konferenca.registration.adapter.out.captcha.RecaptchaCaptchaVerifier;
 import si.konferenca.registration.adapter.out.captcha.TestModeCaptchaVerifier;
+import si.konferenca.registration.adapter.out.excel.PoiRegistrationExporter;
 import si.konferenca.registration.adapter.out.jsoncopy.FileJsonCopyStore;
 import si.konferenca.registration.adapter.out.mail.SmtpMailNotifier;
 import si.konferenca.registration.adapter.out.options.FileOptionsCatalogue;
 import si.konferenca.registration.adapter.out.persistence.JpaRegistrationStore;
 import si.konferenca.registration.adapter.out.persistence.TransactionalUnitOfWork;
+import si.konferenca.registration.application.ExportRegistrations;
 import si.konferenca.registration.application.FormQueries;
 import si.konferenca.registration.application.SubmitRegistration;
 import si.konferenca.registration.application.SubmitRegistration.ConsentTerms;
@@ -38,6 +40,11 @@ public class ApplicationConfig {
 
   /** The identifier of the one mandatory consent (D-09). */
   public static final String CONSENT_ID = "personal-data";
+
+  @Bean
+  ExportRegistrations exportRegistrations(RegistrationStore store) {
+    return new ExportRegistrations(store, new PoiRegistrationExporter());
+  }
 
   @Bean
   Clock clock() {
