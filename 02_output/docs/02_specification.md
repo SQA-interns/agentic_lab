@@ -113,7 +113,7 @@ Environment variables of the backend; the frontend has none at build time and re
 | Request-size limit | `MAX_REQUEST_BYTES` | `16384` | SR-03 |
 | Trusted proxy headers | `TRUST_FORWARDED_HEADERS` | `false` | `true` behind the production reverse proxy |
 
-Start-up checks (the backend refuses to start): a required setting without a default is missing; the options file is invalid; in `production`, test mode is on, a reCAPTCHA key is empty, or `ORGANIZER_REQUIRE_HTTPS` is off.
+Start-up checks (the backend refuses to start): a required setting without a default is missing; the options file is invalid; in `production`, test mode is on, a reCAPTCHA key is empty, or `ORGANIZER_REQUIRE_HTTPS` is off; in any environment, test mode is off and a reCAPTCHA key is empty, or a rate limit or the request-size limit is not positive (D-18).
 
 ## 6. Security controls
 
@@ -156,7 +156,7 @@ Only the items of `security-requirements.md` ("Personal data") are collected, fo
 
 - `02_output/docker-compose.yml` starts PostgreSQL, Mailpit, backend and frontend; every port is published on 127.0.0.1 only. Named volumes hold the database and the JSON copies (NFR-02).
 - Health: `/actuator/health/liveness` and `/actuator/health/readiness` (readiness includes the database); only `health` is exposed. Compose health checks use them, and the frontend waits for a healthy backend (NFR-04, ES-09).
-- Backend image: the jar built by the Maven wrapper is copied into the `eclipse-temurin` JRE image. Reason: `tech-stack.md` lists no JDK image. Frontend image: built in the `node` image, served by `nginx` on an unprivileged port.
+- Backend image: the jar built by the Maven wrapper is copied into the `eclipse-temurin` JRE image. Reason: `tech-stack.md` lists no JDK image. Frontend image: built in the `node` image, served by `nginx` on an unprivileged port; its `/api` route forwards to the fixed host name `backend`, which must resolve on the container network when nginx starts (D-18).
 - Schema changes only through Flyway; the first migration equals `registration-schema.sql`; Hibernate validates and never alters the schema (AR-06, ES-08).
 
 ## 9. Choices the inputs leave open
