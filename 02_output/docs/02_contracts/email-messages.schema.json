@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "email-messages.schema.json",
+  "title": "Emails sent by the backend",
+  "description": "Contract \"Emails\" between the backend and the SMTP server (US-006, US-007, SR-05). Describes each message as a mail catcher reports it. Both messages are plain text, UTF-8, with no HTML part. Subjects never contain participant input. Body lines are \"Label: value\"; values are the stored values, which cannot contain line breaks.",
+  "oneOf": [{ "$ref": "#/$defs/participantConfirmation" }, { "$ref": "#/$defs/organizerNotification" }],
+  "$defs": {
+    "address": { "type": "string", "pattern": "^[^\\s@<>,;]+@[^\\s@<>,;]+$" },
+    "participantConfirmation": {
+      "type": "object",
+      "required": ["kind", "from", "to", "subject", "text", "attachments"],
+      "properties": {
+        "kind": { "const": "participant-confirmation" },
+        "from": { "$ref": "#/$defs/address", "description": "The configured sender address." },
+        "to": {
+          "description": "Only the email address of the registration.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/address" },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "subject": {
+          "description": "\"Potrditev prijave: <conference name>\"",
+          "type": "string",
+          "pattern": "^Potrditev prijave: [^\\r\\n]+$"
+        },
+        "text": {
+          "description": "Confirms that the registration was received; lists the registration id, the type, the submitted fields and the selected options by name.",
+          "type": "string",
+          "minLength": 1
+        },
+        "html": { "const": "" },
+        "attachments": { "type": "array", "maxItems": 0 }
+      },
+      "additionalProperties": false
+    },
+    "organizerNotification": {
+      "type": "object",
+      "required": ["kind", "from", "to", "subject", "text", "attachments"],
+      "properties": {
+        "kind": { "const": "organizer-notification" },
+        "from": { "$ref": "#/$defs/address" },
+        "to": {
+          "description": "Every configured organizer recipient (ORGANIZER_EMAILS).",
+          "type": "array",
+          "items": { "$ref": "#/$defs/address" },
+          "minItems": 1
+        },
+        "subject": {
+          "description": "\"Nova prijava: <conference name> (<registration id>)\"",
+          "type": "string",
+          "pattern": "^Nova prijava: [^\\r\\n]+ \\([0-9a-f-]{36}\\)$"
+        },
+        "text": {
+          "description": "Lists the registration id, the acceptance time, the type, the submitted fields, the selected options and the consent time. Registration data only (SR-07).",
+          "type": "string",
+          "minLength": 1
+        },
+        "html": { "const": "" },
+        "attachments": {
+          "description": "Exactly one: the raw JSON copy, byte for byte (registration-copy.schema.json).",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["fileName", "contentType"],
+            "properties": {
+              "fileName": { "type": "string", "pattern": "^registration-[0-9a-f-]{36}\\.json$" },
+              "contentType": { "type": "string", "pattern": "^application/json" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

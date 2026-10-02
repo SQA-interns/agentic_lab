@@ -1,0 +1,9 @@
+{
+  "kind": "participant-confirmation",
+  "from": "prijave@konferenca.example",
+  "to": ["ziva.cucnik@example.org"],
+  "subject": "Potrditev prijave: Konferenca 2027",
+  "text": "Spoštovani,\n\nvašo prijavo na dogodek Konferenca 2027 smo prejeli.\n\nŠtevilka prijave: 3f0e7a52-8a54-4d0e-9f43-1c6a2b7d9e10\nVrsta prijave: Zunanji udeleženec\nIme: Živa\nPriimek: Čučnik Šušteršič\nE-pošta: ziva.cucnik@example.org\nOrganizacija / ustanova: Inštitut za računalništvo\n\nIzbrane možnosti:\n- Delavnica: testiranje programske opreme\n- Kosilo, prvi dan\n",
+  "html": "",
+  "attachments": []
+}

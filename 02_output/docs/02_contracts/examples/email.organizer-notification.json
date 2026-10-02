@@ -1,0 +1,11 @@
+{
+  "kind": "organizer-notification",
+  "from": "prijave@konferenca.example",
+  "to": ["organizator@konferenca.example", "tajnistvo@konferenca.example"],
+  "subject": "Nova prijava: Konferenca 2027 (3f0e7a52-8a54-4d0e-9f43-1c6a2b7d9e10)",
+  "text": "Nova prijava.\n\nŠtevilka prijave: 3f0e7a52-8a54-4d0e-9f43-1c6a2b7d9e10\nSprejeto: 2026-10-02T10:15:30.123Z\nVrsta prijave: Zunanji udeleženec\nIme: Živa\nPriimek: Čučnik Šušteršič\nE-pošta: ziva.cucnik@example.org\nOrganizacija / ustanova: Inštitut za računalništvo\n\nIzbrane možnosti:\n- Delavnica: testiranje programske opreme\n- Kosilo, prvi dan\n\nSoglasje dano: 2026-10-02T10:15:30.123Z\n",
+  "html": "",
+  "attachments": [
+    { "fileName": "registration-3f0e7a52-8a54-4d0e-9f43-1c6a2b7d9e10.json", "contentType": "application/json" }
+  ]
+}
