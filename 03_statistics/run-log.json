@@ -19,12 +19,12 @@
       "phase": 1,
       "name": "requirements",
       "start": "2026-10-02T10:43:27Z",
-      "end": null
+      "end": "2026-10-02T10:44:49Z"
     },
     {
       "phase": 2,
       "name": "design",
-      "start": null,
+      "start": "2026-10-02T10:44:49Z",
       "end": null
     },
     {
@@ -115,6 +115,42 @@
       "type": "non-blocking",
       "start": "2026-10-02T10:40:01Z",
       "end": "2026-10-02T10:40:01Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:44:03Z",
+      "end": "2026-10-02T10:44:03Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:44:03Z",
+      "end": "2026-10-02T10:44:03Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:44:03Z",
+      "end": "2026-10-02T10:44:03Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:44:03Z",
+      "end": "2026-10-02T10:44:03Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:44:03Z",
+      "end": "2026-10-02T10:44:03Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-02T10:44:03Z",
+      "end": "2026-10-02T10:44:03Z"
     }
   ],
   "humanInterventions": [
