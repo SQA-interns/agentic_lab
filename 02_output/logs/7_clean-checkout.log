@@ -1,0 +1,94 @@
+== clean checkout of e4db016 into C:\Users\tanej\AppData\Local\Temp/rc
+untracked or ignored files in the checkout: 0
+
+== backend README: build
+$ ./mvnw -B -ntp -DskipTests package
+[INFO] Total time:  8.642 s
+[INFO] Finished at: 2026-10-02T15:45:59+02:00
+[INFO] ------------------------------------------------------------------------
+PASS backend README: build
+
+== backend README: check
+$ ./mvnw -B -ntp compile spotless:check pmd:check spotbugs:check
+[INFO] Total time:  19.046 s
+[INFO] Finished at: 2026-10-02T15:46:21+02:00
+[INFO] ------------------------------------------------------------------------
+PASS backend README: check
+
+== backend README: test
+$ ./mvnw -B -ntp verify
+[INFO] Total time:  01:20 min
+[INFO] Finished at: 2026-10-02T15:47:45+02:00
+[INFO] ------------------------------------------------------------------------
+PASS backend README: test
+
+== frontend README: npm ci
+$ npm ci --no-audit --no-fund
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 586 packages in 11s
+PASS frontend README: npm ci
+
+== frontend README: build
+$ npm run build
+[2mdist/[22m[35massets/index-D1B-bZ0I.css  [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:  0.58 kB[22m
+[2mdist/[22m[36massets/index-BeRwceLJ.js   [39m[1m[2m231.99 kB[22m[1m[22m[2m │ gzip: 72.68 kB[22m
+[32m✓ built in 981ms[39m
+PASS frontend README: build
+
+== frontend README: check
+$ npm run check
+
+Checking formatting...
+All matched files use Prettier code style!
+PASS frontend README: check
+
+== frontend README: test
+$ npm test
+Functions    : 97.77% ( 44/45 )
+Lines        : 95.61% ( 610/638 )
+================================================================================
+PASS frontend README: test
+
+== root README: quick start, start the stack (also the run command of the backend README)
+$ compose up -d --build --wait
+ Container registration-backend-1 Healthy 
+ Container registration-postgres-1 Healthy 
+ Container registration-frontend-1 Healthy 
+PASS root README: quick start, start the stack (also the run command of the backend README)
+
+== root README: all four services healthy
+$ sh -c [ "$(MSYS_NO_PATHCONV=1 docker compose --env-file 'C:/Users/tanej/Documents/LAB/agentic_lab/.env' -f 'C:/Users/tanej/AppData/Local/Temp/rc/02_output/docker-compose.yml' ps --format '{{.Health}}' | grep -c '^healthy$')" = 4 ]
+PASS root README: all four services healthy
+
+== root README: registration form answers
+$ curl -sf -o /dev/null http://127.0.0.1:8080/
+PASS root README: registration form answers
+
+== root README: API answers through the frontend
+$ curl -sf -o /dev/null http://127.0.0.1:8080/api/options
+PASS root README: API answers through the frontend
+
+== root README: Mailpit answers
+$ curl -sf -o /dev/null http://127.0.0.1:8025/
+PASS root README: Mailpit answers
+
+== frontend README: run (development server with /api forwarded to the stack)
+$ npm run dev
+
+== frontend README: development server serves the page
+$ curl -sf -o /dev/null http://127.0.0.1:5173/
+PASS frontend README: development server serves the page
+
+== frontend README: development server forwards /api
+$ curl -sf -o /dev/null http://127.0.0.1:5173/api/form-config
+PASS frontend README: development server forwards /api
+
+== root README: stop the stack
+$ compose down
+ Container registration-mailpit-1 Removed 
+ Network registration_default Removing 
+ Network registration_default Removed 
+PASS root README: stop the stack
+
+== clean checkout finished: 0 failed step(s)

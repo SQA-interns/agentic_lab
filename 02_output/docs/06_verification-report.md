@@ -17,8 +17,8 @@ Final run: 2026-10-02T13:41:41Z, every tool through `scripts/verify.sh 6`; logs 
 | DoD-05 | Pass | no open Critical or High: F-01 lowered by human decision D-16, F-02 fixed; Dependency-Check 0 findings (`6_backend-depscan.log`), `npm audit` 0 Critical, 0 High (`6_frontend-audit.log`), Semgrep 0, gitleaks 0 (`6_gitleaks.log`) |
 | DoD-06 | Pass | runtime demonstration, 48 checks passed, 0 failed (`6_demo.log`); see "Runtime demonstration" |
 | DoD-07 | Pass | "Traceability": 52 of 52 AC have at least one test and one commit |
-| DoD-08 | Evidence added in phase 7 (D-19) | the READMEs are written by the phase 7 card; the clean-checkout log follows there |
-| DoD-09 | Evidence added in phase 7 (D-19) | `docs/release-notes.md` is written by the phase 7 card |
+| DoD-08 | Pass (added in phase 7, D-19) | `logs/7_clean-checkout.log`: clean clone of commit `e4db016` in a short path; every command of the root, backend and frontend README run once, 15 steps passed, 0 failed (build, check, test of both components, compose stack healthy, form, API and Mailpit reachable, development server with `/api`, stop) |
+| DoD-09 | Pass (added in phase 7, D-19) | `docs/release-notes.md`, "Must be tested manually by a human": six items, including the three external services of `environments.md` |
 | DoD-10 | Pass | `decisions-log.md`: blocking D-05 and D-16 resolved by the human; D-01, D-03, D-04 accepted; all others marked pending review; inputs and protected files unchanged (`6_manifests.log`) |
 | DoD-11 | Pass, with F-06 | phase 3 changed no production code (`git diff 7d3883d ffdd967` over `backend/src/main` and `frontend/src` outside `acceptance`: empty); freeze commit `ffdd967` holds only the manifest and every listed file was committed before it; every story has a phase 4 commit naming it (`4_commits.log`); commit sizes: F-06; hashes match; every decision resolved or pending review |
 | DoD-P01 | Pass | `6_demo.log`: one external and one student registration answered 201 |

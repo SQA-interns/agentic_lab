@@ -1,0 +1,41 @@
+
+> registration-frontend@0.1.0 test
+> vitest run --coverage
+
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/validation.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/api.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/Captcha.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[32m 209[2mms[22m[39m
+ [32m✓[39m src/App.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 260[2mms[22m[39m
+ [32m✓[39m src/acceptance/us003-configurable-options.acceptance.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 1286[2mms[22m[39m
+   [33m[2m✓[22m[39m US-003 configurable conference options[2m > [22mAC-003-01 offers the active options grouped by category with their display names [33m 499[2mms[22m[39m
+ [32m✓[39m src/RegistrationForm.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 1699[2mms[22m[39m
+   [33m[2m✓[22m[39m RegistrationForm[2m > [22msends trimmed values and the selected options in form order, without unticked ones [33m 639[2mms[22m[39m
+ [32m✓[39m src/acceptance/us004-confirmation.acceptance.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 1835[2mms[22m[39m
+   [33m[2m✓[22m[39m US-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation only after the registration was accepted [33m 566[2mms[22m[39m
+   [33m[2m✓[22m[39m US-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation for a student registration [33m 367[2mms[22m[39m
+   [33m[2m✓[22m[39m US-004 registration confirmation[2m > [22mAC-004-02 shows the reasons of a rejection next to the fields and keeps the values [33m 304[2mms[22m[39m
+ [32m✓[39m src/acceptance/us001-external-registration.acceptance.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 2313[2mms[22m[39m
+   [33m[2m✓[22m[39m US-001 external participant registration[2m > [22mAC-001-01 sends a valid external registration and it is accepted [33m 720[2mms[22m[39m
+ [32m✓[39m src/acceptance/us002-student-registration.acceptance.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[33m 2498[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-01 sends a valid student registration and it is accepted [33m 751[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-03 reports every empty required field and sends nothing [33m 316[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-05 reports an invalid email before anything is sent [33m 334[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-10 offers students every active option, the same as the external form [33m 325[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m79 passed[39m[22m[90m (79)[39m
+[2m   Start at [22m 15:45:30
+[2m   Duration [22m 5.66s[2m (transform 459ms, setup 0ms, collect 4.74s, tests 10.15s, environment 15.28s, prepare 2.14s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 95.61% ( 610/638 )
+Branches     : 92.34% ( 181/196 )
+Functions    : 97.77% ( 44/45 )
+Lines        : 95.61% ( 610/638 )
+================================================================================
