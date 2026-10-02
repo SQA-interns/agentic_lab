@@ -29,12 +29,25 @@ public class RateLimitFilter extends OncePerRequestFilter {
   private final Limits limits;
   private final ClientRequests clientRequests;
   private final Clock clock;
+  private final int maxTrackedClients;
   private final Map<String, Window> windows = new ConcurrentHashMap<>();
 
   public RateLimitFilter(Limits limits, ClientRequests clientRequests, Clock clock) {
+    this(limits, clientRequests, clock, MAX_TRACKED_CLIENTS);
+  }
+
+  /** For tests: a small bound on the number of tracked windows. */
+  RateLimitFilter(
+      Limits limits, ClientRequests clientRequests, Clock clock, int maxTrackedClients) {
     this.limits = limits;
     this.clientRequests = clientRequests;
     this.clock = clock;
+    this.maxTrackedClients = maxTrackedClients;
+  }
+
+  /** The number of windows currently held in memory. */
+  int trackedWindows() {
+    return windows.size();
   }
 
   @Override
@@ -60,7 +73,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     }
     long now = clock.millis();
     long windowStart = now - now % WINDOW_MILLIS;
-    if (windows.size() > MAX_TRACKED_CLIENTS) {
+    if (windows.size() > maxTrackedClients) {
       // Bounded memory: windows that are over are dropped before new clients are tracked.
       windows.values().removeIf(window -> window.start() != windowStart);
     }
