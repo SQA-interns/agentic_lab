@@ -9,7 +9,10 @@
 | Acceptance, backend | `backend/src/test/java/si/konferenca/registration/acceptance/`, fixtures in `backend/src/test/resources/acceptance/` | HTTP (`openapi.yaml`), SQL (`registration-schema.sql`), JSON copy files, Mailpit API, settings of specification section 5 | `verify.sh <phase> backend-test` (JUnit, Testcontainers PostgreSQL and Mailpit; backend started in-process through its entry point) | 79 |
 | Acceptance, frontend | `frontend/src/acceptance/` | rendered page by role and label (`registration-form.ui.json`); network replaced by an in-memory backend that follows `openapi.yaml` | `verify.sh <phase> frontend-test` (Vitest, Testing Library, jsdom) | 29 |
 | End-to-end | `frontend/e2e/` | browser against the running local stack, Mailpit API, export over HTTP | `verify.sh <phase> e2e` (Playwright container on the stack's network, D-15) | 3 |
-| Unit / integration | phase 5 | | | |
+| Unit, backend | `backend/src/test/java/si/konferenca/registration/{domain,application,adapter,config}/` | classes directly, with hand-written fakes for the ports | `verify.sh <phase> backend-test` (JUnit) | 108 |
+| Architecture, backend | `backend/src/test/java/si/konferenca/registration/architecture/` | compiled production classes (ArchUnit, specification section 3; AR-02, AR-03, AR-06) | `verify.sh <phase> backend-test` | 8 |
+| Integration, backend | `backend/src/test/java/si/konferenca/registration/integration/` | HTTP against the backend started with its real settings, Testcontainers PostgreSQL, a mocked reCAPTCHA verification endpoint (DoD-P05), closed SMTP port | `verify.sh <phase> backend-test` | 18 |
+| Unit, frontend | `frontend/src/*.test.ts(x)` | modules and components directly (Vitest, Testing Library) | `verify.sh <phase> frontend-test` | 38 |
 
 - No test imports an application class except the two entry points (`RegistrationApplication`, `App`), used only to start the component.
 - No live external service: anti-automation runs in test mode, mail goes to Mailpit.
@@ -48,5 +51,20 @@
 - Tests are formatted and linted: `logs/3_backend-check.log`, `logs/3_frontend-check.log`.
 
 ## First complete run (before any fix)
+
+Phase 5, 2026-10-02T12:53:56Z, all levels, after formatting only; nothing needed a compile fix.
+
+| Suite | Passed | Failed | Log |
+|---|---|---|---|
+| Backend (acceptance 79, unit 108, architecture 8, integration 18) | 210 | 3 | `logs/5_backend-test-first-run.log` |
+| Frontend (acceptance 29, unit 38) | 67 | 0 | `logs/5_frontend-test.log` |
+| End-to-end, against the compose stack | 3 | 0 | `logs/5_e2e.log` |
+| Total | 280 | 3 | |
+
+| Failure | Tests | Class | Action |
+|---|---|---|---|
+| A text of no-break spaces only (U+00A0) is accepted as a value, and a leading no-break space is kept, against BR-02 ("required fields are never empty; leading and trailing whitespace is not significant"). The trimming used the Java notion of whitespace, which leaves out the no-break spaces. | `RegistrationValidatorTest.br02_fieldOfUnicodeSpacesOnlyIsEmpty` (2 of 3 cases), `RegistrationValidatorTest.validInputIsReturnedTrimmedWithItsOptions` | Implementation defect | fix the code: trim every Unicode space character |
+
+No failure is a defect of a non-frozen test, and no frozen test failed.
 
 ## Final run (phase 6)
