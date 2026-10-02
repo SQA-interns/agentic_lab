@@ -1,0 +1,3 @@
+# Only the built jar goes into the image.
+*
+!target/registration-0.1.0.jar
