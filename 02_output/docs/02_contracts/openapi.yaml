@@ -145,6 +145,8 @@ paths:
 components:
   securitySchemes:
     organizerBasic:
+      # D-16 (F-01): HTTP Basic over HTTPS is kept by human decision; see docs/decisions-log.md.
+      # nosemgrep: yaml.openapi.security.use-of-basic-authentication.use-of-basic-authentication
       type: http
       scheme: basic
       description: The single organizer account (ORGANIZER_USERNAME, ORGANIZER_PASSWORD).
