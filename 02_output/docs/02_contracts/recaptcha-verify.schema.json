@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "recaptcha-verify.schema.json",
+  "title": "Anti-automation verification",
+  "description": "Contract \"Anti-automation\" between the frontend, the backend and Google reCAPTCHA v2 (SR-01, SR-02). Mode recaptcha: the frontend renders the reCAPTCHA v2 checkbox widget with the site key from /api/form-config and sends its response token as captchaToken; the backend sends `request` as application/x-www-form-urlencoded with HTTP POST to the configured verification URL (default https://www.google.com/recaptcha/api/siteverify) and accepts the registration only when `response.success` is true. A non-2xx answer, a timeout or an unparsable body is not a success: the registration is answered with 503 and nothing is stored. Mode test: no network call; the frontend shows a plain checkbox that yields the token in `testMode.passToken`; the backend accepts exactly that token and rejects every other value.",
+  "type": "object",
+  "properties": {
+    "request": { "$ref": "#/$defs/request" },
+    "response": { "$ref": "#/$defs/response" },
+    "testMode": { "$ref": "#/$defs/testMode" }
+  },
+  "additionalProperties": false,
+  "minProperties": 1,
+  "$defs": {
+    "request": {
+      "description": "Form fields of the verification call. remoteip is never sent (data minimisation, SB-12).",
+      "type": "object",
+      "required": ["secret", "response"],
+      "properties": {
+        "secret": { "type": "string", "minLength": 1, "description": "RECAPTCHA_SECRET_KEY" },
+        "response": { "type": "string", "minLength": 1, "maxLength": 4096 }
+      },
+      "additionalProperties": false
+    },
+    "response": {
+      "type": "object",
+      "required": ["success"],
+      "properties": {
+        "success": { "type": "boolean" },
+        "challenge_ts": { "type": "string" },
+        "hostname": { "type": "string" },
+        "error-codes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "testMode": {
+      "type": "object",
+      "required": ["passToken"],
+      "properties": { "passToken": { "const": "test-pass" } },
+      "additionalProperties": false
+    }
+  }
+}

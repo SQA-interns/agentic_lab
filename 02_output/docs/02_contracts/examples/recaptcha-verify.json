@@ -1,0 +1,5 @@
+{
+  "request": { "secret": "configured-secret-key", "response": "token-from-the-widget" },
+  "response": { "success": false, "error-codes": ["invalid-input-response"] },
+  "testMode": { "passToken": "test-pass" }
+}
