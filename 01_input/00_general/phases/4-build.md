@@ -2,7 +2,7 @@
 
 > Owner: Architect · Read in: phase 4 · Agent: read-only
 
-- Read: `docs/02_specification.md`, `docs/02_contracts/`, `project/00_setup/tech-stack.md`, `project/00_setup/environments.md`, `project/02_design/architecture.md`, `project/02_design/known-pitfalls.md`, `general/standards.md` ("Engineering standards")
+- Read: `docs/02_specification.md`, `docs/02_contracts/`, `project/00_setup/tech-stack.md`, `project/00_setup/environments.md`, `project/02_design/architecture.md`, `general/standards.md` ("Engineering standards")
 - Write: source code
 
 ## Do

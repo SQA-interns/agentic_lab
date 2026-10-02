@@ -15,7 +15,7 @@ Humans start here; agents start at `AGENTS.md`.
 | `01_input/00_general/standards.md` | Lookup tables: engineering standards, tests, security baseline, severity scale, definition of done | as a card names |
 | `01_input/01_project/00_setup/` | Run configuration, secrets list, tech stack, environments | 0 |
 | `01_input/01_project/01_requirements/` | Stories, business rules, scope, open questions | 1 |
-| `01_input/01_project/02_design/` | Architecture, security requirements, quality requirements, known pitfalls | 2 |
+| `01_input/01_project/02_design/` | Architecture, security requirements, quality requirements | 2 |
 | `02_output/` | Everything the agent produces (docs, code, scripts, logs) | 0-7 |
 | `03_statistics/` | Experiment measurement (not part of the project) | all |
 
@@ -40,12 +40,11 @@ Humans start here; agents start at `AGENTS.md`.
 | `01_input/01_project/02_design/architecture.md` | components, constraints, interfaces |
 | `01_input/01_project/02_design/security-requirements.md` | security level, authentication, personal data, project requirements |
 | `01_input/01_project/02_design/quality-requirements.md` | non-functional requirements, thresholds, extra done criteria |
-| `01_input/01_project/02_design/known-pitfalls.md` | defects earlier runs of this project repeated, as constraints |
 | `03_statistics/usage.md` | prices before the post-run session; usage-panel values after the run |
 
 ## 2. Do not touch (change only when revising the template itself)
 
-- `AGENTS.md`, `README.md`, `.gitattributes`
+- `AGENTS.md`, `README.md`
 - everything in `01_input/00_general/`: `rules.md`, `standards.md`, `phases/0-preflight.md` … `phases/7-release.md`
 - `03_statistics/metrics.md`, `03_statistics/run-log.template.json`
 
@@ -54,7 +53,7 @@ Humans start here; agents start at `AGENTS.md`.
 - `02_output/README.md` and one README per component
 - `02_output/docs/`: `00_preflight-report.md`, `00_input-manifest.sha256` (frozen once written), `00_progress.md`, `01_acceptance-criteria.md`, `02_specification.md`, `02_contracts/`, `03_acceptance-manifest.sha256`, `03_test-strategy.md`, `06_verification-report.md`, `decisions-log.md`, `release-notes.md`
 - `02_output/scripts/`, `02_output/logs/`, all source code and tests in `02_output/`
-- `.gitignore` at the repository root: lines may be added, none removed
+- repository files required by ES-03 at the repository root: `.gitattributes`, `.gitignore`
 - `03_statistics/run-log.json`, `03_statistics/run-summary.md`
 
 Any change to sections 1 and 2 during a run is detected in phase 6 by comparing `00_input-manifest.sha256`.

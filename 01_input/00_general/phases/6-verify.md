@@ -12,7 +12,7 @@ Verify the finished system with evidence. Fill the tables of the report skeleton
 1. Run `out/scripts/verify.sh` in full: test suite, every check command (ES-05), coverage, mutation, architecture tests, every scanner in `tooling` (dependency, static analysis, secrets), duplication and code metrics. Read the summary lines; open a log only for a tool that reports a problem.
 2. Recompute every hash in `docs/03_acceptance-manifest.sha256` and `docs/00_input-manifest.sha256`. Any mismatch is a Critical finding, whatever the reason.
 3. Start every component as described for its target environment and exercise the core user flows and every `DoD-Pnn` at runtime; save what was run and observed to `out/logs/`.
-4. For every `SB`, `SR` and `KP` item, record where it is implemented and how it was checked (test, scan or inspection). An item without evidence is a finding.
+4. For every `SB` and `SR` item, record where it is implemented and how it was checked (test, scan or inspection). An item without evidence is a finding.
 5. Check logs and error responses produced during testing for personal data, secrets and internals. Check that no `.env` value leaked, listing file names only (no output means clean; any name is a Critical finding):
    - files: `git ls-files -co --exclude-standard -z | xargs -0 grep -lF -f <(sed -n 's/^[A-Z_]*=//p' .env | tr -d '\r "'"'"'' | awk 'length>=6')`
    - commit messages: `git log --all --format=%B | grep -cF -f <(sed -n 's/^[A-Z_]*=//p' .env | tr -d '\r "'"'"'' | awk 'length>=6')` (must print `0`)

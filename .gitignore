@@ -1,5 +1,0 @@
-# Secrets and local configuration (ES-02)
-.env
-.env.*
-
-# The agent appends build output and dependency folders below this line (ES-03)

@@ -2,8 +2,8 @@
 
 > Owner: Team lead · Read in: phase 0 · Agent: read-only
 
-- Read: `project/00_setup/*`, `project/02_design/architecture.md` ("Components"), `project/02_design/known-pitfalls.md`, `general/standards.md` ("Engineering standards", "Security baseline", "Severity scale")
-- Write: `docs/00_preflight-report.md`, `docs/00_input-manifest.sha256`, `docs/00_progress.md`, one skeleton per component, `out/scripts/verify.sh`
+- Read: `project/00_setup/*`, `project/02_design/architecture.md` ("Components"), `general/standards.md` ("Engineering standards", "Security baseline", "Severity scale")
+- Write: `docs/00_preflight-report.md`, `docs/00_input-manifest.sha256`, `docs/00_progress.md`, one skeleton per component, repository files (ES-03), `out/scripts/verify.sh`
 
 First action: copy `03_statistics/run-log.template.json` to `run-log.json` and record the start (`03_statistics/metrics.md`).
 
@@ -36,4 +36,4 @@ Check on the human's behalf that everything the run needs is present and working
 
 ## Commits
 
-One per component skeleton; one for `verify.sh`; one for the preflight and manifest documents.
+One per component skeleton; one for the repository files (ES-03); one for `verify.sh`; one for the preflight and manifest documents.

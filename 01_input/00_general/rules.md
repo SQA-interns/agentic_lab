@@ -75,7 +75,7 @@ Blocking, one record each:
 |---|---|---|
 | `US-nnn` / `AC-nnn-nn` | User story / acceptance criterion | `project/01_requirements/user-stories.md` / `docs/01_acceptance-criteria.md` |
 | `BR-nn` / `OQ-nn` | Business rule / open question | `project/01_requirements/` |
-| `AR-nn` / `KP-nn` | Architecture constraint / known pitfall | `project/02_design/architecture.md` / `known-pitfalls.md` |
+| `AR-nn` | Architecture constraint | `project/02_design/architecture.md` |
 | `SR-nn` / `NFR-nn` / `DoD-Pnn` | Project security / non-functional requirement / done criterion | `project/02_design/` |
 | `ES-nn` / `SB-nn` / `DoD-nn` | Engineering standard / security baseline / done criterion | `general/standards.md` |
 | `F-nn` / `D-nn` | Finding / decision | `docs/06_verification-report.md` / `docs/decisions-log.md` |
