@@ -18,9 +18,11 @@ ROOT_HOST="$(cd "$ROOT" && (pwd -W 2>/dev/null || pwd))"
 SEMGREP_IMAGE=semgrep/semgrep:1.177.0
 GITLEAKS_IMAGE=zricethezav/gitleaks:v8.30.1
 CLOC_IMAGE=aldanial/cloc:2.10
+REDOCLY_IMAGE=redocly/cli:2.57.0
+POSTGRES_IMAGE=postgres:16.15-alpine
 
 ALL_TOOLS="backend-build backend-check backend-test backend-deps backend-depscan \
-frontend-build frontend-check frontend-test frontend-audit semgrep gitleaks cloc"
+frontend-build frontend-check frontend-test frontend-audit semgrep gitleaks cloc contracts"
 
 PHASE="${1:?usage: verify.sh <phase> [tool ...]}"
 shift
@@ -75,6 +77,18 @@ run_tool() {
       MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST:/repo" "$GITLEAKS_IMAGE" \
         detect --source /repo --no-banner --redact --verbose --log-opts="HEAD" >"$log" 2>&1 || rc=$?
       numbers="$(key 'leaks found|no leaks' "$log")" ;;
+    contracts)
+      # Every contract in docs/02_contracts is read by a parser: OpenAPI by Redocly,
+      # JSON schemas and their documents by ajv, the SQL schema by PostgreSQL itself.
+      {
+        echo "== openapi (redocly lint)"
+        MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output/docs/02_contracts:/spec" "$REDOCLY_IMAGE"           lint /spec/openapi.yaml || rc=1
+        echo "== json (ajv)"
+        node "$OUT/scripts/validate-contracts.mjs" || rc=1
+        echo "== sql (postgres)"
+        MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output/docs/02_contracts:/c:ro" "$POSTGRES_IMAGE"           su postgres -c 'initdb -D /tmp/pg >/dev/null && pg_ctl -D /tmp/pg -w -o "-c listen_addresses=" start >/dev/null             && psql -v ON_ERROR_STOP=1 -q -f /c/registration-schema.sql && echo "sql tables=$(psql -At -c "select count(*) from pg_tables where schemaname = current_schema()")"' || rc=1
+      } >"$log" 2>&1
+      numbers="$(grep -cE 'Woohoo|is valid' "$log") openapi ok; $(key 'json contracts:' "$log"); $(key 'sql tables=' "$log")" ;;
     cloc)
       MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output:/tmp" "$CLOC_IMAGE" \
         --exclude-dir=node_modules,target,dist,logs,docs,coverage,reports . >"$log" 2>&1 || rc=$?
