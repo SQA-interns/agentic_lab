@@ -20,6 +20,7 @@ GITLEAKS_IMAGE=zricethezav/gitleaks:v8.30.1
 CLOC_IMAGE=aldanial/cloc:2.10
 REDOCLY_IMAGE=redocly/cli:2.57.0
 POSTGRES_IMAGE=postgres:16.15-alpine
+PLAYWRIGHT_IMAGE=mcr.microsoft.com/playwright:v1.63.0-noble
 
 ALL_TOOLS="backend-build backend-check backend-test backend-deps backend-depscan \
 frontend-build frontend-check frontend-test frontend-audit semgrep gitleaks cloc contracts"
@@ -89,6 +90,14 @@ run_tool() {
         MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output/docs/02_contracts:/c:ro" "$POSTGRES_IMAGE"           su postgres -c 'initdb -D /tmp/pg >/dev/null && pg_ctl -D /tmp/pg -w -o "-c listen_addresses=" start >/dev/null             && psql -v ON_ERROR_STOP=1 -q -f /c/registration-schema.sql && echo "sql tables=$(psql -At -c "select count(*) from pg_tables where schemaname = current_schema()")"' || rc=1
       } >"$log" 2>&1
       numbers="$(grep -cE 'Woohoo|is valid' "$log") openapi ok; $(key 'json contracts:' "$log"); $(key 'sql tables=' "$log")" ;;
+    e2e)
+      # Not in ALL_TOOLS: needs the running local stack. Playwright runs in its own container on
+      # the network of the stack (D-15); the organizer credentials are passed without being
+      # shown (rules.md, "Secrets").
+      (export E2E_ORGANIZER_USERNAME="$(sed -n 's/^ORGANIZER_USERNAME=//p' "$ROOT/.env" | tr -d '')"
+       export E2E_ORGANIZER_PASSWORD="$(sed -n 's/^ORGANIZER_PASSWORD=//p' "$ROOT/.env" | tr -d '')"
+       MSYS_NO_PATHCONV=1 docker run --rm --network "${E2E_NETWORK:-registration_default}"          -v "$ROOT_HOST/02_output/frontend:/work" -w /work          -e E2E_BASE_URL="${E2E_BASE_URL:-http://frontend:8080}"          -e E2E_MAILPIT_URL="${E2E_MAILPIT_URL:-http://mailpit:8025}"          -e E2E_ORGANIZER_USERNAME -e E2E_ORGANIZER_PASSWORD -e CI=1          "$PLAYWRIGHT_IMAGE" node node_modules/@playwright/test/cli.js test) >"$log" 2>&1 || rc=$?
+      numbers="$(key '[0-9]+ (passed|failed)' "$log")" ;;
     cloc)
       MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST/02_output:/tmp" "$CLOC_IMAGE" \
         --exclude-dir=node_modules,target,dist,logs,docs,coverage,reports . >"$log" 2>&1 || rc=$?
