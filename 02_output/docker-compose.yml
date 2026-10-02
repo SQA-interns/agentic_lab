@@ -1,0 +1,74 @@
+# Local stack: backend, frontend, PostgreSQL and the mail catcher (environments.md, "local").
+# Start from this folder, with the secrets of the repository root:
+#   (cd backend && ./mvnw -B -DskipTests package)
+#   docker compose --env-file ../.env up -d --build --wait
+# Every published port is bound to 127.0.0.1 only. Plain HTTP; never use this file in production.
+name: registration
+
+services:
+  postgres:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:8025:8025"
+
+  backend:
+    build: ./backend
+    environment:
+      APP_ENVIRONMENT: local
+      DB_URL: jdbc:postgresql://postgres:5432/registration
+      DB_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_STARTTLS: "false"
+      CONFERENCE_NAME: Konferenca (lokalno)
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?set ORGANIZER_EMAILS in .env}
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?set ORGANIZER_USERNAME in .env}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?set ORGANIZER_PASSWORD in .env}
+      # Local plain HTTP only (SR-06); the test mode is refused in production (SR-02).
+      ORGANIZER_REQUIRE_HTTPS: "false"
+      RECAPTCHA_TEST_MODE: "true"
+      OPTIONS_FILE: /config/conference-options.json
+      # The frontend nginx is the trusted proxy that sets the forwarded headers.
+      TRUST_FORWARDED_HEADERS: "true"
+    volumes:
+      - json-copies:/data/registrations
+      - ./config/conference-options.json:/config/conference-options.json:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:8080:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    depends_on:
+      backend:
+        condition: service_healthy
+
+# Named volumes: registrations and JSON copies survive `docker compose down` and `up` (NFR-02).
+volumes:
+  db-data:
+  json-copies:
