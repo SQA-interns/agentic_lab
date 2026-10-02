@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes><![CDATA[
+      D-07: false positive, identifier mismatch. CVE-2025-7962 is an SMTP injection in Angus Mail
+      before 2.0.4; the scanner matched the CPE eclipse:angus_mail on angus-activation 2.0.3
+      (low confidence). The shipped angus-mail is 2.0.5, which contains the fix.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.eclipse\.angus/angus-activation@.*$</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+      D-07: false positive, identifier mismatch. CVE-2025-15104 is in the Nu Html Checker
+      (validator.nu, CPE validator:validator); the scanner matched it on Hibernate Validator
+      9.1.3.Final, an unrelated product.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.hibernate\.validator/hibernate-validator@.*$</packageUrl>
+    <cve>CVE-2025-15104</cve>
+  </suppress>
+</suppressions>
