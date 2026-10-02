@@ -5,7 +5,15 @@ import java.util.List;
 /** The registration types and the fields each one asks for (BR-01). */
 public enum RegistrationType {
   EXTERNAL(
-      List.of(TextField.FIRST_NAME, TextField.LAST_NAME, TextField.EMAIL, TextField.ORGANIZATION));
+      List.of(TextField.FIRST_NAME, TextField.LAST_NAME, TextField.EMAIL, TextField.ORGANIZATION)),
+  STUDENT(
+      List.of(
+          TextField.FIRST_NAME,
+          TextField.LAST_NAME,
+          TextField.EMAIL,
+          TextField.STUDY_INSTITUTION,
+          TextField.STUDY_PROGRAMME,
+          TextField.STUDENT_ID));
 
   private final List<TextField> fields;
 
