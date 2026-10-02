@@ -1,0 +1,8 @@
+# D-17: Spring Security's generated start-up password of the bootstrap application, printed into
+# the phase 3 test log. Each value existed only for one in-process test start of an application
+# that no longer exists; it never protected anything. History is not rewritten (rules.md).
+7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:117
+7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:589
+7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:702
+7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:765
+7dec4b8fef2061b262ce33074678a957af221d28:02_output/logs/3_backend-test.log:generic-api-key:893

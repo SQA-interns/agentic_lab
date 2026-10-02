@@ -76,8 +76,10 @@ run_tool() {
       numbers="$(key 'Findings: |findings' "$log")" ;;
     gitleaks)
       # History of the current branch only (D-04): other branches belong to other runs.
+      # Matches accepted as false positives are listed in 02_output/.gitleaksignore (D-17).
       MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT_HOST:/repo" "$GITLEAKS_IMAGE" \
-        detect --source /repo --no-banner --redact --verbose --log-opts="HEAD" >"$log" 2>&1 || rc=$?
+        detect --source /repo --no-banner --redact --verbose --log-opts="HEAD" \
+        --gitleaks-ignore-path /repo/02_output/.gitleaksignore >"$log" 2>&1 || rc=$?
       numbers="$(key 'leaks found|no leaks' "$log")" ;;
     contracts)
       # Every contract in docs/02_contracts is read by a parser: OpenAPI by Redocly,
