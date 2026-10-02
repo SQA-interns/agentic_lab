@@ -168,7 +168,7 @@
       "id": "D-16",
       "type": "blocking",
       "start": "2026-10-02T11:21:57Z",
-      "end": null
+      "end": "2026-10-02T11:28:29Z"
     }
   ],
   "humanInterventions": [
@@ -179,7 +179,7 @@
     },
     {
       "start": "2026-10-02T11:23:02Z",
-      "end": null,
+      "end": "2026-10-02T11:28:29Z",
       "reason": "D-16: Semgrep High finding on HTTP Basic for the organizer export"
     }
   ],

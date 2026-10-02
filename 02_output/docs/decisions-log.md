@@ -45,5 +45,5 @@
   1. (proposed default) Keep HTTP Basic over HTTPS. The finding is recorded as F-01, lowered to Low with the evidence above, and suppressed for that line with this decision id. No contract, specification or test changes.
   2. Replace it with a login operation that sets a server-side session cookie (HttpOnly, Secure, SameSite=Strict) and an export that requires the session. The agent changes `openapi.yaml`, specification section 6 and the US-008 tests before the freeze. More code and a session to protect; the password still travels once per login.
   3. Another mechanism named by the human (for example client certificates at the reverse proxy). The agent redesigns accordingly before the freeze; a mechanism that needs a technology outside `tech-stack.md` also needs that approval.
-- Human response: none
-- Resolution:
+- Human response: 2026-10-02T11:28:29Z: "D-16: 1". Keep HTTP Basic over HTTPS; record the finding as F-01 at High as found, then lower it to Low with the written evidence; suppress only that line with the D-16 id; keep the raw Semgrep report. D-06 to D-15: no objection for now, they stay pending review and are listed in the release notes.
+- Resolution: option 1. F-01 recorded in `06_verification-report.md` (High as found, Low after this decision); `# nosemgrep` with the D-16 id on the `organizerBasic` scheme in `openapi.yaml`; raw report kept as `logs/3_semgrep-raw.log`.

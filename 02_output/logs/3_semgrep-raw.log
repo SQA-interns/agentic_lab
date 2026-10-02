@@ -16,24 +16,35 @@
   yaml             35       1                                                                                           
   html              1       1                                                                                           
                                                                                                                         
+                  
+                  
+┌────────────────┐
+│ 1 Code Finding │
+└────────────────┘
+                                       
+    /src/docs/02_contracts/openapi.yaml
+   ❯❯❱ yaml.openapi.security.use-of-basic-authentication.use-of-basic-authentication
+          ❰❰ Blocking ❱❱
+          Basic authentication is considered weak and should be avoided.  Use a different authentication
+          scheme, such of OAuth2, OpenID Connect, or mTLS.                                              
+          Details: https://sg.run/v8wNW                                                                 
+                                                                                                        
+          148┆ type: http
+          149┆ scheme: basic
+          150┆ description: The single organizer account (ORGANIZER_USERNAME, ORGANIZER_PASSWORD).
+
                 
                 
 ┌──────────────┐
 │ Scan Summary │
 └──────────────┘
 ✅ Scan completed successfully.
- • Findings: 0 (0 blocking)
+ • Findings: 1 (1 blocking)
  • Rules run: 382
  • Targets scanned: 57
- • Parsed lines: ~99.9%
+ • Parsed lines: ~100.0%
  • Scan skipped: 
    ◦ Matching --exclude patterns: 4
    ◦ Files matching .semgrepignore patterns: 2
  • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
-Ran 382 rules on 57 files: 0 findings.
-(need more rules? `semgrep login` for additional free Semgrep Registry rules)
-
-
-A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
-If Semgrep missed a finding, please send us feedback to let us know!
-See https://semgrep.dev/docs/reporting-false-negatives/
+Ran 382 rules on 57 files: 1 finding.
