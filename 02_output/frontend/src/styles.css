@@ -1,0 +1,114 @@
+:root {
+  color-scheme: light;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  line-height: 1.5;
+  color: #1c2430;
+  background: #f4f6f9;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+}
+
+.conference {
+  margin-top: 0;
+  color: #4a5668;
+}
+
+form,
+.confirmation {
+  background: #ffffff;
+  border: 1px solid #d5dbe5;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+}
+
+fieldset {
+  border: 1px solid #d5dbe5;
+  border-radius: 0.375rem;
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 0.25rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.field > label:not(.choice) {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="email"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  font: inherit;
+  border: 1px solid #8a96a8;
+  border-radius: 0.25rem;
+}
+
+input[aria-invalid="true"] {
+  border-color: #b3261e;
+  outline-color: #b3261e;
+}
+
+.choice {
+  display: block;
+  padding: 0.125rem 0;
+}
+
+.error,
+.failure {
+  color: #b3261e;
+  margin: 0.25rem 0 0;
+}
+
+.failure {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background: #1f4fa3;
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #8a96a8;
+  cursor: default;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #f0a020;
+  outline-offset: 2px;
+}
