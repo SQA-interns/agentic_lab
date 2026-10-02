@@ -1,0 +1,12 @@
+{
+  "options": [
+    { "id": "ws-testing", "name": "Delavnica: testiranje programske opreme", "category": "workshop", "active": true },
+    { "id": "ws-security", "name": "Delavnica: varnost spletnih aplikacij", "category": "workshop", "active": false },
+    { "id": "ws-new", "name": "Delavnica: umetna inteligenca", "category": "workshop", "active": true },
+    { "id": "ev-opening", "name": "Otvoritev v novi dvorani", "category": "event", "active": true },
+    { "id": "ev-dinner", "name": "Slavnostna večerja", "category": "event", "active": true },
+    { "id": "meal-lunch-day1", "name": "Kosilo, prvi dan", "category": "meal", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarijanski meni", "category": "meal", "active": true },
+    { "id": "other-city-tour", "name": "Voden ogled mesta", "category": "other", "active": false }
+  ]
+}
