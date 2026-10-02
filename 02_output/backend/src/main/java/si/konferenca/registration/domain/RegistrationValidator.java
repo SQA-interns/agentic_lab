@@ -17,7 +17,9 @@ public final class RegistrationValidator {
   public static final int MAX_CAPTCHA_TOKEN_LENGTH = 4096;
 
   // One address: a local part, one @, and a domain of at least two labels; no whitespace.
-  private static final Pattern EMAIL = Pattern.compile("^[^\\s@]+@[^\\s@.]+(\\.[^\\s@.]+)+$");
+  // Unicode character classes, so "no whitespace" also excludes the no-break spaces.
+  private static final Pattern EMAIL =
+      Pattern.compile("^[^\\s@]+@[^\\s@.]+(\\.[^\\s@.]+)+$", Pattern.UNICODE_CHARACTER_CLASS);
   private static final int LINE_SEPARATOR = 0x2028;
   private static final int PARAGRAPH_SEPARATOR = 0x2029;
 
@@ -67,7 +69,7 @@ public final class RegistrationValidator {
 
   private static void validateText(
       TextField field, String raw, Map<TextField, String> values, List<FieldError> errors) {
-    String value = raw == null ? "" : raw.strip();
+    String value = raw == null ? "" : trim(raw);
     if (value.isEmpty()) {
       errors.add(new FieldError(field.apiName(), FieldError.REQUIRED));
     } else if (value.codePoints().anyMatch(RegistrationValidator::isForbiddenCharacter)) {
@@ -79,6 +81,26 @@ public final class RegistrationValidator {
     } else {
       values.put(field, value);
     }
+  }
+
+  /**
+   * Removes leading and trailing whitespace (BR-02). Every Unicode space counts, including the
+   * no-break spaces that {@link String#strip()} keeps, so a field of such spaces only is empty.
+   */
+  static String trim(String text) {
+    int start = 0;
+    int end = text.length();
+    while (start < end && isSpace(text.codePointAt(start))) {
+      start += Character.charCount(text.codePointAt(start));
+    }
+    while (end > start && isSpace(text.codePointBefore(end))) {
+      end -= Character.charCount(text.codePointBefore(end));
+    }
+    return text.substring(start, end);
+  }
+
+  private static boolean isSpace(int codePoint) {
+    return Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint);
   }
 
   private static boolean isForbiddenCharacter(int codePoint) {
