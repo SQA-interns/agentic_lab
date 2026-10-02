@@ -1,0 +1,21 @@
+
+> registration-frontend@0.1.0 format
+> prettier --write .
+
+[90m.prettierrc.json[39m 54ms (unchanged)
+e2e/registration.e2e.spec.ts 223ms
+[90me2e/support.ts[39m 75ms (unchanged)
+[90meslint.config.js[39m 19ms (unchanged)
+[90mindex.html[39m 47ms (unchanged)
+[90mpackage.json[39m 5ms (unchanged)
+[90mplaywright.config.ts[39m 8ms (unchanged)
+[90mREADME.md[39m 62ms (unchanged)
+src/acceptance/harness.tsx 69ms
+[90msrc/acceptance/us001-external-registration.acceptance.test.tsx[39m 47ms (unchanged)
+[90msrc/acceptance/us002-student-registration.acceptance.test.tsx[39m 32ms (unchanged)
+[90msrc/acceptance/us003-configurable-options.acceptance.test.tsx[39m 19ms (unchanged)
+[90msrc/acceptance/us004-confirmation.acceptance.test.tsx[39m 34ms (unchanged)
+[90msrc/App.tsx[39m 5ms (unchanged)
+[90msrc/main.tsx[39m 6ms (unchanged)
+[90mtsconfig.json[39m 3ms (unchanged)
+[90mvite.config.ts[39m 3ms (unchanged)

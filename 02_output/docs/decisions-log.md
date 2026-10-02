@@ -20,6 +20,7 @@
 | D-12 | 2026-10-02T10:44:03Z | 1 | OQ-05 unanswered; priorities 1 and 2 in `scope.md`. | A second registration with the same email is accepted and stored as a separate registration: nothing submitted is lost, and the form does not reveal whether an email is already registered. Duplicates are visible to the organizer in the export. AC-001-13. | pending review |
 | D-13 | 2026-10-02T10:44:03Z | 1 | OQ-06 unanswered; SB-13. | The system never deletes registrations or JSON copies by itself; they are kept until the organizer removes them. The retention period is stated for human confirmation in phase 2 with the personal-data list. No acceptance criterion. | pending review |
 | D-14 | 2026-10-02T10:49:30Z | 2 | Phase 2 card: every contract validates with a parser; `tech-stack.md` lists no OpenAPI or JSON Schema validator. | Dev-only tooling added under the `tech-stack.md` rule: container `redocly/cli:2.57.0` (OpenAPI lint, nothing installed on the host) and `ajv` 8.20.0, already in `frontend/package-lock.json` as a transitive development dependency (JSON Schema 2020-12). The SQL contract is parsed by the pinned `postgres:16.15-alpine`. Neither tool is shipped. | pending review |
+| D-15 | 2026-10-02T11:21:57Z | 3 | End-to-end tests need the Chromium of `@playwright/test` 1.63.0; downloading it would install software on the host (`AGENTS.md`, "Never"). The frontend tests also need Node type declarations, which `tech-stack.md` does not list. | Dev-only tooling added under the `tech-stack.md` rule: container `mcr.microsoft.com/playwright:v1.63.0-noble` (the same Playwright version with its browsers; `verify.sh <phase> e2e` runs the tests in it on the network of the stack, nothing installed on the host) and npm `@types/node` 24.19.1 (types only). Neither is shipped. | pending review |
 
 ## Blocking
 
@@ -34,3 +35,15 @@
   3. The human confirms the five provided keys are filled and waives the automated check; the agent runs only the scan.
 - Human response: 2026-10-02T10:37:13Z: "D-05: 1". Run check 4 exactly as the card writes it (presence and non-empty only, no length checks, no values shown), then `verify.sh 0 backend-depscan`; probe nothing else about the values.
 - Resolution: option 1. Check 4 passed for the five provided keys; the scan ran (results: D-06, D-07).
+
+## D-16: Semgrep reports HTTP Basic authentication of the organizer export as a blocking finding
+
+- Timestamp: 2026-10-02T11:21:57Z
+- Phase: 3
+- Trigger: `verify.sh 3 semgrep` (`logs/3_semgrep.log`): rule `yaml.openapi.security.use-of-basic-authentication` on `docs/02_contracts/openapi.yaml` lines 148-150, severity ERROR, which the severity scale of `standards.md` maps to High. The specification (section 6) chose HTTP Basic for the single organizer export (BR-08, SR-06); `security-requirements.md` leaves the mechanism to phase 2 and puts identity providers out of scope. Accepting or lowering a High finding is a blocking decision (`rules.md`). The answer decides the US-008 acceptance and end-to-end tests, so the freeze (`03_acceptance-manifest.sha256`) waits for it. Evidence for option 1: credentials are refused over plain HTTP before they are read (SR-06, 403); TLS in production (SB-04); one account from configuration held only as a bcrypt hash (SB-03); failed logins are rate limited (SB-06); no session or cookie exists, so there is no session fixation and no CSRF surface; ASVS 5.0 Level 1 does not forbid Basic over TLS; the rule's alternatives (OAuth2, OpenID Connect, mTLS) need an identity provider or client certificates, both outside the stated scope.
+- Options:
+  1. (proposed default) Keep HTTP Basic over HTTPS. The finding is recorded as F-01, lowered to Low with the evidence above, and suppressed for that line with this decision id. No contract, specification or test changes.
+  2. Replace it with a login operation that sets a server-side session cookie (HttpOnly, Secure, SameSite=Strict) and an export that requires the session. The agent changes `openapi.yaml`, specification section 6 and the US-008 tests before the freeze. More code and a session to protect; the password still travels once per login.
+  3. Another mechanism named by the human (for example client certificates at the reverse proxy). The agent redesigns accordingly before the freeze; a mechanism that needs a technology outside `tech-stack.md` also needs that approval.
+- Human response: none
+- Resolution:

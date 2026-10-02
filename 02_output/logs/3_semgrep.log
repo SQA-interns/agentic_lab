@@ -1,0 +1,50 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 57 files tracked by git with 1074 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      61      57          Community    1074                                                                
+  json              4      17                                                                                           
+  ts              163      11                                                                                           
+  js              153       2                                                                                           
+  bash              4       2                                                                                           
+  java            118       1                                                                                           
+  yaml             35       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                  
+                  
+┌────────────────┐
+│ 1 Code Finding │
+└────────────────┘
+                                       
+    /src/docs/02_contracts/openapi.yaml
+   ❯❯❱ yaml.openapi.security.use-of-basic-authentication.use-of-basic-authentication
+          ❰❰ Blocking ❱❱
+          Basic authentication is considered weak and should be avoided.  Use a different authentication
+          scheme, such of OAuth2, OpenID Connect, or mTLS.                                              
+          Details: https://sg.run/v8wNW                                                                 
+                                                                                                        
+          148┆ type: http
+          149┆ scheme: basic
+          150┆ description: The single organizer account (ORGANIZER_USERNAME, ORGANIZER_PASSWORD).
+
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 1 (1 blocking)
+ • Rules run: 382
+ • Targets scanned: 57
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 4
+   ◦ Files matching .semgrepignore patterns: 2
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 382 rules on 57 files: 1 finding.

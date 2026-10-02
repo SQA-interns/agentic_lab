@@ -157,6 +157,18 @@
       "type": "non-blocking",
       "start": "2026-10-02T10:49:30Z",
       "end": "2026-10-02T10:49:30Z"
+    },
+    {
+      "id": "D-15",
+      "type": "non-blocking",
+      "start": "2026-10-02T11:21:57Z",
+      "end": "2026-10-02T11:21:57Z"
+    },
+    {
+      "id": "D-16",
+      "type": "blocking",
+      "start": "2026-10-02T11:21:57Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -164,6 +176,11 @@
       "start": "2026-10-02T10:24:13Z",
       "end": "2026-10-02T10:37:13Z",
       "reason": "D-05: permission for the .env presence check and the NVD dependency scan"
+    },
+    {
+      "start": "2026-10-02T11:23:02Z",
+      "end": null,
+      "reason": "D-16: Semgrep High finding on HTTP Basic for the organizer export"
     }
   ],
   "codeMetrics": {

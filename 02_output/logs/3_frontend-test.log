@@ -1,0 +1,1330 @@
+
+> registration-frontend@0.1.0 test
+> vitest run --coverage
+
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [31m❯[39m src/acceptance/us003-configurable-options.acceptance.test.tsx [2m([22m[2m4 tests[22m[2m | [22m[31m4 failed[39m[2m)[22m[33m 4147[2mms[22m[39m
+[31m   [31m×[31m US-003 configurable conference options[2m > [22mAC-003-01 offers the active options grouped by category with their display names[39m[33m 1083[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-003 configurable conference options[2m > [22mAC-003-02 does not offer an option that is not active[39m[33m 1023[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-003 configurable conference options[2m > [22mAC-003-03 offers the new set of options and keeps the fixed fields[39m[33m 1022[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-003 configurable conference options[2m > [22mAC-003-05 stays usable when a category has no active option[39m[33m 1014[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m❯[39m src/acceptance/us004-confirmation.acceptance.test.tsx [2m([22m[2m6 tests[22m[2m | [22m[31m6 failed[39m[2m)[22m[33m 6175[2mms[22m[39m
+[31m   [31m×[31m US-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation only after the registration was accepted[39m[33m 1090[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation for a student registration[39m[33m 1015[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-004 registration confirmation[2m > [22mAC-004-02 shows the reasons of a rejection next to the fields and keeps the values[39m[33m 1019[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-004 registration confirmation[2m > [22mAC-004-03 tells the participant when the registration could not be stored[39m[33m 1020[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-004 registration confirmation[2m > [22mAC-004-03 tells the participant when the backend cannot be reached[39m[33m 1016[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-004 registration confirmation[2m > [22mAC-004-02 tells the participant when too many attempts were made[39m[33m 1012[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m❯[39m src/acceptance/us002-student-registration.acceptance.test.tsx [2m([22m[2m9 tests[22m[2m | [22m[31m9 failed[39m[2m)[22m[33m 9206[2mms[22m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-01 sends a valid student registration and it is accepted[39m[33m 1083[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-02 asks for exactly the six student fields[39m[33m 1023[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-03 reports every empty required field and sends nothing[39m[33m 1016[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-05 reports an invalid email before anything is sent[39m[33m 1021[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-08 reports the missing consent and shows no confirmation[39m[33m 1015[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-09 reports the missing anti-automation check and shows no confirmation[39m[33m 1011[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-10 offers students every active option, the same as the external form[39m[33m 1008[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-11 does not preselect the consent, the anti-automation check or any option[39m[33m 1009[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-002 student registration[2m > [22mAC-002-12 shows the form of the chosen registration type[39m[33m 1017[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [31m❯[39m src/acceptance/us001-external-registration.acceptance.test.tsx [2m([22m[2m10 tests[22m[2m | [22m[31m10 failed[39m[2m)[22m[33m 10226[2mms[22m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-01 sends a valid external registration and it is accepted[39m[33m 1081[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-02 asks for exactly the four external participant fields[39m[33m 1023[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-03 reports every empty required field and sends nothing[39m[33m 1020[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-03 reports only the field that is empty[39m[33m 1017[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-05 reports an invalid email before anything is sent[39m[33m 1018[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-07 AC-001-08 shows that a selected option is not available[39m[33m 1012[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-09 reports the missing consent and shows no confirmation[39m[33m 1008[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-10 sends a registration without options[39m[33m 1009[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-12 reports the missing anti-automation check and shows no confirmation[39m[33m 1017[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[31m   [31m×[31m US-001 external participant registration[2m > [22mAC-001-14 does not preselect the consent, the anti-automation check or any option[39m[33m 1017[2mms[22m[39m
+[31m     → Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 29 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-01 sends a valid external registration and it is accepted
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m28:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-02 asks for exactly the four external participant fields
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m55:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-03 reports every empty required field and sends nothing
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m70:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-03 reports only the field that is empty
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m89:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-05 reports an invalid email before anything is sent
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m108:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-07 AC-001-08 shows that a selected option is not available
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m135:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-09 reports the missing consent and shows no confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m152:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-10 sends a registration without options
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m170:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-12 reports the missing anti-automation check and shows no confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m183:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us001-external-registration.acceptance.test.tsx[2m > [22mUS-001 external participant registration[2m > [22mAC-001-14 does not preselect the consent, the anti-automation check or any option
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us001-external-registration.acceptance.test.tsx:[2m200:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-01 sends a valid student registration and it is accepted
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m36:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-02 asks for exactly the six student fields
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m62:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-03 reports every empty required field and sends nothing
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m76:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-05 reports an invalid email before anything is sent
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m95:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-08 reports the missing consent and shows no confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m112:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-09 reports the missing anti-automation check and shows no confirmation
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m129:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-10 offers students every active option, the same as the external form
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m146:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-11 does not preselect the consent, the anti-automation check or any option
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m158:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us002-student-registration.acceptance.test.tsx[2m > [22mUS-002 student registration[2m > [22mAC-002-12 shows the form of the chosen registration type
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us002-student-registration.acceptance.test.tsx:[2m171:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us003-configurable-options.acceptance.test.tsx[2m > [22mUS-003 configurable conference options[2m > [22mAC-003-01 offers the active options grouped by category with their display names
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us003-configurable-options.acceptance.test.tsx:[2m31:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us003-configurable-options.acceptance.test.tsx[2m > [22mUS-003 configurable conference options[2m > [22mAC-003-02 does not offer an option that is not active
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us003-configurable-options.acceptance.test.tsx:[2m46:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us003-configurable-options.acceptance.test.tsx[2m > [22mUS-003 configurable conference options[2m > [22mAC-003-03 offers the new set of options and keeps the fixed fields
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us003-configurable-options.acceptance.test.tsx:[2m56:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us003-configurable-options.acceptance.test.tsx[2m > [22mUS-003 configurable conference options[2m > [22mAC-003-05 stays usable when a category has no active option
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us003-configurable-options.acceptance.test.tsx:[2m70:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us004-confirmation.acceptance.test.tsx[2m > [22mUS-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation only after the registration was accepted
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m submitValidExternal src/acceptance/us004-confirmation.acceptance.test.tsx:[2m22:9[22m[39m
+[90m [2m❯[22m src/acceptance/us004-confirmation.acceptance.test.tsx:[2m39:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us004-confirmation.acceptance.test.tsx[2m > [22mUS-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation for a student registration
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us004-confirmation.acceptance.test.tsx:[2m56:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us004-confirmation.acceptance.test.tsx[2m > [22mUS-004 registration confirmation[2m > [22mAC-004-02 shows the reasons of a rejection next to the fields and keeps the values
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m submitValidExternal src/acceptance/us004-confirmation.acceptance.test.tsx:[2m22:9[22m[39m
+[90m [2m❯[22m src/acceptance/us004-confirmation.acceptance.test.tsx:[2m76:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us004-confirmation.acceptance.test.tsx[2m > [22mUS-004 registration confirmation[2m > [22mAC-004-03 tells the participant when the registration could not be stored
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m submitValidExternal src/acceptance/us004-confirmation.acceptance.test.tsx:[2m22:9[22m[39m
+[90m [2m❯[22m src/acceptance/us004-confirmation.acceptance.test.tsx:[2m103:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us004-confirmation.acceptance.test.tsx[2m > [22mUS-004 registration confirmation[2m > [22mAC-004-03 tells the participant when the backend cannot be reached
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m src/acceptance/us004-confirmation.acceptance.test.tsx:[2m114:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/29]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/acceptance/us004-confirmation.acceptance.test.tsx[2m > [22mUS-004 registration confirmation[2m > [22mAC-004-02 tells the participant when too many attempts were made
+[31m[1mTestingLibraryElementError[22m: Unable to find role="radiogroup" and name `/^Vrsta prijave/`
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main />[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m86:33[22m[39m
+[36m [2m❯[22m openRegistrationPage src/acceptance/harness.tsx:[2m177:16[22m[39m
+    [90m175| [39m[35mexport[39m [35masync[39m [35mfunction[39m [34mopenRegistrationPage[39m()[33m:[39m [33mPromise[39m[33m<[39m[35mvoid[39m[33m>[39m {
+    [90m176| [39m  [34mrender[39m([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m177| [39m  [35mawait[39m screen[33m.[39m[34mfindByRole[39m([32m"radiogroup"[39m[33m,[39m { name[33m:[39m [33mLABELS[39m[33m.[39mtypeLegend })[33m;[39m
+    [90m   | [39m               [31m^[39m
+    [90m178| [39m}
+    [90m179| [39m
+[90m [2m❯[22m submitValidExternal src/acceptance/us004-confirmation.acceptance.test.tsx:[2m22:9[22m[39m
+[90m [2m❯[22m src/acceptance/us004-confirmation.acceptance.test.tsx:[2m139:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/29]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m4 failed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[31m29 failed[39m[22m[90m (29)[39m
+[2m   Start at [22m 13:06:24
+[2m   Duration [22m 48.66s[2m (transform 580ms, setup 0ms, collect 38.58s, tests 29.75s, environment 101.01s, prepare 6.78s)[22m
+

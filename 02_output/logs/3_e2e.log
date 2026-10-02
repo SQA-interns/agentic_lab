@@ -1,0 +1,97 @@
+Unable to find image 'mcr.microsoft.com/playwright:v1.63.0-noble' locally
+v1.63.0-noble: Pulling from playwright
+1b189482e65c: Pulling fs layer
+74c72610aa2d: Pulling fs layer
+a2ac83a9a562: Pulling fs layer
+0926a8eb0e60: Pulling fs layer
+e2bfec3c8017: Pulling fs layer
+b4dfe9b5d621: Pulling fs layer
+d8cf7dc1ff62: Pulling fs layer
+74c72610aa2d: Download complete
+0926a8eb0e60: Download complete
+0926a8eb0e60: Pull complete
+1b189482e65c: Download complete
+a2ac83a9a562: Download complete
+e2bfec3c8017: Download complete
+e2bfec3c8017: Pull complete
+74c72610aa2d: Pull complete
+d8cf7dc1ff62: Download complete
+b4dfe9b5d621: Download complete
+d8cf7dc1ff62: Pull complete
+b4dfe9b5d621: Pull complete
+a2ac83a9a562: Pull complete
+1b189482e65c: Pull complete
+Digest: sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+Status: Downloaded newer image for mcr.microsoft.com/playwright:v1.63.0-noble
+
+Running 3 tests using 1 worker
+
+  ✘  1 [chromium] › e2e/registration.e2e.spec.ts:40:1 › AC-001-01 AC-003-01 AC-004-01 AC-006-01 AC-007-01 AC-007-02 AC-008-01 AC-008-02 AC-008-05 external registration with Slovenian characters reaches the confirmation, both emails, the JSON copy and the export (1.0m)
+  ✘  2 [chromium] › e2e/registration.e2e.spec.ts:113:1 › AC-002-01 AC-004-01 AC-006-01 AC-008-01 student registration reaches the confirmation, the email and the export (1.0m)
+  ✘  3 [chromium] › e2e/registration.e2e.spec.ts:152:1 › AC-001-03 AC-004-02 AC-006-02 a registration with an empty required field is not accepted and sends no email (1.0m)
+
+
+  1) [chromium] › e2e/registration.e2e.spec.ts:40:1 › AC-001-01 AC-003-01 AC-004-01 AC-006-01 AC-007-01 AC-007-02 AC-008-01 AC-008-02 AC-008-05 external registration with Slovenian characters reaches the confirmation, both emails, the JSON copy and the export 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: /^Zunanji udeleženec/ })
+
+
+      43 |   const email = uniqueEmail("ziva.cucnik");
+      44 |   await page.goto("/");
+    > 45 |   await page.getByRole("radio", { name: /^Zunanji udeleženec/ }).check();
+         |                                                                  ^
+      46 |   await page.getByRole("textbox", { name: FIRST_NAME }).fill("Živa");
+      47 |   await page.getByRole("textbox", { name: /^Priimek/ }).fill("Čučnik Šušteršič");
+      48 |   await page.getByRole("textbox", { name: /^E-pošta/ }).fill(email);
+        at /work/e2e/registration.e2e.spec.ts:45:66
+
+    Error Context: test-results/registration.e2e-AC-001-01-f6638-he-JSON-copy-and-the-export-chromium/error-context.md
+
+  2) [chromium] › e2e/registration.e2e.spec.ts:113:1 › AC-002-01 AC-004-01 AC-006-01 AC-008-01 student registration reaches the confirmation, the email and the export 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: /^Študent/ })
+
+
+      117 |   const studentId = `6321${Math.floor(Math.random() * 9000) + 1000}`;
+      118 |   await page.goto("/");
+    > 119 |   await page.getByRole("radio", { name: /^Študent/ }).check();
+          |                                                       ^
+      120 |   await page.getByRole("textbox", { name: FIRST_NAME }).fill("Žan");
+      121 |   await page.getByRole("textbox", { name: /^Priimek/ }).fill("Košir");
+      122 |   await page.getByRole("textbox", { name: /^E-pošta/ }).fill(email);
+        at /work/e2e/registration.e2e.spec.ts:119:55
+
+    Error Context: test-results/registration.e2e-AC-002-01-91a5b-on-the-email-and-the-export-chromium/error-context.md
+
+  3) [chromium] › e2e/registration.e2e.spec.ts:152:1 › AC-001-03 AC-004-02 AC-006-02 a registration with an empty required field is not accepted and sends no email 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: /^Zunanji udeleženec/ })
+
+
+      155 |   const email = uniqueEmail("brez.imena");
+      156 |   await page.goto("/");
+    > 157 |   await page.getByRole("radio", { name: /^Zunanji udeleženec/ }).check();
+          |                                                                  ^
+      158 |   await page.getByRole("textbox", { name: /^Priimek/ }).fill("Novak");
+      159 |   await page.getByRole("textbox", { name: /^E-pošta/ }).fill(email);
+      160 |   await page.getByRole("textbox", { name: /^Organizacija \/ ustanova/ }).fill("Podjetje Primer");
+        at /work/e2e/registration.e2e.spec.ts:157:66
+
+    Error Context: test-results/registration.e2e-AC-001-03-e8ace-accepted-and-sends-no-email-chromium/error-context.md
+
+  3 failed
+    [chromium] › e2e/registration.e2e.spec.ts:40:1 › AC-001-01 AC-003-01 AC-004-01 AC-006-01 AC-007-01 AC-007-02 AC-008-01 AC-008-02 AC-008-05 external registration with Slovenian characters reaches the confirmation, both emails, the JSON copy and the export 
+    [chromium] › e2e/registration.e2e.spec.ts:113:1 › AC-002-01 AC-004-01 AC-006-01 AC-008-01 student registration reaches the confirmation, the email and the export 
+    [chromium] › e2e/registration.e2e.spec.ts:152:1 › AC-001-03 AC-004-02 AC-006-02 a registration with an empty required field is not accepted and sends no email 
