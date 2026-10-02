@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "b7c1d2e3-4f50-4a61-8b72-93a4b5c6d7e8",
+  "type": "STUDENT",
+  "acceptedAt": "2026-10-02T11:00:00Z",
+  "firstName": "Žan",
+  "lastName": "Košir",
+  "email": "zan.kosir@example.org",
+  "studyInstitution": "Univerza v Ljubljani, Fakulteta za računalništvo in informatiko",
+  "studyProgramme": "Računalništvo in informatika",
+  "studentId": "63210001",
+  "options": [],
+  "consent": {
+    "id": "personal-data",
+    "text": "Soglašam z obdelavo svojih osebnih podatkov za namen prijave na konferenco.",
+    "givenAt": "2026-10-02T11:00:00Z"
+  }
+}

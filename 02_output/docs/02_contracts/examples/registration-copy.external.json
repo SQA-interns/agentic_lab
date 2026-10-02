@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "3f0e7a52-8a54-4d0e-9f43-1c6a2b7d9e10",
+  "type": "EXTERNAL",
+  "acceptedAt": "2026-10-02T10:15:30.123Z",
+  "firstName": "Živa",
+  "lastName": "Čučnik Šušteršič",
+  "email": "ziva.cucnik@example.org",
+  "organization": "Inštitut za računalništvo",
+  "options": [
+    { "id": "ws-testing", "name": "Delavnica: testiranje programske opreme", "category": "workshop" },
+    { "id": "meal-lunch-day1", "name": "Kosilo, prvi dan", "category": "meal" }
+  ],
+  "consent": {
+    "id": "personal-data",
+    "text": "Soglašam z obdelavo svojih osebnih podatkov za namen prijave na konferenco.",
+    "givenAt": "2026-10-02T10:15:30.123Z"
+  }
+}

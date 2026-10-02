@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Contract \"JSON copy\" between the backend and the persistent volume (BR-07). One UTF-8 file per registration, named <id>.json in the configured directory. The same bytes are attached to the organizer email.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "type",
+    "acceptedAt",
+    "firstName",
+    "lastName",
+    "email",
+    "options",
+    "consent"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "acceptedAt": { "type": "string", "format": "date-time" },
+    "firstName": { "$ref": "#/$defs/text100" },
+    "lastName": { "$ref": "#/$defs/text100" },
+    "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+    "organization": { "$ref": "#/$defs/text200" },
+    "studyInstitution": { "$ref": "#/$defs/text200" },
+    "studyProgramme": { "$ref": "#/$defs/text200" },
+    "studentId": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "options": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["workshop", "event", "meal", "other"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "consent": {
+      "type": "object",
+      "required": ["id", "text", "givenAt"],
+      "properties": {
+        "id": { "const": "personal-data" },
+        "text": { "type": "string", "minLength": 1 },
+        "givenAt": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": { "type": { "const": "EXTERNAL" } },
+      "required": ["organization"],
+      "not": {
+        "anyOf": [
+          { "required": ["studyInstitution"] },
+          { "required": ["studyProgramme"] },
+          { "required": ["studentId"] }
+        ]
+      }
+    },
+    {
+      "properties": { "type": { "const": "STUDENT" } },
+      "required": ["studyInstitution", "studyProgramme", "studentId"],
+      "not": { "required": ["organization"] }
+    }
+  ],
+  "$defs": {
+    "text100": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "text200": { "type": "string", "minLength": 1, "maxLength": 200 }
+  }
+}
