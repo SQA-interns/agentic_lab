@@ -49,12 +49,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-10-02T12:57:38Z",
-      "end": null
+      "end": "2026-10-02T13:43:51Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-10-02T13:43:51Z",
       "end": null
     }
   ],
@@ -63,16 +63,36 @@
     "failed": 3
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 311,
+    "failed": 0
   },
   "findings": {
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0
+    "high": 2,
+    "medium": 3,
+    "low": 2
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-02"
+      ],
+      "change": "frontend/nginx.conf: fixed proxy destination",
+      "start": null,
+      "startReason": "the detection time was not taken with date when the scan reported it",
+      "end": "2026-10-02T12:39:53Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-04"
+      ],
+      "change": "14 backend and 12 frontend tests; settable bound in RateLimitFilter",
+      "start": "2026-10-02T13:00:37Z",
+      "end": "2026-10-02T13:41:15Z"
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -181,6 +201,12 @@
       "type": "non-blocking",
       "start": "2026-10-02T12:42:21Z",
       "end": "2026-10-02T12:42:21Z"
+    },
+    {
+      "id": "D-19",
+      "type": "non-blocking",
+      "start": "2026-10-02T13:39:40Z",
+      "end": "2026-10-02T13:39:40Z"
     }
   ],
   "humanInterventions": [
@@ -196,9 +222,23 @@
     }
   ],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 1985,
+        "testLoc": 3204,
+        "duplicationPct": 0
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 678,
+        "testLoc": 1650,
+        "duplicationPct": 0
+      }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "tech-stack.md lists no tool that reports complexity",
+    "duplicationPct": 0
   },
   "commits": [],
   "usage": {

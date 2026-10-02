@@ -1,0 +1,24 @@
+== backend/src/main
+Language                     files          blank        comment           code
+Java                            46            318            200           1906
+Properties                       1              5              2             43
+SQL                              1              3              3             36
+SUM:                            48            326            205           1985
+== backend/src/test
+Language                     files          blank        comment           code
+Java                            27            556             95           3180
+JSON                             2              0              0             24
+SUM:                            29            556             95           3204
+== frontend/src:prod
+Language                     files          blank        comment           code
+TypeScript                       7             57             19            581
+CSS                              1             17              0             97
+SUM:                             8             74             19            678
+== frontend/src:test
+Language                     files          blank        comment           code
+TypeScript                      10            226             26           1376
+SUM:                            10            226             26           1376
+== frontend/e2e
+Language                     files          blank        comment           code
+TypeScript                       2             26              7            274
+SUM:                             2             26              7            274

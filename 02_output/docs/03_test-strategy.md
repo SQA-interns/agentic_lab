@@ -70,3 +70,16 @@ No failure is a defect of a non-frozen test, and no frozen test failed.
 After the fix (`RegistrationValidator.trim`, and the email pattern now treats the no-break spaces as whitespace; two email cases added to `RegistrationValidatorTest`): backend 215 passed, frontend 67 passed, end-to-end 3 passed, 0 failed (`logs/5_backend-test.log`, `logs/5_frontend-test.log`, `logs/5_e2e.log`).
 
 ## Final run (phase 6)
+
+2026-10-02T13:41:41Z, `verify.sh 6`, all levels.
+
+| Suite | Passed | Failed | Coverage | Mutation score | Log |
+|---|---|---|---|---|---|
+| Backend: acceptance 79, unit 124, architecture 8, integration 18 | 229 | 0 | lines 97.8 %, branches 95.0 % | 98 % (214 of 219; unit tests only, classes with unit tests) | `logs/6_backend-test.log`, `logs/6_backend-coverage.log`, `logs/6_backend-mutation.log` |
+| Frontend: acceptance 29, unit 50 | 79 | 0 | lines 95.61 %, branches 92.34 % | 96.22 % | `logs/6_frontend-test.log`, `logs/6_frontend-mutation.log` |
+| End-to-end, against the compose stack | 3 | 0 | | | `logs/6_e2e.log` |
+| Total | 311 | 0 | | | |
+
+- Added in phase 6 after mutation testing (F-04): 14 backend unit tests and 12 frontend unit tests. No frozen test changed; all 20 manifest hashes match (`logs/6_manifests.log`).
+- No test is skipped, disabled or known to be flaky; the one test that depends on the clock minute waits for the start of a rate-limit window.
+- Not automated, for manual testing: live reCAPTCHA, real SMTP delivery, HTTPS at the reverse proxy (release notes).

@@ -1,0 +1,213 @@
+[32m15:35:24 (42188) INFO ProjectReader[39m Found 7 of 56 file(s) to be mutated.
+[32m15:35:24 (42188) INFO Instrumenter[39m Instrumented 7 source file(s) with 450 mutant(s)
+[32m15:35:24 (42188) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m15:35:27 (42188) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m15:35:44 (42188) INFO DryRunExecutor[39m Initial test run succeeded. Ran 79 tests in 17 seconds (net 4918.629000000019 ms, overhead 12534.370999999981 ms).
+
+All tests
+  acceptance
+    us001-external-registration.acceptance.test.tsx
+      ✓ US-001 external participant registration AC-001-01 sends a valid external registration and it is accepted (killed 11)
+      ~ US-001 external participant registration AC-001-02 asks for exactly the four external participant fields (covered 125)
+      ✓ US-001 external participant registration AC-001-03 reports every empty required field and sends nothing (killed 4)
+      ~ US-001 external participant registration AC-001-03 reports only the field that is empty (covered 173)
+      ✓ US-001 external participant registration AC-001-05 reports an invalid email before anything is sent (killed 1)
+      ✓ US-001 external participant registration AC-001-07 AC-001-08 shows that a selected option is not available (killed 18)
+      ✓ US-001 external participant registration AC-001-09 reports the missing consent and shows no confirmation (killed 1)
+      ~ US-001 external participant registration AC-001-10 sends a registration without options (covered 197)
+      ✓ US-001 external participant registration AC-001-12 reports the missing anti-automation check and shows no confirmation (killed 1)
+      ~ US-001 external participant registration AC-001-14 does not preselect the consent, the anti-automation check or any option (covered 125)
+    us002-student-registration.acceptance.test.tsx
+      ✓ US-002 student registration AC-002-01 sends a valid student registration and it is accepted (killed 70)
+      ~ US-002 student registration AC-002-02 asks for exactly the six student fields (covered 125)
+      ✓ US-002 student registration AC-002-03 reports every empty required field and sends nothing (killed 9)
+      ✓ US-002 student registration AC-002-05 reports an invalid email before anything is sent (killed 3)
+      ✓ US-002 student registration AC-002-08 reports the missing consent and shows no confirmation (killed 4)
+      ✓ US-002 student registration AC-002-09 reports the missing anti-automation check and shows no confirmation (killed 1)
+      ✓ US-002 student registration AC-002-10 offers students every active option, the same as the external form (killed 5)
+      ~ US-002 student registration AC-002-11 does not preselect the consent, the anti-automation check or any option (covered 125)
+      ~ US-002 student registration AC-002-12 shows the form of the chosen registration type (covered 125)
+    us003-configurable-options.acceptance.test.tsx
+      ✓ US-003 configurable conference options AC-003-01 offers the active options grouped by category with their display names (killed 2)
+      ~ US-003 configurable conference options AC-003-02 does not offer an option that is not active (covered 125)
+      ✓ US-003 configurable conference options AC-003-03 offers the new set of options and keeps the fixed fields (killed 1)
+      ✓ US-003 configurable conference options AC-003-05 stays usable when a category has no active option (killed 3)
+    us004-confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation only after the registration was accepted (killed 11)
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation for a student registration (killed 6)
+      ✓ US-004 registration confirmation AC-004-02 shows the reasons of a rejection next to the fields and keeps the values (killed 12)
+      ✓ US-004 registration confirmation AC-004-03 tells the participant when the registration could not be stored (killed 3)
+      ✓ US-004 registration confirmation AC-004-03 tells the participant when the backend cannot be reached (killed 2)
+      ✓ US-004 registration confirmation AC-004-02 tells the participant when too many attempts were made (killed 8)
+  api.test.ts
+    ✓ submitRegistration AR-01 posts the registration as JSON to /api/registrations (killed 4)
+    ✓ submitRegistration returns the field errors of a rejection (killed 1)
+    ✓ submitRegistration drops entries of a rejection that are not field errors (killed 1)
+    ✓ submitRegistration treats a 400 without field errors as not received (killed 4)
+    ~ submitRegistration treats a 400 with an empty error list as not received (covered 26)
+    ~ submitRegistration treats a 400 that is not JSON as not received (covered 21)
+    ~ submitRegistration treats a 413 as not received (covered 19)
+    ~ submitRegistration treats a 500 as not received (covered 19)
+    ~ submitRegistration treats a 503 as not received (covered 19)
+    ~ submitRegistration treats an unexpected 200 as not received (covered 19)
+    ~ submitRegistration reports too many requests (covered 17)
+    ✓ submitRegistration treats a network failure as not received (killed 1)
+    ~ loading the form AR-01 reads the form configuration and the options under /api (covered 11)
+    ✓ loading the form fails when the backend does not answer with success (killed 1)
+    ~ submitRegistration, strictness of what counts as a rejection keeps only entries that have both a field and a code (covered 38)
+    ✓ submitRegistration, strictness of what counts as a rejection does not read field errors from an answer that is not a 400 (killed 1)
+  App.test.tsx
+    ✓ App shows the title at once and the form with the conference name after loading (killed 17)
+    ✓ App tells the participant when the options cannot be loaded (killed 10)
+    ~ App tells the participant when the backend cannot be reached (covered 56)
+  Captcha.test.tsx
+    ✓ Captcha in test mode yields the passing token when ticked and none when cleared, without loading any script (killed 1)
+    ~ Captcha in test mode links the control to its error message (covered 12)
+    ✓ Captcha in reCAPTCHA mode AR-07 renders the widget with the site key and passes its token on (killed 6)
+    ✓ Captcha in reCAPTCHA mode asks for a new check after a token was used (killed 7)
+    ✓ Captcha in reCAPTCHA mode loads the Google script only in this mode and renders once it has loaded (killed 6)
+    ✓ Captcha in reCAPTCHA mode, lifecycle passes the token to the handler of the latest render (killed 2)
+    ✓ Captcha in reCAPTCHA mode, lifecycle does not render the widget after the control was removed before the script loaded (killed 7)
+    ~ Captcha in reCAPTCHA mode, lifecycle does not ask for a new check before a token was used, and renders the widget once (covered 42)
+  RegistrationForm.test.tsx
+    ✓ RegistrationForm sends trimmed values and the selected options in form order, without unticked ones (killed 53)
+    ✓ RegistrationForm SR-01 asks for a new anti-automation check after the backend refused a registration (killed 17)
+    ✓ RegistrationForm marks the consent as invalid when it is missing and clears the mark when the type changes (killed 9)
+    ✓ RegistrationForm falls back to its own text when the backend sends a code without a message (killed 3)
+    ✓ RegistrationForm reports an error for a field that is not on the form as not received (killed 7)
+    ✓ RegistrationForm clears an earlier failure message when the next attempt starts (killed 3)
+    ✓ RegistrationForm with the reCAPTCHA widget SR-01 resets the widget after a refused registration, because a token is valid only once (killed 17)
+  validation.test.ts
+    ~ validate accepts a complete external and a complete student form (covered 27)
+    ~ validate NFR-03 reports every missing field of the chosen form, consent and anti-automation check (covered 22)
+    ~ validate does not ask an external participant for student fields (covered 18)
+    ~ validate treats a value of whitespace only as missing (covered 29)
+    ✓ validate accepts a text at its limit and reports one character more as too long (killed 2)
+    ~ validate reports the email ziva as invalid (covered 29)
+    ~ validate reports the email ziva@ as invalid (covered 29)
+    ~ validate reports the email @example.org as invalid (covered 29)
+    ~ validate reports the email ziva@example as invalid (covered 29)
+    ~ validate reports the email ziva @example.org as invalid (covered 29)
+    ~ validate reports the email ziva@@example.org as invalid (covered 29)
+    ~ validate reports the email ziva@example..org as invalid (covered 29)
+    ~ validate reports the email ziva@example.org. as invalid (covered 29)
+    ~ validate accepts the email a@b.si (covered 27)
+    ✓ validate accepts the email ime.priimek+oznaka@pod.domena.example.org (killed 1)
+    ~ validate accepts the email   ziva@example.org (covered 27)
+
+[Survived] ConditionalExpression
+src/App.tsx:24:13
+-           if (!cancelled) {
++           if (true) {
+
+[Survived] OptionalChaining
+src/Captcha.tsx:84:7
+-         window.grecaptcha?.ready(() => {
++         window.grecaptcha.ready(() => {
+
+[Survived] LogicalOperator
+src/Captcha.tsx:85:13
+-           if (cancelled || !container.current || widgetId.current !== null || !window.grecaptcha) {
++           if (cancelled && !container.current || widgetId.current !== null || !window.grecaptcha) {
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:85:48
+-           if (cancelled || !container.current || widgetId.current !== null || !window.grecaptcha) {
++           if (cancelled || !container.current || false || !window.grecaptcha) {
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:101:22
+-         script.defer = true;
++         script.defer = false;
+
+[Survived] BlockStatement
+src/Captcha.tsx:105:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:106:19
+-         cancelled = true;
++         cancelled = false;
+
+[Survived] ArrayDeclaration
+src/Captcha.tsx:108:6
+-     }, [siteKey]);
++     }, []);
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:112:28
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (resetSignal > 0 && true) {
+
+[Survived] OptionalChaining
+src/Captcha.tsx:113:7
+-         window.grecaptcha?.reset(widgetId.current);
++         window.grecaptcha.reset(widgetId.current);
+
+[NoCoverage] StringLiteral
+src/main.tsx:6:38
+-   const root = document.getElementById("root");
++   const root = document.getElementById("");
+
+[NoCoverage] ConditionalExpression
+src/main.tsx:7:5
+-   if (root) {
++   if (true) {
+
+[NoCoverage] ConditionalExpression
+src/main.tsx:7:5
+-   if (root) {
++   if (false) {
+
+[NoCoverage] BlockStatement
+src/main.tsx:7:11
+-   if (root) {
+-     createRoot(root).render(
+-       <StrictMode>
+-         <App />
+-       </StrictMode>,
+-     );
+-   }
++   if (root) {}
+
+[NoCoverage] CallExpression
+src/main.tsx:8:3
+-     createRoot(root).render(
+-       <StrictMode>
+-         <App />
+-       </StrictMode>,
+-     );
++     ;
+
+[NoCoverage] BlockStatement
+src/RegistrationForm.tsx:67:27
+-       if (!type || sending) {
+-         return;
+-       }
++       if (!type || sending) {}
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:88:51
+-         request[field.name] = (texts[field.name] ?? "").trim();
++         request[field.name] = (texts[field.name] ?? "Stryker was here!").trim();
+
+Ran 2.35 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  96.22 |   97.74 |      357 |        76 |         10 |        7 |        0 |
+ api.ts               | 100.00 |  100.00 |       50 |        13 |          0 |        0 |        0 |
+ App.tsx              |  98.18 |   98.18 |       45 |         9 |          1 |        0 |        0 |
+ Captcha.tsx          |  85.94 |   85.94 |       53 |         2 |          9 |        0 |        0 |
+ main.tsx             |   0.00 |    0.00 |        0 |         0 |          0 |        5 |        0 |
+ RegistrationForm.tsx |  98.58 |  100.00 |      115 |        24 |          0 |        2 |        0 |
+ texts.ts             | 100.00 |  100.00 |       50 |        22 |          0 |        0 |        0 |
+ validation.ts        | 100.00 |  100.00 |       44 |         6 |          0 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m15:41:15 (42188) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m15:41:15 (42188) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/index.html
+[32m15:41:15 (42188) INFO MutationTestExecutor[39m Done in 5 minutes and 51 seconds.

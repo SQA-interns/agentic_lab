@@ -1,0 +1,92 @@
+
+== NFR-04 health and readiness
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
+PASS services reported healthy (4)
+PASS backend readiness ({"status":"UP"})
+
+== Form configuration and options (US-003)
+PASS GET /api/form-config (200)
+"mode":"test"
+PASS GET /api/options (200)
+PASS active options offered (7)
+PASS frontend page (200)
+
+== DoD-P01 one external and one student registration
+PASS POST external registration (201)
+external id c06abaca-330f-4e54-b434-a6c9e3966a88
+PASS POST student registration (201)
+student id a09e4430-f2ba-4594-8537-5b0bae41b97a
+
+== Rejections store and send nothing (AC-001-05, AC-001-12)
+PASS POST with an invalid email (400)
+"code":"invalid_format","field":"email"
+PASS POST with a failed anti-automation check (400)
+
+== DoD-P02 each registration is in PostgreSQL and has its JSON copy
+PASS rows added (2)
+c06abaca-330f-4e54-b434-a6c9e3966a88|EXTERNAL|2026-10-02 13:26:24.848+00
+a09e4430-f2ba-4594-8537-5b0bae41b97a|STUDENT|2026-10-02 13:26:25.141+00
+PASS external row, Slovenian characters intact (Živa Čučnik Šušteršič)
+PASS option rows of the external registration (2)
+PASS JSON copies added (2)
+-rw-r--r-- app 696 /data/registrations/a09e4430-f2ba-4594-8537-5b0bae41b97a.json
+-rw-r--r-- app 760 /data/registrations/c06abaca-330f-4e54-b434-a6c9e3966a88.json
+PASS JSON copy keeps the name (1)
+
+== DoD-P03 participant and organizer emails arrive in Mailpit
+"Subject":"Nova prijava: Konferenca (lokalno) (c06abaca-330f-4e54-b434-a6c9e3966a88)"
+"Subject":"Potrditev prijave: Konferenca (lokalno)"
+PASS participant confirmation to the external participant (1)
+PASS organizer notification for the external registration (1)
+PASS JSON attachment on the organizer notification (1)
+PASS organizer notification for the student registration (1)
+
+== DoD-P04 organizer export; refused without organizer access
+PASS export with organizer credentials (200)
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Disposition: attachment; filename="prijave.xlsx"
+Cache-Control: no-store
+worksheet parts: 1
+PASS workbook contains the external registration (1)
+PASS workbook contains the student registration (1)
+PASS workbook keeps Slovenian characters (Čučnik Šušteršič)
+PASS export without credentials (401)
+PASS refusal carries no registration data (0)
+PASS export with wrong credentials (401)
+
+== Security at runtime (SB-10, SB-11, SR-03)
+PASS page header content-security-policy (1)
+PASS API header content-security-policy (1)
+PASS page header x-content-type-options (1)
+PASS API header x-content-type-options (1)
+PASS page header x-frame-options (1)
+PASS API header x-frame-options (1)
+PASS page header referrer-policy (1)
+PASS API header referrer-policy (1)
+PASS no cookie is set (0)
+PASS backend runs as non-root (0)
+PASS frontend runs as non-root (0)
+backend 8080/tcp
+frontend 127.0.0.1:8080->8080/tcp
+mailpit 127.0.0.1:8025->8025/tcp
+postgres 5432/tcp
+PASS ports published beyond 127.0.0.1 (0)
+PASS request over the size limit (413)
+
+== ES-07 backend logs hold no personal data of the demonstration
+PASS log lines with a participant email or name (0)
+PASS log lines naming the accepted registrations (2)
+PASS stack traces in the log (0)
+
+== NFR-02 data survive recreation of every container
+PASS containers after down (0)
+PASS services healthy after up (4)
+PASS rows after recreation (10)
+PASS JSON copies after recreation (10)
+PASS export after recreation (200)
+PASS workbook still contains the external registration (1)
+
+== demonstration finished: 0 failed check(s)
