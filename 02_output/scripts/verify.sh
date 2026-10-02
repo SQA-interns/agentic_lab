@@ -170,6 +170,10 @@ run_tool() {
       # Not in ALL_TOOLS: the runtime demonstration against the running local stack (phase 6).
       bash "$OUT/scripts/demo.sh" >"$log" 2>&1 || rc=$?
       numbers="pass=$(grep -c '^PASS ' "$log") fail=$(grep -c '^FAIL ' "$log")" ;;
+    clean-checkout)
+      # Not in ALL_TOOLS: follows the READMEs from a clean clone (phase 7); the stack must be down.
+      bash "$OUT/scripts/clean-checkout.sh" >"$log" 2>&1 || rc=$?
+      numbers="pass=$(grep -c '^PASS ' "$log") fail=$(grep -c '^FAIL ' "$log")" ;;
     e2e)
       # Not in ALL_TOOLS: needs the running local stack. Playwright runs in its own container on
       # the network of the stack (D-15); the organizer credentials are passed without being
