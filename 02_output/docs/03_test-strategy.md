@@ -67,4 +67,6 @@ Phase 5, 2026-10-02T12:53:56Z, all levels, after formatting only; nothing needed
 
 No failure is a defect of a non-frozen test, and no frozen test failed.
 
+After the fix (`RegistrationValidator.trim`, and the email pattern now treats the no-break spaces as whitespace; two email cases added to `RegistrationValidatorTest`): backend 215 passed, frontend 67 passed, end-to-end 3 passed, 0 failed (`logs/5_backend-test.log`, `logs/5_frontend-test.log`, `logs/5_e2e.log`).
+
 ## Final run (phase 6)

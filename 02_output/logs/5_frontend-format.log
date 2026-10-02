@@ -1,0 +1,31 @@
+
+> registration-frontend@0.1.0 format
+> prettier --write .
+
+[90m.prettierrc.json[39m 20ms (unchanged)
+[90me2e/registration.e2e.spec.ts[39m 94ms (unchanged)
+[90me2e/support.ts[39m 41ms (unchanged)
+[90meslint.config.js[39m 8ms (unchanged)
+[90mindex.html[39m 24ms (unchanged)
+[90mpackage.json[39m 2ms (unchanged)
+[90mplaywright.config.ts[39m 4ms (unchanged)
+[90mREADME.md[39m 28ms (unchanged)
+[90msrc/acceptance/harness.tsx[39m 28ms (unchanged)
+[90msrc/acceptance/us001-external-registration.acceptance.test.tsx[39m 16ms (unchanged)
+[90msrc/acceptance/us002-student-registration.acceptance.test.tsx[39m 21ms (unchanged)
+[90msrc/acceptance/us003-configurable-options.acceptance.test.tsx[39m 6ms (unchanged)
+[90msrc/acceptance/us004-confirmation.acceptance.test.tsx[39m 13ms (unchanged)
+src/api.test.ts 11ms
+[90msrc/api.ts[39m 10ms (unchanged)
+[90msrc/App.test.tsx[39m 6ms (unchanged)
+[90msrc/App.tsx[39m 9ms (unchanged)
+src/Captcha.test.tsx 12ms
+[90msrc/Captcha.tsx[39m 8ms (unchanged)
+[90msrc/main.tsx[39m 2ms (unchanged)
+[90msrc/RegistrationForm.tsx[39m 21ms (unchanged)
+[90msrc/styles.css[39m 28ms (unchanged)
+[90msrc/texts.ts[39m 4ms (unchanged)
+[90msrc/validation.test.ts[39m 7ms (unchanged)
+[90msrc/validation.ts[39m 3ms (unchanged)
+[90mtsconfig.json[39m 2ms (unchanged)
+[90mvite.config.ts[39m 2ms (unchanged)

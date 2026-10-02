@@ -1,0 +1,38 @@
+
+> registration-frontend@0.1.0 test
+> vitest run --coverage
+
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/validation.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/api.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m src/Captcha.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 157[2mms[22m[39m
+ [32m✓[39m src/App.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 209[2mms[22m[39m
+ [32m✓[39m src/acceptance/us003-configurable-options.acceptance.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 995[2mms[22m[39m
+   [33m[2m✓[22m[39m US-003 configurable conference options[2m > [22mAC-003-01 offers the active options grouped by category with their display names [33m 355[2mms[22m[39m
+ [32m✓[39m src/acceptance/us004-confirmation.acceptance.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 1746[2mms[22m[39m
+   [33m[2m✓[22m[39m US-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation only after the registration was accepted [33m 435[2mms[22m[39m
+   [33m[2m✓[22m[39m US-004 registration confirmation[2m > [22mAC-004-02 tells the participant when too many attempts were made [33m 358[2mms[22m[39m
+ [32m✓[39m src/acceptance/us001-external-registration.acceptance.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 2228[2mms[22m[39m
+   [33m[2m✓[22m[39m US-001 external participant registration[2m > [22mAC-001-01 sends a valid external registration and it is accepted [33m 520[2mms[22m[39m
+   [33m[2m✓[22m[39m US-001 external participant registration[2m > [22mAC-001-07 AC-001-08 shows that a selected option is not available [33m 446[2mms[22m[39m
+ [32m✓[39m src/acceptance/us002-student-registration.acceptance.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[33m 2378[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-01 sends a valid student registration and it is accepted [33m 571[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-08 reports the missing consent and shows no confirmation [33m 392[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-10 offers students every active option, the same as the external form [33m 347[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m8 passed[39m[22m[90m (8)[39m
+[2m      Tests [22m [1m[32m67 passed[39m[22m[90m (67)[39m
+[2m   Start at [22m 14:57:01
+[2m   Duration [22m 5.73s[2m (transform 537ms, setup 0ms, collect 4.40s, tests 7.75s, environment 13.92s, prepare 2.13s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 94.67% ( 604/638 )
+Branches     : 89.41% ( 169/189 )
+Functions    : 97.77% ( 44/45 )
+Lines        : 94.67% ( 604/638 )
+================================================================================

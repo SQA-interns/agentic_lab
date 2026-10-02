@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/registration.e2e.spec.ts:40:1 › AC-001-01 AC-003-01 AC-004-01 AC-006-01 AC-007-01 AC-007-02 AC-008-01 AC-008-02 AC-008-05 external registration with Slovenian characters reaches the confirmation, both emails, the JSON copy and the export (845ms)
+  ✓  2 [chromium] › e2e/registration.e2e.spec.ts:113:1 › AC-002-01 AC-004-01 AC-006-01 AC-008-01 student registration reaches the confirmation, the email and the export (575ms)
+  ✓  3 [chromium] › e2e/registration.e2e.spec.ts:152:1 › AC-001-03 AC-004-02 AC-006-02 a registration with an empty required field is not accepted and sends no email (1.9s)
+
+  3 passed (5.4s)

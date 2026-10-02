@@ -1,0 +1,202 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< si.konferenca:registration >---------------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration ---
+[INFO] argLine set to -javaagent:C:\\Users\\tanej\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\tanej\\Documents\\LAB\\agentic_lab\\02_output\\backend\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ registration ---
+[INFO] 
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ registration ---
+[INFO] Replacing main artifact C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend\target\registration-0.1.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend\target\registration-0.1.0.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.910 s
+[INFO] Finished at: 2026-10-02T14:53:06+02:00
+[INFO] ------------------------------------------------------------------------
+ Image registration-backend Building 
+ Image registration-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.11kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 666B 0.0s done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 750B 0.0s done
+#3 DONE 0.0s
+
+#4 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#4 DONE 0.1s
+
+#5 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#5 ...
+
+#6 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#6 DONE 1.0s
+
+#7 [frontend internal] load .dockerignore
+#7 transferring context: 123B done
+#7 DONE 0.0s
+
+#8 [frontend build 1/7] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#8 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.0s done
+#8 DONE 0.0s
+
+#9 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#9 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.0s done
+#9 DONE 0.0s
+
+#10 [frontend internal] load build context
+#10 transferring context: 15.20kB done
+#10 DONE 0.0s
+
+#11 [frontend build 2/7] WORKDIR /app
+#11 CACHED
+
+#12 [frontend build 3/7] COPY package.json package-lock.json ./
+#12 CACHED
+
+#13 [frontend build 4/7] RUN npm ci --no-audit --no-fund
+#13 CACHED
+
+#14 [frontend build 5/7] COPY index.html tsconfig.json vite.config.ts ./
+#14 CACHED
+
+#15 [frontend build 6/7] COPY src ./src
+#15 DONE 0.1s
+
+#5 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#5 DONE 1.2s
+
+#16 [frontend build 7/7] RUN npx vite build
+#16 ...
+
+#17 [backend internal] load .dockerignore
+#17 transferring context: 115B done
+#17 DONE 0.0s
+
+#18 [backend internal] load build context
+#18 transferring context: 79B done
+#18 DONE 0.0s
+
+#19 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#19 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.0s done
+#19 DONE 0.0s
+
+#20 [backend 3/4] WORKDIR /app
+#20 CACHED
+
+#21 [backend 2/4] RUN addgroup -S app     && adduser -S -G app app     && mkdir -p /data/registrations     && chown app:app /data/registrations
+#21 CACHED
+
+#22 [backend 4/4] COPY target/registration-0.1.0.jar /app/app.jar
+#22 CACHED
+
+#23 [backend] exporting to image
+#23 exporting layers done
+#23 exporting manifest sha256:3ecb987f4cd519ec90129340455070e998951ee71fd76b658b46c899d6ca2672 done
+#23 exporting config sha256:86b26b47312a3ef11c28a554d1c229a6b70d8a907f91399c4b9fa6dc7d3eaba7 done
+#23 exporting attestation manifest sha256:c6ffe36ef9ed356e0278680c41ddf555600600a406f6dd77d233107173190680 0.0s done
+#23 exporting manifest list sha256:e264a7c7901a71c168ddb2b0ddf4025c91edc3ed126b2a2af5f992d372f17d0e 0.0s done
+#23 naming to docker.io/library/registration-backend:latest done
+#23 unpacking to docker.io/library/registration-backend:latest 0.0s done
+#23 DONE 0.1s
+
+#16 [frontend build 7/7] RUN npx vite build
+#16 ...
+
+#24 [backend] resolving provenance for metadata file
+#24 DONE 0.0s
+
+#16 [frontend build 7/7] RUN npx vite build
+#16 1.969 vite v6.4.3 building for production...
+#16 2.074 transforming...
+#16 3.307 ✓ 34 modules transformed.
+#16 3.507 rendering chunks...
+#16 3.520 computing gzip size...
+#16 3.584 dist/index.html                   0.41 kB │ gzip:  0.27 kB
+#16 3.584 dist/assets/index-D1B-bZ0I.css    1.23 kB │ gzip:  0.58 kB
+#16 3.584 dist/assets/index-BeRwceLJ.js   231.99 kB │ gzip: 72.68 kB
+#16 3.584 ✓ built in 1.57s
+#16 DONE 3.7s
+
+#25 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#25 CACHED
+
+#26 [frontend stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#26 CACHED
+
+#27 [frontend] exporting to image
+#27 exporting layers done
+#27 exporting manifest sha256:8fe19e8f1bfe265d17876dc72dd8c93882cbafc7a4dde9883744271cda328187 done
+#27 exporting config sha256:a3e5a76e5fcc789fbdd9789e569789e818938185d1e41c2394fb9c19537ccbf6 done
+#27 exporting attestation manifest sha256:aa779acab24a1e7b78f58892ba9615ea45fb97686eeba0e26da8817029cbe537 0.0s done
+#27 exporting manifest list sha256:5f41c447c9d8c19d5221c58cf5c82f77bb095e47c801a5001d9803668bfe5b7f 0.0s done
+#27 naming to docker.io/library/registration-frontend:latest done
+#27 unpacking to docker.io/library/registration-frontend:latest 0.0s done
+#27 DONE 0.1s
+
+#28 [frontend] resolving provenance for metadata file
+#28 DONE 0.0s
+ Image registration-backend Built 
+ Image registration-frontend Built 
+ Network registration_default Creating 
+ Network registration_default Creating 
+ Network registration_default Created 
+ Network registration_default Created 
+ Container registration-postgres-1 Creating 
+ Container registration-mailpit-1 Creating 
+ Container registration-mailpit-1 Created 
+ Container registration-postgres-1 Created 
+ Container registration-backend-1 Creating 
+ Container registration-backend-1 Created 
+ Container registration-frontend-1 Creating 
+ Container registration-frontend-1 Created 
+ Container registration-mailpit-1 Starting 
+ Container registration-postgres-1 Starting 
+ Container registration-mailpit-1 Started 
+ Container registration-postgres-1 Started 
+ Container registration-postgres-1 Waiting 
+ Container registration-postgres-1 Healthy 
+ Container registration-backend-1 Starting 
+ Container registration-backend-1 Started 
+ Container registration-backend-1 Waiting 
+ Container registration-backend-1 Healthy 
+ Container registration-frontend-1 Starting 
+ Container registration-frontend-1 Started 
+ Container registration-backend-1 Waiting 
+ Container registration-frontend-1 Waiting 
+ Container registration-postgres-1 Waiting 
+ Container registration-mailpit-1 Waiting 
+ Container registration-backend-1 Healthy 
+ Container registration-mailpit-1 Healthy 
+ Container registration-postgres-1 Healthy 
+ Container registration-frontend-1 Healthy 
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
