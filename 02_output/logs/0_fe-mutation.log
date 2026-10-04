@@ -1,0 +1,20 @@
+[32m22:05:56 (30736) INFO ProjectReader[39m Found 1 of 31 file(s) to be mutated.
+[32m22:05:56 (30736) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
+[32m22:05:56 (30736) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m22:05:58 (30736) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m22:06:00 (30736) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 1 second (net 66.42269999999962 ms, overhead 1509.5773000000004 ms).
+
+All tests/App.test.tsx
+  ✓ App skeleton renders the page heading (killed 1)
+
+Ran 1.00 tests per mutant on average.
+----------|------------------|----------|-----------|------------|----------|----------|
+          | % Mutation score |          |           |            |          |          |
+File      |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------|--------|---------|----------|-----------|------------|----------|----------|
+All files | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+ App.tsx  | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+----------|--------|---------|----------|-----------|------------|----------|----------|
+[32m22:06:02 (30736) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m22:06:02 (30736) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m22:06:02 (30736) INFO MutationTestExecutor[39m Done in 6 seconds.
