@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 1 (requirements), not started
-- Last gate result: phase 0 passed at 2026-10-04T20:09:12Z; every preflight check passes (decisions D-01 to D-05, non-blocking), both components build, all 15 default tools and `e2e` run through `out/scripts/verify.sh`, input manifest written
-- Next step: read `general/phases/1-requirements.md` and write `docs/01_acceptance-criteria.md`
+- Current phase: 2 (design), not started
+- Last gate result: phase 1 passed at 2026-10-04T20:11:19Z; 48 criteria over US-001 to US-008, OQ-01 to OQ-06 decided as D-06 to D-11 (non-blocking). Phase 0 passed at 2026-10-04T20:09:12Z (D-01 to D-05)
+- Next step: read `general/phases/2-design.md` and write `docs/02_specification.md` and `docs/02_contracts/`
 - Waiting for the human on: nothing

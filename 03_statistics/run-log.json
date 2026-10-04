@@ -18,8 +18,8 @@
     {
       "phase": 1,
       "name": "requirements",
-      "start": null,
-      "end": null
+      "start": "2026-10-04T20:09:34Z",
+      "end": "2026-10-04T20:11:19Z"
     },
     {
       "phase": 2,
@@ -78,7 +78,13 @@
     { "id": "D-02", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
     { "id": "D-03", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
     { "id": "D-04", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
-    { "id": "D-05", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" }
+    { "id": "D-05", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
+    { "id": "D-06", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
+    { "id": "D-07", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
+    { "id": "D-08", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
+    { "id": "D-09", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
+    { "id": "D-10", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
+    { "id": "D-11", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" }
   ],
   "humanInterventions": [],
   "codeMetrics": {
