@@ -1,0 +1,13 @@
+8059a8f build: add container images and the local compose stack (NFR-02, NFR-04, SB-11)
+6533aa4 feat: add registration page with options, consent and confirmation (US-001..US-004)
+9d44a34 feat: add frontend API client and field validation (US-001, US-002, NFR-03)
+e814f1d feat: add rate and size limits and startup guards (SR-02, SR-03, SB-06)
+0a2be66 feat: export registrations to Excel behind an organizer token (US-008)
+ff91898 feat: send participant confirmation and organizer notifications (US-006, US-007)
+3342e47 feat: accept registrations over the API with anti-automation check (US-001, US-002, AC-004-01..03)
+d31ad3a feat: validate and store registrations of both types (US-001, US-002)
+49bb0ec feat: store registrations in PostgreSQL and as JSON copies (US-005)
+37a20ab chore: read PMD 7 violation counts in verify.sh
+674ffeb docs: allow Hibernate annotations in the domain layer (D-13, D-14)
+62f39d3 feat: load conference options and serve the form configuration (US-003)
+a3971c6 chore: record the phase 3 gate in progress and run log
