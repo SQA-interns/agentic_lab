@@ -1,0 +1,16 @@
+{
+  "consent": {
+    "id": "personal-data-v1",
+    "text": "I agree that the organizers process my personal data given in this form to organise my attendance at the conference and the activities I selected."
+  },
+  "options": [
+    { "id": "ws-ai", "name": "Delavnica: umetna inteligenca v praksi", "category": "workshop", "active": true },
+    { "id": "ws-security", "name": "Delavnica: varnost spletnih aplikacij", "category": "workshop", "active": true },
+    { "id": "ws-legacy", "name": "Delavnica: arhivirana tema", "category": "workshop", "active": false },
+    { "id": "ev-reception", "name": "Sprejem dobrodošlice", "category": "event", "active": true },
+    { "id": "ev-city-tour", "name": "Ogled mesta Ljubljana", "category": "event", "active": true },
+    { "id": "meal-lunch-day1", "name": "Kosilo, 1. dan", "category": "meal", "active": true },
+    { "id": "meal-dinner", "name": "Večerja za udeležence", "category": "meal", "active": true },
+    { "id": "other-certificate", "name": "Potrdilo o udeležbi", "category": "other", "active": true }
+  ]
+}
