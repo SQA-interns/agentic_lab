@@ -2,7 +2,7 @@
 
 > Owner: Team lead · Agent: read-only
 
-Template version: **tanej-1.0** (derived from template 1.2). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
+Template version: **tanej-1.1** (derived from template 1.2; changes since tanej-1.0 at the end of this file). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
 
 Humans start here; agents start at `AGENTS.md`.
 
@@ -12,7 +12,8 @@ Humans start here; agents start at `AGENTS.md`.
 |---|---|---|
 | `01_input/00_general/rules.md` | Rules of every phase: decisions, commits, time, output size, secrets | all |
 | `01_input/00_general/phases/` | One card per phase: what to read, do, write, the gate, the commit unit | one each |
-| `01_input/00_general/standards.md` | Lookup tables: engineering standards, tests, security baseline, severity scale, definition of done | as a card names |
+| `01_input/00_general/standards.md` | Lookup tables: engineering standards, tests and their measures, security baseline, severity scale, definition of done | as a card names |
+| `01_input/00_general/tools/` | Scripts the cards call; `usage-from-transcript.mjs` counts tokens, calls and cost | 7 |
 | `01_input/01_project/00_setup/` | Run configuration, secrets list, tech stack, environments | 0 |
 | `01_input/01_project/01_requirements/` | Stories, business rules, scope, open questions | 1 |
 | `01_input/01_project/02_design/` | Architecture, security requirements, quality requirements | 2 |
@@ -21,10 +22,13 @@ Humans start here; agents start at `AGENTS.md`.
 
 ## Running
 
-1. Fill section 1, copy `secrets.env.example` to `.env` in the repository root and fill it, commit the inputs.
-2. Start the agent in the repository root with: "Read `AGENTS.md` and start."
-3. When the agent asks a blocking question it ends its turn. Answer in the same session if you are back within the hour. Otherwise start a new session with: "Read `AGENTS.md` and resume; answer to D-nn: …". A new session has its own transcript; the post-run usage session must count both.
-4. After the run, review the non-blocking decisions and suppressed false positives listed in `02_output/docs/release-notes.md`.
+1. Fill section 1 (including the prices in `03_statistics/usage.md`), copy `secrets.env.example` to `.env` in the repository root and fill it, commit the inputs. Start each run on its own branch from the template commit, so `02_output/` holds only the skeletons.
+2. Install the platform versions of `tech-stack.md` on the host (JDK, Node.js with npm, Docker); another version costs a decision record and may break a tool.
+3. Use a permission mode that asks you, not one that silently refuses: the agent checks `.env` with fixed `sed` commands (phase 0) and passes `.env` to tools without showing it. Approve those commands; never paste a secret into the conversation.
+4. Start the agent in the repository root with: "Read `AGENTS.md` and start."
+5. When the agent asks a blocking question it ends its turn. Answer in your own words, for example "D-16: 1". If you paste a prepared answer, write one line of your own in the same message, such as "This is my answer, follow it", otherwise the agent asks you to confirm it. Answer in the same session if you are back within the hour. Otherwise start a new session with: "Read `AGENTS.md` and resume; answer to D-nn: …"; that session has its own transcript, so pass both to the usage script (`--transcript` twice).
+6. At the end of phase 7 the agent fills tokens, calls and cost in `run-log.json`. Right after the run, fill the usage-panel values in `03_statistics/usage.md` (API time, approval prompts, cost shown); only a human can read them.
+7. Review the non-blocking decisions and suppressed false positives listed in `02_output/docs/release-notes.md`, and do the manual tests listed there.
 
 ## 1. Fill in (human, for each project or run)
 
@@ -40,12 +44,12 @@ Humans start here; agents start at `AGENTS.md`.
 | `01_input/01_project/02_design/architecture.md` | components, constraints, interfaces |
 | `01_input/01_project/02_design/security-requirements.md` | security level, authentication, personal data, project requirements |
 | `01_input/01_project/02_design/quality-requirements.md` | non-functional requirements, thresholds, extra done criteria |
-| `03_statistics/usage.md` | prices before the post-run session; usage-panel values after the run |
+| `03_statistics/usage.md` | prices with their date before the run; usage-panel values right after the run |
 
 ## 2. Do not touch (change only when revising the template itself)
 
 - `AGENTS.md`, `README.md`
-- everything in `01_input/00_general/`: `rules.md`, `standards.md`, `phases/0-preflight.md` … `phases/7-release.md`
+- everything in `01_input/00_general/`: `rules.md`, `standards.md`, `phases/0-preflight.md` … `phases/7-release.md`, `tools/usage-from-transcript.mjs`
 - `03_statistics/metrics.md`, `03_statistics/run-log.template.json`
 
 ## 3. Written by the agent (read, do not edit)
@@ -64,4 +68,21 @@ Any change to sections 1 and 2 during a run is detected in phase 6 by comparing 
 - A rule that holds in every phase goes in `rules.md`; a step of one phase goes on that phase's card; a table that is looked up by ID goes in `standards.md`. State each rule once.
 - A phase card is self-sufficient: an agent that has read `AGENTS.md`, `rules.md` and the card knows everything to read for that phase.
 - Versions appear only in `tech-stack.md`.
-- `03_statistics/` is shared with the other templates and is not changed here, so that runs stay comparable.
+- `03_statistics/` is shared with the other templates and is not changed here, so that runs stay comparable; only `usage.md` is filled per run. The usage script implements `metrics.md` section 2 as written, so another template can run it on its own transcript and get comparable numbers.
+
+## Changes since tanej-1.0
+
+Taken from run tanej-01 and from the v002 run of the other template:
+
+| Change | Where | Reason |
+|---|---|---|
+| Tokens, calls and cost filled at the end of phase 7 by a script; prices filled before the run | `tools/usage-from-transcript.mjs`, `phases/7-release.md`, `03_statistics/usage.md` | usage stayed empty in both runs |
+| Measures table: test counts per level, coverage per component and level, mutation scope | `standards.md`, "Tests" | from the other template; tanej-01 recorded coverage only combined |
+| Mutation testing and survivor classification move to phase 5 | `phases/5-unit-tests.md`, `phases/6-verify.md` | tanej-01 found weak tests only in phase 6 and needed a fix loop there |
+| DoD-08 and DoD-09 evidenced by phase 7 | `phases/6-verify.md`, `phases/7-release.md` | the phase 6 gate asked for files only phase 7 writes (decision D-19 in tanej-01) |
+| Scanners run over the contracts in phase 2 | `phases/2-design.md` | a design finding in phase 3 held up the test freeze (D-16 in tanej-01) |
+| Harness helpers exercised with probe tests before the freeze | `phases/3-test-design.md` | a wrong frozen test needed a human decision in the other run (its D-12) |
+| Permission denials are blocking; humans answer in their own words | `rules.md`, this README, "Running" | tanej-01 lost about 13 minutes in phase 0 to a refused `.env` check and a pasted answer |
+| Files only through the file tools; commit size checked before each commit | `rules.md` | about six failed builds from shell-written files and nine oversized commits in tanej-01 |
+| Secret scan limited to the current branch; no generated credentials in logs; Windows path handling for Docker | `standards.md` SB-09, `phases/0-preflight.md` | decisions D-04 and D-17 and several failed tool runs in tanej-01 |
+| Development tools listed with exact versions; OSS Index option set | `01_project/00_setup/tech-stack.md` | decisions D-06, D-14 and D-15 in tanej-01 |
