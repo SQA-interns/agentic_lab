@@ -1,0 +1,27 @@
+== redocly lint ==
+No configurations were provided -- using built in recommended configuration by default.
+
+validating 02_contracts/recaptcha-siteverify.openapi.yaml...
+02_contracts/recaptcha-siteverify.openapi.yaml: validated in 93ms
+
+No configurations were provided -- using built in recommended configuration by default.
+
+validating 02_contracts/registration-api.openapi.yaml...
+02_contracts/registration-api.openapi.yaml: validated in 74ms
+
+Woohoo! Your API descriptions are valid. 🎉
+
+== ajv ==
+ok    conference-options.schema.json compiles
+ok    email-message.schema.json compiles
+ok    email-message.schema.json example 1
+ok    email-message.schema.json example 2
+ok    registration-copy.schema.json compiles
+ok    registration-copy.schema.json example 1
+ok    ui-contract.schema.json compiles
+ok    conference-options.example.json against conference-options.schema.json
+ok    registration-form.ui.json against ui-contract.schema.json
+all valid
+== psql ==
+-- registration-storage.sql
+ok    registration-storage.sql applies
