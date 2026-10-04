@@ -104,7 +104,7 @@ tooling:
   - { id: ajv, ecosystem: npm, version: 8.20.0, purpose: contract-validation (JSON Schema 2020-12), component: frontend, source: npm }
   - { id: "@stryker-mutator/core", ecosystem: npm, version: 10.0.0, purpose: mutation, component: frontend, source: npm }
   - { id: "@stryker-mutator/vitest-runner", ecosystem: npm, version: 10.0.0, purpose: mutation, component: frontend, source: npm }
-  - { id: jscpd, ecosystem: npm, version: 4.3.0, purpose: duplication, component: frontend, source: npm }
+  - { id: jscpd, ecosystem: npm, version: 5.4.0, purpose: duplication (4.3.0 pulls braces 3.0.3 with a High advisory), component: frontend, source: npm }
   - { id: npm audit (npm 11.6.2), ecosystem: npm, version: 11.6.2, purpose: dependency-scan, component: frontend, source: npm }
   # all components (run as containers, nothing installed on the host)
   - { id: semgrep/semgrep, ecosystem: container, version: 1.177.0, purpose: static-analysis (security rules), component: all, source: docker-hub }

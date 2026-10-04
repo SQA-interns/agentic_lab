@@ -6,7 +6,7 @@ The only file a human fills before starting the agent; the agent checks everythi
 
 - Model: claude-opus-5-5
 - Effort: medium
-- Template version: tanej-1.1
-- Run ID: tanej-02_conference-registration_opus5.5_sdd_template-tanej-1.1
+- Template version: tanej-1.2
+- Run ID: tanej-03_conference-registration_opus5.5_sdd_template-tanej-1.2
 - Unattended: no (a human answers blocking decisions; `yes` would apply the proposed defaults, see "Unattended runs" in `general/rules.md`)
 - Starting commit: git HEAD when the agent starts (recorded in phase 0; it must contain these filled inputs)
