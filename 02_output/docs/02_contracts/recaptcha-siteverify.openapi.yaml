@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Google reCAPTCHA v2 verification (as used by the backend)
+  version: 1.0.0
+  description: >
+    The external call the backend makes for every registration outside test mode (SR-01).
+    The base URL is configuration (RECAPTCHA_VERIFY_URL) so tests can point it at a mock that
+    implements this contract (DoD-P05). Only the fields the backend reads are listed.
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: https://www.google.com/recaptcha/api
+security: []
+paths:
+  /siteverify:
+    post:
+      operationId: siteVerify
+      summary: Verify a reCAPTCHA v2 response token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [secret, response]
+              properties:
+                secret:
+                  type: string
+                  description: RECAPTCHA_SECRET_KEY
+                response:
+                  type: string
+                  description: Token submitted with the registration
+                remoteip:
+                  type: string
+                  description: Client address as seen by the backend (optional)
+      responses:
+        '200':
+          description: >
+            Verification result. The backend accepts the token only when success is true.
+            Any other status, a timeout or an unreadable body counts as a failed check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteVerifyResponse'
+        4XX:
+          description: Rejected request; the backend counts it as a failed check
+        5XX:
+          description: Service error; the backend counts it as a failed check
+components:
+  schemas:
+    SiteVerifyResponse:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+        challenge_ts:
+          type: string
+          format: date-time
+        hostname:
+          type: string
+        error-codes:
+          type: array
+          items:
+            type: string
+      examples:
+        - success: true
+          challenge_ts: '2026-10-04T20:00:00Z'
+          hostname: registration.example.si
+        - success: false
+          error-codes: [invalid-input-response]
