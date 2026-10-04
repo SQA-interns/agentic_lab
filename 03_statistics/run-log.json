@@ -24,8 +24,8 @@
     {
       "phase": 2,
       "name": "design",
-      "start": null,
-      "end": null
+      "start": "2026-10-04T20:11:38Z",
+      "end": "2026-10-04T20:24:28Z"
     },
     {
       "phase": 3,
@@ -84,7 +84,8 @@
     { "id": "D-08", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
     { "id": "D-09", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
     { "id": "D-10", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-11", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" }
+    { "id": "D-11", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
+    { "id": "D-12", "type": "non-blocking", "start": "2026-10-04T20:24:12Z", "end": "2026-10-04T20:24:12Z" }
   ],
   "humanInterventions": [],
   "codeMetrics": {
