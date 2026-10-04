@@ -17,5 +17,6 @@
 | D-09 | 2026-10-04T20:10:23Z | 1 | OQ-04 unanswered (options per category) | Zero or more distinct active options per category; selecting the same option twice is rejected; no upper limit, so no legitimate participant is locked out (AC-001-09, AC-001-10) | pending review |
 | D-10 | 2026-10-04T20:10:23Z | 1 | OQ-05 unanswered (second registration with the same email) | Rejected: one registration per email address across both types, compared case-insensitively after trimming; the participant is told the address is already registered and to contact the organizers (AC-001-14, AC-002-09) | pending review |
 | D-11 | 2026-10-04T20:10:23Z | 1 | OQ-06 unanswered (retention of registrations and JSON copies); SB-13 | The application never deletes registrations or JSON copies by itself (scope priority 1); retention is an operator procedure: the release notes state the purpose and ask the organizer to set the period and delete both copies by hand; no acceptance criterion | pending review |
+| D-12 | 2026-10-04T20:24:12Z | 2 | UI language not stated in any input; NFR-01 only requires Slovenian characters to survive | UI text in English (`registration-form.ui.json`, `lang="en"`); option names and consent wording come from configuration in any language | pending review |
 
 ## Blocking
