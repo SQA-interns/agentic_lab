@@ -87,7 +87,7 @@ tooling:
   - { id: org.apache.maven.plugins:maven-pmd-plugin, ecosystem: maven, version: 3.26.0, purpose: lint, static-analysis, duplication (CPD), component: backend, source: maven-central }
   - { id: org.jacoco:jacoco-maven-plugin, ecosystem: maven, version: 0.8.12, purpose: coverage, component: backend, source: maven-central }
   - { id: org.pitest:pitest-maven, ecosystem: maven, version: 1.30.0, purpose: mutation (with org.pitest:pitest-junit5-plugin 1.2.3), component: backend, source: maven-central }
-  - { id: org.owasp:dependency-check-maven, ecosystem: maven, version: 12.1.0, purpose: dependency-scan (needs NVD_API_KEY), component: backend, source: maven-central }
+  - { id: org.owasp:dependency-check-maven, ecosystem: maven, version: 12.1.0, purpose: dependency-scan (needs NVD_API_KEY), component: backend, source: maven-central, options: "ossindexAnalyzerEnabled=false (OSS Index needs credentials that secrets.env.example does not list)" }
   # frontend
   - { id: vite, ecosystem: npm, version: 6.4.3, purpose: build, component: frontend, source: npm }
   - { id: typescript, ecosystem: npm, version: 5.9.3, purpose: type-check (tsc --noEmit), component: frontend, source: npm }
@@ -99,7 +99,9 @@ tooling:
   - { id: prettier, ecosystem: npm, version: 3.9.9, purpose: format, component: frontend, source: npm }
   - { id: vitest, ecosystem: npm, version: 3.2.7, purpose: test (unit, component), component: frontend, source: npm }
   - { id: "@vitest/coverage-v8", ecosystem: npm, version: 3.2.7, purpose: coverage, component: frontend, source: npm }
-  - { id: "@playwright/test", ecosystem: npm, version: 1.63.0, purpose: test (end-to-end, with its bundled Chromium), component: frontend, source: npm }
+  - { id: "@playwright/test", ecosystem: npm, version: 1.63.0, purpose: test (end-to-end; runs in the Playwright container below, no browser on the host), component: frontend, source: npm }
+  - { id: "@types/node", ecosystem: npm, version: 24.19.1, purpose: type-check (Node APIs in end-to-end helpers and configuration), component: frontend, source: npm }
+  - { id: ajv, ecosystem: npm, version: 8.20.0, purpose: contract-validation (JSON Schema 2020-12), component: frontend, source: npm }
   - { id: "@stryker-mutator/core", ecosystem: npm, version: 10.0.0, purpose: mutation, component: frontend, source: npm }
   - { id: "@stryker-mutator/vitest-runner", ecosystem: npm, version: 10.0.0, purpose: mutation, component: frontend, source: npm }
   - { id: jscpd, ecosystem: npm, version: 4.3.0, purpose: duplication, component: frontend, source: npm }
@@ -108,4 +110,6 @@ tooling:
   - { id: semgrep/semgrep, ecosystem: container, version: 1.177.0, purpose: static-analysis (security rules), component: all, source: docker-hub }
   - { id: zricethezav/gitleaks, ecosystem: container, version: v8.30.1, purpose: secret-scan, component: all, source: docker-hub }
   - { id: aldanial/cloc, ecosystem: container, version: "2.10", purpose: code-metrics, component: all, source: docker-hub }
+  - { id: redocly/cli, ecosystem: container, version: 2.57.0, purpose: contract-validation (OpenAPI lint), component: all, source: docker-hub }
+  - { id: mcr.microsoft.com/playwright, ecosystem: container, version: v1.63.0-noble, purpose: test (end-to-end runner with the browsers of @playwright/test 1.63.0), component: frontend, source: mcr.microsoft.com }
 ```
