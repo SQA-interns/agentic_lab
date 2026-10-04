@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "email-message.schema.json",
+  "title": "Emails sent by the backend over SMTP",
+  "description": "Normalised view of one sent message (as read back from the mail catcher). Bodies are text/plain UTF-8 only, so user input cannot add markup; user input never appears in a header, so it cannot inject one (SR-05). Sent after storage, one message per recipient (D-08).",
+  "type": "object",
+  "required": ["kind", "from", "to", "subject", "text", "attachments"],
+  "properties": {
+    "kind": { "enum": ["participant-confirmation", "organizer-notification"] },
+    "from": { "type": "string", "description": "MAIL_FROM" },
+    "to": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": { "type": "string" }
+    },
+    "subject": { "type": "string" },
+    "text": { "type": "string", "minLength": 1 },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename", "contentType"],
+        "properties": {
+          "filename": { "type": "string", "pattern": "^registration-[0-9a-f-]{36}\\.json$" },
+          "contentType": { "const": "application/json" }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "description": "US-006: to the submitted address; lists the submitted details and selected option names; no attachment",
+      "properties": {
+        "kind": { "const": "participant-confirmation" },
+        "subject": { "type": "string", "pattern": "^Registration confirmed: .+$" },
+        "attachments": { "type": "array", "maxItems": 0 }
+      }
+    },
+    {
+      "description": "US-007: to one ORGANIZER_EMAILS address; lists the submitted data; attaches the raw JSON copy, byte-identical to the stored file",
+      "properties": {
+        "kind": { "const": "organizer-notification" },
+        "subject": { "type": "string", "pattern": "^New registration \\((external participant|student)\\): .+$" },
+        "attachments": { "type": "array", "minItems": 1, "maxItems": 1 }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "kind": "participant-confirmation",
+      "from": "registrations@example.si",
+      "to": ["spela.zagar@example.si"],
+      "subject": "Registration confirmed: Konferenca 2026",
+      "text": "Dear Špela Žagar,\n\nyour registration for Konferenca 2026 was received.\n...",
+      "attachments": []
+    },
+    {
+      "kind": "organizer-notification",
+      "from": "registrations@example.si",
+      "to": ["organizer@example.si"],
+      "subject": "New registration (external participant): Konferenca 2026",
+      "text": "Registration 0b9a3c4e-6a8f-4f3e-9d43-2a1f6c5e7b10\nType: external participant\n...",
+      "attachments": [{ "filename": "registration-0b9a3c4e-6a8f-4f3e-9d43-2a1f6c5e7b10.json", "contentType": "application/json" }]
+    }
+  ]
+}
