@@ -1,0 +1,12 @@
+# Defaults allowed only on the local stack (environments.md): database, mail catcher, options.
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://postgres:5432/registration}
+    username: ${DB_USERNAME:registration}
+
+app:
+  smtp:
+    host: ${SMTP_HOST:mailpit}
+    port: ${SMTP_PORT:1025}
+    starttls: ${SMTP_STARTTLS:false}
+  options-file: ${CONFERENCE_OPTIONS_FILE:classpath:contracts/conference-options.example.json}

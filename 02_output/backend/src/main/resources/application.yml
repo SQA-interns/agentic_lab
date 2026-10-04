@@ -1,14 +1,33 @@
+# Production defaults. Values that environments.md allows to default only locally or in tests
+# are in application-local.yml and application-test.yml; secrets have no default.
 spring:
   application:
     name: registration-backend
+  profiles:
+    default: production
   datasource:
-    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5432/registration}
-    username: ${DB_USERNAME:registration}
-    password: ${POSTGRES_PASSWORD}
+    url: ${DB_URL:}
+    username: ${DB_USERNAME:}
+    password: ${POSTGRES_PASSWORD:}
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+  flyway:
+    locations: classpath:si/konferenca/registration/infrastructure/migration
+  mvc:
+    problemdetails:
+      enabled: false
+
+server:
+  forward-headers-strategy: native
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-exception: false
+    include-binding-errors: never
+    whitelabel:
+      enabled: false
 
 management:
   endpoints:
@@ -19,3 +38,36 @@ management:
     health:
       probes:
         enabled: true
+      show-details: never
+  health:
+    mail:
+      enabled: false
+
+app:
+  conference-name: ${CONFERENCE_NAME:Conference}
+  mail-from: ${MAIL_FROM:registrations@localhost}
+  smtp:
+    host: ${SMTP_HOST:}
+    port: ${SMTP_PORT:587}
+    starttls: ${SMTP_STARTTLS:true}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+  options-file: ${CONFERENCE_OPTIONS_FILE:}
+  json-copy-dir: ${JSON_COPY_DIR:/data/json-copies}
+  captcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:false}
+    site-key: ${RECAPTCHA_SITE_KEY:}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  organizer:
+    username: ${ORGANIZER_USERNAME:}
+    password: ${ORGANIZER_PASSWORD:}
+    emails: ${ORGANIZER_EMAILS:}
+    https-only: ${ORGANIZER_HTTPS_ONLY:true}
+  cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:}
+  rate-limit:
+    registrations: ${RATE_LIMIT_REGISTRATIONS:10}
+    tokens: ${RATE_LIMIT_TOKENS:5}
+    exports: ${RATE_LIMIT_EXPORTS:10}
+    form-config: ${RATE_LIMIT_FORM_CONFIG:60}
+  max-request-bytes: ${MAX_REQUEST_BYTES:16384}

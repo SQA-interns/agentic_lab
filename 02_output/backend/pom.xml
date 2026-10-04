@@ -139,6 +139,21 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <!-- Contracts shipped unchanged: the storage SQL (run by the V1 Flyway migration) and the
+           default options file for the local and test environments. -->
+      <resource>
+        <directory>../docs/02_contracts</directory>
+        <targetPath>contracts</targetPath>
+        <includes>
+          <include>registration-storage.sql</include>
+          <include>conference-options.example.json</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
