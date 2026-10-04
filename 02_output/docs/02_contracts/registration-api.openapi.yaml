@@ -132,7 +132,15 @@ paths:
         - organizerToken: []
       responses:
         '200':
-          description: Workbook with a heading row and one row per registration, oldest first
+          description: >
+            Workbook with one sheet "Registrations": row 1 holds the headings below in this order,
+            then one row per accepted registration, oldest first. Every cell is a string cell.
+            Headings: Registration ID | Type | Accepted at (UTC) | First name | Last name | Email |
+            Organization / institution | Study institution | Study programme | Student ID | Options |
+            Consent | Consent given at (UTC).
+            Type is "External participant" or "Student"; fields of the other type are empty;
+            Options lists "<name> [<id>]" joined by "; " in the order selected; times are ISO-8601 UTC
+            (for example 2026-10-04T20:15:30.123Z).
           headers:
             Content-Disposition:
               description: attachment; filename="registrations.xlsx"
