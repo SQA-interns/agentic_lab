@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Written to <JSON_COPY_DIR>/<acceptedAt as yyyyMMdd'T'HHmmssSSS'Z'>_<id>.json before the success response (BR-07, AR-05). The organizer email attaches the same bytes as registration-<id>.json (US-007). UTF-8, no byte order mark.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "type", "acceptedAt", "participant", "options", "consent"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "acceptedAt": { "type": "string", "format": "date-time" },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "$ref": "#/$defs/text100" },
+        "lastName": { "$ref": "#/$defs/text100" },
+        "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+        "organization": { "$ref": "#/$defs/text200" },
+        "studyInstitution": { "$ref": "#/$defs/text200" },
+        "studyProgramme": { "$ref": "#/$defs/text200" },
+        "studentId": { "type": "string", "minLength": 1, "maxLength": 50 }
+      }
+    },
+    "options": {
+      "type": "array",
+      "description": "Selected options with the name and category they had when the registration was accepted",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["workshop", "event", "meal", "other"] }
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "givenAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "givenAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "type": "object",
+            "required": ["organization"],
+            "not": {
+              "anyOf": [
+                { "required": ["studyInstitution"] },
+                { "required": ["studyProgramme"] },
+                { "required": ["studentId"] }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "type": "object",
+            "required": ["studyInstitution", "studyProgramme", "studentId"],
+            "not": { "required": ["organization"] }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "text100": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "text200": { "type": "string", "minLength": 1, "maxLength": 200 }
+  },
+  "examples": [
+    {
+      "schemaVersion": 1,
+      "id": "0b9a3c4e-6a8f-4f3e-9d43-2a1f6c5e7b10",
+      "type": "EXTERNAL",
+      "acceptedAt": "2026-10-04T20:15:30.123Z",
+      "participant": {
+        "firstName": "Špela",
+        "lastName": "Žagar",
+        "email": "spela.zagar@example.si",
+        "organization": "Inštitut Jožef Stefan"
+      },
+      "options": [{ "id": "ws-ai", "name": "Delavnica umetne inteligence", "category": "workshop" }],
+      "consent": {
+        "id": "personal-data-v1",
+        "text": "I agree to the processing of my personal data for organising my attendance.",
+        "givenAt": "2026-10-04T20:15:30.123Z"
+      }
+    }
+  ]
+}
