@@ -11,6 +11,7 @@ import si.konferenca.registration.application.JsonCopyStore;
 import si.konferenca.registration.application.OptionsCatalog;
 import si.konferenca.registration.application.PublicSettings;
 import si.konferenca.registration.application.RegistrationJson;
+import si.konferenca.registration.application.RegistrationNotifier;
 import si.konferenca.registration.application.RegistrationService;
 import si.konferenca.registration.domain.RegistrationRepository;
 import si.konferenca.registration.infrastructure.FileJsonCopyStore;
@@ -54,10 +55,18 @@ public class BackendConfig {
       CaptchaVerifier captcha,
       OptionsCatalog catalog,
       JsonMapper mapper,
+      RegistrationNotifier notifier,
       TransactionTemplate transaction,
       Clock clock) {
     return new RegistrationService(
-        repository, copies, captcha, catalog, new RegistrationJson(mapper), transaction, clock);
+        repository,
+        copies,
+        captcha,
+        catalog,
+        new RegistrationJson(mapper),
+        notifier,
+        transaction,
+        clock);
   }
 
   @Bean

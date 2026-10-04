@@ -29,6 +29,7 @@ public class RegistrationService {
   private final CaptchaVerifier captcha;
   private final OptionsCatalog catalog;
   private final RegistrationJson json;
+  private final RegistrationNotifier notifier;
   private final TransactionTemplate transaction;
   private final Clock clock;
 
@@ -38,6 +39,7 @@ public class RegistrationService {
       CaptchaVerifier captcha,
       OptionsCatalog catalog,
       RegistrationJson json,
+      RegistrationNotifier notifier,
       TransactionTemplate transaction,
       Clock clock) {
     this.repository = repository;
@@ -45,6 +47,7 @@ public class RegistrationService {
     this.captcha = captcha;
     this.catalog = catalog;
     this.json = json;
+    this.notifier = notifier;
     this.transaction = transaction;
     this.clock = clock;
   }
@@ -81,7 +84,20 @@ public class RegistrationService {
     byte[] copy = json.toJson(registration);
     store(registration, copy);
     LOG.info("registration {} accepted", registration.id());
+    notifyQuietly(registration, copy);
     return new Accepted(registration.id(), registration.type(), registration.acceptedAt());
+  }
+
+  /** Emails come after storage; their failure never changes the outcome (D-08). */
+  private void notifyQuietly(Registration registration, byte[] copy) {
+    try {
+      notifier.registrationAccepted(registration, copy);
+    } catch (RuntimeException e) {
+      LOG.warn(
+          "notifications for registration {} failed: {}",
+          registration.id(),
+          e.getClass().getSimpleName());
+    }
   }
 
   private void store(Registration registration, byte[] copy) {
