@@ -33,7 +33,7 @@ Layered, packages under `si.konferenca.registration`. Reason: four small use cas
 |---|---|---|---|
 | api | `..api..` | controllers, request/response DTOs, exception handler, rate-limit and size filters | application, domain |
 | application | `..application..` | use-case services, validation rules, ports `CaptchaVerifier`, `JsonCopyStore`, `RegistrationNotifier`, `RegistrationExporter`, `OptionsCatalog`, `OrganizerTokens` | domain |
-| domain | `..domain..` | JPA entities `Registration`, `RegistrationOption`, Spring Data repository, enums | `jakarta.persistence`, `org.springframework.data` only |
+| domain | `..domain..` | JPA entity `Registration` with embedded `SelectedOption`s, Spring Data repository, enums | `jakarta.persistence`, `org.hibernate.annotations` (order column type, D-13), `org.springframework.data` only |
 | infrastructure | `..infrastructure..` | port adapters: reCAPTCHA client, JSON file store, mail sender, Excel writer, options file loader | application, domain |
 | config | `..config..` | Spring configuration, properties, security filter chain, startup guards | all |
 
