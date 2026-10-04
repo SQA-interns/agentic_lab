@@ -86,8 +86,8 @@ run_tool() {
       (cd "$BE" && ./mvnw -B -ntp compile spotless:check pmd:check pmd:cpd-check spotbugs:check) >"$log" 2>&1 || rc=$?
       local bugs pmd cpd
       bugs="$(grep -oE 'Total bugs: [0-9]+' "$log" | tail -n 1 | grep -oE '[0-9]+')"
-      pmd="$(grep -oE 'You have [0-9]+ PMD violation' "$log" | grep -oE '[0-9]+')"
-      cpd="$(grep -oE 'You have [0-9]+ CPD duplication' "$log" | grep -oE '[0-9]+')"
+      pmd="$(grep -oE '(You have|has found) [0-9]+ (PMD )?violation' "$log" | grep -oE '[0-9]+' | head -n 1)"
+      cpd="$(grep -oE '(You have|has found) [0-9]+ (CPD )?duplication' "$log" | grep -oE '[0-9]+' | head -n 1)"
       summary="spotless $(grep -q 'spotless.*violations' "$log" && echo fail || echo ok), pmd ${pmd:-0}, cpd ${cpd:-0}, spotbugs ${bugs:-0}"
       ;;
     be-mutation)
