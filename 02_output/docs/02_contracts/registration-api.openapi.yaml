@@ -1,0 +1,424 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >
+    REST interface between the frontend (or an organizer) and the backend (AR-01).
+    Every error body is application/problem+json (RFC 9457) and never contains internal details (ES-07).
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: /api
+security: []
+tags:
+  - name: registration
+    description: Public participant operations
+  - name: organizer
+    description: Operations that need organizer access (BR-08)
+paths:
+  /form-config:
+    get:
+      tags: [registration]
+      operationId: getFormConfig
+      summary: Active options, consent wording and anti-automation settings for the forms
+      responses:
+        '200':
+          description: Form configuration; inactive options are never listed (BR-04)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormConfig'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /registrations:
+    post:
+      tags: [registration]
+      operationId: createRegistration
+      summary: Submit a registration
+      description: >
+        The response is sent only after the database row and the JSON copy are both written (AR-05).
+        Emails are sent afterwards; their failure does not change the response (D-08).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '201':
+          description: Registration accepted and stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationAccepted'
+        '400':
+          description: Malformed body, field validation errors or failed anti-automation check; nothing stored
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: The email address is already registered (D-10); nothing stored
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          description: Content type is not application/json
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '503':
+          description: Storage unavailable; nothing kept, the participant may retry (AC-004-03, AC-005-03)
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /organizer/token:
+    post:
+      tags: [organizer]
+      operationId: createOrganizerToken
+      summary: Exchange the organizer credentials for a short-lived access token
+      description: >
+        The password is sent once per session and compared with a salted slow hash (SB-03).
+        Accepted only over HTTPS or from localhost (SR-06); rate limited (SB-06, SR-03).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerCredentials'
+      responses:
+        '200':
+          description: Token issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerToken'
+        '400':
+          description: Malformed body
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '401':
+          description: Wrong credentials; the response does not say which part was wrong
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '403':
+          description: Sent over plain HTTP from a non-local client (SR-06); credentials not evaluated
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /organizer/registrations/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Excel workbook of all accepted registrations
+      security:
+        - organizerToken: []
+      responses:
+        '200':
+          description: Workbook with a heading row and one row per registration, oldest first
+          headers:
+            Content-Disposition:
+              description: attachment; filename="registrations.xlsx"
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentMediaType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        '401':
+          description: Missing, unknown or expired token; no data returned
+          headers:
+            WWW-Authenticate:
+              description: Bearer
+              schema:
+                type: string
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '403':
+          description: Token sent over plain HTTP from a non-local client (SR-06); token not evaluated
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    organizerToken:
+      type: http
+      scheme: bearer
+      description: >
+        Opaque random token from createOrganizerToken, valid for 15 minutes, kept only as a hash in
+        backend memory; accepted only over HTTPS or from localhost (SR-06)
+  responses:
+    RateLimited:
+      description: Too many requests from this client (SR-03)
+      headers:
+        Retry-After:
+          description: Seconds until the next request is allowed
+          schema:
+            type: integer
+            minimum: 1
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    PayloadTooLarge:
+      description: Request body above the configured size limit (SR-03)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  schemas:
+    Category:
+      type: string
+      enum: [workshop, event, meal, other]
+    OptionId:
+      type: string
+      pattern: '^[a-z0-9][a-z0-9-]{0,63}$'
+    FormOption:
+      type: object
+      additionalProperties: false
+      required: [id, name, category]
+      properties:
+        id:
+          $ref: '#/components/schemas/OptionId'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        category:
+          $ref: '#/components/schemas/Category'
+    FormConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, consent, options, captcha]
+      properties:
+        conferenceName:
+          type: string
+        consent:
+          type: object
+          additionalProperties: false
+          required: [id, text]
+          properties:
+            id:
+              type: string
+            text:
+              type: string
+              description: Configured wording of the single mandatory consent (D-07)
+        options:
+          type: array
+          description: Active options only, in configuration order
+          items:
+            $ref: '#/components/schemas/FormOption'
+        captcha:
+          type: object
+          additionalProperties: false
+          required: [testMode, siteKey]
+          properties:
+            testMode:
+              type: boolean
+              description: true only in the local and test environments (SR-02)
+            siteKey:
+              type: [string, 'null']
+              description: reCAPTCHA v2 site key; null in test mode (AR-07)
+      examples:
+        - conferenceName: Konferenca 2026
+          consent:
+            id: personal-data-v1
+            text: I agree to the processing of my personal data for organising my attendance.
+          options:
+            - { id: ws-ai, name: Delavnica umetne inteligence, category: workshop }
+            - { id: lunch-day1, name: Kosilo 1. dan, category: meal }
+          captcha: { testMode: true, siteKey: null }
+    PersonName:
+      type: string
+      description: Trimmed before validation; 1-100 characters after trimming; no control characters
+      maxLength: 400
+    LongText:
+      type: string
+      description: Trimmed before validation; 1-200 characters after trimming; no control characters
+      maxLength: 800
+    Email:
+      type: string
+      description: Trimmed; at most 254 characters; local@domain.tld with no whitespace or control characters
+      maxLength: 1000
+    RegistrationCommon:
+      type: object
+      required: [type, firstName, lastName, email, optionIds, consentGiven, captchaToken]
+      properties:
+        firstName:
+          $ref: '#/components/schemas/PersonName'
+        lastName:
+          $ref: '#/components/schemas/PersonName'
+        email:
+          $ref: '#/components/schemas/Email'
+        optionIds:
+          type: array
+          maxItems: 100
+          description: Zero or more distinct active option ids (BR-04, D-09)
+          items:
+            type: string
+            maxLength: 64
+        consentGiven:
+          type: boolean
+          description: Must be true (BR-05)
+        captchaToken:
+          type: string
+          maxLength: 4096
+          description: reCAPTCHA v2 response token (SR-01)
+    ExternalRegistrationRequest:
+      allOf:
+        - $ref: '#/components/schemas/RegistrationCommon'
+        - type: object
+          required: [type, organization]
+          properties:
+            type:
+              const: EXTERNAL
+            organization:
+              $ref: '#/components/schemas/LongText'
+      unevaluatedProperties: false
+    StudentRegistrationRequest:
+      allOf:
+        - $ref: '#/components/schemas/RegistrationCommon'
+        - type: object
+          required: [type, studyInstitution, studyProgramme, studentId]
+          properties:
+            type:
+              const: STUDENT
+            studyInstitution:
+              $ref: '#/components/schemas/LongText'
+            studyProgramme:
+              $ref: '#/components/schemas/LongText'
+            studentId:
+              type: string
+              description: Trimmed; 1-50 characters after trimming; no control characters
+              maxLength: 200
+      unevaluatedProperties: false
+    RegistrationRequest:
+      oneOf:
+        - $ref: '#/components/schemas/ExternalRegistrationRequest'
+        - $ref: '#/components/schemas/StudentRegistrationRequest'
+      discriminator:
+        propertyName: type
+        mapping:
+          EXTERNAL: '#/components/schemas/ExternalRegistrationRequest'
+          STUDENT: '#/components/schemas/StudentRegistrationRequest'
+      examples:
+        - type: STUDENT
+          firstName: "Žiga"
+          lastName: "Čebašek"
+          email: ziga.cebasek@example.si
+          studyInstitution: Univerza v Ljubljani
+          studyProgramme: "Računalništvo in informatika"
+          studentId: '63210001'
+          optionIds: [ws-ai, lunch-day1]
+          consentGiven: true
+          captchaToken: test-pass
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [id, type, acceptedAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [EXTERNAL, STUDENT]
+        acceptedAt:
+          type: string
+          format: date-time
+    OrganizerCredentials:
+      type: object
+      additionalProperties: false
+      required: [username, password]
+      properties:
+        username:
+          type: string
+          maxLength: 200
+        password:
+          type: string
+          maxLength: 200
+    OrganizerToken:
+      type: object
+      additionalProperties: false
+      required: [token, expiresAt]
+      properties:
+        token:
+          type: string
+          description: Opaque bearer token (256 random bits, base64url)
+        expiresAt:
+          type: string
+          format: date-time
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, code]
+      properties:
+        field:
+          type: string
+          description: Request property name (for example firstName, optionIds, consentGiven, captchaToken)
+        code:
+          type: string
+          enum:
+            - REQUIRED
+            - TOO_LONG
+            - INVALID_CHARACTERS
+            - INVALID_EMAIL
+            - UNKNOWN_OPTION
+            - INACTIVE_OPTION
+            - DUPLICATE_OPTION
+            - CONSENT_REQUIRED
+            - CAPTCHA_FAILED
+            - NOT_ALLOWED
+    Problem:
+      type: object
+      required: [title, status, code]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+          description: Message safe to show to the participant
+        code:
+          type: string
+          enum:
+            - VALIDATION_FAILED
+            - MALFORMED_REQUEST
+            - EMAIL_ALREADY_REGISTERED
+            - PAYLOAD_TOO_LARGE
+            - UNSUPPORTED_MEDIA_TYPE
+            - RATE_LIMITED
+            - STORAGE_UNAVAILABLE
+            - UNAUTHORIZED
+            - HTTPS_REQUIRED
+            - INTERNAL_ERROR
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldError'
