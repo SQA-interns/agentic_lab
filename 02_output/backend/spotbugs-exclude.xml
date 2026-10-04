@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <!-- D-14 (docs/decisions-log.md): the executed SQL is the storage contract read from the jar
+       (contracts/registration-storage.sql), never user input. -->
+  <Match>
+    <Class name="si.konferenca.registration.infrastructure.migration.V1__Create_registration_storage"/>
+    <Method name="migrate"/>
+    <Bug pattern="SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE"/>
+  </Match>
+</FindBugsFilter>
