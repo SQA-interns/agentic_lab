@@ -31,7 +31,7 @@ Start with phase 0. If `02_output/docs/00_progress.md` shows work in progress, r
 - Do not commit secrets or environment-specific values.
 - Do not read `.env` with a file tool, and do not print, copy or log its values (see "Secrets" in `rules.md`).
 - Do not ask the human to paste a secret into the conversation; ask them to put it in `.env`.
-- Do not start a phase before the previous phase's gate has passed.
-- Do not finish while a Critical or High finding is open.
-- Do not wait, poll or sleep for a human answer; ask and end the turn (see "Blocking decisions" in `rules.md`).
+- Do not start a phase before the previous phase's gate has passed, except as "Unattended runs" in `rules.md` allows.
+- Do not finish while a Critical or High finding is open; an unattended run ends with it listed as open.
+- Do not wait, poll or sleep for a human answer; ask and end the turn, or, in an unattended run, apply the proposed default and record it (see "Blocking decisions" in `rules.md`).
 - Do not touch `03_statistics/` except as stated in `rules.md`.

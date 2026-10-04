@@ -40,6 +40,18 @@ Procedure:
 
 When the human answers, in this or a new session: read `docs/00_progress.md`, record the answer and its time, re-run only what the answer affects, continue.
 
+### Unattended runs
+
+When `project/00_setup/run-config.md` says `Unattended: yes`, no human answers during the run. A blocking decision is then recorded exactly as above, but not asked:
+
+1. Write the full record with numbered options and the proposed default. Choose as default the most conservative option that the agent may apply on its own (step 3).
+2. Apply the default at once and record: `Human response: none (unattended run)` and `Resolution: option N, proposed default, applied without a human answer at <time>; pending human review`. In `run-log.json` the decision is `blocking`, its `end` is that time; no human intervention is logged.
+3. A default never installs or upgrades software on the host, changes an entry of `tech-stack.md` or `secrets.env.example`, edits `01_input/`, a frozen test or a manifest, shows a secret, retries a refused command in another form, or lowers a Critical or High finding. When every real option needs one of these, the default is: leave the item open, record a finding at the severity found, and continue with all work that does not depend on it.
+4. A gate that fails only because of such an open item counts as passed with an exception: name the item and the decision in `docs/00_progress.md` and in the gate commit message.
+5. In phase 7 the release notes start their "Decisions pending review" with every decision applied without a human answer, and list every exception. A run with an open Critical or High finding ends with it listed as open; it is not a finished release.
+
+Unattended runs also need every command the cards prescribe to be allowed beforehand (README, "Running"); a permission prompt would wait until morning.
+
 ## Non-blocking decisions
 
 Decide, record one table row, continue. The human reviews the rows in the release notes.
