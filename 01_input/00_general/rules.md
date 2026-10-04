@@ -26,6 +26,7 @@ Any phase may write `docs/decisions-log.md`, `docs/00_progress.md` and `out/logs
 Blocking, and only these:
 
 - something checked in phase 0 is missing or wrong and only a human can fix it;
+- the harness refuses a command that a card prescribes (a permission denial): do not retry it in another form; ask for the permission;
 - a technology, version or service from `project/00_setup/tech-stack.md` does not work or needs changing;
 - a frozen acceptance test appears wrong (only a human may approve the manifest change);
 - a real Critical or High finding would be downgraded or accepted.
@@ -87,7 +88,7 @@ Tests, commits and findings reference these IDs.
 Commit as a human developer would: small, finished steps, never half a project.
 
 - One commit = one logical change that can be reverted alone. Commit when it is done and its checks pass; do not batch.
-- At most about 15 files or 400 changed lines, not counting logs, lock files and generated files; otherwise split, or state in the message why it cannot be. Never a whole phase or component.
+- At most about 15 files or 400 changed lines, not counting logs, lock files and generated files; otherwise split, or state in the message why it cannot be. Never a whole phase or component. Check before every commit with `git diff --cached --numstat`; tests of one area can be split by class or file.
 - Keep code, tests, documents, dependency or build changes, and each fix (`F-nn`) in separate commits.
 - The build passes at every commit and no previously passing test fails. Frozen tests of behaviour not yet built may fail.
 - Message: `<type>: <summary> (IDs)`; type `feat`, `test`, `fix`, `refactor`, `docs`, `build` or `chore`; imperative, at most 72 characters.
@@ -105,6 +106,11 @@ Every timestamp you write anywhere is the output of `date -u +%Y-%m-%dT%H:%M:%SZ
 - Documents are tables and lists that cite IDs. Do not restate an input; do not narrate. Each card gives a size limit.
 - Do not print or re-read a file you have just written.
 
+## Files
+
+- Create and change files with the file tools (write, edit). Do not produce source, test, configuration or document files with shell here-documents, `sed` or generated scripts: quoting and escape sequences break silently there, and every such failure costs a build.
+- A small one-off script that edits structured data (for example JSON) is fine; write the script itself with the file tool.
+
 ## Secrets (`.env`)
 
 You never need to see a secret value; the tools that run need it, not you.
@@ -121,3 +127,6 @@ Update `docs/00_progress.md` at every gate and before any stop, so a fresh sessi
 ## Statistics
 
 At the start and end of each phase, and for every fix loop, human intervention and decision, update `03_statistics/run-log.json` as defined in `03_statistics/metrics.md`, and write `03_statistics/run-summary.md` in phase 7. Do nothing else in `03_statistics/`.
+
+- Take every timestamp at the moment of the event, including the moment a scanner or test reports a finding (it starts a fix loop) and the moment a question to the human is sent.
+- Section 2 of `metrics.md` (`usage`) is filled at the end of phase 7 with `general/tools/usage-from-transcript.mjs`, not by estimate; see the phase 7 card.
