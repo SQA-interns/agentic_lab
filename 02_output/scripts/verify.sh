@@ -172,18 +172,40 @@ run_tool() {
       summary="$(awk -F, '/^== /{p=$0; gsub(/ ?== ?/,"",p); next} $2=="SUM"{printf "%s %s code; ", p, $5}' "$log")"
       ;;
     contracts)
-      local docs files=()
+      # OpenAPI: redocly lint; JSON Schema and instances: ajv; SQL: psql in a throwaway PostgreSQL.
+      local docs files=() sqls=() r1=0 r2=0 r3=0 pg
       docs="$(winpath "$OUT/docs")"
       if [ -d "$OUT/docs/02_contracts" ]; then
         while IFS= read -r f; do files+=("02_contracts/${f##*/}"); done \
-          < <(find "$OUT/docs/02_contracts" -maxdepth 1 \( -name '*openapi*.yaml' -o -name '*openapi*.yml' \) | sort)
+          < <(find "$OUT/docs/02_contracts" -maxdepth 1 -name '*.openapi.yaml' | sort)
+        while IFS= read -r f; do sqls+=("${f##*/}"); done \
+          < <(find "$OUT/docs/02_contracts" -maxdepth 1 -name '*.sql' | sort)
       fi
-      if [ ${#files[@]} -gt 0 ]; then
-        dockr run --rm -v "$docs:/spec" -w /spec "$REDOCLY_IMAGE" lint "${files[@]}" >"$log" 2>&1 || rc=$?
-        summary="$(grep -E 'valid|error|warning' "$log" | tail -n 2 | tr '\n' ' ')"
-      else
+      if [ ${#files[@]} -eq 0 ]; then
         dockr run --rm "$REDOCLY_IMAGE" --version >"$log" 2>&1 || rc=$?
         summary="no contracts yet; redocly $(tail -n 1 "$log")"
+      else
+        {
+          echo "== redocly lint =="
+          dockr run --rm -v "$docs:/spec" -w /spec "$REDOCLY_IMAGE" lint "${files[@]}" || r1=$?
+          echo "== ajv =="
+          node "$OUT/scripts/validate-contracts.mjs" || r2=$?
+          echo "== psql =="
+          pg="verify-contracts-pg-$$"
+          dockr run -d --rm --name "$pg" -e POSTGRES_PASSWORD=verify-only -v "$docs/02_contracts:/contracts:ro" \
+            "postgres:16.15-alpine" >/dev/null
+          for _ in $(seq 1 30); do
+            dockr exec "$pg" pg_isready -U postgres -q 2>/dev/null && break
+            sleep 1
+          done
+          for s in "${sqls[@]}"; do
+            echo "-- $s"
+            dockr exec "$pg" psql -U postgres -v ON_ERROR_STOP=1 -q -f "/contracts/$s" && echo "ok    $s applies" || r3=1
+          done
+          dockr rm -f "$pg" >/dev/null
+        } >"$log" 2>&1
+        [ "$r1$r2$r3" = 000 ] || rc=1
+        summary="redocly $([ "$r1" = 0 ] && echo ok || echo fail) ($(grep -cE 'validated in' "$log") files, $(grep -oE 'You have [0-9]+ (warning|error)s?' "$log" | grep -oE '[0-9]+' | paste -sd+ - | bc 2>/dev/null || echo 0) warnings/errors); ajv $(grep -E '^(all valid|[0-9]+ failed)' "$log"); sql $(grep -c 'applies' "$log")/${#sqls[@]} apply"
       fi
       ;;
     e2e)
