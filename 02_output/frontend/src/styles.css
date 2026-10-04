@@ -1,0 +1,71 @@
+:root {
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  line-height: 1.5;
+  color: #1d2733;
+  background: #f6f8fa;
+}
+
+main {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.field,
+.consent,
+.captcha,
+.type-choice,
+.options {
+  margin-bottom: 1rem;
+}
+
+.field label,
+.group-label {
+  display: block;
+  font-weight: 600;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+.field input[aria-invalid='true'] {
+  border: 2px solid #b42318;
+}
+
+.choice {
+  display: block;
+}
+
+.options {
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+.error,
+.form-error {
+  color: #b42318;
+  margin: 0.25rem 0 0;
+}
+
+button {
+  padding: 0.6rem 1.4rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.confirmation {
+  padding: 1rem;
+  border-left: 4px solid #1a7f37;
+  background: #e6f4ea;
+}
