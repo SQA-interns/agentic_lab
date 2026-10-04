@@ -8,7 +8,7 @@
 ## Do
 
 1. Write the READMEs (ES-06): commands only, each one run and working.
-2. Follow them from a clean checkout in a short path (through `verify.sh`, the stack stopped first); save the log to `out/logs/`. Fix what fails. Do not copy `.env` into the checkout; point `--env-file` at the original.
+2. Follow them from a clean checkout in a short path (through `verify.sh`, the stack stopped first); save the log to `out/logs/`. Fix what fails. Do not copy `.env` into the checkout: start the checkout's stack with the original repository's `secrets.sh run … -- docker compose -f <checkout>/02_output/docker-compose.yml …`.
 3. Write the release notes from their skeleton: what was delivered per story, known limitations, everything a human must test manually, every non-blocking decision and suppressed false positive for review. In an unattended run, "Decisions pending review" starts with every blocking decision applied without a human answer and every gate exception (`rules.md`, "Unattended runs").
 4. Add the DoD-08 and DoD-09 evidence to `docs/06_verification-report.md`.
 5. Close the run log: `end` and `finalCommit` (HEAD before the closing commit). Then fill `usage` (`metrics.md`, section 2): `node 01_input/00_general/tools/usage-from-transcript.mjs --write`. It counts the transcript up to `end`, prices it with `03_statistics/usage.md`, and adds `usage.estimates` (model time and permission refusals estimated from the transcript; the usage panel stays authoritative).

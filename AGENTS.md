@@ -29,7 +29,7 @@ Start with phase 0. If `02_output/docs/00_progress.md` shows work in progress, r
 - Do not change a technology, version, service or secret named in `01_project/00_setup/tech-stack.md` or `01_project/00_setup/secrets.env.example` without human approval.
 - Do not install or upgrade software on the host without human approval.
 - Do not commit secrets or environment-specific values.
-- Do not read `.env` with a file tool, and do not print, copy or log its values (see "Secrets" in `rules.md`).
+- Do not read `.env` with a file tool or a shell command, and do not print, copy or log its values; only `01_input/00_general/tools/secrets.sh` reads it (see "Secrets" in `rules.md`).
 - Do not ask the human to paste a secret into the conversation; ask them to put it in `.env`.
 - Do not start a phase before the previous phase's gate has passed, except as "Unattended runs" in `rules.md` allows.
 - Do not finish while a Critical or High finding is open; an unattended run ends with it listed as open.

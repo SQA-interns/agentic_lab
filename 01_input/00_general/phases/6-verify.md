@@ -14,8 +14,7 @@ Verify the finished system with evidence. Fill the tables of the report skeleton
 3. Start every component as described for its target environment and exercise the core user flows and every `DoD-Pnn` at runtime; save what was run and observed to `out/logs/`.
 4. For every `SB` and `SR` item, record where it is implemented and how it was checked (test, scan or inspection). An item without evidence is a finding.
 5. Check logs and error responses produced during testing for personal data, secrets and internals. Check that no `.env` value leaked, listing file names only (no output means clean; any name is a Critical finding):
-   - files: `git ls-files -co --exclude-standard -z | xargs -0 grep -lF -f <(sed -n 's/^[A-Z_]*=//p' .env | tr -d '\r "'"'"'' | awk 'length>=6')`
-   - commit messages: `git log --all --format=%B | grep -cF -f <(sed -n 's/^[A-Z_]*=//p' .env | tr -d '\r "'"'"'' | awk 'length>=6')` (must print `0`)
+   - `bash 01_input/00_general/tools/secrets.sh leak-check`: prints `<file>: <key>` for every file that contains a value of at least 6 characters, and the number of commit-message lines that do (must be `0`). A match of a value that is an ordinary word (for example a user name that also appears in the requirements) is judged by the key name and recorded as a finding with that reasoning; never print the value to check it.
 6. Classify every finding with the severity scale. Scanner false positives and proposed downgrades follow `rules.md`.
 7. Fix loops: for every Critical or High finding, fix, re-run only the affected tools, and log the loop. Triage Medium and Low as fixed, accepted with a reason, or open.
 8. Build the traceability table: AC → tests → commits.

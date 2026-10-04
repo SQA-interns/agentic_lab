@@ -125,11 +125,12 @@ Every timestamp you write anywhere is the output of `date -u +%Y-%m-%dT%H:%M:%SZ
 
 ## Secrets (`.env`)
 
-You never need to see a secret value; the tools that run need it, not you.
+You never need to see a secret value; the tools that run need it, not you. Only `general/tools/secrets.sh` reads `.env`.
 
-- Do not read `.env` with a file tool, and do not print, copy or log its values: no `cat`, `echo`, `env`, `printenv` or `docker compose config` on it, in commands, files, logs, commit messages or the conversation.
-- Pass values to tools without showing them: `docker compose --env-file .env`, or `export NAME="$(sed -n 's/^NAME=//p' .env | tr -d '\r')"` inside the command that needs it.
-- Check presence and emptiness only, as in the phase 0 card.
+- Never name `.env` in a command or file tool, and never print, copy or log a secret value in commands, files, logs, commit messages or the conversation. The harness denies reading `.env`.
+- Check that the keys are filled: `bash 01_input/00_general/tools/secrets.sh check` (prints present or missing, never a value).
+- Give a tool the values it needs: `bash 01_input/00_general/tools/secrets.sh run KEY[,KEY...] -- <command>`. The command gets only the named keys in its environment. Allowed: `docker compose …` (Compose reads `${KEY}` from that environment; no `--env-file`), `docker run …` (pass a key into the container with `-e KEY`), `./mvnw …`, `npx playwright …`. `verify.sh` calls it the same way inside its tools.
+- Never pass a secret to a command the script refuses, and never work around a refusal; a tool that needs another command is a blocking decision.
 - Before saving output from a command that may print an environment, filter it so no value is written.
 
 ## Progress
