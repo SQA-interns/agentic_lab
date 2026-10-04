@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes><![CDATA[
+      D-03 (docs/decisions-log.md): CVE-2025-7962 targets cpe eclipse:angus_mail < 2.0.4 and was
+      matched with LOW confidence against angus-activation 2.0.3, a different artifact. The shipped
+      org.eclipse.angus:angus-mail is 2.0.5, which already contains the fix.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.eclipse\.angus/angus-activation@.*$</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+      D-04 (docs/decisions-log.md): CVE-2025-15104 is a vulnerability of the Nu Html Checker
+      (cpe validator:validator), matched against org.hibernate.validator:hibernate-validator by name.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.hibernate\.validator/hibernate-validator@.*$</packageUrl>
+    <cve>CVE-2025-15104</cve>
+  </suppress>
+</suppressions>

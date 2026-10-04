@@ -232,6 +232,9 @@
           <nodeAuditAnalyzerEnabled>false</nodeAuditAnalyzerEnabled>
           <retireJsAnalyzerEnabled>false</retireJsAnalyzerEnabled>
           <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+          <suppressionFiles>
+            <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+          </suppressionFiles>
           <formats>
             <format>JSON</format>
             <format>HTML</format>
