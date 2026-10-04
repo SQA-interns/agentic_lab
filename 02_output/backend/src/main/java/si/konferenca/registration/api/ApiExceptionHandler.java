@@ -10,6 +10,9 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
+import si.konferenca.registration.application.EmailAlreadyRegisteredException;
+import si.konferenca.registration.application.RegistrationRejectedException;
+import si.konferenca.registration.application.StorageUnavailableException;
 
 /** Maps failures to the problem bodies of the REST contract, never exposing internals. */
 @RestControllerAdvice
@@ -17,8 +20,34 @@ public class ApiExceptionHandler {
 
   private static final Logger LOG = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
-  @ExceptionHandler(HttpMessageNotReadableException.class)
-  ResponseEntity<Problem> malformed(HttpMessageNotReadableException e) {
+  @ExceptionHandler(RegistrationRejectedException.class)
+  ResponseEntity<Problem> rejected(RegistrationRejectedException e) {
+    return Problem.validation(
+            e.errors().stream().map(f -> new Problem.FieldError(f.field(), f.code())).toList())
+        .toResponse();
+  }
+
+  @ExceptionHandler(EmailAlreadyRegisteredException.class)
+  ResponseEntity<Problem> duplicate(EmailAlreadyRegisteredException e) {
+    return Problem.of(
+            HttpStatus.CONFLICT,
+            "EMAIL_ALREADY_REGISTERED",
+            "This email address is already registered. Please contact the organizers if you need"
+                + " to change your registration.")
+        .toResponse();
+  }
+
+  @ExceptionHandler(StorageUnavailableException.class)
+  ResponseEntity<Problem> storage(StorageUnavailableException e) {
+    return Problem.of(
+            HttpStatus.SERVICE_UNAVAILABLE,
+            "STORAGE_UNAVAILABLE",
+            "Your registration could not be saved. Please try again later.")
+        .toResponse();
+  }
+
+  @ExceptionHandler({HttpMessageNotReadableException.class, MalformedRequestException.class})
+  ResponseEntity<Problem> malformed(Exception e) {
     return Problem.of(
             HttpStatus.BAD_REQUEST,
             "MALFORMED_REQUEST",

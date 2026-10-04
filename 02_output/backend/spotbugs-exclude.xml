@@ -7,4 +7,16 @@
     <Method name="migrate"/>
     <Bug pattern="SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE"/>
   </Match>
+  <!-- D-16 (docs/decisions-log.md): constructor-injected shared collaborators (JsonMapper,
+       TransactionTemplate, Clock, mail sender) are dependencies, not internal representation. -->
+  <Match>
+    <Or>
+      <Class name="si.konferenca.registration.application.RegistrationJson"/>
+      <Class name="si.konferenca.registration.application.RegistrationService"/>
+      <Class name="si.konferenca.registration.infrastructure.RecaptchaVerifier"/>
+      <Class name="si.konferenca.registration.infrastructure.MailRegistrationNotifier"/>
+      <Class name="si.konferenca.registration.application.OrganizerAccessService"/>
+    </Or>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
 </FindBugsFilter>
