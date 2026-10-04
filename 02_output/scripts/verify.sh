@@ -209,11 +209,16 @@ run_tool() {
       fi
       ;;
     e2e)
-      local fe args=()
-      fe="$(winpath "$FE")"
+      # Runs in the compose network of the local stack by default (E2E_NETWORK, E2E_BASE_URL and
+      # MAILPIT_URL override it); organizer keys reach the container only through secrets.sh.
+      local out args=()
+      out="$(winpath "$OUT")"
       [ -n "$FILTER" ] && args=(--grep "$FILTER")
-      dockr run --rm --network host --ipc=host -e CI=1 -e E2E_BASE_URL="${E2E_BASE_URL:-http://127.0.0.1:8081}" \
-        -v "$fe:/work" -w /work "$PLAYWRIGHT_IMAGE" npx playwright test --pass-with-no-tests "${args[@]}" \
+      MSYS_NO_PATHCONV=1 bash "$SECRETS" run ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+        docker run --rm --network "${E2E_NETWORK:-registration_default}" --ipc=host \
+        -e CI=1 -e ORGANIZER_USERNAME -e ORGANIZER_PASSWORD -e ORGANIZER_EMAILS \
+        -e "E2E_BASE_URL=${E2E_BASE_URL:-http://frontend:8080}" -e "MAILPIT_URL=${MAILPIT_URL:-http://mailpit:8025}" \
+        -v "$out:/work" -w /work/frontend "$PLAYWRIGHT_IMAGE" npx playwright test --pass-with-no-tests "${args[@]}" \
         >"$log" 2>&1 || rc=$?
       summary="$(grep -E '[0-9]+ (passed|failed|skipped|flaky)' "$log" | tr -s ' ' | tr '\n' ' ')"
       [ -n "$summary" ] || summary="$(tail -n 1 "$log")"
