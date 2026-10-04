@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui-contract.schema.json",
+  "title": "Schema of the registration form UI contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["language", "pageHeading", "typeChoice", "forms", "options", "consent", "captcha", "submit", "confirmation", "errors"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "language": { "type": "string" },
+    "pageHeading": { "type": "string" },
+    "typeChoice": {
+      "type": "object",
+      "required": ["role", "name", "choices"],
+      "properties": {
+        "role": { "const": "radiogroup" },
+        "name": { "type": "string" },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "label"],
+            "properties": { "type": { "enum": ["EXTERNAL", "STUDENT"] }, "label": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "forms": {
+      "type": "object",
+      "required": ["EXTERNAL", "STUDENT"],
+      "additionalProperties": false,
+      "properties": {
+        "EXTERNAL": { "$ref": "#/$defs/fieldList" },
+        "STUDENT": { "$ref": "#/$defs/fieldList" }
+      }
+    },
+    "options": {
+      "type": "object",
+      "required": ["groups", "control"],
+      "properties": {
+        "control": { "const": "checkbox" },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["category", "legend"],
+            "properties": { "category": { "enum": ["workshop", "event", "meal", "other"] }, "legend": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "required": ["control", "label", "initiallyChecked"],
+      "properties": {
+        "control": { "const": "checkbox" },
+        "label": { "type": "string" },
+        "initiallyChecked": { "const": false }
+      }
+    },
+    "captcha": { "type": "object" },
+    "submit": { "type": "object", "required": ["role", "name"] },
+    "confirmation": { "type": "object", "required": ["role", "heading"] },
+    "errors": { "type": "object", "required": ["fieldError", "formError", "messages"] }
+  },
+  "$defs": {
+    "fieldList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "label", "inputType", "autocomplete", "maxLength"],
+        "properties": {
+          "field": { "type": "string" },
+          "label": { "type": "string" },
+          "inputType": { "enum": ["text", "email"] },
+          "autocomplete": { "type": "string" },
+          "maxLength": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

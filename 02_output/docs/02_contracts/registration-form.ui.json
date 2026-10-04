@@ -1,0 +1,75 @@
+{
+  "$schema": "./ui-contract.schema.json",
+  "language": "en",
+  "pageHeading": "Conference registration",
+  "typeChoice": {
+    "role": "radiogroup",
+    "name": "Registration type",
+    "choices": [
+      { "type": "EXTERNAL", "label": "External participant" },
+      { "type": "STUDENT", "label": "Student" }
+    ]
+  },
+  "forms": {
+    "EXTERNAL": [
+      { "field": "firstName", "label": "First name", "inputType": "text", "autocomplete": "given-name", "maxLength": 100 },
+      { "field": "lastName", "label": "Last name", "inputType": "text", "autocomplete": "family-name", "maxLength": 100 },
+      { "field": "email", "label": "Email", "inputType": "email", "autocomplete": "email", "maxLength": 254 },
+      { "field": "organization", "label": "Organization / institution", "inputType": "text", "autocomplete": "organization", "maxLength": 200 }
+    ],
+    "STUDENT": [
+      { "field": "firstName", "label": "First name", "inputType": "text", "autocomplete": "given-name", "maxLength": 100 },
+      { "field": "lastName", "label": "Last name", "inputType": "text", "autocomplete": "family-name", "maxLength": 100 },
+      { "field": "email", "label": "Email", "inputType": "email", "autocomplete": "email", "maxLength": 254 },
+      { "field": "studyInstitution", "label": "Study institution", "inputType": "text", "autocomplete": "off", "maxLength": 200 },
+      { "field": "studyProgramme", "label": "Study programme", "inputType": "text", "autocomplete": "off", "maxLength": 200 },
+      { "field": "studentId", "label": "Student ID", "inputType": "text", "autocomplete": "off", "maxLength": 50 }
+    ]
+  },
+  "options": {
+    "control": "checkbox",
+    "description": "One fieldset per category that has active options, in this order; each checkbox is labelled with the option's display name. No option is preselected.",
+    "groups": [
+      { "category": "workshop", "legend": "Workshops" },
+      { "category": "event", "legend": "Events" },
+      { "category": "meal", "legend": "Meals" },
+      { "category": "other", "legend": "Other activities" }
+    ]
+  },
+  "consent": {
+    "control": "checkbox",
+    "label": "the configured consent text (form-config consent.text)",
+    "initiallyChecked": false
+  },
+  "captcha": {
+    "production": "Google reCAPTCHA v2 checkbox widget rendered with the site key from form-config",
+    "testMode": "a checkbox labelled \"I am not a robot (test mode)\"; checked yields token test-pass, unchecked sends no token"
+  },
+  "submit": { "role": "button", "name": "Register" },
+  "confirmation": {
+    "role": "status",
+    "heading": "Registration received",
+    "text": "Thank you, {firstName}. Your registration was received. A confirmation email is on its way to {email}.",
+    "note": "Shown only after a 201 response; the form is then hidden (BR-06)"
+  },
+  "errors": {
+    "fieldError": "text shown under the field, linked with aria-describedby; the field gets aria-invalid=true",
+    "formError": "role=alert region above the submit button for errors that belong to no field",
+    "messages": {
+      "REQUIRED": "This field is required.",
+      "TOO_LONG": "This value is too long.",
+      "INVALID_CHARACTERS": "This value contains characters that are not allowed.",
+      "INVALID_EMAIL": "Enter a valid email address.",
+      "UNKNOWN_OPTION": "One of the selected options is not available.",
+      "INACTIVE_OPTION": "One of the selected options is not available.",
+      "DUPLICATE_OPTION": "An option was selected more than once.",
+      "CONSENT_REQUIRED": "You must give this consent to register.",
+      "CAPTCHA_FAILED": "Please confirm that you are not a robot.",
+      "NOT_ALLOWED": "This field does not belong to the selected registration type.",
+      "EMAIL_ALREADY_REGISTERED": "This email address is already registered. Please contact the organizers if you need to change your registration.",
+      "RATE_LIMITED": "Too many attempts. Please wait a minute and try again.",
+      "STORAGE_UNAVAILABLE": "Your registration could not be saved. Please try again later.",
+      "GENERIC": "Something went wrong. Please try again later."
+    }
+  }
+}
