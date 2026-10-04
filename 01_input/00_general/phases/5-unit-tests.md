@@ -17,12 +17,14 @@
 | Defect in a non-frozen test | fix the test and say so in `docs/03_test-strategy.md` |
 | Frozen test appears wrong | blocking decision; do not touch the test |
 
-4. Record the test levels as executed and the first run in `docs/03_test-strategy.md`.
+4. Run coverage and mutation testing through `verify.sh` once the suite passes. Classify every surviving mutant in validation, security, persistence and business-rule code: add a test where one should have caught it, otherwise state why not (equivalent, logging only, not observable). Record the measures of `standards.md` ("Tests").
+5. Record the test levels as executed, the first run and the measures in `docs/03_test-strategy.md`.
 
 ## Gate
 
 - The first complete run is recorded and classified before any fix.
 - The full suite passes.
+- Coverage and mutation score are recorded; every surviving mutant in validation, security, persistence and business-rule code is classified.
 
 ## Commits
 

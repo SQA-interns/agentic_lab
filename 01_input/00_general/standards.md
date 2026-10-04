@@ -27,6 +27,14 @@ Lookup tables for every project. Project additions are in `project/02_design/`.
 | End-to-end | 3 | acceptance criteria | yes, from the freeze commit | path contains `e2e` |
 | Unit / integration | 5 | implementation | no | any other test path |
 
+Measures recorded in every project (phases 5 and 6, `docs/03_test-strategy.md`; thresholds in `project/02_design/quality-requirements.md`):
+
+| Measure | Scope |
+|---|---|
+| Test counts | per component and per level (acceptance, end-to-end, unit, integration, architecture), passed and failed |
+| Line and branch coverage | per component, unit and integration separately where the tools allow, and all levels together |
+| Mutation score | per component, over validation, security, persistence and business-rule code at least; state what was excluded and why |
+
 - Do not test acceptance behaviour through internals; use the component's public interface (API, UI, CLI, messages).
 - Do not depend on live external services in automated tests; use the local substitutes in `project/00_setup/environments.md` and list the real services in the release notes for manual testing.
 - Do not leave flaky, skipped or disabled tests; fix them or record a decision.
@@ -52,7 +60,7 @@ Lookup tables for every project. Project additions are in `project/02_design/`.
 | SB-06 | Public and authentication endpoints are rate limited. |
 | SB-07 | Errors and logs expose no internals, secrets or personal data (ES-07). |
 | SB-08 | Dependencies are scanned; no known Critical or High vulnerability ships. |
-| SB-09 | Source is scanned with static analysis and a secret scanner. |
+| SB-09 | Source is scanned with static analysis and a secret scanner. The secret scanner covers the working tree and the history of the current branch; other branches belong to other runs. |
 | SB-10 | Web responses carry security headers (content security policy, framing, content-type options). |
 | SB-11 | Deployed processes run with least privilege (e.g. non-root containers). |
 | SB-12 | Collect only the personal data a requirement needs; the project lists it. |

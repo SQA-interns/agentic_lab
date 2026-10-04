@@ -9,7 +9,7 @@ Verify the finished system with evidence. Fill the tables of the report skeleton
 
 ## Do
 
-1. Run `out/scripts/verify.sh` in full: test suite, every check command (ES-05), coverage, mutation, architecture tests, every scanner in `tooling` (dependency, static analysis, secrets), duplication and code metrics. Read the summary lines; open a log only for a tool that reports a problem.
+1. Run `out/scripts/verify.sh` in full: test suite, every check command (ES-05), coverage, mutation, architecture tests, every scanner in `tooling` (dependency, static analysis, secrets), duplication and code metrics. Read the summary lines; open a log only for a tool that reports a problem. Mutation testing was classified in phase 5; here it only confirms the score, unless code changed since.
 2. Recompute every hash in `docs/03_acceptance-manifest.sha256` and `docs/00_input-manifest.sha256`. Any mismatch is a Critical finding, whatever the reason.
 3. Start every component as described for its target environment and exercise the core user flows and every `DoD-Pnn` at runtime; save what was run and observed to `out/logs/`.
 4. For every `SB` and `SR` item, record where it is implemented and how it was checked (test, scan or inspection). An item without evidence is a finding.
@@ -19,7 +19,7 @@ Verify the finished system with evidence. Fill the tables of the report skeleton
 6. Classify every finding with the severity scale. Scanner false positives and proposed downgrades follow `rules.md`.
 7. Fix loops: for every Critical or High finding, fix, re-run only the affected tools, and log the loop. Triage Medium and Low as fixed, accepted with a reason, or open.
 8. Build the traceability table: AC → tests → commits.
-9. For each `DoD` and `DoD-Pnn` item, record evidence or a finding.
+9. For each `DoD` and `DoD-Pnn` item, record evidence or a finding. DoD-08 (READMEs from a clean checkout) and DoD-09 (release notes) concern files that phase 7 writes: mark them "phase 7"; the phase 7 card adds their evidence.
 10. Record `findings`, `finalTestRun` and `codeMetrics` in the run log.
 
 ## Evidence
@@ -31,7 +31,7 @@ Verify the finished system with evidence. Fill the tables of the report skeleton
 
 ## Gate
 
-- Every general and project DoD item has evidence.
+- Every general and project DoD item except DoD-08 and DoD-09 has evidence.
 - No open Critical or High finding.
 - Manifest hashes match.
 - No secret value in any file, log or commit message.
