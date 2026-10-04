@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 [chromium] › e2e/zz-harness-probe.spec.ts:16:1 › probe contract, mailpit, xlsx, organizer and page helpers (566ms)
+
+  1 passed (3.4s)
