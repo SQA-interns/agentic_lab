@@ -16,6 +16,7 @@
       <Class name="si.konferenca.registration.infrastructure.RecaptchaVerifier"/>
       <Class name="si.konferenca.registration.infrastructure.MailRegistrationNotifier"/>
       <Class name="si.konferenca.registration.application.OrganizerAccessService"/>
+      <Class name="si.konferenca.registration.api.RequestLimitsFilter"/>
     </Or>
     <Bug pattern="EI_EXPOSE_REP2"/>
   </Match>
