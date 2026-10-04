@@ -20,5 +20,17 @@
 | D-12 | 2026-10-04T20:24:12Z | 2 | UI language not stated in any input; NFR-01 only requires Slovenian characters to survive | UI text in English (`registration-form.ui.json`, `lang="en"`); option names and consent wording come from configuration in any language | pending review |
 | D-13 | 2026-10-04T20:58:23Z | 4 | Hibernate schema validation rejects `registration_option.position smallint` (contract `registration-storage.sql`) for a list order column, which it maps to integer; specification section 2 allows the domain only `jakarta.persistence` and `org.springframework.data` | Keep the contract; annotate the order column with `org.hibernate.annotations.ListIndexJdbcTypeCode(SMALLINT)` and allow `org.hibernate.annotations` in the domain layer (specification section 2 corrected) | pending review |
 | D-14 | 2026-10-04T20:58:23Z | 4 | SpotBugs `SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE` (Low) in `V1__Create_registration_storage.migrate`: the SQL is the storage contract read from the jar, not user input | False positive on constant input; excluded for that method and pattern only in `backend/spotbugs-exclude.xml` | pending review |
+| D-16 | 2026-10-04T21:18:00Z | 4 | SpotBugs `EI_EXPOSE_REP2` (Medium) on constructors of `RegistrationJson`, `RegistrationService`, `RecaptchaVerifier`, `MailRegistrationNotifier`, `OrganizerAccessService`, `RequestLimitsFilter`: they store injected shared collaborators (`JsonMapper`, `TransactionTemplate`, `Clock`, mail sender) | False positive (dependencies, not internal state); excluded for those classes and that pattern only in `backend/spotbugs-exclude.xml`; value records keep defensive copies | pending review |
 
 ## Blocking
+
+## D-15: Frozen test AC-005-01 casts a timestamp column to the wrong Java type
+- Timestamp: 2026-10-04T21:18:00Z
+- Phase: 4
+- Trigger: `backend/src/test/java/si/konferenca/registration/acceptance/Us005StorageAcceptanceTest.java` (frozen in 5ee3c71), test `ac005_01_databaseHoldsTheWholeRegistration` (AC-005-01), line 55, casts `row.get("accepted_at")` and `row.get("consent_given_at")` to `java.time.OffsetDateTime`. The frozen helper `support/Database.rows` reads values with `ResultSet.getObject(int)`, which the PostgreSQL JDBC driver 42.7.13 returns as `java.sql.Timestamp` for `timestamptz` columns, so the test ends in a `ClassCastException` before checking the values. The phase 3 probe read only text columns, so this harness defect was not caught before the freeze. Production code cannot change the driver's return type. Every other frozen test passes: 64 of 65 acceptance (`out/logs/4_be-test.log`), 15 of 15 end-to-end (`out/logs/4_e2e.log`).
+- Options:
+  1. (proposed default) In AC-005-01 only, change the two conversions from `((OffsetDateTime) row.get(...)).toInstant()` to `((java.sql.Timestamp) row.get(...)).toInstant()`. The expected values and every other assertion stay as they are. Re-hash that one file in `docs/03_acceptance-manifest.sha256` in a separate commit that cites D-15.
+  2. Change the frozen helper `support/Database.rows` to return `timestamptz` columns as `OffsetDateTime` (`getObject(col, OffsetDateTime.class)`), leave the test unchanged, and re-hash the helper.
+  3. Change nothing: AC-005-01 stays failing and is recorded as an open finding. The stored times stay covered indirectly by AC-005-02, AC-008-01 and the phase 5 integration tests.
+- Human response: none
+- Resolution: open, waiting for the human
