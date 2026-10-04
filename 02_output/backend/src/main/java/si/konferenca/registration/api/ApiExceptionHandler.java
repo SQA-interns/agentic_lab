@@ -2,7 +2,9 @@ package si.konferenca.registration.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -43,6 +45,22 @@ public class ApiExceptionHandler {
             HttpStatus.SERVICE_UNAVAILABLE,
             "STORAGE_UNAVAILABLE",
             "Your registration could not be saved. Please try again later.")
+        .toResponse();
+  }
+
+  @ExceptionHandler(UnauthorizedException.class)
+  ResponseEntity<Problem> unauthorized(UnauthorizedException e) {
+    Problem problem =
+        Problem.of(HttpStatus.UNAUTHORIZED, "UNAUTHORIZED", "Organizer access is required.");
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+        .header(HttpHeaders.WWW_AUTHENTICATE, "Bearer")
+        .contentType(MediaType.APPLICATION_PROBLEM_JSON)
+        .body(problem);
+  }
+
+  @ExceptionHandler(HttpsRequiredException.class)
+  ResponseEntity<Problem> httpsRequired(HttpsRequiredException e) {
+    return Problem.of(HttpStatus.FORBIDDEN, "HTTPS_REQUIRED", "Organizer access requires HTTPS.")
         .toResponse();
   }
 

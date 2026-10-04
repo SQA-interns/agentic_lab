@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.transaction.support.TransactionTemplate;
 import si.konferenca.registration.application.CaptchaVerifier;
+import si.konferenca.registration.application.ExportService;
 import si.konferenca.registration.application.JsonCopyStore;
 import si.konferenca.registration.application.OptionsCatalog;
+import si.konferenca.registration.application.OrganizerAccessService;
 import si.konferenca.registration.application.PublicSettings;
 import si.konferenca.registration.application.RegistrationJson;
 import si.konferenca.registration.application.RegistrationNotifier;
@@ -16,6 +18,7 @@ import si.konferenca.registration.application.RegistrationService;
 import si.konferenca.registration.domain.RegistrationRepository;
 import si.konferenca.registration.infrastructure.FileJsonCopyStore;
 import si.konferenca.registration.infrastructure.JsonOptionsFile;
+import si.konferenca.registration.infrastructure.PoiRegistrationExporter;
 import si.konferenca.registration.infrastructure.RecaptchaVerifier;
 import si.konferenca.registration.infrastructure.TestModeCaptchaVerifier;
 import tools.jackson.databind.json.JsonMapper;
@@ -67,6 +70,18 @@ public class BackendConfig {
         notifier,
         transaction,
         clock);
+  }
+
+  @Bean
+  OrganizerAccessService organizerAccessService(AppProperties properties, Clock clock) {
+    AppProperties.Organizer organizer = properties.organizer();
+    return new OrganizerAccessService(
+        organizer.username(), organizer.password(), organizer.httpsOnly(), clock);
+  }
+
+  @Bean
+  ExportService exportService(RegistrationRepository repository) {
+    return new ExportService(repository, new PoiRegistrationExporter());
   }
 
   @Bean
