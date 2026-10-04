@@ -73,7 +73,13 @@ const to = runLog.end ? Date.parse(runLog.end) : Infinity;
 const calls = new Map();
 const byTool = {};
 const counted = new Set();
+// For the estimates: when each call was requested (the last user or tool-result line before it)
+// and when its first and last content block were written.
+const timing = new Map();
+let permissionDenials = 0;
+const DENIAL = /permission for this action was denied|permission to use [^ ]+ was denied|user rejected|denied by the user/i;
 for (const file of files) {
+  let requested = null;
   for (const line of readFileSync(file, "utf8").split("\n")) {
     if (!line.trim()) continue;
     let entry;
@@ -83,11 +89,23 @@ for (const file of files) {
       continue;
     }
     const message = entry.message;
-    if (entry.type !== "assistant" || !message?.usage) continue;
     const time = Date.parse(entry.timestamp);
     if (time > to) continue;
+    if (entry.type === "user") {
+      requested = time;
+      for (const block of Array.isArray(message?.content) ? message.content : []) {
+        if (block.type === "tool_result" && block.is_error && DENIAL.test(JSON.stringify(block.content))) {
+          permissionDenials += 1;
+        }
+      }
+      continue;
+    }
+    if (entry.type !== "assistant" || !message?.usage) continue;
     counted.add(file);
-    calls.set(`${file}|${message.id}`, { usage: message.usage, model: message.model });
+    const key = `${file}|${message.id}`;
+    const seen = timing.get(key);
+    timing.set(key, { requested: seen?.requested ?? requested, first: seen?.first ?? time, last: time });
+    calls.set(key, { usage: message.usage, model: message.model });
     for (const block of message.content ?? []) {
       if (block.type === "tool_use") byTool[block.name] = (byTool[block.name] ?? 0) + 1;
     }
@@ -144,6 +162,24 @@ const usage = {
   priceTableDate,
 };
 
+// Estimates from the transcript, a cross-check for the usage panel, never a replacement for it.
+// The transcript has no duration per model call: the lower bound runs from the request to the
+// first written block of the reply; the upper bound to the last block, which can include tool runs
+// that overlap a long reply. Commands the human approved are not recorded at all; refusals are.
+let lowerMs = 0;
+let upperMs = 0;
+for (const { requested, first, last } of timing.values()) {
+  if (requested === null || requested === undefined) continue;
+  lowerMs += Math.max(0, first - requested);
+  upperMs += Math.max(0, last - requested);
+}
+const estimates = {
+  modelTimeMinutesLowerBound: Math.round(lowerMs / 60000),
+  modelTimeMinutesUpperBound: Math.round(upperMs / 60000),
+  permissionDenials,
+  note: "estimated from the transcript; the usage panel in 03_statistics/usage.md is authoritative; approved commands are not recorded in a transcript",
+};
+
 console.log(`transcript: ${transcript}`);
 for (const file of counted) {
   if (resolve(file) !== resolve(transcript)) console.log(`also counted: ${file}`);
@@ -155,10 +191,12 @@ console.log(JSON.stringify(usage, null, 2));
 if (tokens.cacheWrite5m > 0 && costUsd !== null) {
   console.log("note: usage.md has one cache-write price; 5-minute writes are cheaper than 1-hour writes");
 }
+console.log(`estimates: ${JSON.stringify(estimates, null, 2)}`);
 
 if (args.includes("--write")) {
-  runLog.usage = { ...runLog.usage, ...usage };
-  if (!configured) runLog.transcript = transcript;
+  // `estimates` is an addition to the fields of metrics.md, kept apart from them.
+  runLog.usage = { ...runLog.usage, ...usage, estimates };
+  if (given.length === 0 && recorded.length === 0) runLog.transcript = transcript;
   writeFileSync(RUN_LOG, JSON.stringify(runLog, null, 2) + "\n");
   console.log(`written to ${RUN_LOG}`);
 }

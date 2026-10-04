@@ -20,7 +20,7 @@ an API-price equivalent; a subscription bills differently.
 
 ## From the harness usage panel
 
-Only a human can read these; fill them right after the run.
+Only a human can read these; fill them right after the run. `usage.estimates` in `run-log.json` holds what the transcript allows instead (model time as a lower and upper bound, permission refusals) as a cross-check; approved commands are not in a transcript.
 
 | Item | Value |
 |---|---|
