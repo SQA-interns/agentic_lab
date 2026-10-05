@@ -37,3 +37,57 @@
 - Options: 1. (default) state the reason here and leave history unchanged (`rules.md` forbids rewriting); reason: `phases.md` asks for one commit for `verify.sh`, and its two helper scripts are only called by it, so splitting them would leave a commit whose `verify.sh` cannot run; 2. rewrite the commit (not allowed).
 - Human response: "state the reason in the decisions log or progress file; do not rewrite history" (2026-10-05T20:34:17Z)
 - Resolution: 1
+
+## D-05: OQ-01, options available per registration type
+- Timestamp: 2026-10-05T20:41:40Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-01 unanswered (`project/requirements.md`).
+- Options: 1. every active option is offered to both types; 2. (default) each option states in configuration the registration types it is offered to, default both; an option is shown and accepted only for those types. Option 2 covers either answer by configuration alone (US-003, AR-04) and rejects a selection the organizer did not offer.
+- Human response: none
+- Resolution: 2, pending review
+
+## D-06: OQ-02, mandatory consents and their wording
+- Timestamp: 2026-10-05T20:41:40Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-02 unanswered; BR-05 and SB-14 require explicit, never preselected consent with a timestamp (`project/constraints.md`, "Personal data").
+- Options: 1. no consents; 2. (default) consents come from configuration (identifier, wording, mandatory or not); the default configuration holds one mandatory consent to the processing of the entered personal data for registration and organisation of the conference, with placeholder wording to be replaced by the organizer; each consent given is stored with its timestamp.
+- Human response: none
+- Resolution: 2, pending review (wording to be supplied by the product owner)
+
+## D-07: OQ-03, storage succeeds but an email fails
+- Timestamp: 2026-10-05T20:41:40Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-03 unanswered; priority 1 ("a registration is never lost") and BR-06.
+- Options: 1. treat the registration as failed and undo it; 2. (default) the registration stays accepted and the confirmation is shown; the failed delivery is logged without personal data so organizers can follow up from the stored data and the JSON copy; no automatic retry.
+- Human response: none
+- Resolution: 2, pending review
+
+## D-08: OQ-04, number of options per category
+- Timestamp: 2026-10-05T20:41:40Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-04 unanswered. Inventing a limit could lock out legitimate participants (High in `standards/security.md`).
+- Options: 1. one option per category; 2. (default) any number of distinct active options per category, including none; the same option twice in one registration is rejected.
+- Human response: none
+- Resolution: 2, pending review
+
+## D-09: OQ-05, second registration with the same email
+- Timestamp: 2026-10-05T20:41:40Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-05 unanswered; editing or cancelling a registration is out of scope.
+- Options: 1. allow duplicates; 2. (default) reject a registration whose email (trimmed, case-insensitive) is already registered under either type, with a message telling the participant to contact the organizers; this keeps the stored data and the export free of duplicates and limits repeated automated submissions.
+- Human response: none
+- Resolution: 2, pending review
+
+## D-10: OQ-06, retention of registrations and JSON copies
+- Timestamp: 2026-10-05T20:41:40Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-06 unanswered; SB-13 requires a retention period; deletion and administration functions are out of scope.
+- Options: 1. build automatic deletion after a fixed period (invents behaviour and an unrequested function); 2. (default) no deletion function is built; retention is stated as "until the organizers delete the data after the conference" and listed under "Before production" for the product owner to set; no acceptance criterion.
+- Human response: none
+- Resolution: 2, pending review
