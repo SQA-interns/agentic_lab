@@ -26,10 +26,10 @@ AGENTS.md                      agent entry point: read order, precedence, never-
 
 1. Fill section 1, copy `01_input/01_project/secrets.env.example` to `.env` in the repository root and fill it, commit the inputs. Start each run on its own branch from the template commit.
 2. Install the platform versions of `project/stack.md` on the host (JDK, Node.js with npm, Docker); another version costs a decision.
-3. Keep the agent away from `.env`: in `.claude/settings.local.json` deny `Read(./.env)`, `Read(./.env.*)`, `Edit(./.env)` and the shell commands that print it. The agent reaches the values only through `tools/secrets.sh`, which prints key names and states, never values. For an unattended run (`Unattended: yes`), allow the commands the skills use beforehand.
+3. Keep the agent away from `.env`: in `.claude/settings.local.json` deny `Read(./.env)`, `Read(./.env.*)`, `Edit(./.env)` and the shell commands that print it. The agent reaches the values only through `tools/secrets.sh`, which prints key names and states, never values.
 4. Start the agent in the repository root with: "Read `AGENTS.md` and start."
-5. A blocking question ends the agent's turn. Answer in your own words, for example "D-16: 1"; a pasted answer needs one line of your own. After more than an hour, answer in a new session: "Read `AGENTS.md` and resume; answer to D-nn: …".
-6. Right after the run, fill the usage-panel values in `03_statistics/usage.md` (API time, approval prompts, cost shown). That is the only task the run leaves you. "Decisions to sign off" and "Before production" in the release notes matter only if the product goes live.
+5. At a blocking question the agent asks and waits for you; the session stays open. Answer in your own words, for example "D-16: 1"; a pasted answer needs one line of your own. Answering after more than an hour costs one rewrite of the prompt cache (a few dollars); a new session started with "Read `AGENTS.md` and resume; answer to D-nn: …" avoids it.
+6. Right after the run, fill the usage-panel values in `03_statistics/usage.md` (API time, approval prompts, cost shown). That is the only task the run leaves you. "Decisions pending review" and "Before production" in the release notes matter only if the product goes live.
 
 ## 1. Fill in (human)
 
@@ -84,7 +84,8 @@ They are written once, but they are not frozen forever. Each file states in its 
 | General rules that lived in project files moved to general files (version rules from the tech stack, AC format from the user stories) | `standards/engineering.md`, `skills/derive-acceptance-criteria` | they would have had to be copied into every project |
 | Procedures moved out of the phase cards into one skill per file; cards replaced by one phase map | `skills/`, `phases.md` | skills were spread over eight cards; separate files are easier to maintain and to give to a single agent later |
 | Standards split by topic | `standards/` | different owners and review cycles |
-| "Pending review" replaced by "applied, to sign off"; only decisions a user would notice go to the release notes | `skills/decisions`, `skills/release`, `docs/release-notes.md` | run tanej-03 listed 16 decisions as if they were still open |
+| Decision making taken over from the other template (v002) unchanged: its blocking list, ask and wait, one full record per decision, "pending review", every Critical or High downgrade (including false positives) blocking; no unattended mode | `rules.md`, `skills/decisions`, `standards/security.md` | keeps decision making equal between the two templates, so the comparison tests structure only |
+| Release notes say that pending-review decisions are already applied | `skills/release`, `docs/release-notes.md` | run tanej-03 listed 16 decisions as if they were still open |
 | "Must be tested manually" renamed "Before production", limited to real external services and out-of-run fixes; DoD-09 reworded | `skills/release`, `standards/done.md` | run tanej-03 presented go-live checks as tasks for the experiment |
 | The run ends with one short message whose only request is the usage-panel values | `skills/release` | run tanej-03 ended with three tasks for the human |
 | Test measures table (tests, coverage, mutation, tools) in the test strategy and the run summary | `docs/03_test-strategy.md`, `03_statistics/run-summary.md` | coverage was only in the agent's documents, not in the statistics |

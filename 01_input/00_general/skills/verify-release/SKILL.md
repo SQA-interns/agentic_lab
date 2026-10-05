@@ -14,7 +14,7 @@ Fill the tables of the report skeleton; add no prose beyond one line per finding
 3. Start every component as described for its target environment and exercise the core user flows and every `DoD-Pnn` at runtime; save what was run and observed to `out/logs/`.
 4. For every `SB` and `SR` item, record where it is implemented and how it was checked (test, scan or inspection). An item without evidence is a finding.
 5. Check logs and error responses produced during testing for personal data, secrets and internals. Then `bash 01_input/00_general/tools/secrets.sh leak-check`: no output means clean; any file name is a Critical finding. A match of a value that is also an ordinary word is judged by the key name and recorded as a finding with that reasoning; never print the value to check it.
-6. Classify every finding with `standards/security.md` ("Severity scale"). False positives and downgrades follow `skills/decisions`.
+6. Classify every finding with `standards/security.md` ("Severity scale"). For a dependency vulnerability, check whether the vulnerable feature is used. If you propose lowering a Critical or High on that basis, record the evidence and raise a blocking decision.
 7. Fix loops: for every Critical or High finding, fix, re-run only the affected tools, and log the loop. Triage Medium and Low as fixed, accepted with a reason, or open.
 8. Build the traceability table: AC → tests → commits.
 9. For each DoD and DoD-P item, record evidence or a finding. DoD-08 and DoD-09 concern files phase 7 writes: mark them "phase 7".
@@ -25,4 +25,4 @@ Fill the tables of the report skeleton; add no prose beyond one line per finding
 - The phase 3 commits add no production code beyond the bootstrap skeleton; the freeze commit adds only the manifest, and every file it lists was committed earlier in phase 3.
 - Phase 4 has at least one commit per user story, each naming its id; no commit exceeds the size guide in `rules.md` without a stated reason.
 - Every manifest hash matches.
-- Every decision has a resolution.
+- Every decision has a resolution or is marked pending review.

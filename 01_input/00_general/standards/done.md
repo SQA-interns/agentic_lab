@@ -15,5 +15,5 @@ Each item needs evidence in `docs/06_verification-report.md`. Project additions 
 | DoD-07 | Every AC traces to at least one test and one commit | traceability table |
 | DoD-08 | Root and component READMEs (ES-06) work when followed from a clean checkout | clone log (phase 7) |
 | DoD-09 | Release notes list the checks a human must do before production use, separate from what this run verified | `docs/release-notes.md` (phase 7) |
-| DoD-10 | Every decision has a resolution; inputs and protected files are unchanged | decisions log, `docs/00_input-manifest.sha256` check |
+| DoD-10 | Every decision has a resolution or is listed as pending review; inputs and protected files are unchanged | decisions log, `docs/00_input-manifest.sha256` check |
 | DoD-11 | The evidence checks of `skills/verify-release` hold | verification report, "Evidence" |

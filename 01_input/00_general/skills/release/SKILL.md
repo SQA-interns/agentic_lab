@@ -12,7 +12,7 @@ description: Write and check the READMEs from a clean checkout, write the releas
 3. Write the release notes into their skeleton, section by section:
    - "Delivered": one row per story.
    - "Known limitations": behaviour the product does not have, from decisions and accepted findings.
-   - "Decisions to sign off": only decisions a participant, organizer or operator would notice (open questions answered, behaviour choices, suppressed scanner findings), and every blocking decision applied without a human answer. They are already applied; the human signs them off before production use. Tool-version and environment deviations stay in the decisions log only.
+   - "Decisions pending review": every decision whose resolution is "pending review", with its choice. They are already applied in the run; the human reviews them before production use.
    - "Before production": the "Must be tested manually" rows of `project/stack.md` ("External services"), and accepted findings whose fix lies outside this run. Nothing else; these are not part of the run.
 4. Add the DoD-08 and DoD-09 evidence to `docs/06_verification-report.md`.
 5. Close the run log: `end` and `finalCommit` (HEAD before the closing commit). Then fill `usage` (`metrics.md`, section 2): `node 01_input/00_general/tools/usage-from-transcript.mjs --write` (one `--transcript` per session if the run was resumed).

@@ -6,9 +6,9 @@
 
 ## Known limitations
 
-## Decisions to sign off
+## Decisions pending review
 
-Already applied during the run. Sign them off before production use.
+Already applied during the run; review them before production use.
 
 ## Before production
 

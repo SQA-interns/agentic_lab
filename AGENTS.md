@@ -6,7 +6,7 @@ Humans start at `README.md`.
 
 ## Read, in this order
 
-1. `01_input/01_project/00_setup/run-config.md`: model, effort, run id, attended or not
+1. `01_input/01_project/00_setup/run-config.md`: model, effort, run id
 2. `01_input/00_general/rules.md`: the rules of every phase
 3. `01_input/00_general/phases.md`: phase order; for each phase its skill, what to read and write, its gate and its commits
 4. The current phase's skill in `01_input/00_general/skills/`, and only the files `phases.md` lists for that phase
@@ -28,7 +28,6 @@ Start with phase 0. If `02_output/docs/00_progress.md` shows work in progress, r
 - Do not change a technology, version, service or secret named in `project/stack.md` or `project/secrets.env.example`, and do not install or upgrade host software, without human approval.
 - Do not read `.env` or print its values; only `general/tools/secrets.sh` reads it. Do not ask the human to paste a secret; ask them to put it in `.env`.
 - Do not commit secrets or environment-specific values.
-- Do not start a phase before the previous gate has passed, except as `skills/decisions` allows in an unattended run.
-- Do not finish while a Critical or High finding is open; an unattended run ends with it listed as open.
-- Do not wait, poll or sleep for a human answer (`skills/decisions`).
+- Do not start a phase before the previous gate has passed.
+- Do not finish while a Critical or High finding is open.
 - Do not touch `03_statistics/` except as `rules.md` ("Statistics") says.

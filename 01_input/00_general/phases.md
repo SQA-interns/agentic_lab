@@ -67,5 +67,5 @@ On a failed gate: fix within the same phase and re-check. If the gate needs a ch
 - Skill: `skills/release`
 - Read: `project/constraints.md` ("Components"), `project/stack.md` ("External services"), `standards/engineering.md` (ES-05, ES-06), `standards/done.md`, `docs/decisions-log.md`, `docs/03_test-strategy.md`, `03_statistics/metrics.md`
 - Write: `out/README.md`, one README per component, `docs/release-notes.md`, the DoD-08 and DoD-09 rows of `docs/06_verification-report.md`, `03_statistics/run-summary.md`, `03_statistics/run-log.json`
-- Gate: every README works from a clean checkout; the release notes have every section of their skeleton; DoD-08 and DoD-09 have evidence; every decision has a resolution; `usage` in `run-log.json` is filled (the cost may stay `null` only when `usage.md` has no price row for the model).
+- Gate: every README works from a clean checkout; the release notes have every section of their skeleton; DoD-08 and DoD-09 have evidence; every decision has a resolution or is listed as pending review; `usage` in `run-log.json` is filled (the cost may stay `null` only when `usage.md` has no price row for the model).
 - Commits: one per README; one for the release notes; one for the verification report rows; one for the run summary and run log.

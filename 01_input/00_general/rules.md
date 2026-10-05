@@ -6,13 +6,12 @@ Rules that hold in every phase. Procedures are in `skills/`; lookup tables in `s
 
 ## Decisions
 
-Every open choice and every blocker becomes a decision, handled with `skills/decisions`. Blocking (a human must answer), and only these:
+Every decision is recorded and handled with `skills/decisions`. Ask the human and wait (blocking) when:
 
-- something checked in phase 0 is missing or wrong and only a human can fix it;
-- the harness refuses a command a skill prescribes (a permission denial): do not retry it in another form; ask for the permission;
+- anything checked in phase 0 is missing or wrong and only a human can fix it;
 - a technology, version or service from `project/stack.md` does not work or needs changing;
-- a frozen acceptance test appears wrong (only a human may approve the manifest change);
-- a real Critical or High finding would be downgraded or accepted.
+- a frozen acceptance test appears wrong (only a human may update the manifest afterwards);
+- a Critical or High finding would be downgraded or accepted.
 
 Everything else is non-blocking: decide, record, continue.
 
@@ -63,7 +62,7 @@ You never need to see a secret value; the tools that run need it. Only `general/
 - Never name `.env` in a command or file tool, and never print, copy or log a secret value anywhere.
 - Check the keys: `bash 01_input/00_general/tools/secrets.sh check`.
 - Give a tool the values it needs: `bash 01_input/00_general/tools/secrets.sh run KEY[,KEY...] -- <command>`. Allowed commands: `docker compose …`, `docker run …` (with `-e KEY`), `./mvnw …`, `npx playwright …`. `verify.sh` calls it the same way.
-- A refused command is never worked around; a tool that needs another command is a blocking decision.
+- A refused command is never worked around in another form; ask the human.
 - Before saving output from a command that may print an environment, filter it so no value is written.
 
 ## Progress

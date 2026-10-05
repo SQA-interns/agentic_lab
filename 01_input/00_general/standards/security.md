@@ -43,7 +43,7 @@ The only levels used anywhere. Critical and High block release.
 | Low | Cosmetic, stylistic, or a theoretical or false-positive finding | A lint warning; a scanner match on constant input |
 
 - Tools that report Critical/High/Medium/Low (or CVSS) are counted as reported.
-- Lowering a real Critical or High needs written evidence and is a blocking decision. A scanner false positive is non-blocking (`skills/decisions`).
+- Lowering a Critical or High to Medium or Low needs written evidence (e.g. the vulnerable feature is not used) and is a blocking decision.
 - A surviving mutant in security-, validation- or persistence-related code is classified individually.
 
 | Tool type | Tool's level | Maps to |
