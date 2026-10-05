@@ -17,8 +17,8 @@ Run: 2026-10-05, `verify.sh 6` (all default tools) plus `verify.sh 6 e2e`; summa
 | DoD-05 | met | Dependency-Check 0, npm audit 0 Critical/High, Semgrep 0 High, gitleaks no leaks; no open Critical/High in Findings |
 | DoD-06 | met | local stack: every container healthy and non-root, core flows at runtime (`6_runtime-demo.log`, `6_e2e.log`) |
 | DoD-07 | met | Traceability below: 48/48 AC → test → commit |
-| DoD-08 | phase 7 | READMEs from a clean checkout |
-| DoD-09 | phase 7 | `docs/release-notes.md` |
+| DoD-08 | met (phase 7) | clone of 6cbd466 without `.env`: backend package, `npm ci`, `verify.sh 7` (be-check, fe-check, fe-test 42, fe-build, be-test 183), stack up from the checkout's compose file with the original `secrets.sh`, quick-start URLs 200/UP, e2e 15/15, stack down (`out/logs/7_clean-checkout.log`); one failure fixed: frontend README not Prettier-formatted (cd24830) |
+| DoD-09 | met (phase 7) | `docs/release-notes.md`, "Must be tested manually by a human": 8 items incl. real reCAPTCHA, SMTP, TLS and proxy, image scan |
 | DoD-10 | met | D-01 … D-17: D-15 resolved by the human, all others pending review; 27/27 input hashes match |
 | DoD-11 | met with finding | phase 3 adds no production code, freeze commit 5ee3c71 holds only the manifest, all its files existed before; every US has a phase 4 commit (`4_commits-since-freeze.log`); 8 commits exceed the size guide (F-05) (`6_evidence-checks.log`) |
 | DoD-P01 | met | external and student registration through the frontend `/api`: 201 each (`6_runtime-demo.log`) |
