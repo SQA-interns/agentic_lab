@@ -1,0 +1,23 @@
+# Local configuration and secrets (ES-02)
+.env
+.env.*
+.claude/
+.idea/
+.vscode/
+*.iml
+
+# Backend build output
+02_output/backend/target/
+
+# Frontend dependencies and build output
+node_modules/
+02_output/frontend/dist/
+02_output/frontend/coverage/
+02_output/frontend/reports/
+02_output/frontend/.stryker-tmp/
+02_output/frontend/test-results/
+02_output/frontend/playwright-report/
+
+# OS files
+.DS_Store
+Thumbs.db
