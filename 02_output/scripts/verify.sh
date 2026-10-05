@@ -79,6 +79,8 @@ run_tool() {
     be-test)
       local args=()
       [ -n "$FILTER" ] && args=("-Dtest=$FILTER" "-Dsurefire.failIfNoSpecifiedTests=false")
+      # coverage of this run only (JaCoCo appends to its data file otherwise)
+      rm -f "$BE/target/jacoco.exec"
       (cd "$BE" && ./mvnw -B -ntp "${args[@]}" test) >"$log" 2>&1 || rc=$?
       summary="$(surefire_summary "$log"); $(jacoco_summary)"
       ;;
