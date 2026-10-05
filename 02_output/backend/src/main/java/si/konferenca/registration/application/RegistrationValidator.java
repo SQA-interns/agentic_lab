@@ -14,7 +14,8 @@ public final class RegistrationValidator {
 
   static final Pattern EMAIL =
       Pattern.compile(
-          "^[^\\s@<>()\\[\\],;:\"\\\\]+@[^\\s@<>()\\[\\],;:\"\\\\]+\\.[^\\s@<>()\\[\\],;:\"\\\\]{2,}$");
+          "^[^\\s@<>()\\[\\],;:\"\\\\]+@(?:[^\\s@<>()\\[\\],;:\"\\\\.]+\\.)+"
+              + "[^\\s@<>()\\[\\],;:\"\\\\.]{2,}$");
   static final int NAME_MAX = 100;
   static final int LONG_TEXT_MAX = 200;
   static final int STUDENT_ID_MAX = 50;
