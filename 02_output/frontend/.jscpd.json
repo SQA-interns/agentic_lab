@@ -1,0 +1,6 @@
+{
+  "reporters": ["json", "console"],
+  "output": "reports/jscpd",
+  "ignore": ["**/*.test.ts", "**/*.test.tsx", "**/test-setup.ts"],
+  "absolute": false
+}
