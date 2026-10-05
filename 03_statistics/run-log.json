@@ -5,9 +5,9 @@
   "templateVersion": "tanej-1.2",
   "transcript": "C:/Users/tanej/.claude/projects/c--Users-tanej-Documents-LAB-agentic-lab/d74117c0-f133-4ca2-8d25-ceb9eb750e24.jsonl",
   "startCommit": "a4272e3bc4295defcc0e92009c145d17be2ed7ed",
-  "finalCommit": null,
+  "finalCommit": "e0bec7006ae034f378740b81c413aeb1578c20fb",
   "start": "2026-10-04T19:46:26Z",
-  "end": null,
+  "end": "2026-10-05T14:44:46Z",
   "phases": [
     {
       "phase": 0,
@@ -54,8 +54,8 @@
     {
       "phase": 7,
       "name": "release",
-      "start": null,
-      "end": null
+      "start": "2026-10-05T14:33:48Z",
+      "end": "2026-10-05T14:44:46Z"
     }
   ],
   "firstTestRun": {
@@ -74,31 +74,128 @@
   },
   "fixLoops": [],
   "decisions": [
-    { "id": "D-01", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
-    { "id": "D-02", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
-    { "id": "D-03", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
-    { "id": "D-04", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
-    { "id": "D-05", "type": "non-blocking", "start": "2026-10-04T20:08:12Z", "end": "2026-10-04T20:08:12Z" },
-    { "id": "D-06", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-07", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-08", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-09", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-10", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-11", "type": "non-blocking", "start": "2026-10-04T20:10:23Z", "end": "2026-10-04T20:10:23Z" },
-    { "id": "D-12", "type": "non-blocking", "start": "2026-10-04T20:24:12Z", "end": "2026-10-04T20:24:12Z" },
-    { "id": "D-13", "type": "non-blocking", "start": "2026-10-04T20:58:23Z", "end": "2026-10-04T20:58:23Z" },
-    { "id": "D-14", "type": "non-blocking", "start": "2026-10-04T20:58:23Z", "end": "2026-10-04T20:58:23Z" },
-    { "id": "D-15", "type": "blocking", "start": "2026-10-04T21:18:00Z", "end": "2026-10-05T09:43:35Z" },
-    { "id": "D-16", "type": "non-blocking", "start": "2026-10-04T21:18:00Z", "end": "2026-10-04T21:18:00Z" },
-    { "id": "D-17", "type": "non-blocking", "start": "2026-10-05T10:19:14Z", "end": "2026-10-05T10:19:14Z" }
+    {
+      "id": "D-01",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:08:12Z",
+      "end": "2026-10-04T20:08:12Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:08:12Z",
+      "end": "2026-10-04T20:08:12Z"
+    },
+    {
+      "id": "D-03",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:08:12Z",
+      "end": "2026-10-04T20:08:12Z"
+    },
+    {
+      "id": "D-04",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:08:12Z",
+      "end": "2026-10-04T20:08:12Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:08:12Z",
+      "end": "2026-10-04T20:08:12Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:10:23Z",
+      "end": "2026-10-04T20:10:23Z"
+    },
+    {
+      "id": "D-07",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:10:23Z",
+      "end": "2026-10-04T20:10:23Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:10:23Z",
+      "end": "2026-10-04T20:10:23Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:10:23Z",
+      "end": "2026-10-04T20:10:23Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:10:23Z",
+      "end": "2026-10-04T20:10:23Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:10:23Z",
+      "end": "2026-10-04T20:10:23Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:24:12Z",
+      "end": "2026-10-04T20:24:12Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:58:23Z",
+      "end": "2026-10-04T20:58:23Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "start": "2026-10-04T20:58:23Z",
+      "end": "2026-10-04T20:58:23Z"
+    },
+    {
+      "id": "D-15",
+      "type": "blocking",
+      "start": "2026-10-04T21:18:00Z",
+      "end": "2026-10-05T09:43:35Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "start": "2026-10-04T21:18:00Z",
+      "end": "2026-10-04T21:18:00Z"
+    },
+    {
+      "id": "D-17",
+      "type": "non-blocking",
+      "start": "2026-10-05T10:19:14Z",
+      "end": "2026-10-05T10:19:14Z"
+    }
   ],
   "humanInterventions": [
-    { "start": "2026-10-04T21:18:37Z", "end": "2026-10-05T09:43:35Z", "reason": "D-15: frozen acceptance test AC-005-01 has a harness type-cast defect; only a human may approve a manifest change" }
+    {
+      "start": "2026-10-04T21:18:37Z",
+      "end": "2026-10-05T09:43:35Z",
+      "reason": "D-15: frozen acceptance test AC-005-01 has a harness type-cast defect; only a human may approve a manifest change"
+    }
   ],
   "codeMetrics": {
     "components": [
-      { "name": "backend", "productionLoc": 2093, "testLoc": 3338 },
-      { "name": "frontend", "productionLoc": 635, "testLoc": 1057 }
+      {
+        "name": "backend",
+        "productionLoc": 2093,
+        "testLoc": 3338
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 635,
+        "testLoc": 1057
+      }
     ],
     "complexity": null,
     "complexityReason": "no complexity tool is listed in tech-stack.md",
@@ -106,16 +203,27 @@
   },
   "commits": [],
   "usage": {
-    "inputTokens": null,
-    "outputTokens": null,
-    "cacheReadTokens": null,
-    "cacheWriteTokens": null,
-    "modelCalls": null,
+    "inputTokens": 506,
+    "outputTokens": 446737,
+    "cacheReadTokens": 84775767,
+    "cacheWriteTokens": 1613726,
+    "modelCalls": 252,
     "toolCalls": {
-      "total": null,
-      "byTool": {}
+      "total": 525,
+      "byTool": {
+        "Bash": 189,
+        "Write": 168,
+        "Edit": 159,
+        "Read": 9
+      }
     },
-    "costUsd": null,
-    "priceTableDate": null
+    "costUsd": 38.8,
+    "priceTableDate": "2026-09-25",
+    "estimates": {
+      "modelTimeMinutesLowerBound": 31,
+      "modelTimeMinutesUpperBound": 63,
+      "permissionDenials": 0,
+      "note": "estimated from the transcript; the usage panel in 03_statistics/usage.md is authoritative; approved commands are not recorded in a transcript"
+    }
   }
 }
