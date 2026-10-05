@@ -34,3 +34,5 @@
   3. Change nothing: AC-005-01 stays failing and is recorded as an open finding. The stored times stay covered indirectly by AC-005-02, AC-008-01 and the phase 5 integration tests.
 - Human response: none
 - Resolution: open, waiting for the human
+- Follow-up 2026-10-05T09:43:35Z, human response: "D-15: 1": in AC-005-01 only, change the two casts to `((java.sql.Timestamp) row.get(...)).toInstant()`, keep every expected value and assertion, re-hash that one file in its own commit citing D-15.
+- Follow-up 2026-10-05T09:50:43Z, resolution: option 1 applied in 941b362 (the two casts; the formatter also dropped the now-unused `OffsetDateTime` import) and the manifest re-hashed alone in 8a51803 (one line changed). Re-run: 65/65 acceptance and 15/15 end-to-end tests pass.
