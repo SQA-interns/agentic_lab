@@ -19,12 +19,12 @@
       "phase": 1,
       "name": "requirements",
       "start": "2026-10-05T20:40:37Z",
-      "end": null
+      "end": "2026-10-05T20:42:28Z"
     },
     {
       "phase": 2,
       "name": "design",
-      "start": null,
+      "start": "2026-10-05T20:42:28Z",
       "end": null
     },
     {
@@ -77,7 +77,13 @@
     { "id": "D-01", "type": "non-blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:26:21Z" },
     { "id": "D-02", "type": "non-blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:26:21Z" },
     { "id": "D-03", "type": "blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z" },
-    { "id": "D-04", "type": "non-blocking", "start": "2026-10-05T20:35:19Z", "end": "2026-10-05T20:35:19Z" }
+    { "id": "D-04", "type": "non-blocking", "start": "2026-10-05T20:35:19Z", "end": "2026-10-05T20:35:19Z" },
+    { "id": "D-05", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
+    { "id": "D-06", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
+    { "id": "D-07", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
+    { "id": "D-08", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
+    { "id": "D-09", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
+    { "id": "D-10", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" }
   ],
   "humanInterventions": [
     { "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z", "reason": "D-03: downgrade of High CVE-2025-7962 (angus-activation) as a false positive" }
