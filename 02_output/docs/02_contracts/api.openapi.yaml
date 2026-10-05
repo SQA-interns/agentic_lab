@@ -1,0 +1,376 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >
+    REST interface between the frontend (or an organizer) and the backend. All paths are under /api
+    (AR-01). Errors use RFC 9457 problem details with an `errors` list of field errors.
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: http://127.0.0.1:8081
+    description: local stack, through the frontend container
+tags:
+  - name: registration
+    description: Public registration flow
+  - name: organizer
+    description: Organizer-only operations
+security: []
+paths:
+  /api/form-config:
+    get:
+      tags: [registration]
+      operationId: getFormConfig
+      summary: Active options, consents and anti-automation settings for the forms
+      responses:
+        "200":
+          description: Form configuration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FormConfig"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/registrations:
+    post:
+      tags: [registration]
+      operationId: createRegistration
+      summary: Submit an external or student registration
+      description: >
+        Validates the request (BR-01 to BR-05), verifies the anti-automation token (SR-01), stores the
+        registration in the database and as a raw JSON copy (BR-07, AR-05) and only then responds 201.
+        Emails are sent after the response is committed; their failure does not change the result (D-07).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+      responses:
+        "201":
+          description: Registration accepted and stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationConfirmation"
+        "400":
+          description: Validation failed, malformed body or anti-automation check failed
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: A registration with this email already exists (D-09)
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "413":
+          $ref: "#/components/responses/PayloadTooLarge"
+        "415":
+          description: Content type is not application/json
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          description: The registration could not be stored; nothing was kept and no email was sent
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "503":
+          description: The anti-automation verification service could not be reached
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+  /api/registrations/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Download all registrations as an Excel workbook (organizer only, BR-08)
+      description: >
+        Requires organizer credentials (HTTP Basic). With organizer HTTPS-only access on (default),
+        the request must arrive over HTTPS (SR-06). Workbook layout: `docs/02_specification.md` ("Export").
+      security:
+        - organizerBasic: []
+      responses:
+        "200":
+          description: Workbook with one row per registration
+          headers:
+            Content-Disposition:
+              description: attachment; filename="registrations.xlsx"
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentMediaType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        "401":
+          description: Missing or wrong organizer credentials
+          headers:
+            WWW-Authenticate:
+              description: Basic realm="organizer"
+              schema:
+                type: string
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "403":
+          description: Organizer access over plain HTTP while HTTPS-only access is on
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+      description: Organizer username and password from configuration (ORGANIZER_USERNAME, ORGANIZER_PASSWORD)
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded (SR-03)
+      headers:
+        Retry-After:
+          description: Seconds until the next request is allowed
+          schema:
+            type: integer
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+    PayloadTooLarge:
+      description: Request body exceeds the configured size limit (SR-03)
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [external, student]
+    OptionCategory:
+      type: string
+      enum: [workshop, event, meal, other]
+    OptionId:
+      type: string
+      pattern: "^[a-z0-9][a-z0-9-]{0,63}$"
+    ConsentId:
+      type: string
+      pattern: "^[a-z0-9][a-z0-9-]{0,63}$"
+    FormOption:
+      type: object
+      additionalProperties: false
+      required: [id, name, category, offeredTo]
+      properties:
+        id:
+          $ref: "#/components/schemas/OptionId"
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/OptionCategory"
+        offeredTo:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/RegistrationType"
+    FormConsent:
+      type: object
+      additionalProperties: false
+      required: [id, text, mandatory]
+      properties:
+        id:
+          $ref: "#/components/schemas/ConsentId"
+        text:
+          type: string
+        mandatory:
+          type: boolean
+    FormConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, options, consents, captcha]
+      properties:
+        conferenceName:
+          type: string
+        options:
+          description: Active options only, in configuration order
+          type: array
+          items:
+            $ref: "#/components/schemas/FormOption"
+        consents:
+          type: array
+          items:
+            $ref: "#/components/schemas/FormConsent"
+        captcha:
+          type: object
+          additionalProperties: false
+          required: [mode]
+          properties:
+            mode:
+              description: "live: Google reCAPTCHA v2 widget; test: deterministic test mode (local and test only, SR-02)"
+              type: string
+              enum: [live, test]
+            siteKey:
+              description: Present when mode is live (AR-07)
+              type: string
+    RegistrationRequest:
+      oneOf:
+        - $ref: "#/components/schemas/ExternalRegistrationRequest"
+        - $ref: "#/components/schemas/StudentRegistrationRequest"
+      discriminator:
+        propertyName: type
+        mapping:
+          external: "#/components/schemas/ExternalRegistrationRequest"
+          student: "#/components/schemas/StudentRegistrationRequest"
+    CommonRegistrationFields:
+      type: object
+      required: [type, firstName, lastName, email, optionIds, consents, captchaToken]
+      properties:
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+          maxLength: 100
+        lastName:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          maxLength: 254
+        optionIds:
+          description: Distinct identifiers of active options offered to this type; may be empty (D-08)
+          type: array
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/OptionId"
+        consents:
+          description: Identifiers of the consents the participant gave
+          type: array
+          maxItems: 20
+          items:
+            $ref: "#/components/schemas/ConsentId"
+        captchaToken:
+          description: reCAPTCHA response token, or the test-mode token
+          type: string
+          maxLength: 4096
+    ExternalRegistrationRequest:
+      allOf:
+        - $ref: "#/components/schemas/CommonRegistrationFields"
+        - type: object
+          required: [organization]
+          properties:
+            type:
+              const: external
+            organization:
+              type: string
+              maxLength: 200
+      unevaluatedProperties: false
+    StudentRegistrationRequest:
+      allOf:
+        - $ref: "#/components/schemas/CommonRegistrationFields"
+        - type: object
+          required: [studyInstitution, studyProgramme, studentId]
+          properties:
+            type:
+              const: student
+            studyInstitution:
+              type: string
+              maxLength: 200
+            studyProgramme:
+              type: string
+              maxLength: 200
+            studentId:
+              type: string
+              maxLength: 50
+      unevaluatedProperties: false
+    SelectedOption:
+      type: object
+      additionalProperties: false
+      required: [id, name, category]
+      properties:
+        id:
+          $ref: "#/components/schemas/OptionId"
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/OptionCategory"
+    RegistrationConfirmation:
+      type: object
+      additionalProperties: false
+      required: [registrationId, type, firstName, lastName, email, options, receivedAt]
+      properties:
+        registrationId:
+          type: string
+          format: uuid
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/SelectedOption"
+        receivedAt:
+          type: string
+          format: date-time
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, code, message]
+      properties:
+        field:
+          description: >
+            Request property name (firstName, lastName, email, organization, studyInstitution,
+            studyProgramme, studentId, type, optionIds, captchaToken), `consents.<consentId>` for a missing
+            mandatory consent, `consents` for an unknown consent, or `body` for a malformed request
+          type: string
+        code:
+          type: string
+          enum:
+            - REQUIRED
+            - INVALID_EMAIL
+            - TOO_LONG
+            - INVALID_CHARACTERS
+            - NOT_ALLOWED
+            - UNKNOWN_OPTION
+            - INACTIVE_OPTION
+            - OPTION_NOT_OFFERED
+            - DUPLICATE_OPTION
+            - CONSENT_REQUIRED
+            - UNKNOWN_CONSENT
+            - CAPTCHA_FAILED
+            - DUPLICATE_EMAIL
+            - MALFORMED
+        message:
+          description: Human-readable message without internal details
+          type: string
+    Problem:
+      type: object
+      required: [title, status]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/FieldError"
