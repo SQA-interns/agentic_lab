@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/ui-registration-form.schema.json",
+  "title": "Registration form UI contract",
+  "description": "Accessible names and structure that the participant sees and that the end-to-end tests use. ui-registration-form.json is the contract instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["page", "typeSelector", "forms", "fields", "optionGroups", "consents", "captcha", "submit", "errors", "confirmation"],
+  "properties": {
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "heading"],
+      "properties": { "path": { "type": "string" }, "heading": { "type": "string" } }
+    },
+    "typeSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name", "choices", "default"],
+      "properties": {
+        "role": { "const": "radiogroup" },
+        "name": { "type": "string" },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "label"],
+            "properties": { "type": { "enum": ["external", "student"] }, "label": { "type": "string" } }
+          }
+        },
+        "default": { "enum": ["external", "student"] }
+      }
+    },
+    "forms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["external", "student"],
+      "properties": {
+        "external": { "type": "array", "items": { "type": "string" } },
+        "student": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "input", "requestProperty"],
+        "properties": {
+          "label": { "type": "string" },
+          "input": { "enum": ["text", "email"] },
+          "requestProperty": { "type": "string" }
+        }
+      }
+    },
+    "optionGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "legend"],
+        "properties": {
+          "category": { "enum": ["workshop", "event", "meal", "other"] },
+          "legend": { "type": "string" }
+        }
+      }
+    },
+    "consents": { "type": "string" },
+    "captcha": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live", "test"],
+      "properties": { "live": { "type": "string" }, "test": { "type": "string" } }
+    },
+    "submit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name"],
+      "properties": { "role": { "const": "button" }, "name": { "type": "string" } }
+    },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "heading", "contains"],
+      "properties": {
+        "role": { "const": "status" },
+        "heading": { "type": "string" },
+        "contains": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

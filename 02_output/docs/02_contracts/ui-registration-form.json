@@ -1,0 +1,48 @@
+{
+  "page": { "path": "/", "heading": "Conference registration" },
+  "typeSelector": {
+    "role": "radiogroup",
+    "name": "Registration type",
+    "choices": [
+      { "type": "external", "label": "External participant" },
+      { "type": "student", "label": "Student" }
+    ],
+    "default": "external"
+  },
+  "forms": {
+    "external": ["firstName", "lastName", "email", "organization"],
+    "student": ["firstName", "lastName", "email", "studyInstitution", "studyProgramme", "studentId"]
+  },
+  "fields": {
+    "firstName": { "label": "First name", "input": "text", "requestProperty": "firstName" },
+    "lastName": { "label": "Last name", "input": "text", "requestProperty": "lastName" },
+    "email": { "label": "Email", "input": "email", "requestProperty": "email" },
+    "organization": { "label": "Organization / institution", "input": "text", "requestProperty": "organization" },
+    "studyInstitution": { "label": "Study institution", "input": "text", "requestProperty": "studyInstitution" },
+    "studyProgramme": { "label": "Study programme", "input": "text", "requestProperty": "studyProgramme" },
+    "studentId": { "label": "Student ID", "input": "text", "requestProperty": "studentId" }
+  },
+  "optionGroups": [
+    { "category": "workshop", "legend": "Workshops" },
+    { "category": "event", "legend": "Events" },
+    { "category": "meal", "legend": "Meals" },
+    { "category": "other", "legend": "Other activities" }
+  ],
+  "consents": "One unchecked checkbox per configured consent, labelled with its text; a group without active options for the current type is not shown.",
+  "captcha": {
+    "live": "Google reCAPTCHA v2 checkbox widget rendered with the site key from GET /api/form-config",
+    "test": "checkbox labelled 'I am not a robot (test mode)'; when checked the token is 'test-pass'"
+  },
+  "submit": { "role": "button", "name": "Register" },
+  "errors": [
+    "Each field error is shown in an element with role 'alert' that the field references with aria-describedby, and the field gets aria-invalid='true'.",
+    "Errors without a field (rate limit, storage failure, verification unavailable, duplicate email message) are shown in one role 'alert' element above the submit button.",
+    "The frontend checks required fields, email format and mandatory consents before sending (NFR-03) and shows the backend's field errors next to the same fields.",
+    "Field error texts: REQUIRED 'This field is required.', INVALID_EMAIL 'Enter a valid email address.', CONSENT_REQUIRED 'This consent is required.', CAPTCHA_FAILED 'Please confirm that you are not a robot.'"
+  ],
+  "confirmation": {
+    "role": "status",
+    "heading": "Registration received",
+    "contains": ["first and last name", "email", "selected option names", "registration id"]
+  }
+}
