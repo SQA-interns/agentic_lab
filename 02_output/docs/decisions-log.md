@@ -99,5 +99,14 @@
 - Trigger: `verify.sh 2 semgrep` (`02_output/logs/2_semgrep.json`): rule `yaml.openapi.security.use-of-basic-authentication` (ERROR → High, CWE-287) on `docs/02_contracts/api.openapi.yaml` line 136, the `organizerBasic` scheme of `GET /api/registrations/export` (`02_specification.md` §7). The rule flags the scheme itself; it does not show an exploit path in this design.
 - Evidence for a downgrade: credentials are accepted only over HTTPS (SR-06, 403 otherwise; refused at startup if switched off in production); the password is at least 16 random characters (`secrets.env.example`) and held only as a BCrypt hash (SB-03); the endpoint is rate limited (SR-03); there is one role and one read-only operation; ASVS 5.0 Level 1 is the chosen level (`project/constraints.md`); identity providers are out of scope, so OAuth2 / OpenID Connect are not available; there is no session, so there is no CSRF exposure.
 - Options: 1. (default) keep HTTP Basic as specified and classify the finding as Low (scanner match on a deliberate, mitigated design), with the evidence above; 2. replace Basic with a credential exchange (`POST /api/organizer/token` with username and password returns a short-lived bearer token for the export); same password secret, more code, and the organizer can no longer download from a browser without a tool or UI; 3. replace Basic with form login and a session cookie plus CSRF protection; needs a login page, which is close to the out-of-scope administration UI; 4. other instruction.
-- Human response: none
-- Resolution: pending
+- Human response: "D-11: 1" (2026-10-05T20:52:36Z, confirmed by the human): keep HTTP Basic over HTTPS; record the finding as found (High), lower it to Low with the evidence above; suppress only that one line citing D-11; keep the raw report; re-scan.
+- Resolution: 1. Severity as found: High; as classified: Low. A `nosemgrep` comment for this rule only, citing D-11, sits directly above `type: http` of the `organizerBasic` scheme in `api.openapi.yaml`, where the match starts. Raw report: `02_output/logs/2_semgrep-raw.json` and `2_semgrep-raw.log`. Re-scan: `02_output/logs/2_semgrep.log`, High 0, Medium 0, Low 0. `verify.sh` semgrep now fails on any ERROR result.
+
+## D-12: Commit of api.openapi.yaml exceeds the 400-line commit limit
+- Timestamp: 2026-10-05T20:55:56Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: commit `1eae1d6` ("docs: add REST API contract") adds about 470 lines in one file; `rules.md` ("Commits") asks for at most about 400 lines or a stated reason, and the message gives none.
+- Options: 1. (default) state the reason here and leave history unchanged; reason: `phases.md` asks for one commit per contract, and an OpenAPI document is one file whose `$ref`s must resolve within it, so a partial commit would not validate; 2. rewrite the commit (not allowed).
+- Human response: "record the reason as you proposed; do not rewrite history" (2026-10-05T20:52:36Z)
+- Resolution: 1

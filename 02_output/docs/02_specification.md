@@ -146,7 +146,7 @@ React single page: type selector, the fields of the selected type, option groups
 | UUID registration ids | not guessable; safe in file names |
 | Field length limits (§4) | bound storage and request size; generous for real names |
 | English UI and email texts, UTF-8 everywhere | requirements and contracts are in English; Slovenian data is preserved (NFR-01) |
-| Basic authentication for the export | §7; pending D-11 |
+| Basic authentication for the export | §7; Semgrep High lowered to Low by the human (D-11) |
 
 ## Traceability
 
