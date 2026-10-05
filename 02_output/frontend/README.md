@@ -16,8 +16,8 @@ The frontend has no secret and no build-time setting: the conference name, the o
 wording, the reCAPTCHA mode and the site key come from `GET /api/form-config` at run time. The nginx
 image needs one environment variable:
 
-| Variable | Source |
-|---|---|
+| Variable      | Source                                                                          |
+| ------------- | ------------------------------------------------------------------------------- |
 | `BACKEND_URL` | `../docker-compose.yml` (local: `http://backend:8080`); `/api` is proxied there |
 
 ## Build
@@ -54,9 +54,9 @@ npm run format                         # fix formatting
 
 ## Troubleshooting
 
-| Symptom | Cause and fix |
-|---|---|
-| page shows "Something went wrong" instead of the form | `/api/form-config` is unreachable; check that the backend is healthy |
-| `npm ci` fails on the lock file | use npm 11 / Node.js 24 as in `tech-stack.md` |
-| end-to-end tests cannot connect | start the stack first (`../README.md`); they use the network `registration_default` |
-| the reCAPTCHA widget does not appear | outside test mode the site key from the backend is empty or the CSP blocks Google; check `RECAPTCHA_SITE_KEY` |
+| Symptom                                               | Cause and fix                                                                                                 |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| page shows "Something went wrong" instead of the form | `/api/form-config` is unreachable; check that the backend is healthy                                          |
+| `npm ci` fails on the lock file                       | use npm 11 / Node.js 24 as in `tech-stack.md`                                                                 |
+| end-to-end tests cannot connect                       | start the stack first (`../README.md`); they use the network `registration_default`                           |
+| the reCAPTCHA widget does not appear                  | outside test mode the site key from the backend is empty or the CSP blocks Google; check `RECAPTCHA_SITE_KEY` |
