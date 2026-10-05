@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -52,9 +51,9 @@ class Us005StorageAcceptanceTest extends AcceptanceTestBase {
     assertThat(row.get("consent_id")).isEqualTo("personal-data-v1");
     assertThat(row.get("consent_text")).isEqualTo(CONSENT_TEXT);
     Instant acceptedAt = Instant.parse(accepted.get("acceptedAt").asString()).truncatedTo(MILLIS);
-    assertThat(((OffsetDateTime) row.get("accepted_at")).toInstant().truncatedTo(MILLIS))
+    assertThat(((java.sql.Timestamp) row.get("accepted_at")).toInstant().truncatedTo(MILLIS))
         .isEqualTo(acceptedAt);
-    assertThat(((OffsetDateTime) row.get("consent_given_at")).toInstant().truncatedTo(MILLIS))
+    assertThat(((java.sql.Timestamp) row.get("consent_given_at")).toInstant().truncatedTo(MILLIS))
         .isEqualTo(acceptedAt);
     List<Map<String, Object>> options = database.options(id);
     assertThat(options)
