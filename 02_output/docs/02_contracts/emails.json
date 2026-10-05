@@ -1,0 +1,51 @@
+{
+  "common": {
+    "from": "MAIL_FROM (default no-reply@konferenca.si)",
+    "charset": "UTF-8",
+    "bodyFormat": "text/plain",
+    "rules": [
+      "Sent only after the registration is stored and the response is committed (BR-07, AC-005-05), asynchronously; a failure is logged with the registration id only and never changes the registration (D-07).",
+      "Plain text only, no HTML: user input cannot inject markup (SR-05).",
+      "Addresses are parsed as single RFC 5322 addresses; user input never contains CR or LF (rejected by validation), so it cannot inject headers (SR-05).",
+      "{conferenceName} is CONFERENCE_NAME; option names are the display names at acceptance, grouped as Workshops, Events, Meals, Other activities.",
+      "No internal fields (database ids other than the registration id, normalized email, stack traces) appear in any email (SR-07)."
+    ]
+  },
+  "messages": [
+    {
+      "id": "participant-confirmation",
+      "trigger": "registration accepted",
+      "to": "the participant's email address",
+      "subject": "Registration confirmed: {conferenceName}",
+      "bodyContains": [
+        "{firstName} {lastName}",
+        "registration type (External participant or Student)",
+        "registration id",
+        "each selected option name under its category heading, or 'No options selected'"
+      ],
+      "attachments": [],
+      "acceptanceCriteria": ["AC-006-01", "AC-006-02", "AC-006-03", "AC-006-04"]
+    },
+    {
+      "id": "organizer-notification",
+      "trigger": "registration accepted",
+      "to": "every address in ORGANIZER_EMAILS, in one message",
+      "subject": "New registration: {conferenceName}",
+      "bodyContains": [
+        "registration id and received-at time (UTC)",
+        "registration type",
+        "every participant field with its label",
+        "each selected option name under its category heading",
+        "each consent given with its timestamp"
+      ],
+      "attachments": [
+        {
+          "filename": "registration-{registrationId}.json",
+          "contentType": "application/json",
+          "content": "the raw JSON copy, byte-identical to the stored file (registration-copy.schema.json)"
+        }
+      ],
+      "acceptanceCriteria": ["AC-007-01", "AC-007-02", "AC-007-03", "AC-007-04"]
+    }
+  ]
+}
