@@ -93,8 +93,15 @@ run_tool() {
       summary="spotless $(grep -q 'spotless.*violations' "$log" && echo fail || echo ok), pmd ${pmd:-0}, cpd ${cpd:-0}, spotbugs ${bugs:-0}"
       ;;
     be-mutation)
-      local args=()
-      [ -n "$FILTER" ] && args=("-DtargetTests=$FILTER")
+      # Unit tests only: acceptance and integration tests start containers per mutant, which
+      # would take hours; Spring wiring classes are reached only by those tests.
+      local p=si.konferenca.registration
+      local args=(
+        "-Dthreads=4"
+        "-DtargetTests=${FILTER:-$p.application.*,$p.infrastructure.*,$p.api.*,$p.config.*}"
+        "-DexcludedTestClasses=$p.acceptance.*,$p.integration.*,$p.ArchitectureTest"
+        "-DexcludedClasses=$p.RegistrationApplication,$p.config.BackendConfig,$p.config.MailConfig,$p.config.SecurityConfig,$p.config.WebConfig,$p.config.AppProperties*"
+      )
       (cd "$BE" && ./mvnw -B -ntp test-compile org.pitest:pitest-maven:mutationCoverage "${args[@]}") >"$log" 2>&1 || rc=$?
       summary="$(grep -E '>> Generated [0-9]+ mutations' "$log" | tail -n 1 | sed 's/.*>> //'); $(grep -E '>> Line Coverage' "$log" | tail -n 1 | sed 's/.*>> //')"
       ;;
