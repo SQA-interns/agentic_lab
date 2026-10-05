@@ -46,6 +46,10 @@ describe('submitRegistration', () => {
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
     expect(url).toBe('/api/registrations');
     expect(init.method).toBe('POST');
+    expect(init.headers).toEqual({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
     expect(JSON.parse(init.body as string)).toEqual(body);
   });
 
@@ -64,6 +68,18 @@ describe('submitRegistration', () => {
   ])('maps status %i code %s to %s', async (status, code, expected) => {
     respond(status, { code });
     await expect(submitRegistration(body)).resolves.toEqual({ kind: 'failed', code: expected });
+  });
+
+  it.each([
+    [200, { id: 'i', acceptedAt: 'a' }],
+    [201, { acceptedAt: 'a' }],
+    [201, { id: 'i' }],
+    [400, { code: 'VALIDATION_FAILED' }],
+    [400, { code: 'MALFORMED_REQUEST', errors: [{ field: 'x', code: 'y' }] }],
+    [422, { code: 'VALIDATION_FAILED', errors: [{ field: 'x', code: 'y' }] }],
+  ])('does not trust an incomplete answer (status %i)', async (status, payload) => {
+    respond(status, payload);
+    await expect(submitRegistration(body)).resolves.toEqual({ kind: 'failed', code: 'GENERIC' });
   });
 
   it('treats an unreadable body or a network error as generic', async () => {

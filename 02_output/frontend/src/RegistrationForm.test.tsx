@@ -171,6 +171,62 @@ describe('registration page', () => {
     expect(screen.getByLabelText('Email')).toHaveValue('ana@example.si');
   });
 
+  it('sends only checked options and marks the consent and captcha errors', async () => {
+    const posts = backend(
+      { status: 503, body: { code: 'STORAGE_UNAVAILABLE' } },
+      { status: 201, body: { id: 'i', type: 'EXTERNAL', acceptedAt: 'a' } },
+    );
+    await openForm();
+    fillExternal();
+    submit();
+    expect(screen.getByRole('checkbox', { name: config.consent.text })).toHaveAccessibleDescription(
+      'You must give this consent to register.',
+    );
+    expect(
+      screen.getByRole('checkbox', { name: 'I am not a robot (test mode)' }),
+    ).toHaveAccessibleDescription('Please confirm that you are not a robot.');
+
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Delavnica A' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Kosilo' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Delavnica A' }));
+    consentAndCaptcha();
+    submit();
+    expect(await screen.findByRole('alert')).toHaveTextContent('could not be saved');
+    expect(screen.getByRole('checkbox', { name: config.consent.text })).not.toHaveAttribute(
+      'aria-invalid',
+    );
+
+    fireEvent.click(screen.getByRole('checkbox', { name: 'I am not a robot (test mode)' }));
+    submit();
+    await screen.findByRole('status');
+    expect(posts).toHaveLength(2);
+    expect((posts[1] as { optionIds: string[] }).optionIds).toEqual(['meal-b']);
+  });
+
+  it('clears the previous form error when submitting again', async () => {
+    backend(
+      { status: 409, body: { code: 'EMAIL_ALREADY_REGISTERED' } },
+      {
+        status: 400,
+        body: { code: 'VALIDATION_FAILED', errors: [{ field: 'email', code: 'INVALID_EMAIL' }] },
+      },
+    );
+    await openForm();
+    fillExternal();
+    consentAndCaptcha();
+    submit();
+    await screen.findByRole('alert');
+
+    fireEvent.click(screen.getByRole('checkbox', { name: 'I am not a robot (test mode)' }));
+    submit();
+    await waitFor(() =>
+      expect(screen.getByLabelText('Email')).toHaveAccessibleDescription(
+        'Enter a valid email address.',
+      ),
+    );
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  });
+
   it('shows option errors from the backend as a form error', async () => {
     backend({
       status: 400,

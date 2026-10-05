@@ -24,6 +24,20 @@ describe('fieldError', () => {
     expect(codePointLength('😀a')).toBe(2);
   });
 
+  it('rejects every character the backend pattern excludes, in each part', () => {
+    for (const ch of [' ', '@', '<', '>', '(', ')', '[', ']', ',', ';', ':', '"', '\\']) {
+      expect(fieldError(email, `a${ch}b@example.si`), `local ${ch}`).toBe('INVALID_EMAIL');
+      expect(fieldError(email, `ab@exa${ch}mple.si`), `domain ${ch}`).toBe('INVALID_EMAIL');
+      expect(fieldError(email, `ab@example.s${ch}i`), `tld ${ch}`).toBe('INVALID_EMAIL');
+    }
+    for (const emptyLabel of ['ab@example.si.', 'ab@.example.si', 'ab@example..si']) {
+      expect(fieldError(email, emptyLabel), emptyLabel).toBe('INVALID_EMAIL');
+    }
+    expect(fieldError(email, 'ab@mail.example.si')).toBeNull();
+    expect(fieldError(email, 'x ab@example.si')).toBe('INVALID_EMAIL');
+    expect(fieldError(email, 'ab@example.si x')).toBe('INVALID_EMAIL');
+  });
+
   it('checks the email format like the backend', () => {
     expect(fieldError(email, 'ana@example.si')).toBeNull();
     expect(fieldError(email, 'š@žabe.si')).toBeNull();
