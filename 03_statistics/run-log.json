@@ -48,8 +48,8 @@
     {
       "phase": 6,
       "name": "verify",
-      "start": null,
-      "end": null
+      "start": "2026-10-05T13:59:02Z",
+      "end": "2026-10-05T14:21:02Z"
     },
     {
       "phase": 7,
@@ -63,14 +63,14 @@
     "failed": 1
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 240,
+    "failed": 0
   },
   "findings": {
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0
+    "medium": 3,
+    "low": 2
   },
   "fixLoops": [],
   "decisions": [
@@ -96,9 +96,13 @@
     { "start": "2026-10-04T21:18:37Z", "end": "2026-10-05T09:43:35Z", "reason": "D-15: frozen acceptance test AC-005-01 has a harness type-cast defect; only a human may approve a manifest change" }
   ],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      { "name": "backend", "productionLoc": 2093, "testLoc": 3338 },
+      { "name": "frontend", "productionLoc": 635, "testLoc": 1057 }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "no complexity tool is listed in tech-stack.md",
+    "duplicationPct": 0
   },
   "commits": [],
   "usage": {
