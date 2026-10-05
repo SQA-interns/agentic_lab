@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/conference-config.schema.json",
+  "title": "Conference options and consents configuration",
+  "description": "UTF-8 JSON file named by CONFERENCE_CONFIG_FILE, read at startup (AR-04, US-003, D-05, D-06). Changing it and restarting the backend changes the options and consents without a code change; it cannot change the participant fields (BR-01). The backend refuses to start when the file is missing, does not match this schema, or repeats an option or consent id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["options", "consents"],
+  "properties": {
+    "options": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "active"],
+        "properties": {
+          "id": {
+            "description": "Stable identifier; never reuse it for another option",
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "name": { "description": "Display name", "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["workshop", "event", "meal", "other"] },
+          "active": { "type": "boolean" },
+          "offeredTo": {
+            "description": "Registration types the option is offered to; default both (D-05)",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "enum": ["external", "student"] }
+          }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "mandatory"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "description": "Wording shown next to the checkbox", "type": "string", "minLength": 1, "maxLength": 2000 },
+          "mandatory": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
