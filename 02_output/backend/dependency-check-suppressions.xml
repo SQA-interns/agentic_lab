@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes><![CDATA[
+      D-03 (human-approved 2026-10-05T20:34:17Z): false positive, classified Low.
+      CVE-2025-7962 affects Angus Mail below 2.0.4; the shipped angus-mail is 2.0.5.
+      angus-activation is the activation framework and matched the angus_mail CPE only by
+      version range, with LOW confidence. Raw report: 02_output/logs/0_be-depscan-raw-report.json.
+    ]]></notes>
+    <packageUrl>pkg:maven/org.eclipse.angus/angus-activation@2.0.3</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
+</suppressions>
