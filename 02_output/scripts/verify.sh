@@ -201,6 +201,8 @@ tool_semgrep() {
     backend/src frontend/src docs/02_contracts >"$LOG" 2>&1
   RC=$?
   SUM="$(summary semgrep "$LOGS/$report")"
+  # An ERROR (High) result fails the tool; triage is recorded in the decisions log.
+  case "$SUM" in "high=0 "*) ;; *) RC=1 ;; esac
 }
 
 # Working tree (tracked and untracked files that git does not ignore) and the history of HEAD only (SB-09).
