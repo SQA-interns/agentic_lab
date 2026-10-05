@@ -85,6 +85,30 @@ class RecaptchaVerifierTest {
   }
 
   @Test
+  void slowEndpointTimesOutAndFails() {
+    answer.set("{\"success\":true}");
+    server.removeContext("/recaptcha/api/siteverify");
+    server.createContext(
+        "/recaptcha/api/siteverify",
+        exchange -> {
+          try {
+            Thread.sleep(8000);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+          byte[] body = answer.get().getBytes(UTF_8);
+          exchange.sendResponseHeaders(200, body.length);
+          exchange.getResponseBody().write(body);
+          exchange.close();
+        });
+
+    long start = System.nanoTime();
+    assertThat(verifier.verify("t", null)).isFalse();
+    assertThat(java.time.Duration.ofNanos(System.nanoTime() - start))
+        .isLessThan(java.time.Duration.ofSeconds(7));
+  }
+
+  @Test
   void unreachableEndpointFails() {
     server.stop(0);
     assertThat(verifier.verify("t", null)).isFalse();

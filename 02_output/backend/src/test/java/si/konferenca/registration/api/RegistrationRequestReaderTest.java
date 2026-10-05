@@ -42,6 +42,7 @@ class RegistrationRequestReaderTest {
     assertThat(command.optionIds()).isNull();
     assertThat(command.consentGiven()).isFalse();
     assertThat(read("{}").consentGiven()).isFalse();
+    assertThat(read("{\"consentGiven\":false}").consentGiven()).isFalse();
   }
 
   @ParameterizedTest

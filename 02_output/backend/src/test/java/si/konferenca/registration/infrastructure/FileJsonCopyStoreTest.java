@@ -45,6 +45,18 @@ class FileJsonCopyStoreTest {
   }
 
   @Test
+  void failedMoveRemovesTheTemporaryFile() throws Exception {
+    Path blocked = dir.resolve("20261005T070809012Z_" + ID + ".json");
+    Files.createDirectories(blocked.resolve("occupied"));
+
+    assertThatThrownBy(() -> new FileJsonCopyStore(dir).write(ID, AT, new byte[] {1}))
+        .isInstanceOf(UncheckedIOException.class);
+    try (Stream<Path> files = Files.list(dir)) {
+      assertThat(files).containsExactly(blocked);
+    }
+  }
+
+  @Test
   void deleteRemovesTheCopyAndIgnoresMissingFiles() {
     FileJsonCopyStore store = new FileJsonCopyStore(dir);
     Path written = store.write(ID, AT, new byte[] {1});

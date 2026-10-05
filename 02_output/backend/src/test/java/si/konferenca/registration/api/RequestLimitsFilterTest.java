@@ -109,6 +109,14 @@ class RequestLimitsFilterTest {
   }
 
   @Test
+  void declaredBodyAtTheLimitPasses() throws Exception {
+    MockHttpServletRequest request = request("POST", "/api/registrations", "5.5.5.4");
+    request.setContent("0123456789".getBytes(UTF_8));
+
+    assertThat(run(request).passed()).isSameAs(request);
+  }
+
+  @Test
   void declaredBodyAboveTheLimitIsRejected() throws Exception {
     MockHttpServletRequest request = request("POST", "/api/registrations", "5.5.5.5");
     request.setContent("01234567890".getBytes(UTF_8));

@@ -141,7 +141,18 @@ class RegistrationValidatorTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"a@b.s", "a<b@c.si", "a@b,c.si", "a;b@c.si", "\"a\"@b.si", "a@b\\c.si"})
+  @ValueSource(
+      strings = {
+        "a@b.s",
+        "a<b@c.si",
+        "a@b,c.si",
+        "a;b@c.si",
+        "\"a\"@b.si",
+        "a@b\\c.si",
+        "a@b.si.",
+        "a@.b.si",
+        "a@b..si"
+      })
   void invalidEmails(String email) {
     assertThat(errors(external("A", email, "x")))
         .containsExactly(new FieldError("email", "INVALID_EMAIL"));

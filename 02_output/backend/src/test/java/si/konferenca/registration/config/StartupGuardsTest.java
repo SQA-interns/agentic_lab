@@ -105,6 +105,45 @@ class StartupGuardsTest {
   }
 
   @Test
+  void everyRateLimitMustBePositive() {
+    String message = "MAX_REQUEST_BYTES and RATE_LIMIT_* must be positive";
+    for (AppProperties.RateLimit limits :
+        new AppProperties.RateLimit[] {
+          new AppProperties.RateLimit(1, 0, 1, 1),
+          new AppProperties.RateLimit(1, 1, 0, 1),
+          new AppProperties.RateLimit(1, 1, 1, 0)
+        }) {
+      AppProperties p = productionReady();
+      AppProperties withLimits =
+          new AppProperties(
+              p.conferenceName(),
+              p.mailFrom(),
+              p.smtp(),
+              p.optionsFile(),
+              p.jsonCopyDir(),
+              p.captcha(),
+              p.organizer(),
+              p.corsAllowedOrigin(),
+              limits,
+              p.maxRequestBytes());
+      assertThat(new StartupGuards(withLimits, environment()).problems()).containsExactly(message);
+    }
+    AppProperties ones =
+        new AppProperties(
+            "K",
+            "f@k.si",
+            new AppProperties.Smtp("h", 1, true, "", ""),
+            "/o.json",
+            "/d",
+            new AppProperties.Captcha(false, "k", "k", "u"),
+            new AppProperties.Organizer("o", "p", "o@k.si", true),
+            "",
+            new AppProperties.RateLimit(1, 1, 1, 1),
+            1);
+    assertThat(new StartupGuards(ones, environment()).problems()).isEmpty();
+  }
+
+  @Test
   void organizerEmailListIsSplitAndTrimmed() {
     assertThat(new AppProperties.Organizer("u", "p", " a@b.si , ,c@d.si", true).emailList())
         .containsExactly("a@b.si", "c@d.si");

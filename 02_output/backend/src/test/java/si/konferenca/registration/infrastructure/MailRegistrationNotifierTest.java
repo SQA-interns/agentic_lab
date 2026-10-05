@@ -82,11 +82,27 @@ class MailRegistrationNotifierTest {
         .contains("- none")
         .doesNotContain("Organization");
 
+    assertThat(participant.getFrom()[0].toString()).isEqualTo("from@konf.si");
+
     MimeMessage organizer = sent.get(1);
+    assertThat(organizer.getFrom()[0].toString()).isEqualTo("from@konf.si");
     assertThat(organizer.getRecipients(Message.RecipientType.TO)[0].toString())
         .isEqualTo("o2@konf.si");
     assertThat(organizer.getSubject()).isEqualTo("New registration (student): Konf 2026");
     Multipart parts = (Multipart) organizer.getContent();
+    assertThat(bodyText(parts))
+        .contains("New registration for Konf 2026")
+        .contains("Registration ID: 0b9a3c4e-6a8f-4f3e-9d43-2a1f6c5e7b10")
+        .contains("Accepted at (UTC): 2026-10-05T10:00:00Z")
+        .contains("Registration type: Student")
+        .contains("First name: Žiga")
+        .contains("Email: z@e.si")
+        .contains("Study institution: UL")
+        .contains("Study programme: FRI")
+        .contains("Student ID: 63")
+        .contains("Options:\n- none")
+        .contains("Consent: Consent text")
+        .contains("Consent given at (UTC): 2026-10-05T10:00:00Z");
     Part attachment = findAttachment(parts);
     assertThat(attachment.getFileName())
         .isEqualTo("registration-0b9a3c4e-6a8f-4f3e-9d43-2a1f6c5e7b10.json");
@@ -94,6 +110,55 @@ class MailRegistrationNotifierTest {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     attachment.getInputStream().transferTo(bytes);
     assertThat(bytes.toString(java.nio.charset.StandardCharsets.UTF_8)).isEqualTo("{\"x\":1}");
+  }
+
+  @Test
+  void externalMailsListOrganizationAndOptions() throws Exception {
+    Registration external =
+        new Registration(
+            UUID.randomUUID(),
+            RegistrationType.EXTERNAL,
+            new Participant("Ana", "Novak", "ana@e.si", "IJS", null, null, null),
+            List.of(
+                new si.konferenca.registration.domain.SelectedOption(
+                    "ws-a",
+                    "Delavnica A",
+                    si.konferenca.registration.domain.OptionCategory.WORKSHOP)),
+            "c1",
+            "Consent text",
+            Instant.parse("2026-10-05T10:00:00Z"));
+
+    notifier.registrationAccepted(external, new byte[] {'{', '}'});
+
+    String participant = (String) sent.get(0).getContent();
+    assertThat(participant)
+        .contains("Registration type: External participant")
+        .contains("Last name: Novak")
+        .contains("Organization / institution: IJS")
+        .contains("- Delavnica A (workshop)")
+        .doesNotContain("[ws-a]")
+        .doesNotContain("Student ID");
+    assertThat(sent.get(1).getSubject())
+        .isEqualTo("New registration (external participant): Konf 2026");
+    assertThat(bodyText((Multipart) sent.get(1).getContent()))
+        .contains("Organization / institution: IJS")
+        .contains("- Delavnica A [ws-a] (workshop)");
+  }
+
+  private static String bodyText(Multipart multipart) throws Exception {
+    for (int i = 0; i < multipart.getCount(); i++) {
+      Part part = multipart.getBodyPart(i);
+      if (part.getContent() instanceof String text && part.getDisposition() == null) {
+        return text;
+      }
+      if (part.getContent() instanceof Multipart nested) {
+        String text = bodyText(nested);
+        if (text != null) {
+          return text;
+        }
+      }
+    }
+    return null;
   }
 
   private static Part findAttachment(Multipart multipart) throws Exception {

@@ -100,6 +100,21 @@ class JsonOptionsFileTest {
   }
 
   @Test
+  void acceptsExactlyOneHundredOptionsAndNamesOfTwoHundredCharacters() throws Exception {
+    StringBuilder hundred = new StringBuilder();
+    for (int i = 0; i < 100; i++) {
+      hundred
+          .append(i == 0 ? "" : ",")
+          .append("{\"id\":\"o")
+          .append(i)
+          .append("\",\"name\":\"")
+          .append("č".repeat(200))
+          .append("\",\"category\":\"other\",\"active\":true}");
+    }
+    assertThat(load(options(hundred.toString())).options().options()).hasSize(100);
+  }
+
+  @Test
   void rejectsMoreThanOneHundredOptions() {
     StringBuilder many = new StringBuilder();
     for (int i = 0; i < 101; i++) {

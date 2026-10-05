@@ -47,6 +47,28 @@ class RegistrationJsonAndFormConfigTest {
   }
 
   @Test
+  void externalCopyHasOrganizationAndConsentText() {
+    Registration registration =
+        new Registration(
+            UUID.randomUUID(),
+            RegistrationType.EXTERNAL,
+            new Participant("Ana", "Novak", "a@e.si", "IJS", null, null, null),
+            List.of(),
+            "c1",
+            "I agree.",
+            Instant.parse("2026-10-05T10:00:00Z"));
+
+    JsonNode copy = mapper.readTree(new RegistrationJson(mapper).toJson(registration));
+
+    assertThat(copy.get("participant").propertyNames())
+        .containsExactly("firstName", "lastName", "email", "organization");
+    assertThat(copy.get("participant").get("organization").asString()).isEqualTo("IJS");
+    assertThat(copy.get("consent").get("id").asString()).isEqualTo("c1");
+    assertThat(copy.get("consent").get("text").asString()).isEqualTo("I agree.");
+    assertThat(copy.get("options")).isEmpty();
+  }
+
+  @Test
   void formConfigHidesInactiveOptionsAndTheSiteKeyInTestMode() {
     ConferenceOptions options = RegistrationValidatorTest.OPTIONS;
 

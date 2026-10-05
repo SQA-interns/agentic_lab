@@ -54,7 +54,24 @@ class PoiRegistrationExporterTest {
       assertThat(row.getCell(7)).isNull();
       assertThat(row.getCell(10).getStringCellValue())
           .isEqualTo("Delavnica A [ws-a]; Kosilo [meal-b]");
+      assertThat(row.getCell(11).getStringCellValue()).isEqualTo("Consent");
       assertThat(row.getCell(12).getStringCellValue()).isEqualTo("2026-10-05T10:00:00.120Z");
+    }
+  }
+
+  @Test
+  void writesRegistrationsInOrderBelowTheHeadings() throws Exception {
+    byte[] bytes =
+        new PoiRegistrationExporter()
+            .export(List.of(external("Prva"), external("Druga"), external("Tretja")));
+
+    try (XSSFWorkbook book = new XSSFWorkbook(new ByteArrayInputStream(bytes))) {
+      Sheet sheet = book.getSheet("Registrations");
+      assertThat(sheet.getLastRowNum()).isEqualTo(3);
+      assertThat(sheet.getRow(0).getCell(0).getStringCellValue()).isEqualTo("Registration ID");
+      assertThat(sheet.getRow(1).getCell(3).getStringCellValue()).isEqualTo("Prva");
+      assertThat(sheet.getRow(2).getCell(3).getStringCellValue()).isEqualTo("Druga");
+      assertThat(sheet.getRow(3).getCell(3).getStringCellValue()).isEqualTo("Tretja");
     }
   }
 
