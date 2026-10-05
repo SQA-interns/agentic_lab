@@ -1,0 +1,422 @@
+[32m12:25:39 (8644) INFO ProjectReader[39m Found 6 of 60 file(s) to be mutated.
+[32m12:25:40 (8644) INFO Instrumenter[39m Instrumented 6 source file(s) with 421 mutant(s)
+[32m12:25:41 (8644) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m12:25:43 (8644) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m12:25:57 (8644) INFO DryRunExecutor[39m Initial test run succeeded. Ran 42 tests in 13 seconds (net 1822.6660999999986 ms, overhead 12043.333900000001 ms).
+
+All tests
+  api.test.ts
+    ~ fetchFormConfig reads the relative endpoint (covered 8)
+    ✓ fetchFormConfig throws on an error status (killed 3)
+    ✓ submitRegistration posts JSON and returns the accepted registration (killed 9)
+    ✓ submitRegistration returns field errors of a validation problem (killed 7)
+    ✓ submitRegistration maps status 409 code EMAIL_ALREADY_REGISTERED to EMAIL_ALREADY_REGISTERED (killed 6)
+    ✓ submitRegistration maps status 429 code RATE_LIMITED to RATE_LIMITED (killed 1)
+    ✓ submitRegistration maps status 503 code STORAGE_UNAVAILABLE to STORAGE_UNAVAILABLE (killed 1)
+    ✓ submitRegistration maps status 400 code MALFORMED_REQUEST to GENERIC (killed 3)
+    ~ submitRegistration maps status 500 code INTERNAL_ERROR to GENERIC (covered 32)
+    ✓ submitRegistration does not trust an incomplete answer (status 200) (killed 4)
+    ~ submitRegistration does not trust an incomplete answer (status 201) (covered 32)
+    ✓ submitRegistration does not trust an incomplete answer (status 400) (killed 4)
+    ✓ submitRegistration does not trust an incomplete answer (status 422) (killed 1)
+    ✓ submitRegistration treats an unreadable body or a network error as generic (killed 4)
+  App.test.tsx
+    ~ App skeleton renders the page heading (covered 30)
+  Captcha.test.tsx
+    ✓ Captcha in test mode toggles the passing token (killed 9)
+    ✓ Captcha loads the Google script once and renders the widget with the site key (killed 22)
+    ✓ Captcha never renders the Google widget in test mode or without a site key (killed 3)
+    ✓ Captcha adds the script only once and renders one widget per container (killed 2)
+    ✓ Captcha does not reset without a widget and links the error description (killed 1)
+    ✓ Captcha renders at once when the script is loaded and resets the widget on request (killed 15)
+  RegistrationForm.test.tsx
+    ✓ registration page shows the external form, options by category and an unchecked consent (killed 57)
+    ✓ registration page switches to the student fields (killed 16)
+    ✓ registration page validates before submitting and sends nothing when invalid (NFR-03) (killed 66)
+    ✓ registration page sends the trimmed-by-backend values with options in configuration order (killed 52)
+    ✓ registration page shows backend field errors next to the fields and resets the captcha (NFR-03) (killed 16)
+    ✓ registration page shows a form error for status 409 (killed 8)
+    ✓ registration page shows a form error for status 503 (killed 1)
+    ✓ registration page shows a form error for status 429 (killed 1)
+    ✓ registration page sends only checked options and marks the consent and captcha errors (killed 7)
+    ~ registration page clears the previous form error when submitting again (covered 235)
+    ✓ registration page shows option errors from the backend as a form error (killed 6)
+    ✓ registration page shows a generic error when the form configuration cannot be loaded (killed 7)
+  validation.test.ts
+    ✓ fieldError requires a value after trimming (killed 1)
+    ✓ fieldError rejects control characters and line separators (killed 3)
+    ✓ fieldError counts code points against the limit (killed 6)
+    ✓ fieldError rejects every character the backend pattern excludes, in each part (killed 5)
+    ~ fieldError checks the email format like the backend (covered 23)
+    ✓ validate checks only the fields of the chosen type plus consent and captcha (killed 9)
+    ~ validate passes a complete student (covered 32)
+
+[Survived] ConditionalExpression
+src/App.tsx:16:13
+-           if (active) {
++           if (true) {
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:42:40
+-       content = <p role="alert">{message('GENERIC')}</p>;
++       content = <p role="alert">{message("")}</p>;
+Tests ran:
+    registration page shows a generic error when the form configuration cannot be loaded
+
+
+[Survived] ConditionalExpression
+src/App.tsx:21:13
+-           if (active) {
++           if (true) {
+Tests ran:
+    registration page shows a generic error when the form configuration cannot be loaded
+    App skeleton renders the page heading
+
+
+[Survived] BlockStatement
+src/App.tsx:25:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:26:16
+-         active = false;
++         active = true;
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 10 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:28:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 10 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:43:23
+-     } else if (!config) {
+-       content = <p>Loading…</p>;
+-     } else {
++     } else if (!config) {} else {
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:51:11
+-         if (window.grecaptcha && widget.current === null && element.childElementCount === 0) {
++         if (window.grecaptcha && widget.current === null || element.childElementCount === 0) {
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha renders at once when the script is loaded and resets the widget on request
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:51:11
+-         if (window.grecaptcha && widget.current === null && element.childElementCount === 0) {
++         if (true && element.childElementCount === 0) {
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha renders at once when the script is loaded and resets the widget on request
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:51:11
+-         if (window.grecaptcha && widget.current === null && element.childElementCount === 0) {
++         if (window.grecaptcha || widget.current === null && element.childElementCount === 0) {
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha renders at once when the script is loaded and resets the widget on request
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:51:32
+-         if (window.grecaptcha && widget.current === null && element.childElementCount === 0) {
++         if (window.grecaptcha && true && element.childElementCount === 0) {
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha renders at once when the script is loaded and resets the widget on request
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:51:59
+-         if (window.grecaptcha && widget.current === null && element.childElementCount === 0) {
++         if (window.grecaptcha && widget.current === null && true) {
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha renders at once when the script is loaded and resets the widget on request
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:67:24
+-           script.async = true;
++           script.async = false;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha does not reset without a widget and links the error description
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:68:24
+-           script.defer = true;
++           script.defer = false;
+Tests ran:
+    Captcha loads the Google script once and renders the widget with the site key
+    Captcha adds the script only once and renders one widget per container
+    Captcha does not reset without a widget and links the error description
+
+
+[Survived] ArrayDeclaration
+src/Captcha.tsx:72:6
+-     }, [testMode, siteKey]);
++     }, []);
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:75:27
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount > 0 && true && window.grecaptcha) {
+Tests ran:
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page shows a form error for status 409
+    registration page shows a form error for status 503
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/contract.ts:39:14
+-     inputType: 'text',
++     inputType: "",
+Ran all tests for this mutant.
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:75:30
+-         captchaToken: token ?? '',
++         captchaToken: token ?? "Stryker was here!",
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:78:48
+-         body[spec.field] = values[spec.field] ?? '';
++         body[spec.field] = values[spec.field] ?? "Stryker was here!";
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:85:41
+-           firstName: (values.firstName ?? '').trim(),
++           firstName: (values.firstName ?? "Stryker was here!").trim(),
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:86:33
+-           email: (values.email ?? '').trim(),
++           email: (values.email ?? "Stryker was here!").trim(),
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:104:69
+-             other = OPTION_ERRORS.includes(error.code) ? error.code : 'GENERIC';
++             other = OPTION_ERRORS.includes(error.code) ? error.code : "";
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:56:66
+-       const id = first ? `f-${first.field}` : found.consentGiven ? 'consent' : null;
++       const id = first ? `f-${first.field}` : found.consentGiven ? "" : null;
+Tests ran:
+    registration page sends only checked options and marks the consent and captcha errors
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:57:9
+-       if (id) {
++       if (true) {
+Tests ran:
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page sends only checked options and marks the consent and captcha errors
+  and 2 more tests!
+
+
+[Survived] OptionalChaining
+src/RegistrationForm.tsx:58:7
+-         document.getElementById(id)?.focus();
++         document.getElementById(id).focus();
+Tests ran:
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page sends only checked options and marks the consent and captcha errors
+  and 1 more test!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:63:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+    registration page sends the trimmed-by-backend values with options in configuration order
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+  and 6 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:64:5
+-       setFormError(null);
++       ;
+Tests ran:
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+    registration page sends the trimmed-by-backend values with options in configuration order
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+  and 6 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:80:19
+-       setSubmitting(true);
++       setSubmitting(false);
+Tests ran:
+    registration page sends the trimmed-by-backend values with options in configuration order
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page shows a form error for status 409
+  and 5 more tests!
+
+
+[Survived] MethodExpression
+src/RegistrationForm.tsx:86:16
+-           email: (values.email ?? '').trim(),
++           email: values.email ?? '',
+Tests ran:
+    registration page sends the trimmed-by-backend values with options in configuration order
+    registration page sends only checked options and marks the consent and captcha errors
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:91:22
+-       setCaptchaResets((n) => n + 1);
++       setCaptchaResets(() => undefined);
+Tests ran:
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page shows a form error for status 409
+    registration page shows a form error for status 503
+  and 4 more tests!
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:91:29
+-       setCaptchaResets((n) => n + 1);
++       setCaptchaResets((n) => n - 1);
+Tests ran:
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page shows a form error for status 409
+    registration page shows a form error for status 503
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:95:9
+-           'consentGiven',
++           "",
+Tests ran:
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page clears the previous form error when submitting again
+    registration page shows option errors from the backend as a form error
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:109:7
+-         focusFirstError(mapped);
++         ;
+Tests ran:
+    registration page shows backend field errors next to the fields and resets the captcha (NFR-03)
+    registration page clears the previous form error when submitting again
+    registration page shows option errors from the backend as a form error
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:133:17
+-                   setErrors({});
++                   ;
+Tests ran:
+    registration page switches to the student fields
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:150:42
+-               value={values[spec.field] ?? ''}
++               value={values[spec.field] ?? "Stryker was here!"}
+Tests ran:
+    registration page shows the external form, options by category and an unchecked consent
+    registration page switches to the student fields
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+  and 8 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:191:47
+-             aria-invalid={errors.consentGiven ? true : undefined}
++             aria-invalid={errors.consentGiven ? false : undefined}
+Tests ran:
+    registration page validates before submitting and sends nothing when invalid (NFR-03)
+    registration page sends only checked options and marks the consent and captcha errors
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:25:24
+-   const OPTION_ERRORS = ['UNKNOWN_OPTION', 'INACTIVE_OPTION', 'DUPLICATE_OPTION'];
++   const OPTION_ERRORS = ["", 'INACTIVE_OPTION', 'DUPLICATE_OPTION'];
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:25:61
+-   const OPTION_ERRORS = ['UNKNOWN_OPTION', 'INACTIVE_OPTION', 'DUPLICATE_OPTION'];
++   const OPTION_ERRORS = ['UNKNOWN_OPTION', 'INACTIVE_OPTION', ""];
+Ran all tests for this mutant.
+
+Ran 3.25 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  90.97 |   92.07 |      356 |        27 |         33 |        5 |        0 |
+ api.ts               | 100.00 |  100.00 |       52 |         3 |          0 |        0 |        0 |
+ App.tsx              |  80.00 |   80.00 |       28 |         0 |          7 |        0 |        0 |
+ Captcha.tsx          |  85.48 |   85.48 |       53 |         0 |          9 |        0 |        0 |
+ contract.ts          |  98.70 |   98.70 |       52 |        24 |          1 |        0 |        0 |
+ RegistrationForm.tsx |  84.09 |   87.40 |      111 |         0 |         16 |        5 |        0 |
+ validation.ts        | 100.00 |  100.00 |       60 |         0 |          0 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m12:29:30 (8644) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m12:29:30 (8644) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m12:29:30 (8644) INFO MutationTestExecutor[39m Done in 3 minutes and 51 seconds.

@@ -1,0 +1,20 @@
+
+Running 15 tests using 1 worker
+
+  ✓   1 [chromium] › e2e/us001-external-registration.spec.ts:10:1 › AC-001-01 an external participant registers with options and sees the confirmation (1.7s)
+  ✓   2 [chromium] › e2e/us001-external-registration.spec.ts:32:1 › AC-001-02 the external form asks for exactly the external fields (275ms)
+  ✓   3 [chromium] › e2e/us001-external-registration.spec.ts:47:1 › AC-001-03 empty required fields are marked and nothing is confirmed (395ms)
+  ✓   4 [chromium] › e2e/us001-external-registration.spec.ts:60:1 › AC-001-05 an invalid email is marked as invalid (377ms)
+  ✓   5 [chromium] › e2e/us001-external-registration.spec.ts:76:1 › AC-001-06 Slovenian characters survive form, emails, JSON copy and export (NFR-01) (2.2s)
+  ✓   6 [chromium] › e2e/us001-external-registration.spec.ts:119:1 › AC-001-11 the consent shows the configured wording and is not selected (265ms)
+  ✓   7 [chromium] › e2e/us001-external-registration.spec.ts:129:1 › AC-001-12 submitting without the consent marks it as required (449ms)
+  ✓   8 [chromium] › e2e/us001-external-registration.spec.ts:146:1 › AC-001-14 an already registered email is refused with a message (1.0s)
+  ✓   9 [chromium] › e2e/us002-student-registration.spec.ts:7:1 › AC-002-01 a student registers with options and sees the confirmation (706ms)
+  ✓  10 [chromium] › e2e/us002-student-registration.spec.ts:29:1 › AC-002-02 the student form asks for exactly the student fields (281ms)
+  ✓  11 [chromium] › e2e/us002-student-registration.spec.ts:40:1 › AC-002-08 the student form offers the same active options as the external form (519ms)
+  ✓  12 [chromium] › e2e/us003-configurable-options.spec.ts:7:1 › AC-003-01 active options are offered grouped by category with their names (352ms)
+  ✓  13 [chromium] › e2e/us003-configurable-options.spec.ts:27:1 › AC-003-02 an inactive option is not offered (311ms)
+  ✓  14 [chromium] › e2e/us004-confirmation.spec.ts:7:1 › AC-004-01 after acceptance the confirmation replaces the form (612ms)
+  ✓  15 [chromium] › e2e/us004-confirmation.spec.ts:29:1 › AC-004-02 a rejected submission shows the reasons and no confirmation (453ms)
+
+  15 passed (14.1s)
