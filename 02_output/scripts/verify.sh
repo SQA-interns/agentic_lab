@@ -11,7 +11,7 @@
 # Default tools:
 #   be-build be-format be-lint be-static be-dup be-test be-mutation be-depscan
 #   fe-build fe-format fe-lint fe-typecheck fe-test fe-mutation fe-dup fe-depscan
-#   contracts-openapi contracts-schema semgrep gitleaks cloc
+#   contracts-openapi contracts-schema contracts-sql semgrep gitleaks cloc
 # Needs the running local stack (docker compose up in 02_output), not in the default list:
 #   e2e
 set -u
@@ -31,6 +31,7 @@ IMG_GITLEAKS="zricethezav/gitleaks:v8.30.1"
 IMG_CLOC="aldanial/cloc:2.10"
 IMG_REDOCLY="redocly/cli:2.57.0"
 IMG_PLAYWRIGHT="mcr.microsoft.com/playwright:v1.63.0-noble"
+IMG_POSTGRES="postgres:16.15-alpine"
 
 E2E_BASE_URL="${E2E_BASE_URL:-http://host.docker.internal:8081}"
 E2E_API_URL="${E2E_API_URL:-http://host.docker.internal:8080}"
@@ -38,7 +39,7 @@ E2E_MAILPIT_URL="${E2E_MAILPIT_URL:-http://host.docker.internal:8025}"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-static be-dup be-test be-mutation be-depscan
   fe-build fe-format fe-lint fe-typecheck fe-test fe-mutation fe-dup fe-depscan
-  contracts-openapi contracts-schema semgrep gitleaks cloc"
+  contracts-openapi contracts-schema contracts-sql semgrep gitleaks cloc"
 
 [ $# -ge 1 ] || { echo "usage: verify.sh <phase> [tool ...] [--filter <pattern>]"; exit 2; }
 PHASE="$1"
@@ -160,13 +161,44 @@ tool_contracts-schema() {
   SUM="$(grep -m1 '^SUMMARY' "$LOG" | sed 's/^SUMMARY //')"
 }
 
+# Applies every SQL contract to a throwaway PostgreSQL container (pinned image, no stored data).
+tool_contracts-sql() {
+  local files=()
+  local f
+  for f in "$CONTRACTS"/*.sql; do
+    [ -f "$f" ] && files+=("$f")
+  done
+  if [ ${#files[@]} -eq 0 ]; then
+    RC=0
+    SUM="contracts=0"
+    : >"$LOG"
+    return
+  fi
+  local name="verify-sql-$$"
+  {
+    dk run -d --rm --name "$name" -e POSTGRES_HOST_AUTH_METHOD=trust "$IMG_POSTGRES" >/dev/null
+    local i
+    for i in $(seq 1 60); do
+      dk exec "$name" pg_isready -U postgres -h 127.0.0.1 >/dev/null 2>&1 && break
+      sleep 1
+    done
+    RC=0
+    for f in "${files[@]}"; do
+      echo "== $(basename "$f")"
+      dk exec -i "$name" psql -v ON_ERROR_STOP=1 -U postgres -h 127.0.0.1 -q <"$f" || RC=1
+    done
+    dk stop "$name" >/dev/null
+  } >"$LOG" 2>&1
+  SUM="contracts=${#files[@]} applied=$([ "$RC" = 0 ] && echo all || echo failed)"
+}
+
 tool_semgrep() {
   local report="${PHASE}_semgrep.json"
   dk run --rm -v "$(winpath "$OUT"):/src" -w /src "$IMG_SEMGREP" semgrep scan \
     --config p/security-audit --config p/owasp-top-ten --config p/java --config p/typescript --config p/react \
     --metrics=off --json --output "/src/logs/$report" \
     --exclude node_modules --exclude target --exclude dist --exclude coverage --exclude reports --exclude logs \
-    backend/src frontend/src >"$LOG" 2>&1
+    backend/src frontend/src docs/02_contracts >"$LOG" 2>&1
   RC=$?
   SUM="$(summary semgrep "$LOGS/$report")"
 }

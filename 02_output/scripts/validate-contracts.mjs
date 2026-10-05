@@ -1,5 +1,6 @@
 // Compiles every JSON Schema in docs/02_contracts with Ajv (JSON Schema 2020-12, strict mode)
-// and validates every example file next to it (<name>.example.json against <name>.schema.json).
+// and validates every instance next to it (<name>.example.json and <name>.json against
+// <name>.schema.json). Formats are annotations only (no ajv-formats in project/stack.md).
 // Usage: node validate-contracts.mjs <contracts dir>
 import { createRequire } from "node:module";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
@@ -17,15 +18,16 @@ let failures = 0;
 let examples = 0;
 
 for (const name of schemas) {
-  const ajv = new Ajv2020({ strict: true, allErrors: true });
+  const ajv = new Ajv2020({ strict: true, allErrors: true, validateFormats: false });
   try {
     const validate = ajv.compile(JSON.parse(readFileSync(join(dir, name), "utf8")));
     console.log(`schema ${name}: valid`);
-    const example = name.replace(/\.schema\.json$/, ".example.json");
-    if (files.includes(example)) {
+    const base = name.replace(/\.schema\.json$/, "");
+    for (const instance of [`${base}.example.json`, `${base}.json`]) {
+      if (!files.includes(instance)) continue;
       examples++;
-      const ok = validate(JSON.parse(readFileSync(join(dir, example), "utf8")));
-      console.log(`example ${example}: ${ok ? "valid" : "INVALID " + ajv.errorsText(validate.errors)}`);
+      const ok = validate(JSON.parse(readFileSync(join(dir, instance), "utf8")));
+      console.log(`instance ${instance}: ${ok ? "valid" : "INVALID " + ajv.errorsText(validate.errors)}`);
       if (!ok) failures++;
     }
   } catch (e) {
