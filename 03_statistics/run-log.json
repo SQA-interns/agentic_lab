@@ -42,8 +42,8 @@
     {
       "phase": 5,
       "name": "unit-tests",
-      "start": null,
-      "end": null
+      "start": "2026-10-05T09:53:28Z",
+      "end": "2026-10-05T10:35:08Z"
     },
     {
       "phase": 6,
@@ -59,8 +59,8 @@
     }
   ],
   "firstTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 216,
+    "failed": 1
   },
   "finalTestRun": {
     "passed": null,
@@ -89,7 +89,8 @@
     { "id": "D-13", "type": "non-blocking", "start": "2026-10-04T20:58:23Z", "end": "2026-10-04T20:58:23Z" },
     { "id": "D-14", "type": "non-blocking", "start": "2026-10-04T20:58:23Z", "end": "2026-10-04T20:58:23Z" },
     { "id": "D-15", "type": "blocking", "start": "2026-10-04T21:18:00Z", "end": "2026-10-05T09:43:35Z" },
-    { "id": "D-16", "type": "non-blocking", "start": "2026-10-04T21:18:00Z", "end": "2026-10-04T21:18:00Z" }
+    { "id": "D-16", "type": "non-blocking", "start": "2026-10-04T21:18:00Z", "end": "2026-10-04T21:18:00Z" },
+    { "id": "D-17", "type": "non-blocking", "start": "2026-10-05T10:19:14Z", "end": "2026-10-05T10:19:14Z" }
   ],
   "humanInterventions": [
     { "start": "2026-10-04T21:18:37Z", "end": "2026-10-05T09:43:35Z", "reason": "D-15: frozen acceptance test AC-005-01 has a harness type-cast defect; only a human may approve a manifest change" }
