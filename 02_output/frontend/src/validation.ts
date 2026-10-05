@@ -3,7 +3,7 @@ import { FORMS, type FieldName, type RegistrationType } from './contract';
 // The backend's field rules (specification section 4), applied before submitting (NFR-03).
 // The backend stays authoritative.
 
-const EMAIL = /^[^\s@<>()[\],;:"\\]+@[^\s@<>()[\],;:"\\]+\.[^\s@<>()[\],;:"\\]{2,}$/;
+const EMAIL = /^[^\s@<>()[\],;:"\\]+@(?:[^\s@<>()[\],;:"\\.]+\.)+[^\s@<>()[\],;:"\\.]{2,}$/;
 const CONTROL = /[\p{Cc}\u2028\u2029]/u;
 
 export type FieldErrors = Partial<Record<FieldName | 'consentGiven' | 'captchaToken', string>>;
