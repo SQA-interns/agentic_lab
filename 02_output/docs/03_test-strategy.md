@@ -95,3 +95,11 @@ Surviving mutants in validation, security, persistence and business-rule code:
 Phase 5 additions that killed earlier survivors (first mutation run 80% / 85%): consent `false` read as false, startup-guard and options-file boundaries, export row order, organizer mail contents and sender, JSON copy organization/consent, temporary-file clean-up, reCAPTCHA read timeout, declared body at the limit; frontend email characters per part, incomplete API answers, captcha guards, unchecked options, cleared form errors.
 
 ## Final run (phase 6)
+
+2026-10-05, `verify.sh 6` and `verify.sh 6 e2e` (`out/logs/6_verify-summary.log`): 240 passed, 0 failed.
+
+| Component / level | Passed / failed | Line / branch coverage | Mutation |
+|---|---|---|---|
+| backend acceptance + unit + integration + architecture | 183 / 0 (65 + 105 + 8 + 5) | 97.1% / 91.8% | PIT 87% (352 mutants, 305 killed), unchanged since phase 5 |
+| frontend unit / component | 42 / 0 | 100% / 95.6% | Stryker 90.97% (357 killed, 26 timeout, 33 survived, 5 no coverage), survivors as classified in phase 5 |
+| end-to-end | 15 / 0 | — | — |
