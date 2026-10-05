@@ -1,0 +1,21 @@
+[33m22:38:31 (16660) WARN ProjectReader[39m Glob pattern "!src/**/*.test.ts" did not exclude any files.
+[32m22:38:31 (16660) INFO ProjectReader[39m Found 1 of 31 file(s) to be mutated.
+[32m22:38:31 (16660) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
+[32m22:38:32 (16660) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m22:38:36 (16660) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m22:38:40 (16660) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 3 seconds (net 126.1872000000003 ms, overhead 3120.8127999999997 ms).
+
+All tests/App.test.tsx
+  ✓ App renders the page heading (killed 1)
+
+Ran 1.00 tests per mutant on average.
+----------|------------------|----------|-----------|------------|----------|----------|
+          | % Mutation score |          |           |            |          |          |
+File      |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------|--------|---------|----------|-----------|------------|----------|----------|
+All files | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+ App.tsx  | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+----------|--------|---------|----------|-----------|------------|----------|----------|
+[32m22:38:43 (16660) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m22:38:43 (16660) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m22:38:43 (16660) INFO MutationTestExecutor[39m Done in 12 seconds.

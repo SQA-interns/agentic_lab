@@ -1,3 +1,39 @@
 # Decisions log
 
 > Written in: every phase · Format: `skills/decisions` ("Decision record") · Agent: appends only
+
+## D-01: Host JDK reports 21.0.11 (Oracle) instead of Temurin 21.0.10+7
+- Timestamp: 2026-10-05T20:26:21Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: preflight check 2, `java -version` reports Java HotSpot 21.0.11+9 (`project/stack.md` platform `java`: Eclipse Temurin 21.0.10+7). The tool runs; same major version 21.
+- Options: 1. (default) build and test with the host JDK 21.0.11; the pin stays authoritative and the runtime image stays `eclipse-temurin:21.0.10_7-jre-alpine`; 2. ask the human to install Temurin 21.0.10+7.
+- Human response: accepted as recorded (2026-10-05T20:34:17Z)
+- Resolution: 1
+
+## D-02: Host Node.js 24.10.0 with npm 10.9.4 instead of 24.13.0 with npm 11.6.2
+- Timestamp: 2026-10-05T20:26:21Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: preflight check 2, `node --version` v24.10.0, `npm --version` 10.9.4 (`project/stack.md` platform `node` and tool `npm audit (npm 11.6.2)`). Both run; `package-lock.json` is lockfileVersion 3, the format npm 11 writes as well.
+- Options: 1. (default) use the host Node.js and npm; the pins stay authoritative and the frontend build image stays `node:24.13.0-alpine`; 2. ask the human to install Node.js 24.13.0 with npm 11.6.2.
+- Human response: accepted as recorded (2026-10-05T20:34:17Z)
+- Resolution: 1
+
+## D-03: Dependency-Check reports High CVE-2025-7962 on angus-activation 2.0.3 (false positive)
+- Timestamp: 2026-10-05T20:26:21Z
+- Phase: 0
+- Type: blocking
+- Trigger: preflight check 6, `02_output/logs/0_be-depscan.log`: CVE-2025-7962, CVSS 7.5 (High), matched to `org.eclipse.angus:angus-activation:2.0.3` (transitive, via `spring-boot-starter-mail`) through CPE `cpe:2.3:a:eclipse:angus_mail:*` with `versionEndExcluding 2.0.4`, match confidence LOW. Evidence: the CVE is an SMTP injection in Jakarta Mail / Angus Mail; the mail implementation on the classpath is `org.eclipse.angus:angus-mail:2.0.5`, outside the affected range and not flagged; angus-activation is the activation framework, not the mail implementation, and only its version number falls under the angus_mail range. Also reported, Medium (non-blocking): CVE-2025-15104 on `hibernate-validator:9.1.3.Final`, a Nu Html Checker (validator.nu) CVE matched by product name.
+- Options: 1. (default) classify CVE-2025-7962 on angus-activation as a false positive (Low), suppress it with a Dependency-Check suppression file in `02_output/backend` that names this CVE and this artifact only, and continue; 2. keep it as High and change the dependency set (needs a `project/stack.md` change from the human, for example an explicit angus-activation version); 3. other instruction.
+- Human response: "D-03: 1" (2026-10-05T20:34:17Z): treat as a false positive, lower to Low with the evidence above, suppress for that one artifact only, keep the raw report, re-run the scan.
+- Resolution: 1. Suppression `02_output/backend/dependency-check-suppressions.xml` (packageUrl `pkg:maven/org.eclipse.angus/angus-activation@2.0.3`, CVE-2025-7962 only); raw report kept in `02_output/logs/0_be-depscan-raw-report.json` and `0_be-depscan-raw.log`; re-scan `0_be-depscan.log`: Critical 0, High 0, Medium 1.
+
+## D-04: Commit of verify.sh exceeds the 400-line commit limit
+- Timestamp: 2026-10-05T20:35:19Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: commit `35c3c77` ("build: add verify.sh and report helpers for all tools") changed 441 lines (`verify.sh` 253, `summarize.mjs` 151, `validate-contracts.mjs` 37); `rules.md` ("Commits") asks for at most about 400 lines or a stated reason, and the message gives none.
+- Options: 1. (default) state the reason here and leave history unchanged (`rules.md` forbids rewriting); reason: `phases.md` asks for one commit for `verify.sh`, and its two helper scripts are only called by it, so splitting them would leave a commit whose `verify.sh` cannot run; 2. rewrite the commit (not allowed).
+- Human response: "state the reason in the decisions log or progress file; do not rewrite history" (2026-10-05T20:34:17Z)
+- Resolution: 1

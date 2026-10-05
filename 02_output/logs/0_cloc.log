@@ -1,0 +1,67 @@
+== backend-main
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 0.166908025741577,
+  "n_files"            : 2,
+  "n_lines"            : 15,
+  "files_per_second"   : 11.9826472760309,
+  "lines_per_second"   : 89.8698545702315,
+  "report_file"        : "/src/logs/0_cloc-backendmain.json"},
+"Java" :{
+  "nFiles": 1,
+  "blank": 3,
+  "comment": 1,
+  "code": 10},
+"Properties" :{
+  "nFiles": 1,
+  "blank": 0,
+  "comment": 0,
+  "code": 1},
+"SUM": {
+  "blank": 3,
+  "comment": 1,
+  "code": 11,
+  "nFiles": 2} }
+== backend-test
+{"SUM":{"code":0}}
+== frontend-main
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 0.106952905654907,
+  "n_files"            : 2,
+  "n_lines"            : 19,
+  "files_per_second"   : 18.6998192125156,
+  "lines_per_second"   : 177.648282518898,
+  "report_file"        : "/src/logs/0_cloc-frontendmain.json"},
+"TypeScript" :{
+  "nFiles": 2,
+  "blank": 1,
+  "comment": 0,
+  "code": 18},
+"SUM": {
+  "blank": 1,
+  "comment": 0,
+  "code": 18,
+  "nFiles": 2} }
+== frontend-test
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 0.114706039428711,
+  "n_files"            : 2,
+  "n_lines"            : 11,
+  "files_per_second"   : 17.435873559587,
+  "lines_per_second"   : 95.8973045777283,
+  "report_file"        : "/src/logs/0_cloc-frontendtest.json"},
+"TypeScript" :{
+  "nFiles": 2,
+  "blank": 1,
+  "comment": 0,
+  "code": 10},
+"SUM": {
+  "blank": 1,
+  "comment": 0,
+  "code": 10,
+  "nFiles": 2} }

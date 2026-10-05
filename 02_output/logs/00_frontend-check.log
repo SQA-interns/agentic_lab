@@ -1,0 +1,18 @@
+
+> registration-frontend@0.1.0 check
+> npm run format:check && npm run lint && npm run typecheck
+
+
+> registration-frontend@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> registration-frontend@0.1.0 lint
+> eslint .
+
+
+> registration-frontend@0.1.0 typecheck
+> tsc --noEmit
+
