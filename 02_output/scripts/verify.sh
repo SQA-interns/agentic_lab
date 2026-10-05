@@ -33,9 +33,10 @@ IMG_REDOCLY="redocly/cli:2.57.0"
 IMG_PLAYWRIGHT="mcr.microsoft.com/playwright:v1.63.0-noble"
 IMG_POSTGRES="postgres:16.15-alpine"
 
-E2E_BASE_URL="${E2E_BASE_URL:-http://host.docker.internal:8081}"
-E2E_API_URL="${E2E_API_URL:-http://host.docker.internal:8080}"
-E2E_MAILPIT_URL="${E2E_MAILPIT_URL:-http://host.docker.internal:8025}"
+# End-to-end tests run on the network of the local stack (docker compose project "registration").
+E2E_NETWORK="${E2E_NETWORK:-registration_default}"
+E2E_BASE_URL="${E2E_BASE_URL:-http://frontend:8080}"
+E2E_MAILPIT_URL="${E2E_MAILPIT_URL:-http://mailpit:8025}"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-static be-dup be-test be-mutation be-depscan
   fe-build fe-format fe-lint fe-typecheck fe-test fe-mutation fe-dup fe-depscan
@@ -263,8 +264,8 @@ tool_e2e() {
   [ -n "$FILTER" ] && args+=(--grep "$FILTER")
   [ -d "$FE/tests/e2e" ] || args+=(--pass-with-no-tests)
   MSYS_NO_PATHCONV=1 bash "$SECRETS" run ORGANIZER_USERNAME,ORGANIZER_PASSWORD -- docker run --rm --ipc=host \
-    -e ORGANIZER_USERNAME -e ORGANIZER_PASSWORD \
-    -e "E2E_BASE_URL=$E2E_BASE_URL" -e "E2E_API_URL=$E2E_API_URL" -e "E2E_MAILPIT_URL=$E2E_MAILPIT_URL" \
+    --network "$E2E_NETWORK" -e ORGANIZER_USERNAME -e ORGANIZER_PASSWORD \
+    -e "E2E_BASE_URL=$E2E_BASE_URL" -e "E2E_MAILPIT_URL=$E2E_MAILPIT_URL" \
     -v "$(winpath "$FE"):/work" -w /work "$IMG_PLAYWRIGHT" "${args[@]}" >"$LOG" 2>&1
   RC=$?
   SUM="$(summary playwright "$FE/reports/e2e.json")"

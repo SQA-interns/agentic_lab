@@ -8,7 +8,7 @@ export default defineConfig({
   retries: 0,
   reporter: [["list"], ["json", { outputFile: "reports/e2e.json" }]],
   use: {
-    baseURL: process.env.E2E_BASE_URL ?? "http://host.docker.internal:8081",
+    baseURL: process.env.E2E_BASE_URL ?? "http://frontend:8080",
     trace: "off",
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
