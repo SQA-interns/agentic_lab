@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Google reCAPTCHA v2 verification (as used by the backend)
+  version: 1.0.0
+  description: >
+    The backend's outgoing call that verifies a reCAPTCHA v2 response token (SR-01). The URL is
+    configurable (RECAPTCHA_VERIFY_URL) so tests can point it at a mocked endpoint (DoD-P05). In test
+    mode (SR-02) no call is made: the token `test-pass` is accepted and every other token rejected.
+    A timeout, a non-200 status or an unreadable body is treated as "unavailable" (registration answered 503).
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: https://www.google.com
+    description: production verification service
+security: []
+paths:
+  /recaptcha/api/siteverify:
+    post:
+      operationId: siteVerify
+      summary: Verify a reCAPTCHA response token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [secret, response]
+              properties:
+                secret:
+                  description: RECAPTCHA_SECRET_KEY
+                  type: string
+                response:
+                  description: The token sent by the frontend as captchaToken
+                  type: string
+                remoteip:
+                  description: Not sent by the backend
+                  type: string
+      responses:
+        "200":
+          description: Verification result; the token is accepted only when success is true
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success]
+                properties:
+                  success:
+                    type: boolean
+                  challenge_ts:
+                    type: string
+                    format: date-time
+                  hostname:
+                    type: string
+                  error-codes:
+                    type: array
+                    items:
+                      type: string
+        "4XX":
+          description: Any client error; the backend treats it as "unavailable" and answers the registration with 503
+          content:
+            text/plain:
+              schema:
+                type: string
