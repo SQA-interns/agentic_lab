@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Written as <registrationId>.json in JSON_COPY_DIR before the registration is confirmed (BR-07, AR-05); UTF-8, attached unchanged to the organizer email (US-007). Values are the accepted values, after trimming.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "registrationId", "type", "receivedAt", "participant", "options", "consents"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "registrationId": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["external", "student"] },
+    "receivedAt": { "type": "string", "format": "date-time" },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "lastName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+        "organization": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studyInstitution": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studyProgramme": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studentId": { "type": "string", "minLength": 1, "maxLength": 50 }
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "name": { "type": "string", "minLength": 1 },
+          "category": { "enum": ["workshop", "event", "meal", "other"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "type": "string", "minLength": 1 },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "if": { "properties": { "type": { "const": "external" } } },
+  "then": {
+    "properties": {
+      "participant": {
+        "type": "object",
+        "properties": {
+          "organization": { "type": "string" },
+          "studyInstitution": false,
+          "studyProgramme": false,
+          "studentId": false
+        },
+        "required": ["organization"]
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "participant": {
+        "type": "object",
+        "properties": {
+          "organization": false,
+          "studyInstitution": { "type": "string" },
+          "studyProgramme": { "type": "string" },
+          "studentId": { "type": "string" }
+        },
+        "required": ["studyInstitution", "studyProgramme", "studentId"]
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "registrationId": "3f1c2a9e-5b7d-4c1e-9a2b-8d6e4f0a1b2c",
+  "type": "student",
+  "receivedAt": "2026-10-05T20:45:00.123Z",
+  "participant": {
+    "firstName": "Žiga",
+    "lastName": "Čebašek",
+    "email": "ziga.cebasek@example.si",
+    "studyInstitution": "Univerza v Ljubljani",
+    "studyProgramme": "Računalništvo in informatika",
+    "studentId": "63210001"
+  },
+  "options": [
+    { "id": "ws-testing", "name": "Delavnica: testiranje", "category": "workshop" },
+    { "id": "meal-lunch", "name": "Kosilo", "category": "meal" }
+  ],
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree to the processing of the personal data entered in this form for the registration and organisation of the conference.",
+      "givenAt": "2026-10-05T20:45:00.123Z"
+    }
+  ]
+}
