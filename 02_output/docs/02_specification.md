@@ -62,7 +62,7 @@ The backend is authoritative; the frontend applies the same rules before submitt
 | firstName, lastName | ≤ 100 → else `TOO_LONG` |
 | organization, studyInstitution, studyProgramme | ≤ 200 → else `TOO_LONG` |
 | studentId | ≤ 50 → else `TOO_LONG` |
-| email | ≤ 254 → else `TOO_LONG`; `^[^\s@<>()\[\],;:"\\]+@[^\s@<>()\[\],;:"\\]+\.[^\s@<>()\[\],;:"\\]{2,}$` → else `INVALID_EMAIL` |
+| email | ≤ 254 → else `TOO_LONG`; `^[^\s@<>()\[\],;:"\\]+@(?:[^\s@<>()\[\],;:"\\.]+\.)+[^\s@<>()\[\],;:"\\.]{2,}$` (no empty domain label, D-17) → else `INVALID_EMAIL` |
 | field of the other type (e.g. `organization` on STUDENT) | present and non-null → `NOT_ALLOWED` |
 | optionIds | each id configured → else `UNKNOWN_OPTION`; active → else `INACTIVE_OPTION`; no repeats → else `DUPLICATE_OPTION`; empty list allowed (D-09) |
 | consentGiven | must be `true` → else `CONSENT_REQUIRED` (BR-05, D-07) |
