@@ -1,3 +1,8 @@
+8a51803 test: re-hash the AC-005-01 test in the acceptance manifest (D-15)
+941b362 test: read stored timestamps as java.sql.Timestamp in AC-005-01 (D-15)
+0c932b7 chore: record the wait for D-15 in progress and run log
+32d4c70 docs: raise blocking decision on the AC-005-01 harness cast (D-15, D-16)
+82f3e57 chore: add phase 4 build, test, e2e and commit-list logs
 8059a8f build: add container images and the local compose stack (NFR-02, NFR-04, SB-11)
 6533aa4 feat: add registration page with options, consent and confirmation (US-001..US-004)
 9d44a34 feat: add frontend API client and field validation (US-001, US-002, NFR-03)
