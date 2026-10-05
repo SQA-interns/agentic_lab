@@ -1,0 +1,29 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 17 files tracked by git with 693 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>       9      17          Community     693                                                                
+  json              3       8                                                                                           
+  ts               87       4                                                                                           
+  yaml             24       2                                                                                           
+  java             86       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 1 (1 blocking)
+ • Rules run: 209
+ • Targets scanned: 17
+ • Parsed lines: ~100.0%
+ • No ignore information available
+Ran 209 rules on 17 files: 1 finding.
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading

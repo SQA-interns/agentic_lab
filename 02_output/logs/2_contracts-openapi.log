@@ -1,0 +1,12 @@
+No configurations were provided -- using built in recommended configuration by default.
+
+validating api.openapi.yaml...
+api.openapi.yaml: validated in 160ms
+
+No configurations were provided -- using built in recommended configuration by default.
+
+validating recaptcha-siteverify.openapi.yaml...
+recaptcha-siteverify.openapi.yaml: validated in 31ms
+
+Woohoo! Your API descriptions are valid. 🎉
+

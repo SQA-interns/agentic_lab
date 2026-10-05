@@ -91,3 +91,13 @@
 - Options: 1. build automatic deletion after a fixed period (invents behaviour and an unrequested function); 2. (default) no deletion function is built; retention is stated as "until the organizers delete the data after the conference" and listed under "Before production" for the product owner to set; no acceptance criterion.
 - Human response: none
 - Resolution: 2, pending review
+
+## D-11: Semgrep High: HTTP Basic authentication on the organizer export
+- Timestamp: 2026-10-05T20:50:26Z
+- Phase: 2
+- Type: blocking
+- Trigger: `verify.sh 2 semgrep` (`02_output/logs/2_semgrep.json`): rule `yaml.openapi.security.use-of-basic-authentication` (ERROR → High, CWE-287) on `docs/02_contracts/api.openapi.yaml` line 136, the `organizerBasic` scheme of `GET /api/registrations/export` (`02_specification.md` §7). The rule flags the scheme itself; it does not show an exploit path in this design.
+- Evidence for a downgrade: credentials are accepted only over HTTPS (SR-06, 403 otherwise; refused at startup if switched off in production); the password is at least 16 random characters (`secrets.env.example`) and held only as a BCrypt hash (SB-03); the endpoint is rate limited (SR-03); there is one role and one read-only operation; ASVS 5.0 Level 1 is the chosen level (`project/constraints.md`); identity providers are out of scope, so OAuth2 / OpenID Connect are not available; there is no session, so there is no CSRF exposure.
+- Options: 1. (default) keep HTTP Basic as specified and classify the finding as Low (scanner match on a deliberate, mitigated design), with the evidence above; 2. replace Basic with a credential exchange (`POST /api/organizer/token` with username and password returns a short-lived bearer token for the export); same password secret, more code, and the organizer can no longer download from a browser without a tool or UI; 3. replace Basic with form login and a session cookie plus CSRF protection; needs a login page, which is close to the out-of-scope administration UI; 4. other instruction.
+- Human response: none
+- Resolution: pending

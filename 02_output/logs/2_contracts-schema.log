@@ -1,0 +1,9 @@
+schema conference-config.schema.json: valid
+instance conference-config.example.json: valid
+schema emails.schema.json: valid
+instance emails.json: valid
+schema registration-copy.schema.json: valid
+instance registration-copy.example.json: valid
+schema ui-registration-form.schema.json: valid
+instance ui-registration-form.json: valid
+SUMMARY schemas=4 examples=4 failures=0
