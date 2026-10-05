@@ -25,12 +25,12 @@
       "phase": 2,
       "name": "design",
       "start": "2026-10-05T20:42:28Z",
-      "end": null
+      "end": "2026-10-05T20:56:18Z"
     },
     {
       "phase": 3,
       "name": "test-design",
-      "start": null,
+      "start": "2026-10-05T20:56:18Z",
       "end": null
     },
     {
@@ -84,11 +84,12 @@
     { "id": "D-08", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
     { "id": "D-09", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
     { "id": "D-10", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-11", "type": "blocking", "start": "2026-10-05T20:50:26Z", "end": null }
+    { "id": "D-11", "type": "blocking", "start": "2026-10-05T20:50:26Z", "end": "2026-10-05T20:52:36Z" },
+    { "id": "D-12", "type": "non-blocking", "start": "2026-10-05T20:55:56Z", "end": "2026-10-05T20:55:56Z" }
   ],
   "humanInterventions": [
     { "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z", "reason": "D-03: downgrade of High CVE-2025-7962 (angus-activation) as a false positive" },
-    { "start": "2026-10-05T20:50:26Z", "end": null, "reason": "D-11: downgrade of Semgrep High on HTTP Basic authentication for the export" }
+    { "start": "2026-10-05T20:50:26Z", "end": "2026-10-05T20:52:36Z", "reason": "D-11: downgrade of Semgrep High on HTTP Basic authentication for the export" }
   ],
   "codeMetrics": {
     "components": [],
