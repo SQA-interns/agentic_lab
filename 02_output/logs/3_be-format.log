@@ -1,0 +1,15 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:check (default-cli) @ registration-backend ---
+[INFO] Spotless.Java is keeping 22 files clean - 0 needs changes to be clean, 2 were already clean, 20 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.969 s
+[INFO] Finished at: 2026-10-05T23:15:01+02:00
+[INFO] ------------------------------------------------------------------------
