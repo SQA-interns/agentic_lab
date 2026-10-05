@@ -21,7 +21,7 @@ set -u
 
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 ENV_FILE="$ROOT/.env"
-EXAMPLE="$ROOT/01_input/01_project/00_setup/secrets.env.example"
+EXAMPLE="$ROOT/01_input/01_project/secrets.env.example"
 
 die() {
   echo "secrets.sh: $*" >&2

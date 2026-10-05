@@ -1,11 +1,15 @@
 # Release notes
 
-> Written in: phase 7 · Agent: writes
+> Written in: phase 7 · Procedure: `skills/release` · Agent: writes
 
 ## Delivered
 
 ## Known limitations
 
-## Must be tested manually by a human
+## Decisions to sign off
 
-## Decisions pending review
+Already applied during the run. Sign them off before production use.
+
+## Before production
+
+Checks that the local run could not do (real external services) and accepted findings whose fix lies outside the run. They are not part of the run's results.

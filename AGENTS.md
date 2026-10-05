@@ -6,32 +6,29 @@ Humans start at `README.md`.
 
 ## Read, in this order
 
-1. `01_input/01_project/00_setup/run-config.md`: model, effort, run id
-2. `01_input/00_general/rules.md`: the rules of every phase, and the phase map
-3. `01_input/00_general/phases/<n>-*.md`: the card of the current phase. It names every other file that phase needs; read nothing else for the phase.
+1. `01_input/01_project/00_setup/run-config.md`: model, effort, run id, attended or not
+2. `01_input/00_general/rules.md`: the rules of every phase
+3. `01_input/00_general/phases.md`: phase order; for each phase its skill, what to read and write, its gate and its commits
+4. The current phase's skill in `01_input/00_general/skills/`, and only the files `phases.md` lists for that phase
 
 Start with phase 0. If `02_output/docs/00_progress.md` shows work in progress, resume from it instead of starting over.
 
 ## Paths and precedence
 
-- Aliases used in all files: `general/` = `01_input/00_general/`, `project/` = `01_input/01_project/`, `out/` = `02_output/`, `docs/` = `02_output/docs/`.
-- Precedence: `AGENTS.md` > `general/rules.md` > phase card > `general/standards.md` > `project/` files, except for explicit overrides.
-- A project file adds to the general file on the same topic and never repeats it; it overrides a general item only with a line `Overrides: <ID>, reason`.
-- A human approval recorded in a decision record (`Human response`) replaces the input entry it changes, for that item only. Never edit `01_input/` to apply it.
-- A conflict that no rule resolves is a decision record, never a silent choice.
+- Aliases used in all files: `general/` = `01_input/00_general/` (so `skills/` = `general/skills/`, `standards/` = `general/standards/`), `project/` = `01_input/01_project/`, `out/` = `02_output/`, `docs/` = `02_output/docs/`.
+- Precedence: `AGENTS.md` > `rules.md` > `phases.md` > skill > `standards/` > `project/`, except a line `Overrides: <ID>, reason` in `project/constraints.md` ("Overrides").
+- A project file adds to the general files and never repeats them.
+- A human answer recorded in a decision replaces the input entry it changes, for that item only. Never edit `01_input/` to apply it.
+- A conflict that no rule resolves is a decision, never a silent choice.
 
 ## Never
 
-- Do not create, modify or delete anything under `01_input/`, or any file in sections 1 and 2 of `README.md`.
-- Write only the files in section 3 of `README.md`.
-- Do not edit a file listed in `02_output/docs/03_acceptance-manifest.sha256`; raise a decision record instead.
-- Do not change `02_output/docs/00_input-manifest.sha256` after phase 0.
-- Do not change a technology, version, service or secret named in `01_project/00_setup/tech-stack.md` or `01_project/00_setup/secrets.env.example` without human approval.
-- Do not install or upgrade software on the host without human approval.
+- Do not create, modify or delete anything under `01_input/`, or any file in sections 1 and 2 of `README.md`. Write only the files in section 3.
+- Do not edit a file listed in `docs/03_acceptance-manifest.sha256`, and do not change `docs/00_input-manifest.sha256` after phase 0.
+- Do not change a technology, version, service or secret named in `project/stack.md` or `project/secrets.env.example`, and do not install or upgrade host software, without human approval.
+- Do not read `.env` or print its values; only `general/tools/secrets.sh` reads it. Do not ask the human to paste a secret; ask them to put it in `.env`.
 - Do not commit secrets or environment-specific values.
-- Do not read `.env` with a file tool or a shell command, and do not print, copy or log its values; only `01_input/00_general/tools/secrets.sh` reads it (see "Secrets" in `rules.md`).
-- Do not ask the human to paste a secret into the conversation; ask them to put it in `.env`.
-- Do not start a phase before the previous phase's gate has passed, except as "Unattended runs" in `rules.md` allows.
+- Do not start a phase before the previous gate has passed, except as `skills/decisions` allows in an unattended run.
 - Do not finish while a Critical or High finding is open; an unattended run ends with it listed as open.
-- Do not wait, poll or sleep for a human answer; ask and end the turn, or, in an unattended run, apply the proposed default and record it (see "Blocking decisions" in `rules.md`).
-- Do not touch `03_statistics/` except as stated in `rules.md`.
+- Do not wait, poll or sleep for a human answer (`skills/decisions`).
+- Do not touch `03_statistics/` except as `rules.md` ("Statistics") says.

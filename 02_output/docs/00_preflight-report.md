@@ -1,15 +1,15 @@
 # Preflight report
 
-> Written in: phase 0 · Source: `project/00_setup/*` · Procedure: `general/phases/0-preflight.md` · Agent: writes
+> Written in: phase 0 · Source: `project/00_setup/run-config.md`, `project/stack.md`, `project/secrets.env.example` · Procedure: `skills/preflight` · Agent: writes
 
 | Check | Source of truth | Result |
 |---|---|---|
 | Run configuration complete | `project/00_setup/run-config.md` | |
-| Platforms and tools installed at the listed versions | `project/00_setup/tech-stack.md` | |
-| Local environments and services running or reachable | `project/00_setup/environments.md` | |
-| Secrets present in `.env` or marked test-only | `project/00_setup/secrets.env.example` | |
-| Every listed dependency resolves | `project/00_setup/tech-stack.md` | |
-| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | |
+| Platforms and tools installed at the listed versions | `project/stack.md` | |
+| Local environments and services running or reachable | `project/stack.md` ("Environments") | |
+| Secrets present in `.env` or marked test-only | `project/secrets.env.example` | |
+| Every listed dependency resolves | `project/stack.md` | |
+| No listed dependency has a known Critical or High vulnerability | `project/stack.md` | |
 | Clean working tree on the starting commit | repository | |
 | Input manifest written | `docs/00_input-manifest.sha256` | |
 

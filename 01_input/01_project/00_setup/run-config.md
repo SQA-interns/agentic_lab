@@ -1,0 +1,10 @@
+# Run configuration
+
+> Owner: Human operator · Fill: every run · Read in: phase 0 · Agent: read-only
+
+- Model: claude-opus-5-5
+- Effort: medium
+- Template version: tanej-2.0
+- Run ID: tanej-04_conference-registration_opus5.5_sdd_template-tanej-2.0
+- Unattended: no (`yes`: no human answers during the run; see `general/skills/decisions/SKILL.md`)
+- Starting commit: git HEAD when the agent starts (recorded in phase 0; it must contain these filled inputs)

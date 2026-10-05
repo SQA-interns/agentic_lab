@@ -1,10 +1,12 @@
 # Decisions log
 
-> Written in: every phase · Format: `general/rules.md` ("Decision log format") · Agent: appends only
+> Written in: every phase · Format: `skills/decisions` ("Log format") · Agent: appends only
 
 ## Non-blocking
 
-| D | Timestamp | Phase | Trigger | Choice | Status |
-|---|---|---|---|---|---|
+Applied when recorded.
+
+| D | Timestamp | Phase | Trigger | Choice |
+|---|---|---|---|---|
 
 ## Blocking

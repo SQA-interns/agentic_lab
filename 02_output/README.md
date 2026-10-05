@@ -1,6 +1,6 @@
 # <Project name>
 
-> Written in: phase 7 · Source: `project/02_design/architecture.md`, ES-06 · Agent: writes
+> Written in: phase 7 · Source: `project/constraints.md` ("Components"), ES-06 · Agent: writes
 
 ## Overview
 

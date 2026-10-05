@@ -1,6 +1,6 @@
 # Specification
 
-> Written in: phase 2 · Source: `01_acceptance-criteria.md`, `project/00_setup/tech-stack.md`, `project/00_setup/environments.md`, `project/02_design/*`, `general/standards.md` · Agent: writes
+> Written in: phase 2 · Source: `01_acceptance-criteria.md`, `project/stack.md`, `project/constraints.md`, `standards/security.md` · Procedure: `skills/write-specification` · Agent: writes
 
 ## Traceability
 

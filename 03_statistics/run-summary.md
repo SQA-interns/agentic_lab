@@ -14,6 +14,13 @@
 
 <!-- tests (first and final run), findings by severity, fix loops -->
 
+## Test measures
+
+<!-- copied from the "Final run" table of 02_output/docs/03_test-strategy.md -->
+
+| Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools |
+|---|---|---|---|---|---|---|
+
 ## Decisions and human interventions
 
 ## Not measured by the agent
