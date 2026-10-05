@@ -1,0 +1,9 @@
+== input manifest
+checked 27
+== acceptance manifest
+checked 26
+== acceptance/e2e files not in manifest
+== leak-check
+files containing a value of .env, as <file>: <key> (none expected):
+commit-message lines containing a value of .env (0 expected): 0
+leak exit=0

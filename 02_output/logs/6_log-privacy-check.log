@@ -1,0 +1,10 @@
+== backend container log (whole stack lifetime)
+lines: 50
+email addresses: 0
+demo names (Špela|Žagar|Čebašek): 0
+stack traces: 0
+generated password: 0
+registration log lines (sample):
+== backend test log 6_be-test.log (application log lines, excluding assertion output)
+app log lines: 297, with an email address: 0
+== frontend nginx log: query strings with data: 0

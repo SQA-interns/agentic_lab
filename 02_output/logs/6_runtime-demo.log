@@ -1,0 +1,73 @@
+== 2026-10-05T14:02:28Z containers
+registration-frontend-1 registration-frontend Up 4 hours (healthy)
+registration-backend-1 registration-backend Up 4 hours (healthy)
+registration-postgres-1 postgres:16.15-alpine Up 17 hours (healthy)
+registration-mailpit-1 axllent/mailpit:v1.31.1 Up 17 hours (healthy)
+== health (backend direct and through the frontend)
+{"status":"UP"}
+{"status":"UP"}
+frontend / 200
+== frontend security headers
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self'; img-src 'self' data:; style-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+== processes run as non-root
+registration-backend-1: uid=10001(app) gid=10001(app) groups=10001(app)
+registration-frontend-1: uid=101(nginx) gid=101(nginx) groups=101(nginx)
+== registrations through the frontend
+form-config: 7 active options, test mode true
+POST /api/registrations EXTERNAL: 201 id=cc64212d-2e2e-4dcd-956a-c97a87ba00e1 email=demo.external.muvbkabn@example.si
+POST /api/registrations STUDENT: 201 id=a4020841-3986-4126-b4ba-2defa7774298 email=demo.student.muvbkabn@example.si
+POST /api/registrations with a failed captcha: 400 VALIDATION_FAILED
+Mailpit participant mail to demo.external.muvbkabn@example.si: 1 (Registration confirmed: Konferenca 2026 (local))
+Mailpit organizer mail: "New registration (external participant): Konferenca 2026 (local)", attachment registration-cc64212d-2e2e-4dcd-956a-c97a87ba00e1.json (application/json)
+Mailpit participant mail to demo.student.muvbkabn@example.si: 1 (Registration confirmed: Konferenca 2026 (local))
+Mailpit organizer mail: "New registration (student): Konferenca 2026 (local)", attachment registration-a4020841-3986-4126-b4ba-2defa7774298.json (application/json)
+== 2026-10-05T14:02:51Z database rows and JSON copies (DoD-P02)
+   type   | first_name | last_name |               email               |        accepted_at         |        options        
+----------+------------+-----------+-----------------------------------+----------------------------+-----------------------
+ EXTERNAL | Špela      | Žagar     | demo.external.muvbkabn@example.si | 2026-10-05 14:02:35.11+00  | ws-ai,meal-lunch-day1
+ STUDENT  | Žiga       | Čebašek   | demo.student.muvbkabn@example.si  | 2026-10-05 14:02:35.895+00 | ev-reception
+(2 rows)
+
+20261005T140235110Z_cc64212d-2e2e-4dcd-956a-c97a87ba00e1.json
+20261005T140235895Z_a4020841-3986-4126-b4ba-2defa7774298.json
+== export with and without organizer access (DoD-P04)
+secrets.sh: argument not allowed: export
+== 2026-10-05T14:02:55Z recreate every container: compose down (volumes kept), up (NFR-02)
+ Container registration-mailpit-1 Removed 
+ Network registration_default Removing 
+ Network registration_default Removed 
+ Container registration-mailpit-1 Healthy 
+ Container registration-backend-1 Healthy 
+ Container registration-postgres-1 Healthy 
+ Container registration-frontend-1 Healthy 
+registration-frontend-1 Up 6 seconds (healthy)
+registration-backend-1 Up 32 seconds (healthy)
+registration-postgres-1 Up 38 seconds (healthy)
+registration-mailpit-1 Up 38 seconds (healthy)
+== after recreation: rows, copies, export
+   type   | first_name | last_name |               email               |        accepted_at         |        options        
+----------+------------+-----------+-----------------------------------+----------------------------+-----------------------
+ EXTERNAL | Špela      | Žagar     | demo.external.muvbkabn@example.si | 2026-10-05 14:02:35.11+00  | ws-ai,meal-lunch-day1
+ STUDENT  | Žiga       | Čebašek   | demo.student.muvbkabn@example.si  | 2026-10-05 14:02:35.895+00 | ev-reception
+(2 rows)
+
+20261005T140235110Z_cc64212d-2e2e-4dcd-956a-c97a87ba00e1.json
+20261005T140235895Z_a4020841-3986-4126-b4ba-2defa7774298.json
+secrets.sh: argument not allowed: export
+== 2026-10-05T14:04:15Z organizer access refusals after recreation (DoD-P04); authorized download: e2e AC-001-06 in out/logs/6_e2e.log
+GET export without access: 401
+GET export with a forged token: 401
+POST token with wrong credentials: 401
+== 2026-10-05T14:04:58Z production start with unsafe settings (SR-02); dummy values only
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
+Caused by: org.flywaydb.core.internal.exception.sqlExceptions.FlywaySqlUnableToConnectToDbException: U
+Caused by: org.postgresql.util.PSQLException: FATAL: password authe
+exit status of the container: 1
+== 2026-10-05T14:05:32Z same, with the real database (password via secrets.sh)
+exit status of the container: 1
+== 2026-10-05T14:06:59Z without CONFERENCE_OPTIONS_FILE the start stops at the options loader: 'CONFERENCE_OPTIONS_FILE is not set'; with the bundled example file:
+unsafe configuration: RECAPTCHA_TEST_MODE is allowed only in the local and test environments; ORGANIZER_HTTPS_ONLY may be false only on the local stack; CONFERENCE_OPTIONS_FILE must be set in production
+Tomcat started lines: 0

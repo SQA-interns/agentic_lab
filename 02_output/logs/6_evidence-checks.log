@@ -1,0 +1,16 @@
+== phase 3 production files changed:
+(end)
+== freeze commit files:
+02_output/docs/03_acceptance-manifest.sha256
+== manifest files present before freeze:
+(end)
+== commits over size since freeze (files>15 or added+deleted>400, excluding logs/locks):
+f865b7d 4 files 411 lines test: add frontend unit and component tests (NFR-03)
+c280895 6 files 494 lines test: add adapter tests for options, JSON copies, export, mail and reCAPTCHA (DoD-P05, SR-05)
+cd72bd7 4 files 579 lines test: add unit tests for validation, registration service and organizer access (SB-01, SB-03)
+6533aa4 6 files 446 lines feat: add registration page with options, consent and confirmation (US-001..US-004)
+d31ad3a 9 files 424 lines feat: validate and store registrations of both types (US-001, US-002)
+62f39d3 19 files 687 lines feat: load conference options and serve the form configuration (US-003)
+== commits over size before freeze:
+d141ad5 5 files 459 lines test: add acceptance environment, API and mail clients, app restarts
+de30ec4 1 files 424 lines docs: add REST contract for options, registration and export (AR-01)

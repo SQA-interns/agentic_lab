@@ -1,0 +1,569 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to -javaagent:C:\\Users\\tanej\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\tanej\\Documents\\LAB\\agentic_lab\\02_output\\backend\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] Copying 2 resources from ..\docs\02_contracts to target\classes\contracts
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] skip non existing resourceDirectory C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest
+15:59:49.968 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+15:59:49.986 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+15:59:50.159 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+15:59:51.885 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+15:59:53.522 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+15:59:53.526 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+15:59:53.626 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.0
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7612 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+15:59:54.604 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+15:59:54.882 [main] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+15:59:55.451 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: c799b63ac0bd2b8731a0bfdea0b5a55f4df4ab8e95f8864d5fc1b584533ba9f9
+15:59:56.801 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT2.1966398S
+15:59:56.823 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+15:59:56.823 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+15:59:56.825 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+15:59:56.827 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+15:59:57.059 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: ceb3fef5ce9a83ac16927f3fadc91aa166c9543dc9d107334b39fb687ff65192
+16:00:03.038 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT6.2109506S
+16:00:03.039 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF)
+16:00:03.040 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+16:00:03.250 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 729b137c56b952b2d391245ade08b45ef43c69c644cd512c89bad7509e4412eb
+16:00:03.980 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /sharp_chandrasekhar: Waiting for 60 seconds for URL: http://localhost:52876/api/v1/info (where port 52876 maps to container port 8025)
+16:00:04.337 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT1.296645S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:00:06.639+02:00  INFO 36336 --- [registration-backend] [           main] .Us001ExternalRegistrationAcceptanceTest : Starting Us001ExternalRegistrationAcceptanceTest using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:00:06.643+02:00  INFO 36336 --- [registration-backend] [           main] .Us001ExternalRegistrationAcceptanceTest : The following 1 profile is active: "test"
+2026-10-05T16:00:10.158+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:00:10.385+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 191 ms. Found 1 JPA repository interface.
+2026-10-05T16:00:13.528+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:00:13.585+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:00:13.607+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:00:13.806+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 7068 ms
+2026-10-05T16:00:15.333+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-05T16:00:16.179+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@27a71243
+2026-10-05T16:00:16.184+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-05T16:00:16.292+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:00:16.510+02:00  INFO 36336 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-05T16:00:16.530+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.052s)
+2026-10-05T16:00:16.587+02:00  INFO 36336 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-05T16:00:16.785+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-05T16:00:16.803+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - Create registration storage"
+2026-10-05T16:00:16.955+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.096s)
+2026-10-05T16:00:17.317+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:00:17.548+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-05T16:00:19.522+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:00:19.959+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:00:23.752+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:00:23.964+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:00:24.882+02:00  INFO 36336 --- [registration-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-05T16:00:26.274+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:00:28.044+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:00:28.251+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62626 (http) with context path '/'
+2026-10-05T16:00:28.271+02:00  INFO 36336 --- [registration-backend] [           main] .Us001ExternalRegistrationAcceptanceTest : Started Us001ExternalRegistrationAcceptanceTest in 23.513 seconds (process running for 45.774)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\tanej\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-05T16:00:29.910+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:00:29.910+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:00:29.919+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2026-10-05T16:00:34.338+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-8] s.k.r.application.RegistrationService    : registration 40eb9725-3849-4035-8f71-72bbd6204ec2 accepted
+2026-10-05T16:00:37.122+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-2] s.k.r.application.RegistrationService    : registration 56158c2d-08a0-4beb-ae7c-0983d202ddf9 accepted
+2026-10-05T16:00:37.342+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-3] s.k.r.application.RegistrationService    : registration 14697b89-eca4-4a16-b009-3ccfc9c27ee7 accepted
+2026-10-05T16:00:51.672+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-7] s.k.r.application.RegistrationService    : registration 5ff0818f-e73c-4e28-8f0a-1a39f2d9223e accepted
+2026-10-05T16:00:56.408+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-3] s.k.r.application.RegistrationService    : registration 0c8e4b06-a16f-4581-80d6-6c645541150f accepted
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 68.44 s -- in si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us002StudentRegistrationAcceptanceTest
+2026-10-05T16:00:56.708+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-4] s.k.r.application.RegistrationService    : registration 8315c087-e259-4405-bbf9-5209c38d28f7 accepted
+2026-10-05T16:01:21.065+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.application.RegistrationService    : registration f8d0a3f9-c462-4ffd-b84a-7ecfdff88dde accepted
+2026-10-05T16:01:21.365+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-9] s.k.r.application.RegistrationService    : registration 8d8dd20b-6786-498d-950d-0334e2d7d7c0 accepted
+2026-10-05T16:01:21.545+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-4] s.k.r.application.RegistrationService    : registration 649d62b2-a889-425d-8c97-8795d223f4c6 accepted
+2026-10-05T16:01:22.875+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-3] s.k.r.application.RegistrationService    : registration 015e05b2-30e4-47bb-b63c-6cbf492367f1 accepted
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.48 s -- in si.konferenca.registration.acceptance.Us002StudentRegistrationAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us003ConfigurableOptionsAcceptanceTest
+2026-10-05T16:01:24.271+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-7] s.k.r.application.RegistrationService    : registration f938e838-2576-48f0-8365-c2daaf26701c accepted
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:01:24.468+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:01:24.468+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "test"
+2026-10-05T16:01:25.125+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:01:25.178+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 1 JPA repository interface.
+2026-10-05T16:01:25.510+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:01:25.513+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:01:25.514+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:01:25.665+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1194 ms
+2026-10-05T16:01:26.084+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-05T16:01:26.145+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@18a4ab4f
+2026-10-05T16:01:26.146+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-05T16:01:26.151+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:01:26.223+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.021s)
+2026-10-05T16:01:26.281+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-05T16:01:26.284+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-05T16:01:26.328+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:01:26.396+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:01:26.418+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:01:26.535+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:01:26.591+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:27.296+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:01:27.581+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:01:27.621+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 50134 (http) with context path '/'
+2026-10-05T16:01:27.628+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 3.243 seconds (process running for 105.131)
+2026-10-05T16:01:27.639+02:00  INFO 36336 --- [registration-backend] [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:01:27.639+02:00  INFO 36336 --- [registration-backend] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:01:27.642+02:00  INFO 36336 --- [registration-backend] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-05T16:01:30.904+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-05T16:01:30.919+02:00  INFO 36336 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-05T16:01:30.929+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:30.935+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-10-05T16:01:30.945+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-10-05T16:01:30.953+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-05T16:01:30.962+02:00  INFO 36336 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:01:31.166+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:01:31.166+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "test"
+2026-10-05T16:01:31.728+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:01:31.779+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interface.
+2026-10-05T16:01:31.969+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:01:31.978+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:01:31.978+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:01:32.071+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 900 ms
+2026-10-05T16:01:32.256+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-05T16:01:32.291+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@b352efe
+2026-10-05T16:01:32.292+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-05T16:01:32.296+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:01:32.360+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.020s)
+2026-10-05T16:01:32.424+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-05T16:01:32.427+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-05T16:01:32.479+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:01:32.539+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:01:32.562+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:01:32.669+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:01:32.720+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:33.379+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:01:33.636+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:01:33.678+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 50149 (http) with context path '/'
+2026-10-05T16:01:33.684+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 2.591 seconds (process running for 111.188)
+2026-10-05T16:01:33.697+02:00  INFO 36336 --- [registration-backend] [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:01:33.697+02:00  INFO 36336 --- [registration-backend] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:01:33.699+02:00  INFO 36336 --- [registration-backend] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-05T16:01:33.793+02:00  INFO 36336 --- [registration-backend] [o-auto-3-exec-2] s.k.r.application.RegistrationService    : registration 31d488b2-edd4-4a6e-87aa-65fbc3e461e5 accepted
+2026-10-05T16:01:33.987+02:00  INFO 36336 --- [registration-backend] [o-auto-3-exec-3] s.k.r.application.RegistrationService    : registration 5dfc9a68-54bc-4972-b9a0-5e2084f19e67 accepted
+2026-10-05T16:01:34.096+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-05T16:01:34.109+02:00  INFO 36336 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-05T16:01:34.116+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:34.117+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-10-05T16:01:34.122+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-10-05T16:01:34.125+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-05T16:01:34.127+02:00  INFO 36336 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.06 s -- in si.konferenca.registration.acceptance.Us003ConfigurableOptionsAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us004ConfirmationAcceptanceTest
+2026-10-05T16:01:34.250+02:00  INFO 36336 --- [registration-backend] [-auto-1-exec-10] s.k.r.application.RegistrationService    : registration ca7fd6f0-da0e-4451-b8a9-ef4f7316fafd accepted
+2026-10-05T16:01:34.405+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-7] s.k.r.application.RegistrationService    : registration 8abf1366-7a63-4f2c-a593-681ef643db03 not stored: UncheckedIOException
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.366 s -- in si.konferenca.registration.acceptance.Us004ConfirmationAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us005StorageAcceptanceTest
+2026-10-05T16:01:35.656+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-8] s.k.r.application.RegistrationService    : registration 3a06d980-b8bf-4c70-a7c1-47001dfea8c3 accepted
+2026-10-05T16:01:35.851+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-9] s.k.r.application.RegistrationService    : registration 08c2a1c6-3c71-4cee-a994-493c1899d5f6 accepted
+2026-10-05T16:01:36.185+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-5] s.k.r.application.RegistrationService    : registration 0e676183-1c99-48ca-a054-bba8223db7ed not stored: UncheckedIOException
+2026-10-05T16:01:37.333+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-4] s.k.r.application.RegistrationService    : registration 54dd369b-e45e-478d-8219-d2e1e2c9840f accepted
+2026-10-05T16:01:37.620+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-2] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: P0001
+2026-10-05T16:01:37.620+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-2] org.hibernate.orm.jdbc.error             : ERROR: injected storage failure
+  Where: PL/pgSQL function acceptance_fail_insert() line 1 at RAISE
+2026-10-05T16:01:37.691+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-2] s.k.r.application.RegistrationService    : registration 18e11a9e-9513-4bbc-a766-d1c94997d1e5 not stored: JpaSystemException
+2026-10-05T16:01:38.861+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-3] s.k.r.application.RegistrationService    : registration bae9dcdb-ac64-49a2-a63e-4cc13b6a2d26 accepted
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:01:39.071+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:01:39.072+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "test"
+2026-10-05T16:01:39.563+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:01:39.612+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 1 JPA repository interface.
+2026-10-05T16:01:39.828+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:01:39.830+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:01:39.830+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:01:39.930+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 855 ms
+2026-10-05T16:01:40.108+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-10-05T16:01:40.135+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@763759f
+2026-10-05T16:01:40.136+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-10-05T16:01:40.140+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:01:40.197+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.018s)
+2026-10-05T16:01:40.256+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-05T16:01:40.259+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-05T16:01:40.303+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:01:40.361+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:01:40.385+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:01:40.493+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:01:40.543+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:41.186+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:01:41.412+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:01:41.448+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 58188 (http) with context path '/'
+2026-10-05T16:01:41.452+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 2.436 seconds (process running for 118.956)
+2026-10-05T16:01:41.465+02:00  INFO 36336 --- [registration-backend] [o-auto-4-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:01:41.466+02:00  INFO 36336 --- [registration-backend] [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:01:41.469+02:00  INFO 36336 --- [registration-backend] [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-05T16:01:41.534+02:00  INFO 36336 --- [registration-backend] [o-auto-4-exec-1] s.k.r.application.RegistrationService    : registration 47dcd5f7-a668-4784-8245-03e10a8fcfb7 accepted
+2026-10-05T16:01:41.646+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-05T16:01:41.657+02:00  INFO 36336 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-05T16:01:41.661+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:41.661+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-10-05T16:01:41.666+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2026-10-05T16:01:41.668+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-05T16:01:41.669+02:00  INFO 36336 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:01:41.737+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:01:41.737+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "test"
+2026-10-05T16:01:42.252+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:01:42.296+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interface.
+2026-10-05T16:01:42.470+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:01:42.472+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:01:42.472+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:01:42.543+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 802 ms
+2026-10-05T16:01:42.703+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-10-05T16:01:42.735+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@184a2612
+2026-10-05T16:01:42.736+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-10-05T16:01:42.740+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:01:42.799+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.018s)
+2026-10-05T16:01:42.855+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-05T16:01:42.857+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-05T16:01:42.903+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:01:42.960+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:01:42.980+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:01:43.081+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:01:43.178+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:43.814+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:01:44.044+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:01:44.073+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 58205 (http) with context path '/'
+2026-10-05T16:01:44.076+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 2.392 seconds (process running for 121.58)
+2026-10-05T16:01:44.090+02:00  INFO 36336 --- [registration-backend] [o-auto-5-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:01:44.090+02:00  INFO 36336 --- [registration-backend] [o-auto-5-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:01:44.093+02:00  INFO 36336 --- [registration-backend] [o-auto-5-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-05T16:01:44.960+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-05T16:01:44.976+02:00  INFO 36336 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-05T16:01:44.980+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:44.981+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-10-05T16:01:44.986+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2026-10-05T16:01:44.994+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-05T16:01:44.995+02:00  INFO 36336 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.498 s -- in si.konferenca.registration.acceptance.Us005StorageAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us006ParticipantEmailAcceptanceTest
+2026-10-05T16:01:46.204+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-2] s.k.r.application.RegistrationService    : registration 6586ca3b-2627-4404-9829-0673b41cd4ff accepted
+2026-10-05T16:01:46.406+02:00  INFO 36336 --- [registration-backend] [-auto-1-exec-10] s.k.r.application.RegistrationService    : registration 57a41410-b189-4183-b0d4-3d121662a0ae accepted
+2026-10-05T16:01:46.425+02:00  WARN 36336 --- [registration-backend] [-auto-1-exec-10] s.k.r.i.MailRegistrationNotifier         : participant confirmation for registration 57a41410-b189-4183-b0d4-3d121662a0ae failed: MailSendException
+2026-10-05T16:01:46.446+02:00  WARN 36336 --- [registration-backend] [-auto-1-exec-10] s.k.r.i.MailRegistrationNotifier         : organizer notification for registration 57a41410-b189-4183-b0d4-3d121662a0ae failed: MailSendException
+2026-10-05T16:01:46.466+02:00  WARN 36336 --- [registration-backend] [-auto-1-exec-10] s.k.r.i.MailRegistrationNotifier         : organizer notification for registration 57a41410-b189-4183-b0d4-3d121662a0ae failed: MailSendException
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.454 s -- in si.konferenca.registration.acceptance.Us006ParticipantEmailAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us007OrganizerNotificationAcceptanceTest
+2026-10-05T16:01:46.567+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-7] s.k.r.application.RegistrationService    : registration f6d8bd11-6b74-4ad8-9484-9e2cfa6ac7a1 accepted
+2026-10-05T16:01:49.438+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.application.RegistrationService    : registration f04e9c8e-91a7-4fbd-9ea2-86deed10e77c accepted
+2026-10-05T16:01:49.456+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.i.MailRegistrationNotifier         : participant confirmation for registration f04e9c8e-91a7-4fbd-9ea2-86deed10e77c failed: MailSendException
+2026-10-05T16:01:49.477+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.i.MailRegistrationNotifier         : organizer notification for registration f04e9c8e-91a7-4fbd-9ea2-86deed10e77c failed: MailSendException
+2026-10-05T16:01:49.498+02:00  WARN 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.i.MailRegistrationNotifier         : organizer notification for registration f04e9c8e-91a7-4fbd-9ea2-86deed10e77c failed: MailSendException
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.033 s -- in si.konferenca.registration.acceptance.Us007OrganizerNotificationAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.Us008ExportAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:01:49.848+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:01:49.849+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "test"
+2026-10-05T16:01:50.354+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:01:50.399+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interface.
+2026-10-05T16:01:50.624+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:01:50.627+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:01:50.628+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:01:50.726+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 875 ms
+2026-10-05T16:01:50.910+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-10-05T16:01:50.970+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@3afac57
+2026-10-05T16:01:50.970+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-10-05T16:01:50.974+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/empty_4b2a8dd1?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:01:51.035+02:00  INFO 36336 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-05T16:01:51.038+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.016s)
+2026-10-05T16:01:51.078+02:00  INFO 36336 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-05T16:01:51.163+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-05T16:01:51.172+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - Create registration storage"
+2026-10-05T16:01:51.270+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.070s)
+2026-10-05T16:01:51.312+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:01:51.361+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:01:51.384+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/empty_4b2a8dd1?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: empty_4b2a8dd1/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:01:51.478+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:01:51.532+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:52.189+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:01:52.410+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:01:52.460+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 58306 (http) with context path '/'
+2026-10-05T16:01:52.469+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 2.668 seconds (process running for 129.972)
+2026-10-05T16:01:52.484+02:00  INFO 36336 --- [registration-backend] [o-auto-6-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:01:52.486+02:00  INFO 36336 --- [registration-backend] [o-auto-6-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:01:52.488+02:00  INFO 36336 --- [registration-backend] [o-auto-6-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-05T16:01:53.217+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-05T16:01:53.232+02:00  INFO 36336 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-05T16:01:53.235+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:01:53.239+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-10-05T16:01:53.250+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2026-10-05T16:01:53.254+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-05T16:01:53.255+02:00  INFO 36336 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2026-10-05T16:01:54.135+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-7] s.k.r.application.RegistrationService    : registration 324cef18-9653-459b-a739-73c5cc1b6ba4 accepted
+2026-10-05T16:01:55.077+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.application.RegistrationService    : registration bc0077d8-51b2-4cbc-9caf-42d890ed8210 accepted
+2026-10-05T16:01:55.228+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-1] s.k.r.application.RegistrationService    : registration f6e1f87d-911d-4e56-8b2d-c16cb101aff9 accepted
+2026-10-05T16:01:56.575+02:00  INFO 36336 --- [registration-backend] [-auto-1-exec-10] s.k.r.application.RegistrationService    : registration fa8ca9e1-edae-4adc-b367-f304cd543830 accepted
+2026-10-05T16:01:57.485+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-9] s.k.r.application.RegistrationService    : registration 30877ad1-4cf0-4adb-bf29-0037cba40741 accepted
+2026-10-05T16:01:57.604+02:00  INFO 36336 --- [registration-backend] [o-auto-1-exec-6] s.k.r.application.RegistrationService    : registration ff8eaab0-d1d2-43ab-8df5-621708478276 accepted
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.915 s -- in si.konferenca.registration.acceptance.Us008ExportAcceptanceTest
+[INFO] Running si.konferenca.registration.api.RegistrationRequestReaderTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.080 s -- in si.konferenca.registration.api.RegistrationRequestReaderTest
+[INFO] Running si.konferenca.registration.api.RequestLimitsFilterTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s -- in si.konferenca.registration.api.RequestLimitsFilterTest
+[INFO] Running si.konferenca.registration.application.OrganizerAccessServiceTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.346 s -- in si.konferenca.registration.application.OrganizerAccessServiceTest
+[INFO] Running si.konferenca.registration.application.RegistrationJsonAndFormConfigTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in si.konferenca.registration.application.RegistrationJsonAndFormConfigTest
+[INFO] Running si.konferenca.registration.application.RegistrationServiceTest
+2026-10-05T16:02:08.151+02:00  INFO 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : registration 98932909-f2e1-4530-af35-0b2d1f8c2fcf accepted
+2026-10-05T16:02:08.155+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : notifications for registration 98932909-f2e1-4530-af35-0b2d1f8c2fcf failed: IllegalStateException
+2026-10-05T16:02:08.261+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : registration 7f0a647b-74a5-4b00-b382-f4e8e13d97a2 not stored: DataIntegrityViolationException
+2026-10-05T16:02:08.296+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : registration bbd673f2-a966-409d-a516-4aa39b3c5632 not stored: UncheckedIOException
+2026-10-05T16:02:08.342+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : registration 4114e951-7cbd-43ca-8bb4-8d2010ba8162 not stored: DataIntegrityViolationException
+2026-10-05T16:02:08.381+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : registration 5a4b6829-b2b9-48c8-8529-f6c528d89ee0 not stored: TransactionSystemException
+2026-10-05T16:02:08.411+02:00  INFO 36336 --- [registration-backend] [           main] s.k.r.application.RegistrationService    : registration b6a6e3c8-2f3a-4940-acce-e45fdf073d95 accepted
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.405 s -- in si.konferenca.registration.application.RegistrationServiceTest
+[INFO] Running si.konferenca.registration.application.RegistrationValidatorTest
+[INFO] Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.309 s -- in si.konferenca.registration.application.RegistrationValidatorTest
+[INFO] Running si.konferenca.registration.config.StartupGuardsTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in si.konferenca.registration.config.StartupGuardsTest
+[INFO] Running si.konferenca.registration.infrastructure.FileJsonCopyStoreTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.159 s -- in si.konferenca.registration.infrastructure.FileJsonCopyStoreTest
+[INFO] Running si.konferenca.registration.infrastructure.JsonOptionsFileTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.389 s -- in si.konferenca.registration.infrastructure.JsonOptionsFileTest
+[INFO] Running si.konferenca.registration.infrastructure.MailRegistrationNotifierTest
+2026-10-05T16:02:09.693+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.i.MailRegistrationNotifier         : organizer notification for registration 7bf56233-dda4-4260-9ac6-6ab2f95a6fa3 failed: MailSendException
+2026-10-05T16:02:09.781+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.i.MailRegistrationNotifier         : organizer notification for registration 0b9a3c4e-6a8f-4f3e-9d43-2a1f6c5e7b10 failed: MailSendException
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.549 s -- in si.konferenca.registration.infrastructure.MailRegistrationNotifierTest
+[INFO] Running si.konferenca.registration.infrastructure.migration.MigrationContractTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in si.konferenca.registration.infrastructure.migration.MigrationContractTest
+[INFO] Running si.konferenca.registration.infrastructure.PoiRegistrationExporterTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.468 s -- in si.konferenca.registration.infrastructure.PoiRegistrationExporterTest
+[INFO] Running si.konferenca.registration.infrastructure.RecaptchaVerifierTest
+2026-10-05T16:02:10.817+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.infrastructure.RecaptchaVerifier   : anti-automation verification failed: ResourceAccessException
+2026-10-05T16:02:10.885+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.infrastructure.RecaptchaVerifier   : anti-automation verification failed: InternalServerError
+2026-10-05T16:02:10.896+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.infrastructure.RecaptchaVerifier   : anti-automation verification failed: StreamReadException
+2026-10-05T16:02:15.938+02:00  WARN 36336 --- [registration-backend] [           main] s.k.r.infrastructure.RecaptchaVerifier   : anti-automation verification failed: ResourceAccessException
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.568 s -- in si.konferenca.registration.infrastructure.RecaptchaVerifierTest
+[INFO] Running si.konferenca.registration.integration.HttpSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-05T16:02:19.220+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.11 with PID 36336 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+2026-10-05T16:02:19.222+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "test"
+2026-10-05T16:02:20.127+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-05T16:02:20.200+02:00  INFO 36336 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 1 JPA repository interface.
+2026-10-05T16:02:20.787+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-05T16:02:20.791+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-05T16:02:20.792+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-05T16:02:20.918+02:00  INFO 36336 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1685 ms
+2026-10-05T16:02:21.314+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-10-05T16:02:21.374+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@2728b98f
+2026-10-05T16:02:21.374+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2026-10-05T16:02:21.379+02:00  INFO 36336 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63130/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-05T16:02:21.460+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.025s)
+2026-10-05T16:02:21.559+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-05T16:02:21.562+02:00  INFO 36336 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-05T16:02:21.640+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-05T16:02:21.750+02:00  INFO 36336 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-05T16:02:21.776+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:63130/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-05T16:02:21.928+02:00  INFO 36336 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-05T16:02:21.984+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:02:22.894+02:00  INFO 36336 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noUsers
+2026-10-05T16:02:23.356+02:00  INFO 36336 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-05T16:02:23.422+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 58440 (http) with context path '/'
+2026-10-05T16:02:23.434+02:00  INFO 36336 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 4.423 seconds (process running for 160.937)
+2026-10-05T16:02:23.459+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-05T16:02:23.460+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-05T16:02:23.463+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-05T16:02:23.852+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-3] s.k.r.application.RegistrationService    : registration f53e42cb-f5b1-4a84-8698-f0a473cd76b1 accepted
+2026-10-05T16:02:24.126+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-4] s.k.r.application.RegistrationService    : registration fbfa4b9a-54c2-40f2-a9bd-a8ffec872df8 accepted
+2026-10-05T16:02:24.261+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-5] s.k.r.application.RegistrationService    : registration 59a1a2cc-f181-45a7-9215-5de5ee145143 accepted
+2026-10-05T16:02:24.456+02:00  INFO 36336 --- [registration-backend] [o-auto-7-exec-8] s.k.r.application.RegistrationService    : registration bb71c3d6-77b1-4c64-8922-9dae6f749fc4 accepted
+2026-10-05T16:02:25.228+02:00  INFO 36336 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-05T16:02:25.242+02:00  INFO 36336 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-05T16:02:25.252+02:00  INFO 36336 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T16:02:25.254+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2026-10-05T16:02:25.262+02:00  INFO 36336 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2026-10-05T16:02:25.267+02:00  INFO 36336 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-05T16:02:25.270+02:00  INFO 36336 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.333 s -- in si.konferenca.registration.integration.HttpSecurityIntegrationTest
+[INFO] Running si.konferenca.registration.ArchitectureTest
+2026-10-05T16:02:25.364+02:00  INFO 36336 --- [registration-backend] [           main] com.tngtech.archunit.core.PluginLoader   : Detected Java version 21.0.11
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.953 s -- in si.konferenca.registration.ArchitectureTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 183, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (report) @ registration-backend ---
+[INFO] Loading execution data file C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend\target\jacoco.exec
+[INFO] Analyzed bundle 'registration-backend' with 63 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:01 min
+[INFO] Finished at: 2026-10-05T16:02:37+02:00
+[INFO] ------------------------------------------------------------------------

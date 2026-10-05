@@ -1,0 +1,4 @@
+frontend production (src without tests):
+8,SUM,61,10,635
+frontend unit tests:
+6,SUM,63,0,501

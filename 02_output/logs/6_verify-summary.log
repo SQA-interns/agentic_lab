@@ -1,0 +1,22 @@
+registration-frontend-1 Up 4 hours (healthy)
+registration-backend-1 Up 4 hours (healthy)
+registration-postgres-1 Up 17 hours (healthy)
+registration-mailpit-1 Up 17 hours (healthy)
+be-build     exit=0   BUILD SUCCESS  log=02_output/logs/6_be-build.log
+be-test      exit=0   Tests run: 183, Failures: 0, Errors: 0, Skipped: 0; line 97.1% (902/929), branch 91.8% (303/330)  log=02_output/logs/6_be-test.log
+be-check     exit=0   spotless ok, pmd 0, cpd 0, spotbugs 0  log=02_output/logs/6_be-check.log
+be-mutation  exit=0   Generated 352 mutations Killed 305 (87%); Line Coverage (for mutated classes only): 688/793 (87%)  log=02_output/logs/6_be-mutation.log
+be-depcheck  exit=0   critical 0, high 0, medium 0, low 0  log=02_output/logs/6_be-depcheck.log
+fe-build     exit=0   ✓ built in 4.66s  log=02_output/logs/6_fe-build.log
+fe-test      exit=0   Tests  42 passed (42); Branches : 95.58% ( 130/136 ) Lines : 100% ( 464/464 )   log=02_output/logs/6_fe-test.log
+fe-check     exit=0   prettier, eslint, tsc ok  log=02_output/logs/6_fe-check.log
+fe-mutation  exit=0   score 90.97%, killed 357, timeout 26, survived 33, no cov 5, errors 0  log=02_output/logs/6_fe-mutation.log
+fe-dup       exit=0   │ Total: │ 8 │ 706 │ 3980 │ 0 │ 0 (0.00%) │ 0 (0.00%) │  log=02_output/logs/6_fe-dup.log
+fe-audit     exit=0   critical 0, high 0, medium 5, low 0  log=02_output/logs/6_fe-audit.log
+semgrep      exit=0   critical 0, high 0, medium 1, low 0  log=02_output/logs/6_semgrep.log
+gitleaks     exit=0   no leaks found | no leaks found  log=02_output/logs/6_gitleaks.log
+cloc         exit=0   backend/src/main 2093 code; backend/src/test 3338 code; frontend/src 1136 code; frontend/e2e 556 code;   log=02_output/logs/6_cloc.log
+contracts    exit=0   redocly ok (2 files, 0 warnings/errors); ajv all valid; sql 1/1 apply  log=02_output/logs/6_contracts.log
+e2e          exit=0    15 passed (28.0s)   log=02_output/logs/6_e2e.log
+
+[exited with code 0]

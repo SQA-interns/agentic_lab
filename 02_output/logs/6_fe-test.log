@@ -1,0 +1,26 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/validation.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/api.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/App.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 238[2mms[22m[39m
+ [32m✓[39m src/Captcha.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 406[2mms[22m[39m
+ [32m✓[39m src/RegistrationForm.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[33m 3074[2mms[22m[39m
+   [33m[2m✓[22m[39m registration page[2m > [22mshows the external form, options by category and an unchecked consent [33m 487[2mms[22m[39m
+   [33m[2m✓[22m[39m registration page[2m > [22msends the trimmed-by-backend values with options in configuration order [33m 379[2mms[22m[39m
+   [33m[2m✓[22m[39m registration page[2m > [22msends only checked options and marks the consent and captcha errors [33m 499[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m42 passed[39m[22m[90m (42)[39m
+[2m   Start at [22m 16:06:56
+[2m   Duration [22m 10.28s[2m (transform 592ms, setup 6.96s, collect 931ms, tests 3.79s, environment 20.09s, prepare 2.43s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 464/464 )
+Branches     : 95.58% ( 130/136 )
+Functions    : 100% ( 21/21 )
+Lines        : 100% ( 464/464 )
+================================================================================
