@@ -3,7 +3,7 @@
 # 02_output/logs/<phase>_<tool>.log; one summary line per tool goes to stdout.
 #
 # Usage: verify.sh <phase> [tool ...]     (no tool = all tools)
-# Tools: backend-build backend-format backend-test backend-spotbugs backend-pmd
+# Tools: contracts backend-build backend-format backend-test backend-spotbugs backend-pmd
 #        backend-mutation backend-depscan frontend-build frontend-format
 #        frontend-lint frontend-typecheck frontend-test frontend-e2e
 #        frontend-mutation frontend-duplication frontend-depscan
@@ -22,7 +22,7 @@ export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-21-openjdk-amd64}"
 NODE_BIN="${NODE_BIN:-$HOME/.nvm/versions/node/v24.13.0/bin}"
 [ -d "$NODE_BIN" ] && export PATH="$NODE_BIN:$PATH"
 
-ALL_TOOLS=(backend-build backend-format backend-test backend-spotbugs backend-pmd
+ALL_TOOLS=(contracts backend-build backend-format backend-test backend-spotbugs backend-pmd
   backend-mutation backend-depscan frontend-build frontend-format frontend-lint
   frontend-typecheck frontend-test frontend-e2e frontend-mutation
   frontend-duplication frontend-depscan semgrep gitleaks cloc)
@@ -43,6 +43,24 @@ first() { grep -Eo "$1" "$2" | tail -1; }
 run_tool() {
   local t="$1" log="$LOGS/${PHASE}_$1.log" rc keys=""
   case "$t" in
+    contracts)
+      # D-18: redocly/cli for OpenAPI, host python3-jsonschema for JSON Schema,
+      # the pinned postgres image for the SQL contract.
+      local c="$OUT/docs/02_contracts" pg="contracts-pg-$$" r1 r2 r3
+      {
+        echo "== openapi (redocly lint)"
+        docker run --rm -u "$(id -u):$(id -g)" -v "$c:/spec:ro" redocly/cli:2.57.0 lint /spec/openapi.yaml; r1=$?
+        echo "== json schemas"
+        python3 "$OUT/scripts/validate-contracts.py" "$c"; r2=$?
+        echo "== database.sql (postgres:16.15-alpine)"
+        docker run -d --rm --name "$pg" -e POSTGRES_PASSWORD=contracts postgres:16.15-alpine >/dev/null
+        for _ in $(seq 1 30); do docker exec "$pg" pg_isready -U postgres -q && break; sleep 1; done
+        sleep 1
+        docker exec -i "$pg" psql -U postgres -v ON_ERROR_STOP=1 -q <"$c/database.sql"; r3=$?
+        docker stop "$pg" >/dev/null
+      } >"$log" 2>&1
+      rc=$(( r1 || r2 || r3 ))
+      keys="openapi=$r1 schemas=$r2 sql=$r3" ;;
     backend-build)
       "${MVN[@]}" -DskipTests package >"$log" 2>&1; rc=$?
       keys="$(first 'BUILD (SUCCESS|FAILURE)' "$log")" ;;
