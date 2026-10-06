@@ -7,7 +7,10 @@ const SETUP: RegistrationSetup = {
   conferenceName: "Konf",
   consent: { id: "c", text: "I agree" },
   recaptcha: { testMode: true, siteKey: "" },
-  options: [{ id: "a", name: "A", category: "MEAL", offeredTo: ["EXTERNAL", "STUDENT"] }],
+  options: [
+    { id: "a", name: "A", category: "MEAL", offeredTo: ["EXTERNAL", "STUDENT"] },
+    { id: "g", name: "G", category: "EVENT", offeredTo: ["EXTERNAL"] },
+  ],
 };
 
 function fill() {
@@ -64,6 +67,46 @@ describe("RegistrationForm", () => {
     fireEvent.blur(screen.getByTestId("email"));
     expect(screen.getByTestId("email")).toHaveAttribute("aria-describedby", "error-email");
     expect(screen.getByTestId("email")).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it("keeps a selected option offered to both types when switching type", async () => {
+    const f = vi.fn(
+      async () => new Response('{"registrationId":"r","receivedAt":"t"}', { status: 201 }),
+    );
+    vi.stubGlobal("fetch", f);
+    render(<RegistrationForm setup={SETUP} onAccepted={() => {}} />);
+    fireEvent.click(screen.getByTestId("option-a"));
+    fireEvent.click(screen.getByTestId("option-g"));
+    fireEvent.click(screen.getByTestId("type-STUDENT"));
+    for (const [id, v] of Object.entries({
+      firstName: "L",
+      lastName: "K",
+      email: "l@k.si",
+      studyInstitution: "U",
+      studyProgramme: "P",
+      studentId: "1",
+    })) {
+      fireEvent.change(screen.getByTestId(id), { target: { value: v } });
+    }
+    fireEvent.click(screen.getByTestId("consent"));
+    fireEvent.click(screen.getByTestId("recaptcha"));
+    fireEvent.click(screen.getByTestId("submit"));
+
+    await vi.waitFor(() => expect(f).toHaveBeenCalled());
+    const init = (f.mock.calls[0] as unknown as [string, RequestInit])[1];
+    const body = JSON.parse(String(init.body));
+    expect(body.optionIds).toEqual(["a"]);
+  });
+
+  it("keeps the captcha token when only other fields were rejected", async () => {
+    serverSays({ errors: [{ field: "email", code: "INVALID_EMAIL" }] });
+    render(<RegistrationForm setup={SETUP} onAccepted={() => {}} />);
+    fill();
+    fireEvent.click(screen.getByTestId("submit"));
+
+    expect(await screen.findByTestId("error-email")).toBeInTheDocument();
+    expect((screen.getByTestId("recaptcha") as HTMLInputElement).checked).toBe(true);
+    expect(screen.queryByTestId("form-error")).not.toBeInTheDocument();
   });
 
   it("reports acceptance with the registration id", async () => {

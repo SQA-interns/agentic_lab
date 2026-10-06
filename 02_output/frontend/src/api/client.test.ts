@@ -56,6 +56,11 @@ describe("submitRegistration", () => {
     expect((await submitRegistration(REQUEST)).kind).toBe(kind);
   });
 
+  it("treats field errors outside a 400 as a failure", async () => {
+    reply(500, '{"errors":[{"field":"email","code":"INVALID_EMAIL"}]}');
+    expect((await submitRegistration(REQUEST)).kind).toBe("failed");
+  });
+
   it("returns field errors of a 400", async () => {
     reply(400, '{"errors":[{"field":"email","code":"INVALID_EMAIL"}]}');
     expect(await submitRegistration(REQUEST)).toEqual({

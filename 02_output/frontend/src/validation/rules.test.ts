@@ -25,6 +25,8 @@ describe("checkText", () => {
     expect(checkText("email", "a@b")).toBe("INVALID_EMAIL");
     expect(checkText("email", "a\u00A0b@c.si")).toBe("INVALID_EMAIL");
     expect(checkText("email", " ana@example.si ")).toBeUndefined();
+    expect(checkText("email", "ana@example.si x")).toBe("INVALID_EMAIL");
+    expect(checkText("email", "ana@example.si@x")).toBe("INVALID_EMAIL");
   });
 
   it("counts code points, not UTF-16 units", () => {
