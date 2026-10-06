@@ -15,8 +15,8 @@ This is a self-check by the development agent, not an independent review.
 | DoD-05 | pass | Dependency-Check 0 (FP D-08, D-09; NVD cache D-07); `npm audit --omit=dev` 0 (dev-only F-11 accepted D-10); gitleaks 0 (F-03, D-23); Semgrep High downgraded D-22; no open Critical/High |
 | DoD-06 | pass | `out/scripts/runtime-demo.sh` → `out/logs/6_runtime-demo.log`: 34 PASS, 0 FAIL |
 | DoD-07 | pass | traceability table below: 48/48 AC with tests and commits |
-| DoD-08 | phase 7 | clone log written in phase 7 (`out/logs/7_clone.log`) |
-| DoD-09 | phase 7 | `docs/release-notes.md` "Must be tested manually" |
+| DoD-08 | pass | `out/logs/7_clone.log`: fresh clone, every README command run; `npm run check` failed on the unformatted frontend README, fixed (974d072) and re-run green |
+| DoD-09 | pass | `docs/release-notes.md` "Must be tested manually by a human": reCAPTCHA keys, SMTP, TLS/proxy, desktop Excel, production startup |
 | DoD-10 | pass | every decision D-01..D-23 resolved or pending review (`decisions-log.md`); input manifest 27/27 match |
 | DoD-11 | pass | Evidence section below |
 | DoD-P01 | pass | runtime demo: external and student registration → 201 |

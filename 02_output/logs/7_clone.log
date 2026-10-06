@@ -1,0 +1,69 @@
+== root README: clone into a short path
+$ git -c core.longpaths=true clone -q --branch run/tanej-01_opus5.5_sdd_tanej-1.0 /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab /tmp/claude-1000/-home-tjan-kazar-storage-Work-lab-agentic-lab-agentic-lab/db7f7cc5-bfe9-42be-a6d6-0144a621c535/scratchpad/reg
+-> exit 0
+(.env copied from the filled original; template is secrets.env.example)
+== backend README
+$ ./mvnw -B -DskipTests package
+[INFO] Total time:  5.328 s
+[INFO] Finished at: 2026-10-06T21:18:43+02:00
+[INFO] ------------------------------------------------------------------------
+-> exit 0
+$ ./mvnw -B -DskipTests compile spotless:check spotbugs:check pmd:check pmd:cpd-check
+[INFO] Total time:  14.230 s
+[INFO] Finished at: 2026-10-06T21:18:59+02:00
+[INFO] ------------------------------------------------------------------------
+-> exit 0
+$ ./mvnw -B verify
+[INFO] Total time:  01:16 min
+[INFO] Finished at: 2026-10-06T21:20:17+02:00
+[INFO] ------------------------------------------------------------------------
+-> exit 0
+[INFO] Tests run: 204, Failures: 0, Errors: 0, Skipped: 0
+== frontend README
+$ npm ci
+  npm audit fix --force
+
+Run `npm audit` for details.
+-> exit 0
+$ npm run build
+dist/assets/index-BEQ8wnK5.css    0.41 kB │ gzip:  0.27 kB
+dist/assets/index-BcipWpHG.js   232.76 kB │ gzip: 72.93 kB
+✓ built in 2.14s
+-> exit 0
+$ npm run test:coverage
+Functions    : 96.42% ( 27/28 )
+Lines        : 100% ( 430/430 )
+================================================================================
+-> exit 0
+$ npm run check
+Checking formatting...
+[warn] README.md
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.
+-> exit 1
+$ npm run test:e2e
+ Network regtest-e2e_default Removed 
+
+  6 passed (48.5s)
+-> exit 0
+== root README quick start (project regclone, ports 18290/18225 to avoid other stacks)
+$ docker compose -p regclone --env-file ../.env up -d --build --wait
+ Container regclone-backend-1 Healthy 
+ Container regclone-postgres-1 Healthy 
+ Container regclone-frontend-1 Healthy 
+-> exit 0
+form: 200  options: 200  mailpit: 200
+export: 200 (PK)
+== frontend README run: dev server against the stack
+dev server /api/options via proxy: 200
+$ docker compose -p regclone --env-file ../.env down -v
+Terminated
+ Volume regclone_jsoncopies Removed 
+ Volume regclone_pgdata Removed 
+ Network regclone_default Removed 
+-> exit 0
+== result: CLEAN CHECKOUT FAILED
+
+== re-run after fix 974d072 fix: format frontend README so npm run check passes (DoD-08)
+$ npm run check
+-> exit 0
+== result: CLEAN CHECKOUT OK (after fix)
