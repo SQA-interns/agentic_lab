@@ -119,3 +119,39 @@
 - Options: 1. (default) exclude only `EI_EXPOSE_REP2` on constructors in `02_output/backend/spotbugs-exclude.xml`; `EI_EXPOSE_REP` (returning internal state) and every other pattern stay active; 2. copy or wrap each collaborator (not possible for an `EntityManager` or a service); 3. keep the findings open as Low.
 - Human response: none
 - Resolution: 1, pending review
+
+## D-14: Frontend acceptance harness does not clean up the DOM between tests
+- Timestamp: 2026-10-06T07:20:04Z
+- Phase: 4
+- Type: blocking
+- Trigger: `verify.sh 4 fe-test` (`02_output/logs/4_fe-test.log`): 16 of 20 frozen frontend acceptance tests fail with "Found multiple elements" because each test's rendered page stays in the document for the next test. Testing Library unmounts automatically only when Vitest runs with `globals: true`; `vite.config.ts` does not set it and the setup file `src/test-setup.ts` (phase 0, not in the acceptance manifest) does not call `cleanup`. The frozen tests themselves are correct; the harness defect was not visible in phase 3 because the probes rendered once per file. A trial run with `afterEach(cleanup)` added to `src/test-setup.ts` passed 21 of 21 (change reverted).
+- Options: 1. (default) add `afterEach(() => cleanup())` to `src/test-setup.ts`; no frozen file changes and the manifest stays valid; 2. set `globals: true` in `vite.config.ts` so Testing Library registers the cleanup itself; 3. other instruction.
+- Human response: none
+- Resolution: pending
+
+## D-15: Backend image runs a jar built on the host
+- Timestamp: 2026-10-06T07:29:20Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: `02_specification.md` §12 says the backend image is built in a multi-stage build with the Maven wrapper; a build stage needs a JDK image, and `project/stack.md` lists only `eclipse-temurin:21.0.10_7-jre-alpine`.
+- Options: 1. (default) build the jar on the host with `./mvnw -B package` and copy it into the pinned JRE image (`backend/Dockerfile`); no unlisted image; §12 corrected; 2. add an unlisted JDK image under `standards/engineering.md` ("Versions").
+- Human response: none
+- Resolution: 1, pending review
+
+## D-16: Run-specific docker compose project name
+- Timestamp: 2026-10-06T07:29:20Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: `docker compose up` with project name `registration` (`02_specification.md` §12) reused volume `registration_pgdata`, created 2026-10-04 by an earlier run on another branch; Flyway failed with "relation registration already exists". Volumes of other runs are not this run's data and are left untouched.
+- Options: 1. (default) project name `registration-tanej04` (volumes `registration-tanej04_pgdata`, `registration-tanej04_jsoncopies`; network `registration-tanej04_default`, used by `verify.sh e2e`); §12 corrected; 2. delete the earlier run's volumes (destroys another run's data).
+- Human response: none
+- Resolution: 1, pending review
+
+## D-17: ORGANIZER_PASSWORD in .env is shorter than 16 characters
+- Timestamp: 2026-10-06T07:29:20Z
+- Phase: 4
+- Type: blocking
+- Trigger: the backend container stops at startup with "ORGANIZER_PASSWORD must have at least 16 characters" (`StartupGuard`, `02_specification.md` §7; `project/secrets.env.example`: "password: random, at least 16 characters"). The value was not read or printed; only its length check failed. The local stack and the end-to-end tests cannot run until it is fixed.
+- Options: 1. (default) the human sets ORGANIZER_PASSWORD in `.env` to a random value of at least 16 characters; nothing else changes; 2. lower the minimum length for `APP_ENVIRONMENT=local` only (weakens SR-06 / SB-03 evidence locally); 3. other instruction.
+- Human response: none
+- Resolution: pending
