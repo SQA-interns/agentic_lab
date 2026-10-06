@@ -75,7 +75,7 @@ tool_be-static() { mvn_be compile spotbugs:check >"$LOG" 2>&1; RC=$?; SUM="$(sum
 tool_be-dup() { mvn_be pmd:cpd-check >"$LOG" 2>&1; RC=$?; SUM="$(summary cpd "$BE/target/cpd.xml")"; }
 
 tool_be-test() {
-  rm -rf "$BE/target/surefire-reports" "$BE/target/site/jacoco"
+  rm -rf "$BE/target/surefire-reports" "$BE/target/site/jacoco" "$BE/target/jacoco.exec"
   if [ -n "$FILTER" ]; then
     mvn_be test "-Dtest=$FILTER" -Dsurefire.failIfNoSpecifiedTests=false >"$LOG" 2>&1
   else
