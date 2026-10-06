@@ -26,6 +26,13 @@ function fill() {
   fireEvent.click(screen.getByTestId("recaptcha"));
 }
 
+/** Renders the form, completes it and submits it. */
+function submitCompleted(onAccepted: (id: string) => void = () => {}) {
+  render(<RegistrationForm setup={SETUP} onAccepted={onAccepted} />);
+  fill();
+  fireEvent.click(screen.getByTestId("submit"));
+}
+
 function serverSays(body: unknown) {
   vi.stubGlobal(
     "fetch",
@@ -40,18 +47,14 @@ afterEach(() => {
 describe("RegistrationForm", () => {
   it("shows a general error for a field error it cannot place", async () => {
     serverSays({ errors: [{ field: "type", code: "REQUIRED" }] });
-    render(<RegistrationForm setup={SETUP} onAccepted={() => {}} />);
-    fill();
-    fireEvent.click(screen.getByTestId("submit"));
+    submitCompleted();
 
     expect(await screen.findByTestId("form-error")).toBeInTheDocument();
   });
 
   it("asks for a new captcha when the server rejected the token", async () => {
     serverSays({ errors: [{ field: "recaptchaToken", code: "RECAPTCHA_FAILED" }] });
-    render(<RegistrationForm setup={SETUP} onAccepted={() => {}} />);
-    fill();
-    fireEvent.click(screen.getByTestId("submit"));
+    submitCompleted();
 
     expect(await screen.findByTestId("error-recaptchaToken")).toBeInTheDocument();
     expect((screen.getByTestId("recaptcha") as HTMLInputElement).checked).toBe(false);
@@ -100,9 +103,7 @@ describe("RegistrationForm", () => {
 
   it("keeps the captcha token when only other fields were rejected", async () => {
     serverSays({ errors: [{ field: "email", code: "INVALID_EMAIL" }] });
-    render(<RegistrationForm setup={SETUP} onAccepted={() => {}} />);
-    fill();
-    fireEvent.click(screen.getByTestId("submit"));
+    submitCompleted();
 
     expect(await screen.findByTestId("error-email")).toBeInTheDocument();
     expect((screen.getByTestId("recaptcha") as HTMLInputElement).checked).toBe(true);
@@ -115,9 +116,7 @@ describe("RegistrationForm", () => {
       vi.fn(async () => new Response('{"registrationId":"r1","receivedAt":"t"}', { status: 201 })),
     );
     const accepted = vi.fn();
-    render(<RegistrationForm setup={SETUP} onAccepted={accepted} />);
-    fill();
-    fireEvent.click(screen.getByTestId("submit"));
+    submitCompleted(accepted);
 
     await vi.waitFor(() => expect(accepted).toHaveBeenCalledWith("r1"));
   });

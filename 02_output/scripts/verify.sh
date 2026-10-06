@@ -126,7 +126,7 @@ PY
       keys="$(grep -E '^ +[0-9]+ (passed|failed|flaky|skipped)' "$log" | sed 's/^ *//;s/ (.*//' | tr '\n' ' ')" ;;
     frontend-mutation)
       (cd "$OUT/frontend" && npx stryker run) >"$log" 2>&1; rc=$?
-      keys="$(grep -E 'Final mutation score' "$log" | tail -1)" ;;
+      keys="$(grep -E '^All files' "$log" | tail -1 | awk -F'|' '{gsub(/ /,""); print "score=" $2 "% killed=" $4 " survived=" $6}')" ;;
     frontend-duplication)
       (cd "$OUT/frontend" && npx jscpd src --silent --exitCode 0) >"$log" 2>&1; rc=$?
       keys="$(grep -Eo 'Found [0-9]+ clones?\.?|Duplicated lines: .*' "$log" | tr '\n' ' ')"; keys="${keys:-$(tail -1 "$log")}" ;;
