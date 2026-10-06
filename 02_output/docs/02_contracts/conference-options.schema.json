@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/conference-options.schema.json",
+  "title": "Conference options configuration (AR-04)",
+  "description": "Configuration -> backend. A YAML file named by OPTIONS_FILE and loaded at startup as Spring configuration under the key 'conference'. A file that violates this schema (unknown category, duplicate id, missing name) stops the backend at startup (AC-003-04). Participant fields are not configurable (BR-01).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["conference"],
+  "properties": {
+    "conference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["consent", "options"],
+      "properties": {
+        "consent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "text"],
+          "description": "The single mandatory consent (D-13)",
+          "properties": {
+            "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+            "text": { "type": "string", "minLength": 1, "maxLength": 2000 }
+          }
+        },
+        "options": {
+          "type": "array",
+          "description": "Identifiers must be unique (checked at startup)",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "category", "active"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+              "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+              "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+              "active": { "type": "boolean" },
+              "offered-to": {
+                "type": "array",
+                "description": "Registration types the option is offered to (D-12); default both",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": { "enum": ["EXTERNAL", "STUDENT"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "conference": {
+        "consent": { "id": "data-processing", "text": "I agree to the processing of my personal data for organising the conference." },
+        "options": [
+          { "id": "ws-ai", "name": "AI workshop", "category": "WORKSHOP", "active": true },
+          { "id": "gala-dinner", "name": "Gala dinner", "category": "EVENT", "active": true, "offered-to": ["EXTERNAL"] },
+          { "id": "lunch-day1", "name": "Lunch, day 1", "category": "MEAL", "active": false }
+        ]
+      }
+    }
+  ]
+}
