@@ -80,3 +80,7 @@ Surviving mutants in validation, security, persistence and business-rule code:
 
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools | Log |
 |---|---|---|---|---|---|---|---|
+| backend | acceptance + unit + integration + architecture | 184 / 0 (92 acceptance, 9 architecture, 83 unit/integration) | 95.3% | 90.4% | 94% (164/174, D-23 scope) | JUnit 6, Testcontainers 2.0.5, ArchUnit 1.3.2, JaCoCo 0.8.12, Pitest 1.30.0 | `06-final_be-test.log`, `06_be-mutation.log` |
+| frontend | acceptance + unit/component | 48 / 0 (19 acceptance incl. bootstrap, 29 unit) | 97.68% | 91.09% | 85.1% (383/451) | Vitest 4.1.11, @vitest/coverage-v8 4.1.11, Stryker 10.0.0 | `06_fe-test.log`, `06_fe-mutation.log` |
+| stack | end-to-end | 10 / 0 | — | — | — | Playwright 1.63.0 (container) | `06-fix_e2e.log` |
+| all | all levels | 242 / 0 | | | | | |
