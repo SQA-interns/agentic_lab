@@ -48,8 +48,33 @@ class SmtpNotifierTest {
         .extracting(Address::toString)
         .containsExactly("Ana@Example.si");
     MimeMessage organizer = sent.getAllValues().get(1);
+    assertThat(participant.getFrom()).extracting(Address::toString).containsExactly("from@x.si");
+    assertThat((String) participant.getContent()).contains("Dear Ana Novak");
     assertThat(organizer.getRecipients(Message.RecipientType.TO)).hasSize(2);
-    assertThat(organizer.getContent()).isInstanceOf(Multipart.class);
+    assertThat(organizer.getFrom()).extracting(Address::toString).containsExactly("from@x.si");
+    assertThat(organizer.getSubject()).isEqualTo("New external registration: Konf");
+    Multipart parts = (Multipart) organizer.getContent();
+    StringBuilder names = new StringBuilder();
+    for (int i = 0; i < parts.getCount(); i++) {
+      collect(parts.getBodyPart(i), names);
+    }
+    assertThat(names.toString())
+        .contains("registration-0b9f7a52-5c1e-4c55-9d1e-3f1f1f6a2b10.json")
+        .contains("Registration ID:");
+  }
+
+  private static void collect(jakarta.mail.BodyPart part, StringBuilder out) throws Exception {
+    if (part.getFileName() != null) {
+      out.append(part.getFileName()).append('\n');
+    }
+    Object content = part.getContent();
+    if (content instanceof Multipart m) {
+      for (int i = 0; i < m.getCount(); i++) {
+        collect(m.getBodyPart(i), out);
+      }
+    } else if (content instanceof String s) {
+      out.append(s);
+    }
   }
 
   @Test

@@ -18,7 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class RateLimitFilter extends OncePerRequestFilter {
 
   private static final long WINDOW_MILLIS = 60_000;
-  private static final int MAX_TRACKED = 50_000;
+  static final int MAX_TRACKED = 50_000;
 
   private final int registrationLimit;
   private final int exportLimit;
@@ -61,6 +61,11 @@ public class RateLimitFilter extends OncePerRequestFilter {
       return;
     }
     chain.doFilter(request, response);
+  }
+
+  /** Number of client windows currently tracked (bounded by eviction). */
+  int trackedWindows() {
+    return windows.size();
   }
 
   /** Counts the request; returns 0 if allowed, else seconds until the window resets. */

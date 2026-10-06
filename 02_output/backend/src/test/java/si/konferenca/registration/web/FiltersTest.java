@@ -58,6 +58,49 @@ class FiltersTest {
   }
 
   @Test
+  void expiredWindowsAreEvictedWhenTheMapIsFull() {
+    RateLimitFilter f = new RateLimitFilter(1, 1, 1, Clock.systemUTC());
+    for (int i = 0; i <= RateLimitFilter.MAX_TRACKED; i++) {
+      f.acquire("k" + i, 1, 0);
+    }
+    f.acquire("fresh", 1, 59_999);
+    assertThat(f.trackedWindows()).isEqualTo(RateLimitFilter.MAX_TRACKED + 2);
+
+    f.acquire("later", 1, 60_000);
+
+    assertThat(f.trackedWindows()).isEqualTo(2);
+  }
+
+  @Test
+  void optionsGroupHasItsOwnLimit() throws Exception {
+    RateLimitFilter f = new RateLimitFilter(9, 9, 1, Clock.systemUTC());
+    MockHttpServletResponse second = new MockHttpServletResponse();
+    f.doFilter(request("GET", "/api/options", "1.2.3.4"), new MockHttpServletResponse(), chain);
+    f.doFilter(request("GET", "/api/options", "1.2.3.4"), second, chain);
+
+    assertThat(second.getStatus()).isEqualTo(429);
+    assertThat(passed.get()).isEqualTo(1);
+  }
+
+  @Test
+  void bodyOfExactlyTheLimitPassesAndBytesAreReturned() throws Exception {
+    MockHttpServletRequest r = request("POST", "/api/registrations", "1.1.1.1");
+    r.setContent(new byte[] {7, 8, 9});
+    FilterChain reading =
+        (req, res) -> {
+          var in = req.getInputStream();
+          assertThat(in.read()).isEqualTo(7);
+          assertThat(in.read(new byte[4], 0, 4)).isEqualTo(2);
+          assertThat(in.read()).isEqualTo(-1);
+          passed.incrementAndGet();
+        };
+
+    new RequestSizeFilter(3).doFilter(r, new MockHttpServletResponse(), reading);
+
+    assertThat(passed.get()).isEqualTo(1);
+  }
+
+  @Test
   void exportIsRateLimited() throws Exception {
     RateLimitFilter f = new RateLimitFilter(9, 1, 9, Clock.systemUTC());
     MockHttpServletResponse second = new MockHttpServletResponse();

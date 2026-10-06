@@ -60,6 +60,7 @@ class RecaptchaVerifierTest {
     assertThat(v.verify("tok en", "10.1.2.3")).isTrue();
     assertThat(lastForm.get()).isEqualTo("secret=s%26ecret&response=tok+en&remoteip=10.1.2.3");
     assertThat(v.siteKey()).isEqualTo("site");
+    assertThat(v.testMode()).isFalse();
   }
 
   @Test

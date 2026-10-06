@@ -190,6 +190,14 @@ class RegistrationValidatorTest {
   }
 
   @Test
+  void fiftyOptionIdsAreStillValidatedOneByOne() {
+    String[] ids = new String[50];
+    Arrays.setAll(ids, i -> "o" + i);
+
+    assertThat(errors(with(Fixtures.external(), 8, List.of(ids)))).hasSize(50);
+  }
+
+  @Test
   void consentMustBeTrueNotJustPresent() {
     assertThat(errors(with(Fixtures.external(), 9, null)))
         .containsExactly(new FieldError("consentGiven", "CONSENT_REQUIRED"));

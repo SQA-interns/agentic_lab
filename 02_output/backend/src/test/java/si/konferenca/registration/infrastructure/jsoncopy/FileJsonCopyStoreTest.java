@@ -50,6 +50,36 @@ class FileJsonCopyStoreTest {
   }
 
   @Test
+  void studentCopyContainsStudentFieldsOnly() {
+    Registration r = Fixtures.registration();
+    Registration student =
+        new Registration(
+            r.id(),
+            si.konferenca.registration.domain.RegistrationType.STUDENT,
+            "Luka",
+            "K",
+            "l@x.si",
+            null,
+            "UM",
+            "Inf",
+            "931",
+            List.of(),
+            r.consent(),
+            r.receivedAt());
+
+    JsonNode p =
+        JsonMapper.builder()
+            .build()
+            .readTree(new FileJsonCopyStore(dir).serialize(student))
+            .path("participant");
+
+    assertThat(p.path("studyInstitution").asString()).isEqualTo("UM");
+    assertThat(p.path("studyProgramme").asString()).isEqualTo("Inf");
+    assertThat(p.path("studentId").asString()).isEqualTo("931");
+    assertThat(p.has("organization")).isFalse();
+  }
+
+  @Test
   void writeLeavesOnlyTheFinalFileAndDeleteRemovesIt() throws Exception {
     FileJsonCopyStore store = new FileJsonCopyStore(dir);
     Registration r = Fixtures.registration();

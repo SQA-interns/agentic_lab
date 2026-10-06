@@ -44,6 +44,16 @@ class OptionCatalogLoaderTest {
   }
 
   @Test
+  void explicitOfferedToIsKept() throws Exception {
+    OptionCatalog c =
+        load(
+            CONSENT
+                + "  options:\n    - { id: g, name: G, category: EVENT, active: true, offered-to: [EXTERNAL] }\n");
+
+    assertThat(c.find("g").orElseThrow().offeredTo()).containsExactly(RegistrationType.EXTERNAL);
+  }
+
+  @Test
   void noOptionsIsAllowed() throws Exception {
     assertThat(load(CONSENT).activeOptions()).isEmpty();
   }

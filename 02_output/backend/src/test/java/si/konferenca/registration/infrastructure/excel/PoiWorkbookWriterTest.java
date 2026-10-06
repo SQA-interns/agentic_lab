@@ -36,6 +36,19 @@ class PoiWorkbookWriterTest {
   }
 
   @Test
+  void writesConsecutiveRowsForSeveralRegistrations() throws Exception {
+    byte[] xlsx =
+        new PoiWorkbookWriter().write(List.of(Fixtures.registration(), Fixtures.registration()));
+
+    try (XSSFWorkbook wb = new XSSFWorkbook(new ByteArrayInputStream(xlsx))) {
+      var sheet = wb.getSheetAt(0);
+      assertThat(sheet.getLastRowNum()).isEqualTo(2);
+      assertThat(sheet.getRow(2).getCell(3).getStringCellValue()).isEqualTo("Ana");
+      assertThat(sheet.getRow(0).getCell(0).getCellStyle().getFontIndex()).isPositive();
+    }
+  }
+
+  @Test
   void exportContainsNoInternalFields() throws Exception {
     byte[] xlsx = new PoiWorkbookWriter().write(List.of());
 

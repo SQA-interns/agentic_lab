@@ -59,6 +59,10 @@ class EmailTextsTest {
   void organizerBodyListsEveryFieldAndConsent() {
     assertThat(EmailTexts.organizerBody(Fixtures.registration()))
         .contains("Registration ID: 0b9f7a52-5c1e-4c55-9d1e-3f1f1f6a2b10")
+        .contains("Received at (UTC): 2026-10-06T18:00:00.123Z")
+        .contains("Type: External participant")
+        .contains("First name: Ana")
+        .contains("Last name: Novak")
         .contains("Email: Ana@Example.si")
         .contains("Organization / institution: IJS")
         .contains("Consent given: I agree.")
