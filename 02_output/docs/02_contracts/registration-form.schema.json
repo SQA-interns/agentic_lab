@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/registration-form.schema.json",
+  "title": "Registration form (participant <-> frontend, UI)",
+  "description": "Field model of the single-page form. x-label is the visible label; x-testid is the element's data-testid; every field has an error element data-testid='error-<field>'. The type selector switches the type-specific fields (AC-002-09). Client checks mirror the backend (NFR-03) and backend field errors are shown at the same elements. On 201 the form is replaced by data-testid='confirmation' (BR-06); on 400/409 the entered values are kept; on other errors data-testid='form-error' shows a general message.",
+  "type": "object",
+  "x-sections": [
+    { "testid": "options-WORKSHOP", "label": "Workshops" },
+    { "testid": "options-EVENT", "label": "Events" },
+    { "testid": "options-MEAL", "label": "Meals" },
+    { "testid": "options-OTHER", "label": "Other activities" }
+  ],
+  "properties": {
+    "type": { "enum": ["EXTERNAL", "STUDENT"], "x-label": "I am registering as", "x-testid": "type-EXTERNAL|type-STUDENT", "default": "EXTERNAL" },
+    "firstName": { "type": "string", "maxLength": 100, "x-label": "First name", "x-testid": "firstName" },
+    "lastName": { "type": "string", "maxLength": 100, "x-label": "Last name", "x-testid": "lastName" },
+    "email": { "type": "string", "maxLength": 254, "x-label": "Email", "x-testid": "email" },
+    "organization": { "type": "string", "maxLength": 200, "x-label": "Organization / institution", "x-testid": "organization", "x-types": ["EXTERNAL"] },
+    "studyInstitution": { "type": "string", "maxLength": 200, "x-label": "Study institution", "x-testid": "studyInstitution", "x-types": ["STUDENT"] },
+    "studyProgramme": { "type": "string", "maxLength": 200, "x-label": "Study programme", "x-testid": "studyProgramme", "x-types": ["STUDENT"] },
+    "studentId": { "type": "string", "maxLength": 50, "x-label": "Student ID", "x-testid": "studentId", "x-types": ["STUDENT"] },
+    "optionIds": { "type": "array", "items": { "type": "string" }, "x-label": "checkbox per active option offered to the selected type, data-testid='option-<id>'", "x-testid": "option-<id>" },
+    "consentGiven": { "type": "boolean", "default": false, "x-label": "consent text from GET /api/options", "x-testid": "consent" },
+    "recaptchaToken": { "type": "string", "x-label": "reCAPTCHA widget, or in test mode a checkbox 'Test mode: I am not a robot'", "x-testid": "recaptcha" }
+  },
+  "x-messages": {
+    "REQUIRED": "This field is required.",
+    "INVALID_EMAIL": "Enter a valid email address.",
+    "TOO_LONG": "This value is too long.",
+    "INVALID_CHARACTERS": "This value contains characters that are not allowed.",
+    "CONSENT_REQUIRED": "You must give this consent to register.",
+    "RECAPTCHA_FAILED": "Please confirm that you are not a robot.",
+    "OPTION": "This option is not available. Reload the page and choose again.",
+    "DUPLICATE_EMAIL": "This email address is already registered. Please contact the organizers.",
+    "GENERAL": "Your registration could not be processed. Please try again later.",
+    "CONFIRMATION": "Thank you, your registration has been received."
+  },
+  "examples": [{ "type": "EXTERNAL", "firstName": "Žiga", "lastName": "Šuštar", "email": "ziga@example.si", "organization": "Institut", "optionIds": [], "consentGiven": true, "recaptchaToken": "test-pass" }]
+}
