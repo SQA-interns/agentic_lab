@@ -1,5 +1,7 @@
 package si.konferenca.registration.web;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import si.konferenca.registration.application.RegistrationCommand;
 import si.konferenca.registration.domain.RegistrationType;
@@ -17,6 +19,10 @@ public record RegistrationRequest(
     List<String> optionIds,
     Boolean consentGiven,
     String recaptchaToken) {
+
+  public RegistrationRequest {
+    optionIds = optionIds == null ? null : Collections.unmodifiableList(new ArrayList<>(optionIds));
+  }
 
   RegistrationCommand toCommand() {
     return new RegistrationCommand(

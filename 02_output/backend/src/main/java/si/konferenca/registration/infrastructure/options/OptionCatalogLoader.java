@@ -28,7 +28,11 @@ public final class OptionCatalogLoader {
   private OptionCatalogLoader() {}
 
   /** The file's structure, bound from YAML. */
-  public record OptionsFile(ConsentEntry consent, List<OptionEntry> options) {}
+  public record OptionsFile(ConsentEntry consent, List<OptionEntry> options) {
+    public OptionsFile {
+      options = options == null ? List.of() : List.copyOf(options);
+    }
+  }
 
   /** The consent entry. */
   public record ConsentEntry(String id, String text) {}
@@ -39,7 +43,11 @@ public final class OptionCatalogLoader {
       String name,
       OptionCategory category,
       Boolean active,
-      List<RegistrationType> offeredTo) {}
+      List<RegistrationType> offeredTo) {
+    public OptionEntry {
+      offeredTo = offeredTo == null ? List.of() : List.copyOf(offeredTo);
+    }
+  }
 
   public static OptionCatalog load(ResourceLoader loader, String location) {
     Resource resource = loader.getResource(location);
@@ -65,8 +73,7 @@ public final class OptionCatalogLoader {
       throw invalid(location, "the consent needs an id and a text");
     }
     List<ConferenceOption> options = new ArrayList<>();
-    List<OptionEntry> entries = file.options() == null ? List.of() : file.options();
-    for (OptionEntry o : entries) {
+    for (OptionEntry o : file.options()) {
       if (o.id() == null || !ID.matcher(o.id()).matches()) {
         throw invalid(location, "option id '" + o.id() + "' is missing or invalid");
       }
@@ -80,7 +87,7 @@ public final class OptionCatalogLoader {
         throw invalid(location, "option '" + o.id() + "' does not state active");
       }
       EnumSet<RegistrationType> offeredTo =
-          o.offeredTo() == null || o.offeredTo().isEmpty()
+          o.offeredTo().isEmpty()
               ? EnumSet.allOf(RegistrationType.class)
               : EnumSet.copyOf(o.offeredTo());
       options.add(

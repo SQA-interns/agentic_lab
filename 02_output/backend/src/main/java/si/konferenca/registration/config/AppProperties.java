@@ -22,7 +22,8 @@ public record AppProperties(
     organizerEmails =
         organizerEmails == null
             ? List.of()
-            : organizerEmails.stream().map(String::strip).filter(s -> !s.isEmpty()).toList();
+            : List.copyOf(
+                organizerEmails.stream().map(String::strip).filter(s -> !s.isEmpty()).toList());
   }
 
   /** SMTP server. */

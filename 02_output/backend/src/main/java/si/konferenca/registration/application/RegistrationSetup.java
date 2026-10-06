@@ -10,4 +10,9 @@ public record RegistrationSetup(
     Consent consent,
     boolean captchaTestMode,
     String captchaSiteKey,
-    List<ConferenceOption> options) {}
+    List<ConferenceOption> options) {
+
+  public RegistrationSetup {
+    options = List.copyOf(options);
+  }
+}
