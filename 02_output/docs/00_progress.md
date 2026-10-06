@@ -4,10 +4,12 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 6 (verify); phase 5 ended 2026-10-06T16:33:18Z
+- Run finished 2026-10-06T17:10:08Z (phase 7 gate passed: READMEs verified from a clean checkout, release notes, DoD-08/09 evidence, run log with usage, run summary). Nothing left for the agent.
+- Previous: phase 6 passed 2026-10-06T16:52:43Z (`docs/06_verification-report.md`).
+- Current phase (historical): 6 (verify); phase 5 ended 2026-10-06T16:33:18Z
 - Last gate result: phase 5 passed 2026-10-06T16:33:18Z (first run 233/0 recorded; suite green; coverage backend 95.3/90.1, frontend 97.7/91.1; mutation backend 94% (D-23 scope), frontend 84.9%; survivors classified in `docs/03_test-strategy.md`). Phase 4 passed 13:36:21Z, phase 3 12:44:45Z (freeze bf86f29, re-frozen dad715c after D-21).
 - Next step: phase 6, `skills/verify-release`: `verify.sh 06 all` + e2e, manifest hash checks, `scripts/runtime-demo.sh` (written, not yet run or committed), SB/SR evidence, leak-check, traceability, verification report.
-- Waiting for the human on: Docker Desktop is down again (needed for backend tests, e2e, scanners in containers, runtime demo).
+- Waiting for the human on: the usage-panel values in `03_statistics/usage.md` only.
 
 ## Run notes
 
