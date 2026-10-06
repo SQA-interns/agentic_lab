@@ -163,3 +163,21 @@
 - Options: 1 (default) English, the language of the requirements; every user-visible text lives in one module per component (`docs/02_contracts/ui-registration-form.json`, `email-messages.json`), so a translation changes no logic. 2 Slovenian.
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-19: Semgrep High "use of basic authentication" on the export contract
+- Timestamp: 2026-10-06T12:17:19Z
+- Phase: 2
+- Type: blocking
+- Trigger: `verify.sh 02 semgrep` (`logs/02_semgrep.json`): ERROR (High) `yaml.openapi.security.use-of-basic-authentication` at `docs/02_contracts/openapi.yaml` securityScheme `organizerBasic`. Context: identity providers are out of scope (`project/constraints.md`); one organizer role, one read-only export (BR-08); ASVS Level 1. Mitigations in the design: refused over plain HTTP before credentials are read (SR-06), rate limited (SR-03), password kept only as a bcrypt hash in memory (SB-03), no session, constant-time comparison.
+- Options: 1 (default) keep HTTP Basic with these mitigations and classify the finding as Low (rule match on a mitigated design). 2 replace with a login endpoint that issues a short-lived bearer token plus an organizer download page in the frontend (more code and a new UI; the password is still sent once per session).
+- Human response: 2026-10-06T12:18:26Z "Keep Basic, mark Low (Recommended)"
+- Resolution: option 1; classified Low; `nosemgrep` marker with D-19 on the `organizerBasic` scheme in `docs/02_contracts/openapi.yaml`. The mitigations are requirements in `docs/02_specification.md`.
+
+## D-20: Semgrep Medium "npm missing minimum release age"
+- Timestamp: 2026-10-06T12:17:19Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: `logs/02_semgrep.json`: WARNING (Medium) `npm-missing-minimum-release-age` at `frontend/.npmrc`. The setting exists from npm 11.10; the pinned npm is 11.6.2 (`project/stack.md`). Every dependency is an exact pin resolved from the committed lock file (ES-04), so no new release is picked up implicitly.
+- Options: 1 (default) keep; record as Medium, mitigated by exact pins and the lock file. 2 upgrade npm (stack change).
+- Human response: none
+- Resolution: pending review (option 1)

@@ -1,0 +1,33 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 45 files tracked by git with 1144 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      66      45          Community    1144                                                                
+  json              4      13                                                                                           
+  ts              164       5                                                                                           
+  yaml             39       3                                                                                           
+  java            118       2                                                                                           
+  bash              4       2                                                                                           
+  js              154       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 1 (1 blocking)
+ • Rules run: 392
+ • Targets scanned: 45
+ • Parsed lines: ~99.9%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 6
+   ◦ Files matching .semgrepignore patterns: 1
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 392 rules on 45 files: 1 finding.
