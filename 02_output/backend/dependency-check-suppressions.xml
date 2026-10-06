@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <!-- Each suppression names one CVE and one artifact, with its decision id and evidence. -->
+
+  <suppress>
+    <notes>D-08: false positive. CVE-2025-7962 affects angus_mail before 2.0.4 (SMTP injection).
+      The CPE was inferred from angus-activation (the activation framework, not the mail
+      implementation); the mail implementation on the classpath is angus-mail 2.0.5.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.eclipse\.angus/angus-activation@.*$</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
+
+  <suppress>
+    <notes>D-09: false positive. CVE-2025-15104 concerns the Nu Html Checker (CPE validator:validator),
+      matched to hibernate-validator by name only.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.hibernate\.validator/hibernate-validator@.*$</packageUrl>
+    <cve>CVE-2025-15104</cve>
+  </suppress>
+</suppressions>

@@ -264,11 +264,15 @@
         <configuration>
           <nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
           <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
+          <suppressionFiles>
+            <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+          </suppressionFiles>
           <formats>
             <format>JSON</format>
             <format>HTML</format>
           </formats>
-          <failBuildOnCVSS>11</failBuildOnCVSS>
+          <!-- High (7.0) and above fail the scan, as standards/security.md blocks release on them -->
+          <failBuildOnCVSS>7</failBuildOnCVSS>
         </configuration>
       </plugin>
     </plugins>
