@@ -19,6 +19,7 @@ import si.konferenca.registration.domain.GivenConsent;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.SelectedOption;
 import si.konferenca.registration.integration.AntiAutomationVerifier;
+import si.konferenca.registration.integration.MailNotifier;
 import si.konferenca.registration.persistence.JsonCopyStore;
 import si.konferenca.registration.persistence.RegistrationRepository;
 
@@ -49,6 +50,7 @@ public class RegistrationService {
   private final RegistrationValidator validator;
   private final RegistrationRepository repository;
   private final JsonCopyStore copies;
+  private final MailNotifier mail;
   private final TransactionTemplate transaction;
 
   public RegistrationService(
@@ -56,11 +58,13 @@ public class RegistrationService {
       ConferenceCatalog catalog,
       RegistrationRepository repository,
       JsonCopyStore copies,
+      MailNotifier mail,
       PlatformTransactionManager transactionManager) {
     this.antiAutomation = antiAutomation;
     this.validator = new RegistrationValidator(catalog);
     this.repository = repository;
     this.copies = copies;
+    this.mail = mail;
     this.transaction = new TransactionTemplate(transactionManager);
   }
 
@@ -90,7 +94,20 @@ public class RegistrationService {
     registration.assignJsonCopyFile(fileName);
     byte[] json = RegistrationCopy.serialize(registration);
     store(registration, fileName, json);
+    notifyParticipant(registration);
     return new Accepted(registration, json);
+  }
+
+  /** After the commit; a failure is logged and never changes the outcome (D-13). */
+  private void notifyParticipant(Registration registration) {
+    try {
+      mail.sendParticipantConfirmation(registration);
+    } catch (RuntimeException e) {
+      LOG.warn(
+          "registration {}: participant confirmation not sent ({})",
+          registration.id(),
+          e.getClass().getSimpleName());
+    }
   }
 
   private void store(Registration registration, String fileName, byte[] json) {

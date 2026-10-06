@@ -181,3 +181,12 @@
 - Options: 1 (default) keep; record as Medium, mitigated by exact pins and the lock file. 2 upgrade npm (stack change).
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-21: Frozen harness defect: subclass @DynamicPropertySource overrides are ignored
+- Timestamp: 2026-10-06T13:01:53Z
+- Phase: 4
+- Type: blocking
+- Trigger: `AntiAutomationLiveAcceptanceTest` (AC-001-13 live path, AC-002-11, DoD-P05) fails 4 of 5 because test mode stays on: a temporary probe showed `RECAPTCHA_TEST_MODE=true` in its context, and in `MailUnavailableTestBase` contexts `MAIL_HOST=localhost` and `MAIL_PORT` = the Mailpit port. The values registered by `AcceptanceTestBase.acceptanceSettings` win over the same keys registered by a subclass. Consequence: the live-verification tests cannot pass, and AC-006-04 and AC-007-05 pass without the SMTP failure being injected. Files are listed in `docs/03_acceptance-manifest.sha256`; only a human may approve a change.
+- Options: 1 (default) in the two overriding classes (`AntiAutomationLiveAcceptanceTest`, `support/MailUnavailableTestBase`) register the overrides under the bound property names (`app.recaptcha.test-mode`, `app.recaptcha.site-key`, `app.recaptcha.secret-key`, `app.recaptcha.verify-url`, `app.mail.host`, `app.mail.port`), which take precedence over the environment-style keys of the base class; no assertion changes; the agent then rewrites `docs/03_acceptance-manifest.sha256` in its own commit. 2 change `AcceptanceTestBase` instead so that subclasses supply overrides through a hook. 3 leave the tests as they are and accept DoD-P05 and AC-006-04/AC-007-05 as unproven.
+- Human response: none
+- Resolution:
