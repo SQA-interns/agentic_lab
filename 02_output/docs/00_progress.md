@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 5 (unit tests)
-- Last gate result: phase 4 passed 2026-10-06T07:44:54Z. All frozen tests pass: backend acceptance 86/86 plus 5 ArchUnit rules (`logs/4_be-test.log`), frontend acceptance 21/21 including the skeleton unit test (`logs/4_fe-test.log`), end-to-end 9/9 against the local stack (`logs/4_e2e.log`). Format, lint, type check, PMD and SpotBugs clean. Commits per story in `logs/4_commits-since-freeze.log`. D-14 and D-17 answered by the human 2026-10-06T07:37:24Z. Local stack (`registration-tanej04`) is running. Earlier gates: phase 3 2026-10-05T21:19:14Z, phase 2 2026-10-05T20:56:18Z, phase 1 2026-10-05T20:42:28Z, phase 0 2026-10-05T20:40:37Z.
-- Next step: phase 5 with `skills/unit-tests`: first complete run recorded and classified before any fix, unit and integration tests per component area, coverage and mutation recorded.
+- Current phase: 6 (verify)
+- Last gate result: phase 5 passed 2026-10-06T08:18:13Z. First complete run 263 passed / 0 failed. Full suite: backend 213/0 (unit 107, integration 15, architecture 5, acceptance 86), frontend 69/0, e2e 9/0. Coverage: backend 96.4% line / 92.2% branch (all levels), 67.0% / 82.4% (unit); frontend 100% / 97.24%. Mutation: backend 95.8% (PIT, scoped), frontend 98.1% (Stryker); survivors classified in `docs/03_test-strategy.md`. Earlier gates: phase 4 2026-10-06T07:44:54Z, phase 3 2026-10-05T21:19:14Z, phase 2 2026-10-05T20:56:18Z, phase 1 2026-10-05T20:42:28Z, phase 0 2026-10-05T20:40:37Z. Local stack `registration-tanej04` is running.
+- Next step: phase 6 with `skills/verify-release`: all scanners, DoD evidence, runtime demonstration (DoD-P01..P05, NFR-02, NFR-04), verification report, final run.
 - Waiting for the human on: nothing
