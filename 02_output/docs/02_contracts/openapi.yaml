@@ -1,0 +1,380 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >
+    REST interface between the frontend (or an organizer) and the backend (AR-01).
+    Every path is served under /api. All bodies are UTF-8 JSON unless stated.
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: /
+tags:
+  - name: registration
+    description: Public registration flow (US-001 to US-004)
+  - name: export
+    description: Organizer export (US-008)
+paths:
+  /api/form-config:
+    get:
+      tags: [registration]
+      operationId: getFormConfig
+      summary: Options, consents and anti-automation settings for the registration forms
+      description: Only active options are returned (BR-04, AC-003-01, AC-003-02).
+      security: []
+      responses:
+        "200":
+          description: Current form configuration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FormConfig"
+        "429":
+          $ref: "#/components/responses/RateLimited"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /api/registrations:
+    post:
+      tags: [registration]
+      operationId: createRegistration
+      summary: Submit a registration
+      description: >
+        Verifies the anti-automation token first (SR-01), then validates (SB-01, BR-02 to BR-05, D-11, D-14, D-15, D-17),
+        stores the database row and the raw JSON copy (BR-07, AR-05), responds 201, then sends the emails (D-13).
+        Request bodies above the configured size limit are refused with 413 (SR-03).
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+      responses:
+        "201":
+          description: Registration accepted and stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationAccepted"
+        "400":
+          description: Validation failed (VALIDATION_FAILED, with fieldErrors), anti-automation check failed (CAPTCHA_FAILED) or malformed body (MALFORMED_REQUEST)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: Email already registered (DUPLICATE_EMAIL, D-15)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: Request body too large (PAYLOAD_TOO_LARGE)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "415":
+          description: Content type is not application/json (UNSUPPORTED_MEDIA_TYPE)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/RateLimited"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "503":
+          description: Storage or anti-automation verification unavailable (STORAGE_FAILED, CAPTCHA_UNAVAILABLE); nothing is stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /api/export/registrations.xlsx:
+    get:
+      tags: [export]
+      operationId: exportRegistrations
+      summary: Download all registrations as an Excel workbook (organizers only)
+      description: >
+        Requires organizer credentials (BR-08). When organizer HTTPS-only access is on, a request that did not
+        arrive over HTTPS is refused with 403 before credentials are evaluated (SR-06). Columns are listed in
+        x-export-columns; no internal field is exported (SR-07). Cell values are text cells, never formulas (AC-008-07).
+      security:
+        - organizerBasic: []
+      x-export-columns:
+        - Type
+        - First name
+        - Last name
+        - Email
+        - Organization / institution
+        - Study institution
+        - Study programme
+        - Student ID
+        - Workshops
+        - Events
+        - Meals
+        - Other activities
+        - Consents
+        - Consent given at
+        - Registered at
+      responses:
+        "200":
+          description: >
+            Workbook with one sheet "Registrations": a heading row with x-export-columns, then one row per
+            registration ordered by registration time. Multiple options in a category are joined with "; ".
+          headers:
+            Content-Disposition:
+              description: attachment; filename="registrations.xlsx"
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentEncoding: binary
+        "401":
+          description: Missing or wrong organizer credentials (UNAUTHORIZED); no data
+          headers:
+            WWW-Authenticate:
+              description: Basic realm="organizer"
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Organizer access over plain HTTP (HTTPS_REQUIRED, SR-06); no data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/RateLimited"
+        "500":
+          $ref: "#/components/responses/InternalError"
+components:
+  securitySchemes:
+    # D-19: Basic accepted for the single organizer export (HTTPS-only, rate limited, hashed password).
+    organizerBasic:
+      type: http # nosemgrep: yaml.openapi.security.use-of-basic-authentication.use-of-basic-authentication
+      scheme: basic
+      description: Organizer username and password from configuration (ORGANIZER_USERNAME, ORGANIZER_PASSWORD).
+  responses:
+    RateLimited:
+      description: Too many requests from this client (RATE_LIMITED, SR-03)
+      headers:
+        Retry-After:
+          description: Seconds until a new request is accepted
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalError:
+      description: Unexpected error (INTERNAL_ERROR); the message contains no internal details (ES-07)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+    Category:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+    FormConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, categories, options, consents, antiAutomation]
+      properties:
+        conferenceName:
+          type: string
+        categories:
+          description: Categories in display order with their optional maximum (D-14)
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id]
+            properties:
+              id:
+                $ref: "#/components/schemas/Category"
+              maxSelections:
+                type: integer
+                minimum: 1
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/Option"
+        consents:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, text]
+            properties:
+              id:
+                type: string
+              text:
+                type: string
+        antiAutomation:
+          type: object
+          additionalProperties: false
+          required: [mode]
+          properties:
+            mode:
+              description: "live: render the Google reCAPTCHA v2 widget with siteKey; test: deterministic test mode (SR-02)"
+              type: string
+              enum: [live, test]
+            siteKey:
+              description: Public site key; present in live mode only (AR-07)
+              type: string
+    Option:
+      type: object
+      additionalProperties: false
+      required: [id, displayName, category, availableTo]
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        category:
+          $ref: "#/components/schemas/Category"
+        availableTo:
+          type: array
+          items:
+            $ref: "#/components/schemas/RegistrationType"
+    RegistrationRequest:
+      type: object
+      additionalProperties: false
+      required: [type, firstName, lastName, email, optionIds, consentIds, antiAutomationToken]
+      description: >
+        EXTERNAL requires organization; STUDENT requires studyInstitution, studyProgramme and studentId.
+        A field of the other type must be absent. Text values are trimmed; a value with a control
+        character is invalid (D-17). Maximum lengths: names 100, email 254, organization, study
+        institution and programme 200, student ID 50.
+      properties:
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+          maxLength: 100
+        lastName:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          maxLength: 254
+        organization:
+          type: string
+          maxLength: 200
+        studyInstitution:
+          type: string
+          maxLength: 200
+        studyProgramme:
+          type: string
+          maxLength: 200
+        studentId:
+          type: string
+          maxLength: 50
+        optionIds:
+          description: Selected option ids, each at most once; may be empty (D-14)
+          type: array
+          maxItems: 50
+          items:
+            type: string
+            maxLength: 64
+        consentIds:
+          description: Ids of the consents the participant gave; must contain every configured consent (BR-05)
+          type: array
+          maxItems: 10
+          items:
+            type: string
+            maxLength: 64
+        antiAutomationToken:
+          description: reCAPTCHA response token, or the test-mode token (SR-01)
+          type: string
+          maxLength: 4096
+      examples:
+        - type: EXTERNAL
+          firstName: Janez
+          lastName: Kovačič
+          email: janez.kovacic@example.com
+          organization: Inštitut Jožef Stefan
+          optionIds: [ws-ai-research, meal-lunch-day1]
+          consentIds: [data-processing]
+          antiAutomationToken: test-mode-pass
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [id, type, firstName, lastName, email, options, registeredAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        options:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, displayName, category]
+            properties:
+              id:
+                type: string
+              displayName:
+                type: string
+              category:
+                $ref: "#/components/schemas/Category"
+        registeredAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      additionalProperties: false
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          enum:
+            - VALIDATION_FAILED
+            - MALFORMED_REQUEST
+            - CAPTCHA_FAILED
+            - CAPTCHA_UNAVAILABLE
+            - DUPLICATE_EMAIL
+            - PAYLOAD_TOO_LARGE
+            - UNSUPPORTED_MEDIA_TYPE
+            - RATE_LIMITED
+            - UNAUTHORIZED
+            - HTTPS_REQUIRED
+            - STORAGE_FAILED
+            - INTERNAL_ERROR
+        message:
+          description: User-facing text without internal details (ES-07)
+          type: string
+        fieldErrors:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [field, code, message]
+            properties:
+              field:
+                description: firstName, lastName, email, organization, studyInstitution, studyProgramme, studentId, optionIds, consentIds or type
+                type: string
+              code:
+                type: string
+                enum: [REQUIRED, INVALID_FORMAT, TOO_LONG, CONTROL_CHARACTER, NOT_ALLOWED, UNKNOWN_OPTION, INACTIVE_OPTION, OPTION_NOT_AVAILABLE, DUPLICATE_OPTION, CATEGORY_LIMIT, CONSENT_MISSING]
+              message:
+                type: string
