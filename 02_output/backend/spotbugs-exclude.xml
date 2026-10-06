@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <!-- Exclusions are added only with a recorded reason. -->
+
+  <!-- Spring Security's HttpSecurity.build() declares "throws Exception"; the bean method must too. -->
+  <Match>
+    <Class name="~si\.konferenca\.registration(\..*)?\.SecurityConfig"/>
+    <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
+  </Match>
+</FindBugsFilter>
