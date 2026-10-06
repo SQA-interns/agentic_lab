@@ -190,3 +190,12 @@
 - Options: 1 (default) in the two overriding classes (`AntiAutomationLiveAcceptanceTest`, `support/MailUnavailableTestBase`) register the overrides under the bound property names (`app.recaptcha.test-mode`, `app.recaptcha.site-key`, `app.recaptcha.secret-key`, `app.recaptcha.verify-url`, `app.mail.host`, `app.mail.port`), which take precedence over the environment-style keys of the base class; no assertion changes; the agent then rewrites `docs/03_acceptance-manifest.sha256` in its own commit. 2 change `AcceptanceTestBase` instead so that subclasses supply overrides through a hook. 3 leave the tests as they are and accept DoD-P05 and AC-006-04/AC-007-05 as unproven.
 - Human response: first asked which files are meant (time not recorded; answered with paths and lines); 2026-10-06T13:21:34Z "1"
 - Resolution: option 1. Test fix d319d31, manifest dad715c (2 lines changed). Re-run: AntiAutomationLive 5/5 and both mail-failure tests pass; the log shows 4 "not sent" warnings, so the SMTP failure is now injected.
+
+## D-22: Client validation on submit only, not on blur
+- Timestamp: 2026-10-06T13:29:49Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: e2e AC-004-02 failed with "Clicking the checkbox did not change its state": leaving the email field showed its error, which moved the consent checkbox under the pointer between mousedown and click. Real users would hit the same misclick. `docs/02_specification.md` section 7 said "on submit and on blur".
+- Options: 1 (default) validate on submit only; server field errors still replace client errors (NFR-03 is met: errors are shown next to the fields before anything is sent). 2 keep blur validation and reserve space for every error message.
+- Human response: none
+- Resolution: pending review (option 1); specification section 7 corrected.

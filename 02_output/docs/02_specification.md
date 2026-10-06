@@ -111,7 +111,7 @@ Option changes (US-003): edit the configuration file and restart; option ids are
 
 ## 7. Frontend
 
-Modules: `api` (typed fetch client for `openapi.yaml`), `texts` (every string of `ui-registration-form.json`, D-18), `validation` (client copies of the rules in §3 step 3 except options availability, which the UI enforces by not offering them), `AntiAutomation` (live widget loaded from Google with the served site key, or the test-mode checkbox), `RegistrationForm`, `Confirmation`, `App` (loads `/api/form-config`, shows a load error if it fails). Client validation runs on submit and on blur; the submit button is disabled while a request is in flight. Server `fieldErrors` replace client errors for the same field.
+Modules: `api` (typed fetch client for `openapi.yaml`), `texts` (every string of `ui-registration-form.json`, D-18), `validation` (client copies of the rules in §3 step 3 except options availability, which the UI enforces by not offering them), `AntiAutomation` (live widget loaded from Google with the served site key, or the test-mode checkbox), `RegistrationForm`, `Confirmation`, `App` (loads `/api/form-config`, shows a load error if it fails). Client validation runs on submit only (D-22: an error appearing on blur shifted the layout under the pointer); the submit button is disabled while a request is in flight. Server `fieldErrors` replace client errors for the same field.
 
 ## 8. Health and deployment (ES-09, NFR-02, NFR-04)
 
