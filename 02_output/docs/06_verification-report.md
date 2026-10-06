@@ -17,8 +17,8 @@ Full run: `verify.sh 06 all`, 2026-10-06T16:36Z–16:45Z, 19/19 tools exit 0 (`l
 | DoD-05 | pass | Dependency-Check 0/0/0/0 (D-08, D-09 suppressions), npm audit critical 0 high 0 (F-04), semgrep high 0 (D-19), gitleaks 0 in history and tree; findings table: no open Critical or High |
 | DoD-06 | pass | runtime demonstration below (`06_runtime-demo.log`, DEMO PASS) and e2e on the compose stack |
 | DoD-07 | pass | traceability below: 57/57 ACs have ≥ 1 test and ≥ 1 commit |
-| DoD-08 | phase 7 | |
-| DoD-09 | phase 7 | |
+| DoD-08 | pass | `logs/07_clean-checkout.log`: clone of 7ba4437 without `.env`; backend build, check, test 184/0; frontend `npm ci`, build, test 48/0, check; stack from the checkout's compose file: page, form config, Mailpit 200, export 401; e2e 10/0. Fixed on the way: frontend README unformatted (fixed `6fbd69f`); first Quick-start attempt returned HTTP 000 (transient, compose re-run exit 0, `07_co-compose.log`) |
+| DoD-09 | pass | `docs/release-notes.md` "Before production": real reCAPTCHA keys, real SMTP delivery, TLS/reverse proxy/`/api` routing, product-owner inputs, F-03, F-04 — separate from what this run verified |
 | DoD-10 | pass | D-01..D-23 each have a resolution or "pending review" (`decisions-log.md`); input manifest 26/26 match |
 | DoD-11 | pass | evidence checks below |
 | DoD-P01 | pass | external `e2e14cac-…` and student `a53ac4ac-…` registrations HTTP 201 (`06_runtime-demo.log`) |
