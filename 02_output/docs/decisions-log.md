@@ -110,3 +110,12 @@
 - Options: 1. (default) state the reason here and leave history unchanged; reason: `phases.md` asks for one commit per contract, and an OpenAPI document is one file whose `$ref`s must resolve within it, so a partial commit would not validate; 2. rewrite the commit (not allowed).
 - Human response: "record the reason as you proposed; do not rewrite history" (2026-10-05T20:52:36Z)
 - Resolution: 1
+
+## D-13: SpotBugs EI_EXPOSE_REP2 excluded for constructor-injected collaborators
+- Timestamp: 2026-10-06T07:17:11Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: `verify.sh 4 be-static` (`02_output/logs/4_be-static.log`): 7 results `EI_EXPOSE_REP2` (rank 18–19, Low) on constructors that receive collaborators by dependency injection (`RegistrationService`, `JpaRegistrationRepository` with `EntityManager`, `SpringTransactions`, `RegistrationController`). Sharing these objects is the purpose of injection, not leaked internal state.
+- Options: 1. (default) exclude only `EI_EXPOSE_REP2` on constructors in `02_output/backend/spotbugs-exclude.xml`; `EI_EXPOSE_REP` (returning internal state) and every other pattern stay active; 2. copy or wrap each collaborator (not possible for an `EntityManager` or a service); 3. keep the findings open as Low.
+- Human response: none
+- Resolution: 1, pending review
