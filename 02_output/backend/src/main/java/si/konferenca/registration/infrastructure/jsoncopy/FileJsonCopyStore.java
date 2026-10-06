@@ -6,7 +6,6 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
@@ -95,10 +94,12 @@ public class FileJsonCopyStore implements JsonCopyStore {
         }
         ch.force(true);
       }
-      Files.move(temp, target, StandardCopyOption.ATOMIC_MOVE);
+      // A hard link publishes the complete file atomically and never replaces an existing copy.
+      Files.createLink(target, temp);
     } catch (IOException e) {
-      deleteQuietly(temp);
       throw new UncheckedIOException("JSON copy not written", e);
+    } finally {
+      deleteQuietly(temp);
     }
   }
 
