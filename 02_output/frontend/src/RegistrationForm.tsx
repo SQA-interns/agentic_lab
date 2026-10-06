@@ -168,11 +168,6 @@ export function RegistrationForm({ config, onAccepted }: Props) {
             maxLength={maxLength}
             value={values[name]}
             onChange={(e) => setValues({ ...values, [name]: e.target.value })}
-            onBlur={(e) => {
-              if (e.target.value !== "") {
-                setErrors({ ...errors, [name]: fieldError(name, e.target.value) });
-              }
-            }}
             aria-invalid={errors[name] ? true : undefined}
             aria-describedby={describedBy(name)}
           />
