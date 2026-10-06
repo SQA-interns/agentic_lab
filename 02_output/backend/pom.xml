@@ -249,6 +249,15 @@
           <targetClasses>
             <param>si.konferenca.registration.*</param>
           </targetClasses>
+          <excludedClasses>
+            <param>si.konferenca.registration.RegistrationApplication</param>
+          </excludedClasses>
+          <!-- ArchUnit rules run on their own engine, which the JUnit 5 plugin does not drive. -->
+          <excludedTestClasses>
+            <param>si.konferenca.registration.architecture.*</param>
+          </excludedTestClasses>
+          <threads>4</threads>
+          <timeoutConstant>8000</timeoutConstant>
           <outputFormats>
             <param>XML</param>
             <param>HTML</param>
