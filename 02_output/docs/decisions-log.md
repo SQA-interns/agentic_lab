@@ -126,8 +126,8 @@
 - Type: blocking
 - Trigger: `verify.sh 4 fe-test` (`02_output/logs/4_fe-test.log`): 16 of 20 frozen frontend acceptance tests fail with "Found multiple elements" because each test's rendered page stays in the document for the next test. Testing Library unmounts automatically only when Vitest runs with `globals: true`; `vite.config.ts` does not set it and the setup file `src/test-setup.ts` (phase 0, not in the acceptance manifest) does not call `cleanup`. The frozen tests themselves are correct; the harness defect was not visible in phase 3 because the probes rendered once per file. A trial run with `afterEach(cleanup)` added to `src/test-setup.ts` passed 21 of 21 (change reverted).
 - Options: 1. (default) add `afterEach(() => cleanup())` to `src/test-setup.ts`; no frozen file changes and the manifest stays valid; 2. set `globals: true` in `vite.config.ts` so Testing Library registers the cleanup itself; 3. other instruction.
-- Human response: none
-- Resolution: pending
+- Human response: "D-14: 1" (2026-10-06T07:37:24Z): add afterEach(cleanup) to src/test-setup.ts, no frozen file and no manifest change.
+- Resolution: 1. `verify.sh 4 fe-test`: 21 passed, 0 failed; `docs/03_acceptance-manifest.sha256` verifies unchanged.
 
 ## D-15: Backend image runs a jar built on the host
 - Timestamp: 2026-10-06T07:29:20Z
@@ -153,5 +153,5 @@
 - Type: blocking
 - Trigger: the backend container stops at startup with "ORGANIZER_PASSWORD must have at least 16 characters" (`StartupGuard`, `02_specification.md` §7; `project/secrets.env.example`: "password: random, at least 16 characters"). The value was not read or printed; only its length check failed. The local stack and the end-to-end tests cannot run until it is fixed.
 - Options: 1. (default) the human sets ORGANIZER_PASSWORD in `.env` to a random value of at least 16 characters; nothing else changes; 2. lower the minimum length for `APP_ENVIRONMENT=local` only (weakens SR-06 / SB-03 evidence locally); 3. other instruction.
-- Human response: none
-- Resolution: pending
+- Human response: "D-17: 1 (updated .env)" (2026-10-06T07:37:24Z): ORGANIZER_PASSWORD set to a random value of at least 16 characters; check only with secrets.sh.
+- Resolution: 1. `secrets.sh check`: ORGANIZER_PASSWORD present; the value was not read.

@@ -87,16 +87,16 @@
     { "id": "D-11", "type": "blocking", "start": "2026-10-05T20:50:26Z", "end": "2026-10-05T20:52:36Z" },
     { "id": "D-12", "type": "non-blocking", "start": "2026-10-05T20:55:56Z", "end": "2026-10-05T20:55:56Z" },
     { "id": "D-13", "type": "non-blocking", "start": "2026-10-06T07:17:11Z", "end": "2026-10-06T07:17:11Z" },
-    { "id": "D-14", "type": "blocking", "start": "2026-10-06T07:20:04Z", "end": null },
+    { "id": "D-14", "type": "blocking", "start": "2026-10-06T07:20:04Z", "end": "2026-10-06T07:37:24Z" },
     { "id": "D-15", "type": "non-blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:29:20Z" },
     { "id": "D-16", "type": "non-blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:29:20Z" },
-    { "id": "D-17", "type": "blocking", "start": "2026-10-06T07:29:20Z", "end": null }
+    { "id": "D-17", "type": "blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:37:24Z" }
   ],
   "humanInterventions": [
     { "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z", "reason": "D-03: downgrade of High CVE-2025-7962 (angus-activation) as a false positive" },
     { "start": "2026-10-05T20:50:26Z", "end": "2026-10-05T20:52:36Z", "reason": "D-11: downgrade of Semgrep High on HTTP Basic authentication for the export" },
     { "start": "2026-10-05T21:30:02Z", "end": "2026-10-06T07:03:00Z", "reason": "Human stopped the run at the phase 4 US-003 test run (tool use rejected); resumed with no changes" },
-    { "start": "2026-10-06T07:29:58Z", "end": null, "reason": "D-14: frontend test cleanup harness fix; D-17: ORGANIZER_PASSWORD in .env shorter than 16 characters" }
+    { "start": "2026-10-06T07:29:58Z", "end": "2026-10-06T07:37:24Z", "reason": "D-14: frontend test cleanup harness fix; D-17: ORGANIZER_PASSWORD in .env shorter than 16 characters" }
   ],
   "codeMetrics": {
     "components": [],
