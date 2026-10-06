@@ -1,0 +1,21 @@
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ✓ tests/acceptance/us004-confirmation.test.tsx (5 tests) 492ms
+ ✓ tests/acceptance/us002-student-form.test.tsx (9 tests) 921ms
+ ✓ tests/acceptance/us001-external-form.test.tsx (15 tests) 1110ms
+
+ Test Files  3 passed (3)
+      Tests  29 passed (29)
+   Start at  20:41:13
+   Duration  2.65s (transform 214ms, setup 266ms, collect 654ms, tests 2.52s, environment 1.77s, prepare 354ms)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 93% ( 399/429 )
+Branches     : 88.13% ( 104/118 )
+Functions    : 96.42% ( 27/28 )
+Lines        : 93% ( 399/429 )
+================================================================================

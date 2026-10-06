@@ -50,3 +50,11 @@ Standing instruction from the human at session start: "do not ask for my permiss
 - Options: 1. (default) Keep the pins; accept for dev/test tooling run locally on own code only; gate SB-08 on `npm audit --omit=dev`; keep the full audit in `out/logs/<phase>_frontend-depscan-all.json`; list in release notes. 2. Upgrade vitest to 5.0.3 (+ @vitest/coverage-v8, Stryker runner compatibility unknown) and jscpd to 5.4.0 (tech-stack change).
 - Human response: standing instruction at session start (2026-10-06T18:03:47Z).
 - Resolution: option 1.
+
+## D-20: Frozen test helper reads timestamptz as java.sql.Timestamp
+- Timestamp: 2026-10-06T18:34:36Z
+- Phase: 4
+- Trigger: `RegistrationStorageAcceptanceTest.AC_005_01` (frozen, `docs/03_acceptance-manifest.sha256`) casts `row.get("received_at")` to `OffsetDateTime`; the frozen helper `RunningApp.query` uses `ResultSet.getObject(i)`, which PgJDBC 42.7.13 returns as `java.sql.Timestamp` for `timestamptz` → `ClassCastException` (`out/logs/4_backend-acceptance-1.log`). No production change can make it pass.
+- Options: 1. (default) Change only the helper: read `timestamptz` columns with `getObject(i, OffsetDateTime.class)`; the assertion stays as strict; re-hash the manifest. 2. Change the test's cast to `Timestamp`. 3. Leave AC-005-01 failing.
+- Human response: standing instruction at session start (do not ask, do what is recommended).
+- Resolution: option 1; manifest re-hashed in its own commit.

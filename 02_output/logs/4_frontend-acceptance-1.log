@@ -1,0 +1,12 @@
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend
+
+ ✓ tests/acceptance/us004-confirmation.test.tsx (5 tests) 338ms
+ ✓ tests/acceptance/us002-student-form.test.tsx (9 tests) 536ms
+ ✓ tests/acceptance/us001-external-form.test.tsx (15 tests) 632ms
+
+ Test Files  3 passed (3)
+      Tests  29 passed (29)
+   Start at  20:37:06
+   Duration  1.63s (transform 153ms, setup 169ms, collect 533ms, tests 1.51s, environment 1.29s, prepare 254ms)
+
