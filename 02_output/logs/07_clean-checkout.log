@@ -1,0 +1,48 @@
+start 2026-10-06T16:59:26Z
+
+== stop the running stack
+ Network conference-registration_default Removed 
+
+== clean checkout of HEAD 7ba4437
+cloned
+no .env in checkout
+
+== backend README: Build, Check
+build ok
+check ok
+
+== frontend README: Build, Test, Check
+npm ci ok
+build ok
+      Tests  48 passed (48)
+check ok
+
+== backend README: Test (via verify.sh)
+be-test         exit=0   tests=184 failures=0 errors=0 skipped=0 line=95.3% branch=90.4%  log=02_output/logs/co_be-test.log
+
+== root README: Quick start
+
+form page HTTP 000
+form config HTTP 000
+mailpit HTTP 000
+export without credentials HTTP 000
+
+== frontend README: end-to-end
+e2e             exit=1   10 failed   log=02_output/logs/co_e2e.log
+
+== restore the stack from the original repository
+ Container conference-registration-frontend-1 Healthy 
+end 2026-10-06T17:04:01Z
+
+== retry of root README Quick start (first attempt above returned HTTP 000; compose up re-run alone: exit 0, log 07_co-compose.log)
+retry 2026-10-06T17:07:48Z
+/ HTTP 200
+/api/form-config HTTP 200
+/api/export/registrations.xlsx HTTP 401
+mailpit HTTP 200
+== frontend README: end-to-end (retry)
+e2e             exit=0   10 passed   log=02_output/logs/co_e2e.log
+== restore
+ Network conference-registration_default Removed 
+ Container conference-registration-frontend-1 Healthy 
+end 2026-10-06T17:08:45Z
