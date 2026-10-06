@@ -21,6 +21,7 @@
 | AC-001-13 | SR-01 | an external submission whose anti-automation check is missing or failed | it is received | the registration is rejected and nothing is stored |
 | AC-001-14 | D-15 | an email that is already registered, in any letter case | an external form with that email is submitted | the registration is rejected with a message to contact the organizers |
 | AC-001-15 | BR-02, BR-03 | an external form with an empty required field or an invalid email | the participant tries to submit it | the error is shown next to the field before anything is sent |
+| AC-001-16 | SR-05, D-17 | an external submission in which a value contains a line break or another control character | it is received | the registration is rejected with an error for that field |
 
 ## US-002 Student registration
 
@@ -72,7 +73,7 @@
 |---|---|---|---|---|
 | AC-006-01 | — | a registration | it is accepted | an email is sent to the participant's address with the conference name, the participant's name, the registration type and the selected options |
 | AC-006-02 | BR-03 | an accepted registration whose values contain č, š and ž | the participant email is read | the characters are shown unchanged |
-| AC-006-03 | SR-05 | an accepted registration whose values contain line breaks, header text or markup | the participant email is sent | it goes only to the participant, has no extra headers and shows the values as plain text |
+| AC-006-03 | SR-05 | an accepted registration whose values contain header text (such as "Bcc: someone@example.com") or markup | the participant email is sent | it goes only to the participant, has no extra headers and shows the values as plain text |
 | AC-006-04 | D-13 | an accepted registration whose participant email cannot be sent | the registration is processed | the registration stays stored and the confirmation is shown |
 | AC-006-05 | BR-06 | a rejected registration | it is processed | no email is sent |
 

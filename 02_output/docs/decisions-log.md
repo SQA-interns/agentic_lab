@@ -145,3 +145,21 @@
 - Options: 1 (default) records and JSON copies are kept until organizers delete them after the conference; no automatic deletion in this release; the retention period is listed in the release notes ("Before production") for the product owner to set. 2 automatic deletion after a fixed period.
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-17: Control characters in registration values are rejected
+- Timestamp: 2026-10-06T11:49:25Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: AC-006-03 (phase 1) assumed an accepted registration may contain line breaks. SB-01 and SR-05 call for trusted-side validation; no field (names, email, institution, student ID) legitimately contains a line break or other control character, and BR-03 only requires Unicode text.
+- Options: 1 (default, conservative) a value containing a control character (including CR, LF, TAB) is rejected as invalid for that field; AC-006-03 is amended before the phase 3 freeze to cover header text and markup in accepted values, and a rejection criterion AC-001-16 is added. 2 accept and strip control characters.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-18: User interface language
+- Timestamp: 2026-10-06T11:49:25Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: no input states the language of the forms and emails; NFR-01 only requires Slovenian characters to survive.
+- Options: 1 (default) English, the language of the requirements; every user-visible text lives in one module per component (`docs/02_contracts/ui-registration-form.json`, `email-messages.json`), so a translation changes no logic. 2 Slovenian.
+- Human response: none
+- Resolution: pending review (option 1)
