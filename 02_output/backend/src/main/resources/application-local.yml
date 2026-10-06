@@ -1,0 +1,17 @@
+# Local development and the docker compose stack: defaults allowed by environments.md.
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://postgres:5432/registration}
+    username: ${DB_USERNAME:registration}
+
+app:
+  options-file: ${OPTIONS_FILE:classpath:conference-options.yaml}
+  cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:http://127.0.0.1:5173}
+  smtp:
+    host: ${SMTP_HOST:mailpit}
+    port: ${SMTP_PORT:1025}
+    starttls: ${SMTP_STARTTLS:false}
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:true}
+  organizer:
+    https-only: ${ORGANIZER_HTTPS_ONLY:false}

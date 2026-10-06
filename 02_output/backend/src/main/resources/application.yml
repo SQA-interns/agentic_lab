@@ -1,0 +1,79 @@
+# Settings that differ between environments come from the environment (spec section 5, ES-01).
+# Without the 'local' or 'test' profile (production) every value without a default must be set.
+spring:
+  application:
+    name: registration-backend
+  main:
+    banner-mode: off
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+    hikari:
+      connection-timeout: 5000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+
+server:
+  port: 8080
+  forward-headers-strategy: native
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+    include-exception: false
+    whitelabel:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+      group:
+        readiness:
+          include: readinessState,db
+  health:
+    mail:
+      enabled: false
+
+app:
+  conference-name: ${CONFERENCE_NAME:Konferenca 2026}
+  mail-from: ${MAIL_FROM:registration@konferenca.local}
+  organizer-emails: ${ORGANIZER_EMAILS}
+  json-copy-dir: ${JSON_COPY_DIR:/data/json-copies}
+  options-file: ${OPTIONS_FILE}
+  cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:}
+  max-request-bytes: ${MAX_REQUEST_BYTES:16384}
+  smtp:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT:587}
+    starttls: ${SMTP_STARTTLS:true}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:false}
+    site-key: ${RECAPTCHA_SITE_KEY:}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  organizer:
+    username: ${ORGANIZER_USERNAME}
+    password: ${ORGANIZER_PASSWORD}
+    https-only: ${ORGANIZER_HTTPS_ONLY:true}
+  rate-limit:
+    registration-per-minute: ${RATE_LIMIT_REGISTRATION_PER_MINUTE:30}
+    export-per-minute: ${RATE_LIMIT_EXPORT_PER_MINUTE:20}
+    options-per-minute: ${RATE_LIMIT_OPTIONS_PER_MINUTE:120}

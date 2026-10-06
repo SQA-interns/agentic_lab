@@ -1,0 +1,7 @@
+# Automated tests: defaults allowed by environments.md; tests pass their own values.
+app:
+  options-file: ${OPTIONS_FILE:classpath:conference-options.yaml}
+  smtp:
+    starttls: ${SMTP_STARTTLS:false}
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:true}

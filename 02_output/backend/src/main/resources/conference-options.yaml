@@ -1,0 +1,16 @@
+# Default option configuration for local and test (conference-options.schema.json).
+# Production sets OPTIONS_FILE to its own file; change it and restart, no code change (AR-04).
+conference:
+  consent:
+    id: data-processing
+    text: "I agree to the processing of my personal data for organising the conference and to being contacted about my registration."
+  options:
+    - { id: ws-ai, name: "Workshop: AI in practice", category: WORKSHOP, active: true }
+    - { id: ws-security, name: "Workshop: Secure web applications", category: WORKSHOP, active: true }
+    - { id: ev-reception, name: "Welcome reception", category: EVENT, active: true }
+    - { id: ev-gala, name: "Gala dinner", category: EVENT, active: true, offered-to: [EXTERNAL] }
+    - { id: meal-lunch-1, name: "Lunch, day 1", category: MEAL, active: true }
+    - { id: meal-lunch-2, name: "Lunch, day 2", category: MEAL, active: true }
+    - { id: meal-vegetarian, name: "Vegetarian meals", category: MEAL, active: true }
+    - { id: other-city-tour, name: "Guided tour of Ljubljana", category: OTHER, active: true }
+    - { id: other-poster, name: "Poster session", category: OTHER, active: false }
