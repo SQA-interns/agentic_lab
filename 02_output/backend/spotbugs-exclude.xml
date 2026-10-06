@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- D-13: collaborators passed to constructors (dependency injection) are shared by design.
+     Only the storing variant is excluded; returning internal state (EI_EXPOSE_REP) stays checked. -->
+<FindBugsFilter>
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Method name="&lt;init&gt;"/>
+  </Match>
+</FindBugsFilter>
