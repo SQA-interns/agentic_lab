@@ -99,11 +99,11 @@ class FiltersTest {
           var in = req.getInputStream();
           assertThat(in.read(new byte[8], 0, 8)).isEqualTo(8);
           assertThat(in.read()).isZero();
+          assertThat(in.read()).isZero();
           read.incrementAndGet();
-          assertThatThrownBy(() -> in.read(new byte[16], 0, 16))
+          assertThatThrownBy(in::read)
               .isInstanceOf(IOException.class)
               .satisfies(e -> assertThat(RequestSizeFilter.isTooLarge(e)).isTrue());
-          assertThatThrownBy(in::read).isInstanceOf(IOException.class);
         };
 
     new RequestSizeFilter(10).doFilter(r, new MockHttpServletResponse(), reading);
@@ -111,6 +111,30 @@ class FiltersTest {
     assertThat(read.get()).isEqualTo(1);
     assertThat(RequestSizeFilter.isTooLarge(new RuntimeException(new IllegalStateException())))
         .isFalse();
+  }
+
+  @Test
+  void bulkReadOverLimitFails() throws Exception {
+    MockHttpServletRequest r =
+        new MockHttpServletRequest("POST", "/api/registrations") {
+          @Override
+          public long getContentLengthLong() {
+            return -1;
+          }
+        };
+    r.setContent(new byte[20]);
+    AtomicInteger checked = new AtomicInteger();
+    FilterChain reading =
+        (req, res) -> {
+          var in = req.getInputStream();
+          assertThatThrownBy(() -> in.read(new byte[16], 0, 16))
+              .satisfies(e -> assertThat(RequestSizeFilter.isTooLarge(e)).isTrue());
+          checked.incrementAndGet();
+        };
+
+    new RequestSizeFilter(10).doFilter(r, new MockHttpServletResponse(), reading);
+
+    assertThat(checked.get()).isEqualTo(1);
   }
 
   @Test
