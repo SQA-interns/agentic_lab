@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
+import si.konferenca.registration.application.ExportService;
 import si.konferenca.registration.application.RegistrationEmails;
 import si.konferenca.registration.application.RegistrationPorts.CaptchaVerifier;
 import si.konferenca.registration.application.RegistrationPorts.JsonCopyStore;
@@ -21,6 +22,7 @@ import si.konferenca.registration.domain.RegistrationValidator;
 import si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier;
 import si.konferenca.registration.infrastructure.captcha.TestModeCaptchaVerifier;
 import si.konferenca.registration.infrastructure.copy.FileJsonCopyStore;
+import si.konferenca.registration.infrastructure.export.PoiExportWriter;
 import si.konferenca.registration.infrastructure.mail.SmtpNotifier;
 import si.konferenca.registration.infrastructure.persistence.JpaRegistrationRepository;
 import si.konferenca.registration.infrastructure.persistence.SpringTransactions;
@@ -64,6 +66,11 @@ public class RegistrationConfig {
       AppProperties properties,
       Executor mailExecutor) {
     return new SmtpNotifier(sender, emails, properties.mailFrom(), mailExecutor);
+  }
+
+  @Bean
+  ExportService exportService(RegistrationRepository repository) {
+    return new ExportService(repository, new PoiExportWriter());
   }
 
   @Bean
