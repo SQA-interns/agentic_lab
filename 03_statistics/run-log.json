@@ -1,0 +1,310 @@
+{
+  "runId": "tanej-04_conference-registration_opus5.5_sdd_template-tanej-2.0",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "templateVersion": "tanej-2.0",
+  "transcript": "~/.claude/projects/-home-tjan-kazar-storage-Work-lab-agentic-lab/df63e88f-fa9b-4afb-a36a-b341dd31e7c2.jsonl",
+  "startCommit": "20c720214a74a65b082724063222be2ee748caa3",
+  "finalCommit": "85ee2258fdba383e12b7946024324fea082b28f7",
+  "start": "2026-10-06T07:39:51Z",
+  "end": "2026-10-06T17:10:08Z",
+  "phases": [
+    {
+      "phase": 0,
+      "name": "preflight-and-bootstrap",
+      "start": "2026-10-06T07:39:51Z",
+      "end": "2026-10-06T11:45:02Z"
+    },
+    {
+      "phase": 1,
+      "name": "requirements",
+      "start": "2026-10-06T11:45:19Z",
+      "end": "2026-10-06T11:47:32Z"
+    },
+    {
+      "phase": 2,
+      "name": "design",
+      "start": "2026-10-06T11:47:49Z",
+      "end": "2026-10-06T12:21:57Z"
+    },
+    {
+      "phase": 3,
+      "name": "test-design",
+      "start": "2026-10-06T12:22:09Z",
+      "end": "2026-10-06T12:44:45Z"
+    },
+    {
+      "phase": 4,
+      "name": "build",
+      "start": "2026-10-06T12:44:45Z",
+      "end": "2026-10-06T13:36:21Z"
+    },
+    {
+      "phase": 5,
+      "name": "unit-tests",
+      "start": "2026-10-06T13:36:21Z",
+      "end": "2026-10-06T16:33:18Z"
+    },
+    {
+      "phase": 6,
+      "name": "verify",
+      "start": "2026-10-06T16:33:18Z",
+      "end": "2026-10-06T16:52:43Z"
+    },
+    {
+      "phase": 7,
+      "name": "release",
+      "start": "2026-10-06T16:52:43Z",
+      "end": "2026-10-06T17:10:08Z"
+    }
+  ],
+  "firstTestRun": {
+    "passed": 233,
+    "failed": 0
+  },
+  "finalTestRun": {
+    "passed": 242,
+    "failed": 0
+  },
+  "findings": {
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 6
+  },
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "change": "verify.sh: exclude .stryker-tmp from semgrep",
+      "start": "2026-10-06T16:45:09Z",
+      "end": "2026-10-06T16:45:35Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-02"
+      ],
+      "change": "application.yml: Hibernate JDBC error loggers off (personal data in logs)",
+      "start": "2026-10-06T16:48:01Z",
+      "end": "2026-10-06T16:52:43Z"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-01",
+      "type": "blocking",
+      "start": "2026-10-06T07:43:39Z",
+      "end": "2026-10-06T09:02:30Z"
+    },
+    {
+      "id": "D-02",
+      "type": "blocking",
+      "start": "2026-10-06T07:43:39Z",
+      "end": "2026-10-06T08:45:02Z"
+    },
+    {
+      "id": "D-03",
+      "type": "non-blocking",
+      "start": "2026-10-06T07:43:39Z",
+      "end": "2026-10-06T07:43:39Z"
+    },
+    {
+      "id": "D-04",
+      "type": "non-blocking",
+      "start": "2026-10-06T07:43:39Z",
+      "end": "2026-10-06T07:43:39Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "start": "2026-10-06T07:43:39Z",
+      "end": "2026-10-06T07:43:39Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:05:10Z",
+      "end": "2026-10-06T11:05:10Z"
+    },
+    {
+      "id": "D-07",
+      "type": "blocking",
+      "start": "2026-10-06T11:38:04Z",
+      "end": "2026-10-06T11:40:16Z"
+    },
+    {
+      "id": "D-08",
+      "type": "blocking",
+      "start": "2026-10-06T11:38:04Z",
+      "end": "2026-10-06T11:40:16Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:38:04Z",
+      "end": "2026-10-06T11:38:04Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:38:04Z",
+      "end": "2026-10-06T11:38:04Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:46:08Z",
+      "end": "2026-10-06T11:46:08Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:46:08Z",
+      "end": "2026-10-06T11:46:08Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:46:08Z",
+      "end": "2026-10-06T11:46:08Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:46:08Z",
+      "end": "2026-10-06T11:46:08Z"
+    },
+    {
+      "id": "D-15",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:46:08Z",
+      "end": "2026-10-06T11:46:08Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:46:08Z",
+      "end": "2026-10-06T11:46:08Z"
+    },
+    {
+      "id": "D-17",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:49:25Z",
+      "end": "2026-10-06T11:49:25Z"
+    },
+    {
+      "id": "D-18",
+      "type": "non-blocking",
+      "start": "2026-10-06T11:49:25Z",
+      "end": "2026-10-06T11:49:25Z"
+    },
+    {
+      "id": "D-19",
+      "type": "blocking",
+      "start": "2026-10-06T12:17:19Z",
+      "end": "2026-10-06T12:18:26Z"
+    },
+    {
+      "id": "D-20",
+      "type": "non-blocking",
+      "start": "2026-10-06T12:17:19Z",
+      "end": "2026-10-06T12:17:19Z"
+    },
+    {
+      "id": "D-21",
+      "type": "blocking",
+      "start": "2026-10-06T13:01:53Z",
+      "end": "2026-10-06T13:21:34Z"
+    },
+    {
+      "id": "D-22",
+      "type": "non-blocking",
+      "start": "2026-10-06T13:29:49Z",
+      "end": "2026-10-06T13:29:49Z"
+    },
+    {
+      "id": "D-23",
+      "type": "non-blocking",
+      "start": "2026-10-06T16:30:58Z",
+      "end": "2026-10-06T16:30:58Z"
+    }
+  ],
+  "humanInterventions": [
+    {
+      "start": "2026-10-06T07:43:39Z",
+      "end": "2026-10-06T08:45:02Z",
+      "reason": "phase 0 preflight: D-01 Node.js 24.13.0 missing, D-02 .env missing"
+    },
+    {
+      "start": "2026-10-06T08:47:21Z",
+      "end": "2026-10-06T09:02:04Z",
+      "reason": "D-01: Node.js 24.13.0 still missing after the human's install; human asked the agent to install it"
+    },
+    {
+      "start": "2026-10-06T11:38:04Z",
+      "end": "2026-10-06T11:40:16Z",
+      "reason": "phase 0 dependency scan: D-07 npm Critical (vitest/tinypool), D-08 High false positive downgrade"
+    },
+    {
+      "start": "2026-10-06T12:17:19Z",
+      "end": "2026-10-06T12:18:26Z",
+      "reason": "phase 2 contract scan: D-19 Semgrep High on Basic auth, downgrade or redesign"
+    },
+    {
+      "start": "2026-10-06T13:01:53Z",
+      "end": "2026-10-06T13:21:34Z",
+      "reason": "phase 4: D-21 frozen harness defect (ignored property overrides); human asked for clarification, then chose option 1"
+    }
+  ],
+  "codeMetrics": {
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2074,
+        "testLoc": 2711,
+        "tool": "cloc 2.10 image (reports 1.98, D-06)"
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 654,
+        "testLoc": 1093,
+        "tool": "cloc 2.10 image; test = src tests and acceptance (833) + e2e (260)"
+      }
+    ],
+    "complexity": null,
+    "complexityReason": "no complexity tool in project/stack.md tooling; PMD rules report no complexity violations",
+    "duplicationPct": 0,
+    "duplicationTools": "jscpd 5.4.0 frontend 0%, PMD CPD backend 0 duplications"
+  },
+  "commits": [],
+  "usage": {
+    "inputTokens": 692,
+    "outputTokens": 458557,
+    "cacheReadTokens": 118166866,
+    "cacheWriteTokens": 1238792,
+    "modelCalls": 349,
+    "toolCalls": {
+      "total": 594,
+      "byTool": {
+        "Bash": 253,
+        "Write": 164,
+        "Edit": 157,
+        "Read": 10,
+        "AskUserQuestion": 8,
+        "ToolSearch": 1,
+        "Monitor": 1
+      }
+    },
+    "costUsd": 42.72,
+    "priceTableDate": "2026-09-25",
+    "estimates": {
+      "modelTimeMinutesLowerBound": 64,
+      "modelTimeMinutesUpperBound": 95,
+      "permissionDenials": 0,
+      "note": "estimated from the transcript; the usage panel in 03_statistics/usage.md is authoritative; approved commands are not recorded in a transcript"
+    }
+  }
+}
