@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/recaptcha.schema.json",
+  "title": "Anti-automation (frontend, backend, Google reCAPTCHA v2)",
+  "description": "Frontend renders the v2 checkbox widget (script https://www.google.com/recaptcha/api.js, site key from GET /api/options) and sends its token as recaptchaToken. Backend POSTs application/x-www-form-urlencoded {secret, response, remoteip} to RECAPTCHA_VERIFY_URL (default https://www.google.com/recaptcha/api/siteverify, 5 s timeout) and accepts only success=true. Test mode (SR-02): no network call; token 'test-pass' passes, anything else fails; the frontend shows a labelled test checkbox that yields 'test-pass'.",
+  "$defs": {
+    "verifyRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["secret", "response"],
+      "properties": {
+        "secret": { "type": "string", "minLength": 1 },
+        "response": { "type": "string", "minLength": 1 },
+        "remoteip": { "type": "string" }
+      }
+    },
+    "verifyResponse": {
+      "type": "object",
+      "required": ["success"],
+      "properties": {
+        "success": { "type": "boolean" },
+        "challenge_ts": { "type": "string" },
+        "hostname": { "type": "string" },
+        "error-codes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$ref": "#/$defs/verifyResponse",
+  "examples": [{ "success": false, "error-codes": ["invalid-input-response"] }, { "success": true, "challenge_ts": "2026-10-06T18:00:00Z", "hostname": "registracija.konferenca.si" }]
+}
