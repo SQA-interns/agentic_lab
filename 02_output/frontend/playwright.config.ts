@@ -3,6 +3,9 @@ import { defineConfig, devices } from "@playwright/test";
 // KP-08: end-to-end tests never reuse a running server.
 export default defineConfig({
   testDir: "./tests/e2e",
+  globalSetup: "./tests/e2e/global-setup.ts",
+  globalTeardown: "./tests/e2e/global-teardown.ts",
+  timeout: 60_000,
   fullyParallel: false,
   workers: 1,
   retries: 0,

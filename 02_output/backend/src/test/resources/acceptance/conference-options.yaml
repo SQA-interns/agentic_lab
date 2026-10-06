@@ -1,0 +1,13 @@
+# Option configuration used by the acceptance tests (conference-options.schema.json).
+conference:
+  consent:
+    id: data-processing
+    text: "I agree to the processing of my personal data for organising the conference."
+  options:
+    - { id: ws-ai, name: "AI workshop", category: WORKSHOP, active: true }
+    - { id: ws-security, name: "Security workshop", category: WORKSHOP, active: true }
+    - { id: ev-gala, name: "Gala dinner", category: EVENT, active: true, offered-to: [EXTERNAL] }
+    - { id: ev-tour, name: "City tour", category: EVENT, active: true }
+    - { id: meal-lunch, name: "Lunch", category: MEAL, active: true }
+    - { id: meal-breakfast, name: "Retired breakfast", category: MEAL, active: false }
+    - { id: other-poster, name: "Poster session", category: OTHER, active: true }
