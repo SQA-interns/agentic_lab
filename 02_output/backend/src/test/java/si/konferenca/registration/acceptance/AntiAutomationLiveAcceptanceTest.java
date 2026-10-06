@@ -21,12 +21,14 @@ class AntiAutomationLiveAcceptanceTest extends AcceptanceTestBase {
 
   private static final String SECRET = "acceptance-secret-key";
 
+  // D-21: bound property names, because the base class's environment-style keys win over a
+  // subclass registering the same keys.
   @DynamicPropertySource
   static void liveVerification(DynamicPropertyRegistry registry) {
-    registry.add("RECAPTCHA_TEST_MODE", () -> "false");
-    registry.add("RECAPTCHA_SITE_KEY", () -> "acceptance-site-key");
-    registry.add("RECAPTCHA_SECRET_KEY", () -> SECRET);
-    registry.add("RECAPTCHA_VERIFY_URL", MockVerificationServer::url);
+    registry.add("app.recaptcha.test-mode", () -> "false");
+    registry.add("app.recaptcha.site-key", () -> "acceptance-site-key");
+    registry.add("app.recaptcha.secret-key", () -> SECRET);
+    registry.add("app.recaptcha.verify-url", MockVerificationServer::url);
   }
 
   @BeforeEach
