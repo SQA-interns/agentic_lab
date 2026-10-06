@@ -1,0 +1,45 @@
+== 2026-10-06T08:44:06Z stop the running stack
+ Network registration-tanej04_default Removed 
+== clone HEAD 9377d5f to a short path
+01_input
+02_output
+03_statistics
+AGENTS.md
+README.md
+.env in checkout: 0
+== frontend README: npm ci
+added 483 packages in 11s
+== backend README Build + frontend README Build/Test/Check, through the checkout's verify.sh
+be-build           exit=0   BUILD SUCCESS  log=02_output/logs/7-clean_be-build.log
+be-format          exit=0   BUILD SUCCESS  log=02_output/logs/7-clean_be-format.log
+be-lint            exit=0   violations=0  log=02_output/logs/7-clean_be-lint.log
+be-static          exit=0   bugs=0 high=0 medium=0 low=0  log=02_output/logs/7-clean_be-static.log
+be-dup             exit=0   duplications=0 duplicated_lines=0  log=02_output/logs/7-clean_be-dup.log
+fe-build           exit=0   dist=ok  log=02_output/logs/7-clean_fe-build.log
+fe-format          exit=0   unformatted=0  log=02_output/logs/7-clean_fe-format.log
+fe-lint            exit=0   problems=0  log=02_output/logs/7-clean_fe-lint.log
+fe-typecheck       exit=0   errors=0  log=02_output/logs/7-clean_fe-typecheck.log
+fe-test            exit=0   tests=69 passed=69 failed=0 skipped=0 line=100% branch=97.24%  log=02_output/logs/7-clean_fe-test.log
+fe-dup             exit=0   clones=0 duplicated_lines=0 duplication=0%  log=02_output/logs/7-clean_fe-dup.log
+== backend README Test
+be-test            exit=0   tests=213 passed=213 failed=0 skipped=0 line=96.4% branch=92.2%  log=02_output/logs/7-clean_be-test.log
+== mutation commands of both READMEs
+be-mutation        exit=0   mutants=311 killed=298 survived=4 no_coverage=9 score=95.8%  log=02_output/logs/7-clean_be-mutation.log
+fe-mutation        exit=0   mutants=368 killed=360 survived=4 no_coverage=4 score=97.8%  log=02_output/logs/7-clean_fe-mutation.log
+== 2026-10-06T08:59:35Z root README Quick start in the checkout (secrets from the original repository's secrets.sh, no .env copied)
+jar built
+ Container registration-tanej04-backend-1 Healthy 
+ Container registration-tanej04-postgres-1 Healthy 
+ Container registration-tanej04-mailpit-1 Healthy 
+ Container registration-tanej04-frontend-1 Healthy 
+registration-tanej04-frontend-1 Up 6 seconds (healthy)
+registration-tanej04-backend-1 Up 27 seconds (healthy)
+registration-tanej04-postgres-1 Up 33 seconds (healthy)
+registration-tanej04-mailpit-1 Up 34 seconds (healthy)
+page: 200  mailpit: 200  health: {"status":"UP"}  export without access: 401
+== frontend README Run: npm run dev against the checkout's stack
+dev page: 200  dev /api/form-config: 200
+dev server stopped (pid 26732)
+== e2e against the checkout's stack (repository verify.sh, organizer credentials from the original secrets.sh)
+e2e                exit=0   tests=10 passed=10 failed=0 flaky=0 skipped=0  log=02_output/logs/7-clean_e2e.log
+== 2026-10-06T09:02:55Z done

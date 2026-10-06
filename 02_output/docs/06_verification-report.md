@@ -15,8 +15,8 @@ This is a self-check by the development agent, not an independent review.
 | DoD-05 | pass | open Critical 0, High 0: F-01 fixed (loop 1); `6_be-depscan.log` 0/0, `6_fe-depscan.log` 0/0, `6_semgrep.log` 0, `6_gitleaks.log` 0 |
 | DoD-06 | pass | `logs/6_runtime-demo.log`, `logs/6-demo_e2e.log`, `logs/6-demo_workbook.log` (runtime demonstration below) |
 | DoD-07 | pass | traceability table below: 51 of 51 ACs have tests and commits |
-| DoD-08 | phase 7 | |
-| DoD-09 | phase 7 | |
+| DoD-08 | pass | `logs/7_clean-checkout.log`: clone of `9377d5f` without `.env`; `npm ci`; every build, test, check and mutation command of both component READMEs through the checkout's `verify.sh` exit 0 (backend 213/0, frontend 69/0, mutation 95.8% / 97.8%; the frontend score varies by one mutant between runs); root README quick start brought all four containers up healthy; page, Mailpit, health and refused export answered as documented; `npm run dev` served the page and proxied `/api`; end-to-end 10/0 against that stack (`logs/7-clean_e2e.log`) |
+| DoD-09 | pass | `docs/release-notes.md` "Before production": live reCAPTCHA keys, real SMTP delivery, TLS reverse proxy (the three manual rows of `stack.md`) and the F-03 tooling upgrade, kept apart from what this run verified |
 | DoD-10 | pass | `decisions-log.md` D-01 to D-19 all resolved or pending review; input manifest 26 of 26 hashes match |
 | DoD-11 | pass | "Evidence" below |
 | DoD-P01 | pass | `6_runtime-demo.log`: external `185b6493-…` and student `0017fcd8-…` registrations answered 201 through the frontend proxy |

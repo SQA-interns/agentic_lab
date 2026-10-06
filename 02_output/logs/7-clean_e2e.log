@@ -1,0 +1,20 @@
+
+Running 10 tests using 1 worker
+
+  ✓   1 [chromium] › tests/e2e/runtime-demo.spec.ts:7:1 › DoD-P04 the organizer downloads a workbook that is saved for inspection (3.4s)
+  ✓   2 [chromium] › tests/e2e/us001-external.spec.ts:12:1 › AC-001-01 AC-001-12 the external form shows its fields and unchecked consents (808ms)
+  ✓   3 [chromium] › tests/e2e/us001-external.spec.ts:35:1 › AC-001-02 AC-001-07 AC-004-01 an external participant with Slovenian characters registers and sees the confirmation (1.7s)
+  ✓   4 [chromium] › tests/e2e/us001-external.spec.ts:61:1 › AC-001-03 an empty required field is reported next to it and nothing is confirmed (563ms)
+  ✓   5 [chromium] › tests/e2e/us002-student.spec.ts:12:1 › AC-002-01 AC-003-03 the student form shows the student fields and only options offered to students (483ms)
+  ✓   6 [chromium] › tests/e2e/us002-student.spec.ts:47:1 › AC-002-02 AC-002-05 a student with Slovenian study data registers and sees the confirmation (861ms)
+  ✓   7 [chromium] › tests/e2e/us006-us007-emails.spec.ts:14:1 › AC-006-01 AC-006-04 AC-007-01 AC-007-02 participant and organizer emails arrive with the JSON copy (972ms)
+  ✓   8 [chromium] › tests/e2e/us008-export.spec.ts:8:1 › AC-008-01 an organizer downloads the registrations as an Excel workbook (368ms)
+  ✓   9 [chromium] › tests/e2e/us008-export.spec.ts:24:1 › AC-008-02 the export without organizer access is refused (20ms)
+  ✓  10 [chromium] › tests/e2e/us008-export.spec.ts:33:1 › AC-008-03 the export with wrong organizer credentials is refused (174ms)
+
+  10 passed (17.2s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
