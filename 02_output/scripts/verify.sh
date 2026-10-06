@@ -12,7 +12,8 @@ OUT="$ROOT/02_output"
 BE="$OUT/backend"
 FE="$OUT/frontend"
 LOGS="$OUT/logs"
-SECRETS="$ROOT/01_input/00_general/tools/secrets.sh"
+# SECRETS_SH: a clean checkout without .env uses the original repository's secrets.sh.
+SECRETS="${SECRETS_SH:-$ROOT/01_input/00_general/tools/secrets.sh}"
 NODE_BIN="${NODE_BIN:-$HOME/.nvm/versions/node/v24.13.0/bin}"
 [ -d "$NODE_BIN" ] && export PATH="$NODE_BIN:$PATH"
 export NPM_CONFIG_UPDATE_NOTIFIER=false
