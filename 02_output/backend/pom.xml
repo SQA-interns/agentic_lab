@@ -246,16 +246,25 @@
           </dependency>
         </dependencies>
         <configuration>
+          <!-- D-23: validation, security, persistence and business-rule code, mutated against the
+               fast unit tests; the Spring/Testcontainers suites time out when run per mutant. -->
           <targetClasses>
-            <param>si.konferenca.registration.*</param>
+            <param>si.konferenca.registration.config.StartupGuard</param>
+            <param>si.konferenca.registration.config.ConferenceCatalogLoader</param>
+            <param>si.konferenca.registration.domain.ConferenceCatalog</param>
+            <param>si.konferenca.registration.service.RegistrationValidator*</param>
+            <param>si.konferenca.registration.web.RegistrationRequestParser</param>
+            <param>si.konferenca.registration.web.FixedWindowRateLimiter*</param>
+            <param>si.konferenca.registration.persistence.JsonCopyStore</param>
+            <param>si.konferenca.registration.integration.AntiAutomationVerifier*</param>
           </targetClasses>
-          <excludedClasses>
-            <param>si.konferenca.registration.RegistrationApplication</param>
-          </excludedClasses>
-          <!-- ArchUnit rules run on their own engine, which the JUnit 5 plugin does not drive. -->
-          <excludedTestClasses>
-            <param>si.konferenca.registration.architecture.*</param>
-          </excludedTestClasses>
+          <targetTests>
+            <param>si.konferenca.registration.config.*Test</param>
+            <param>si.konferenca.registration.service.*Test</param>
+            <param>si.konferenca.registration.web.RegistrationRequestParserTest</param>
+            <param>si.konferenca.registration.persistence.*Test</param>
+            <param>si.konferenca.registration.integration.*Test</param>
+          </targetTests>
           <threads>4</threads>
           <timeoutConstant>8000</timeoutConstant>
           <outputFormats>

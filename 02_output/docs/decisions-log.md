@@ -199,3 +199,12 @@
 - Options: 1 (default) validate on submit only; server field errors still replace client errors (NFR-03 is met: errors are shown next to the fields before anything is sent). 2 keep blur validation and reserve space for every error message.
 - Human response: none
 - Resolution: pending review (option 1); specification section 7 corrected.
+
+## D-23: Backend mutation scope: rule classes against the unit tests
+- Timestamp: 2026-10-06T16:30:58Z
+- Phase: 5
+- Type: non-blocking
+- Trigger: Pitest over all classes with the full suite timed out (`logs/05_be-mutation.log`: "Minion exited abnormally due to TIMED_OUT"): each mutant restarts the Spring context and Testcontainers acceptance tests; two sessions ended during the run. `standards/testing.md` requires validation, security, persistence and business-rule code at least.
+- Options: 1 (default) mutate `StartupGuard`, `ConferenceCatalogLoader`, `ConferenceCatalog`, `RegistrationValidator`, `RegistrationRequestParser`, `FixedWindowRateLimiter`, `JsonCopyStore`, `AntiAutomationVerifier` against the unit tests (`config`, `service`, `persistence`, `integration`, `RegistrationRequestParserTest`); excluded: controllers, filters, `RegistrationService`, `MailNotifier`, `ExportService`, entities (wiring and I/O covered by acceptance and integration tests, not mutation-tested). 2 mutate everything with the full suite over several hours.
+- Human response: none
+- Resolution: pending review (option 1)
