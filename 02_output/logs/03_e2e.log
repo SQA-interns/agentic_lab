@@ -1,0 +1,381 @@
+
+Running 10 tests using 1 worker
+
+  ✘   1 [chromium] › e2e/us001-us002-registration.spec.ts:11:1 › AC-001-02 AC-001-07 an external participant with Slovenian characters registers (15.3s)
+  ✘   2 [chromium] › e2e/us001-us002-registration.spec.ts:30:1 › AC-001-14 a second registration with the same email is refused with a message (15.8s)
+  ✘   3 [chromium] › e2e/us001-us002-registration.spec.ts:44:1 › AC-002-02 a student registers (15.7s)
+  ✘   4 [chromium] › e2e/us003-us004-form.spec.ts:4:1 › AC-003-01 AC-003-02 active options are grouped by category and inactive ones are hidden (15.5s)
+  ✘   5 [chromium] › e2e/us003-us004-form.spec.ts:20:1 › AC-003-04 options for external participants only are not offered to students (15.6s)
+  ✘   6 [chromium] › e2e/us003-us004-form.spec.ts:31:1 › AC-004-02 AC-001-15 invalid input shows errors next to the fields and keeps the values (15.5s)
+  ✘   7 [chromium] › e2e/us006-us007-emails.spec.ts:11:1 › AC-006-01 AC-006-02 the participant receives a confirmation email (15.8s)
+  ✘   8 [chromium] › e2e/us006-us007-emails.spec.ts:31:1 › AC-007-01 AC-007-04 organizers receive the registration with the JSON attached (15.9s)
+  ✘   9 [chromium] › e2e/us008-export.spec.ts:6:1 › AC-008-01 an organizer downloads the registrations workbook (15.9s)
+  ✘  10 [chromium] › e2e/us008-export.spec.ts:30:1 › AC-008-02 the export is refused without organizer access (309ms)
+
+
+  1) [chromium] › e2e/us001-us002-registration.spec.ts:11:1 › AC-001-02 AC-001-07 an external participant with Slovenian characters registers 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at registerExternal (/work/e2e/support.ts:50:3)
+        at /work/e2e/us001-us002-registration.spec.ts:16:3
+
+    Error Context: test-results/us001-us002-registration-A-55f95-venian-characters-registers-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-us002-registration-A-55f95-venian-characters-registers-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-us002-registration-A-55f95-venian-characters-registers-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/us001-us002-registration.spec.ts:30:1 › AC-001-14 a second registration with the same email is refused with a message 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at registerExternal (/work/e2e/support.ts:50:3)
+        at /work/e2e/us001-us002-registration.spec.ts:35:3
+
+    Error Context: test-results/us001-us002-registration-A-3d26e-l-is-refused-with-a-message-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-us002-registration-A-3d26e-l-is-refused-with-a-message-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-us002-registration-A-3d26e-l-is-refused-with-a-message-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e/us001-us002-registration.spec.ts:44:1 › AC-002-02 a student registers ────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at /work/e2e/us001-us002-registration.spec.ts:46:3
+
+    Error Context: test-results/us001-us002-registration-AC-002-02-a-student-registers-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-us002-registration-AC-002-02-a-student-registers-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-us002-registration-AC-002-02-a-student-registers-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e/us003-us004-form.spec.ts:4:1 › AC-003-01 AC-003-02 active options are grouped by category and inactive ones are hidden 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at /work/e2e/us003-us004-form.spec.ts:7:3
+
+    Error Context: test-results/us003-us004-form-AC-003-01-33c08-nd-inactive-ones-are-hidden-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us003-us004-form-AC-003-01-33c08-nd-inactive-ones-are-hidden-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us003-us004-form-AC-003-01-33c08-nd-inactive-ones-are-hidden-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › e2e/us003-us004-form.spec.ts:20:1 › AC-003-04 options for external participants only are not offered to students 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at /work/e2e/us003-us004-form.spec.ts:23:3
+
+    Error Context: test-results/us003-us004-form-AC-003-04-03ed2-are-not-offered-to-students-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us003-us004-form-AC-003-04-03ed2-are-not-offered-to-students-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us003-us004-form-AC-003-04-03ed2-are-not-offered-to-students-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › e2e/us003-us004-form.spec.ts:31:1 › AC-004-02 AC-001-15 invalid input shows errors next to the fields and keeps the values 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at /work/e2e/us003-us004-form.spec.ts:34:3
+
+    Error Context: test-results/us003-us004-form-AC-004-02-9c852-fields-and-keeps-the-values-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us003-us004-form-AC-004-02-9c852-fields-and-keeps-the-values-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us003-us004-form-AC-004-02-9c852-fields-and-keeps-the-values-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › e2e/us006-us007-emails.spec.ts:11:1 › AC-006-01 AC-006-02 the participant receives a confirmation email 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at registerExternal (/work/e2e/support.ts:50:3)
+        at /work/e2e/us006-us007-emails.spec.ts:16:3
+
+    Error Context: test-results/us006-us007-emails-AC-006--123bc-ceives-a-confirmation-email-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us006-us007-emails-AC-006--123bc-ceives-a-confirmation-email-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us006-us007-emails-AC-006--123bc-ceives-a-confirmation-email-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › e2e/us006-us007-emails.spec.ts:31:1 › AC-007-01 AC-007-04 organizers receive the registration with the JSON attached 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at registerExternal (/work/e2e/support.ts:50:3)
+        at /work/e2e/us006-us007-emails.spec.ts:37:3
+
+    Error Context: test-results/us006-us007-emails-AC-007--5c9af-tion-with-the-JSON-attached-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us006-us007-emails-AC-007--5c9af-tion-with-the-JSON-attached-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us006-us007-emails-AC-007--5c9af-tion-with-the-JSON-attached-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › e2e/us008-export.spec.ts:6:1 › AC-008-01 an organizer downloads the registrations workbook 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Register' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Register' }) with timeout 15000ms
+      - waiting for getByRole('button', { name: 'Register' })
+
+
+       at support.ts:26
+
+      24 | export async function openForm(page: Page) {
+      25 |   await page.goto("/");
+    > 26 |   await expect(page.getByRole("button", { name: "Register" })).toBeVisible();
+         |                                                                ^
+      27 | }
+      28 |
+      29 | export async function chooseType(page: Page, label: "External participant" | "Student") {
+        at openForm (/work/e2e/support.ts:26:64)
+        at registerExternal (/work/e2e/support.ts:50:3)
+        at /work/e2e/us008-export.spec.ts:9:3
+
+    Error Context: test-results/us008-export-AC-008-01-an--83a1b--the-registrations-workbook-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us008-export-AC-008-01-an--83a1b--the-registrations-workbook-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us008-export-AC-008-01-an--83a1b--the-registrations-workbook-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › e2e/us008-export.spec.ts:30:1 › AC-008-02 the export is refused without organizer access 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      31 |   const response = await request.get("/api/export/registrations.xlsx");
+      32 |
+    > 33 |   expect(response.status()).toBe(401);
+         |                             ^
+      34 |   expect(response.headers()["content-type"] ?? "").not.toContain(XLSX);
+      35 | });
+      36 |
+        at /work/e2e/us008-export.spec.ts:33:29
+
+    Error Context: test-results/us008-export-AC-008-02-the-b8bbf-ed-without-organizer-access-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us008-export-AC-008-02-the-b8bbf-ed-without-organizer-access-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us008-export-AC-008-02-the-b8bbf-ed-without-organizer-access-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10 failed
+    [chromium] › e2e/us001-us002-registration.spec.ts:11:1 › AC-001-02 AC-001-07 an external participant with Slovenian characters registers 
+    [chromium] › e2e/us001-us002-registration.spec.ts:30:1 › AC-001-14 a second registration with the same email is refused with a message 
+    [chromium] › e2e/us001-us002-registration.spec.ts:44:1 › AC-002-02 a student registers ─────────
+    [chromium] › e2e/us003-us004-form.spec.ts:4:1 › AC-003-01 AC-003-02 active options are grouped by category and inactive ones are hidden 
+    [chromium] › e2e/us003-us004-form.spec.ts:20:1 › AC-003-04 options for external participants only are not offered to students 
+    [chromium] › e2e/us003-us004-form.spec.ts:31:1 › AC-004-02 AC-001-15 invalid input shows errors next to the fields and keeps the values 
+    [chromium] › e2e/us006-us007-emails.spec.ts:11:1 › AC-006-01 AC-006-02 the participant receives a confirmation email 
+    [chromium] › e2e/us006-us007-emails.spec.ts:31:1 › AC-007-01 AC-007-04 organizers receive the registration with the JSON attached 
+    [chromium] › e2e/us008-export.spec.ts:6:1 › AC-008-01 an organizer downloads the registrations workbook 
+    [chromium] › e2e/us008-export.spec.ts:30:1 › AC-008-02 the export is refused without organizer access 

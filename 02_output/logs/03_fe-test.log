@@ -1,0 +1,701 @@
+
+ RUN  v4.1.11 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ❯ src/acceptance/us003-options.test.tsx (2 tests | 2 failed) 2103ms
+     × AC-003-01 active options are offered grouped by category with their display names 1081ms
+     × AC-003-04 options for external participants only are not offered on the student form 1016ms
+ ❯ src/acceptance/us002-student-form.test.tsx (3 tests | 3 failed) 3124ms
+     × AC-002-01 the student form asks for exactly the student fields 1085ms
+     × AC-002-02 a valid student form is submitted with the entered values 1018ms
+     × AC-002-04 empty student fields are reported next to each field 1015ms
+ ❯ src/acceptance/us004-confirmation.test.tsx (4 tests | 4 failed) 4135ms
+     × AC-004-01 an accepted registration shows the confirmation in place of the form 1085ms
+     × AC-004-02 a rejected registration shows the backend field errors and keeps the values 1017ms
+     × AC-004-03 a storage failure shows a general error and no confirmation 1014ms
+     × AC-004-03 an unreachable backend shows a general error and no confirmation 1014ms
+ ❯ src/acceptance/us001-external-form.test.tsx (9 tests | 9 failed) 9211ms
+     × AC-001-01 the external form asks for exactly the external participant fields 1092ms
+     × AC-001-11 no consent is preselected 1017ms
+     × AC-001-12 submitting without the consent shows an error next to the consent 1015ms
+     × AC-001-13 submitting without the anti-automation check sends nothing 1014ms
+     × AC-001-14 a duplicate email is reported with the backend message 1015ms
+     × AC-001-15 empty required fields are reported next to each field before anything is sent 1012ms
+     × AC-001-15 whitespace-only values count as empty before anything is sent 1011ms
+     × AC-001-15 an invalid email is reported next to the email field before anything is sent 1010ms
+     × AC-001-02 a valid external form is submitted with the entered values 1017ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-01 the external form asks for exactly the external participant fields
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:23:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-11 no consent is preselected
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:39:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-12 submitting without the consent shows an error next to the consent
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:46:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-13 submitting without the anti-automation check sends nothing
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:60:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-14 a duplicate email is reported with the backend message
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:78:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-15 empty required fields are reported next to each field before anything is sent
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:92:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-15 whitespace-only values count as empty before anything is sent
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:107:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-15 an invalid email is reported next to the email field before anything is sent
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:124:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/18]⎯
+
+ FAIL  src/acceptance/us001-external-form.test.tsx > US-001 External participant registration (UI) > AC-001-02 a valid external form is submitted with the entered values
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us001-external-form.test.tsx:141:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/18]⎯
+
+ FAIL  src/acceptance/us002-student-form.test.tsx > US-002 Student registration (UI) > AC-002-01 the student form asks for exactly the student fields
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us002-student-form.test.tsx:22:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/18]⎯
+
+ FAIL  src/acceptance/us002-student-form.test.tsx > US-002 Student registration (UI) > AC-002-02 a valid student form is submitted with the entered values
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us002-student-form.test.tsx:40:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/18]⎯
+
+ FAIL  src/acceptance/us002-student-form.test.tsx > US-002 Student registration (UI) > AC-002-04 empty student fields are reported next to each field
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us002-student-form.test.tsx:70:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/18]⎯
+
+ FAIL  src/acceptance/us003-options.test.tsx > US-003 Configurable conference options (UI) > AC-003-01 active options are offered grouped by category with their display names
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us003-options.test.tsx:17:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/18]⎯
+
+ FAIL  src/acceptance/us003-options.test.tsx > US-003 Configurable conference options (UI) > AC-003-04 options for external participants only are not offered on the student form
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us003-options.test.tsx:34:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/18]⎯
+
+ FAIL  src/acceptance/us004-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-01 an accepted registration shows the confirmation in place of the form
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us004-confirmation.test.tsx:19:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/18]⎯
+
+ FAIL  src/acceptance/us004-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-02 a rejected registration shows the backend field errors and keeps the values
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us004-confirmation.test.tsx:47:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/18]⎯
+
+ FAIL  src/acceptance/us004-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-03 a storage failure shows a general error and no confirmation
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us004-confirmation.test.tsx:72:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/18]⎯
+
+ FAIL  src/acceptance/us004-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-03 an unreachable backend shows a general error and no confirmation
+TestingLibraryElementError: Unable to find role="button" and name "Register"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderApp src/acceptance/support.tsx:141:16
+    139| export async function renderApp() {
+    140|   render(<App />);
+    141|   await screen.findByRole("button", { name: "Register" });
+       |                ^
+    142| }
+    143|
+ ❯ src/acceptance/us004-confirmation.test.tsx:87:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/18]⎯
+
+
+ Test Files  4 failed | 1 passed (5)
+      Tests  18 failed | 1 passed (19)
+   Start at  14:36:54
+   Duration  10.84s (transform 184ms, setup 1.51s, import 207ms, tests 18.71s, environment 4.08s)
+
