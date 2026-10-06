@@ -1,0 +1,22 @@
+No configurations were provided -- using built in recommended configuration by default.
+
+validating docs/02_contracts/openapi.yaml...
+docs/02_contracts/openapi.yaml: validated in 109ms
+
+No configurations were provided -- using built in recommended configuration by default.
+
+validating docs/02_contracts/recaptcha-siteverify.openapi.yaml...
+docs/02_contracts/recaptcha-siteverify.openapi.yaml: validated in 12ms
+
+Woohoo! Your API descriptions are valid. 🎉
+
+valid schema /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/conference-config.schema.json
+valid instance /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/conference-config.json
+valid schema /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/email-messages.schema.json
+valid instance /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/email-messages.json
+valid schema /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/registration-copy.schema.json
+valid instance /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/registration-copy.json
+valid schema /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/ui-registration-form.schema.json
+valid instance /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/docs/02_contracts/ui-registration-form.json
+489f5f24f7aa77b4128ae8f32d11e4ecd88b20f1633eb5684a46dc2a75492ab0
+valid sql docs/02_contracts/registration-storage.sql

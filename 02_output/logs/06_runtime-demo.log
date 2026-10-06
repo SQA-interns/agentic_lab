@@ -1,0 +1,95 @@
+start 2026-10-06T16:46:42Z
+== health (NFR-04)
+backend Up 36 seconds (healthy)
+frontend Up 26 seconds (healthy)
+mailpit Up 42 seconds (healthy)
+postgres Up 42 seconds (healthy)
+PASS form configuration served through the frontend — 9 active options
+PASS DoD-P01 EXTERNAL registration accepted — HTTP 201, id e2e14cac-12d7-4eac-a040-d000287baa12
+PASS DoD-P03 participant email for EXTERNAL
+PASS DoD-P03 organizer email for EXTERNAL with JSON attachment — 1 recipients, attachment registration-e2e14cac-12d7-4eac-a040-d000287baa12.json
+PASS DoD-P01 STUDENT registration accepted — HTTP 201, id a53ac4ac-31fa-455d-a201-e47278ce4ba1
+PASS DoD-P03 participant email for STUDENT
+PASS DoD-P03 organizer email for STUDENT with JSON attachment — 1 recipients, attachment registration-a53ac4ac-31fa-455d-a201-e47278ce4ba1.json
+PASS DoD-P04 export refused without organizer access — HTTP 401
+PASS DoD-P04 organizer receives a valid workbook — HTTP 200, 5656 bytes
+RESULT PASS
+== database rows (DoD-P02)
+EXTERNAL|e2e14cac-12d7-4eac-a040-d000287baa12|20261006T164643Z_e2e14cac-12d7-4eac-a040-d000287baa12.json
+STUDENT|a53ac4ac-31fa-455d-a201-e47278ce4ba1|20261006T164643Z_a53ac4ac-31fa-455d-a201-e47278ce4ba1.json
+== JSON copies on the volume (DoD-P02)
+20261006T164638Z_b1353874-179c-4394-a084-2870215a0983.json
+20261006T164639Z_5ff1c098-2196-4625-9e77-99ea6499f347.json
+20261006T164640Z_8b88c43c-e782-482c-b460-bd949ab4d199.json
+20261006T164643Z_a53ac4ac-31fa-455d-a201-e47278ce4ba1.json
+20261006T164643Z_e2e14cac-12d7-4eac-a040-d000287baa12.json
+== recreate every container (NFR-02): docker compose down, then up
+ Container conference-registration-frontend-1 Stopping 
+ Container conference-registration-frontend-1 Stopped 
+ Container conference-registration-frontend-1 Removing 
+ Container conference-registration-frontend-1 Removed 
+ Container conference-registration-backend-1 Stopping 
+ Container conference-registration-backend-1 Stopped 
+ Container conference-registration-backend-1 Removing 
+ Container conference-registration-backend-1 Removed 
+ Container conference-registration-postgres-1 Stopping 
+ Container conference-registration-mailpit-1 Stopping 
+ Container conference-registration-postgres-1 Stopped 
+ Container conference-registration-postgres-1 Removing 
+ Container conference-registration-postgres-1 Removed 
+ Container conference-registration-mailpit-1 Stopped 
+ Container conference-registration-mailpit-1 Removing 
+ Container conference-registration-mailpit-1 Removed 
+ Network conference-registration_default Removing 
+ Network conference-registration_default Removed 
+ Network conference-registration_default Creating 
+ Network conference-registration_default Created 
+ Container conference-registration-mailpit-1 Creating 
+ Container conference-registration-postgres-1 Creating 
+ Container conference-registration-mailpit-1 Created 
+ Container conference-registration-postgres-1 Created 
+ Container conference-registration-backend-1 Creating 
+ Container conference-registration-backend-1 Created 
+ Container conference-registration-frontend-1 Creating 
+ Container conference-registration-frontend-1 Created 
+ Container conference-registration-mailpit-1 Starting 
+ Container conference-registration-postgres-1 Starting 
+ Container conference-registration-mailpit-1 Started 
+ Container conference-registration-postgres-1 Started 
+ Container conference-registration-postgres-1 Waiting 
+ Container conference-registration-postgres-1 Healthy 
+ Container conference-registration-backend-1 Starting 
+ Container conference-registration-backend-1 Started 
+ Container conference-registration-backend-1 Waiting 
+ Container conference-registration-backend-1 Healthy 
+ Container conference-registration-frontend-1 Starting 
+ Container conference-registration-frontend-1 Started 
+ Container conference-registration-postgres-1 Waiting 
+ Container conference-registration-mailpit-1 Waiting 
+ Container conference-registration-backend-1 Waiting 
+ Container conference-registration-frontend-1 Waiting 
+ Container conference-registration-backend-1 Healthy 
+ Container conference-registration-mailpit-1 Healthy 
+ Container conference-registration-postgres-1 Healthy 
+ Container conference-registration-frontend-1 Healthy 
+== health (NFR-04)
+backend Up 26 seconds (healthy)
+frontend Up 10 seconds (healthy)
+mailpit Up 32 seconds (healthy)
+postgres Up 32 seconds (healthy)
+== database rows (DoD-P02)
+EXTERNAL|e2e14cac-12d7-4eac-a040-d000287baa12|20261006T164643Z_e2e14cac-12d7-4eac-a040-d000287baa12.json
+STUDENT|a53ac4ac-31fa-455d-a201-e47278ce4ba1|20261006T164643Z_a53ac4ac-31fa-455d-a201-e47278ce4ba1.json
+== JSON copies on the volume (DoD-P02)
+20261006T164638Z_b1353874-179c-4394-a084-2870215a0983.json
+20261006T164639Z_5ff1c098-2196-4625-9e77-99ea6499f347.json
+20261006T164640Z_8b88c43c-e782-482c-b460-bd949ab4d199.json
+20261006T164643Z_a53ac4ac-31fa-455d-a201-e47278ce4ba1.json
+20261006T164643Z_e2e14cac-12d7-4eac-a040-d000287baa12.json
+PASS NFR-02 EXTERNAL registration still stored after recreation (duplicate refused) — HTTP 409
+PASS NFR-02 STUDENT registration still stored after recreation (duplicate refused) — HTTP 409
+PASS DoD-P04 export refused without organizer access — HTTP 401
+PASS DoD-P04 organizer receives a valid workbook — HTTP 200, 5656 bytes
+RESULT PASS
+end 2026-10-06T16:47:24Z
+DEMO PASS

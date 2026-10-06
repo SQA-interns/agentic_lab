@@ -1,0 +1,751 @@
+[32m18:39:44 (116357) INFO ProjectReader[39m Found 7 of 65 file(s) to be mutated.
+[32m18:39:44 (116357) INFO Instrumenter[39m Instrumented 7 source file(s) with 451 mutant(s)
+[32m18:39:45 (116357) INFO ConcurrencyTokenProvider[39m Creating 7 test runner process(es).
+[32m18:39:46 (116357) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m18:39:46 (116357) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m18:39:57 (116357) INFO DryRunExecutor[39m Initial test run succeeded. Ran 48 tests in 10 seconds (net 3727.749499999999 ms, overhead 6650.250500000001 ms).
+Mutation testing 3% (elapsed: <1m, remaining: ~4m) 29/451 tested (5 survived, 0 timed out)
+Mutation testing 4% (elapsed: <1m, remaining: ~7m) 52/451 tested (16 survived, 0 timed out)
+Mutation testing 9% (elapsed: <1m, remaining: ~4m) 81/451 tested (20 survived, 1 timed out)
+Mutation testing 12% (elapsed: <1m, remaining: ~4m) 89/451 tested (20 survived, 1 timed out)
+Mutation testing 14% (elapsed: <1m, remaining: ~4m) 96/451 tested (25 survived, 1 timed out)
+Mutation testing 20% (elapsed: ~1m, remaining: ~3m) 110/451 tested (31 survived, 1 timed out)
+Mutation testing 23% (elapsed: ~1m, remaining: ~3m) 122/451 tested (31 survived, 1 timed out)
+Mutation testing 28% (elapsed: ~1m, remaining: ~3m) 143/451 tested (32 survived, 1 timed out)
+Mutation testing 32% (elapsed: ~1m, remaining: ~3m) 163/451 tested (32 survived, 1 timed out)
+Mutation testing 37% (elapsed: ~1m, remaining: ~2m) 181/451 tested (33 survived, 1 timed out)
+Mutation testing 39% (elapsed: ~1m, remaining: ~2m) 195/451 tested (38 survived, 1 timed out)
+Mutation testing 40% (elapsed: ~2m, remaining: ~2m) 218/451 tested (42 survived, 1 timed out)
+Mutation testing 45% (elapsed: ~2m, remaining: ~2m) 238/451 tested (44 survived, 1 timed out)
+Mutation testing 52% (elapsed: ~2m, remaining: ~2m) 260/451 tested (45 survived, 1 timed out)
+Mutation testing 54% (elapsed: ~2m, remaining: ~2m) 272/451 tested (46 survived, 1 timed out)
+Mutation testing 58% (elapsed: ~2m, remaining: ~1m) 286/451 tested (50 survived, 1 timed out)
+Mutation testing 62% (elapsed: ~2m, remaining: ~1m) 302/451 tested (51 survived, 1 timed out)
+Mutation testing 65% (elapsed: ~3m, remaining: ~1m) 321/451 tested (55 survived, 1 timed out)
+Mutation testing 67% (elapsed: ~3m, remaining: ~1m) 344/451 tested (56 survived, 1 timed out)
+Mutation testing 71% (elapsed: ~3m, remaining: ~1m) 360/451 tested (56 survived, 1 timed out)
+Mutation testing 80% (elapsed: ~3m, remaining: <1m) 398/451 tested (56 survived, 1 timed out)
+Mutation testing 83% (elapsed: ~3m, remaining: <1m) 406/451 tested (58 survived, 1 timed out)
+Mutation testing 84% (elapsed: ~3m, remaining: <1m) 410/451 tested (58 survived, 1 timed out)
+Mutation testing 90% (elapsed: ~4m, remaining: <1m) 425/451 tested (62 survived, 1 timed out)
+Mutation testing 97% (elapsed: ~4m, remaining: <1m) 444/451 tested (63 survived, 1 timed out)
+
+All tests
+  acceptance
+    us001-external-form.test.tsx
+      ✓ US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields (killed 8)
+      ~ US-001 External participant registration (UI) AC-001-11 no consent is preselected (covered 122)
+      ✓ US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent (killed 6)
+      ✓ US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing (killed 5)
+      ✓ US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message (killed 5)
+      ✓ US-001 External participant registration (UI) AC-001-15 empty required fields are reported next to each field before anything is sent (killed 6)
+      ~ US-001 External participant registration (UI) AC-001-15 whitespace-only values count as empty before anything is sent (covered 226)
+      ✓ US-001 External participant registration (UI) AC-001-15 an invalid email is reported next to the email field before anything is sent (killed 6)
+      ✓ US-001 External participant registration (UI) AC-001-02 a valid external form is submitted with the entered values (killed 3)
+    us002-student-form.test.tsx
+      ✓ US-002 Student registration (UI) AC-002-01 the student form asks for exactly the student fields (killed 2)
+      ~ US-002 Student registration (UI) AC-002-02 a valid student form is submitted with the entered values (covered 272)
+      ✓ US-002 Student registration (UI) AC-002-04 empty student fields are reported next to each field (killed 3)
+    us003-options.test.tsx
+      ✓ US-003 Configurable conference options (UI) AC-003-01 active options are offered grouped by category with their display names (killed 1)
+      ✓ US-003 Configurable conference options (UI) AC-003-04 options for external participants only are not offered on the student form (killed 1)
+    us004-confirmation.test.tsx
+      ✓ US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation in place of the form (killed 21)
+      ✓ US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values (killed 6)
+      ✓ US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation (killed 3)
+      ✓ US-004 Registration confirmation (UI) AC-004-03 an unreachable backend shows a general error and no confirmation (killed 2)
+  AntiAutomation.test.tsx
+    ✓ AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on (killed 31)
+  api.test.ts
+    ✓ api throws when the form configuration cannot be loaded (killed 1)
+    ✓ api posts JSON to /api/registrations (killed 7)
+    ✓ api returns the backend error of a rejected registration (killed 7)
+    ✓ api treats a network failure as unreachable (killed 2)
+    ✓ api treats a non-JSON or foreign error body as unreachable (killed 9)
+  App.test.tsx
+    ~ App renders the page heading (covered 52)
+  RegistrationForm.test.tsx
+    ✓ RegistrationForm refuses more workshops than the maximum before sending (killed 66)
+    ✓ RegistrationForm drops selected options that the new type cannot take (killed 48)
+    ✓ RegistrationForm sends trimmed values and only the boxes that are still checked (killed 19)
+    ✓ RegistrationForm checks each field against its own maximum length (killed 22)
+    ✓ RegistrationForm requires every configured consent (killed 1)
+    ~ RegistrationForm rejects control characters before sending (covered 226)
+    ✓ RegistrationForm clears the anti-automation check after the backend rejects the token (killed 21)
+    ✓ RegistrationForm shows a load error when the form configuration is unavailable (killed 14)
+    ✓ RegistrationForm disables the submit button while sending (killed 4)
+  validation.test.ts
+    ✓ validation accepts the email a@b.si (killed 2)
+    ~ validation accepts the email ana.horvat@uni-lj.si (covered 18)
+    ~ validation accepts the email š@ž.si (covered 18)
+    ~ validation accepts the email x+y@sub.example.com (covered 18)
+    ~ validation rejects the email a@b (covered 7)
+    ✓ validation rejects the email a@.b.si (killed 6)
+    ✓ validation rejects the email a@b.si. (killed 1)
+    ~ validation rejects the email a..b@c.si (covered 8)
+    ~ validation rejects the email @b.si (covered 7)
+    ✓ validation rejects the email a b@c.si (killed 1)
+    ~ validation rejects the email a@@b.si (covered 7)
+    ✓ validation rejects the email a@b.si x (killed 1)
+    ✓ validation reports required, control characters, length and format in that order (killed 24)
+    ✓ validation finds categories above their maximum only (killed 18)
+
+[NoCoverage] StringLiteral
+src/AntiAutomation.tsx:36:47
+-         script.onerror = () => reject(new Error("reCAPTCHA could not be loaded"));
++         script.onerror = () => reject(new Error(""));
+
+[NoCoverage] StringLiteral
+src/AntiAutomation.tsx:69:55
+-           <RecaptchaWidget siteKey={settings.siteKey ?? ""} onToken={onToken} resetKey={resetKey} />
++           <RecaptchaWidget siteKey={settings.siteKey ?? "Stryker was here!"} onToken={onToken} resetKey={resetKey} />
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:30:7
+-     if (!scriptPromise) {
++     if (true) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BooleanLiteral
+src/AntiAutomation.tsx:34:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ArrowFunction
+src/AntiAutomation.tsx:36:24
+-         script.onerror = () => reject(new Error("reCAPTCHA could not be loaded"));
++         script.onerror = () => undefined;
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] StringLiteral
+src/AntiAutomation.tsx:54:27
+-     const errorId = error ? "antiAutomation-error" : undefined;
++     const errorId = error ? "" : undefined;
+Tests ran:
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+
+
+[Survived] BooleanLiteral
+src/AntiAutomation.tsx:63:35
+-               aria-invalid={error ? true : undefined}
++               aria-invalid={error ? false : undefined}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+
+
+[Survived] OptionalChaining
+src/AntiAutomation.tsx:98:9
+-           window.grecaptcha?.ready(() => {
++           window.grecaptcha.ready(() => {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (true) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled && container.current && widgetId.current === null || window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (true && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled && container.current || widgetId.current === null && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (true && widgetId.current === null && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled || container.current && widgetId.current === null && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:50
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled && container.current && true && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ArrowFunction
+src/AntiAutomation.tsx:108:14
+-         .catch(() => callback.current(null));
++         .catch(() => undefined);
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BlockStatement
+src/AntiAutomation.tsx:109:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BooleanLiteral
+src/AntiAutomation.tsx:110:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ArrayDeclaration
+src/AntiAutomation.tsx:112:6
+-     }, [siteKey]);
++     }, []);
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] StringLiteral
+src/AntiAutomation.tsx:65:14
+-             />{" "}
++             />{""}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:115:9
+-       if (widgetId.current !== null && window.grecaptcha) {
++       if (true && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:115:9
+-       if (widgetId.current !== null && window.grecaptcha) {
++       if (widgetId.current !== null || window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BlockStatement
+src/api.ts:72:11
+-     } catch {
+-       return { kind: "unreachable" };
+-     }
++     } catch {}
+Tests ran:
+    US-004 Registration confirmation (UI) AC-004-03 an unreachable backend shows a general error and no confirmation
+    api treats a network failure as unreachable
+
+
+[Survived] ObjectLiteral
+src/api.ts:57:52
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", {});
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 26 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:57:63
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: {} });
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 26 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:57:73
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: { Accept: "" } });
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 26 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:69:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:21:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:22:16
+-         active = false;
++         active = true;
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:24:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:8
+-         {state.kind !== "loading" && state.kind !== "failed" && (
+-           <p className="conference">{state.config.conferenceName}</p>
+-         )}
++         {true}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:8
+-         {state.kind !== "loading" && state.kind !== "failed" && (
+-           <p className="conference">{state.config.conferenceName}</p>
+-         )}
++         {false}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {true}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {false}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {true && <p>{texts.loading}</p>}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {state.kind === "loading" || <p>{texts.loading}</p>}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {state.kind !== "loading" && <p>{texts.loading}</p>}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:32:23
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {state.kind === "" && <p>{texts.loading}</p>}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 25 more tests!
+
+
+[NoCoverage] BlockStatement
+src/RegistrationForm.tsx:89:15
+-       if (busy) {
+-         return;
+-       }
++       if (busy) {}
+
+[NoCoverage] BlockStatement
+src/RegistrationForm.tsx:184:38
+-           if (inCategory.length === 0) {
+-             return null;
+-           }
++           if (inCategory.length === 0) {}
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:58:5
+-       setErrors({});
++       ;
+Tests ran:
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm checks each field against its own maximum length
+    US-002 Student registration (UI) AC-002-01 the student form asks for exactly the student fields
+  and 3 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:88:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 18 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:89:9
+-       if (busy) {
++       if (false) {
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 18 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:94:5
+-       setFormError(null);
++       ;
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 18 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:100:18
+-         firstName: "",
++         firstName: "Stryker was here!",
+Tests ran:
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:102:14
+-         email: "",
++         email: "Stryker was here!",
+Tests ran:
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:101:17
+-         lastName: "",
++         lastName: "Stryker was here!",
+Tests ran:
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+  and 8 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:123:55
+-       for (const fieldErrorBody of error.fieldErrors ?? []) {
++       for (const fieldErrorBody of error.fieldErrors ?? ["Stryker was here"]) {
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:129:19
+-         setResetKey((k) => k + 1);
++         setResetKey(() => undefined);
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:129:26
+-         setResetKey((k) => k + 1);
++         setResetKey((k) => k - 1);
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:127:9
+-       if (error.code === "CAPTCHA_FAILED") {
++       if (true) {
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:131:9
+-       if (error.code !== "VALIDATION_FAILED" || serverErrors.type) {
++       if (true) {
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:131:24
+-       if (error.code !== "VALIDATION_FAILED" || serverErrors.type) {
++       if (error.code !== "" || serverErrors.type) {
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:154:16
+-               />{" "}
++               />{""}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:184:13
+-           if (inCategory.length === 0) {
++           if (false) {
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:205:20
+-                   />{" "}
++                   />{""}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:217:8
+-         {errors.optionIds && <p className="error">{errors.optionIds}</p>}
++         {true}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:217:8
+-         {errors.optionIds && <p className="error">{errors.optionIds}</p>}
++         {false}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:217:8
+-         {errors.optionIds && <p className="error">{errors.optionIds}</p>}
++         {errors.optionIds || <p className="error">{errors.optionIds}</p>}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:236:16
+-               />{" "}
++               />{""}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 23 more tests!
+
+
+[Survived] ObjectLiteral
+src/RegistrationForm.tsx:25:58
+-   const AUTOCOMPLETE: Partial<Record<TextField, string>> = {
+-     firstName: "given-name",
+-     lastName: "family-name",
+-     email: "email",
+-     organization: "organization",
+-   };
++   const AUTOCOMPLETE: Partial<Record<TextField, string>> = {};
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:26:14
+-     firstName: "given-name",
++     firstName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:27:13
+-     lastName: "family-name",
++     lastName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:28:10
+-     email: "email",
++     email: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:29:17
+-     organization: "organization",
++     organization: "",
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/validation.ts:68:11
+-         if (max === undefined) {
++         if (false) {
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 19 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:68:30
+-         if (max === undefined) {
+-           return false;
+-         }
++         if (max === undefined) {}
+Tests ran:
+    RegistrationForm refuses more workshops than the maximum before sending
+    RegistrationForm drops selected options that the new type cannot take
+    RegistrationForm sends trimmed values and only the boxes that are still checked
+  and 19 more tests!
+
+
+Ran 5.27 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  85.14 |   85.91 |      383 |         1 |         63 |        4 |        0 |
+ AntiAutomation.tsx   |  65.63 |   67.74 |       41 |         1 |         20 |        2 |        0 |
+ api.ts               |  88.89 |   88.89 |       40 |         0 |          5 |        0 |        0 |
+ App.tsx              |  81.03 |   81.03 |       47 |         0 |         11 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+ RegistrationForm.tsx |  85.33 |   86.26 |      157 |         0 |         25 |        2 |        0 |
+ validation.ts        |  97.98 |   97.98 |       97 |         0 |          2 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m18:44:13 (116357) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m18:44:13 (116357) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/index.html
+[32m18:44:13 (116357) INFO MutationTestExecutor[39m Done in 4 minutes and 29 seconds.
