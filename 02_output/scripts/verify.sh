@@ -167,7 +167,7 @@ run_tool() {
     semgrep)
       docker run --rm --user "$DOCKER_USER" -e SEMGREP_ENABLE_VERSION_CHECK=0 -e HOME=/tmp -v "$OUT:/src" -w /src "$SEMGREP_IMAGE" \
         semgrep scan --metrics=off --config p/default --config p/owasp-top-ten --config p/java --config p/typescript --config p/react \
-        --exclude node_modules --exclude target --exclude dist --exclude logs --exclude reports --exclude coverage \
+        --exclude node_modules --exclude target --exclude dist --exclude logs --exclude reports --exclude coverage --exclude .stryker-tmp \
         --json --output /src/logs/"${PHASE}"_semgrep.json >"$log" 2>&1; rc=$?
       # standards/security.md: ERROR/WARNING/INFO -> High/Medium/Low; rules that already use CRITICAL/HIGH/MEDIUM/LOW count as reported.
       numbers="$(node -e 'const r=JSON.parse(require("fs").readFileSync(process.argv[1])).results;
