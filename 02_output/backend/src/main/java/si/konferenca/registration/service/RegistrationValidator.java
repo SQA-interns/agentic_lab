@@ -54,7 +54,10 @@ public final class RegistrationValidator {
           RegistrationType.EXTERNAL,
           List.of(new TextField("organization", 200, RegistrationRequest::organization)),
           RegistrationType.STUDENT,
-          List.of());
+          List.of(
+              new TextField("studyInstitution", 200, RegistrationRequest::studyInstitution),
+              new TextField("studyProgramme", 200, RegistrationRequest::studyProgramme),
+              new TextField("studentId", 50, RegistrationRequest::studentId)));
 
   private final ConferenceCatalog catalog;
 
@@ -108,8 +111,10 @@ public final class RegistrationValidator {
       errors.add(new FieldError("type", FieldCode.REQUIRED));
       return null;
     }
-    if (RegistrationType.EXTERNAL.name().equals(raw)) {
-      return RegistrationType.EXTERNAL;
+    for (RegistrationType type : RegistrationType.values()) {
+      if (type.name().equals(raw)) {
+        return type;
+      }
     }
     errors.add(new FieldError("type", FieldCode.NOT_ALLOWED));
     return null;
