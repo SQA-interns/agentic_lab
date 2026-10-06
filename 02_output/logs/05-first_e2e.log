@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+  ✓   1 [chromium] › e2e/us001-us002-registration.spec.ts:11:1 › AC-001-02 AC-001-07 an external participant with Slovenian characters registers (1.5s)
+  ✓   2 [chromium] › e2e/us001-us002-registration.spec.ts:30:1 › AC-001-14 a second registration with the same email is refused with a message (1.5s)
+  ✓   3 [chromium] › e2e/us001-us002-registration.spec.ts:44:1 › AC-002-02 a student registers (852ms)
+  ✓   4 [chromium] › e2e/us003-us004-form.spec.ts:4:1 › AC-003-01 AC-003-02 active options are grouped by category and inactive ones are hidden (266ms)
+  ✓   5 [chromium] › e2e/us003-us004-form.spec.ts:20:1 › AC-003-04 options for external participants only are not offered to students (657ms)
+  ✓   6 [chromium] › e2e/us003-us004-form.spec.ts:31:1 › AC-004-02 AC-001-15 invalid input shows errors next to the fields and keeps the values (1.0s)
+  ✓   7 [chromium] › e2e/us006-us007-emails.spec.ts:11:1 › AC-006-01 AC-006-02 the participant receives a confirmation email (1.9s)
+  ✓   8 [chromium] › e2e/us006-us007-emails.spec.ts:31:1 › AC-007-01 AC-007-04 organizers receive the registration with the JSON attached (1.3s)
+  ✓   9 [chromium] › e2e/us008-export.spec.ts:6:1 › AC-008-01 an organizer downloads the registrations workbook (1.7s)
+  ✓  10 [chromium] › e2e/us008-export.spec.ts:30:1 › AC-008-02 the export is refused without organizer access (14ms)
+
+  10 passed (12.2s)

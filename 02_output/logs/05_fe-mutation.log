@@ -1,0 +1,767 @@
+[32m17:20:49 (153161) INFO ProjectReader[39m Found 7 of 65 file(s) to be mutated.
+[32m17:20:50 (153161) INFO Instrumenter[39m Instrumented 7 source file(s) with 451 mutant(s)
+[32m17:20:51 (153161) INFO ConcurrencyTokenProvider[39m Creating 7 test runner process(es).
+[32m17:20:52 (153161) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m17:20:53 (153161) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m17:21:08 (153161) INFO DryRunExecutor[39m Initial test run succeeded. Ran 47 tests in 15 seconds (net 5210.125831000004 ms, overhead 10434.874168999995 ms).
+Mutation testing 2% (elapsed: <1m, remaining: ~6m) 25/451 tested (5 survived, 0 timed out)
+Mutation testing 4% (elapsed: <1m, remaining: ~7m) 47/451 tested (14 survived, 0 timed out)
+Mutation testing 9% (elapsed: <1m, remaining: ~4m) 80/451 tested (21 survived, 0 timed out)
+Mutation testing 11% (elapsed: <1m, remaining: ~5m) 87/451 tested (21 survived, 0 timed out)
+Mutation testing 14% (elapsed: <1m, remaining: ~4m) 95/451 tested (26 survived, 0 timed out)
+Mutation testing 17% (elapsed: ~1m, remaining: ~4m) 102/451 tested (31 survived, 0 timed out)
+Mutation testing 22% (elapsed: ~1m, remaining: ~4m) 118/451 tested (32 survived, 0 timed out)
+Mutation testing 27% (elapsed: ~1m, remaining: ~3m) 138/451 tested (32 survived, 0 timed out)
+Mutation testing 31% (elapsed: ~1m, remaining: ~3m) 156/451 tested (33 survived, 0 timed out)
+Mutation testing 36% (elapsed: ~1m, remaining: ~2m) 175/451 tested (33 survived, 0 timed out)
+Mutation testing 38% (elapsed: ~1m, remaining: ~2m) 189/451 tested (36 survived, 0 timed out)
+Mutation testing 40% (elapsed: ~2m, remaining: ~2m) 209/451 tested (39 survived, 0 timed out)
+Mutation testing 43% (elapsed: ~2m, remaining: ~2m) 231/451 tested (45 survived, 0 timed out)
+Mutation testing 48% (elapsed: ~2m, remaining: ~2m) 245/451 tested (45 survived, 0 timed out)
+Mutation testing 53% (elapsed: ~2m, remaining: ~2m) 268/451 tested (46 survived, 0 timed out)
+Mutation testing 56% (elapsed: ~2m, remaining: ~2m) 276/451 tested (48 survived, 0 timed out)
+Mutation testing 61% (elapsed: ~2m, remaining: ~1m) 295/451 tested (51 survived, 0 timed out)
+Mutation testing 63% (elapsed: ~3m, remaining: ~1m) 307/451 tested (53 survived, 0 timed out)
+Mutation testing 66% (elapsed: ~3m, remaining: ~1m) 334/451 tested (57 survived, 0 timed out)
+Mutation testing 68% (elapsed: ~3m, remaining: ~1m) 345/451 tested (57 survived, 0 timed out)
+Mutation testing 73% (elapsed: ~3m, remaining: ~1m) 369/451 tested (57 survived, 0 timed out)
+Mutation testing 80% (elapsed: ~3m, remaining: <1m) 400/451 tested (57 survived, 0 timed out)
+Mutation testing 83% (elapsed: ~3m, remaining: <1m) 408/451 tested (59 survived, 0 timed out)
+Mutation testing 85% (elapsed: ~4m, remaining: <1m) 413/451 tested (60 survived, 0 timed out)
+Mutation testing 92% (elapsed: ~4m, remaining: <1m) 432/451 tested (63 survived, 0 timed out)
+Mutation testing 99% (elapsed: ~4m, remaining: <1m) 449/451 tested (64 survived, 0 timed out)
+
+All tests
+  acceptance
+    us001-external-form.test.tsx
+      ✓ US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields (killed 14)
+      ~ US-001 External participant registration (UI) AC-001-11 no consent is preselected (covered 122)
+      ✓ US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent (killed 5)
+      ✓ US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing (killed 4)
+      ✓ US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message (killed 11)
+      ✓ US-001 External participant registration (UI) AC-001-15 empty required fields are reported next to each field before anything is sent (killed 7)
+      ~ US-001 External participant registration (UI) AC-001-15 whitespace-only values count as empty before anything is sent (covered 226)
+      ✓ US-001 External participant registration (UI) AC-001-15 an invalid email is reported next to the email field before anything is sent (killed 7)
+      ✓ US-001 External participant registration (UI) AC-001-02 a valid external form is submitted with the entered values (killed 3)
+    us002-student-form.test.tsx
+      ✓ US-002 Student registration (UI) AC-002-01 the student form asks for exactly the student fields (killed 2)
+      ~ US-002 Student registration (UI) AC-002-02 a valid student form is submitted with the entered values (covered 272)
+      ✓ US-002 Student registration (UI) AC-002-04 empty student fields are reported next to each field (killed 3)
+    us003-options.test.tsx
+      ~ US-003 Configurable conference options (UI) AC-003-01 active options are offered grouped by category with their display names (covered 122)
+      ✓ US-003 Configurable conference options (UI) AC-003-04 options for external participants only are not offered on the student form (killed 1)
+    us004-confirmation.test.tsx
+      ✓ US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation in place of the form (killed 23)
+      ✓ US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values (killed 5)
+      ✓ US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation (killed 4)
+      ✓ US-004 Registration confirmation (UI) AC-004-03 an unreachable backend shows a general error and no confirmation (killed 4)
+  AntiAutomation.test.tsx
+    ✓ AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on (killed 32)
+  api.test.ts
+    ✓ api throws when the form configuration cannot be loaded (killed 1)
+    ✓ api posts JSON to /api/registrations (killed 9)
+    ✓ api returns the backend error of a rejected registration (killed 5)
+    ✓ api treats a non-JSON or foreign error body as unreachable (killed 10)
+  App.test.tsx
+    ~ App renders the page heading (covered 52)
+  RegistrationForm.test.tsx
+    ✓ RegistrationForm refuses more workshops than the maximum before sending (killed 60)
+    ✓ RegistrationForm drops selected options that the new type cannot take (killed 42)
+    ✓ RegistrationForm sends trimmed values and only the boxes that are still checked (killed 21)
+    ✓ RegistrationForm checks each field against its own maximum length (killed 23)
+    ✓ RegistrationForm requires every configured consent (killed 1)
+    ~ RegistrationForm rejects control characters before sending (covered 226)
+    ✓ RegistrationForm clears the anti-automation check after the backend rejects the token (killed 17)
+    ✓ RegistrationForm shows a load error when the form configuration is unavailable (killed 14)
+    ✓ RegistrationForm disables the submit button while sending (killed 3)
+  validation.test.ts
+    ✓ validation accepts the email a@b.si (killed 3)
+    ✓ validation accepts the email ana.horvat@uni-lj.si (killed 1)
+    ~ validation accepts the email š@ž.si (covered 18)
+    ~ validation accepts the email x+y@sub.example.com (covered 18)
+    ~ validation rejects the email a@b (covered 7)
+    ✓ validation rejects the email a@.b.si (killed 6)
+    ✓ validation rejects the email a@b.si. (killed 1)
+    ~ validation rejects the email a..b@c.si (covered 8)
+    ~ validation rejects the email @b.si (covered 7)
+    ✓ validation rejects the email a b@c.si (killed 1)
+    ~ validation rejects the email a@@b.si (covered 7)
+    ✓ validation rejects the email a@b.si x (killed 1)
+    ✓ validation reports required, control characters, length and format in that order (killed 22)
+    ✓ validation finds categories above their maximum only (killed 17)
+
+[NoCoverage] StringLiteral
+src/AntiAutomation.tsx:36:47
+-         script.onerror = () => reject(new Error("reCAPTCHA could not be loaded"));
++         script.onerror = () => reject(new Error(""));
+
+[NoCoverage] StringLiteral
+src/AntiAutomation.tsx:69:55
+-           <RecaptchaWidget siteKey={settings.siteKey ?? ""} onToken={onToken} resetKey={resetKey} />
++           <RecaptchaWidget siteKey={settings.siteKey ?? "Stryker was here!"} onToken={onToken} resetKey={resetKey} />
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:30:7
+-     if (!scriptPromise) {
++     if (true) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BooleanLiteral
+src/AntiAutomation.tsx:34:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ArrowFunction
+src/AntiAutomation.tsx:36:24
+-         script.onerror = () => reject(new Error("reCAPTCHA could not be loaded"));
++         script.onerror = () => undefined;
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] StringLiteral
+src/AntiAutomation.tsx:54:27
+-     const errorId = error ? "antiAutomation-error" : undefined;
++     const errorId = error ? "" : undefined;
+Tests ran:
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+
+
+[Survived] BooleanLiteral
+src/AntiAutomation.tsx:63:35
+-               aria-invalid={error ? true : undefined}
++               aria-invalid={error ? false : undefined}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+
+
+[Survived] OptionalChaining
+src/AntiAutomation.tsx:98:9
+-           window.grecaptcha?.ready(() => {
++           window.grecaptcha.ready(() => {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (true) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled && container.current && widgetId.current === null || window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (true && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled && container.current || widgetId.current === null && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (true && widgetId.current === null && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:99:15
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled || container.current && widgetId.current === null && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:99:50
+-             if (!cancelled && container.current && widgetId.current === null && window.grecaptcha) {
++             if (!cancelled && container.current && true && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] StringLiteral
+src/AntiAutomation.tsx:65:14
+-             />{" "}
++             />{""}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] ArrowFunction
+src/AntiAutomation.tsx:108:14
+-         .catch(() => callback.current(null));
++         .catch(() => undefined);
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BlockStatement
+src/AntiAutomation.tsx:109:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] BooleanLiteral
+src/AntiAutomation.tsx:110:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ArrayDeclaration
+src/AntiAutomation.tsx:112:6
+-     }, [siteKey]);
++     }, []);
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:115:9
+-       if (widgetId.current !== null && window.grecaptcha) {
++       if (widgetId.current !== null || window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] ConditionalExpression
+src/AntiAutomation.tsx:115:9
+-       if (widgetId.current !== null && window.grecaptcha) {
++       if (true && window.grecaptcha) {
+Tests ran:
+    AntiAutomation live mode loads Google's script, renders the widget with the site key and passes tokens on
+
+
+[Survived] LogicalOperator
+src/AntiAutomation.tsx:71:8
+-         {error && (
+-           <p id={errorId} className="error">
+-             {error}
+-           </p>
+-         )}
++         {error || <p id={errorId} className="error">
++             {error}
++           </p>}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 24 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:72:11
+-     } catch {
+-       return { kind: "unreachable" };
+-     }
++     } catch {}
+Tests ran:
+    US-004 Registration confirmation (UI) AC-004-03 an unreachable backend shows a general error and no confirmation
+
+
+[Survived] ObjectLiteral
+src/api.ts:57:52
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", {});
+Tests ran:
+    api throws when the form configuration cannot be loaded
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+  and 26 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:57:63
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: {} });
+Tests ran:
+    api throws when the form configuration cannot be loaded
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+  and 26 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:57:73
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: { Accept: "" } });
+Tests ran:
+    api throws when the form configuration cannot be loaded
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+  and 26 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:69:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    api posts JSON to /api/registrations
+    api returns the backend error of a rejected registration
+    api treats a non-JSON or foreign error body as unreachable
+  and 11 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:21:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:22:16
+-         active = false;
++         active = true;
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:8
+-         {state.kind !== "loading" && state.kind !== "failed" && (
+-           <p className="conference">{state.config.conferenceName}</p>
+-         )}
++         {true}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:24:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:8
+-         {state.kind !== "loading" && state.kind !== "failed" && (
+-           <p className="conference">{state.config.conferenceName}</p>
+-         )}
++         {false}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {true}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {false}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {state.kind === "loading" || <p>{texts.loading}</p>}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {true && <p>{texts.loading}</p>}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:32:8
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {state.kind !== "loading" && <p>{texts.loading}</p>}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:32:23
+-         {state.kind === "loading" && <p>{texts.loading}</p>}
++         {state.kind === "" && <p>{texts.loading}</p>}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 25 more tests!
+
+
+[NoCoverage] BlockStatement
+src/RegistrationForm.tsx:89:15
+-       if (busy) {
+-         return;
+-       }
++       if (busy) {}
+
+[NoCoverage] BlockStatement
+src/RegistrationForm.tsx:184:38
+-           if (inCategory.length === 0) {
+-             return null;
+-           }
++           if (inCategory.length === 0) {}
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:58:5
+-       setErrors({});
++       ;
+Tests ran:
+    US-002 Student registration (UI) AC-002-01 the student form asks for exactly the student fields
+    US-002 Student registration (UI) AC-002-02 a valid student form is submitted with the entered values
+    US-002 Student registration (UI) AC-002-04 empty student fields are reported next to each field
+  and 3 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:88:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+  and 18 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:89:9
+-       if (busy) {
++       if (false) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+  and 18 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:94:5
+-       setFormError(null);
++       ;
+Tests ran:
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+  and 18 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:100:18
+-         firstName: "",
++         firstName: "Stryker was here!",
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-001 External participant registration (UI) AC-001-02 a valid external form is submitted with the entered values
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation in place of the form
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:101:17
+-         lastName: "",
++         lastName: "Stryker was here!",
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-001 External participant registration (UI) AC-001-02 a valid external form is submitted with the entered values
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation in place of the form
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:102:14
+-         email: "",
++         email: "Stryker was here!",
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-001 External participant registration (UI) AC-001-02 a valid external form is submitted with the entered values
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation in place of the form
+  and 8 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:123:55
+-       for (const fieldErrorBody of error.fieldErrors ?? []) {
++       for (const fieldErrorBody of error.fieldErrors ?? ["Stryker was here"]) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:129:19
+-         setResetKey((k) => k + 1);
++         setResetKey(() => undefined);
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:129:26
+-         setResetKey((k) => k + 1);
++         setResetKey((k) => k - 1);
+Tests ran:
+    RegistrationForm clears the anti-automation check after the backend rejects the token
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:127:9
+-       if (error.code === "CAPTCHA_FAILED") {
++       if (true) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values
+    US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:131:9
+-       if (error.code !== "VALIDATION_FAILED" || serverErrors.type) {
++       if (true) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values
+    US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:131:24
+-       if (error.code !== "VALIDATION_FAILED" || serverErrors.type) {
++       if (error.code !== "" || serverErrors.type) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+    US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows the backend field errors and keeps the values
+    US-004 Registration confirmation (UI) AC-004-03 a storage failure shows a general error and no confirmation
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:154:16
+-               />{" "}
++               />{""}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:184:13
+-           if (inCategory.length === 0) {
++           if (false) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:205:20
+-                   />{" "}
++                   />{""}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:217:8
+-         {errors.optionIds && <p className="error">{errors.optionIds}</p>}
++         {true}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:217:8
+-         {errors.optionIds && <p className="error">{errors.optionIds}</p>}
++         {false}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:217:8
+-         {errors.optionIds && <p className="error">{errors.optionIds}</p>}
++         {errors.optionIds || <p className="error">{errors.optionIds}</p>}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:236:16
+-               />{" "}
++               />{""}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-01 the external form asks for exactly the external participant fields
+    US-001 External participant registration (UI) AC-001-11 no consent is preselected
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+  and 23 more tests!
+
+
+[Survived] ObjectLiteral
+src/RegistrationForm.tsx:25:58
+-   const AUTOCOMPLETE: Partial<Record<TextField, string>> = {
+-     firstName: "given-name",
+-     lastName: "family-name",
+-     email: "email",
+-     organization: "organization",
+-   };
++   const AUTOCOMPLETE: Partial<Record<TextField, string>> = {};
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:26:14
+-     firstName: "given-name",
++     firstName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:27:13
+-     lastName: "family-name",
++     lastName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:28:10
+-     email: "email",
++     email: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:29:17
+-     organization: "organization",
++     organization: "",
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/validation.ts:68:11
+-         if (max === undefined) {
++         if (false) {
+Tests ran:
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+  and 19 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:68:30
+-         if (max === undefined) {
+-           return false;
+-         }
++         if (max === undefined) {}
+Tests ran:
+    US-001 External participant registration (UI) AC-001-12 submitting without the consent shows an error next to the consent
+    US-001 External participant registration (UI) AC-001-13 submitting without the anti-automation check sends nothing
+    US-001 External participant registration (UI) AC-001-14 a duplicate email is reported with the backend message
+  and 19 more tests!
+
+
+Ran 5.35 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  84.92 |   85.68 |      383 |         0 |         64 |        4 |        0 |
+ AntiAutomation.tsx   |  64.06 |   66.13 |       41 |         0 |         21 |        2 |        0 |
+ api.ts               |  88.89 |   88.89 |       40 |         0 |          5 |        0 |        0 |
+ App.tsx              |  81.03 |   81.03 |       47 |         0 |         11 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+ RegistrationForm.tsx |  85.33 |   86.26 |      157 |         0 |         25 |        2 |        0 |
+ validation.ts        |  97.98 |   97.98 |       97 |         0 |          2 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m17:25:32 (153161) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m17:25:32 (153161) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/index.html
+[32m17:25:32 (153161) INFO MutationTestExecutor[39m Done in 4 minutes and 43 seconds.

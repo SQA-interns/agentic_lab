@@ -1,0 +1,18 @@
+
+ RUN  v4.1.11 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  9 passed (9)
+      Tests  43 passed (43)
+   Start at  15:42:20
+   Duration  3.52s (transform 507ms, setup 2.32s, import 816ms, tests 7.30s, environment 6.09s)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 96.5% ( 221/229 )
+Branches     : 89.72% ( 131/146 )
+Functions    : 97.36% ( 74/76 )
+Lines        : 96.75% ( 209/216 )
+================================================================================

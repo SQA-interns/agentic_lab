@@ -37,10 +37,44 @@ Passing on bootstrap code: `frontend/src/App.test.tsx` "renders the page heading
 
 ## First complete run (phase 5, before any fix)
 
+2026-10-06T13:40:31Z, all levels, after the phase 5 tests were written and compiled: **233 passed, 0 failed** (backend 180, frontend 43, e2e 10; logs `05-first_be-test.log`, `05-first_fe-test.log`, `05-first_e2e.log`). No failure to classify.
+
+Defects found later in non-frozen tests (fixed, no production change):
+
+| Test | Defect | Fix |
+|---|---|---|
+| `SecurityControlsIntegrationTest.registrationsAboveTheLimitAreRefusedWithRetryAfter` | failed under Pitest's coverage run: the one-minute rate-limit window rolled over mid-loop | loop up to 2 × limit + 1 requests; assert at most 2 × limit accepted |
+
 ## Measures (phase 5)
 
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools | Log |
 |---|---|---|---|---|---|---|---|
+| backend | acceptance (frozen) | 92 / 0 | — | — | — | JUnit 6, Testcontainers | `05-first_be-test.log` |
+| backend | unit + integration | 79 / 0 (180 − 92 − 9) | — | — | — | JUnit 6, AssertJ | `05_be-test.log` |
+| backend | architecture | 9 / 0 | — | — | — | ArchUnit 1.3.2 | `05-first_be-test.log` |
+| backend | all levels | 180 / 0 (+4 added after mutation: 184) | 95.3% | 90.1% | 94% (164/174; D-23 scope: StartupGuard, ConferenceCatalogLoader, ConferenceCatalog, RegistrationValidator, RegistrationRequestParser, FixedWindowRateLimiter, JsonCopyStore, AntiAutomationVerifier) | JaCoCo 0.8.12, Pitest 1.30.0 | `05_be-mutation.log` |
+| frontend | acceptance (frozen) + bootstrap | 19 / 0 | — | — | — | Vitest 4.1.11 | `05_fe-test.log` |
+| frontend | unit / component | 29 / 0 | — | — | — | Vitest, Testing Library | `05_fe-test.log` |
+| frontend | all levels | 48 / 0 | 97.68% | 91.09% | 84.9% (383/451; all `src` except tests, `main.tsx`, frozen helpers) | @vitest/coverage-v8 4.1.11, Stryker 10.0.0 | `05_fe-mutation.log` |
+| stack | end-to-end (frozen) | 10 / 0 | — | — | — | Playwright 1.63.0 | `05-first_e2e.log` |
+
+Coverage is the full-suite JaCoCo / v8 figure of the run in the Log column.
+
+Surviving mutants in validation, security, persistence and business-rule code:
+
+| Mutant | Classification |
+|---|---|
+| ConferenceCatalogLoader 78, 94 (unknown property check), 147 (length boundary) | should have been caught → tests added, killed |
+| AntiAutomationVerifier 92 (form encoding), 51 (4096 token boundary) | should have been caught → test added, killed |
+| JsonCopyStore 28 (startup writability check) | should have been caught → test added, killed |
+| RegistrationValidator 155, 159 (empty list on early return) | equivalent: the list is discarded because the collected errors are thrown |
+| AntiAutomationVerifier 86, 87 (interrupt handling) | not observable: thread-interrupt path |
+| FixedWindowRateLimiter 26, 27 (5 mutants, cleanup above 10 000 keys) | not observable: memory hygiene only |
+| JsonCopyStore 44 (`FileChannel.force`) | not observable: durability only on power loss |
+| frontend `api.ts` 72 (swallowed network error) | should have been caught → test added |
+| frontend `api.ts` 57, 69 (`Accept` headers) | not observable: the backend answers JSON regardless |
+| frontend `validation.ts` 68 (undefined maximum) | equivalent: `count > undefined` is false |
+| frontend `AntiAutomation.tsx`, `RegistrationForm.tsx`, `App.tsx` (61 mutants) | UI rendering details (spacing text nodes, cleanup flags, effect dependencies); behaviour covered by acceptance and e2e tests; not in the required scope |
 
 ## Final run (phase 6)
 
