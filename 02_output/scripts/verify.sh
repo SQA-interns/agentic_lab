@@ -147,11 +147,11 @@ PY
       [ -f "$sj" ] && keys="$(python3 -c 'import json,sys,collections;r=json.load(open(sys.argv[1]))["results"];c=collections.Counter(x["extra"]["severity"] for x in r);print("ERROR=%d WARNING=%d INFO=%d"%(c["ERROR"],c["WARNING"],c["INFO"]))' "$sj")" ;;
     gitleaks)
       # Only this run's commits: history before the start commit belongs to
-      # earlier runs (D-11).
+      # earlier runs (D-11). Suppressed fingerprints: 02_output/.gitleaksignore (D-23).
       local START_COMMIT
       START_COMMIT="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["startCommit"])' "$ROOT/03_statistics/run-log.json")"
       docker run --rm -u "$(id -u):$(id -g)" -v "$ROOT:/repo" zricethezav/gitleaks:v8.30.1 \
-        git /repo --redact --no-banner -v --log-opts="$START_COMMIT..HEAD" >"$log" 2>&1; rc=$?
+        git /repo --redact --no-banner -v --gitleaks-ignore-path /repo/02_output/.gitleaksignore --log-opts="$START_COMMIT..HEAD" >"$log" 2>&1; rc=$?
       keys="$(grep -Eo 'no leaks found|leaks found: [0-9]+' "$log" | tail -1)" ;;
     cloc)
       docker run --rm -u "$(id -u):$(id -g)" -v "$OUT:/src:ro" -w /src aldanial/cloc:2.10 \

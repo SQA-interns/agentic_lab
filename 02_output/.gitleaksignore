@@ -1,0 +1,25 @@
+# D-23: Spring Boot 'Using generated security password' lines printed by the phase 3 bootstrap
+# skeleton in test logs; random per-run values of throwaway test instances, not credentials.
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1016
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:107
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1102
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1162
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1222
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1285
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1345
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1408
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1522
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:162
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1692
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1848
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1911
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:1974
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:2037
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:2100
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:258
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:321
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:451
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:514
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:614
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_backend-acceptance-red.log:generic-api-key:916
+24660302a74af1c4d87a085a61b3a54c9308173a:02_output/logs/3_trial.log:generic-api-key:107
