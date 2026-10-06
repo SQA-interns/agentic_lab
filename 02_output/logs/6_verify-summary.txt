@@ -1,0 +1,20 @@
+contracts              exit=0   openapi=0 schemas=0 sql=0                                    02_output/logs/6_contracts.log
+backend-build          exit=0   BUILD SUCCESS                                                02_output/logs/6_backend-build.log
+backend-format         exit=0   violations=0                                                 02_output/logs/6_backend-format.log
+backend-test           exit=0   Tests run: 197, Failures: 0, Errors: 0, Skipped: 0; line=96.4% branch=91.7% 02_output/logs/6_backend-test.log
+backend-spotbugs       exit=1   Total bugs: 21                                               02_output/logs/6_backend-spotbugs.log
+backend-pmd            exit=1   pmd=2 cpd=0                                                  02_output/logs/6_backend-pmd.log
+backend-mutation       exit=0   >> Generated 336 mutations Killed 251 (75%)                  02_output/logs/6_backend-mutation.log
+backend-depscan        exit=0   critical=0 high=0 medium=0 low=0                             02_output/logs/6_backend-depscan.log
+frontend-build         exit=0   built in 2.07s                                               02_output/logs/6_frontend-build.log
+frontend-format        exit=0   unformatted=0                                                02_output/logs/6_frontend-format.log
+frontend-lint          exit=0   0 problems                                                   02_output/logs/6_frontend-lint.log
+frontend-typecheck     exit=0   errors=0                                                     02_output/logs/6_frontend-typecheck.log
+frontend-test          exit=0   Tests  66 passed (66); line=100% branch=97.05%               02_output/logs/6_frontend-test.log
+frontend-e2e           exit=0   6 passed                                                     02_output/logs/6_frontend-e2e.log
+frontend-mutation      exit=0                                                                02_output/logs/6_frontend-mutation.log
+frontend-duplication   exit=0   Duplications detection: Found 1 exact clones with 7(0.62%) duplicated lines in 23 (4 formats) files. 02_output/logs/6_frontend-duplication.log
+frontend-depscan       exit=0   shipped: critical=0 high=0 moderate=0 low=0; all: critical=2 high=5 moderate=4 low=0 02_output/logs/6_frontend-depscan.log
+semgrep                exit=0   ERROR=1 WARNING=0 INFO=0                                     02_output/logs/6_semgrep.log
+gitleaks               exit=1   leaks found: 23                                              02_output/logs/6_gitleaks.log
+cloc                   exit=0   SUM: 149 1289 335 17684                                      02_output/logs/6_cloc.log

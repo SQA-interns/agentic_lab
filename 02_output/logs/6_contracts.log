@@ -1,0 +1,16 @@
+== openapi (redocly lint)
+No configurations were provided -- using built in recommended configuration by default.
+
+validating openapi.yaml...
+openapi.yaml: validated in 70ms
+
+Woohoo! Your API description is valid. 🎉
+
+== json schemas
+ok conference-options.schema.json (1 examples)
+ok emails.schema.json (1 examples)
+ok json-copy.schema.json (1 examples)
+ok recaptcha.schema.json (2 examples)
+ok registration-form.schema.json (1 examples)
+schemas invalid=0
+== database.sql (postgres:16.15-alpine)

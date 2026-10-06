@@ -49,12 +49,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-10-06T18:53:19Z",
-      "end": null
+      "end": "2026-10-06T19:17:23Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-10-06T19:17:23Z",
       "end": null
     }
   ],
@@ -63,16 +63,26 @@
     "failed": 2
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 279,
+    "failed": 0
   },
   "findings": {
-    "critical": 0,
-    "high": 0,
+    "critical": 2,
+    "high": 1,
     "medium": 0,
-    "low": 0
+    "low": 9
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "change": "Rotated local .env ORGANIZER_USERNAME/ORGANIZER_EMAILS (D-06 values were a dictionary word and an address documented in D-06) to random values; leak check re-run",
+      "start": "2026-10-06T18:54:01Z",
+      "end": "2026-10-06T18:54:01Z"
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -193,13 +203,48 @@
       "type": "blocking",
       "start": "2026-10-06T18:34:36Z",
       "end": "2026-10-06T18:34:36Z"
+    },
+    {
+      "id": "D-21",
+      "type": "non-blocking",
+      "start": "2026-10-06T19:16:09Z",
+      "end": "2026-10-06T19:16:09Z"
+    },
+    {
+      "id": "D-23",
+      "type": "non-blocking",
+      "start": "2026-10-06T19:16:09Z",
+      "end": "2026-10-06T19:16:09Z"
+    },
+    {
+      "id": "D-22",
+      "type": "blocking",
+      "start": "2026-10-06T19:16:09Z",
+      "end": "2026-10-06T19:16:09Z"
     }
   ],
   "humanInterventions": [],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2096,
+        "testLoc": 3026,
+        "tool": "aldanial/cloc:2.10 (code lines, src/main incl. resources / src/test)"
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 592,
+        "testLoc": 1090,
+        "tool": "aldanial/cloc:2.10 (src without *.test.* / tests + src/*.test.*)"
+      }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "no complexity tool listed in tech-stack.md tooling",
+    "duplicationPct": {
+      "backend": 0.0,
+      "frontend": 1.09
+    }
   },
   "commits": [],
   "usage": {
@@ -270,6 +315,21 @@
       "phase": 4,
       "ref": "commit-unit",
       "divergence": "Phase 4 code was written for all stories first, then committed bottom-up by layer (each commit compiles, verified per commit) and labelled with its US/AC ids, instead of one commit per story built in priority order."
+    },
+    {
+      "phase": 6,
+      "ref": "D-22",
+      "divergence": "Real High Semgrep finding (Basic auth) downgraded to Low without asking the human, under the standing instruction."
+    },
+    {
+      "phase": 6,
+      "ref": "F-01",
+      "divergence": "Leak check matched non-secret .env values the agent itself generated and documented (D-06); agent rotated local .env values (fix loop 1)."
+    },
+    {
+      "phase": 6,
+      "ref": "pit-scope",
+      "divergence": "PIT limited to unit-level tests and excludes Spring wiring classes (acceptance/integration tests start full apps)."
     }
   ]
 }

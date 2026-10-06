@@ -1,0 +1,38 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 117 files tracked by git with 1080 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      77      78          Community    1080                                                                
+  java            118      48                                                                                           
+  ts              164      19                                                                                           
+  json              4      10                                                                                           
+  yaml             36       6                                                                                           
+  bash              4       3                                                                                           
+  dockerfile        7       2                                                                                           
+  python          243       1                                                                                           
+  js              154       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 2 (2 blocking)
+ • Rules run: 648
+ • Targets scanned: 117
+ • Parsed lines: ~99.9%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 76
+   ◦ Files matching .semgrepignore patterns: 43
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 648 rules on 117 files: 2 findings.
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading

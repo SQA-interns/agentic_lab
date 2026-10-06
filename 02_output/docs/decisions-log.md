@@ -24,6 +24,8 @@ Standing instruction from the human at session start: "do not ask for my permiss
 | D-17 | 2026-10-06T18:05:33Z | 1 | OQ-06 unanswered (retention) | Database rows and JSON copies kept 12 months after the conference, then deleted by the operator (manual procedure in the backend README); no automated deletion (no story requires it) | pending review |
 | D-18 | 2026-10-06T18:11:13Z | 2 | Phase 2 needs parsers for contracts; none listed in tech-stack | Dev-only validators: container `redocly/cli:2.57.0` (OpenAPI lint) and host `python3-jsonschema` 4.10.3 (already installed, JSON Schema 2020-12); SQL applied to `postgres:16.15-alpine`. Run via `verify.sh <phase> contracts`; not shipped | pending review |
 | D-19 | 2026-10-06T18:11:13Z | 2 | Backend image must build from a clean checkout; tech-stack lists only the JRE image | Build stage `eclipse-temurin:21.0.10_7-jdk-alpine` (same pinned JDK release, jdk variant); runtime stays `eclipse-temurin:21.0.10_7-jre-alpine`; scanned in phase 6 | pending review |
+| D-21 | 2026-10-06T19:16:09Z | 6 | SpotBugs (F-06): EI_EXPOSE_REP2 on constructor-injected collaborators of `RegistrationService`, `ExportService`, `OptionsController`; EI_EXPOSE_REP on `RequestSizeFilter$LimitedRequest.getInputStream`; SE_TRANSIENT_FIELD_NOT_RESTORED on `ValidationException`; THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION on `SecurityConfiguration` (Spring `HttpSecurity.build()`) | Inherent to dependency injection / Servlet API / Spring API, not defects; targeted exclusions in `backend/spotbugs-exclude.xml` citing D-21; raw report `out/logs/6_backend-spotbugs.log` (first run) | pending review |
+| D-23 | 2026-10-06T19:16:09Z | 6 | gitleaks (F-03): 23 `generic-api-key` matches, all on the line "Using generated security password" in committed phase 3 logs `out/logs/3_trial.log`, `3_backend-acceptance-red.log` (bootstrap skeleton before the organizer user store existed) | Not credentials of any deployed system (random per test instance, instance gone); fingerprints in `02_output/.gitleaksignore` citing D-23; later logs contain no such line | pending review |
 
 ## Blocking
 
@@ -58,3 +60,11 @@ Standing instruction from the human at session start: "do not ask for my permiss
 - Options: 1. (default) Change only the helper: read `timestamptz` columns with `getObject(i, OffsetDateTime.class)`; the assertion stays as strict; re-hash the manifest. 2. Change the test's cast to `Timestamp`. 3. Leave AC-005-01 failing.
 - Human response: standing instruction at session start (do not ask, do what is recommended).
 - Resolution: option 1; manifest re-hashed in its own commit.
+
+## D-22: Semgrep ERROR "use of basic authentication" (High) on the organizer export
+- Timestamp: 2026-10-06T19:16:09Z
+- Phase: 6
+- Trigger: Semgrep `yaml.openapi.security.use-of-basic-authentication` (ERROR → High per `standards.md`) at `docs/02_contracts/openapi.yaml:132` (`organizerBasic`), finding F-02.
+- Options: 1. (default) Downgrade to Low and accept: one organizer role and one read operation (security-requirements: ASVS L1, identity providers out of scope); credentials refused over plain HTTP from non-local clients (SR-06, `HttpsOnlyFilter`, tests `FiltersTest`), production refuses `ORGANIZER_HTTPS_ONLY=false` and passwords < 16 characters (`StartupGuard`), password stored only as BCrypt hash (SB-03), export rate limited (SR-03), stateless (no cookie, no CSRF surface). 2. Replace with a session/form login (adds CSRF and session handling, no stronger credential). 3. Introduce an identity provider (out of scope).
+- Human response: standing instruction at session start (do not ask, do what is recommended).
+- Resolution: option 1; F-02 recorded as found (High) and accepted as Low.

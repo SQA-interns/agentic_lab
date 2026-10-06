@@ -39,3 +39,13 @@ Phase 5 first complete run (all levels, before any fix; 2026-10-06T18:49Z): **26
 After the fixes: 197 backend + 66 frontend + 6 end-to-end = 269 passed, 0 failed (`out/logs/5_*.log`). Coverage (record only): backend line 96.4 %, branch 91.7 % (JaCoCo); frontend line 100 %, branch 97.05 % (V8).
 
 ## Final run (phase 6)
+
+Phase 6 (2026-10-06), after fixes F-05..F-10, all levels: **279 passed, 0 failed** — backend 204 (unit, architecture, integration, 79 frozen acceptance), frontend 69 (unit + 29 frozen acceptance), end-to-end 6 (\`out/logs/6_*-test.log\`, \`6_frontend-e2e.log\`).
+
+| Measure (record only) | Backend | Frontend |
+|---|---|---|
+| Line / branch coverage | 96.3 % / 92.5 % (JaCoCo, all backend tests) | 100 % / 97.08 % (V8) |
+| Mutation score | 83 % (PIT 281/340; unit-level tests only, Spring wiring classes excluded because acceptance/integration tests start whole applications) | 82.43 % (Stryker, unit + acceptance) |
+
+Test fixes in phase 6: added tests for catchable survivors (F-08, F-09); extracted a shared submit helper in \`RegistrationForm.test.tsx\` (F-10). No frozen test changed in phase 6.
+

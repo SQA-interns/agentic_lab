@@ -213,6 +213,20 @@
             <param>XML</param>
           </outputFormats>
           <timestampedReports>false</timestampedReports>
+          <threads>4</threads>
+          <!-- Unit-level tests only; acceptance/integration tests start full applications. -->
+          <excludedTestClasses>
+            <param>si.konferenca.registration.acceptance.*</param>
+            <param>si.konferenca.registration.integration.*</param>
+            <param>si.konferenca.registration.architecture.*</param>
+          </excludedTestClasses>
+          <!-- Spring wiring only, exercised by the acceptance tests. -->
+          <excludedClasses>
+            <param>si.konferenca.registration.RegistrationApplication</param>
+            <param>si.konferenca.registration.config.ApplicationConfiguration</param>
+            <param>si.konferenca.registration.config.SecurityConfiguration</param>
+            <param>si.konferenca.registration.config.WebFilterConfiguration</param>
+          </excludedClasses>
           <failWhenNoMutations>false</failWhenNoMutations>
         </configuration>
       </plugin>

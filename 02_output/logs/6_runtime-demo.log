@@ -1,0 +1,87 @@
+
+== start the stack from scratch (docker compose up --build --wait)
+PASS stack started and healthy
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
+
+== NFR-04 health and readiness
+PASS frontend /healthz -> 200
+{"status":"UP"}
+PASS every container reports healthy
+
+== SB-10 / KP-02 security headers exactly once (HTML and /api)
+PASS / Content-Security-Policy count=1
+PASS / X-Content-Type-Options count=1
+PASS / X-Frame-Options count=1
+PASS / Referrer-Policy count=1
+PASS /api/options Content-Security-Policy count=1
+PASS /api/options X-Content-Type-Options count=1
+PASS /api/options X-Frame-Options count=1
+PASS /api/options Referrer-Policy count=1
+PASS /assets/missing.js Content-Security-Policy count=1
+PASS /assets/missing.js X-Content-Type-Options count=1
+PASS /assets/missing.js X-Frame-Options count=1
+PASS /assets/missing.js Referrer-Policy count=1
+
+== KP-01 client-supplied Host is not reflected
+PASS no redirect to evil.example
+PASS /api via proxy with forged Host still 200
+
+== DoD-P01 one external and one student registration (NFR-01 characters)
+external: {"registrationId":"7b3c029d-5a9c-451d-a39e-2ecade65c264","receivedAt":"2026-10-06T19:12:04.740Z"} 201
+PASS external registration 201
+student: {"registrationId":"27a08a5b-6379-4435-a0de-8fbda34ad304","receivedAt":"2026-10-06T19:12:05.321Z"} 201
+PASS student registration 201
+
+== DoD-P02 rows in PostgreSQL and JSON copies on the volume
+EXTERNAL|Špela|Čeh Žagar|2
+STUDENT|Luka|Kranjc|1
+PASS 2 rows stored (got 2)
+total 8
+-rw-r--r-- 1 app app 759 Oct  6 19:12 20261006T191204Z_7b3c029d-5a9c-451d-a39e-2ecade65c264.json
+-rw-r--r-- 1 app app 743 Oct  6 19:12 20261006T191205Z_27a08a5b-6379-4435-a0de-8fbda34ad304.json
+PASS 2 JSON copies (got 2)
+    "firstName" : "Špela",
+    "lastName" : "Čeh Žagar",
+    "organization" : "Občina Škofja Loka"
+    "firstName" : "Luka",
+    "lastName" : "Kranjc",
+
+== DoD-P03 participant and organizer emails in Mailpit
+New student registration: Konferenca 2026 | attachments: 1
+Registration received: Konferenca 2026 | attachments: 0
+New external registration: Konferenca 2026 | attachments: 1
+Registration received: Konferenca 2026 | attachments: 0
+participant mails: 2 organizer mails with JSON: 2
+PASS 2 participant + 2 organizer emails with attachment
+
+== DoD-P04 export: organizer gets a valid workbook, anonymous is refused
+PASS organizer export -> 200
+Špela in workbook: True
+Čeh Žagar in workbook: True
+Občina Škofja Loka in workbook: True
+Računalništvo in workbook: True
+valid xlsx parts: 9
+PASS workbook opens and keeps č/š/ž
+PASS anonymous export -> 401
+PASS wrong password -> 401
+
+== ES-07 / SB-07 no personal data in container logs
+PASS logs do not contain a submitted value
+PASS logs do not contain a submitted value
+PASS logs do not contain a submitted value
+PASS logs do not contain a submitted value
+PASS logs contain no stack traces
+
+== NFR-02 data survives recreation of every container (down, up)
+PASS after recreation rows=2 copies=2
+
+== SB-11 processes run as non-root
+backend uid: 10001  frontend uid: 101
+PASS backend non-root
+PASS frontend non-root
+
+== result
+RUNTIME DEMO PASSED

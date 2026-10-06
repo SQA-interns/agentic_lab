@@ -1,0 +1,179 @@
+github.com/AlDanial/cloc v 1.98  T=0.28 s (524.4 files/s, 68836.4 lines/s)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+File                                                                                                                        blank        comment           code
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+./frontend/package-lock.json                                                                                                    0              0           8742
+./docs/02_contracts/openapi.yaml                                                                                                0              0            317
+./backend/pom.xml                                                                                                               6              4            245
+./frontend/tests/acceptance/us001-external-form.test.tsx                                                                       31              0            217
+./backend/src/test/java/si/konferenca/registration/acceptance/ExternalRegistrationAcceptanceTest.java                          59              1            214
+./backend/src/test/java/si/konferenca/registration/web/FiltersTest.java                                                        36              0            193
+./frontend/src/components/RegistrationForm.tsx                                                                                 23              2            187
+./backend/src/test/java/si/konferenca/registration/application/RegistrationValidatorTest.java                                  38              0            186
+./backend/mvnw                                                                                                                 26             48            185
+./backend/src/test/java/si/konferenca/registration/acceptance/support/RunningApp.java                                          30              7            175
+./backend/src/test/java/si/konferenca/registration/acceptance/RegistrationStorageAcceptanceTest.java                           16              1            168
+./backend/src/test/java/si/konferenca/registration/application/RegistrationServiceTest.java                                    28              1            165
+./docs/02_specification.md                                                                                                     31              0            144
+./frontend/tests/e2e/registration.spec.ts                                                                                      19              1            144
+./backend/src/test/java/si/konferenca/registration/acceptance/ConfigurableOptionsAcceptanceTest.java                           21              1            141
+./scripts/verify.sh                                                                                                             8             18            141
+./frontend/tests/acceptance/us002-student-form.test.tsx                                                                        21              0            136
+./backend/mvnw.cmd                                                                                                             15              0            134
+./backend/src/test/java/si/konferenca/registration/acceptance/StudentRegistrationAcceptanceTest.java                           32              1            128
+./backend/src/main/java/si/konferenca/registration/config/ApplicationConfiguration.java                                        15              1            127
+./backend/src/main/java/si/konferenca/registration/application/RegistrationValidator.java                                       9              8            126
+./backend/src/test/java/si/konferenca/registration/acceptance/OrganizerNotificationAcceptanceTest.java                         16              2            118
+./backend/src/main/java/si/konferenca/registration/infrastructure/persistence/RegistrationEntity.java                          33              2            116
+./frontend/tests/acceptance/support.ts                                                                                         15              4            113
+./backend/src/test/java/si/konferenca/registration/acceptance/RegistrationExportAcceptanceTest.java                            24              1            112
+./frontend/src/components/RegistrationForm.test.tsx                                                                            16              0            108
+./backend/src/test/java/si/konferenca/registration/infrastructure/jsoncopy/FileJsonCopyStoreTest.java                          19              0            107
+./scripts/runtime-demo.sh                                                                                                      14              3            107
+./backend/src/main/java/si/konferenca/registration/infrastructure/jsoncopy/FileJsonCopyStore.java                              11              2            105
+./frontend/tests/acceptance/us004-confirmation.test.tsx                                                                        13              0            103
+./backend/src/test/java/si/konferenca/registration/integration/RunningApplicationIntegrationTest.java                          18              1            101
+./backend/src/test/java/si/konferenca/registration/config/StartupGuardTest.java                                                15              0             99
+./backend/src/test/java/si/konferenca/registration/infrastructure/mail/SmtpNotifierTest.java                                   15              0             98
+./backend/src/test/java/si/konferenca/registration/acceptance/support/AcceptanceEnvironment.java                               11             10             96
+./docs/02_contracts/json-copy.schema.json                                                                                       0              0             94
+./backend/src/main/java/si/konferenca/registration/infrastructure/options/OptionCatalogLoader.java                             11              7             92
+./backend/src/test/java/si/konferenca/registration/acceptance/AntiAutomationAcceptanceTest.java                                17              4             90
+./backend/src/main/java/si/konferenca/registration/web/RequestSizeFilter.java                                                  16              2             89
+./backend/src/main/java/si/konferenca/registration/infrastructure/mail/SmtpNotifier.java                                       10              4             86
+./backend/src/test/java/si/konferenca/registration/infrastructure/recaptcha/RecaptchaVerifierTest.java                         19              1             82
+./backend/src/main/java/si/konferenca/registration/application/RegistrationService.java                                         7             12             80
+./backend/src/test/java/si/konferenca/registration/architecture/ArchitectureTest.java                                           9              1             79
+./docs/00_preflight-report.md                                                                                                   6              0             79
+./backend/src/test/java/si/konferenca/registration/application/Fixtures.java                                                    7              1             78
+./backend/src/test/java/si/konferenca/registration/infrastructure/options/OptionCatalogLoaderTest.java                         18              0             78
+./backend/src/main/java/si/konferenca/registration/web/RateLimitFilter.java                                                     8              6             77
+./backend/src/main/java/si/konferenca/registration/infrastructure/excel/PoiWorkbookWriter.java                                  6              4             76
+./frontend/src/api/client.test.ts                                                                                              10              0             76
+./backend/src/main/java/si/konferenca/registration/infrastructure/recaptcha/RecaptchaVerifier.java                             10              2             75
+./backend/src/test/java/si/konferenca/registration/acceptance/RegistrationConfirmationAcceptanceTest.java                      19              4             75
+./backend/src/main/resources/application.yml                                                                                    3              2             74
+./docs/01_acceptance-criteria.md                                                                                               17              0             74
+./backend/src/test/java/si/konferenca/registration/acceptance/ParticipantEmailAcceptanceTest.java                              15              1             72
+./backend/src/test/java/si/konferenca/registration/acceptance/support/Mailpit.java                                             12              4             72
+./docker-compose.yml                                                                                                            5              2             72
+./backend/src/main/java/si/konferenca/registration/infrastructure/mail/EmailTexts.java                                          9              1             71
+./docs/02_contracts/emails.schema.json                                                                                          0              0             63
+./backend/src/main/java/si/konferenca/registration/web/ApiExceptionHandler.java                                                10              1             62
+./docs/02_contracts/conference-options.schema.json                                                                              0              0             62
+./backend/src/main/java/si/konferenca/registration/config/StartupGuard.java                                                     8              4             61
+./backend/src/test/java/si/konferenca/registration/infrastructure/mail/EmailTextsTest.java                                     10              0             61
+./backend/src/main/java/si/konferenca/registration/config/SecurityConfiguration.java                                            6             35             60
+./frontend/src/App.test.tsx                                                                                                     9              0             60
+./frontend/src/components/Captcha.tsx                                                                                           7              2             58
+./backend/src/test/java/si/konferenca/registration/domain/TextTest.java                                                        12              0             55
+./backend/src/test/java/si/konferenca/registration/infrastructure/excel/PoiWorkbookWriterTest.java                              9              0             55
+./backend/src/main/java/si/konferenca/registration/infrastructure/persistence/JpaRegistrationStore.java                         8              1             53
+./backend/src/test/java/si/konferenca/registration/acceptance/support/Workbook.java                                             9              3             53
+./frontend/package.json                                                                                                         0              0             52
+./docs/decisions-log.md                                                                                                         9              0             51
+./frontend/src/App.tsx                                                                                                          6              0             50
+./backend/src/test/java/si/konferenca/registration/domain/OptionCatalogTest.java                                               12              0             48
+./backend/src/test/java/si/konferenca/registration/acceptance/support/Registrations.java                                        8              2             47
+./docs/02_contracts/registration-form.schema.json                                                                               0              0             46
+./frontend/src/components/TextInput.tsx                                                                                         2              0             45
+./backend/src/main/java/si/konferenca/registration/domain/Text.java                                                             9              5             43
+./backend/src/main/java/si/konferenca/registration/web/HttpsOnlyFilter.java                                                     8              5             43
+./backend/src/main/java/si/konferenca/registration/web/Problems.java                                                            8              2             43
+./backend/src/test/java/si/konferenca/registration/application/QueriesTest.java                                                12              0             43
+./frontend/tests/e2e/support/mailpit.ts                                                                                         5              1             42
+./backend/src/test/java/si/konferenca/registration/integration/ProductionStartupIntegrationTest.java                           11              1             41
+./frontend/src/components/OptionGroups.tsx                                                                                      3              1             41
+./frontend/src/validation/rules.test.ts                                                                                         6              0             40
+./frontend/src/api/client.ts                                                                                                    4              1             39
+./backend/src/main/java/si/konferenca/registration/web/OptionsController.java                                                   5              1             38
+./frontend/src/styles.css                                                                                                       0              0             38
+./docs/02_contracts/database.sql                                                                                                3              3             37
+./frontend/src/validation/rules.ts                                                                                              7              3             37
+./backend/src/main/java/si/konferenca/registration/web/RegistrationRequest.java                                                 4              1             36
+./frontend/src/api/types.ts                                                                                                     5              1             36
+./frontend/src/messages.ts                                                                                                      3              1             35
+./backend/src/main/java/si/konferenca/registration/web/RegistrationController.java                                              5              1             32
+./backend/src/main/java/si/konferenca/registration/domain/Registration.java                                                     5              2             31
+./backend/src/main/java/si/konferenca/registration/config/WebFilterConfiguration.java                                           5              1             30
+./docs/02_contracts/recaptcha.schema.json                                                                                       0              0             30
+./docs/03_test-strategy.md                                                                                                     11              0             30
+./frontend/tests/e2e/support/stack.ts                                                                                           5              1             29
+./backend/src/main/java/si/konferenca/registration/config/AppProperties.java                                                    7              5             28
+./backend/src/main/java/si/konferenca/registration/domain/OptionCatalog.java                                                    7              2             28
+./backend/src/main/java/si/konferenca/registration/web/ExportController.java                                                    6              1             28
+./backend/src/main/java/si/konferenca/registration/infrastructure/persistence/RegistrationOptionValue.java                     10              1             27
+./frontend/src/architecture.test.ts                                                                                             4              1             27
+./frontend/tests/e2e/support/xlsx.ts                                                                                            1              1             25
+./backend/spotbugs-exclude.xml                                                                                                  0              6             23
+./backend/src/main/java/si/konferenca/registration/application/RegistrationCommand.java                                         3              1             21
+./frontend/vite.config.ts                                                                                                       1              1             21
+./scripts/validate-contracts.py                                                                                                 1              1             21
+./backend/src/main/java/si/konferenca/registration/application/SetupQuery.java                                                  5              1             20
+./backend/src/main/java/si/konferenca/registration/domain/ConferenceOption.java                                                 4              1             19
+./frontend/tsconfig.json                                                                                                        0              0             19
+./docs/06_verification-report.md                                                                                               12              0             18
+./frontend/eslint.config.js                                                                                                     1              0             18
+./backend/Dockerfile                                                                                                            1              2             16
+./backend/dependency-check-suppressions.xml                                                                                     0              1             16
+./backend/src/main/java/si/konferenca/registration/application/ExportService.java                                               5              1             16
+./frontend/Dockerfile                                                                                                           1              1             16
+./frontend/playwright.config.ts                                                                                                 1              1             16
+./frontend/src/components/Confirmation.tsx                                                                                      2              1             16
+./backend/src/main/resources/application-local.yml                                                                              1              1             15
+./backend/src/main/java/si/konferenca/registration/application/RegistrationSetup.java                                           3              1             14
+./backend/src/main/java/si/konferenca/registration/domain/OptionCategory.java                                                   4              1             14
+./backend/src/main/resources/conference-options.yaml                                                                            0              2             14
+./backend/src/main/java/si/konferenca/registration/application/FieldError.java                                                  2              1             13
+./backend/src/main/java/si/konferenca/registration/application/ValidationException.java                                         6              1             13
+./backend/src/main/java/si/konferenca/registration/domain/RegistrationType.java                                                 4              1             12
+./backend/src/test/resources/acceptance/conference-options.yaml                                                                 0              1             12
+./frontend/index.html                                                                                                           0              0             12
+./frontend/stryker.config.json                                                                                                  0              0             10
+./backend/src/main/java/si/konferenca/registration/RegistrationApplication.java                                                 3              1              9
+./frontend/src/main.tsx                                                                                                         1              0              9
+./frontend/tests/e2e/global-setup.ts                                                                                            1              0              9
+./backend/src/main/java/si/konferenca/registration/application/JsonCopyStore.java                                               6              9              8
+./backend/src/main/java/si/konferenca/registration/application/RegistrationStore.java                                           5              3              8
+./backend/src/main/java/si/konferenca/registration/domain/Consent.java                                                          3              1              8
+./backend/src/main/java/si/konferenca/registration/infrastructure/persistence/RegistrationJpaRepository.java                    4              1              8
+./docs/00_progress.md                                                                                                           3              0              8
+./backend/src/main/java/si/konferenca/registration/application/DuplicateEmailException.java                                     3              1              7
+./backend/src/main/java/si/konferenca/registration/application/MalformedRequestException.java                                   3              1              7
+./backend/src/main/java/si/konferenca/registration/application/ServiceUnavailableException.java                                 3              1              7
+./README.md                                                                                                                     7              2              6
+./backend/src/main/java/si/konferenca/registration/application/CaptchaVerifier.java                                             4              8              6
+./backend/src/main/java/si/konferenca/registration/application/WorkbookWriter.java                                              3              1              6
+./backend/src/main/resources/application-test.yml                                                                               0              1              6
+./docs/release-notes.md                                                                                                         5              0              6
+./frontend/tests/e2e/global-teardown.ts                                                                                         1              0              6
+./backend/src/main/java/si/konferenca/registration/application/Notifier.java                                                    3              2              5
+./backend/.mvn/wrapper/maven-wrapper.properties                                                                                 0             16              3
+./frontend/.prettierrc.json                                                                                                     0              0              3
+./frontend/src/test-setup.ts                                                                                                    0              0              1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+SUM:                                                                                                                         1317            342          17899
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+JSON                            10              0              0           9121
+Java                            79            909            205           5114
+TypeScript                      29            222             23           1726
+YAML                             7              9              9            510
+Bourne Shell                     3             48             69            433
+Markdown                         9            101              2            416
+Maven                            1              6              4            245
+DOS Batch                        1             15              0            134
+XML                              2              0              7             39
+CSS                              1              0              0             38
+SQL                              1              3              3             37
+Dockerfile                       2              2              3             32
+Python                           1              1              1             21
+JavaScript                       1              1              0             18
+HTML                             1              0              0             12
+Properties                       1              0             16              3
+-------------------------------------------------------------------------------
+SUM:                           149           1317            342          17899
+-------------------------------------------------------------------------------

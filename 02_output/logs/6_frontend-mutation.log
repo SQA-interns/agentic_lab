@@ -1,0 +1,843 @@
+[32m21:06:49 (390815) INFO ProjectReader[39m Found 10 of 72 file(s) to be mutated.
+[32m21:06:50 (390815) INFO Instrumenter[39m Instrumented 10 source file(s) with 404 mutant(s)
+[32m21:06:51 (390815) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m21:06:51 (390815) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m21:06:52 (390815) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m21:06:59 (390815) INFO DryRunExecutor[39m Initial test run succeeded. Ran 66 tests in 7 seconds (net 1836.6641000000004 ms, overhead 5409.3359 ms).
+Mutation testing 2% (elapsed: <1m, remaining: ~5m) 14/404 tested (4 survived, 0 timed out)
+Mutation testing 6% (elapsed: <1m, remaining: ~4m) 26/404 tested (7 survived, 0 timed out)
+Mutation testing 9% (elapsed: <1m, remaining: ~4m) 35/404 tested (12 survived, 0 timed out)
+Mutation testing 13% (elapsed: <1m, remaining: ~4m) 47/404 tested (15 survived, 0 timed out)
+Mutation testing 17% (elapsed: <1m, remaining: ~4m) 59/404 tested (15 survived, 0 timed out)
+Mutation testing 19% (elapsed: ~1m, remaining: ~4m) 72/404 tested (19 survived, 0 timed out)
+Mutation testing 23% (elapsed: ~1m, remaining: ~3m) 106/404 tested (23 survived, 0 timed out)
+Mutation testing 25% (elapsed: ~1m, remaining: ~3m) 123/404 tested (27 survived, 0 timed out)
+Mutation testing 29% (elapsed: ~1m, remaining: ~3m) 138/404 tested (30 survived, 0 timed out)
+Mutation testing 33% (elapsed: ~1m, remaining: ~3m) 150/404 tested (31 survived, 0 timed out)
+Mutation testing 40% (elapsed: ~1m, remaining: ~2m) 168/404 tested (32 survived, 0 timed out)
+Mutation testing 43% (elapsed: ~2m, remaining: ~2m) 194/404 tested (37 survived, 0 timed out)
+Mutation testing 47% (elapsed: ~2m, remaining: ~2m) 208/404 tested (38 survived, 0 timed out)
+Mutation testing 51% (elapsed: ~2m, remaining: ~2m) 221/404 tested (45 survived, 0 timed out)
+Mutation testing 53% (elapsed: ~2m, remaining: ~2m) 236/404 tested (46 survived, 0 timed out)
+Mutation testing 54% (elapsed: ~2m, remaining: ~2m) 253/404 tested (46 survived, 0 timed out)
+Mutation testing 56% (elapsed: ~2m, remaining: ~2m) 275/404 tested (49 survived, 0 timed out)
+Mutation testing 59% (elapsed: ~3m, remaining: ~2m) 283/404 tested (53 survived, 0 timed out)
+Mutation testing 63% (elapsed: ~3m, remaining: ~1m) 294/404 tested (58 survived, 0 timed out)
+Mutation testing 66% (elapsed: ~3m, remaining: ~1m) 309/404 tested (59 survived, 0 timed out)
+Mutation testing 72% (elapsed: ~3m, remaining: ~1m) 329/404 tested (59 survived, 0 timed out)
+Mutation testing 80% (elapsed: ~3m, remaining: <1m) 353/404 tested (59 survived, 0 timed out)
+Mutation testing 83% (elapsed: ~3m, remaining: <1m) 362/404 tested (63 survived, 0 timed out)
+Mutation testing 86% (elapsed: ~4m, remaining: <1m) 370/404 tested (67 survived, 0 timed out)
+Mutation testing 97% (elapsed: ~4m, remaining: <1m) 398/404 tested (68 survived, 0 timed out)
+
+All tests
+  src
+    api/client.test.ts
+      ✓ submitRegistration posts JSON to the relative API path (AR-01) (killed 8)
+      ✓ submitRegistration maps status 409 with body {} to duplicate (killed 4)
+      ✓ submitRegistration maps status 400 with body {"errors":[]} to failed (killed 6)
+      ~ submitRegistration maps status 400 with body {} to failed (covered 24)
+      ✓ submitRegistration maps status 400 with body not json to failed (killed 2)
+      ~ submitRegistration maps status 201 with body not json to failed (covered 16)
+      ~ submitRegistration maps status 413 with body {} to failed (covered 20)
+      ~ submitRegistration maps status 429 with body {} to failed (covered 20)
+      ~ submitRegistration maps status 500 with body {} to failed (covered 20)
+      ✓ submitRegistration treats field errors outside a 400 as a failure (killed 1)
+      ✓ submitRegistration returns field errors of a 400 (killed 4)
+      ✓ submitRegistration treats a network failure as failed (killed 2)
+      ✓ fetchSetup rejects when the server answers with an error (killed 3)
+    components/RegistrationForm.test.tsx
+      ✓ RegistrationForm shows a general error for a field error it cannot place (killed 22)
+      ✓ RegistrationForm asks for a new captcha when the server rejected the token (killed 12)
+      ✓ RegistrationForm unchecks an option on a second click and links field errors for screen readers (killed 10)
+      ✓ RegistrationForm keeps a selected option offered to both types when switching type (killed 11)
+      ✓ RegistrationForm keeps the captcha token when only other fields were rejected (killed 9)
+      ~ RegistrationForm reports acceptance with the registration id (covered 150)
+    validation/rules.test.ts
+      ✓ strip removes " " at both edges (killed 1)
+      ~ strip removes " " at both edges (covered 2)
+      ~ strip removes " " at both edges (covered 2)
+      ~ strip removes "　" at both edges (covered 2)
+      ~ strip removes "﻿" at both edges (covered 2)
+      ~ strip removes "" at both edges (covered 2)
+      ~ strip removes "\t" at both edges (covered 2)
+      ~ strip removes "\n" at both edges (covered 2)
+      ~ strip removes " " at both edges (covered 2)
+      ~ strip removes " " at both edges (covered 2)
+      ~ strip keeps inner whitespace (covered 2)
+      ✓ checkText reports required, characters, length and email in that order (killed 25)
+      ~ checkText counts code points, not UTF-16 units (covered 20)
+      ~ checkText accepts Slovenian letters (covered 20)
+      ✓ FIELDS_BY_TYPE lists the fixed fields of each form (BR-01) (killed 7)
+    App.test.tsx
+      ✓ App offers a retry when the form setup cannot be loaded (killed 23)
+      ✓ App loads the Google widget with the configured site key outside test mode (killed 18)
+      ✓ App renders the widget directly when the script is already present (killed 4)
+  tests/acceptance
+    us001-external-form.test.tsx
+      ✓ US-001 external participant form AC-001-01 submits a complete external registration with selected options (killed 41)
+      ✓ US-001 external participant form AC-001-02 identifies each empty required field and does not submit (killed 9)
+      ✓ US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty (killed 2)
+      ~ US-001 external participant form AC-001-04 sends values without leading and trailing whitespace (covered 213)
+      ✓ US-001 external participant form AC-001-05 identifies an invalid email and does not submit (killed 1)
+      ~ US-001 external participant form AC-001-06 sends Slovenian characters unchanged (covered 213)
+      ✓ US-001 external participant form AC-001-07 AC-001-08 shows an option error returned by the server (killed 24)
+      ✓ US-001 external participant form AC-001-09 identifies a missing consent and does not submit (killed 5)
+      ~ US-001 external participant form AC-001-10 shows the consent wording, not preselected (covered 139)
+      ✓ US-001 external participant form AC-001-11 shows the offered options grouped by category with display names (killed 3)
+      ~ US-001 external participant form AC-001-12 submits a registration without options (covered 213)
+      ~ US-001 external participant form AC-001-13 submits several options of one category (covered 215)
+      ✓ US-001 external participant form AC-001-14 requires the anti-automation check before submitting (killed 7)
+      ✓ US-001 external participant form AC-001-15 shows the duplicate email message at the email field (killed 7)
+      ~ US-001 external participant form AC-001-02 shows a field error after leaving an empty required field (NFR-03) (covered 154)
+    us002-student-form.test.tsx
+      ✓ US-002 student form AC-002-01 submits a complete student registration (killed 13)
+      ✓ US-002 student form AC-002-02 identifies each empty student field and does not submit (killed 10)
+      ✓ US-002 student form AC-002-03 treats a no-break-space student ID as empty (killed 1)
+      ✓ US-002 student form AC-002-04 identifies an invalid student email (killed 1)
+      ✓ US-002 student form AC-002-05 AC-002-06 does not show options not offered to students (killed 3)
+      ✓ US-002 student form AC-002-05 does not send an option hidden by switching to student (killed 2)
+      ✓ US-002 student form AC-002-08 requires consent from students, not preselected (killed 1)
+      ✓ US-002 student form AC-002-09 shows student fields instead of the organization field (killed 1)
+      ~ US-002 student form AC-002-09 does not send the organization for a student (covered 219)
+    us004-confirmation.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation only after the registration was accepted (killed 19)
+      ✓ US-004 registration confirmation AC-004-02 shows server field errors at the fields and keeps the entered values (killed 4)
+      ✓ US-004 registration confirmation AC-004-03 shows a general error without details when the service is unavailable (killed 6)
+      ✓ US-004 registration confirmation AC-004-03 shows a general error when the network fails (killed 1)
+      ~ US-004 registration confirmation AC-004-03 shows a general error for an unexpected server error (covered 222)
+
+[Survived] ObjectLiteral
+src/api/client.ts:6:48
+-     const response = await fetch("/api/options", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/options", {});
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 30 more tests!
+
+
+[Survived] ObjectLiteral
+src/api/client.ts:6:59
+-     const response = await fetch("/api/options", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/options", { headers: {} });
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 30 more tests!
+
+
+[Survived] StringLiteral
+src/api/client.ts:6:69
+-     const response = await fetch("/api/options", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/options", { headers: { Accept: "" } });
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 30 more tests!
+
+
+[Survived] BlockStatement
+src/api/client.ts:21:11
+-     } catch {
+-       return { kind: "failed" };
+-     }
++     } catch {}
+Tests ran:
+    US-004 registration confirmation AC-004-03 shows a general error when the network fails
+    submitRegistration treats a network failure as failed
+
+
+[Survived] ObjectLiteral
+src/api/client.ts:18:16
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: {},
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/api/client.ts:18:34
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "", Accept: "application/json" },
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/api/client.ts:18:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 29 more tests!
+
+
+[Survived] BlockStatement
+src/api/client.ts:38:11
+-     } catch {
+-       return { kind: "failed" };
+-     }
++     } catch {}
+Tests ran:
+    submitRegistration maps status 400 with body not json to failed
+    submitRegistration maps status 201 with body not json to failed
+
+
+[NoCoverage] StringLiteral
+src/components/Captcha.tsx:39:43
+-           "expired-callback": () => onToken(""),
++           "expired-callback": () => onToken("Stryker was here!"),
+
+[NoCoverage] StringLiteral
+src/components/Captcha.tsx:60:73
+-             onChange={(e) => onToken(e.target.checked ? TEST_PASS_TOKEN : "")}
++             onChange={(e) => onToken(e.target.checked ? TEST_PASS_TOKEN : "Stryker was here!")}
+
+[Survived] OptionalChaining
+src/components/Captcha.tsx:36:7
+-         window.grecaptcha?.render(element, {
++         window.grecaptcha.render(element, {
+Tests ran:
+    App loads the Google widget with the configured site key outside test mode
+    App renders the widget directly when the script is already present
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:33:9
+-       if (testMode || !container.current) return;
++       if (false) return;
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:33:9
+-       if (testMode || !container.current) return;
++       if (testMode && !container.current) return;
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] ArrowFunction
+src/components/Captcha.tsx:39:29
+-           "expired-callback": () => onToken(""),
++           "expired-callback": () => undefined,
+Tests ran:
+    App loads the Google widget with the configured site key outside test mode
+    App renders the widget directly when the script is already present
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:48:20
+-       script.async = true;
++       script.async = false;
+Tests ran:
+    App offers a retry when the form setup cannot be loaded
+    App loads the Google widget with the configured site key outside test mode
+
+
+[Survived] ArrayDeclaration
+src/components/Captcha.tsx:50:6
+-     }, [testMode, siteKey, onToken]);
++     }, []);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] StringLiteral
+src/components/Confirmation.tsx:14:90
+-           A confirmation email for {conferenceName} is on its way. Your registration ID is{" "}
++           A confirmation email for {conferenceName} is on its way. Your registration ID is{""}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 6 more tests!
+
+
+[Survived] LogicalOperator
+src/components/OptionGroups.tsx:17:8
+-         {error && (
+-           <p data-testid="error-optionIds" className="error" role="alert">
+-             {MESSAGES.OPTION}
+-           </p>
+-         )}
++         {error || <p data-testid="error-optionIds" className="error" role="alert">
++             {MESSAGES.OPTION}
++           </p>}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/OptionGroups.tsx:27:14
+-               {inCategory.length === 0 && <p className="hint">No options offered.</p>}
++               {true && <p className="hint">No options offered.</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:34:50
+-     const [optionError, setOptionError] = useState(false);
++     const [optionError, setOptionError] = useState(true);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:35:46
+-     const [formError, setFormError] = useState(false);
++     const [formError, setFormError] = useState(true);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:47:5
+-       setErrors({});
++       ;
+Tests ran:
+    US-002 student form AC-002-01 submits a complete student registration
+    US-002 student form AC-002-02 identifies each empty student field and does not submit
+    US-002 student form AC-002-03 treats a no-break-space student ID as empty
+  and 7 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:57:51
+-       setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
++       setSelected((s) => (s.includes(id) ? s.filter(() => undefined) : [...s, id]));
+Tests ran:
+    RegistrationForm unchecks an option on a second click and links field errors for screen readers
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:57:58
+-       setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
++       setSelected((s) => (s.includes(id) ? s.filter((x) => false) : [...s, id]));
+Tests ran:
+    RegistrationForm unchecks an option on a second click and links field errors for screen readers
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:59:59
+-     const onToken = useCallback((t: string) => setToken(t), []);
++     const onToken = useCallback((t: string) => setToken(t), ["Stryker was here"]);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:72:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 26 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:73:18
+-       setFormError(false);
++       setFormError(true);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 26 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:74:20
+-       setOptionError(false);
++       setOptionError(true);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 26 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:84:18
+-         firstName: "",
++         firstName: "Stryker was here!",
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 17 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:85:17
+-         lastName: "",
++         lastName: "Stryker was here!",
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 17 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:86:14
+-         email: "",
++         email: "Stryker was here!",
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 17 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:91:19
+-       setSubmitting(true);
++       setSubmitting(false);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 17 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:93:19
+-       setSubmitting(false);
++       setSubmitting(true);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-04 sends values without leading and trailing whitespace
+    US-001 external participant form AC-001-06 sends Slovenian characters unchanged
+  and 17 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:111:18
+-         } else if (e.field === "consentGiven" || e.field === "recaptchaToken") {
++         } else if (false || e.field === "recaptchaToken") {
+Tests ran:
+    RegistrationForm shows a general error for a field error it cannot place
+    RegistrationForm asks for a new captcha when the server rejected the token
+    RegistrationForm keeps the captcha token when only other fields were rejected
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:111:30
+-         } else if (e.field === "consentGiven" || e.field === "recaptchaToken") {
++         } else if (e.field === "" || e.field === "recaptchaToken") {
+Tests ran:
+    RegistrationForm shows a general error for a field error it cannot place
+    RegistrationForm asks for a new captcha when the server rejected the token
+    RegistrationForm keeps the captcha token when only other fields were rejected
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:119:47
+-       if (tokenRejected(serverErrors)) setToken("");
++       if (tokenRejected(serverErrors)) setToken("Stryker was here!");
+Tests ran:
+    RegistrationForm asks for a new captcha when the server rejected the token
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:135:24
+-                 checked={type === t}
++                 checked={false}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:138:29
+-               <label htmlFor={`type-${t}`}>{LABELS[t]}</label>
++               <label htmlFor={``}>{LABELS[t]}</label>
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:149:17
+-             type={field === "email" ? "email" : "text"}
++             type={true ? "email" : "text"}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:149:17
+-             type={field === "email" ? "email" : "text"}
++             type={false ? "email" : "text"}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:149:17
+-             type={field === "email" ? "email" : "text"}
++             type={field !== "email" ? "email" : "text"}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:164:51
+-             aria-describedby={errors.consentGiven ? "error-consentGiven" : undefined}
++             aria-describedby={errors.consentGiven ? "" : undefined}
+Tests ran:
+    US-001 external participant form AC-001-09 identifies a missing consent and does not submit
+    US-002 student form AC-002-08 requires consent from students, not preselected
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:149:27
+-             type={field === "email" ? "email" : "text"}
++             type={field === "" ? "email" : "text"}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:149:37
+-             type={field === "email" ? "email" : "text"}
++             type={field === "email" ? "" : "text"}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:149:47
+-             type={field === "email" ? "email" : "text"}
++             type={field === "email" ? "email" : ""}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 35 more tests!
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:211:10
+-     return errors.some((e) => e.field === "recaptchaToken");
++     return errors.every(e => e.field === "recaptchaToken");
+Tests ran:
+    US-001 external participant form AC-001-07 AC-001-08 shows an option error returned by the server
+    RegistrationForm shows a general error for a field error it cannot place
+    RegistrationForm asks for a new captcha when the server rejected the token
+  and 2 more tests!
+
+
+[Survived] ObjectLiteral
+src/components/RegistrationForm.tsx:202:58
+-   const AUTOCOMPLETE: Partial<Record<TextField, string>> = {
+-     firstName: "given-name",
+-     lastName: "family-name",
+-     email: "email",
+-     organization: "organization",
+-   };
++   const AUTOCOMPLETE: Partial<Record<TextField, string>> = {};
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:203:14
+-     firstName: "given-name",
++     firstName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:204:13
+-     lastName: "family-name",
++     lastName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:205:10
+-     email: "email",
++     email: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:206:17
+-     organization: "organization",
++     organization: "",
+Ran all tests for this mutant.
+
+[NoCoverage] StringLiteral
+src/components/TextInput.tsx:18:10
+-     type = "text",
++     type = "",
+
+[Survived] StringLiteral
+src/validation/rules.ts:5:20
+-   const WHITESPACE = "[\\t\\n\\v\\f\\r\\u001C-\\u001F\\u0085\\uFEFF\\p{Zs}\\u2028\\u2029]";
++   const WHITESPACE = "";
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.tsx:15:53
+-     const [state, setState] = useState<State>({ kind: "loading" });
++     const [state, setState] = useState<State>({ kind: "" });
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ObjectLiteral
+src/App.tsx:15:45
+-     const [state, setState] = useState<State>({ kind: "loading" });
++     const [state, setState] = useState<State>({});
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ObjectLiteral
+src/App.tsx:18:14
+-       setState({ kind: "loading" });
++       setState({});
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:18:22
+-       setState({ kind: "loading" });
++       setState({ kind: "" });
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:22:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:24:19
+-     useEffect(load, [load]);
++     useEffect(load, []);
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:26:42
+-     const title = state.kind === "form" || state.kind === "done" ? state.setup.conferenceName : "";
++     const title = state.kind === "form" || false ? state.setup.conferenceName : "";
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:26:57
+-     const title = state.kind === "form" || state.kind === "done" ? state.setup.conferenceName : "";
++     const title = state.kind === "form" || state.kind === "" ? state.setup.conferenceName : "";
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:26:95
+-     const title = state.kind === "form" || state.kind === "done" ? state.setup.conferenceName : "";
++     const title = state.kind === "form" || state.kind === "done" ? state.setup.conferenceName : "Stryker was here!";
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:30:47
+-         <h1>{title ? `${title}: registration` : "Conference registration"}</h1>
++         <h1>{title ? `${title}: registration` : ""}</h1>
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:31:8
+-         {state.kind === "loading" && <p>Loading…</p>}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:31:8
+-         {state.kind === "loading" && <p>Loading…</p>}
++         {true && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:31:8
+-         {state.kind === "loading" && <p>Loading…</p>}
++         {state.kind !== "loading" && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:31:23
+-         {state.kind === "loading" && <p>Loading…</p>}
++         {state.kind === "" && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:32:8
+-         {state.kind === "load-error" && (
++         {true && (
+Tests ran:
+    US-001 external participant form AC-001-01 submits a complete external registration with selected options
+    US-001 external participant form AC-001-02 identifies each empty required field and does not submit
+    US-001 external participant form AC-001-03 treats whitespace-only values including no-break spaces as empty
+  and 29 more tests!
+
+
+[Survived] StringLiteral
+src/messages.ts:6:13
+-     TOO_LONG: "This value is too long.",
++     TOO_LONG: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:7:23
+-     INVALID_CHARACTERS: "This value contains characters that are not allowed.",
++     INVALID_CHARACTERS: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:8:25
+-     NOT_ALLOWED_FOR_TYPE: "This field does not belong to the selected registration type.",
++     NOT_ALLOWED_FOR_TYPE: "",
+Ran all tests for this mutant.
+
+Ran 9.25 tests per mutant on average.
+-----------------------|------------------|----------|-----------|------------|----------|----------|
+                       | % Mutation score |          |           |            |          |          |
+File                   |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files              |  82.43 |   83.04 |      333 |         0 |         68 |        3 |        0 |
+ api                   |  84.62 |   84.62 |       44 |         0 |          8 |        0 |        0 |
+  client.ts            |  84.62 |   84.62 |       44 |         0 |          8 |        0 |        0 |
+ components            |  80.70 |   81.78 |      184 |         0 |         41 |        3 |        0 |
+  Captcha.tsx          |  72.41 |   77.78 |       21 |         0 |          6 |        2 |        0 |
+  Confirmation.tsx     |  50.00 |   50.00 |        1 |         0 |          1 |        0 |        0 |
+  OptionGroups.tsx     |  92.31 |   92.31 |       24 |         0 |          2 |        0 |        0 |
+  RegistrationForm.tsx |  80.12 |   80.12 |      129 |         0 |         32 |        0 |        0 |
+  TextInput.tsx        |  90.00 |  100.00 |        9 |         0 |          0 |        1 |        0 |
+ validation            |  98.21 |   98.21 |       55 |         0 |          1 |        0 |        0 |
+  rules.ts             |  98.21 |   98.21 |       55 |         0 |          1 |        0 |        0 |
+ App.tsx               |  71.70 |   71.70 |       38 |         0 |         15 |        0 |        0 |
+ messages.ts           |  80.00 |   80.00 |       12 |         0 |          3 |        0 |        0 |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m21:11:13 (390815) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m21:11:13 (390815) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m21:11:13 (390815) INFO MutationTestExecutor[39m Done in 4 minutes and 23 seconds.

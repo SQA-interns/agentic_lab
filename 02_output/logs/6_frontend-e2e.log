@@ -1,0 +1,209 @@
+ Image konferenca-registration-frontend:local Building 
+ Image konferenca-registration-backend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.18kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 676B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 975B done
+#3 DONE 0.0s
+
+#4 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#4 DONE 0.1s
+
+#5 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#5 DONE 0.1s
+
+#6 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jdk-alpine
+#6 DONE 0.1s
+
+#7 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#7 DONE 0.1s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 125B done
+#8 DONE 0.0s
+
+#9 [backend internal] load .dockerignore
+#9 transferring context: 59B done
+#9 DONE 0.0s
+
+#10 [frontend build 1/7] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#10 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#10 DONE 0.1s
+
+#11 [frontend stage-1 1/5] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#11 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#11 DONE 0.1s
+
+#12 [backend build 1/6] FROM docker.io/library/eclipse-temurin:21.0.10_7-jdk-alpine@sha256:bcc7ec7e8fef937ba9f01ee5f810361d722c6b5dbe19ac188ab7b25c1a4dd2c9
+#12 resolve docker.io/library/eclipse-temurin:21.0.10_7-jdk-alpine@sha256:bcc7ec7e8fef937ba9f01ee5f810361d722c6b5dbe19ac188ab7b25c1a4dd2c9 0.1s done
+#12 DONE 0.1s
+
+#13 [backend stage-1 1/3] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#13 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#13 DONE 0.1s
+
+#14 [frontend internal] load build context
+#14 transferring context: 1.19kB done
+#14 DONE 0.0s
+
+#15 [backend internal] load build context
+#15 transferring context: 6.29kB done
+#15 DONE 0.0s
+
+#16 [frontend build 3/7] COPY package.json package-lock.json .npmrc ./
+#16 CACHED
+
+#17 [frontend build 7/7] RUN npm run build
+#17 CACHED
+
+#18 [frontend build 2/7] WORKDIR /src
+#18 CACHED
+
+#19 [frontend build 4/7] RUN npm ci --no-audit --no-fund
+#19 CACHED
+
+#20 [frontend stage-1 2/5] RUN rm /etc/nginx/conf.d/default.conf
+#20 CACHED
+
+#21 [frontend build 5/7] COPY index.html tsconfig.json vite.config.ts ./
+#21 CACHED
+
+#22 [frontend stage-1 3/5] COPY nginx/nginx.conf /etc/nginx/nginx.conf
+#22 CACHED
+
+#23 [frontend stage-1 4/5] COPY nginx/security-headers.conf /etc/nginx/security-headers.conf
+#23 CACHED
+
+#24 [frontend build 6/7] COPY src src
+#24 CACHED
+
+#25 [frontend stage-1 5/5] COPY --from=build /src/dist /usr/share/nginx/html
+#25 CACHED
+
+#26 [backend build 4/6] COPY mvnw pom.xml spotbugs-exclude.xml dependency-check-suppressions.xml ./
+#26 CACHED
+
+#27 [backend stage-1 2/3] RUN addgroup -S -g 10001 app && adduser -S -D -H -u 10001 -G app app     && mkdir -p /data/json-copies && chown app:app /data/json-copies
+#27 CACHED
+
+#28 [backend build 2/6] WORKDIR /src
+#28 CACHED
+
+#29 [backend build 5/6] COPY src/main src/main
+#29 CACHED
+
+#30 [backend build 3/6] COPY .mvn .mvn
+#30 CACHED
+
+#31 [backend build 6/6] RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -ntp -q -DskipTests -Djacoco.skip package     && cp target/registration-backend-1.0.0.jar /app.jar
+#31 CACHED
+
+#32 [backend stage-1 3/3] COPY --from=build /app.jar /app/app.jar
+#32 CACHED
+
+#33 [backend] exporting to image
+#33 exporting layers done
+#33 exporting manifest sha256:1166a33c1a608ecef79661cdf7bb8b879d30b4766bd8e7f1af0e65376a3f3a17 0.0s done
+#33 exporting config sha256:7cfdf4a5f2794e45b3f88c5e90db88f7c2251b288552fb01d2bb44c9c56f1f12 0.0s done
+#33 exporting attestation manifest sha256:eaf377f220caa53279e8ad4e53e48bde4abc3c856e11aedafdd03f930759fc28
+#33 ...
+
+#34 [frontend] exporting to image
+#34 exporting layers done
+#34 exporting manifest sha256:720e4f9307c912536263a8bab9876caee15779f47734f5df3360ed3c48fc500b done
+#34 exporting config sha256:dee7cf173962fb4cce1eb245c98f69ef7f17ddef8bbd626148f2d31e8060c6ca done
+#34 exporting attestation manifest sha256:7ae8c5ade4b4b9be7457e12f9afc6d90bd8263f5dfc50784ddda5119c9eb61b0 0.1s done
+#34 exporting manifest list sha256:7c5f06b5bce336dee0199a8e978f8b7ef80ae532ee4b37a39193aba1142a991a 0.0s done
+#34 naming to docker.io/library/konferenca-registration-frontend:local 0.0s done
+#34 unpacking to docker.io/library/konferenca-registration-frontend:local 0.1s done
+#34 DONE 0.3s
+
+#33 [backend] exporting to image
+#33 exporting attestation manifest sha256:eaf377f220caa53279e8ad4e53e48bde4abc3c856e11aedafdd03f930759fc28 0.1s done
+#33 exporting manifest list sha256:2a5a034642d17ff62fe80af84b6396f671476a0236e0e8d2282193ebab19134e 0.0s done
+#33 naming to docker.io/library/konferenca-registration-backend:local done
+#33 unpacking to docker.io/library/konferenca-registration-backend:local 0.0s done
+#33 DONE 0.3s
+
+#35 [frontend] resolving provenance for metadata file
+#35 DONE 0.0s
+
+#36 [backend] resolving provenance for metadata file
+#36 DONE 0.0s
+ Image konferenca-registration-backend:local Built 
+ Image konferenca-registration-frontend:local Built 
+ Network regtest-e2e_default Creating 
+ Network regtest-e2e_default Created 
+ Volume regtest-e2e_pgdata Creating 
+ Volume regtest-e2e_pgdata Created 
+ Volume regtest-e2e_jsoncopies Creating 
+ Volume regtest-e2e_jsoncopies Created 
+ Container regtest-e2e-postgres-1 Creating 
+ Container regtest-e2e-mailpit-1 Creating 
+ Container regtest-e2e-mailpit-1 Created 
+ Container regtest-e2e-postgres-1 Created 
+ Container regtest-e2e-backend-1 Creating 
+ Container regtest-e2e-backend-1 Created 
+ Container regtest-e2e-frontend-1 Creating 
+ Container regtest-e2e-frontend-1 Created 
+ Container regtest-e2e-postgres-1 Starting 
+ Container regtest-e2e-mailpit-1 Starting 
+ Container regtest-e2e-postgres-1 Started 
+ Container regtest-e2e-mailpit-1 Started 
+ Container regtest-e2e-mailpit-1 Waiting 
+ Container regtest-e2e-postgres-1 Waiting 
+ Container regtest-e2e-mailpit-1 Healthy 
+ Container regtest-e2e-postgres-1 Healthy 
+ Container regtest-e2e-backend-1 Starting 
+ Container regtest-e2e-backend-1 Started 
+ Container regtest-e2e-backend-1 Waiting 
+ Container regtest-e2e-backend-1 Healthy 
+ Container regtest-e2e-frontend-1 Starting 
+ Container regtest-e2e-frontend-1 Started 
+ Container regtest-e2e-backend-1 Waiting 
+ Container regtest-e2e-frontend-1 Waiting 
+ Container regtest-e2e-postgres-1 Waiting 
+ Container regtest-e2e-mailpit-1 Waiting 
+ Container regtest-e2e-mailpit-1 Healthy 
+ Container regtest-e2e-backend-1 Healthy 
+ Container regtest-e2e-postgres-1 Healthy 
+ Container regtest-e2e-frontend-1 Healthy 
+
+Running 6 tests using 1 worker
+
+  ✓  1 [chromium] › tests/e2e/registration.spec.ts:32:1 › AC-001-01 AC-004-01 AC-006-01 AC-007-01 NFR-01 external registration end to end (1.3s)
+  ✓  2 [chromium] › tests/e2e/registration.spec.ts:60:1 › AC-002-01 AC-002-09 student registration end to end (458ms)
+  ✓  3 [chromium] › tests/e2e/registration.spec.ts:81:1 › AC-001-10 AC-001-11 the form shows grouped options and an unchecked consent (228ms)
+  ✓  4 [chromium] › tests/e2e/registration.spec.ts:96:1 › AC-001-02 AC-004-02 an incomplete form shows field errors and no confirmation (227ms)
+  ✓  5 [chromium] › tests/e2e/registration.spec.ts:109:1 › AC-001-15 a second registration with the same email is refused (608ms)
+  ✓  6 [chromium] › tests/e2e/registration.spec.ts:130:1 › AC-008-01 AC-008-02 AC-008-03 AC-008-05 organizer export through the public site (1.3s)
+ Container regtest-e2e-frontend-1 Stopping 
+ Container regtest-e2e-frontend-1 Stopped 
+ Container regtest-e2e-frontend-1 Removing 
+ Container regtest-e2e-frontend-1 Removed 
+ Container regtest-e2e-backend-1 Stopping 
+ Container regtest-e2e-backend-1 Stopped 
+ Container regtest-e2e-backend-1 Removing 
+ Container regtest-e2e-backend-1 Removed 
+ Container regtest-e2e-postgres-1 Stopping 
+ Container regtest-e2e-mailpit-1 Stopping 
+ Container regtest-e2e-postgres-1 Stopped 
+ Container regtest-e2e-postgres-1 Removing 
+ Container regtest-e2e-postgres-1 Removed 
+ Container regtest-e2e-mailpit-1 Stopped 
+ Container regtest-e2e-mailpit-1 Removing 
+ Container regtest-e2e-mailpit-1 Removed 
+ Network regtest-e2e_default Removing 
+ Volume regtest-e2e_jsoncopies Removing 
+ Volume regtest-e2e_pgdata Removing 
+ Volume regtest-e2e_jsoncopies Removed 
+ Volume regtest-e2e_pgdata Removed 
+ Network regtest-e2e_default Removed 
+
+  6 passed (37.1s)
