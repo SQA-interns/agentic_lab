@@ -1,0 +1,59 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.field,
+fieldset {
+  margin: 0 0 1rem;
+}
+
+fieldset {
+  border: 1px solid #c8c8c8;
+  padding: 0.5rem 1rem;
+}
+
+label {
+  display: block;
+}
+
+.legend {
+  display: block;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem;
+  font: inherit;
+}
+
+input[aria-invalid="true"] {
+  border: 2px solid #b00020;
+}
+
+.error,
+.alert {
+  color: #b00020;
+  margin: 0.25rem 0 0;
+}
+
+button {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+}
+
+.confirmation {
+  border: 1px solid #2e7d32;
+  padding: 1rem;
+}
