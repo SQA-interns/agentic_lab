@@ -1,3 +1,93 @@
 # Decisions log
 
 > Written in: every phase · Format: `skills/decisions` ("Decision record") · Agent: appends only
+
+## D-01: Node.js 24.13.0 with npm 11.6.2 not installed
+- Timestamp: 2026-10-06T07:43:39Z
+- Phase: 0
+- Type: blocking
+- Trigger: `project/stack.md` platform `node` 24.13.0; `node` and `npm` do not resolve in a fresh shell (bash and zsh login). nvm holds 22.23.3, 24.11.1, 24.14.1 only. Confirmed twice.
+- Options: 1 (default) human runs `nvm install 24.13.0`; the agent calls it by its nvm path. 2 use the installed 24.14.1 (replaces the stack entry for this run). 3 other.
+- Human response: 2026-10-06T08:47:21Z "Installed now" (not present on re-check); 2026-10-06T09:02:04Z "can you install it?" (approval for the agent to install)
+- Resolution: option 1, installed by the agent with the human's approval: `nvm install 24.13.0` (checksum matched), user-local under `~/.nvm`, not on the global PATH; the agent and `verify.sh` call it by `~/.nvm/versions/node/v24.13.0/bin`. Fresh-shell check 2026-10-06T09:02:30Z: node v24.13.0, npm 11.6.2.
+
+## D-02: `.env` missing
+- Timestamp: 2026-10-06T07:43:39Z
+- Phase: 0
+- Type: blocking
+- Trigger: `secrets.sh check` reports `.env` missing (confirmed twice). Required keys per `project/secrets.env.example`: POSTGRES_PASSWORD, ORGANIZER_USERNAME, ORGANIZER_PASSWORD, ORGANIZER_EMAILS, NVD_API_KEY. Preflight checks 4 and 6 (Dependency-Check needs NVD_API_KEY) wait on it.
+- Options: 1 (default) human copies `01_input/01_project/secrets.env.example` to `.env` and fills the five keys; RECAPTCHA_* and SMTP_* stay empty. 2 other.
+- Human response: 2026-10-06T08:45:02Z "Done, .env is filled"
+- Resolution: option 1; `secrets.sh check` 2026-10-06T08:45:02Z: all five required keys present, RECAPTCHA_* empty (allowed), SMTP_* present.
+
+## D-03: Host JDK is Ubuntu OpenJDK 21.0.12.1, not Temurin 21.0.10+7
+- Timestamp: 2026-10-06T07:43:39Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: `java -version` reports OpenJDK 21.0.12.1+1-Ubuntu; `project/stack.md` platform `java` lists Eclipse Temurin 21.0.10+7. Same major version; it runs.
+- Options: 1 (default) build and test with the host JDK 21; the runtime image stays on the pinned `eclipse-temurin:21.0.10_7-jre-alpine`; the pin stays authoritative. 2 human installs Temurin 21.0.10+7.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-04: Docker Engine reports 29.3.1, not 29.8.0
+- Timestamp: 2026-10-06T07:43:39Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: `docker version` reports server 29.3.1 (client 29.5.0); `project/stack.md` platform `docker` lists 29.8.0. It runs.
+- Options: 1 (default) continue with the host engine; the pin stays authoritative. 2 human upgrades.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-05: Docker Compose reports v5.1.1, not 5.5.1
+- Timestamp: 2026-10-06T07:43:39Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: `docker compose version` reports v5.1.1; `project/stack.md` platform `compose` lists 5.5.1. It runs.
+- Options: 1 (default) continue with the host Compose; the pin stays authoritative. 2 human upgrades.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-06: Image `aldanial/cloc:2.10` reports cloc 1.98
+- Timestamp: 2026-10-06T11:05:10Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: `docker run --rm aldanial/cloc:2.10 --version` prints `1.98` (confirmed twice); `project/stack.md` tooling `aldanial/cloc` lists "2.10". It runs.
+- Options: 1 (default) use the pinned tag `aldanial/cloc:2.10`; the pin stays authoritative. 2 human changes the pin.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-07: npm audit Critical in tinypool via vitest 3.2.7
+- Timestamp: 2026-10-06T11:38:04Z
+- Phase: 0
+- Type: blocking
+- Trigger: preflight check 6, `verify.sh 00 fe-depscan` (`logs/00_fe-depscan.log`): critical=2 (tinypool <=2.1.1, GHSA-5gmw-xhrv-c9v3 and GHSA-85c8-ppgw-ccpr, prototype-pollution gadget to RCE; reported again under `vitest` as the direct dependency), plus moderate GHSA-82fw-gwwq-j7x9 in @vitest/mocker 3.2.7. Pulled by `vitest` 3.2.7 (tinypool ^1.1.1); test tooling only, not in the production image. Every fix changes the `vitest` and `@vitest/coverage-v8` pins of `project/stack.md`. Checked in a scratch copy: with 4.1.11 or 5.0.3 critical=0, high=0 (both accept vite 6.4.3 and Node 24; `@stryker-mutator/vitest-runner` 10.0.0 accepts vitest >=2.0.0).
+- Options: 1 (default) `vitest` and `@vitest/coverage-v8` 3.2.7 → 4.1.11 (patched 4.x line, smallest change that fixes it). 2 → 5.0.3 (latest, what npm audit proposes). 3 keep 3.2.7 and accept the finding as test-only (downgrade of a Critical).
+- Human response: 2026-10-06T11:40:16Z "4.1.11 (Recommended)"
+- Resolution: option 1. `vitest` 4.1.11 and `@vitest/coverage-v8` 4.1.11 replace the 3.2.7 stack entries for this run; tinypool no longer in the tree. Re-run `verify.sh 00 all`: fe-depscan critical=0 high=0 medium=2 (D-10).
+
+## D-08: Dependency-Check High CVE-2025-7962 on angus-activation 2.0.3 is a false positive
+- Timestamp: 2026-10-06T11:38:04Z
+- Phase: 0
+- Type: blocking
+- Trigger: preflight check 6, `verify.sh 00 be-depscan` (`logs/00_be-depscan.log`): high=1, CVE-2025-7962 (CVSS 7.5, SMTP injection in Jakarta Mail < 2.0.2 / angus_mail < 2.0.4). Evidence: the match is the CPE `eclipse:angus_mail:2.0.3` inferred from `org.eclipse.angus:angus-activation:2.0.3` (the activation framework, not the mail implementation); the mail implementation on the classpath is `org.eclipse.angus:angus-mail:2.0.5` (`dependency:tree`), which is >= the fixed 2.0.4. Lowering a High needs human approval (`standards/security.md`).
+- Options: 1 (default) classify as false positive (Low) and suppress exactly this CVE for `pkg:maven/org.eclipse.angus/angus-activation@.*` in a Dependency-Check suppression file with this evidence. 2 keep it High and pin angus-activation explicitly (no fixed version exists for a CVE it does not have). 3 other.
+- Human response: 2026-10-06T11:40:16Z "Yes, suppress (Recommended)"
+- Resolution: option 1. Suppressed in `backend/dependency-check-suppressions.xml`; Dependency-Check now fails the build at CVSS >= 7. Re-run `verify.sh 00 all`: be-depscan critical=0 high=0 medium=0.
+
+## D-09: Dependency-Check Medium CVE-2025-15104 on hibernate-validator 9.1.3 is a false positive
+- Timestamp: 2026-10-06T11:38:04Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: `logs/00_be-depscan.log`: medium=1, CVE-2025-15104 (CVSS 5.3) concerns the Nu Html Checker (CPE `validator:validator`), matched to `org.hibernate.validator:hibernate-validator:9.1.3.Final` by name only.
+- Options: 1 (default) classify as false positive (Low) and suppress exactly this CVE for hibernate-validator, with this evidence. 2 keep it as Medium.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-10: npm audit Medium in qs 6.15.1 via @stryker-mutator/core
+- Timestamp: 2026-10-06T11:38:04Z
+- Phase: 0
+- Type: non-blocking
+- Trigger: `logs/00_fe-depscan.log`: moderate GHSA-q8mj-m7cp-5q26, GHSA-x5fp-wj9c-mxmx, GHSA-4mjr-xmp4-gh2g in `qs` 6.15.1, reached via `@stryker-mutator/core` 10.0.0 → `typed-rest-client` 2.3.1 (dashboard reporter, not enabled in `stryker.config.json`). `npm audit fix` does not remove it; mutation tooling only, never in the production image.
+- Options: 1 (default) keep, record as Medium, re-check in phase 6. 2 add an npm `overrides` entry for qs (unlisted pin).
+- Human response: none
+- Resolution: pending review (option 1)

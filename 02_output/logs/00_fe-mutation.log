@@ -1,0 +1,22 @@
+[33m13:43:44 (4025645) WARN ProjectReader[39m Glob pattern "!src/**/*.test.ts" did not exclude any files.
+[32m13:43:44 (4025645) INFO ProjectReader[39m Found 1 of 27 file(s) to be mutated.
+[32m13:43:45 (4025645) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
+[32m13:43:45 (4025645) INFO ConcurrencyTokenProvider[39m Creating 7 test runner process(es).
+[32m13:43:46 (4025645) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m13:43:47 (4025645) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m13:43:48 (4025645) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 1 second (net 116.07604700000002 ms, overhead 1154.923953 ms).
+
+All tests/App.test.tsx
+  ✓ App renders the page heading (killed 1)
+
+Ran 1.00 tests per mutant on average.
+----------|------------------|----------|-----------|------------|----------|----------|
+          | % Mutation score |          |           |            |          |          |
+File      |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------|--------|---------|----------|-----------|------------|----------|----------|
+All files | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+ App.tsx  | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+----------|--------|---------|----------|-----------|------------|----------|----------|
+[32m13:43:49 (4025645) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m13:43:49 (4025645) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/index.html
+[32m13:43:49 (4025645) INFO MutationTestExecutor[39m Done in 5 seconds.

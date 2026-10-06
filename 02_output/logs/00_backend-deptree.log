@@ -1,0 +1,22 @@
+si.konferenca:registration-backend:jar:0.1.0
++- org.springframework.boot:spring-boot-starter-webmvc:jar:4.1.1:compile
+|  +- org.springframework.boot:spring-boot-starter:jar:4.1.1:compile
+|  |  \- org.springframework.boot:spring-boot-starter-logging:jar:4.1.1:compile
+|  |     \- org.apache.logging.log4j:log4j-to-slf4j:jar:2.26.1:compile
+|  \- org.springframework.boot:spring-boot-starter-tomcat:jar:4.1.1:compile
+|     \- org.springframework.boot:spring-boot-starter-tomcat-runtime:jar:4.1.1:compile
+|        \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:11.0.26:compile
++- org.springframework.boot:spring-boot-starter-validation:jar:4.1.1:compile
+|  \- org.springframework.boot:spring-boot-validation:jar:4.1.1:compile
+|     \- org.apache.tomcat.embed:tomcat-embed-el:jar:11.0.26:compile
++- org.flywaydb:flyway-core:jar:12.4.0:compile
++- org.flywaydb:flyway-database-postgresql:jar:12.4.0:compile
++- org.postgresql:postgresql:jar:42.7.13:runtime
++- org.apache.tomcat.embed:tomcat-embed-core:jar:11.0.26:compile
++- org.apache.logging.log4j:log4j-api:jar:2.26.1:compile
++- org.apache.commons:commons-lang3:jar:3.20.0:compile
++- org.testcontainers:testcontainers-junit-jupiter:jar:2.0.5:test
+|  \- org.testcontainers:testcontainers:jar:2.0.5:test
+\- org.testcontainers:testcontainers-postgresql:jar:2.0.5:test
+   \- org.testcontainers:testcontainers-jdbc:jar:2.0.5:test
+      \- org.testcontainers:testcontainers-database-commons:jar:2.0.5:test

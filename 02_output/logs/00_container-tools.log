@@ -1,0 +1,127 @@
+Unable to find image 'semgrep/semgrep:1.177.0' locally
+1.177.0: Pulling from semgrep/semgrep
+c99587e2f1a4: Pulling fs layer
+e3cf999f99d9: Pulling fs layer
+bd9ddc54bea9: Pulling fs layer
+084b49e0f217: Pulling fs layer
+017f2f3badb9: Pulling fs layer
+49d304e88a85: Pulling fs layer
+4d8e903c73eb: Pulling fs layer
+ca088dc29a89: Pulling fs layer
+101a07067531: Pulling fs layer
+2161ff2ba716: Pulling fs layer
+b343805976d3: Pulling fs layer
+86de964fd639: Pulling fs layer
+e6f31ffc071e: Pulling fs layer
+bd9ddc54bea9: Already exists
+9a88ee3fd8a9: Download complete
+e3cf999f99d9: Download complete
+101a07067531: Download complete
+b343805976d3: Download complete
+ca088dc29a89: Download complete
+2161ff2ba716: Download complete
+86de964fd639: Download complete
+4d8e903c73eb: Download complete
+e6f31ffc071e: Download complete
+e6f31ffc071e: Pull complete
+084b49e0f217: Download complete
+c99587e2f1a4: Download complete
+c99587e2f1a4: Pull complete
+bd9ddc54bea9: Pull complete
+084b49e0f217: Pull complete
+017f2f3badb9: Download complete
+017f2f3badb9: Pull complete
+49d304e88a85: Download complete
+49d304e88a85: Pull complete
+4d8e903c73eb: Pull complete
+101a07067531: Pull complete
+ca088dc29a89: Pull complete
+2161ff2ba716: Pull complete
+b343805976d3: Pull complete
+86de964fd639: Pull complete
+e3cf999f99d9: Pull complete
+Digest: sha256:acaac22ffc7b7cc5926de0751b223bce0b2491c33d18422fa72f632c78d81198
+Status: Downloaded newer image for semgrep/semgrep:1.177.0
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
+semgrep/semgrep:1.177.0 -> 1.177.0
+Unable to find image 'zricethezav/gitleaks:v8.30.1' locally
+v8.30.1: Pulling from zricethezav/gitleaks
+a43ab0c74cc4: Pulling fs layer
+d92b655ae8e2: Pulling fs layer
+61fdfd7c0175: Pulling fs layer
+d49a2dee86fb: Pulling fs layer
+a43ab0c74cc4: Download complete
+d92b655ae8e2: Download complete
+cc89e3f50cd2: Download complete
+d49a2dee86fb: Download complete
+61fdfd7c0175: Download complete
+d49a2dee86fb: Pull complete
+d92b655ae8e2: Pull complete
+a43ab0c74cc4: Pull complete
+61fdfd7c0175: Pull complete
+Digest: sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f
+Status: Downloaded newer image for zricethezav/gitleaks:v8.30.1
+zricethezav/gitleaks:v8.30.1 -> v8.30.1
+Unable to find image 'aldanial/cloc:2.10' locally
+2.10: Pulling from aldanial/cloc
+f3f713d3e926: Pulling fs layer
+0ac0076110ec: Pulling fs layer
+ed766c8416d6: Pulling fs layer
+46662a772259: Pulling fs layer
+f3f713d3e926: Download complete
+46662a772259: Download complete
+ed766c8416d6: Download complete
+0ac0076110ec: Download complete
+0ac0076110ec: Pull complete
+ed766c8416d6: Pull complete
+f3f713d3e926: Pull complete
+46662a772259: Pull complete
+Digest: sha256:54d1304dc3b80eec8efb2d9bb96d41e508987405f2eff8c1818ddf461e943597
+Status: Downloaded newer image for aldanial/cloc:2.10
+aldanial/cloc:2.10 -> 1.98
+Unable to find image 'redocly/cli:2.57.0' locally
+2.57.0: Pulling from redocly/cli
+7ce7dcbafb7f: Pulling fs layer
+6f741ccad950: Pulling fs layer
+373fbe57114e: Pulling fs layer
+02f40d53b06f: Pulling fs layer
+3c504d5a797b: Pulling fs layer
+71ecce601f5f: Pulling fs layer
+7863135ab0c6: Pulling fs layer
+7ce7dcbafb7f: Download complete
+6f741ccad950: Download complete
+7863135ab0c6: Download complete
+02f40d53b06f: Download complete
+71ecce601f5f: Download complete
+44136fa355b3: Already exists
+73c6217404b1: Download complete
+373fbe57114e: Download complete
+3c504d5a797b: Download complete
+3c504d5a797b: Pull complete
+02f40d53b06f: Pull complete
+7ce7dcbafb7f: Pull complete
+71ecce601f5f: Pull complete
+6f741ccad950: Pull complete
+7863135ab0c6: Pull complete
+373fbe57114e: Pull complete
+Digest: sha256:e320090ecd380878ff2aa671a928d5ac28fcbb7bb6230250d772790811125aea
+Status: Downloaded newer image for redocly/cli:2.57.0
+redocly/cli:2.57.0 -> 2.57.0
+Unable to find image 'mcr.microsoft.com/playwright:v1.63.0-noble' locally
+v1.63.0-noble: Pulling from playwright
+1b189482e65c: Pulling fs layer
+74c72610aa2d: Pulling fs layer
+d8cf7dc1ff62: Pulling fs layer
+e2bfec3c8017: Pulling fs layer
+a2ac83a9a562: Pulling fs layer
+0926a8eb0e60: Pulling fs layer
+b4dfe9b5d621: Pulling fs layer
+74c72610aa2d: Download complete
+0926a8eb0e60: Download complete
+0926a8eb0e60: Pull complete
+e2bfec3c8017: Download complete
+e2bfec3c8017: Pull complete
+74c72610aa2d: Pull complete
+1b189482e65c: Download complete
+a2ac83a9a562: Download complete

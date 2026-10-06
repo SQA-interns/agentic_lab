@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+
+ ✓ src/App.test.tsx (1 test) 106ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  13:29:15
+   Duration  1.23s (transform 54ms, setup 179ms, collect 21ms, tests 106ms, environment 528ms, prepare 99ms)
+
