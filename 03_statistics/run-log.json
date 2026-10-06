@@ -5,9 +5,9 @@
   "templateVersion": "tanej-2.0",
   "transcript": "C:/Users/tanej/.claude/projects/c--Users-tanej-Documents-LAB-agentic-lab/1a159aa4-f001-4ecb-93e9-074b9c324307.jsonl",
   "startCommit": "20c720214a74a65b082724063222be2ee748caa3",
-  "finalCommit": null,
+  "finalCommit": "250dc4143d0a0c740efbbdf32c0e9206f3c0f288",
   "start": "2026-10-05T20:02:30Z",
-  "end": null,
+  "end": "2026-10-06T09:03:48Z",
   "phases": [
     {
       "phase": 0,
@@ -55,7 +55,7 @@
       "phase": 7,
       "name": "release",
       "start": "2026-10-06T08:42:35Z",
-      "end": null
+      "end": "2026-10-06T09:03:48Z"
     }
   ],
   "firstTestRun": {
@@ -73,39 +73,168 @@
     "low": 4
   },
   "fixLoops": [
-    { "loop": 1, "findings": ["F-01"], "change": "npm override pins transitive tinypool to 2.1.2 (D-18)", "start": "2026-10-06T08:29:08Z", "end": "2026-10-06T08:36:11Z" }
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "change": "npm override pins transitive tinypool to 2.1.2 (D-18)",
+      "start": "2026-10-06T08:29:08Z",
+      "end": "2026-10-06T08:36:11Z"
+    }
   ],
   "decisions": [
-    { "id": "D-01", "type": "non-blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:26:21Z" },
-    { "id": "D-02", "type": "non-blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:26:21Z" },
-    { "id": "D-03", "type": "blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z" },
-    { "id": "D-04", "type": "non-blocking", "start": "2026-10-05T20:35:19Z", "end": "2026-10-05T20:35:19Z" },
-    { "id": "D-05", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-06", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-07", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-08", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-09", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-10", "type": "non-blocking", "start": "2026-10-05T20:41:40Z", "end": "2026-10-05T20:41:40Z" },
-    { "id": "D-11", "type": "blocking", "start": "2026-10-05T20:50:26Z", "end": "2026-10-05T20:52:36Z" },
-    { "id": "D-12", "type": "non-blocking", "start": "2026-10-05T20:55:56Z", "end": "2026-10-05T20:55:56Z" },
-    { "id": "D-13", "type": "non-blocking", "start": "2026-10-06T07:17:11Z", "end": "2026-10-06T07:17:11Z" },
-    { "id": "D-14", "type": "blocking", "start": "2026-10-06T07:20:04Z", "end": "2026-10-06T07:37:24Z" },
-    { "id": "D-15", "type": "non-blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:29:20Z" },
-    { "id": "D-16", "type": "non-blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:29:20Z" },
-    { "id": "D-17", "type": "blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:37:24Z" },
-    { "id": "D-18", "type": "non-blocking", "start": "2026-10-06T08:36:11Z", "end": "2026-10-06T08:36:11Z" },
-    { "id": "D-19", "type": "non-blocking", "start": "2026-10-06T08:36:11Z", "end": "2026-10-06T08:36:11Z" }
+    {
+      "id": "D-01",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:26:21Z",
+      "end": "2026-10-05T20:26:21Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:26:21Z",
+      "end": "2026-10-05T20:26:21Z"
+    },
+    {
+      "id": "D-03",
+      "type": "blocking",
+      "start": "2026-10-05T20:26:21Z",
+      "end": "2026-10-05T20:34:17Z"
+    },
+    {
+      "id": "D-04",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:35:19Z",
+      "end": "2026-10-05T20:35:19Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:41:40Z",
+      "end": "2026-10-05T20:41:40Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:41:40Z",
+      "end": "2026-10-05T20:41:40Z"
+    },
+    {
+      "id": "D-07",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:41:40Z",
+      "end": "2026-10-05T20:41:40Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:41:40Z",
+      "end": "2026-10-05T20:41:40Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:41:40Z",
+      "end": "2026-10-05T20:41:40Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:41:40Z",
+      "end": "2026-10-05T20:41:40Z"
+    },
+    {
+      "id": "D-11",
+      "type": "blocking",
+      "start": "2026-10-05T20:50:26Z",
+      "end": "2026-10-05T20:52:36Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-10-05T20:55:56Z",
+      "end": "2026-10-05T20:55:56Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-06T07:17:11Z",
+      "end": "2026-10-06T07:17:11Z"
+    },
+    {
+      "id": "D-14",
+      "type": "blocking",
+      "start": "2026-10-06T07:20:04Z",
+      "end": "2026-10-06T07:37:24Z"
+    },
+    {
+      "id": "D-15",
+      "type": "non-blocking",
+      "start": "2026-10-06T07:29:20Z",
+      "end": "2026-10-06T07:29:20Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "start": "2026-10-06T07:29:20Z",
+      "end": "2026-10-06T07:29:20Z"
+    },
+    {
+      "id": "D-17",
+      "type": "blocking",
+      "start": "2026-10-06T07:29:20Z",
+      "end": "2026-10-06T07:37:24Z"
+    },
+    {
+      "id": "D-18",
+      "type": "non-blocking",
+      "start": "2026-10-06T08:36:11Z",
+      "end": "2026-10-06T08:36:11Z"
+    },
+    {
+      "id": "D-19",
+      "type": "non-blocking",
+      "start": "2026-10-06T08:36:11Z",
+      "end": "2026-10-06T08:36:11Z"
+    }
   ],
   "humanInterventions": [
-    { "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z", "reason": "D-03: downgrade of High CVE-2025-7962 (angus-activation) as a false positive" },
-    { "start": "2026-10-05T20:50:26Z", "end": "2026-10-05T20:52:36Z", "reason": "D-11: downgrade of Semgrep High on HTTP Basic authentication for the export" },
-    { "start": "2026-10-05T21:30:02Z", "end": "2026-10-06T07:03:00Z", "reason": "Human stopped the run at the phase 4 US-003 test run (tool use rejected); resumed with no changes" },
-    { "start": "2026-10-06T07:29:58Z", "end": "2026-10-06T07:37:24Z", "reason": "D-14: frontend test cleanup harness fix; D-17: ORGANIZER_PASSWORD in .env shorter than 16 characters" }
+    {
+      "start": "2026-10-05T20:26:21Z",
+      "end": "2026-10-05T20:34:17Z",
+      "reason": "D-03: downgrade of High CVE-2025-7962 (angus-activation) as a false positive"
+    },
+    {
+      "start": "2026-10-05T20:50:26Z",
+      "end": "2026-10-05T20:52:36Z",
+      "reason": "D-11: downgrade of Semgrep High on HTTP Basic authentication for the export"
+    },
+    {
+      "start": "2026-10-05T21:30:02Z",
+      "end": "2026-10-06T07:03:00Z",
+      "reason": "Human stopped the run at the phase 4 US-003 test run (tool use rejected); resumed with no changes"
+    },
+    {
+      "start": "2026-10-06T07:29:58Z",
+      "end": "2026-10-06T07:37:24Z",
+      "reason": "D-14: frontend test cleanup harness fix; D-17: ORGANIZER_PASSWORD in .env shorter than 16 characters"
+    }
   ],
   "codeMetrics": {
     "components": [
-      { "name": "backend", "productionLoc": 2307, "testLoc": 3748, "duplicatedLines": 0 },
-      { "name": "frontend", "productionLoc": 545, "testLoc": 1727, "duplicatedLines": 0 }
+      {
+        "name": "backend",
+        "productionLoc": 2307,
+        "testLoc": 3748,
+        "duplicatedLines": 0
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 545,
+        "testLoc": 1727,
+        "duplicatedLines": 0
+      }
     ],
     "complexity": null,
     "complexityReason": "no complexity tool is listed in project/stack.md tooling; cloc, PMD CPD and jscpd report size and duplication only",
@@ -113,16 +242,30 @@
   },
   "commits": [],
   "usage": {
-    "inputTokens": null,
-    "outputTokens": null,
-    "cacheReadTokens": null,
-    "cacheWriteTokens": null,
-    "modelCalls": null,
+    "inputTokens": 562,
+    "outputTokens": 458505,
+    "cacheReadTokens": 102209089,
+    "cacheWriteTokens": 1031022,
+    "modelCalls": 268,
     "toolCalls": {
-      "total": null,
-      "byTool": {}
+      "total": 488,
+      "byTool": {
+        "Bash": 185,
+        "Write": 175,
+        "Edit": 111,
+        "Read": 13,
+        "Grep": 2,
+        "ToolSearch": 1,
+        "Monitor": 1
+      }
     },
-    "costUsd": null,
-    "priceTableDate": null
+    "costUsd": 37.86,
+    "priceTableDate": "2026-09-25",
+    "estimates": {
+      "modelTimeMinutesLowerBound": 33,
+      "modelTimeMinutesUpperBound": 67,
+      "permissionDenials": 0,
+      "note": "estimated from the transcript; the usage panel in 03_statistics/usage.md is authoritative; approved commands are not recorded in a transcript"
+    }
   }
 }
