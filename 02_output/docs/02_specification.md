@@ -125,10 +125,10 @@ Production startup guard (`APP_ENVIRONMENT=production`): test mode off, both reC
 
 ## 12 Deployment and operations (NFR-02, NFR-04, ES-09)
 
-- `02_output/docker-compose.yml` (project name `registration`): `postgres` (volume `pgdata`), `mailpit` (UI/API `127.0.0.1:8025`), `backend` (`127.0.0.1:8080`, volume `jsoncopies` at `/data/registrations`, config file mounted read-only), `frontend` (`127.0.0.1:8081` → nginx 8080, proxies `/api/` to `backend:8080` as the production proxy does). Local values: `APP_ENVIRONMENT=local`, `RECAPTCHA_TEST_MODE=true`, `ORGANIZER_HTTPS_ONLY=false`, `SMTP_TLS=false`. Secrets come from `.env`.
+- `02_output/docker-compose.yml` (project name `registration-tanej04`, D-16): `postgres` (volume `pgdata`), `mailpit` (UI/API `127.0.0.1:8025`), `backend` (`127.0.0.1:8080`, volume `jsoncopies` at `/data/registrations`, config file mounted read-only), `frontend` (`127.0.0.1:8081` → nginx 8080, proxies `/api/` to `backend:8080` as the production proxy does). Local values: `APP_ENVIRONMENT=local`, `RECAPTCHA_TEST_MODE=true`, `ORGANIZER_HTTPS_ONLY=false`, `SMTP_TLS=false`. Secrets come from `.env`.
 - Named volumes keep the database and JSON copies across `docker compose down` / `up` (NFR-02).
 - Actuator exposes only `health` with liveness and readiness groups at `/actuator/health/{liveness,readiness}`. Readiness includes the database. The compose health checks use them, and the frontend depends on a healthy backend (NFR-04). `/actuator` is not under `/api`, so the production proxy does not publish it.
-- Images: backend multi-stage (build with the Maven wrapper, run on `eclipse-temurin` JRE alpine); frontend multi-stage (`node` build, `nginx` runtime). Both use the `project/stack.md` pins.
+- Images: backend from the jar built on the host with the Maven wrapper, run on `eclipse-temurin` JRE alpine (D-15); frontend multi-stage (`node` build, `nginx` runtime). Both use the `project/stack.md` pins.
 - End-to-end tests run in the Playwright container on the compose network against `http://frontend:8080` and Mailpit `http://mailpit:8025`.
 
 ## 13 Frontend
