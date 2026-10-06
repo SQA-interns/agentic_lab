@@ -5,9 +5,9 @@
   "templateVersion": "tanej-1.0",
   "transcript": "~/.claude/projects/-home-tjan-kazar-storage-Work-lab-agentic-lab-agentic-lab/db7f7cc5-bfe9-42be-a6d6-0144a621c535.jsonl",
   "startCommit": "b6c9dc6eaafd0d43da18025f278d267c9fcb4a1c",
-  "finalCommit": null,
+  "finalCommit": "a443b6a4b6a71a9ce1e4de4ce3f573e80dc6fbea",
   "start": "2026-10-06T17:52:46Z",
-  "end": null,
+  "end": "2026-10-06T19:22:53Z",
   "phases": [
     {
       "phase": 0,
@@ -55,7 +55,7 @@
       "phase": 7,
       "name": "release",
       "start": "2026-10-06T19:17:23Z",
-      "end": null
+      "end": "2026-10-06T19:22:53Z"
     }
   ],
   "firstTestRun": {
@@ -330,6 +330,11 @@
       "phase": 6,
       "ref": "pit-scope",
       "divergence": "PIT limited to unit-level tests and excludes Spring wiring classes (acceptance/integration tests start full apps)."
+    },
+    {
+      "phase": 7,
+      "ref": "finalCommit",
+      "divergence": "finalCommit is HEAD before the commit that adds run-summary.md and the closed run-log.json (a commit cannot contain its own hash)."
     }
   ]
 }
