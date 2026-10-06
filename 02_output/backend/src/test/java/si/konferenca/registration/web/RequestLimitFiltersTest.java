@@ -94,6 +94,7 @@ class RequestLimitFiltersTest {
     assertThat(call(filter, request("GET", "/api/registrations", "a"), passed)).isEqualTo(200);
     assertThat(call(filter, request("GET", "/actuator/health", "a"), passed)).isEqualTo(200);
     assertThat(call(filter, request("GET", "/actuator/health", "a"), passed)).isEqualTo(200);
+    assertThat(passed).as("requests passed on to the application").hasValue(6);
   }
 
   @Test
@@ -107,8 +108,61 @@ class RequestLimitFiltersTest {
     filter.doFilter(request, response, (req, res) -> passed.incrementAndGet());
 
     assertThat(response.getStatus()).isEqualTo(413);
+    assertThat(response.getContentType()).isEqualTo("application/problem+json");
     assertThat(response.getContentAsString()).contains("\"status\":413");
     assertThat(passed).hasValue(0);
+  }
+
+  @Test
+  void singleByteReadsReturnTheBytesAndStopAfterTheLimit() throws Exception {
+    RequestSizeLimitFilter filter = new RequestSizeLimitFilter(3);
+    MockHttpServletRequest request =
+        new MockHttpServletRequest("POST", "/api/registrations") {
+          @Override
+          public long getContentLengthLong() {
+            return -1;
+          }
+        };
+    request.setContent(new byte[] {0, 8, 9, 10});
+    java.util.List<Integer> bytes = new java.util.ArrayList<>();
+    AtomicReference<Exception> failure = new AtomicReference<>();
+
+    filter.doFilter(
+        request,
+        new MockHttpServletResponse(),
+        (req, res) -> {
+          var in = req.getInputStream();
+          try {
+            for (int i = 0; i < 4; i++) {
+              bytes.add(in.read());
+            }
+          } catch (IOException e) {
+            failure.set(e);
+          }
+        });
+
+    assertThat(bytes).containsExactly(0, 8, 9);
+    assertThat(failure.get()).isNotNull();
+  }
+
+  @Test
+  void endOfStreamIsNotCounted() throws Exception {
+    RequestSizeLimitFilter filter = new RequestSizeLimitFilter(2);
+    MockHttpServletRequest request = request("POST", "/api/registrations", "a");
+    request.setContent(new byte[] {1, 2});
+    java.util.List<Integer> bytes = new java.util.ArrayList<>();
+
+    filter.doFilter(
+        request,
+        new MockHttpServletResponse(),
+        (req, res) -> {
+          var in = req.getInputStream();
+          for (int i = 0; i < 4; i++) {
+            bytes.add(in.read());
+          }
+        });
+
+    assertThat(bytes).containsExactly(1, 2, -1, -1);
   }
 
   @Test

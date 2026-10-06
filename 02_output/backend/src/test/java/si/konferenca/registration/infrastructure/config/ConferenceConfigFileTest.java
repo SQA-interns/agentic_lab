@@ -144,18 +144,37 @@ class ConferenceConfigFileTest {
         .hasMessageContaining("consents[0].text");
   }
 
-  @Test
-  void tooManyEntriesAreRejected() throws IOException {
+  private static String consents(int count) {
     StringBuilder consents = new StringBuilder();
-    for (int i = 0; i < 21; i++) {
+    for (int i = 0; i < count; i++) {
       consents
           .append(i == 0 ? "" : ",")
           .append("{\"id\":\"c")
           .append(i)
           .append("\",\"text\":\"t\",\"mandatory\":false}");
     }
-    Path file = write(config("", consents.toString()));
+    return consents.toString();
+  }
+
+  @Test
+  void tooManyEntriesAreRejected() throws IOException {
+    Path file = write(config("", consents(21)));
     assertThatThrownBy(() -> ConferenceConfigFile.load(file)).hasMessageContaining("at most 20");
+  }
+
+  @Test
+  void theMaximumNumberOfEntriesIsAllowed() throws IOException {
+    assertThat(ConferenceConfigFile.load(write(config("", consents(20)))).consents()).hasSize(20);
+  }
+
+  @Test
+  void consentMustBeAnObjectWithKnownProperties() throws IOException {
+    Path notObject = write(config("", "\"data\""));
+    assertThatThrownBy(() -> ConferenceConfigFile.load(notObject))
+        .hasMessageContaining("consents[0] must be an object");
+    Path extra = write(config("", "{\"id\":\"d\",\"text\":\"t\",\"mandatory\":true,\"x\":1}"));
+    assertThatThrownBy(() -> ConferenceConfigFile.load(extra))
+        .hasMessageContaining("unknown property x");
   }
 
   @Test

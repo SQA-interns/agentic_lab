@@ -104,6 +104,28 @@ class RegistrationEmailsTest {
   }
 
   @Test
+  void organizerEmailHasEveryFieldLineAndTheOptions() {
+    Registration external =
+        new Registration(
+            ID,
+            RegistrationType.EXTERNAL,
+            new Participant("Ana", "Novak", "ana@example.si", "IJS", null, null, null),
+            List.of(new Registration.SelectedOption("t", "Ogled", OptionCategory.OTHER)),
+            List.of(),
+            AT);
+
+    String text = emails.organizerNotification(external, new byte[0]).text();
+
+    assertThat(text)
+        .contains("Registration ID: " + ID + "\n")
+        .contains("Registration type: External participant\n")
+        .contains("First name: Ana\n")
+        .contains("Last name: Novak\n")
+        .contains("Email: ana@example.si\n")
+        .contains("Selected options:\nOther activities: Ogled\n");
+  }
+
+  @Test
   void attachmentContentCannotBeChangedFromOutside() {
     byte[] copy = {1, 2};
     RegistrationEmails.Attachment attachment = new RegistrationEmails.Attachment("f", "t", copy);

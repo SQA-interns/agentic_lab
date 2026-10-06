@@ -158,6 +158,35 @@ class StartupGuardTest {
     assertThatThrownBy(() -> StartupGuard.check(p)).hasMessageContaining("ORGANIZER_EMAILS");
   }
 
+  private static AppProperties withLimits(AppProperties.Limits limits) {
+    return new AppProperties(
+        "test",
+        "C",
+        "/c.json",
+        "/d",
+        "a@b.si",
+        false,
+        "",
+        new AppProperties.Recaptcha(true, "", "", ""),
+        new AppProperties.Organizer("o", PASSWORD, "a@org.si", false),
+        limits);
+  }
+
+  @Test
+  void smallestAllowedLimitsStartAndOneLessDoesNot() {
+    assertThatCode(() -> StartupGuard.check(withLimits(new AppProperties.Limits(1, 1, 1, 1024))))
+        .doesNotThrowAnyException();
+    for (AppProperties.Limits limits :
+        java.util.List.of(
+            new AppProperties.Limits(0, 1, 1, 1024),
+            new AppProperties.Limits(1, 0, 1, 1024),
+            new AppProperties.Limits(1, 1, 0, 1024),
+            new AppProperties.Limits(1, 1, 1, 1023))) {
+      assertThatThrownBy(() -> StartupGuard.check(withLimits(limits)))
+          .hasMessageContaining("rate limits");
+    }
+  }
+
   @Test
   void listsAreSplitOnCommas() {
     org.assertj.core.api.Assertions.assertThat(AppProperties.split(" a , ,b "))

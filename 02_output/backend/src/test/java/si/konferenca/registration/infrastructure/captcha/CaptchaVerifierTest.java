@@ -81,6 +81,17 @@ class CaptchaVerifierTest {
   }
 
   @Test
+  void interruptedVerificationFailsClosedAndKeepsTheInterrupt() {
+    Thread.currentThread().interrupt();
+    try {
+      assertThat(verifier().verify("t")).isEqualTo(CaptchaResult.UNAVAILABLE);
+      assertThat(Thread.currentThread().isInterrupted()).isTrue();
+    } finally {
+      Thread.interrupted();
+    }
+  }
+
+  @Test
   void testModeAcceptsOnlyItsToken() {
     TestModeCaptchaVerifier testMode = new TestModeCaptchaVerifier();
     assertThat(testMode.verify("test-pass")).isEqualTo(CaptchaResult.PASSED);

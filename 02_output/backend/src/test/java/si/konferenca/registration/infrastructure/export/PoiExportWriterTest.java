@@ -76,6 +76,19 @@ class PoiExportWriterTest {
   }
 
   @Test
+  void everyRegistrationGetsItsOwnRowInOrder() throws IOException {
+    byte[] xlsx =
+        new PoiExportWriter().write(List.of(registration("First"), registration("Second")));
+
+    try (XSSFWorkbook workbook = new XSSFWorkbook(new ByteArrayInputStream(xlsx))) {
+      Sheet sheet = workbook.getSheetAt(0);
+      assertThat(sheet.getLastRowNum()).isEqualTo(2);
+      assertThat(sheet.getRow(1).getCell(3).getStringCellValue()).isEqualTo("First");
+      assertThat(sheet.getRow(2).getCell(3).getStringCellValue()).isEqualTo("Second");
+    }
+  }
+
+  @Test
   void emptyExportHasOnlyTheHeader() throws IOException {
     byte[] xlsx = new PoiExportWriter().write(List.of());
 
