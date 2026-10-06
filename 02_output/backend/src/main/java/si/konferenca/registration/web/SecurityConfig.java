@@ -1,6 +1,7 @@
 package si.konferenca.registration.web;
 
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.Clock;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -79,6 +81,10 @@ public class SecurityConfig {
                         referrer ->
                             referrer.policy(
                                 ReferrerPolicyHeaderWriter.ReferrerPolicy.NO_REFERRER)));
+    http.addFilterBefore(
+            new RequestLimitsFilter(app, Clock.systemUTC()), BasicAuthenticationFilter.class)
+        .addFilterAfter(
+            new HttpsOnlyFilter(app.organizer().httpsOnly()), RequestLimitsFilter.class);
     if (app.corsAllowedOrigin() != null && !app.corsAllowedOrigin().isBlank()) {
       http.cors(cors -> cors.configurationSource(corsSource(app.corsAllowedOrigin())));
     }
