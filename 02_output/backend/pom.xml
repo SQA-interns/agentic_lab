@@ -205,12 +205,30 @@
           </dependency>
         </dependencies>
         <configuration>
+          <!-- Validation, security, storage-order and business-rule code; classes reached only
+               through a Spring context (controllers, JPA adapter, SMTP, configuration wiring) are
+               covered by acceptance and integration tests instead (docs/03_test-strategy.md). -->
           <targetClasses>
-            <param>si.konferenca.registration.*</param>
+            <param>si.konferenca.registration.domain.*</param>
+            <param>si.konferenca.registration.application.*</param>
+            <param>si.konferenca.registration.infrastructure.config.*</param>
+            <param>si.konferenca.registration.infrastructure.copy.*</param>
+            <param>si.konferenca.registration.infrastructure.captcha.*</param>
+            <param>si.konferenca.registration.infrastructure.export.*</param>
+            <param>si.konferenca.registration.web.RateLimitFilter*</param>
+            <param>si.konferenca.registration.web.RequestSizeLimitFilter*</param>
+            <param>si.konferenca.registration.config.StartupGuard*</param>
+            <param>si.konferenca.registration.config.AppProperties*</param>
+            <param>si.konferenca.registration.config.OrganizerHttpsFilter*</param>
           </targetClasses>
           <targetTests>
-            <param>si.konferenca.registration.*</param>
+            <param>si.konferenca.registration.domain.*</param>
+            <param>si.konferenca.registration.application.*</param>
+            <param>si.konferenca.registration.infrastructure.*</param>
+            <param>si.konferenca.registration.web.*</param>
+            <param>si.konferenca.registration.config.*</param>
           </targetTests>
+          <threads>4</threads>
           <outputFormats>
             <param>XML</param>
             <param>HTML</param>
