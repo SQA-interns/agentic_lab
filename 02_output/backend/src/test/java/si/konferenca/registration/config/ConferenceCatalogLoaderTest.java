@@ -112,6 +112,35 @@ class ConferenceCatalogLoaderTest {
   }
 
   @Test
+  void refusesUnknownPropertiesInsideAnOptionOrAConsent() {
+    assertThatThrownBy(
+            () ->
+                load(
+                    "{"
+                        + CONSENTS
+                        + ",\"options\":[{\"id\":\"a\",\"displayName\":\"A\",\"category\":\"OTHER\","
+                        + "\"active\":true,\"price\":5}]}"))
+        .isInstanceOf(InvalidConfigurationException.class)
+        .hasMessageContaining("price");
+    assertThatThrownBy(
+            () ->
+                load(
+                    "{\"consents\":[{\"id\":\"c\",\"text\":\"t\",\"optional\":true}],\"options\":[]}"))
+        .isInstanceOf(InvalidConfigurationException.class)
+        .hasMessageContaining("optional");
+  }
+
+  @Test
+  void acceptsADisplayNameOfExactlyTheMaximumLength() throws IOException {
+    String option =
+        ",\"options\":[{\"id\":\"a\",\"displayName\":\"%s\",\"category\":\"OTHER\",\"active\":true}]}";
+
+    assertThat(load("{" + CONSENTS + option.formatted("x".repeat(200))).option("a")).isPresent();
+    assertThatThrownBy(() -> load("{" + CONSENTS + option.formatted("x".repeat(201))))
+        .isInstanceOf(InvalidConfigurationException.class);
+  }
+
+  @Test
   void acceptsLimitsAtTheBoundaries() throws IOException {
     ConferenceCatalog catalog =
         load("{" + CONSENTS + ",\"categoryLimits\":{\"MEAL\":1,\"EVENT\":100},\"options\":[]}");

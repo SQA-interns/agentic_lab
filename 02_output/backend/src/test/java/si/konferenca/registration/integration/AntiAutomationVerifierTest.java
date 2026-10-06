@@ -62,6 +62,29 @@ class AntiAutomationVerifierTest {
   }
 
   @Test
+  void liveModeSendsTheEncodedSecretTokenAndAddressAndAcceptsSuccess() throws IOException {
+    StringBuilder received = new StringBuilder();
+    server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
+    server.createContext(
+        "/siteverify",
+        exchange -> {
+          received.append(
+              new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8));
+          byte[] bytes = "{\"success\":true}".getBytes(StandardCharsets.UTF_8);
+          exchange.sendResponseHeaders(200, bytes.length);
+          exchange.getResponseBody().write(bytes);
+          exchange.close();
+        });
+    server.start();
+    String url = "http://127.0.0.1:" + server.getAddress().getPort() + "/siteverify";
+    String longToken = "a&b=" + "t".repeat(4092);
+
+    assertThat(verifier(false, url).verify(longToken, "10.0.0.1")).isEqualTo(Outcome.PASSED);
+    assertThat(received.toString())
+        .isEqualTo("secret=secret&response=a%26b%3D" + "t".repeat(4092) + "&remoteip=10.0.0.1");
+  }
+
+  @Test
   void liveModeFailsWhenSuccessIsMissingOrFalse() throws IOException {
     assertThat(verifier(false, serve(200, "{}")).verify("t", null)).isEqualTo(Outcome.FAILED);
     stop();

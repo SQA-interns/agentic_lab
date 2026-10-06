@@ -66,6 +66,18 @@ class JsonCopyStoreTest {
   }
 
   @Test
+  void refusesToStartWithAnExistingReadOnlyDirectory() throws IOException {
+    Path readOnly = Files.createDirectory(dir.resolve("read-only"));
+    Files.setPosixFilePermissions(readOnly, PosixFilePermissions.fromString("r-x------"));
+    try {
+      assertThatThrownBy(() -> new JsonCopyStore(settings(readOnly)))
+          .isInstanceOf(UncheckedIOException.class);
+    } finally {
+      Files.setPosixFilePermissions(readOnly, PosixFilePermissions.fromString("rwx------"));
+    }
+  }
+
+  @Test
   void refusesToStartWithAnUnwritableDirectory() throws IOException {
     Path file = Files.writeString(dir.resolve("not-a-dir"), "x");
 
