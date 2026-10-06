@@ -17,7 +17,7 @@ import si.konferenca.registration.config.AppProperties;
  * to a temporary file, forced to disk and moved atomically to its final name.
  */
 @Component
-public class JsonCopyStore {
+public final class JsonCopyStore {
 
   private final Path directory;
 
@@ -63,7 +63,7 @@ public class JsonCopyStore {
   }
 
   /** Throws when a file cannot be created in the directory (readiness, startup). */
-  public final void checkWritable() throws IOException {
+  public void checkWritable() throws IOException {
     Path probe = Files.createTempFile(directory, ".probe-", ".tmp");
     Files.delete(probe);
   }
