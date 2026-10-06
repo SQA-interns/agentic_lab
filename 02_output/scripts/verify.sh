@@ -141,19 +141,38 @@ run_tool() {
         if [ ${#specs[@]} -gt 0 ]; then
           docker run --rm --user "$DOCKER_USER" -v "$OUT:/spec" -w /spec "$REDOCLY_IMAGE" lint "${specs[@]}" >>"$log" 2>&1 || rc=1
         fi
+        # Each X.schema.json must compile (strict); X.json, when present, must validate against it.
         for s in "${schemas[@]}"; do
-          (cd "$FE" && node -e 'const Ajv=require("ajv/dist/2020").default;const a=new Ajv({strict:true,allErrors:true});
-            a.compile(JSON.parse(require("fs").readFileSync(process.argv[1])));console.log("valid schema",process.argv[1])' "$OUT/$s") >>"$log" 2>&1 || rc=1
+          (cd "$FE" && node -e 'const fs=require("fs"),Ajv=require("ajv/dist/2020").default;
+            const a=new Ajv({strict:true,allErrors:true,validateFormats:false});const [s,i]=process.argv.slice(1);
+            const v=a.compile(JSON.parse(fs.readFileSync(s)));console.log("valid schema",s);
+            if(fs.existsSync(i)){if(!v(JSON.parse(fs.readFileSync(i)))){console.log("error: instance",i,JSON.stringify(v.errors));process.exit(1)}console.log("valid instance",i)}' \
+            "$OUT/$s" "$OUT/${s%.schema.json}.json") >>"$log" 2>&1 || rc=1
         done
-        numbers="openapi=${#specs[@]} schemas=${#schemas[@]} errors=$(grep -cE '^(\[[0-9]+\] |.*error)' "$log")"
+        # SQL contracts: applied in one transaction to a throwaway PostgreSQL (the stack's image).
+        local sqls=()
+        while IFS= read -r f; do sqls+=("$f"); done < <(cd "$OUT" && find docs/02_contracts -name '*.sql' | sort)
+        if [ ${#sqls[@]} -gt 0 ]; then
+          local pg="verify-contracts-$$"
+          docker run -d --rm --name "$pg" -e POSTGRES_HOST_AUTH_METHOD=trust -v "$OUT/docs/02_contracts:/contracts:ro" postgres:16.15-alpine >>"$log" 2>&1
+          for _ in $(seq 1 30); do docker exec "$pg" pg_isready -U postgres -q 2>/dev/null && break; sleep 1; done
+          for f in "${sqls[@]}"; do
+            docker exec "$pg" psql -U postgres -v ON_ERROR_STOP=1 --single-transaction -q -f "/contracts/${f#docs/02_contracts/}" >>"$log" 2>&1 \
+              && echo "valid sql $f" >>"$log" || { echo "error: sql $f" >>"$log"; rc=1; }
+          done
+          docker stop "$pg" >/dev/null 2>&1
+        fi
+        numbers="openapi=${#specs[@]} schemas=${#schemas[@]} sql=${#sqls[@]} errors=$(grep -cE '^(\[[0-9]+\] |error)' "$log")"
       fi ;;
     semgrep)
       docker run --rm --user "$DOCKER_USER" -e SEMGREP_ENABLE_VERSION_CHECK=0 -e HOME=/tmp -v "$OUT:/src" -w /src "$SEMGREP_IMAGE" \
         semgrep scan --metrics=off --config p/default --config p/owasp-top-ten --config p/java --config p/typescript --config p/react \
         --exclude node_modules --exclude target --exclude dist --exclude logs --exclude reports --exclude coverage \
         --json --output /src/logs/"${PHASE}"_semgrep.json >"$log" 2>&1; rc=$?
-      numbers="$(node -e 'const r=JSON.parse(require("fs").readFileSync(process.argv[1])).results;const c={ERROR:0,WARNING:0,INFO:0};
-        for(const x of r)c[x.extra.severity]=(c[x.extra.severity]||0)+1;console.log(`high=${c.ERROR} medium=${c.WARNING} low=${c.INFO}`)' "$LOGS/${PHASE}_semgrep.json" 2>/dev/null || echo "report=none")" ;;
+      # standards/security.md: ERROR/WARNING/INFO -> High/Medium/Low; rules that already use CRITICAL/HIGH/MEDIUM/LOW count as reported.
+      numbers="$(node -e 'const r=JSON.parse(require("fs").readFileSync(process.argv[1])).results;
+        const m={CRITICAL:"critical",ERROR:"high",HIGH:"high",WARNING:"medium",MEDIUM:"medium",INFO:"low",LOW:"low"},c={critical:0,high:0,medium:0,low:0};
+        for(const x of r)c[m[x.extra.severity]||"low"]++;console.log(Object.entries(c).map(([k,v])=>k+"="+v).join(" "))' "$LOGS/${PHASE}_semgrep.json" 2>/dev/null || echo "report=none")" ;;
     gitleaks)
       # Working tree = tracked and untracked-not-ignored files only (never .env); history = commits reachable from HEAD.
       local tree; tree="$(mktemp -d)"
