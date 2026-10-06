@@ -160,7 +160,11 @@ public final class RunningApp implements AutoCloseable {
         while (rs.next()) {
           Map<String, Object> row = new LinkedHashMap<>();
           for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            row.put(rs.getMetaData().getColumnLabel(i), rs.getObject(i));
+            Object value =
+                "timestamptz".equals(rs.getMetaData().getColumnTypeName(i))
+                    ? rs.getObject(i, java.time.OffsetDateTime.class)
+                    : rs.getObject(i);
+            row.put(rs.getMetaData().getColumnLabel(i), value);
           }
           rows.add(row);
         }
