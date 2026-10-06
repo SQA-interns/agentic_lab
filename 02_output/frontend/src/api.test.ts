@@ -56,6 +56,10 @@ describe("api", () => {
     ];
     expect(url).toBe("/api/registrations");
     expect(init.method).toBe("POST");
+    expect(init.headers).toEqual({
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    });
     expect(JSON.parse(init.body as string)).toEqual(request);
   });
 
@@ -86,6 +90,20 @@ describe("api", () => {
           message: "Enter a valid email address.",
         },
       ],
+    });
+  });
+
+  it.each([
+    [{ code: "C", message: "m" }],
+    [{ field: "f", message: "m" }],
+    [{ field: "f", code: "C" }],
+    [{ field: "f", code: "C", message: 3 }],
+  ])("drops a field error without all three texts: %j", async (error) => {
+    respond(400, JSON.stringify({ errors: [error] }));
+    expect(await submitRegistration(request)).toEqual({
+      kind: "rejected",
+      status: 400,
+      errors: [],
     });
   });
 
