@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/json-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Backend <-> persistent volume (BR-07). One UTF-8 file per registration named <receivedAt as yyyyMMdd'T'HHmmss'Z'>_<registrationId>.json in the JSON copy directory, written atomically (temp file + move). The organizer email attaches the identical bytes (AC-007-01).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "registrationId", "receivedAt", "type", "participant", "options", "consent"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "registrationId": { "type": "string", "format": "uuid" },
+    "receivedAt": { "type": "string", "format": "date-time" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "lastName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+        "organization": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studyInstitution": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studyProgramme": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studentId": { "type": "string", "minLength": 1, "maxLength": 50 }
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "givenAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "givenAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "required": ["organization"],
+            "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "required": ["studyInstitution", "studyProgramme", "studentId"],
+            "not": { "required": ["organization"] }
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schemaVersion": 1,
+      "registrationId": "0b9f7a52-5c1e-4c55-9d1e-3f1f1f6a2b10",
+      "receivedAt": "2026-10-06T18:00:00Z",
+      "type": "STUDENT",
+      "participant": {
+        "firstName": "Špela",
+        "lastName": "Čeh",
+        "email": "spela.ceh@example.si",
+        "studyInstitution": "Univerza v Ljubljani",
+        "studyProgramme": "Računalništvo",
+        "studentId": "63210000"
+      },
+      "options": [{ "id": "ws-ai", "name": "AI workshop", "category": "WORKSHOP" }],
+      "consent": { "id": "data-processing", "text": "I agree …", "givenAt": "2026-10-06T18:00:00Z" }
+    }
+  ]
+}
