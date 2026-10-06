@@ -1,6 +1,8 @@
 spring:
   application:
     name: registration-backend
+  main:
+    banner-mode: "off"
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
@@ -9,6 +11,46 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+  flyway:
+    locations: classpath:db/migration
+
+# Settings of docs/02_specification.md section 4; secrets have no default (ES-01, ES-02).
+app:
+  environment: ${APP_ENVIRONMENT:production}
+  conference-name: ${CONFERENCE_NAME:Conference 2026}
+  conference-config-file: ${CONFERENCE_CONFIG_FILE:}
+  json-copy-dir: ${JSON_COPY_DIR:/var/lib/registration/json-copies}
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    starttls: ${MAIL_STARTTLS:false}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    from: ${MAIL_FROM:registration@konferenca.si}
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:false}
+    site-key: ${RECAPTCHA_SITE_KEY:}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  organizer:
+    username: ${ORGANIZER_USERNAME:}
+    password: ${ORGANIZER_PASSWORD:}
+    emails: ${ORGANIZER_EMAILS:}
+    https-only: ${ORGANIZER_HTTPS_ONLY:true}
+  cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:}
+  rate-limit:
+    registrations: ${RATE_LIMIT_REGISTRATIONS:20}
+    exports: ${RATE_LIMIT_EXPORTS:10}
+    config: ${RATE_LIMIT_CONFIG:120}
+  max-request-bytes: ${MAX_REQUEST_BYTES:16384}
+
+server:
+  forward-headers-strategy: native
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-exception: false
+    include-binding-errors: never
 
 management:
   endpoints:
@@ -19,3 +61,14 @@ management:
     health:
       probes:
         enabled: true
+      group:
+        readiness:
+          include: readinessState,db
+  health:
+    mail:
+      enabled: false
+
+logging:
+  level:
+    org.hibernate.SQL: warn
+    org.springframework.security: warn

@@ -1,0 +1,35 @@
+{
+  "categoryLimits": {
+    "WORKSHOP": 2
+  },
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree that the organizers process the personal data I enter in this form to organise the conference and my participation in it."
+    }
+  ],
+  "options": [
+    { "id": "ws-ai-research", "displayName": "Workshop: AI in research", "category": "WORKSHOP", "active": true },
+    { "id": "ws-open-data", "displayName": "Workshop: Open data", "category": "WORKSHOP", "active": true },
+    {
+      "id": "ws-industry-lab",
+      "displayName": "Workshop: Industry lab",
+      "category": "WORKSHOP",
+      "active": true,
+      "availableTo": ["EXTERNAL"]
+    },
+    { "id": "ws-legacy", "displayName": "Workshop: Retired session", "category": "WORKSHOP", "active": false },
+    { "id": "ev-welcome", "displayName": "Welcome reception", "category": "EVENT", "active": true },
+    {
+      "id": "ev-gala-dinner",
+      "displayName": "Gala dinner",
+      "category": "EVENT",
+      "active": true,
+      "availableTo": ["EXTERNAL"]
+    },
+    { "id": "meal-lunch-day1", "displayName": "Lunch, day 1", "category": "MEAL", "active": true },
+    { "id": "meal-lunch-day2", "displayName": "Lunch, day 2", "category": "MEAL", "active": true },
+    { "id": "meal-vegetarian", "displayName": "Vegetarian meals", "category": "MEAL", "active": true },
+    { "id": "other-city-tour", "displayName": "Ljubljana city tour", "category": "OTHER", "active": true }
+  ]
+}
