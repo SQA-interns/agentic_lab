@@ -1,0 +1,30 @@
+# Secrets and local configuration
+.env
+.env.*
+*.local
+.claude/settings.local.json
+
+# Build output
+target/
+dist/
+build/
+
+# Dependencies
+node_modules/
+.mvn/wrapper/maven-wrapper.jar
+
+# Test and tool output (summaries go to 02_output/logs/)
+coverage/
+reports/
+.stryker-tmp/
+playwright-report/
+test-results/
+blob-report/
+02_output/logs/*.tmp
+
+# Editors and OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
