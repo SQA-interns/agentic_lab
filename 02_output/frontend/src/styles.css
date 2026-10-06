@@ -1,0 +1,38 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+.field input {
+  padding: 0.4rem;
+  font: inherit;
+}
+fieldset {
+  margin-bottom: 1rem;
+}
+.check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.error {
+  color: #b00020;
+  margin: 0.25rem 0;
+}
+.hint {
+  color: GrayText;
+}
+button {
+  font: inherit;
+  padding: 0.5rem 1.25rem;
+}
