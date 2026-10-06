@@ -71,4 +71,8 @@ management:
 logging:
   level:
     org.hibernate.SQL: warn
+    # F-02: its messages carry PostgreSQL's "Failing row contains (...)" detail, i.e. personal
+    # data (ES-07); RegistrationService logs the failure with the registration id only.
+    org.hibernate.orm.jdbc.error: "off"
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: "off"
     org.springframework.security: warn
