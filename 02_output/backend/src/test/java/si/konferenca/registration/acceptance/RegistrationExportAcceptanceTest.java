@@ -21,7 +21,7 @@ class RegistrationExportAcceptanceTest {
 
   private static void assertRefusedWithoutData(Response r, String... secrets) {
     assertThat(r.status()).isEqualTo(401);
-    assertThat(r.header("Content-Type")).doesNotContain("spreadsheetml");
+    assertThat(String.valueOf(r.header("Content-Type"))).doesNotContain("spreadsheetml");
     for (String s : secrets) {
       assertThat(r.text()).doesNotContain(s);
     }
