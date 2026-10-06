@@ -7,4 +7,17 @@
     <Class name="~si\.konferenca\.registration(\..*)?\.SecurityConfig"/>
     <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
   </Match>
+
+  <!-- Constructor injection stores Spring-managed collaborators by design; value types (records)
+       copy their collections defensively instead. -->
+  <Match>
+    <Method name="&lt;init&gt;"/>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
+
+  <!-- The rejection exception is never serialized (it is mapped to an HTTP response). -->
+  <Match>
+    <Class name="si.konferenca.registration.service.RegistrationRejectedException"/>
+    <Bug pattern="SE_TRANSIENT_FIELD_NOT_RESTORED"/>
+  </Match>
 </FindBugsFilter>
