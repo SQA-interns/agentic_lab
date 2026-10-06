@@ -49,6 +49,16 @@ describe("api", () => {
     });
   });
 
+  it("treats a network failure as unreachable", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => {
+        throw new TypeError("Failed to fetch");
+      }),
+    );
+    expect(await submitRegistration(body)).toEqual({ kind: "unreachable" });
+  });
+
   it("treats a non-JSON or foreign error body as unreachable", async () => {
     reply(502, "<html>Bad gateway</html>");
     expect(await submitRegistration(body)).toEqual({ kind: "unreachable" });
