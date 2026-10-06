@@ -1,0 +1,64 @@
+# Local stack (project/stack.md "Environments", local): plain HTTP on 127.0.0.1 only.
+# Start from the repository root, secrets injected by name:
+#   bash 01_input/00_general/tools/secrets.sh run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS \
+#     -- docker compose -f 02_output/docker-compose.yml up -d --build
+name: conference-registration
+
+services:
+  postgres:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:8026:8025"
+
+  backend:
+    build: ./backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    environment:
+      APP_ENVIRONMENT: local
+      DB_URL: jdbc:postgresql://postgres:5432/registration
+      DB_USERNAME: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      MAIL_HOST: mailpit
+      MAIL_PORT: "1025"
+      MAIL_STARTTLS: "false"
+      CONFERENCE_NAME: Konferenca 2026
+      RECAPTCHA_TEST_MODE: "true"
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?set ORGANIZER_USERNAME in .env}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?set ORGANIZER_PASSWORD in .env}
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?set ORGANIZER_EMAILS in .env}
+      ORGANIZER_HTTPS_ONLY: "false"
+      RATE_LIMIT_REGISTRATIONS: "200"
+    volumes:
+      - json-copies:/var/lib/registration/json-copies
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_UPSTREAM: backend:8080
+    ports:
+      - "127.0.0.1:8088:8080"
+
+volumes:
+  pgdata:
+  json-copies:
