@@ -1,0 +1,317 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >
+    Options, registration and export between the frontend or organizer and the backend (AR-01).
+    Every error body is RFC 9457 problem JSON without internal details (SB-07).
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: /
+security: []
+tags:
+  - name: public
+    description: Anonymous participant operations
+  - name: organizer
+    description: Organizer-only operations (BR-08)
+paths:
+  /api/options:
+    get:
+      tags: [public]
+      operationId: getRegistrationSetup
+      summary: Active options, consent wording and anti-automation settings for the forms
+      responses:
+        "200":
+          description: Form setup
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationSetup"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/registrations:
+    post:
+      tags: [public]
+      operationId: createRegistration
+      summary: Submit an external or student registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+      responses:
+        "201":
+          description: Accepted; stored in the database and as a JSON copy (AR-05)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationAccepted"
+        "400":
+          description: Validation or anti-automation failure; nothing stored
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ValidationProblem"
+        "409":
+          description: Email already registered (D-16); nothing stored
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "413":
+          description: Request body larger than the configured limit
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "415":
+          description: Content type is not application/json
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/ServerError"
+        "503":
+          description: Storage or anti-automation verification unavailable; nothing accepted
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+  /api/admin/registrations/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Excel workbook of all current registrations
+      security:
+        - organizerBasic: []
+      responses:
+        "200":
+          description: Workbook, one row per registration, header row first
+          headers:
+            Content-Disposition:
+              description: attachment; filename="registrations.xlsx"
+              schema:
+                type: string
+            Cache-Control:
+              description: no-store
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentMediaType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        "401":
+          description: Missing or wrong organizer credentials; no data returned
+          headers:
+            WWW-Authenticate:
+              description: Basic realm="organizer"
+              schema:
+                type: string
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "403":
+          description: Plain HTTP from a non-local client while HTTPS-only is on (SR-06); credentials are not checked
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded (SR-03)
+      headers:
+        Retry-After:
+          description: Seconds until a new request is allowed
+          schema:
+            type: integer
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+    ServerError:
+      description: Unexpected error; generic message only
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+    OptionCategory:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+    OptionId:
+      type: string
+      pattern: "^[a-z0-9][a-z0-9-]{0,63}$"
+    RegistrationSetup:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, consent, recaptcha, options]
+      properties:
+        conferenceName:
+          type: string
+        consent:
+          type: object
+          additionalProperties: false
+          required: [id, text]
+          properties:
+            id:
+              type: string
+            text:
+              type: string
+        recaptcha:
+          type: object
+          additionalProperties: false
+          required: [testMode, siteKey]
+          properties:
+            testMode:
+              type: boolean
+              description: true only where configuration enables it (SR-02); the form then shows a test checkbox instead of the Google widget
+            siteKey:
+              type: string
+              description: Public site key; empty in test mode (AR-07)
+        options:
+          type: array
+          description: Active options only (BR-04)
+          items:
+            $ref: "#/components/schemas/Option"
+    Option:
+      type: object
+      additionalProperties: false
+      required: [id, name, category, offeredTo]
+      properties:
+        id:
+          $ref: "#/components/schemas/OptionId"
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/OptionCategory"
+        offeredTo:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/RegistrationType"
+    RegistrationRequest:
+      type: object
+      additionalProperties: false
+      description: >
+        Text fields are trimmed of leading and trailing Unicode whitespace (spec "Validation") before
+        validation. Fields of the other registration type must be absent or empty.
+      required: [type, firstName, lastName, email, optionIds, consentGiven, recaptchaToken]
+      properties:
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+          maxLength: 100
+        lastName:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          maxLength: 254
+        organization:
+          type: string
+          maxLength: 200
+          description: Required for EXTERNAL
+        studyInstitution:
+          type: string
+          maxLength: 200
+          description: Required for STUDENT
+        studyProgramme:
+          type: string
+          maxLength: 200
+          description: Required for STUDENT
+        studentId:
+          type: string
+          maxLength: 50
+          description: Required for STUDENT
+        optionIds:
+          type: array
+          maxItems: 50
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/OptionId"
+        consentGiven:
+          type: boolean
+          description: Must be true (BR-05)
+        recaptchaToken:
+          type: string
+          maxLength: 4096
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [registrationId, receivedAt]
+      properties:
+        registrationId:
+          type: string
+          format: uuid
+        receivedAt:
+          type: string
+          format: date-time
+    Problem:
+      type: object
+      required: [title, status]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        code:
+          type: string
+          enum: [DUPLICATE_EMAIL, PAYLOAD_TOO_LARGE, UNSUPPORTED_MEDIA_TYPE, RATE_LIMITED, HTTPS_REQUIRED, UNAUTHORIZED, SERVICE_UNAVAILABLE, INTERNAL_ERROR, MALFORMED_REQUEST]
+    ValidationProblem:
+      allOf:
+        - $ref: "#/components/schemas/Problem"
+        - type: object
+          required: [errors]
+          properties:
+            code:
+              const: VALIDATION_FAILED
+            errors:
+              type: array
+              minItems: 1
+              items:
+                $ref: "#/components/schemas/FieldError"
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, code]
+      properties:
+        field:
+          type: string
+          description: Request property name, or "optionIds[n]" for one option
+        code:
+          type: string
+          enum:
+            - REQUIRED
+            - INVALID_EMAIL
+            - TOO_LONG
+            - INVALID_CHARACTERS
+            - NOT_ALLOWED_FOR_TYPE
+            - UNKNOWN_OPTION
+            - INACTIVE_OPTION
+            - OPTION_NOT_OFFERED
+            - CONSENT_REQUIRED
+            - RECAPTCHA_FAILED
