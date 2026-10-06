@@ -1,0 +1,6 @@
+# Reviewed gitleaks results (F-02): test-only constants, not secrets. secrets.sh leak-check confirms
+# that no value of .env appears in any file or commit message.
+/scan/02_output/backend/src/test/java/si/konferenca/registration/acceptance/support/TestEnvironment.java:generic-api-key:25
+/scan/02_output/backend/src/test/java/si/konferenca/registration/config/StartupGuardTest.java:generic-api-key:10
+1d41a80c353e290934916ff65693eb0aaf41895f:02_output/backend/src/test/java/si/konferenca/registration/config/StartupGuardTest.java:generic-api-key:10
+5fc1acbacc193975a4a9fac99003d307eec48ad4:02_output/backend/src/test/java/si/konferenca/registration/acceptance/support/TestEnvironment.java:generic-api-key:25

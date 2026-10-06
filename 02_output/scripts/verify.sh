@@ -215,12 +215,17 @@ tool_gitleaks() {
   local wt="${PHASE}_gitleaks-tree.json"
   {
     echo "== working tree"
-    dk run --rm -v "$(winpath "$tree"):/scan" -v "$(winpath "$LOGS"):/out" "$IMG_GITLEAKS" \
-      dir /scan --redact --no-banner --report-format json --report-path "/out/$wt"
+    # Reviewed results only (scripts/.gitleaksignore, one fingerprint per accepted finding).
+    dk run --rm -v "$(winpath "$tree"):/scan" -v "$(winpath "$LOGS"):/out" \
+      -v "$(winpath "$OUT/scripts"):/ignore" "$IMG_GITLEAKS" \
+      dir /scan --redact --no-banner --gitleaks-ignore-path /ignore/.gitleaksignore \
+      --report-format json --report-path "/out/$wt"
     local rc_tree=$?
     echo "== history of HEAD"
-    dk run --rm -v "$(winpath "$ROOT"):/repo" -v "$(winpath "$LOGS"):/out" "$IMG_GITLEAKS" \
-      git /repo --log-opts=HEAD --redact --no-banner --report-format json --report-path "/out/$hist"
+    dk run --rm -v "$(winpath "$ROOT"):/repo" -v "$(winpath "$LOGS"):/out" \
+      -v "$(winpath "$OUT/scripts"):/ignore" "$IMG_GITLEAKS" \
+      git /repo --log-opts=HEAD --redact --no-banner --gitleaks-ignore-path /ignore/.gitleaksignore \
+      --report-format json --report-path "/out/$hist"
     local rc_hist=$?
     echo "exit tree=$rc_tree history=$rc_hist"
     [ "$rc_tree" = 0 ] && [ "$rc_hist" = 0 ]
