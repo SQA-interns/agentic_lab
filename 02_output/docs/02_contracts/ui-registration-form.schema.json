@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui-registration-form.schema.json",
+  "title": "Registration form user interface",
+  "description": "Accessible names and behaviour of the single-page registration UI (US-001 to US-004, NFR-03). Tests select elements by these names (role and label), never by internal structure.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["path", "language", "pageHeading", "typeSelector", "forms", "categories", "consent", "antiAutomation", "submit", "fieldError", "formError", "confirmation"],
+  "properties": {
+    "path": { "const": "/" },
+    "language": { "type": "string" },
+    "pageHeading": { "$ref": "#/$defs/text" },
+    "typeSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name", "choices"],
+      "properties": {
+        "role": { "const": "radiogroup" },
+        "name": { "$ref": "#/$defs/text" },
+        "choices": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["EXTERNAL", "STUDENT"],
+          "properties": { "EXTERNAL": { "$ref": "#/$defs/text" }, "STUDENT": { "$ref": "#/$defs/text" } }
+        },
+        "default": { "enum": ["EXTERNAL", "STUDENT"] }
+      }
+    },
+    "forms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["EXTERNAL", "STUDENT"],
+      "properties": {
+        "EXTERNAL": { "$ref": "#/$defs/fieldList" },
+        "STUDENT": { "$ref": "#/$defs/fieldList" }
+      }
+    },
+    "categories": {
+      "description": "Group heading (role group, accessible name) per category; each option is a checkbox labelled with its displayName. A category with no option for the selected type is not shown.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["WORKSHOP", "EVENT", "MEAL", "OTHER"],
+      "properties": {
+        "WORKSHOP": { "$ref": "#/$defs/text" },
+        "EVENT": { "$ref": "#/$defs/text" },
+        "MEAL": { "$ref": "#/$defs/text" },
+        "OTHER": { "$ref": "#/$defs/text" }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "label", "preselected", "requiredMessage"],
+      "properties": {
+        "role": { "const": "checkbox" },
+        "label": { "type": "string", "description": "The configured consent text" },
+        "preselected": { "const": false },
+        "requiredMessage": { "$ref": "#/$defs/text" }
+      }
+    },
+    "antiAutomation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live", "test", "requiredMessage"],
+      "properties": {
+        "live": { "type": "string" },
+        "test": { "type": "string" },
+        "requiredMessage": { "$ref": "#/$defs/text" }
+      }
+    },
+    "submit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name", "busyName"],
+      "properties": {
+        "role": { "const": "button" },
+        "name": { "$ref": "#/$defs/text" },
+        "busyName": { "$ref": "#/$defs/text" }
+      }
+    },
+    "fieldError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["placement", "messages"],
+      "properties": {
+        "placement": { "type": "string" },
+        "messages": {
+          "type": "object",
+          "description": "Client-side messages by error code; backend fieldErrors are shown with the backend message",
+          "additionalProperties": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "formError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "placement"],
+      "properties": { "role": { "const": "alert" }, "placement": { "type": "string" } }
+    },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "heading", "text"],
+      "properties": {
+        "role": { "const": "status" },
+        "heading": { "$ref": "#/$defs/text" },
+        "text": { "$ref": "#/$defs/text" }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1 },
+    "fieldList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "label", "inputType", "maxLength"],
+        "properties": {
+          "field": { "type": "string", "description": "RegistrationRequest property in openapi.yaml" },
+          "label": { "$ref": "#/$defs/text" },
+          "inputType": { "enum": ["text", "email"] },
+          "maxLength": { "type": "integer", "minimum": 1 },
+          "autocomplete": { "type": "string" }
+        }
+      }
+    }
+  }
+}

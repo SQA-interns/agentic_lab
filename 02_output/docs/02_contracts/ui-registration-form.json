@@ -1,0 +1,64 @@
+{
+  "path": "/",
+  "language": "en (D-18)",
+  "pageHeading": "Conference registration",
+  "typeSelector": {
+    "role": "radiogroup",
+    "name": "Registration type",
+    "choices": { "EXTERNAL": "External participant", "STUDENT": "Student" },
+    "default": "EXTERNAL"
+  },
+  "forms": {
+    "EXTERNAL": [
+      { "field": "firstName", "label": "First name", "inputType": "text", "maxLength": 100, "autocomplete": "given-name" },
+      { "field": "lastName", "label": "Last name", "inputType": "text", "maxLength": 100, "autocomplete": "family-name" },
+      { "field": "email", "label": "Email", "inputType": "email", "maxLength": 254, "autocomplete": "email" },
+      { "field": "organization", "label": "Organization / institution", "inputType": "text", "maxLength": 200, "autocomplete": "organization" }
+    ],
+    "STUDENT": [
+      { "field": "firstName", "label": "First name", "inputType": "text", "maxLength": 100, "autocomplete": "given-name" },
+      { "field": "lastName", "label": "Last name", "inputType": "text", "maxLength": 100, "autocomplete": "family-name" },
+      { "field": "email", "label": "Email", "inputType": "email", "maxLength": 254, "autocomplete": "email" },
+      { "field": "studyInstitution", "label": "Study institution", "inputType": "text", "maxLength": 200 },
+      { "field": "studyProgramme", "label": "Study programme", "inputType": "text", "maxLength": 200 },
+      { "field": "studentId", "label": "Student ID", "inputType": "text", "maxLength": 50 }
+    ]
+  },
+  "categories": {
+    "WORKSHOP": "Workshops",
+    "EVENT": "Events",
+    "MEAL": "Meals",
+    "OTHER": "Other activities"
+  },
+  "consent": {
+    "role": "checkbox",
+    "label": "consents[].text from GET /api/form-config",
+    "preselected": false,
+    "requiredMessage": "This consent is required."
+  },
+  "antiAutomation": {
+    "live": "Google reCAPTCHA v2 checkbox widget rendered with antiAutomation.siteKey",
+    "test": "checkbox labelled \"I am not a robot (test mode)\"; when checked the token is \"test-mode-pass\"",
+    "requiredMessage": "Please confirm that you are not a robot."
+  },
+  "submit": { "role": "button", "name": "Register", "busyName": "Sending…" },
+  "fieldError": {
+    "placement": "text directly after the input, linked with aria-describedby; the input gets aria-invalid=true",
+    "messages": {
+      "REQUIRED": "This field is required.",
+      "INVALID_FORMAT": "Enter a valid email address.",
+      "TOO_LONG": "This value is too long.",
+      "CONTROL_CHARACTER": "This value contains characters that are not allowed.",
+      "CATEGORY_LIMIT": "Too many options selected in this group."
+    }
+  },
+  "formError": {
+    "role": "alert",
+    "placement": "above the submit button; shows the backend message for errors without a field (DUPLICATE_EMAIL, CAPTCHA_FAILED, RATE_LIMITED, STORAGE_FAILED, INTERNAL_ERROR) or a generic text when the backend is unreachable"
+  },
+  "confirmation": {
+    "role": "status",
+    "heading": "Registration received",
+    "text": "Thank you, {firstName}. A confirmation email is on its way to {email}."
+  }
+}
