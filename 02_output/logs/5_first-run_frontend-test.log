@@ -1,0 +1,40 @@
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ✓ src/validation/rules.test.ts (15 tests) 18ms
+ ✓ src/api/client.test.ts (12 tests) 48ms
+stderr | src/components/RegistrationForm.test.tsx > RegistrationForm > reports acceptance with the registration id
+An update to RegistrationForm inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.tsx (3 tests) 359ms
+ ✓ src/components/RegistrationForm.test.tsx (4 tests) 468ms
+ ✓ tests/acceptance/us004-confirmation.test.tsx (5 tests) 687ms
+ ✓ src/architecture.test.ts (3 tests) 6ms
+ ✓ tests/acceptance/us002-student-form.test.tsx (9 tests) 1090ms
+   ✓ US-002 student form > AC-002-01 submits a complete student registration  326ms
+ ✓ tests/acceptance/us001-external-form.test.tsx (15 tests) 1307ms
+   ✓ US-001 external participant form > AC-001-01 submits a complete external registration with selected options  330ms
+
+ Test Files  8 passed (8)
+      Tests  66 passed (66)
+   Start at  20:48:04
+   Duration  3.08s (transform 511ms, setup 928ms, collect 1.59s, tests 3.98s, environment 5.56s, prepare 1.23s)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 430/430 )
+Branches     : 97.05% ( 132/136 )
+Functions    : 96.42% ( 27/28 )
+Lines        : 100% ( 430/430 )
+================================================================================
