@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "3f1c2b7e-8a4d-4c1e-9b2f-6d5e4a3b2c1d",
+  "type": "STUDENT",
+  "registeredAt": "2026-10-06T12:00:00Z",
+  "participant": {
+    "firstName": "Špela",
+    "lastName": "Žagar",
+    "email": "spela.zagar@example.com",
+    "studyInstitution": "Univerza v Ljubljani",
+    "studyProgramme": "Računalništvo in informatika",
+    "studentId": "63210001"
+  },
+  "options": [
+    { "id": "ws-open-data", "displayName": "Workshop: Open data", "category": "WORKSHOP" },
+    { "id": "meal-lunch-day1", "displayName": "Lunch, day 1", "category": "MEAL" }
+  ],
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree that the organizers process the personal data I enter in this form to organise the conference and my participation in it.",
+      "givenAt": "2026-10-06T12:00:00Z"
+    }
+  ]
+}

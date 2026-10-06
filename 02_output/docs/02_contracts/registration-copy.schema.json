@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Written once per accepted registration to the JSON copy directory as <registeredAt as yyyyMMdd'T'HHmmss'Z'>_<id>.json, UTF-8, before the success response (BR-07, AR-05). The same bytes are the organizer email attachment (US-007). Values are stored as accepted: trimmed, otherwise unchanged (BR-02, BR-03).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "type", "registeredAt", "participant", "options", "consents"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "registeredAt": { "type": "string", "format": "date-time" },
+    "participant": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["firstName", "lastName", "email", "organization"],
+          "properties": {
+            "firstName": { "$ref": "#/$defs/name" },
+            "lastName": { "$ref": "#/$defs/name" },
+            "email": { "$ref": "#/$defs/email" },
+            "organization": { "$ref": "#/$defs/text200" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["firstName", "lastName", "email", "studyInstitution", "studyProgramme", "studentId"],
+          "properties": {
+            "firstName": { "$ref": "#/$defs/name" },
+            "lastName": { "$ref": "#/$defs/name" },
+            "email": { "$ref": "#/$defs/email" },
+            "studyInstitution": { "$ref": "#/$defs/text200" },
+            "studyProgramme": { "$ref": "#/$defs/text200" },
+            "studentId": { "type": "string", "minLength": 1, "maxLength": 50 }
+          }
+        }
+      ]
+    },
+    "options": {
+      "description": "Selected options with the display name and category valid at registration time.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "displayName", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "displayName": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "description": "Consents given, with the wording shown and the time (SB-14).",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+    "text200": { "type": "string", "minLength": 1, "maxLength": 200 }
+  }
+}
