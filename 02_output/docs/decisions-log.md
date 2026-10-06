@@ -22,6 +22,8 @@ Standing instruction from the human at session start: "do not ask for my permiss
 | D-15 | 2026-10-06T18:05:33Z | 1 | OQ-04 unanswered (options per category) | No per-category limit: any number of distinct active options in each category; each option counts once | pending review |
 | D-16 | 2026-10-06T18:05:33Z | 1 | OQ-05 unanswered (same email twice) | Reject a second registration whose email equals a stored one (trimmed, case-insensitive), with a message to contact the organizers | pending review |
 | D-17 | 2026-10-06T18:05:33Z | 1 | OQ-06 unanswered (retention) | Database rows and JSON copies kept 12 months after the conference, then deleted by the operator (manual procedure in the backend README); no automated deletion (no story requires it) | pending review |
+| D-18 | 2026-10-06T18:11:13Z | 2 | Phase 2 needs parsers for contracts; none listed in tech-stack | Dev-only validators: container `redocly/cli:2.57.0` (OpenAPI lint) and host `python3-jsonschema` 4.10.3 (already installed, JSON Schema 2020-12); SQL applied to `postgres:16.15-alpine`. Run via `verify.sh <phase> contracts`; not shipped | pending review |
+| D-19 | 2026-10-06T18:11:13Z | 2 | Backend image must build from a clean checkout; tech-stack lists only the JRE image | Build stage `eclipse-temurin:21.0.10_7-jdk-alpine` (same pinned JDK release, jdk variant); runtime stays `eclipse-temurin:21.0.10_7-jre-alpine`; scanned in phase 6 | pending review |
 
 ## Blocking
 
