@@ -4,9 +4,9 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 1 (requirements); phase 0 ended 2026-10-06T11:45:02Z
-- Last gate result: phase 0 passed 2026-10-06T11:45:02Z (`docs/00_preflight-report.md`; `verify.sh 00 all` 19/19 exit 0)
-- Next step: phase 1, `skills/derive-acceptance-criteria` from `project/requirements.md` → `docs/01_acceptance-criteria.md`
+- Current phase: 2 (design); phase 1 ended 2026-10-06T11:47:32Z
+- Last gate result: phase 1 passed 2026-10-06T11:47:32Z (56 ACs over US-001..US-008; OQ-01..OQ-06 → D-11..D-16). Phase 0 passed 2026-10-06T11:45:02Z.
+- Next step: phase 2, `skills/write-specification` → `docs/02_specification.md`, `docs/02_contracts/`
 - Waiting for the human on: nothing
 
 ## Run notes

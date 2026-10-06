@@ -91,3 +91,57 @@
 - Options: 1 (default) keep, record as Medium, re-check in phase 6. 2 add an npm `overrides` entry for qs (unlisted pin).
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-11: OQ-01 option availability per registration type
+- Timestamp: 2026-10-06T11:46:08Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `project/requirements.md` OQ-01 unanswered; US-002 speaks of "the activities available to students".
+- Options: 1 (default, conservative) each configured option states which registration types may select it (both unless configured otherwise); an option not available to the submitted type is not offered on that form and is rejected. 2 every active option is available to both types.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-12: OQ-02 mandatory consents and wording
+- Timestamp: 2026-10-06T11:46:08Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-02 unanswered; BR-05 requires mandatory consents, SB-12 and SB-14 apply.
+- Options: 1 (default, conservative) one mandatory consent, to the processing of the submitted personal data for organising the conference; its wording comes from configuration (placeholder wording until the product owner supplies it); no optional consents; the consent and the time it was given are stored. 2 several consents (for example photography, newsletter).
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-13: OQ-03 storage succeeds but an email fails
+- Timestamp: 2026-10-06T11:46:08Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-03 unanswered; priority 1 ("a registration is never lost: storage comes before any notification") and AR-05.
+- Options: 1 (default, conservative) the registration stays accepted and stored and the confirmation is shown; the failure is logged without personal data so organizers can follow up; no automatic resend in this release. 2 reject the registration when an email fails.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-14: OQ-04 number of options per category
+- Timestamp: 2026-10-06T11:46:08Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-04 unanswered; no rule states a limit.
+- Options: 1 (default) selecting options is optional (zero allowed); each option at most once; an optional maximum per category may be set in configuration and selections above it are rejected; no maximum is configured by default. 2 a fixed maximum of one per category.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-15: OQ-05 second registration with the same email
+- Timestamp: 2026-10-06T11:46:08Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-05 unanswered; editing or cancelling is out of scope, so duplicates could not be corrected.
+- Options: 1 (default, conservative) a second registration with an email already registered (ignoring letter case and surrounding whitespace, across both types) is rejected, with a message to contact the organizers. 2 allow duplicates.
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-16: OQ-06 retention of registrations and JSON copies
+- Timestamp: 2026-10-06T11:46:08Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-06 unanswered; SB-13 needs a retention period per personal-data item; deleting registrations is out of scope.
+- Options: 1 (default) records and JSON copies are kept until organizers delete them after the conference; no automatic deletion in this release; the retention period is listed in the release notes ("Before production") for the product owner to set. 2 automatic deletion after a fixed period.
+- Human response: none
+- Resolution: pending review (option 1)
