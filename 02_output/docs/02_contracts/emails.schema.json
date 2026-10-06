@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/emails.schema.json",
+  "title": "Emails (backend -> SMTP)",
+  "description": "Both messages are plain text UTF-8 (no HTML, SR-05); user input never appears in headers (subject and recipients come only from configuration, plus the validated participant address as To). Sent after the registration is stored (scope priority 1); a send failure is logged without personal data and does not change the response (D-14).",
+  "oneOf": [{ "$ref": "#/$defs/participantConfirmation" }, { "$ref": "#/$defs/organizerNotification" }],
+  "$defs": {
+    "address": { "type": "string", "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" },
+    "participantConfirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "from", "to", "subject", "contentType", "body", "attachments"],
+      "properties": {
+        "kind": { "const": "PARTICIPANT_CONFIRMATION" },
+        "from": { "$ref": "#/$defs/address", "description": "MAIL_FROM" },
+        "to": { "type": "array", "minItems": 1, "maxItems": 1, "items": { "$ref": "#/$defs/address" } },
+        "subject": { "type": "string", "pattern": "^Registration received: .+$", "description": "'Registration received: ' + CONFERENCE_NAME" },
+        "contentType": { "const": "text/plain; charset=UTF-8" },
+        "body": { "type": "string", "description": "Greeting with first and last name, registration type, selected options by category and display name, registration id" },
+        "attachments": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "organizerNotification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "from", "to", "subject", "contentType", "body", "attachments"],
+      "properties": {
+        "kind": { "const": "ORGANIZER_NOTIFICATION" },
+        "from": { "$ref": "#/$defs/address" },
+        "to": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/address" }, "description": "ORGANIZER_EMAILS" },
+        "subject": { "type": "string", "pattern": "^New (external|student) registration: .+$", "description": "'New <type> registration: ' + CONFERENCE_NAME" },
+        "contentType": { "const": "text/plain; charset=UTF-8" },
+        "body": { "type": "string", "description": "Every submitted field as 'Label: value' lines, options, consent and time; registration data only (SR-07)" },
+        "attachments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["filename", "contentType", "content"],
+            "properties": {
+              "filename": { "type": "string", "pattern": "^registration-[0-9a-f-]{36}\\.json$" },
+              "contentType": { "const": "application/json" },
+              "content": { "description": "Byte-identical to the JSON copy (json-copy.schema.json)" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "kind": "ORGANIZER_NOTIFICATION",
+      "from": "registration@konferenca.local",
+      "to": ["organizer@konferenca.local"],
+      "subject": "New student registration: Konferenca 2026",
+      "contentType": "text/plain; charset=UTF-8",
+      "body": "First name: Špela\n…",
+      "attachments": [{ "filename": "registration-0b9f7a52-5c1e-4c55-9d1e-3f1f1f6a2b10.json", "contentType": "application/json", "content": "{…}" }]
+    }
+  ]
+}
