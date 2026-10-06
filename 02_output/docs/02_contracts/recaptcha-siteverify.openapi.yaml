@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: Google reCAPTCHA v2 verification (subset used by the backend)
+  version: 1.0.0
+  description: >
+    Outbound call from the backend to Google (SR-01). The base URL comes from configuration
+    (RECAPTCHA_VERIFY_URL) so tests point it at a local mock (DoD-P05); production uses the
+    default below. Timeout 5 s. A token is accepted only when success is true. A network error,
+    timeout or non-2xx status is CAPTCHA_UNAVAILABLE (503); success false is CAPTCHA_FAILED (400).
+    In test mode (RECAPTCHA_TEST_MODE=true, never in production, SR-02) this call is not made and
+    only the token "test-mode-pass" is accepted.
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: https://www.google.com/recaptcha/api
+tags:
+  - name: verification
+    description: Token verification
+paths:
+  /siteverify:
+    post:
+      tags: [verification]
+      operationId: siteVerify
+      summary: Verify a reCAPTCHA response token
+      security:
+        - secretInBody: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [secret, response]
+              properties:
+                secret:
+                  description: RECAPTCHA_SECRET_KEY
+                  type: string
+                response:
+                  description: Token produced by the widget in the browser
+                  type: string
+                remoteip:
+                  description: Client address as seen behind the trusted proxy
+                  type: string
+      responses:
+        "200":
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success]
+                properties:
+                  success:
+                    type: boolean
+                  challenge_ts:
+                    type: string
+                    format: date-time
+                  hostname:
+                    type: string
+                  error-codes:
+                    type: array
+                    items:
+                      type: string
+        "400":
+          description: Not documented by Google for this call; treated as CAPTCHA_UNAVAILABLE
+components:
+  securitySchemes:
+    secretInBody:
+      type: apiKey
+      in: query
+      name: secret
+      description: The secret is sent in the form body field "secret" (OpenAPI cannot express a body-field key).
