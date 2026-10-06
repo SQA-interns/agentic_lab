@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SpotBugs exclusions; each entry cites the decision that justifies it. -->
 <FindBugsFilter>
+  <!-- D-21: collaborators are injected singletons (services, ports, TransactionTemplate);
+       holding the reference is the purpose of constructor injection. -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Or>
+      <Class name="si.konferenca.registration.application.RegistrationService"/>
+      <Class name="si.konferenca.registration.application.ExportService"/>
+      <Class name="si.konferenca.registration.web.OptionsController"/>
+    </Or>
+  </Match>
+  <!-- D-21: the request wrapper must hand out its limited stream (Servlet API contract). -->
+  <Match>
+    <Class name="si.konferenca.registration.web.RequestSizeFilter$LimitedRequest"/>
+    <Bug pattern="EI_EXPOSE_REP"/>
+  </Match>
+  <!-- D-21: exceptions are never serialised; the field list is not Serializable. -->
+  <Match>
+    <Class name="si.konferenca.registration.application.ValidationException"/>
+    <Bug pattern="SE_TRANSIENT_FIELD_NOT_RESTORED"/>
+  </Match>
+  <!-- D-21: HttpSecurity.build() declares 'throws Exception' (Spring Security API). -->
+  <Match>
+    <Class name="si.konferenca.registration.config.SecurityConfiguration"/>
+    <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
+  </Match>
 </FindBugsFilter>
