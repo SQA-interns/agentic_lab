@@ -49,12 +49,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-10-06T08:18:13Z",
-      "end": null
+      "end": "2026-10-06T08:42:35Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-10-06T08:42:35Z",
       "end": null
     }
   ],
@@ -63,16 +63,18 @@
     "failed": 0
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 292,
+    "failed": 0
   },
   "findings": {
-    "critical": 0,
+    "critical": 1,
     "high": 0,
-    "medium": 0,
-    "low": 0
+    "medium": 2,
+    "low": 4
   },
-  "fixLoops": [],
+  "fixLoops": [
+    { "loop": 1, "findings": ["F-01"], "change": "npm override pins transitive tinypool to 2.1.2 (D-18)", "start": "2026-10-06T08:29:08Z", "end": "2026-10-06T08:36:11Z" }
+  ],
   "decisions": [
     { "id": "D-01", "type": "non-blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:26:21Z" },
     { "id": "D-02", "type": "non-blocking", "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:26:21Z" },
@@ -90,7 +92,9 @@
     { "id": "D-14", "type": "blocking", "start": "2026-10-06T07:20:04Z", "end": "2026-10-06T07:37:24Z" },
     { "id": "D-15", "type": "non-blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:29:20Z" },
     { "id": "D-16", "type": "non-blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:29:20Z" },
-    { "id": "D-17", "type": "blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:37:24Z" }
+    { "id": "D-17", "type": "blocking", "start": "2026-10-06T07:29:20Z", "end": "2026-10-06T07:37:24Z" },
+    { "id": "D-18", "type": "non-blocking", "start": "2026-10-06T08:36:11Z", "end": "2026-10-06T08:36:11Z" },
+    { "id": "D-19", "type": "non-blocking", "start": "2026-10-06T08:36:11Z", "end": "2026-10-06T08:36:11Z" }
   ],
   "humanInterventions": [
     { "start": "2026-10-05T20:26:21Z", "end": "2026-10-05T20:34:17Z", "reason": "D-03: downgrade of High CVE-2025-7962 (angus-activation) as a false positive" },
@@ -99,9 +103,13 @@
     { "start": "2026-10-06T07:29:58Z", "end": "2026-10-06T07:37:24Z", "reason": "D-14: frontend test cleanup harness fix; D-17: ORGANIZER_PASSWORD in .env shorter than 16 characters" }
   ],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      { "name": "backend", "productionLoc": 2307, "testLoc": 3748, "duplicatedLines": 0 },
+      { "name": "frontend", "productionLoc": 545, "testLoc": 1727, "duplicatedLines": 0 }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "no complexity tool is listed in project/stack.md tooling; cloc, PMD CPD and jscpd report size and duplication only",
+    "duplicationPct": 0
   },
   "commits": [],
   "usage": {
