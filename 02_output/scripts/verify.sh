@@ -193,10 +193,18 @@ run_tool() {
       done
       numbers="$(awk -F, '/^== /{p=$0; sub(/^== /,"",p)} /,SUM,/{printf "%s=%s ", p, $5}' "$log")" ;;
     e2e)
-      # Needs the local stack (docker compose up) running; not in the default list.
-      docker run --rm --network host --user "$DOCKER_USER" -e HOME=/tmp -e CI=1 -v "$FE:/work" -w /work "$PLAYWRIGHT_IMAGE" \
+      # Needs the local stack (docker compose up) on E2E_BASE_URL / MAILPIT_URL; not in the default list.
+      # Organizer credentials reach the container only through secrets.sh (passed by name with -e KEY).
+      # Host ports are reached as host.docker.internal (Docker Desktop runs containers in a VM, so
+      # --network host would not see the host's loopback).
+      bash "$SECRETS" run ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+        docker run --rm --add-host host.docker.internal:host-gateway --user "$DOCKER_USER" -e HOME=/tmp -e CI=1 \
+        -e ORGANIZER_USERNAME -e ORGANIZER_PASSWORD -e ORGANIZER_EMAILS \
+        -e E2E_BASE_URL="${E2E_BASE_URL:-http://host.docker.internal:8088}" \
+        -e MAILPIT_URL="${MAILPIT_URL:-http://host.docker.internal:8026}" \
+        -v "$FE:/work" -w /work "$PLAYWRIGHT_IMAGE" \
         npx --no-install playwright test ${FILTER:+$FILTER} >"$log" 2>&1; rc=$?
-      numbers="$(grep -oE '[0-9]+ (passed|failed|flaky|skipped)' "$log" | tr '\n' ' ')" ;;
+      numbers="$(grep -oE '[0-9]+ (passed|failed|flaky|skipped|did not run)' "$log" | tr '\n' ' ')" ;;
     *)
       echo "unknown tool: $tool" >"$log"; rc=2 ;;
   esac
