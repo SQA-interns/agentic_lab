@@ -1,11 +1,14 @@
 package si.konferenca.registration.integration;
 
+import jakarta.activation.DataHandler;
 import jakarta.mail.MessagingException;
+import jakarta.mail.Part;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.util.ByteArrayDataSource;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -138,8 +141,16 @@ public class MailNotifier {
       helper.setSubject(subject);
       helper.setText(body, false);
       if (attachment != null) {
-        helper.addAttachment(
-            fileName, new ByteArrayResource(attachment), "application/json; charset=UTF-8");
+        // base64 keeps the bytes identical to the stored copy (AC-007-02); 7bit or
+        // quoted-printable would rewrite line endings to CRLF.
+        MimeBodyPart part = new MimeBodyPart();
+        part.setDataHandler(
+            new DataHandler(
+                new ByteArrayDataSource(attachment, "application/json; charset=UTF-8")));
+        part.setFileName(fileName);
+        part.setDisposition(Part.ATTACHMENT);
+        part.setHeader("Content-Transfer-Encoding", "base64");
+        helper.getMimeMultipart().addBodyPart(part);
       }
       sender.send(message);
     } catch (MessagingException e) {

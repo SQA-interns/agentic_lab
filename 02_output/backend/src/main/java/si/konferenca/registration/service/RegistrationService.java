@@ -95,7 +95,20 @@ public class RegistrationService {
     byte[] json = RegistrationCopy.serialize(registration);
     store(registration, fileName, json);
     notifyParticipant(registration);
+    notifyOrganizers(registration, json);
     return new Accepted(registration, json);
+  }
+
+  /** After the commit, with the stored JSON bytes attached (US-007, D-13). */
+  private void notifyOrganizers(Registration registration, byte[] json) {
+    try {
+      mail.sendOrganizerNotification(registration, json);
+    } catch (RuntimeException e) {
+      LOG.warn(
+          "registration {}: organizer notification not sent ({})",
+          registration.id(),
+          e.getClass().getSimpleName());
+    }
   }
 
   /** After the commit; a failure is logged and never changes the outcome (D-13). */
