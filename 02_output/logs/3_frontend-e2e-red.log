@@ -1,0 +1,181 @@
+docker-compose.yml not found: the stack under test does not exist yet
+
+Running 6 tests using 1 worker
+
+  ✘  1 [chromium] › tests/e2e/registration.spec.ts:32:1 › AC-001-01 AC-004-01 AC-006-01 AC-007-01 NFR-01 external registration end to end (574ms)
+  ✘  2 [chromium] › tests/e2e/registration.spec.ts:60:1 › AC-002-01 AC-002-09 student registration end to end (146ms)
+  ✘  3 [chromium] › tests/e2e/registration.spec.ts:81:1 › AC-001-10 AC-001-11 the form shows grouped options and an unchecked consent (158ms)
+  ✘  4 [chromium] › tests/e2e/registration.spec.ts:96:1 › AC-001-02 AC-004-02 an incomplete form shows field errors and no confirmation (159ms)
+  ✘  5 [chromium] › tests/e2e/registration.spec.ts:109:1 › AC-001-15 a second registration with the same email is refused (150ms)
+  ✘  6 [chromium] › tests/e2e/registration.spec.ts:130:1 › AC-008-01 AC-008-02 AC-008-03 AC-008-05 organizer export through the public site (168ms)
+
+
+  1) [chromium] › tests/e2e/registration.spec.ts:32:1 › AC-001-01 AC-004-01 AC-006-01 AC-007-01 NFR-01 external registration end to end 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18090/
+    Call log:
+      - navigating to "http://127.0.0.1:18090/", waiting until "load"
+
+
+      12 |
+      13 | async function openForm(page: Page) {
+    > 14 |   await page.goto(BASE_URL + "/");
+         |              ^
+      15 |   await expect(page.getByTestId("registration-form")).toBeVisible();
+      16 | }
+      17 |
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:14:14)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:36:9
+
+    Error Context: test-results/registration-AC-001-01-AC--9a387-nal-registration-end-to-end-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/registration-AC-001-01-AC--9a387-nal-registration-end-to-end-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/registration-AC-001-01-AC--9a387-nal-registration-end-to-end-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/registration.spec.ts:60:1 › AC-002-01 AC-002-09 student registration end to end 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18090/
+    Call log:
+      - navigating to "http://127.0.0.1:18090/", waiting until "load"
+
+
+      12 |
+      13 | async function openForm(page: Page) {
+    > 14 |   await page.goto(BASE_URL + "/");
+         |              ^
+      15 |   await expect(page.getByTestId("registration-form")).toBeVisible();
+      16 | }
+      17 |
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:14:14)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:62:9
+
+    Error Context: test-results/registration-AC-002-01-AC--fdcfa-ent-registration-end-to-end-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/registration-AC-002-01-AC--fdcfa-ent-registration-end-to-end-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/registration-AC-002-01-AC--fdcfa-ent-registration-end-to-end-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/e2e/registration.spec.ts:81:1 › AC-001-10 AC-001-11 the form shows grouped options and an unchecked consent 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18090/
+    Call log:
+      - navigating to "http://127.0.0.1:18090/", waiting until "load"
+
+
+      12 |
+      13 | async function openForm(page: Page) {
+    > 14 |   await page.goto(BASE_URL + "/");
+         |              ^
+      15 |   await expect(page.getByTestId("registration-form")).toBeVisible();
+      16 | }
+      17 |
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:14:14)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:84:9
+
+    Error Context: test-results/registration-AC-001-10-AC--037bc-ns-and-an-unchecked-consent-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/registration-AC-001-10-AC--037bc-ns-and-an-unchecked-consent-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/registration-AC-001-10-AC--037bc-ns-and-an-unchecked-consent-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests/e2e/registration.spec.ts:96:1 › AC-001-02 AC-004-02 an incomplete form shows field errors and no confirmation 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18090/
+    Call log:
+      - navigating to "http://127.0.0.1:18090/", waiting until "load"
+
+
+      12 |
+      13 | async function openForm(page: Page) {
+    > 14 |   await page.goto(BASE_URL + "/");
+         |              ^
+      15 |   await expect(page.getByTestId("registration-form")).toBeVisible();
+      16 | }
+      17 |
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:14:14)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:99:9
+
+    Error Context: test-results/registration-AC-001-02-AC--3a9e6--errors-and-no-confirmation-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/registration-AC-001-02-AC--3a9e6--errors-and-no-confirmation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/registration-AC-001-02-AC--3a9e6--errors-and-no-confirmation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › tests/e2e/registration.spec.ts:109:1 › AC-001-15 a second registration with the same email is refused 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18090/
+    Call log:
+      - navigating to "http://127.0.0.1:18090/", waiting until "load"
+
+
+      12 |
+      13 | async function openForm(page: Page) {
+    > 14 |   await page.goto(BASE_URL + "/");
+         |              ^
+      15 |   await expect(page.getByTestId("registration-form")).toBeVisible();
+      16 | }
+      17 |
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:14:14)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:112:11
+
+    Error Context: test-results/registration-AC-001-15-a-s-9089d-h-the-same-email-is-refused-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/registration-AC-001-15-a-s-9089d-h-the-same-email-is-refused-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/registration-AC-001-15-a-s-9089d-h-the-same-email-is-refused-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › tests/e2e/registration.spec.ts:130:1 › AC-008-01 AC-008-02 AC-008-03 AC-008-05 organizer export through the public site 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18090/
+    Call log:
+      - navigating to "http://127.0.0.1:18090/", waiting until "load"
+
+
+      12 |
+      13 | async function openForm(page: Page) {
+    > 14 |   await page.goto(BASE_URL + "/");
+         |              ^
+      15 |   await expect(page.getByTestId("registration-form")).toBeVisible();
+      16 | }
+      17 |
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:14:14)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/agentic_lab/02_output/frontend/tests/e2e/registration.spec.ts:135:9
+
+    Error Context: test-results/registration-AC-008-01-AC--af771-ort-through-the-public-site-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/registration-AC-008-01-AC--af771-ort-through-the-public-site-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/registration-AC-008-01-AC--af771-ort-through-the-public-site-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [chromium] › tests/e2e/registration.spec.ts:32:1 › AC-001-01 AC-004-01 AC-006-01 AC-007-01 NFR-01 external registration end to end 
+    [chromium] › tests/e2e/registration.spec.ts:60:1 › AC-002-01 AC-002-09 student registration end to end 
+    [chromium] › tests/e2e/registration.spec.ts:81:1 › AC-001-10 AC-001-11 the form shows grouped options and an unchecked consent 
+    [chromium] › tests/e2e/registration.spec.ts:96:1 › AC-001-02 AC-004-02 an incomplete form shows field errors and no confirmation 
+    [chromium] › tests/e2e/registration.spec.ts:109:1 › AC-001-15 a second registration with the same email is refused 
+    [chromium] › tests/e2e/registration.spec.ts:130:1 › AC-008-01 AC-008-02 AC-008-03 AC-008-05 organizer export through the public site 
