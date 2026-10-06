@@ -55,7 +55,7 @@ const summarizers = {
   spotbugs([xml]) {
     if (!existsSync(xml)) return "bugs=n/a";
     const t = read(xml);
-    const ranks = [...t.matchAll(/<BugInstance [^>]*rank="(\d+)"/g)].map((m) => +m[1]);
+    const ranks = [...t.matchAll(/<BugInstance [^>]*rank=['"](\d+)['"]/g)].map((m) => +m[1]);
     const high = ranks.filter((r) => r <= 4).length;
     const medium = ranks.filter((r) => r >= 5 && r <= 9).length;
     return `bugs=${ranks.length} high=${high} medium=${medium} low=${ranks.length - high - medium}`;
