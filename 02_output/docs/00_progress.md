@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 4 (build), gate not yet run
-- Last gate result: phase 3 passed 2026-10-05T21:19:14Z (freeze commit `2a543e5`). Phase 4 so far: backend complete for US-001 to US-008 (all 86 backend acceptance tests and 5 ArchUnit rules pass; format, PMD, SpotBugs clean); frontend for US-001 to US-004 committed (16 of 20 frontend acceptance tests fail only because the test harness keeps the DOM between tests, D-14; with the proposed fix 21 of 21 passed); images, `docker-compose.yml` and local config committed. Local stack not running: backend refuses to start because ORGANIZER_PASSWORD in `.env` is shorter than 16 characters (D-17).
-- Next step: on D-14 option 1, add `afterEach(cleanup)` to `frontend/src/test-setup.ts`, run `verify.sh 4 fe-test`, commit. On D-17, start the stack (`cd 02_output && bash ../01_input/00_general/tools/secrets.sh run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- docker compose up -d --build`), run `verify.sh 4 e2e`, fix until all frozen tests pass, save `git log --oneline 2a543e5..HEAD` to `logs/`, run all checks, pass the phase 4 gate.
-- Waiting for the human on: D-14, D-17
+- Current phase: 5 (unit tests)
+- Last gate result: phase 4 passed 2026-10-06T07:44:54Z. All frozen tests pass: backend acceptance 86/86 plus 5 ArchUnit rules (`logs/4_be-test.log`), frontend acceptance 21/21 including the skeleton unit test (`logs/4_fe-test.log`), end-to-end 9/9 against the local stack (`logs/4_e2e.log`). Format, lint, type check, PMD and SpotBugs clean. Commits per story in `logs/4_commits-since-freeze.log`. D-14 and D-17 answered by the human 2026-10-06T07:37:24Z. Local stack (`registration-tanej04`) is running. Earlier gates: phase 3 2026-10-05T21:19:14Z, phase 2 2026-10-05T20:56:18Z, phase 1 2026-10-05T20:42:28Z, phase 0 2026-10-05T20:40:37Z.
+- Next step: phase 5 with `skills/unit-tests`: first complete run recorded and classified before any fix, unit and integration tests per component area, coverage and mutation recorded.
+- Waiting for the human on: nothing

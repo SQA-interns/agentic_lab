@@ -1,0 +1,27 @@
+fef118b docs: record answers to D-14 and D-17
+7d39af6 test: unmount rendered pages between frontend tests (D-14)
+9f206d9 chore: record phase 4 progress and open questions D-14, D-17
+345933c docs: record decisions D-14 to D-17
+29f7cd7 docs: correct image build and compose project name (D-15, D-16)
+ba79cf2 build: add local compose stack and conference config (NFR-02, NFR-04)
+920ab3b build: add non-root backend and frontend images (SB-10, SB-11)
+749e548 build: reset JaCoCo data before each backend test run
+da082d3 test: check declared backend layers and package cycles (AR-02, AR-03)
+b888cb9 feat: export registrations as an Excel workbook (AC-008-01..AC-008-05)
+362ea1a feat: add registration form and confirmation page (US-001..US-004)
+55518ca feat: add frontend API client and form checks (NFR-03, AR-01)
+b226e8b docs: record SpotBugs exclusion decision (D-13)
+09263b6 feat: accept registrations over the API (US-001, US-002, US-004)
+21ef318 feat: send participant and organizer emails (US-006, US-007)
+2bfdd59 feat: write raw JSON copies and verify tokens (AC-005-02, AC-001-14)
+4759ee9 feat: store registrations in PostgreSQL via Flyway and JPA (AC-005-01)
+69aa085 feat: register with row and JSON copy stored together (AC-005-03, AR-05)
+b76d471 feat: validate registrations on the backend (AC-001-03..13, AC-002-03..08)
+323977d build: exclude SpotBugs EI_EXPOSE_REP2 on injected collaborators (D-13)
+17ddbba chore: record human intervention in run log
+3bdd2bb feat: add access control and organizer authentication (BR-08, SR-06)
+63dad44 feat: bind settings and refuse unsafe startup (SR-02, US-003)
+613d4e9 feat: add problem responses and request limits (SR-03, ES-07)
+a253962 feat: load conference options and serve form config (AC-003-01..03)
+1ffee38 build: read single-quoted SpotBugs ranks in verify summary
+a21f976 chore: record phase 3 gate in progress and run log
