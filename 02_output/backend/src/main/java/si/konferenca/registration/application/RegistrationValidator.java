@@ -16,7 +16,8 @@ import si.konferenca.registration.domain.Text;
 /** Server-side validation of a registration (SB-01, BR-02..BR-05, spec section 4). */
 public class RegistrationValidator {
 
-  static final Pattern EMAIL = Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$");
+  static final Pattern EMAIL =
+      Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", Pattern.UNICODE_CHARACTER_CLASS);
   static final int MAX_NAME = 100;
   static final int MAX_EMAIL = 254;
   static final int MAX_INSTITUTION = 200;
