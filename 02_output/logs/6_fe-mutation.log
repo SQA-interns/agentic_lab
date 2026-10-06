@@ -1,0 +1,155 @@
+[32m10:31:13 (18724) INFO ProjectReader[39m Found 6 of 58 file(s) to be mutated.
+[32m10:31:13 (18724) INFO Instrumenter[39m Instrumented 6 source file(s) with 368 mutant(s)
+[32m10:31:13 (18724) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m10:31:16 (18724) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m10:31:32 (18724) INFO DryRunExecutor[39m Initial test run succeeded. Ran 69 tests in 16 seconds (net 3547.1851000000092 ms, overhead 13208.81489999999 ms).
+
+All tests
+  src
+    api.test.ts
+      ~ api loads the form configuration from the relative API path (covered 8)
+      ✓ api fails when the form configuration cannot be loaded (killed 1)
+      ~ api posts the registration as JSON and returns the confirmation (covered 13)
+      ✓ api keeps only well-formed field errors of a rejection (killed 2)
+      ~ api drops a field error without all three texts: {"code":"C","message":"m"} (covered 36)
+      ~ api drops a field error without all three texts: {"field":"f","message":"m"} (covered 39)
+      ~ api drops a field error without all three texts: {"field":"f","code":"C"} (covered 42)
+      ~ api drops a field error without all three texts: {"field":"f","code":"C","message":3} (covered 42)
+      ✓ api returns no field errors for body not json (killed 2)
+      ~ api returns no field errors for body {"errors":"none"} (covered 19)
+      ~ api returns no field errors for body null (covered 16)
+    App.test.tsx
+      ~ App renders the page heading (covered 20)
+    FormBehaviour.test.tsx
+      ✓ form state starts empty, without alerts, with an email input for the email (killed 12)
+      ✓ form state does not show a category without options for the chosen type (killed 13)
+      ✓ form state an unchecked option is not sent (killed 29)
+      ✓ form state switching type clears errors and forgets options the other type is not offered (killed 12)
+      ✓ form state unchecking the test captcha means it must be confirmed again (killed 7)
+      ✓ form state disables the button while sending (killed 2)
+      ✓ form state clears an earlier general message when sending again (killed 5)
+      ✓ form state shows backend consent errors at the consent and only field errors without a general message (killed 8)
+      ✓ form state joins several general messages (killed 3)
+      ✓ live captcha does nothing in test mode or without a site key (killed 5)
+      ✓ live captcha renders once even when its properties change, and expiry clears the token (killed 12)
+      ✓ live captcha renders when the Google script has loaded and adds the script only once (killed 7)
+      ~ live captcha links its error to the widget (covered 34)
+      ✓ App loading shows loading until the configuration arrives (killed 3)
+    RegistrationForm.test.tsx
+      ✓ RegistrationForm shows a fixed message for status 429 (killed 20)
+      ✓ RegistrationForm shows a fixed message for status 503 (killed 1)
+      ✓ RegistrationForm shows a fixed message for status 500 (killed 1)
+      ✓ RegistrationForm shows errors of fields that are not on the form above the button (killed 10)
+      ✓ RegistrationForm shows a backend captcha error next to the captcha (killed 6)
+      ✓ RegistrationForm reports a network failure without details (killed 2)
+      ✓ RegistrationForm drops options the new type is not offered and sends the student fields only (killed 16)
+      ~ RegistrationForm unchecking the test captcha clears the token (covered 84)
+      ✓ RegistrationForm renders the live widget with the site key and uses its token (killed 7)
+      ✓ RegistrationForm loads the Google script once when the widget is not there yet (killed 2)
+      ✓ App says so when the form cannot be loaded (killed 6)
+      ✓ App shows the conference name and no options text in the confirmation (killed 3)
+    validation.test.ts
+      ✓ validate accepts a complete external registration (killed 5)
+      ✓ validate requires every field of the chosen type only (killed 4)
+      ✓ validate treats whitespace as empty and checks the email format after trimming (killed 2)
+      ✓ validate requires mandatory consents and the captcha token (killed 2)
+      ~ validate reports an empty email as required, not as invalid (covered 24)
+      ~ isValidEmail a@b.si -> true (covered 2)
+      ~ isValidEmail  a@b.si  -> true (covered 2)
+      ~ isValidEmail a@b -> false (covered 2)
+      ~ isValidEmail a b@c.si -> false (covered 2)
+      ~ isValidEmail a@@b.si -> false (covered 2)
+      ~ isValidEmail @b.si -> false (covered 2)
+  tests/acceptance
+    us001-external.test.tsx
+      ✓ US-001 external participant registration AC-001-01 shows exactly the external participant fields by default (killed 14)
+      ✓ US-001 external participant registration AC-001-02 sends the external registration with the selected options and consents (killed 25)
+      ✓ US-001 external participant registration AC-001-03 shows a required-field error next to an empty field and sends nothing (killed 8)
+      ~ US-001 external participant registration AC-001-04 treats a whitespace-only field as empty (covered 150)
+      ~ US-001 external participant registration AC-001-06 shows an email format error next to the email field and sends nothing (covered 150)
+      ✓ US-001 external participant registration AC-001-06 shows the backend's email error next to the email field (killed 13)
+      ~ US-001 external participant registration AC-001-12 shows every consent unchecked (covered 105)
+      ✓ US-001 external participant registration AC-001-13 shows a consent error next to the missing mandatory consent and sends nothing (killed 4)
+      ✓ US-001 external participant registration AC-001-14 asks to pass the anti-automation check before sending (killed 3)
+      ~ US-001 external participant registration AC-001-15 shows the duplicate-email message from the backend (covered 227)
+    us002-student.test.tsx
+      ✓ US-002 student registration AC-002-01 shows exactly the student fields after choosing Student (killed 7)
+      ✓ US-002 student registration AC-002-02 sends the student registration with the selected options (killed 9)
+      ✓ US-002 student registration AC-002-03 shows a required-field error next to an empty student field and sends nothing (killed 3)
+      ✓ US-002 student registration AC-002-04 shows an email format error next to the email field (killed 2)
+    us003-options.test.tsx
+      ✓ US-003 configurable conference options AC-003-01 shows the options grouped by category with their display names (killed 1)
+      ~ US-003 configurable conference options AC-003-02 shows only the options the configuration offers and none unchecked by default (covered 105)
+      ~ US-003 configurable conference options AC-003-03 shows an external-only option on the external form and not on the student form (covered 112)
+    us004-confirmation.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation with the accepted data after acceptance (killed 5)
+      ✓ US-004 registration confirmation AC-004-02 keeps the form with the entered values and the errors when rejected (killed 2)
+      ~ US-004 registration confirmation AC-004-03 shows an error without internal details when storing fails (covered 196)
+
+[Survived] BlockStatement
+src/api.ts:99:33
+-       if (!Array.isArray(errors)) {
+-         return [];
+-       }
++       if (!Array.isArray(errors)) {}
+Tests ran:
+    RegistrationForm shows a fixed message for status 429
+    RegistrationForm shows a fixed message for status 503
+    RegistrationForm shows a fixed message for status 500
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:26:13
+-           if (active) {
++           if (true) {
+Tests ran:
+    App says so when the form cannot be loaded
+    App renders the page heading
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:59:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    RegistrationForm loads the Google script once when the widget is not there yet
+    live captcha renders when the Google script has loaded and adds the script only once
+
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:86:38
+-         firstName: values.firstName ?? "",
++         firstName: values.firstName ?? "Stryker was here!",
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:87:36
+-         lastName: values.lastName ?? "",
++         lastName: values.lastName ?? "Stryker was here!",
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:88:30
+-         email: values.email ?? "",
++         email: values.email ?? "Stryker was here!",
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:97:26
+-           values[field] ?? "";
++           values[field] ?? "Stryker was here!";
+
+Ran 3.27 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  98.10 |   99.18 |      306 |        55 |          3 |        4 |        0 |
+ api.ts               |  98.31 |   98.31 |       37 |        21 |          1 |        0 |        0 |
+ App.tsx              |  95.00 |   95.00 |       13 |         6 |          1 |        0 |        0 |
+ Captcha.tsx          |  98.11 |   98.11 |       48 |         4 |          1 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        4 |         2 |          0 |        0 |        0 |
+ RegistrationForm.tsx |  97.59 |  100.00 |      145 |        17 |          0 |        4 |        0 |
+ validation.ts        | 100.00 |  100.00 |       59 |         5 |          0 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m10:35:52 (18724) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m10:35:52 (18724) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m10:35:52 (18724) INFO MutationTestExecutor[39m Done in 4 minutes and 40 seconds.

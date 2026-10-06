@@ -1,0 +1,88 @@
+== 2026-10-06T08:37:07Z containers
+registration-tanej04-backend-1 Up 58 minutes (healthy)
+registration-tanej04-frontend-1 Up 57 minutes (healthy)
+registration-tanej04-postgres-1 Up About an hour (healthy)
+registration-tanej04-mailpit-1 Up About an hour (healthy)
+== health (NFR-04)
+{"status":"UP"}
+{"status":"UP"}
+ok
+== frontend page and headers (SB-10)
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+== DoD-P01 external registration through the frontend proxy
+{"type":"about:blank","title":"Malformed request","status":400,"detail":"The request could not be read.","errors":[{"field":"body","code":"MALFORMED","message":"The request could not be read."}]}
+status=400
+== DoD-P01 student registration through the frontend proxy
+{"type":"about:blank","title":"Malformed request","status":400,"detail":"The request could not be read.","errors":[{"field":"body","code":"MALFORMED","message":"The request could not be read."}]}
+status=400
+== DoD-P04 export without organizer access
+status=401
+== note: the first two requests above were sent as command-line arguments, which Git Bash passes to curl.exe in the Windows code page (not UTF-8); the backend rejected the invalid UTF-8 as MALFORMED. Resent below as UTF-8 files.
+== 2026-10-06T08:37:22Z DoD-P01 external registration (UTF-8 body)
+{"registrationId":"185b6493-a43f-4342-b6a0-66d09dea1d80","type":"external","firstName":"Žiga","lastName":"Čebašek","email":"demo.external.20261006@example.com","options":[{"id":"ws-testing","name":"Delavnica: testiranje programske opreme","category":"workshop"},{"id":"meal-lunch","name":"Kosilo","category":"meal"}],"receivedAt":"2026-10-06T08:37:22.792Z"}
+status=201
+== DoD-P01 student registration (UTF-8 body)
+{"registrationId":"0017fcd8-d752-4d99-b9ae-b8a435072c73","type":"student","firstName":"Luka","lastName":"Kranjc","email":"demo.student.20261006@example.com","options":[{"id":"ev-student-meetup","name":"Študentsko srečanje","category":"event"}],"receivedAt":"2026-10-06T08:37:22.888Z"}
+status=201
+== 2026-10-06T08:37:35Z DoD-P02 database rows
+                  id                  |   type   | first_name | last_name |  organization  |       study_programme        |        options        |       consents        
+--------------------------------------+----------+------------+-----------+----------------+------------------------------+-----------------------+-----------------------
+ 185b6493-a43f-4342-b6a0-66d09dea1d80 | external | Žiga       | Čebašek   | Šola za ščepce |                              | meal-lunch,ws-testing | data-processing
+ 0017fcd8-d752-4d99-b9ae-b8a435072c73 | student  | Luka       | Kranjc    |                | Računalništvo in informatika | ev-student-meetup     | data-processing,photo
+(2 rows)
+
+== DoD-P02 JSON copies on the volume
+-rw------- 1 app app 943 Oct  6 08:37 /data/registrations/0017fcd8-d752-4d99-b9ae-b8a435072c73.json
+-rw------- 1 app app 782 Oct  6 08:37 /data/registrations/185b6493-a43f-4342-b6a0-66d09dea1d80.json
+{
+  "schemaVersion" : 1,
+  "registrationId" : "185b6493-a43f-4342-b6a0-66d09dea1d80",
+  "type" : "external",
+  "receivedAt" : "2026-10-06T08:37:22.792Z",
+  "participant" : {
+    "firstName" : "Žiga",
+    "lastName" : "Čebašek",
+    "email" : "demo.external.20261006@example.com",
+    "organization" : "Šola za ščepce"
+  },
+  "options" : [ {
+    "id" : "ws-testing",
+    "name" : "Delavnica: testiranje programske opreme",
+    "category" : "workshop"
+  }, {
+    "id" : "meal-lunch",
+    "name" : "Kosilo",
+    "category" : "meal"
+  } ],
+  "consents" : [ {
+    "id" : "data-processing",
+    "text" : "I agree to the processing of the personal data entered in this form for the registration and organisation of the conference.",
+    "givenAt" : "2026-10-06T08:37:22.792Z"
+  } ]
+}
+== DoD-P03 Mailpit messages for the demo registrations
+participant: demo.external.20261006@example.com | Registration confirmed: Konferenca 2026 | attachments 0
+participant: demo.student.20261006@example.com | Registration confirmed: Konferenca 2026 | attachments 0
+organizer: to 1 address(es) | New registration: Konferenca 2026 | registration-0017fcd8-d752-4d99-b9ae-b8a435072c73.json application/json
+organizer: to 1 address(es) | New registration: Konferenca 2026 | registration-185b6493-a43f-4342-b6a0-66d09dea1d80.json application/json
+== 2026-10-06T08:38:03Z NFR-02 before recreation: registrations=11 json_copies=11
+ Container registration-tanej04-mailpit-1 Removed 
+ Network registration-tanej04_default Removing 
+ Network registration-tanej04_default Removed 
+ Container registration-tanej04-mailpit-1 Healthy 
+ Container registration-tanej04-frontend-1 Healthy 
+== 2026-10-06T08:38:40Z NFR-02 after down and up: registrations=11 json_copies=11
+/data/registrations/185b6493-a43f-4342-b6a0-66d09dea1d80.json
+== NFR-04 health after restart
+registration-tanej04-frontend-1 Up 8 seconds (healthy)
+registration-tanej04-backend-1 Up 24 seconds (healthy)
+registration-tanej04-postgres-1 Up 30 seconds (healthy)
+registration-tanej04-mailpit-1 Up 30 seconds (healthy)
+{"status":"UP"}
+== SB-11 processes are not root
+uid=100(app) gid=101(app) groups=101(app)
+uid=101(nginx) gid=101(nginx) groups=101(nginx)

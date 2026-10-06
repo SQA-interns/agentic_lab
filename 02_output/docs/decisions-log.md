@@ -155,3 +155,21 @@
 - Options: 1. (default) the human sets ORGANIZER_PASSWORD in `.env` to a random value of at least 16 characters; nothing else changes; 2. lower the minimum length for `APP_ENVIRONMENT=local` only (weakens SR-06 / SB-03 evidence locally); 3. other instruction.
 - Human response: "D-17: 1 (updated .env)" (2026-10-06T07:37:24Z): ORGANIZER_PASSWORD set to a random value of at least 16 characters; check only with secrets.sh.
 - Resolution: 1. `secrets.sh check`: ORGANIZER_PASSWORD present; the value was not read.
+
+## D-18: Pin transitive tinypool 2.1.2 to fix Critical advisories (F-01)
+- Timestamp: 2026-10-06T08:36:11Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: `verify.sh 6 fe-depscan`: 2 Critical, `tinypool` 1.1.1 (GHSA-5gmw-xhrv-c9v3, GHSA-85c8-ppgw-ccpr, prototype pollution to code execution, fixed in 2.1.2) pulled in by the pinned `vitest` 3.2.7 (test only, not in the shipped bundle); advisories published after the phase 0 scan. No patched 1.x exists; npm's own fix is `vitest` 5.0.3, a `project/stack.md` change.
+- Options: 1. (default) npm `overrides` pins the unlisted transitive `tinypool` to exactly 2.1.2 (`standards/engineering.md`, "Versions"); `vitest` stays 3.2.7; 2. ask the human to change `vitest` and `@vitest/coverage-v8` to 5.0.3 in `stack.md`; 3. lower the severity as test-only (blocking).
+- Human response: none
+- Resolution: 1, pending review. Re-run with the override: `fe-test` 69/0, `fe-mutation` 98.1%, `fe-build` ok, `fe-depscan` Critical 0, High 0, Medium 5.
+
+## D-19: Correction to D-12: the API contract commit is within the size guide
+- Timestamp: 2026-10-06T08:36:11Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: the phase 6 commit-size check (`git show --numstat 1eae1d6`) counts 376 lines, not about 470 as D-12 states; D-12 was based on an estimate. The only commit above 400 lines is `35c3c77` (441 lines, D-04).
+- Options: 1. (default) record the correction here; D-12 stays as written (records are not rewritten).
+- Human response: none
+- Resolution: 1

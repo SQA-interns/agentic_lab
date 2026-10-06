@@ -88,5 +88,16 @@ Killed by tests added after the first run: config file (consent not an object, e
 
 ## Final run (phase 6)
 
+All levels, after fix loop 1 (`f4182f5`, frontend test tooling only); 292 passed, 0 failed. The end-to-end suite includes `runtime-demo.spec.ts` (DoD-P04), added in phase 6.
+
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools | Log |
 |---|---|---|---|---|---|---|---|
+| backend | acceptance | 86 / 0 | — | — | — | JUnit 6, Testcontainers | `logs/6_be-test.log` |
+| backend | integration | 15 / 0 | — | — | — | JUnit 6, Testcontainers | `logs/6_be-test.log` |
+| backend | architecture | 5 / 0 | — | — | — | ArchUnit | `logs/6_be-test.log` |
+| backend | unit | 107 / 0 | 67.0% | 82.4% | 95.8%, 298 of 311 (scope in "Measures") | JUnit 6, JaCoCo, PIT | `logs/5-unit_be-test.log`, `logs/6_be-mutation.log` |
+| backend | all levels | 213 / 0 | 96.4% | 92.2% | — | JaCoCo | `logs/6_be-test.log` |
+| frontend | acceptance | 20 / 0 | — | — | — | Vitest | `logs/6_fe-test.log` |
+| frontend | unit | 49 / 0 | — | — | — | Vitest | `logs/6_fe-test.log` |
+| frontend | all levels (unit + acceptance) | 69 / 0 | 100% | 97.24% | 98.1%, 361 of 368 (all of `src` except `main.tsx`) | Vitest, v8, Stryker | `logs/6_fe-test.log`, `logs/6_fe-mutation.log` |
+| frontend + backend | end-to-end | 10 / 0 | — | — | — | Playwright 1.63.0 | `logs/6_e2e.log` |

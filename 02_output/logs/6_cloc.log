@@ -1,0 +1,95 @@
+== backend-main
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 2.08517718315125,
+  "n_files"            : 45,
+  "n_lines"            : 2840,
+  "files_per_second"   : 21.5808998696184,
+  "lines_per_second"   : 1361.99456954925,
+  "report_file"        : "/src/logs/6_cloc-backendmain.json"},
+"Java" :{
+  "nFiles": 43,
+  "blank": 339,
+  "comment": 172,
+  "code": 2220},
+"Properties" :{
+  "nFiles": 1,
+  "blank": 7,
+  "comment": 7,
+  "code": 47},
+"SQL" :{
+  "nFiles": 1,
+  "blank": 4,
+  "comment": 4,
+  "code": 40},
+"SUM": {
+  "blank": 350,
+  "comment": 183,
+  "code": 2307,
+  "nFiles": 45} }
+== backend-test
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 1.78861808776855,
+  "n_files"            : 38,
+  "n_lines"            : 4429,
+  "files_per_second"   : 21.2454521509441,
+  "lines_per_second"   : 2476.21335727714,
+  "report_file"        : "/src/logs/6_cloc-backendtest.json"},
+"Java" :{
+  "nFiles": 37,
+  "blank": 599,
+  "comment": 82,
+  "code": 3725},
+"JSON" :{
+  "nFiles": 1,
+  "blank": 0,
+  "comment": 0,
+  "code": 23},
+"SUM": {
+  "blank": 599,
+  "comment": 82,
+  "code": 3748,
+  "nFiles": 38} }
+== frontend-main
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 0.196380853652954,
+  "n_files"            : 7,
+  "n_lines"            : 596,
+  "files_per_second"   : 35.6450227697373,
+  "lines_per_second"   : 3034.91908153763,
+  "report_file"        : "/src/logs/6_cloc-frontendmain.json"},
+"TypeScript" :{
+  "nFiles": 7,
+  "blank": 43,
+  "comment": 8,
+  "code": 545},
+"SUM": {
+  "blank": 43,
+  "comment": 8,
+  "code": 545,
+  "nFiles": 7} }
+== frontend-test
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 0.469873905181885,
+  "n_files"            : 16,
+  "n_lines"            : 1957,
+  "files_per_second"   : 34.0516888117175,
+  "lines_per_second"   : 4164.9471877832,
+  "report_file"        : "/src/logs/6_cloc-frontendtest.json"},
+"TypeScript" :{
+  "nFiles": 16,
+  "blank": 210,
+  "comment": 20,
+  "code": 1727},
+"SUM": {
+  "blank": 210,
+  "comment": 20,
+  "code": 1727,
+  "nFiles": 16} }

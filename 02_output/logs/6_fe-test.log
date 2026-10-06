@@ -1,0 +1,36 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/api.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/validation.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/App.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 153[2mms[22m[39m
+ [32m✓[39m tests/acceptance/us003-options.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 754[2mms[22m[39m
+   [33m[2m✓[22m[39m US-003 configurable conference options[2m > [22mAC-003-01 shows the options grouped by category with their display names [33m 389[2mms[22m[39m
+ [32m✓[39m tests/acceptance/us004-confirmation.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 1108[2mms[22m[39m
+   [33m[2m✓[22m[39m US-004 registration confirmation[2m > [22mAC-004-01 shows the confirmation with the accepted data after acceptance [33m 573[2mms[22m[39m
+ [32m✓[39m tests/acceptance/us002-student.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 1321[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-01 shows exactly the student fields after choosing Student [33m 394[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-02 sends the student registration with the selected options [33m 345[2mms[22m[39m
+   [33m[2m✓[22m[39m US-002 student registration[2m > [22mAC-002-03 shows a required-field error next to an empty student field and sends nothing [33m 339[2mms[22m[39m
+ [32m✓[39m src/FormBehaviour.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 1673[2mms[22m[39m
+ [32m✓[39m src/RegistrationForm.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[33m 1728[2mms[22m[39m
+   [33m[2m✓[22m[39m RegistrationForm[2m > [22mshows a fixed message for status 429 [33m 457[2mms[22m[39m
+ [32m✓[39m tests/acceptance/us001-external.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 2017[2mms[22m[39m
+   [33m[2m✓[22m[39m US-001 external participant registration[2m > [22mAC-001-01 shows exactly the external participant fields by default [33m 334[2mms[22m[39m
+   [33m[2m✓[22m[39m US-001 external participant registration[2m > [22mAC-001-02 sends the external registration with the selected options and consents [33m 381[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m69 passed[39m[22m[90m (69)[39m
+[2m   Start at [22m 10:31:03
+[2m   Duration [22m 5.71s[2m (transform 444ms, setup 5.14s, collect 1.40s, tests 8.79s, environment 19.12s, prepare 2.45s)[22m
+
+JSON report written to C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/vitest.json
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 425/425 )
+Branches     : 97.24% ( 141/145 )
+Functions    : 100% ( 19/19 )
+Lines        : 100% ( 425/425 )
+================================================================================

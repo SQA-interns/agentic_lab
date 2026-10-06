@@ -1,0 +1,24 @@
+== backend log lines: 49
+personal data hits (emails, demo names): 0
+stack traces: 0
+sample INFO lines:
+== frontend (nginx) access log lines with personal data: 0
+== committed phase logs with stack traces of the product (not tests):
+logs/6_be-test.log
+== product log lines in logs/6_be-test.log (loggers si.konferenca.registration.*)
+106
+-- with an email address or test names:
+0
+-- distinct product messages:
+     25 Registration <id> accepted
+     23 Sent participant email of registration <id>
+     23 Sent organizer email of registration <id>
+      7 No active profile set, falling back to 1 default profile: "default"
+      4 Registration <id> could not be stored
+      2 Could not send participant email of registration <id>: MailSendException
+      2 Could not send organizer email of registration <id>: MailSendException
+      2 Anti-automation verification answer has no success flag
+      1 Starting WebIntegrationTest using Java 21.0.11 with PID 39940 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+      1 Starting Us008ExportAcceptanceTest using Java 21.0.11 with PID 39940 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+      1 Starting Us005StorageAcceptanceTest using Java 21.0.11 with PID 39940 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)
+      1 Starting Us004ConfirmationAcceptanceTest using Java 21.0.11 with PID 39940 (started by tanej in C:\Users\tanej\Documents\LAB\agentic_lab\02_output\backend)

@@ -1,0 +1,8 @@
+== working tree
+[90m8:39AM[0m [32mINF[0m [1mscanned ~2129005 bytes (2.13 MB) in 1.74s[0m
+[90m8:39AM[0m [32mINF[0m [1mno leaks found[0m
+== history of HEAD
+[90m8:40AM[0m [32mINF[0m [1m108 commits scanned.[0m
+[90m8:40AM[0m [32mINF[0m [1mscanned ~2957254 bytes (2.96 MB) in 13.4s[0m
+[90m8:40AM[0m [32mINF[0m [1mno leaks found[0m
+exit tree=0 history=0

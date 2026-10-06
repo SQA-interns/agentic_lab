@@ -1,0 +1,5 @@
+sheet name: Registrations
+rows incl header: 12
+header: Registration ID | Received at | Type | First name | Last name | Email | Organization / institution | Study institution | Study programme | Student ID | Workshops | Events | Meals | Other activities | Consents
+demo rows present: True
+formula cells: 0
