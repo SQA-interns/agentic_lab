@@ -5,6 +5,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.regex.Pattern;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -13,6 +16,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * (SR-06). Behind the trusted proxy, isSecure() reflects X-Forwarded-Proto.
  */
 public class HttpsOnlyFilter extends OncePerRequestFilter {
+
+  private static final Pattern LITERAL_IP = Pattern.compile("^[0-9a-fA-F:.]+$");
 
   private final boolean httpsOnly;
 
@@ -37,10 +42,15 @@ public class HttpsOnlyFilter extends OncePerRequestFilter {
     chain.doFilter(request, response);
   }
 
+  /** True for a literal loopback address; never resolves host names. */
   static boolean isLoopback(String address) {
-    return address != null
-        && (address.startsWith("127.")
-            || "::1".equals(address)
-            || "0:0:0:0:0:0:0:1".equals(address));
+    if (address == null || !LITERAL_IP.matcher(address).matches()) {
+      return false;
+    }
+    try {
+      return InetAddress.getByName(address).isLoopbackAddress();
+    } catch (UnknownHostException e) {
+      return false;
+    }
   }
 }
