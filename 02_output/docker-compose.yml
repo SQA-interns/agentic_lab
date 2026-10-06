@@ -1,0 +1,83 @@
+# Local stack (docs/02_specification.md §12): plain HTTP on 127.0.0.1 only.
+# Build the backend jar first (cd backend && ./mvnw -B package -DskipTests), then from 02_output:
+#   bash ../01_input/00_general/tools/secrets.sh run \
+#     POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- docker compose up -d --build
+# Run-specific project name, so volumes of earlier runs named "registration_*" are never reused (D-16).
+name: registration-tanej04
+
+services:
+  postgres:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "registration", "-d", "registration"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:8025:8025"
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build: ./backend
+    environment:
+      APP_ENVIRONMENT: local
+      DB_URL: jdbc:postgresql://postgres:5432/registration
+      DB_USERNAME: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_TLS: "false"
+      CONFERENCE_NAME: Konferenca 2026
+      CONFERENCE_CONFIG_FILE: /config/conference-config.json
+      JSON_COPY_DIR: /data/registrations
+      RECAPTCHA_TEST_MODE: "true"
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?ORGANIZER_USERNAME is required}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?ORGANIZER_PASSWORD is required}
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?ORGANIZER_EMAILS is required}
+      ORGANIZER_HTTPS_ONLY: "false"
+    volumes:
+      - jsoncopies:/data/registrations
+      - ./config/conference-config.json:/config/conference-config.json:ro
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/actuator/health/readiness"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:8081:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  pgdata:
+  jsoncopies:

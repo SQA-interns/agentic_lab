@@ -33,8 +33,8 @@ IMG_REDOCLY="redocly/cli:2.57.0"
 IMG_PLAYWRIGHT="mcr.microsoft.com/playwright:v1.63.0-noble"
 IMG_POSTGRES="postgres:16.15-alpine"
 
-# End-to-end tests run on the network of the local stack (docker compose project "registration").
-E2E_NETWORK="${E2E_NETWORK:-registration_default}"
+# End-to-end tests run on the network of the local stack (docker compose project "registration-tanej04").
+E2E_NETWORK="${E2E_NETWORK:-registration-tanej04_default}"
 E2E_BASE_URL="${E2E_BASE_URL:-http://frontend:8080}"
 E2E_MAILPIT_URL="${E2E_MAILPIT_URL:-http://mailpit:8025}"
 
