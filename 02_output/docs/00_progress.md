@@ -4,9 +4,10 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 4 (build); phase 3 ended 2026-10-06T12:44:45Z
-- Last gate result: phase 3 passed 2026-10-06T12:44:45Z (freeze commit bf86f29; 34 frozen files; 57/57 ACs tested; freeze run backend 0/92, frontend 1/19 (bootstrap App test), e2e 0/10, all behavioural). Phase 2 passed 12:21:57Z, phase 1 11:47:32Z, phase 0 11:45:02Z.
-- Next step: phase 4, `skills/build`: implement backend then frontend per story until every frozen test passes; ArchUnit rules (spec §2); compose stack for e2e.
+- Current phase: 5 (unit tests); phase 4 ended 2026-10-06T13:36:21Z
+- Last gate result: phase 4 passed 2026-10-06T13:36:21Z (`verify.sh 04` 15/15 exit 0: backend 101/101 incl. ArchUnit, frontend 19/19; e2e 10/10 on the compose stack; commits per story in `logs/04_commits-since-freeze.log`). Phase 3 passed 12:44:45Z (freeze bf86f29, re-frozen dad715c after D-21).
+- Next step: phase 5, `skills/unit-tests`: unit/integration tests for validation, security, persistence, rules, error paths; record first complete run; coverage and mutation.
+- Local stack is running (`conference-registration`, 127.0.0.1:8088 frontend, 8026 Mailpit); start command in `02_output/docker-compose.yml` header.
 - Phase 4 so far: backend US-001..US-008 + SR-03/SR-06 committed (last d19c6f5); `be-test` 88/92, the 4 failures are D-21. Not done: ArchUnit rules, frontend (US-001..US-004 UI), Dockerfiles/nginx/compose, e2e run. Process slips to report in phase 6: 4e3b1a6 has 758 lines without a reason in the message; 68b473a mixes decisions-log.md into a feat commit.
 - D-21 resolved 2026-10-06T13:21:34Z (option 1; d319d31, dad715c).
 - Waiting for the human on: nothing

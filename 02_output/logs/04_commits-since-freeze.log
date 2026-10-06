@@ -1,0 +1,23 @@
+0ce98d8 fix: stop forwarding the client Host header to the backend
+5ca0649 docs: correct client validation timing in the specification (D-22)
+44c9a35 build: add container images and the local compose stack (NFR-02, NFR-04, SB-10, SB-11)
+7fa076c fix: validate the form on submit only to avoid misclicks (D-22, AC-004-02)
+9357219 feat: show the confirmation and form errors (US-004, AC-004-01..AC-004-03)
+82b50e2 feat: add the registration form for both types (US-001, US-002, US-003)
+6d659de feat: add API client, UI texts and client validation (US-001, NFR-03)
+5bf36b7 test: add ArchUnit rules for the declared architecture (AR-02, AR-03, AR-06)
+a72f474 docs: remove an estimated timestamp from D-21
+6c6cfa0 docs: record D-21 resolution and progress
+dad715c test: update acceptance manifest for the D-21 fix
+d319d31 test: fix ignored property overrides in two frozen tests (D-21)
+d19c6f5 feat: add rate limits, size limit and HTTPS-only organizer access (SR-03, SR-06)
+191f3c6 feat: export registrations as an Excel workbook for organizers (AC-008-01..AC-008-07)
+c8980cf feat: notify organizers with the raw JSON copy attached (AC-007-01..AC-007-05)
+68b473a feat: send the participant confirmation email (AC-006-01..AC-006-05, D-21)
+6ebd025 feat: verify anti-automation tokens against siteverify (AC-001-13, SR-01)
+574ed50 feat: accept student registrations with study fields (AC-002-02..AC-002-12)
+3f6eb27 feat: accept and store external registrations (AC-001-02, AC-001-03, AC-001-05, AC-001-07, AC-001-14)
+a45e2f6 feat: validate external registrations and test-mode tokens (AC-001-04..AC-001-16)
+f71093c feat: add registration schema, entities and JSON copy store (US-005)
+4e3b1a6 feat: load conference configuration and serve form config (AC-003-01, AC-003-02, AC-003-04)
+0825a2e docs: record phase 3 gate in progress

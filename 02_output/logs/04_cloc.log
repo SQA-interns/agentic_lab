@@ -1,0 +1,21 @@
+== backend/src/main
+files,language,blank,comment,code,"github.com/AlDanial/cloc v 1.98  T=0.08 s (543.5 files/s 32496.9 lines/s)"
+40,Java,297,187,1929
+1,YAML,4,1,69
+1,SQL,4,4,41
+1,JSON,0,0,35
+43,SUM,305,192,2074
+== backend/src/test
+files,language,blank,comment,code,"github.com/AlDanial/cloc v 1.98  T=0.07 s (336.8 files/s 31133.0 lines/s)"
+24,Java,338,73,1865
+1,JSON,0,0,35
+25,SUM,338,73,1900
+== frontend/src
+files,language,blank,comment,code,"github.com/AlDanial/cloc v 1.98  T=0.04 s (402.3 files/s 33136.5 lines/s)"
+15,TypeScript,127,15,1117
+1,CSS,10,0,49
+16,SUM,137,15,1166
+== frontend/e2e
+files,language,blank,comment,code,"github.com/AlDanial/cloc v 1.98  T=0.03 s (177.0 files/s 10619.8 lines/s)"
+5,TypeScript,39,1,260
+5,SUM,39,1,260
