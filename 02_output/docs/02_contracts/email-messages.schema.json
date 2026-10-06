@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "email-messages.schema.json",
+  "title": "Email messages sent over SMTP",
+  "description": "Templates of the participant confirmation (US-006) and the organizer notification (US-007). Headers contain no participant input except the validated recipient address of the participant email (SR-05). Bodies are text/plain; charset=UTF-8, so markup is shown as text. Placeholders are {name}; values are inserted verbatim (already validated, D-17).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["participantConfirmation", "organizerNotification"],
+  "properties": {
+    "participantConfirmation": { "$ref": "#/$defs/message" },
+    "organizerNotification": { "$ref": "#/$defs/message" }
+  },
+  "$defs": {
+    "message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["to", "subject", "contentType", "bodyLines", "attachments"],
+      "properties": {
+        "to": { "type": "string", "description": "Recipient source" },
+        "subject": { "type": "string", "description": "May use {conferenceName} and {registrationType} only" },
+        "contentType": { "const": "text/plain; charset=UTF-8" },
+        "bodyLines": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fileName", "contentType", "content"],
+            "properties": {
+              "fileName": { "type": "string" },
+              "contentType": { "type": "string" },
+              "content": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "participantConfirmation": {
+    "to": "the participant's email address (single address, parsed strictly)",
+    "subject": "Registration confirmed: {conferenceName}",
+    "contentType": "text/plain; charset=UTF-8",
+    "bodyLines": [
+      "Dear {firstName} {lastName},",
+      "",
+      "thank you for registering for {conferenceName}. Your registration has been received.",
+      "",
+      "Registration type: {registrationTypeLabel}",
+      "Selected options:",
+      "{optionLines}",
+      "",
+      "If any of this is wrong, please reply to the organizers.",
+      "",
+      "{conferenceName} organizers"
+    ],
+    "attachments": []
+  },
+  "organizerNotification": {
+    "to": "every address in ORGANIZER_EMAILS, in one message",
+    "subject": "New {registrationType} registration: {conferenceName}",
+    "contentType": "text/plain; charset=UTF-8",
+    "bodyLines": [
+      "A new registration was accepted.",
+      "",
+      "Registration type: {registrationTypeLabel}",
+      "Registered at: {registeredAt}",
+      "{fieldLines}",
+      "Selected options:",
+      "{optionLines}",
+      "Consents: {consentLines}",
+      "",
+      "The raw registration JSON is attached."
+    ],
+    "attachments": [
+      {
+        "fileName": "registration-{id}.json",
+        "contentType": "application/json; charset=UTF-8",
+        "content": "the stored raw JSON copy, byte for byte (registration-copy.schema.json)"
+      }
+    ]
+  }
+}
