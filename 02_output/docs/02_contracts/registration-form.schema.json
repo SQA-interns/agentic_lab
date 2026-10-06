@@ -4,6 +4,13 @@
   "title": "Registration form (participant <-> frontend, UI)",
   "description": "Field model of the single-page form. x-label is the visible label; x-testid is the element's data-testid; every field has an error element data-testid='error-<field>'. The type selector switches the type-specific fields (AC-002-09). Client checks mirror the backend (NFR-03) and backend field errors are shown at the same elements. On 201 the form is replaced by data-testid='confirmation' (BR-06); on 400/409 the entered values are kept; on other errors data-testid='form-error' shows a general message.",
   "type": "object",
+  "x-submit": { "testid": "submit", "label": "Register" },
+  "x-other-testids": {
+    "form": "registration-form",
+    "consentText": "consent-text",
+    "optionsError": "error-optionIds",
+    "loadError": "load-error"
+  },
   "x-sections": [
     { "testid": "options-WORKSHOP", "label": "Workshops" },
     { "testid": "options-EVENT", "label": "Events" },
