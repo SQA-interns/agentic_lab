@@ -1,0 +1,157 @@
+ Image registration-tanej04-frontend Building 
+ Image registration-tanej04-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.15kB done
+#1 DONE 0.0s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 516B 0.0s done
+#2 DONE 0.1s
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 620B 0.0s done
+#3 DONE 0.1s
+
+#4 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#4 DONE 0.1s
+
+#5 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#5 DONE 0.1s
+
+#6 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#6 DONE 0.1s
+
+#7 [frontend internal] load .dockerignore
+#7 transferring context: 144B 0.0s done
+#7 DONE 0.0s
+
+#8 [backend internal] load .dockerignore
+#8 transferring context: 81B 0.0s done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [backend internal] load build context
+#10 transferring context: 87B 0.0s done
+#10 DONE 0.0s
+
+#11 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#11 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#11 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#11 DONE 0.1s
+
+#12 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#12 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#12 DONE 0.1s
+
+#13 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#13 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#13 DONE 0.1s
+
+#14 [backend 2/4] RUN addgroup -S app && adduser -S -G app app     && mkdir -p /data/registrations     && chown app:app /data/registrations
+#14 CACHED
+
+#15 [backend 3/4] WORKDIR /app
+#15 CACHED
+
+#16 [backend 4/4] COPY target/registration-backend-0.1.0.jar /app/app.jar
+#16 CACHED
+
+#17 [backend] exporting to image
+#17 exporting layers done
+#17 ...
+
+#9 [frontend internal] load build context
+#9 transferring context: 1.38kB 0.0s done
+#9 DONE 0.0s
+
+#18 [frontend stage-1 2/4] COPY nginx.conf /etc/nginx/nginx.conf
+#18 CACHED
+
+#19 [frontend build 2/6] WORKDIR /build
+#19 CACHED
+
+#20 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#20 CACHED
+
+#21 [frontend build 5/6] COPY . .
+#21 CACHED
+
+#22 [frontend build 4/6] RUN npm ci --no-audit --no-fund
+#22 CACHED
+
+#23 [frontend build 6/6] RUN npm run build
+#23 CACHED
+
+#24 [frontend stage-1 3/4] COPY --from=build /build/dist /usr/share/nginx/html
+#24 CACHED
+
+#17 [backend] exporting to image
+#17 exporting manifest sha256:4ef8e7858ca81699a01f72d55593a10800aa8dec7c795fbbc3be61341c82e96a 0.0s done
+#17 exporting config sha256:90525bb3b9e3a87e2a7db2aa69f390f34c37b062b3c2c576359832b13cacacf0
+#17 ...
+
+#25 [frontend stage-1 4/4] RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx
+#25 CACHED
+
+#17 [backend] exporting to image
+#17 exporting config sha256:90525bb3b9e3a87e2a7db2aa69f390f34c37b062b3c2c576359832b13cacacf0 0.2s done
+#17 exporting attestation manifest sha256:f359e38fc4827b190d035a1afb67a97542ffe3ed4a7b1758def66b06dc3edd46
+#17 exporting attestation manifest sha256:f359e38fc4827b190d035a1afb67a97542ffe3ed4a7b1758def66b06dc3edd46 0.1s done
+#17 exporting manifest list sha256:182e37310775953f797d0cdcadddd557787b693626b2704dfe0af5c2eddfaebc 0.1s done
+#17 naming to docker.io/library/registration-tanej04-backend:latest 0.0s done
+#17 unpacking to docker.io/library/registration-tanej04-backend:latest
+#17 unpacking to docker.io/library/registration-tanej04-backend:latest 0.0s done
+#17 DONE 0.6s
+
+#26 [frontend] exporting to image
+#26 exporting layers 0.0s done
+#26 exporting manifest sha256:a124728472c918a6c82bd1306271c5083dc95d67df2a202990d13b8f349ca8a6 0.1s done
+#26 exporting config sha256:8b9f2300a114e03244b82143487b14c67ea58775423466591db5f8392c3924e7 0.1s done
+#26 exporting attestation manifest sha256:dc1fc00f637748303450ae3b7375f3f233382f6eb9058341b6dff0f4d86f81c8 0.1s done
+#26 exporting manifest list sha256:a19dff58b8163020299ffbe13657282b0f4897ec47c30a56882acdc9c602118c 0.0s done
+#26 naming to docker.io/library/registration-tanej04-frontend:latest done
+#26 unpacking to docker.io/library/registration-tanej04-frontend:latest 0.0s done
+#26 DONE 0.6s
+
+#27 [backend] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [frontend] resolving provenance for metadata file
+#28 DONE 0.0s
+ Image registration-tanej04-backend Built 
+ Image registration-tanej04-frontend Built 
+ Network registration-tanej04_default Creating 
+ Volume registration-tanej04_pgdata Creating 
+ Network registration-tanej04_default Creating 
+ Volume registration-tanej04_pgdata Creating 
+ Volume registration-tanej04_jsoncopies Creating 
+ Volume registration-tanej04_jsoncopies Creating 
+ Volume registration-tanej04_pgdata Created 
+ Volume registration-tanej04_pgdata Created 
+ Volume registration-tanej04_jsoncopies Created 
+ Volume registration-tanej04_jsoncopies Created 
+ Network registration-tanej04_default Created 
+ Network registration-tanej04_default Created 
+ Container registration-tanej04-postgres-1 Creating 
+ Container registration-tanej04-mailpit-1 Creating 
+ Container registration-tanej04-mailpit-1 Created 
+ Container registration-tanej04-postgres-1 Created 
+ Container registration-tanej04-backend-1 Creating 
+ Container registration-tanej04-backend-1 Created 
+ Container registration-tanej04-frontend-1 Creating 
+ Container registration-tanej04-frontend-1 Created 
+ Container registration-tanej04-postgres-1 Starting 
+ Container registration-tanej04-mailpit-1 Starting 
+ Container registration-tanej04-postgres-1 Started 
+ Container registration-tanej04-mailpit-1 Started 
+ Container registration-tanej04-mailpit-1 Waiting 
+ Container registration-tanej04-postgres-1 Waiting 
+ Container registration-tanej04-mailpit-1 Healthy 
+ Container registration-tanej04-postgres-1 Healthy 
+ Container registration-tanej04-backend-1 Starting 
+ Container registration-tanej04-backend-1 Started 
+ Container registration-tanej04-backend-1 Waiting 
+ Container registration-tanej04-backend-1 Error dependency backend failed to start
+dependency failed to start: container registration-tanej04-backend-1 exited (1)
