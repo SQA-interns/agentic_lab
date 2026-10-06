@@ -1,0 +1,54 @@
+github.com/AlDanial/cloc v 1.98  T=0.16 s (181.1 files/s, 61698.9 lines/s)
+----------------------------------------------------------------------------------------------------------------------------------
+File                                                                                           blank        comment           code
+----------------------------------------------------------------------------------------------------------------------------------
+./frontend/package-lock.json                                                                       0              0           8742
+./backend/pom.xml                                                                                  6              2            233
+./backend/mvnw                                                                                    26             48            185
+./backend/mvnw.cmd                                                                                15              0            134
+./scripts/verify.sh                                                                                8             16            125
+./frontend/package.json                                                                            0              0             52
+./frontend/vite.config.ts                                                                          1              1             21
+./docs/00_preflight-report.md                                                                      6              0             18
+./docs/06_verification-report.md                                                                  12              0             18
+./frontend/eslint.config.js                                                                        1              0             18
+./frontend/tsconfig.json                                                                           0              0             18
+./backend/dependency-check-suppressions.xml                                                        0              1             16
+./frontend/playwright.config.ts                                                                    1              1             13
+./frontend/index.html                                                                              0              0             12
+./frontend/stryker.config.json                                                                     0              0             10
+./backend/src/main/java/si/konferenca/registration/RegistrationApplication.java                    3              1              9
+./frontend/src/main.tsx                                                                            1              0              8
+./docs/00_progress.md                                                                              3              0              7
+./README.md                                                                                        7              2              6
+./docs/decisions-log.md                                                                            4              0              6
+./docs/release-notes.md                                                                            5              0              6
+./docs/02_specification.md                                                                         3              0              5
+./docs/03_test-strategy.md                                                                         4              0              5
+./backend/.mvn/wrapper/maven-wrapper.properties                                                    0             16              3
+./backend/spotbugs-exclude.xml                                                                     0              1              3
+./frontend/.prettierrc.json                                                                        0              0              3
+./frontend/src/App.tsx                                                                             0              0              3
+./docs/01_acceptance-criteria.md                                                                   1              0              2
+./frontend/src/test-setup.ts                                                                       0              0              1
+----------------------------------------------------------------------------------------------------------------------------------
+SUM:                                                                                             107             89           9682
+----------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+JSON                             5              0              0           8825
+Bourne Shell                     2             34             64            310
+Maven                            1              6              2            233
+DOS Batch                        1             15              0            134
+Markdown                         9             45              2             73
+TypeScript                       5              3              2             46
+XML                              2              0              2             19
+JavaScript                       1              1              0             18
+HTML                             1              0              0             12
+Java                             1              3              1              9
+Properties                       1              0             16              3
+-------------------------------------------------------------------------------
+SUM:                            29            107             89           9682
+-------------------------------------------------------------------------------

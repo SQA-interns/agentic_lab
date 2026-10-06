@@ -1,0 +1,211 @@
+{
+  "runId": "tanej-01_conference-registration_opus5.5_sdd_template-tanej-1.0",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "templateVersion": "tanej-1.0",
+  "transcript": "~/.claude/projects/-home-tjan-kazar-storage-Work-lab-agentic-lab-agentic-lab/db7f7cc5-bfe9-42be-a6d6-0144a621c535.jsonl",
+  "startCommit": "b6c9dc6eaafd0d43da18025f278d267c9fcb4a1c",
+  "finalCommit": null,
+  "start": "2026-10-06T17:52:46Z",
+  "end": null,
+  "phases": [
+    {
+      "phase": 0,
+      "name": "preflight-and-bootstrap",
+      "start": "2026-10-06T17:52:46Z",
+      "end": null
+    },
+    {
+      "phase": 1,
+      "name": "requirements",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 2,
+      "name": "design",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 3,
+      "name": "test-design",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 4,
+      "name": "build",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 5,
+      "name": "unit-tests",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 6,
+      "name": "verify",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 7,
+      "name": "release",
+      "start": null,
+      "end": null
+    }
+  ],
+  "firstTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "finalTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "findings": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "fixLoops": [],
+  "decisions": [
+    {
+      "id": "D-01",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-03",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-04",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-06",
+      "type": "blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-07",
+      "type": "blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    },
+    {
+      "id": "D-10",
+      "type": "blocking",
+      "start": "2026-10-06T18:03:47Z",
+      "end": "2026-10-06T18:03:47Z"
+    }
+  ],
+  "humanInterventions": [],
+  "codeMetrics": {
+    "components": [],
+    "complexity": null,
+    "duplicationPct": null
+  },
+  "commits": [],
+  "usage": {
+    "inputTokens": null,
+    "outputTokens": null,
+    "cacheReadTokens": null,
+    "cacheWriteTokens": null,
+    "modelCalls": null,
+    "toolCalls": {
+      "total": null,
+      "byTool": {}
+    },
+    "costUsd": null,
+    "priceTableDate": null
+  },
+  "divergences": [
+    {
+      "phase": 0,
+      "ref": "standing-instruction",
+      "divergence": "Human said at start: do not ask permission, do what is recommended, record divergence. Blocking decisions D-06, D-07, D-10 were resolved by the agent's proposed default without asking (rules.md 'Blocking decisions' procedure of asking and ending the turn was not followed); no humanInterventions recorded for them."
+    },
+    {
+      "phase": 0,
+      "ref": "D-06",
+      "divergence": "Agent created .env (not a README section 3 file) with generated local secret values; values never displayed."
+    },
+    {
+      "phase": 0,
+      "ref": "D-07",
+      "divergence": "No NVD_API_KEY: Dependency-Check runs on the cached NVD database (updated 2026-10-06T16:44:34Z) with autoUpdate=false."
+    },
+    {
+      "phase": 0,
+      "ref": "D-10",
+      "divergence": "Critical/High advisories in dev-only npm tooling (vitest 3.2.7, jscpd 4.3.0) accepted instead of escalated; SB-08 gate uses npm audit --omit=dev."
+    },
+    {
+      "phase": 0,
+      "ref": "D-01",
+      "divergence": "Work committed on new branch run/tanej-01_opus5.5_sdd_tanej-1.0 because the starting commit was a detached HEAD."
+    },
+    {
+      "phase": 0,
+      "ref": "D-03",
+      "divergence": "Host JDK Ubuntu OpenJDK 21.0.12.1 used instead of Temurin 21.0.10+7 for build/test (runtime image exact)."
+    },
+    {
+      "phase": 0,
+      "ref": "D-04",
+      "divergence": "Host Docker Engine 29.3.1 / Compose 5.1.1 used instead of 29.8.0 / 5.5.1."
+    },
+    {
+      "phase": 0,
+      "ref": "D-11",
+      "divergence": "gitleaks scans only startCommit..HEAD; earlier history (other runs) has 80 matches."
+    },
+    {
+      "phase": 0,
+      "ref": "run-log-schema",
+      "divergence": "Field 'divergences' added to run-log.json (not in run-log.template.json) at the human's request to record divergences in metrics."
+    }
+  ]
+}
