@@ -24,7 +24,9 @@ Only a human can read these; fill them right after the run. `usage.estimates` in
 
 | Item | Value |
 |---|---|
-| API time | |
-| Approval prompts | |
-| Cost shown | |
-| Difference to `usage.costUsd` | |
+| API time | 19m 8s (wall 19h 28m 47s) |
+| Approval prompts | not shown in the panel |
+| Cost shown | $12.28 (claude-opus-5-5: 2.3k input, 65.0k output, 49.5m cache read, 135.1k cache write) |
+| Difference to `usage.costUsd` | −$30.44 ($12.28 vs $42.72) |
+
+Read 2026-10-07 from the `/cost` panel ("Session"). The panel covers only the last Claude Code process of the run: the run was resumed several times, and the panel's 65.0k output and 49.5m cache-read tokens are a fraction of the transcript totals (458.6k output, 118.2m cache read). Its 19m 8s API time is also below the transcript's model-time bounds (64–95 min). The transcript figure in `run-log.json` therefore stays the whole-run value; the panel value is a partial cross-check, not the run total.
