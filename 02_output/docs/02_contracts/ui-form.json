@@ -1,0 +1,34 @@
+{
+  "page": { "testId": "registration-page", "text": "Conference registration", "behaviour": "Single page at '/'; loads GET /api/form; shows formError if it fails." },
+  "typeSelector": {
+    "EXTERNAL": { "testId": "type-external", "text": "External participant", "behaviour": "Radio button; shows the EXTERNAL fields and the options available to EXTERNAL." },
+    "STUDENT": { "testId": "type-student", "text": "Student", "behaviour": "Radio button; shows the STUDENT fields and the options available to STUDENT (D-11)." },
+    "default": "EXTERNAL"
+  },
+  "fields": [
+    { "name": "firstName", "label": "First name", "testId": "field-firstName", "errorTestId": "error-firstName", "types": ["EXTERNAL", "STUDENT"], "inputType": "text" },
+    { "name": "lastName", "label": "Last name", "testId": "field-lastName", "errorTestId": "error-lastName", "types": ["EXTERNAL", "STUDENT"], "inputType": "text" },
+    { "name": "email", "label": "Email", "testId": "field-email", "errorTestId": "error-email", "types": ["EXTERNAL", "STUDENT"], "inputType": "email" },
+    { "name": "organization", "label": "Organization / institution", "testId": "field-organization", "errorTestId": "error-organization", "types": ["EXTERNAL"], "inputType": "text" },
+    { "name": "studyInstitution", "label": "Study institution", "testId": "field-studyInstitution", "errorTestId": "error-studyInstitution", "types": ["STUDENT"], "inputType": "text" },
+    { "name": "studyProgramme", "label": "Study programme", "testId": "field-studyProgramme", "errorTestId": "error-studyProgramme", "types": ["STUDENT"], "inputType": "text" },
+    { "name": "studentId", "label": "Student ID", "testId": "field-studentId", "errorTestId": "error-studentId", "types": ["STUDENT"], "inputType": "text" }
+  ],
+  "optionGroups": {
+    "groupTestIdPattern": "options-{category}",
+    "groupOrder": ["WORKSHOP", "EVENT", "MEAL", "OTHER"],
+    "headings": { "WORKSHOP": "Workshops", "EVENT": "Events", "MEAL": "Meals", "OTHER": "Other activities" },
+    "checkboxTestIdPattern": "option-{id}",
+    "errorTestId": "error-optionIds"
+  },
+  "consents": { "checkboxTestIdPattern": "consent-{id}", "preselected": false, "errorTestId": "error-consentIds" },
+  "antiAutomation": {
+    "containerTestId": "recaptcha",
+    "testModeCheckboxTestId": "recaptcha-test",
+    "testModeToken": "test-mode-pass",
+    "errorTestId": "error-recaptchaToken"
+  },
+  "submit": { "testId": "submit", "text": "Register", "behaviour": "Validates the fields in the browser first (NFR-03); disabled while a submission is in progress." },
+  "formError": { "testId": "form-error", "text": "", "behaviour": "Shows the problem title for 409, 413, 429 and 5xx without internal details; field errors from 400 appear at the errorTestId of their field." },
+  "confirmation": { "testId": "confirmation", "text": "Thank you, your registration was received.", "behaviour": "Shown only after a 201 response (BR-06); replaces the form." }
+}

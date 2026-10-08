@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:konferenca:ui-form:1",
+  "title": "Structure of the registration form UI contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["page", "typeSelector", "fields", "optionGroups", "consents", "antiAutomation", "submit", "formError", "confirmation"],
+  "properties": {
+    "page": { "$ref": "#/$defs/element" },
+    "typeSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["EXTERNAL", "STUDENT", "default"],
+      "properties": {
+        "EXTERNAL": { "$ref": "#/$defs/element" },
+        "STUDENT": { "$ref": "#/$defs/element" },
+        "default": { "enum": ["EXTERNAL", "STUDENT"] }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "label", "testId", "errorTestId", "types", "inputType"],
+        "properties": {
+          "name": { "type": "string" },
+          "label": { "type": "string" },
+          "testId": { "type": "string" },
+          "errorTestId": { "type": "string" },
+          "types": { "type": "array", "minItems": 1, "items": { "enum": ["EXTERNAL", "STUDENT"] } },
+          "inputType": { "enum": ["text", "email"] }
+        }
+      }
+    },
+    "optionGroups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["groupTestIdPattern", "groupOrder", "headings", "checkboxTestIdPattern", "errorTestId"],
+      "properties": {
+        "groupTestIdPattern": { "type": "string" },
+        "groupOrder": { "type": "array", "items": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] } },
+        "headings": { "type": "object", "additionalProperties": { "type": "string" } },
+        "checkboxTestIdPattern": { "type": "string" },
+        "errorTestId": { "type": "string" }
+      }
+    },
+    "consents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checkboxTestIdPattern", "preselected", "errorTestId"],
+      "properties": {
+        "checkboxTestIdPattern": { "type": "string" },
+        "preselected": { "const": false },
+        "errorTestId": { "type": "string" }
+      }
+    },
+    "antiAutomation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["containerTestId", "testModeCheckboxTestId", "testModeToken", "errorTestId"],
+      "properties": {
+        "containerTestId": { "type": "string" },
+        "testModeCheckboxTestId": { "type": "string" },
+        "testModeToken": { "type": "string" },
+        "errorTestId": { "type": "string" }
+      }
+    },
+    "submit": { "$ref": "#/$defs/element" },
+    "formError": { "$ref": "#/$defs/element" },
+    "confirmation": { "$ref": "#/$defs/element" }
+  },
+  "$defs": {
+    "element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["testId", "text"],
+      "properties": {
+        "testId": { "type": "string" },
+        "text": { "type": "string", "description": "Visible text or label; may be empty when not fixed" },
+        "behaviour": { "type": "string" }
+      }
+    }
+  }
+}
