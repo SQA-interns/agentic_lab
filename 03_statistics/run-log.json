@@ -1,0 +1,140 @@
+{
+  "runId": "tanej-01_conference-registration_opus5.5_sdd_template-tanej-1.0",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "templateVersion": "tanej-1.0",
+  "transcript": "~/.claude/projects/-home-tjan-kazar-storage-Work-lab-agentic-lab/077edf0b-fdd6-4974-a35e-5d8e70932f34.jsonl",
+  "startCommit": "b6c9dc6eaafd0d43da18025f278d267c9fcb4a1c",
+  "finalCommit": null,
+  "start": "2026-10-08T20:49:53Z",
+  "end": null,
+  "phases": [
+    {
+      "phase": 0,
+      "name": "preflight-and-bootstrap",
+      "start": "2026-10-08T20:49:53Z",
+      "end": null
+    },
+    {
+      "phase": 1,
+      "name": "requirements",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 2,
+      "name": "design",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 3,
+      "name": "test-design",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 4,
+      "name": "build",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 5,
+      "name": "unit-tests",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 6,
+      "name": "verify",
+      "start": null,
+      "end": null
+    },
+    {
+      "phase": 7,
+      "name": "release",
+      "start": null,
+      "end": null
+    }
+  ],
+  "firstTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "finalTestRun": {
+    "passed": null,
+    "failed": null
+  },
+  "findings": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "fixLoops": [],
+  "decisions": [
+    {
+      "id": "D-01",
+      "type": "non-blocking",
+      "start": "2026-10-08T20:55:53Z",
+      "end": "2026-10-08T20:55:53Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "start": "2026-10-08T20:55:53Z",
+      "end": "2026-10-08T20:55:53Z"
+    },
+    {
+      "id": "D-03",
+      "type": "non-blocking",
+      "start": "2026-10-08T20:55:53Z",
+      "end": "2026-10-08T20:55:53Z"
+    },
+    {
+      "id": "D-04",
+      "type": "blocking",
+      "start": "2026-10-08T20:55:53Z",
+      "end": null
+    },
+    {
+      "id": "D-05",
+      "type": "blocking",
+      "start": "2026-10-08T20:55:53Z",
+      "end": null
+    },
+    {
+      "id": "D-06",
+      "type": "blocking",
+      "start": "2026-10-08T20:55:53Z",
+      "end": null
+    }
+  ],
+  "humanInterventions": [
+    {
+      "start": "2026-10-08T20:55:53Z",
+      "end": null,
+      "reason": "phase 0 preflight: D-04 Docker Engine not running, D-05 .env missing, D-06 npm dev-tooling Critical/High"
+    }
+  ],
+  "codeMetrics": {
+    "components": [],
+    "complexity": null,
+    "duplicationPct": null
+  },
+  "commits": [],
+  "usage": {
+    "inputTokens": null,
+    "outputTokens": null,
+    "cacheReadTokens": null,
+    "cacheWriteTokens": null,
+    "modelCalls": null,
+    "toolCalls": {
+      "total": null,
+      "byTool": {}
+    },
+    "costUsd": null,
+    "priceTableDate": null
+  }
+}

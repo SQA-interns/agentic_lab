@@ -1,0 +1,8 @@
+
+ RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+
+No test files found, exiting with code 0
+
+include: src/**/*.test.{ts,tsx}, tests/acceptance/**/*.test.{ts,tsx}
+exclude:  **/node_modules/**, **/dist/**, **/cypress/**, **/.{idea,git,cache,output,temp}/**, **/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*
+

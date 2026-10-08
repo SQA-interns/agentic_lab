@@ -1,0 +1,22 @@
+[33m22:55:16 (784298) WARN ProjectReader[39m Glob pattern "!src/**/*.test.{ts,tsx}" did not exclude any files.
+[32m22:55:16 (784298) INFO ProjectReader[39m Found 1 of 28 file(s) to be mutated.
+[32m22:55:16 (784298) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
+[32m22:55:16 (784298) INFO ConcurrencyTokenProvider[39m Creating 7 test runner process(es).
+[32m22:55:17 (784298) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[33m22:55:17 (784346) WARN VitestTestRunner[39m Vitest failed to find test files related to mutated files. Either disable `vitest.related` or import your source files directly from your test files. See https://stryker-mutator.io/docs/stryker-js/troubleshooting/#vitest-failed-to-find-test-files-related-to-mutated-files
+[32m22:55:17 (784298) INFO DryRunExecutor[39m No tests were found
+[91m22:55:17 (784298) ERROR Stryker[39m No tests were executed. Stryker will exit prematurely. Please check your configuration.
+file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/node_modules/@stryker-mutator/core/dist/src/process/3-dry-run-executor.js:47
+            throw new ConfigError('No tests were executed. Stryker will exit prematurely. Please check your configuration.');
+                  ^
+
+ConfigError: No tests were executed. Stryker will exit prematurely. Please check your configuration.
+    at DryRunExecutor.execute (file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/node_modules/@stryker-mutator/core/dist/src/process/3-dry-run-executor.js:47:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Stryker.run (file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/node_modules/@stryker-mutator/core/dist/src/stryker.js:52:53)
+    at async Stryker.runMutationTest (file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/node_modules/@stryker-mutator/core/dist/src/stryker.js:27:20)
+    at async Command.<anonymous> (file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/node_modules/@stryker-mutator/core/dist/src/stryker-cli.js:51:13) {
+  innerError: undefined
+}
+
+Node.js v24.13.0
