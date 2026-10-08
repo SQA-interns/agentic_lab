@@ -1,0 +1,6 @@
+{
+  "threshold": 3,
+  "reporters": ["console", "json"],
+  "output": "reports/jscpd",
+  "ignore": ["**/*.test.*"]
+}
