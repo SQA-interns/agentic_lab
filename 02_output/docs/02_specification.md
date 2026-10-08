@@ -72,7 +72,7 @@ Mechanism: a JSON file at `CONFERENCE_OPTIONS_FILE`, read and validated at start
 - HTTP Basic on `GET /api/export` only, one in-memory user from `ORGANIZER_USERNAME` / `ORGANIZER_PASSWORD`; the password is BCrypt-hashed at startup and the plain value discarded (SB-03). Startup fails if either is empty or the password is shorter than 16 characters. Reason: one role, one operation, no identity provider (security requirements).
 - Missing or wrong credentials → 401 with `WWW-Authenticate`; failed attempts count against the export rate limit (SB-06).
 - HTTPS only (SR-06): with `ORGANIZER_HTTPS_ONLY=true` a request is allowed only when it is secure (`X-Forwarded-Proto: https` from the trusted proxy, via Spring's forwarded-header support restricted to the proxy address range) or comes from a loopback address; otherwise 403 before credentials are checked.
-- Workbook (Apache POI, one sheet `Registrations`): header row, then one row per registration ordered by `receivedAt`: id, type, received at, first name, last name, email, organization, study institution, study programme, student id, workshops, events, meals, other activities (display names joined with `; `), consents (`id @ time`). All cells are string cells, so no value is evaluated as a formula. `Content-Disposition: attachment; filename="registrations.xlsx"`, `Cache-Control: no-store`. No other data (SR-07).
+- Workbook (Apache POI, one sheet `Registrations`): header row `Registration ID`, `Type` (`EXTERNAL`/`STUDENT`), `Received at`, `First name`, `Last name`, `Email`, `Organization / institution`, `Study institution`, `Study programme`, `Student ID`, `Workshops`, `Events`, `Meals`, `Other activities` (display names joined with `; `), `Consents` (`id @ time`), then one row per registration ordered by `receivedAt`. All cells are string cells, so no value is evaluated as a formula. `Content-Disposition: attachment; filename="registrations.xlsx"`, `Cache-Control: no-store`. No other data (SR-07).
 
 ## 7. Emails (US-006, US-007, SR-05)
 
@@ -80,7 +80,7 @@ Format per [`emails.schema.json`](02_contracts/emails.schema.json): plain text U
 
 ## 8. Anti-automation (SR-01, SR-02)
 
-- Production: the frontend renders the Google reCAPTCHA v2 checkbox with the site key from `GET /api/form`; the backend verifies every token per [`recaptcha-verify.openapi.yaml`](02_contracts/recaptcha-verify.openapi.yaml) (5 s timeout, fail closed).
+- Production: the frontend renders the Google reCAPTCHA v2 checkbox with the site key from `GET /api/form`; a missing or empty token is rejected with `captcha_failed` without a call; the backend verifies every other token per [`recaptcha-verify.openapi.yaml`](02_contracts/recaptcha-verify.openapi.yaml) (5 s timeout, fail closed).
 - Test mode (`RECAPTCHA_TEST_MODE=true`, test and local only): no Google script or call; the frontend shows a checkbox `recaptcha-test` producing the token `test-mode-pass`; the backend accepts only that token.
 - Startup check: when `APP_ENVIRONMENT=production` (the default) the backend refuses to start if test mode is on, either key is empty, `ORGANIZER_HTTPS_ONLY=false` or `CORS_ALLOWED_ORIGIN` is set. Reason: a missing setting fails safe.
 
