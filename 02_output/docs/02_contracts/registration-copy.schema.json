@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:konferenca:registration-copy:1",
+  "title": "Raw JSON copy of an accepted registration (BR-07, US-005, US-007)",
+  "description": "Written as <JSON_COPY_DIR>/<id>.json (UTF-8, no BOM) before the registration is accepted, and attached unchanged to the organizer email. Contains the registration exactly as accepted: trimmed values, option and consent identifiers with the display names and wording in force at that moment, plus server metadata. Never contains the anti-automation token or internal fields (SR-07).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "receivedAt", "type", "participant", "options", "consents"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "receivedAt": { "type": "string", "format": "date-time" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "$ref": "#/$defs/text100" },
+        "lastName": { "$ref": "#/$defs/text100" },
+        "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+        "organization": { "$ref": "#/$defs/text200" },
+        "studyInstitution": { "$ref": "#/$defs/text200" },
+        "studyProgramme": { "$ref": "#/$defs/text200" },
+        "studentId": { "type": "string", "minLength": 1, "maxLength": 50 }
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "required": ["organization"],
+            "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": {
+        "properties": {
+          "participant": {
+            "required": ["studyInstitution", "studyProgramme", "studentId"],
+            "not": { "required": ["organization"] }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "text100": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "text200": { "type": "string", "minLength": 1, "maxLength": 200 }
+  }
+}

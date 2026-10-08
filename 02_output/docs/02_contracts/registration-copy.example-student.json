@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "9b1d7e22-0c3a-4f55-8e2b-6a4c3d1f0e98",
+  "receivedAt": "2026-10-08T21:16:00Z",
+  "type": "STUDENT",
+  "participant": {
+    "firstName": "Žiga",
+    "lastName": "Kovač",
+    "email": "ziga.kovac@student.example.si",
+    "studyInstitution": "Univerza v Ljubljani",
+    "studyProgramme": "Računalništvo in informatika",
+    "studentId": "63210001"
+  },
+  "options": [{ "id": "ev-career-fair", "name": "Career fair", "category": "EVENT" }],
+  "consents": [
+    { "id": "data-processing", "text": "I agree that my personal data is processed for registering me for the conference and organising my attendance.", "givenAt": "2026-10-08T21:16:00Z" }
+  ]
+}

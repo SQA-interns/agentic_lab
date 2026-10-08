@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "3f2b8c1e-7a4d-4e8b-9c61-2d5f0a9e4b17",
+  "receivedAt": "2026-10-08T21:15:00Z",
+  "type": "EXTERNAL",
+  "participant": {
+    "firstName": "Čedomir",
+    "lastName": "Šuštaršič",
+    "email": "cedomir@example.si",
+    "organization": "Žalec d.o.o."
+  },
+  "options": [
+    { "id": "ws-testing", "name": "Delavnica: testiranje programske opreme", "category": "WORKSHOP" },
+    { "id": "meal-dinner", "name": "Conference dinner (vegetarian option)", "category": "MEAL" }
+  ],
+  "consents": [
+    { "id": "data-processing", "text": "I agree that my personal data is processed for registering me for the conference and organising my attendance.", "givenAt": "2026-10-08T21:15:00Z" }
+  ]
+}
