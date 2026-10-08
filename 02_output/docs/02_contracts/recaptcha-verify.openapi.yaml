@@ -1,0 +1,43 @@
+openapi: 3.1.0
+info:
+  title: Google reCAPTCHA v2 verification (consumed by the backend)
+  version: 1.0.0
+  description: >
+    External interface used by the backend for SR-01. The base URL is the RECAPTCHA_VERIFY_URL
+    setting (production: https://www.google.com/recaptcha/api/siteverify); tests point it at a
+    mocked endpoint (DoD-P05). In test mode (SR-02) no call is made and only the token
+    "test-mode-pass" is accepted. Any non-200 response, timeout (5 s), malformed body or
+    success=false rejects the registration with field error captcha_failed.
+servers:
+  - url: https://www.google.com/recaptcha/api
+paths:
+  /siteverify:
+    post:
+      operationId: siteverify
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [secret, response]
+              properties:
+                secret: { type: string, description: RECAPTCHA_SECRET_KEY, never logged }
+                response: { type: string, description: token from the widget }
+                remoteip: { type: string, description: client address as seen by the backend }
+      responses:
+        "200":
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success]
+                properties:
+                  success: { type: boolean }
+                  challenge_ts: { type: string, format: date-time }
+                  hostname: { type: string }
+                  error-codes:
+                    type: array
+                    items: { type: string }
