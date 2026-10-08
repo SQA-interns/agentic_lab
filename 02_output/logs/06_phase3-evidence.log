@@ -1,0 +1,5 @@
+== production source touched in phase 3 (7bf1ee1..453b03e):
+== freeze commit files:
+02_output/docs/03_acceptance-manifest.sha256
+== manifest files all committed before freeze:
+     34 ok

@@ -57,3 +57,19 @@ Fix: commit "fix: keep null option and consent ids for validation" maps a null e
 Phase 5 gate run 2026-10-08T22:22:14Z: backend 229/229 (`logs/05_be-test.log`), frontend 56/56 and e2e 6/6 unchanged since the first run (no frontend change).
 
 ## Final run (phase 6)
+
+Run 2026-10-08T22:22:57Z (`verify.sh 06`, all tools) and 2026-10-08T22:47:42Z (backend after two added unit tests).
+
+| Level | Tests | Passed | Failed |
+|---|---|---|---|
+| Backend unit + integration + acceptance | 231 | 231 | 0 |
+| Frontend unit + acceptance | 56 | 56 | 0 |
+| End-to-end | 6 | 6 | 0 |
+
+| Measure | Backend | Frontend |
+|---|---|---|
+| Line / branch coverage | 97.3% / 93.0% (JaCoCo) | 97.07% / 91.26% (v8) |
+| Mutation | 323/423 killed, 76% (PIT, unit and integration tests; acceptance tests excluded because they start containers) | not measurable with the pinned Stryker runner under vitest 5 (F-05, D-27) |
+
+Tests added in phase 6: `EmailAddressTest.boundariesOfTotalAndLabelLength`, `FiltersTest.staleWindowsAreEvicted` (F-08).
+

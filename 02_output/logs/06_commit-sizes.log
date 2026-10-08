@@ -1,0 +1,7 @@
+b1ee442 test: add acceptance and end-to-end harness (KP-08, DoD-P05) | files=19 lines=1158
+e9650ca test: add acceptance and e2e tests for US-001 (AC-001-01..15) | files=3 lines=554
+f261470 feat: load conference options from a file and serve the form (US-003) | files=10 lines=468
+968b272 feat: store registrations in PostgreSQL and as JSON copies (US-005) | files=13 lines=525
+dab9619 feat: accept external and student registrations (US-001, US-002, US-004) | files=12 lines=654
+32d6857 test: add service tests for validation, storage, notification, retention | files=4 lines=686
+a96d61e test: add infrastructure tests for options, copies, Excel, reCAPTCHA | files=4 lines=433

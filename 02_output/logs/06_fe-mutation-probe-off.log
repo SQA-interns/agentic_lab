@@ -1,0 +1,1249 @@
+[32m00:34:44 (841178) INFO ProjectReader[39m Found 1 of 64 file(s) to be mutated.
+[32m00:34:44 (841178) INFO Instrumenter[39m Instrumented 1 source file(s) with 157 mutant(s)
+[32m00:34:45 (841178) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m00:34:46 (841178) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "off" coverage analysis). This may take a while.
+[32m00:34:51 (841178) INFO DryRunExecutor[39m Initial test run succeeded. Ran 47 tests in 5 seconds (net 1481.393992000001 ms, overhead 3718.606007999999 ms).
+
+All tests
+  src
+    RegistrationForm.test.tsx
+      ✓ RegistrationForm drops options the new registration type cannot select (D-11) (killed 11)
+      ✓ RegistrationForm reports too many options before sending (D-14) (killed 2)
+      ~ RegistrationForm disables the button while a submission is pending, so it is sent once (covered 72)
+      ✓ RegistrationForm shows server errors for fields it does not display as a form error (killed 1)
+      ✓ RegistrationForm links field errors to their inputs for assistive technology (killed 1)
+    validation.test.ts
+      ~ clean (KP-03) removes NBSP, em space and BOM at the ends only (covered 3)
+      ✓ isValidEmail (BR-03) accepts ana@example.si (killed 6)
+      ~ isValidEmail (BR-03) accepts žan@šola.si (covered 32)
+      ~ isValidEmail (BR-03) accepts a+b@sub.example.com (covered 32)
+      ✓ isValidEmail (BR-03) accepts x@xn--d1acufc.si (killed 1)
+      ~ isValidEmail (BR-03) rejects plain (covered 15)
+      ~ isValidEmail (BR-03) rejects ana@ (covered 23)
+      ~ isValidEmail (BR-03) rejects @example.si (covered 16)
+      ~ isValidEmail (BR-03) rejects ana@example (covered 23)
+      ~ isValidEmail (BR-03) rejects ana@@example.si (covered 15)
+      ✓ isValidEmail (BR-03) rejects ana novak@example.si (killed 2)
+      ~ isValidEmail (BR-03) rejects ana@example..si (covered 31)
+      ✓ isValidEmail (BR-03) rejects ana@-x.si (killed 2)
+      ~ isValidEmail (BR-03) rejects ana@example.s (covered 32)
+      ~ isValidEmail (BR-03) rejects ana@example.12 (covered 32)
+      ~ isValidEmail (BR-03) rejects a
+@example.si (covered 9)
+      ~ isValidEmail (BR-03) rejects aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.si (covered 16)
+      ~ validate (NFR-03) passes a complete external registration (covered 82)
+      ✓ validate (NFR-03) requires the fields of the chosen type only (killed 13)
+      ~ validate (NFR-03) reports too long values in code points and control characters (covered 74)
+      ~ validate (NFR-03) limits options per category (D-14) (covered 83)
+      ~ validate (NFR-03) requires mandatory consents only (BR-05) (covered 73)
+      ~ validate (NFR-03) requires the anti-automation token (SR-01) (covered 73)
+  tests/acceptance
+    us001-external-form.test.tsx
+      ✓ US-001 external participant form AC-001-01 a complete external registration is sent and confirmed (killed 9)
+      ✘ US-001 external participant form AC-001-02 the external form shows exactly its four required fields (covered 0)
+      ~ US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent (covered 83)
+      ~ US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty (covered 83)
+      ~ US-001 external participant form AC-001-05 surrounding whitespace including NBSP is removed before sending (covered 82)
+      ✓ US-001 external participant form AC-001-06 an invalid email is reported and nothing is sent (killed 1)
+      ~ US-001 external participant form AC-001-07 Slovenian characters are sent unchanged (covered 82)
+      ✘ US-001 external participant form AC-001-08 options are offered grouped as workshops, events, meals and other activities (covered 0)
+      ✘ US-001 external participant form AC-001-12 the mandatory consent is shown with its wording and not preselected (covered 0)
+      ✓ US-001 external participant form AC-001-13 a missing mandatory consent is reported and nothing is sent (killed 1)
+      ✓ US-001 external participant form AC-001-14 without the anti-automation check nothing is sent (killed 1)
+      ~ US-001 external participant form AC-001-15 an already registered email is reported without confirmation (covered 82)
+    us002-student-form.test.tsx
+      ~ US-002 student form AC-002-01 a complete student registration is sent and confirmed (covered 82)
+      ✘ US-002 student form AC-002-02 the student form shows exactly its six required fields (covered 0)
+      ~ US-002 student form AC-002-03 a student field of only no-break spaces is reported and nothing is sent (covered 83)
+      ✘ US-002 student form AC-002-06 options not available to students are not offered on the student form (covered 0)
+    us004-confirmation.test.tsx
+      ~ US-004 confirmation AC-004-01 the confirmation appears only after the registration was accepted (covered 82)
+      ✓ US-004 confirmation AC-004-02 backend field errors appear next to the fields and no confirmation is shown (killed 1)
+      ~ US-004 confirmation AC-004-02 a server failure shows a generic error without internal details (covered 82)
+
+[Survived] StringLiteral
+src/validation.ts:10:71
+-   export const clean = (value: string | undefined): string => (value ?? "").trim();
++   export const clean = (value: string | undefined): string => (value ?? "Stryker was here!").trim();
+Tests ran:
+    RegistrationForm links field errors to their inputs for assistive technology
+    clean (KP-03) removes NBSP, em space and BOM at the ends only
+    validate (NFR-03) requires the fields of the chosen type only
+
+
+[Survived] BlockStatement
+src/validation.ts:51:54
+-   export function isValidEmail(email: string): boolean {
+-     if (email.length > 254 || CONTROL.test(email)) {
+-       return false;
+-     }
+-     const parts = email.split("@");
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
+-       return false;
+-     }
+-     const labels = parts[1].split(".");
+-     return (
+-       labels.length >= 2 &&
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
+-       TOP_LEVEL.test(labels[labels.length - 1])
+-     );
+-   }
++   export function isValidEmail(email: string): boolean {}
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:10:61
+-   export const clean = (value: string | undefined): string => (value ?? "").trim();
++   export const clean = (value: string | undefined): string => value ?? "";
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 23 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:10:62
+-   export const clean = (value: string | undefined): string => (value ?? "").trim();
++   export const clean = (value: string | undefined): string => (value && "").trim();
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 23 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (email.length > 254 && CONTROL.test(email)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (false || CONTROL.test(email)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:52:50
+-     if (email.length > 254 || CONTROL.test(email)) {
+-       return false;
+-     }
++     if (email.length > 254 || CONTROL.test(email)) {}
+Tests ran:
+    isValidEmail (BR-03) rejects a
+@example.si
+
+
+[Survived] BooleanLiteral
+src/validation.ts:53:12
+-       return false;
++       return true;
+Tests ran:
+    isValidEmail (BR-03) rejects a
+@example.si
+
+
+[Survived] EqualityOperator
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (email.length >= 254 || CONTROL.test(email)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (email.length <= 254 || CONTROL.test(email)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 37 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:55:29
+-     const parts = email.split("@");
++     const parts = email.split("");
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 36 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:56:7
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 36 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:56:7
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 36 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:56:7
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
++     if (parts.length !== 2 && !LOCAL.test(parts[0])) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 36 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:56:52
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
+-       return false;
+-     }
++     if (parts.length !== 2 || !LOCAL.test(parts[0])) {}
+Tests ran:
+    isValidEmail (BR-03) rejects plain
+    isValidEmail (BR-03) rejects @example.si
+    isValidEmail (BR-03) rejects ana@@example.si
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:56:7
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
++     if (false || !LOCAL.test(parts[0])) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 36 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:56:7
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
++     if (parts.length === 2 || !LOCAL.test(parts[0])) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 36 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:57:12
+-       return false;
++       return true;
+Tests ran:
+    isValidEmail (BR-03) rejects plain
+    isValidEmail (BR-03) rejects @example.si
+    isValidEmail (BR-03) rejects ana@@example.si
+  and 2 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:56:29
+-     if (parts.length !== 2 || !LOCAL.test(parts[0])) {
++     if (parts.length !== 2 || LOCAL.test(parts[0])) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 34 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:59:33
+-     const labels = parts[1].split(".");
++     const labels = parts[1].split("");
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:5
+-       labels.length >= 2 &&
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
+-       TOP_LEVEL.test(labels[labels.length - 1])
++       true
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:5
+-       labels.length >= 2 &&
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
+-       TOP_LEVEL.test(labels[labels.length - 1])
++       false
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:61:5
+-       labels.length >= 2 &&
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
+-       TOP_LEVEL.test(labels[labels.length - 1])
++       labels.length >= 2 && labels.every(label => label.length <= 63 && LABEL.test(label)) || TOP_LEVEL.test(labels[labels.length - 1])
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:5
+-       labels.length >= 2 &&
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       true &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:61:5
+-       labels.length >= 2 &&
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.length >= 2 || labels.every(label => label.length <= 63 && LABEL.test(label)) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:5
+-       labels.length >= 2 &&
++       true &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:5
+-       labels.length >= 2 &&
++       labels.length > 2 &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:5
+-       labels.length >= 2 &&
++       labels.length < 2 &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 31 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:62:5
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.some(label => label.length <= 63 && LABEL.test(label)) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] ArrowFunction
+src/validation.ts:62:18
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every(() => undefined) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => true) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => false) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => label.length <= 63 || LABEL.test(label)) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => true && LABEL.test(label)) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => label.length < 63 && LABEL.test(label)) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => label.length > 63 && LABEL.test(label)) &&
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 28 more tests!
+
+
+[Survived] ArithmeticOperator
+src/validation.ts:63:27
+-       TOP_LEVEL.test(labels[labels.length - 1])
++       TOP_LEVEL.test(labels[labels.length + 1])
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 26 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:74:11
+-   ): Errors {
+-     const errors: Errors = {};
+-     for (const { name, max } of FIELDS[type]) {
+-       const value = clean(values[name]);
+-       if (value === "") {
+-         errors[name] = MESSAGES.required;
+-       } else if ([...value].length > max) {
+-         errors[name] = MESSAGES.too_long;
+-       } else if (CONTROL.test(value)) {
+-         errors[name] = MESSAGES.invalid_characters;
+-       } else if (name === "email" && !isValidEmail(value)) {
+-         errors[name] = MESSAGES.invalid_email;
+-       }
+-     }
+-     const counts = new Map<Category, number>();
+-     for (const id of optionIds) {
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
+-       if (option) {
+-         counts.set(option.category, (counts.get(option.category) ?? 0) + 1);
+-       }
+-     }
+-     for (const { category, maxSelections } of config.categories) {
+-       if ((counts.get(category) ?? 0) > maxSelections) {
+-         errors.optionIds = MESSAGES.too_many_options;
+-       }
+-     }
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
+-       errors.consentIds = MESSAGES.consent_missing;
+-     }
+-     if (token === "") {
+-       errors.recaptchaToken = MESSAGES.captcha_failed;
+-     }
+-     return errors;
+-   }
++   ): Errors {}
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:76:45
+-     for (const { name, max } of FIELDS[type]) {
+-       const value = clean(values[name]);
+-       if (value === "") {
+-         errors[name] = MESSAGES.required;
+-       } else if ([...value].length > max) {
+-         errors[name] = MESSAGES.too_long;
+-       } else if (CONTROL.test(value)) {
+-         errors[name] = MESSAGES.invalid_characters;
+-       } else if (name === "email" && !isValidEmail(value)) {
+-         errors[name] = MESSAGES.invalid_email;
+-       }
+-     }
++     for (const { name, max } of FIELDS[type]) {}
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:78:9
+-       if (value === "") {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:78:9
+-       if (value === "") {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:78:9
+-       if (value === "") {
++       if (value !== "") {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:78:19
+-       if (value === "") {
++       if (value === "Stryker was here!") {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:78:23
+-       if (value === "") {
+-         errors[name] = MESSAGES.required;
+-       } else if ([...value].length > max) {
++       if (value === "") {} else if ([...value].length > max) {
+Tests ran:
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+    RegistrationForm links field errors to their inputs for assistive technology
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:80:16
+-       } else if ([...value].length > max) {
++       } else if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:80:16
+-       } else if ([...value].length > max) {
++       } else if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:80:16
+-       } else if ([...value].length > max) {
++       } else if ([...value].length >= max) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:80:41
+-       } else if ([...value].length > max) {
+-         errors[name] = MESSAGES.too_long;
+-       } else if (CONTROL.test(value)) {
++       } else if ([...value].length > max) {} else if (CONTROL.test(value)) {
+Tests ran:
+    validate (NFR-03) reports too long values in code points and control characters
+
+
+[Survived] EqualityOperator
+src/validation.ts:80:16
+-       } else if ([...value].length > max) {
++       } else if ([...value].length <= max) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:82:37
+-       } else if (CONTROL.test(value)) {
+-         errors[name] = MESSAGES.invalid_characters;
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (CONTROL.test(value)) {} else if (name === "email" && !isValidEmail(value)) {
+Tests ran:
+    validate (NFR-03) reports too long values in code points and control characters
+
+
+[Survived] ArrayDeclaration
+src/validation.ts:80:16
+-       } else if ([...value].length > max) {
++       } else if ([].length > max) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:82:16
+-       } else if (CONTROL.test(value)) {
++       } else if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:82:16
+-       } else if (CONTROL.test(value)) {
++       } else if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:84:16
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:84:16
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:84:16
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (name === "email" || !isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:84:16
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (true && !isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:84:58
+-       } else if (name === "email" && !isValidEmail(value)) {
+-         errors[name] = MESSAGES.invalid_email;
+-       }
++       } else if (name === "email" && !isValidEmail(value)) {}
+Tests ran:
+    US-001 external participant form AC-001-06 an invalid email is reported and nothing is sent
+
+
+[Survived] EqualityOperator
+src/validation.ts:84:16
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (name !== "email" && !isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:84:25
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (name === "" && !isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:84:36
+-       } else if (name === "email" && !isValidEmail(value)) {
++       } else if (name === "email" && isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 21 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:89:31
+-     for (const id of optionIds) {
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
+-       if (option) {
+-         counts.set(option.category, (counts.get(option.category) ?? 0) + 1);
+-       }
+-     }
++     for (const id of optionIds) {}
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] ArrowFunction
+src/validation.ts:90:40
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
++       const option = config.options.find(() => undefined);
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:90:65
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
++       const option = config.options.find((o: ConferenceOption) => true);
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:90:65
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
++       const option = config.options.find((o: ConferenceOption) => false);
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:90:65
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
++       const option = config.options.find((o: ConferenceOption) => o.id !== id);
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:91:9
+-       if (option) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:91:9
+-       if (option) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:91:17
+-       if (option) {
+-         counts.set(option.category, (counts.get(option.category) ?? 0) + 1);
+-       }
++       if (option) {}
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] ArithmeticOperator
+src/validation.ts:92:35
+-         counts.set(option.category, (counts.get(option.category) ?? 0) + 1);
++         counts.set(option.category, (counts.get(option.category) ?? 0) - 1);
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:92:36
+-         counts.set(option.category, (counts.get(option.category) ?? 0) + 1);
++         counts.set(option.category, (counts.get(option.category) && 0) + 1);
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 14 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:95:64
+-     for (const { category, maxSelections } of config.categories) {
+-       if ((counts.get(category) ?? 0) > maxSelections) {
+-         errors.optionIds = MESSAGES.too_many_options;
+-       }
+-     }
++     for (const { category, maxSelections } of config.categories) {}
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:96:9
+-       if ((counts.get(category) ?? 0) > maxSelections) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:96:9
+-       if ((counts.get(category) ?? 0) > maxSelections) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:96:54
+-       if ((counts.get(category) ?? 0) > maxSelections) {
+-         errors.optionIds = MESSAGES.too_many_options;
+-       }
++       if ((counts.get(category) ?? 0) > maxSelections) {}
+Tests ran:
+    RegistrationForm reports too many options before sending (D-14)
+    validate (NFR-03) limits options per category (D-14)
+
+
+[Survived] EqualityOperator
+src/validation.ts:96:9
+-       if ((counts.get(category) ?? 0) > maxSelections) {
++       if ((counts.get(category) ?? 0) >= maxSelections) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:96:9
+-       if ((counts.get(category) ?? 0) > maxSelections) {
++       if ((counts.get(category) ?? 0) <= maxSelections) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:96:10
+-       if ((counts.get(category) ?? 0) > maxSelections) {
++       if ((counts.get(category) && 0) > maxSelections) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:100:7
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:100:7
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:100:7
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (config.consents.every(c => c.mandatory && !consentIds.includes(c.id))) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ArrowFunction
+src/validation.ts:100:28
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (config.consents.some(() => undefined)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:100:35
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (config.consents.some((c) => true)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:100:35
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (config.consents.some((c) => false)) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:100:35
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (config.consents.some((c) => c.mandatory || !consentIds.includes(c.id))) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:100:50
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
++     if (config.consents.some((c) => c.mandatory && consentIds.includes(c.id))) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:100:79
+-     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {
+-       errors.consentIds = MESSAGES.consent_missing;
+-     }
++     if (config.consents.some((c) => c.mandatory && !consentIds.includes(c.id))) {}
+Tests ran:
+    US-001 external participant form AC-001-13 a missing mandatory consent is reported and nothing is sent
+    RegistrationForm links field errors to their inputs for assistive technology
+    validate (NFR-03) requires mandatory consents only (BR-05)
+
+
+[Survived] ConditionalExpression
+src/validation.ts:103:7
+-     if (token === "") {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:103:7
+-     if (token === "") {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:103:7
+-     if (token === "") {
++     if (token !== "") {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:103:17
+-     if (token === "") {
++     if (token === "Stryker was here!") {
+Tests ran:
+    US-001 external participant form AC-001-01 a complete external registration is sent and confirmed
+    US-001 external participant form AC-001-03 an empty required field is reported and nothing is sent
+    US-001 external participant form AC-001-04 a value of only no-break spaces counts as empty
+  and 22 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:103:21
+-     if (token === "") {
+-       errors.recaptchaToken = MESSAGES.captcha_failed;
+-     }
++     if (token === "") {}
+Tests ran:
+    US-001 external participant form AC-001-14 without the anti-automation check nothing is sent
+    RegistrationForm links field errors to their inputs for assistive technology
+    validate (NFR-03) requires the anti-automation token (SR-01)
+
+
+[Survived] StringLiteral
+src/validation.ts:31:13
+-     too_long: "This value is too long.",
++     too_long: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:33:23
+-     invalid_characters: "This value contains characters that are not allowed.",
++     invalid_characters: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:34:25
+-     not_allowed_for_type: "This field does not belong to the selected form.",
++     not_allowed_for_type: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:35:19
+-     unknown_option: "A selected option is not offered.",
++     unknown_option: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:37:25
+-     option_not_available: "A selected option is not available for this registration type.",
++     option_not_available: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:40:20
+-     unknown_consent: "A consent is not recognised.",
++     unknown_consent: "",
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:46:15
+-   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?$/u;
++   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?/u;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:46:15
+-   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?$/u;
++   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])$/u;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:46:15
+-   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?$/u;
++   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\P{N}])?$/u;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:47:19
+-   const TOP_LEVEL = /^\p{L}{2,}$/u;
++   const TOP_LEVEL = /\p{L}{2,}$/u;
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:47:19
+-   const TOP_LEVEL = /^\p{L}{2,}$/u;
++   const TOP_LEVEL = /^\p{L}{2,}/u;
+Ran all tests for this mutant.
+
+Ran 7.11 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  33.12 |   33.12 |       52 |         0 |        105 |        0 |        0 |
+ validation.ts |  33.12 |   33.12 |       52 |         0 |        105 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m00:37:04 (841178) INFO MutationTestExecutor[39m Done in 2 minutes and 20 seconds.

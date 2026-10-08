@@ -63,14 +63,14 @@
     "failed": 1
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 293,
+    "failed": 0
   },
   "findings": {
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0
+    "high": 2,
+    "medium": 3,
+    "low": 6
   },
   "fixLoops": [],
   "decisions": [
@@ -211,6 +211,30 @@
       "type": "non-blocking",
       "start": "2026-10-08T22:00:38Z",
       "end": "2026-10-08T22:00:38Z"
+    },
+    {
+      "id": "D-24",
+      "type": "non-blocking",
+      "start": "2026-10-08T22:48:29Z",
+      "end": "2026-10-08T22:48:29Z"
+    },
+    {
+      "id": "D-25",
+      "type": "non-blocking",
+      "start": "2026-10-08T22:48:29Z",
+      "end": "2026-10-08T22:48:29Z"
+    },
+    {
+      "id": "D-26",
+      "type": "blocking",
+      "start": "2026-10-08T22:48:29Z",
+      "end": null
+    },
+    {
+      "id": "D-27",
+      "type": "blocking",
+      "start": "2026-10-08T22:48:29Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -223,12 +247,30 @@
       "start": "2026-10-08T21:07:07Z",
       "end": "2026-10-08T21:10:48Z",
       "reason": "phase 0: D-10 jscpd 4.3.0 High (braces) remains after vitest upgrade"
+    },
+    {
+      "start": "2026-10-08T22:50:01Z",
+      "end": null,
+      "reason": "phase 6: D-26 semgrep High on Basic authentication, D-27 frontend mutation runner"
     }
   ],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2279,
+        "testLoc": 3306
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 556,
+        "testLoc": 1017
+      }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "no tool in tech-stack.md reports cyclomatic complexity",
+    "duplicationPct": 0.0,
+    "duplicationSource": "PMD CPD 0 duplications, jscpd 0 clones"
   },
   "commits": [],
   "usage": {

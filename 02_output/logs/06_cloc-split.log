@@ -1,0 +1,4 @@
+backend production: 2279
+backend test: 3306
+frontend production: 556
+frontend test: 1017

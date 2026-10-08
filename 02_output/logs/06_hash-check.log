@@ -1,0 +1,5 @@
+== acceptance manifest (02_output)
+      34 OK backend/src/test/java/si/konferenca/registration/acceptance/ExportReader.java
+== input manifest (root)
+     27 OK
+(empty = protected files unchanged since start)

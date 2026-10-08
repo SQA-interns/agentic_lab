@@ -25,6 +25,8 @@
 | D-21 | 2026-10-08T21:56:20Z | 4 | SpotBugs EI_EXPOSE_REP2 (Medium) on `NotificationService.copies`: the constructor stores the injected `JsonCopyStore` singleton | Not a defect: shared Spring bean by design. Excluded for that class and field only in `backend/spotbugs-exclude.xml`; raw log `logs/04_be-spotbugs.log` | pending review |
 | D-22 | 2026-10-08T22:00:38Z | 4 | Frozen harness `AcceptanceStack.newTempDir` assumes the stack was started by an earlier test; Surefire's default `filesystem` order makes that order-dependent (seen running `Us005` alone: NullPointerException) | Surefire `runOrder` set to `alphabetical` in `pom.xml`, so `Us001` (which starts the stack) always runs first; frozen tests untouched. Running a later class alone still needs `-Dtest=Us001*,<class>` | pending review |
 | D-23 | 2026-10-08T22:00:38Z | 4 | Follow-up to D-21: the same SpotBugs EI_EXPOSE_REP2 on `ExportService.store` and `.writer` (injected singletons) | Added those two fields to the same explicit exclusion; nothing else excluded | pending review |
+| D-24 | 2026-10-08T22:48:29Z | 6 | Phase 6 gate needs evidence for DoD-08 (READMEs from a clean checkout) and DoD-09 (release notes), which the phase 7 card produces | Rows marked "evidence in phase 7"; the report rows are completed at the phase 7 gate in their own commit | pending review |
+| D-25 | 2026-10-08T22:48:29Z | 6 | gitleaks `generic-api-key` x15 on this branch: the fake organizer password constant in the frozen harness (`AcceptanceStack.java:28`) and Spring Boot's "Using generated security password" (random, per test JVM, from the phase 3 skeleton) in `logs/03_be-*.log` | Not real secrets (test constant; ephemeral random values from before `SecurityConfig` existed). Fingerprints listed in `02_output/.gitleaksignore` (root files are not writable), passed via `--gitleaks-ignore-path`; raw report `logs/06_gitleaks.json` kept | pending review |
 
 ## Blocking
 
@@ -59,3 +61,19 @@
 - Options: 1. (default) Approve upgrading jscpd to 5.4.0 (the only fixed version), in line with the vitest upgrade. 2. Drop jscpd and measure frontend duplication with PMD CPD (already pinned, supports TypeScript). 3. Keep jscpd 4.3.0 and accept the finding as dev-only tooling run on project code only; phase 6 gates on `npm audit --omit=dev`.
 - Human response: "3" (2026-10-08T21:10:48Z)
 - Resolution: 3; jscpd 4.3.0 kept, High accepted as dev-only tooling (not shipped). Phase 6 gates SB-08 on `npm audit --omit=dev`; the full audit is reported in the release notes.
+
+## D-26: Downgrade semgrep High on HTTP Basic organizer authentication
+- Timestamp: 2026-10-08T22:48:29Z
+- Phase: 6
+- Trigger: semgrep `yaml.openapi.security.use-of-basic-authentication` (ERROR = High) on `docs/02_contracts/api.openapi.yaml:104` (F-01). Basic is the specified mechanism for the single organizer export (specification section 6; security requirements leave the mechanism to phase 2, identity providers out of scope). Evidence against realistic exploitability: credentials accepted only over HTTPS or from localhost (`HttpsOnlyFilter`, SR-06; production refuses to start with it off), password at least 16 characters, BCrypt in memory (SB-03), export rate limit counts failed logins (SB-06), stateless (no session or CSRF surface), one read-only operation; tests `FiltersTest`, `Us008ExportAcceptanceTest`, `StartupChecksTest`.
+- Options: 1. (default) Approve the downgrade to Low with this evidence; keep Basic over HTTPS and add a semgrep suppression naming D-26. 2. Replace Basic with a session login (form login, session cookie, CSRF protection) — more code, no stronger credential. 3. Keep High and do not release until an identity provider is in scope.
+- Human response: none
+- Resolution:
+
+## D-27: Frontend mutation score cannot be measured with the pinned Stryker and vitest
+- Timestamp: 2026-10-08T22:48:29Z
+- Phase: 6
+- Trigger: `@stryker-mutator/vitest-runner` 10.0.0 does not activate mutants under vitest 5.0.3 (the D-06 upgrade): score 15.67%, and mutants that break every test (for example `loadForm` emptied, `isValidEmail` always false) are reported as surviving; same result with `coverageAnalysis` perTest, off and all (`logs/06_fe-mutation*.log`) (F-05). DoD-03 asks for a recorded mutation score (threshold: record only).
+- Options: 1. (default) Configure Stryker's built-in command runner (`testRunner: "command"`, `npx vitest run`, coverage analysis off) — no version change, slower (one full test run per mutant, about 20 to 30 minutes). 2. Record the frontend mutation score as not measurable with the pinned toolset and accept F-05 (Medium). 3. Approve another `@stryker-mutator/*` version or a vitest version that work together (needs a compatibility check).
+- Human response: none
+- Resolution:

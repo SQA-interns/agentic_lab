@@ -1,0 +1,57 @@
+
+== fresh stack (down -v, up --build --wait)
+up exit=0
+backend Up 14 seconds (healthy)
+db Up 17 seconds (healthy)
+frontend Up 3 seconds (healthy)
+mailpit Up 17 seconds (healthy)
+
+== NFR-04 health and readiness
+{"status":"UP"}
+{"status":"UP"}
+
+== SB-11 processes are not root
+backend uid=10001 frontend uid=101
+
+== GET /api/form
+{"conferenceName":"Konferenca 2026","recaptcha":{"siteKey":"","testMode":true},"categories":[{"category":"WORKSHOP","maxSelections":2},{"category":"EVENT","maxS
+
+== DoD-P01 one external and one student registration
+external HTTP 201
+student HTTP 201
+invalid token HTTP 400
+
+== DoD-P02 rows in PostgreSQL and JSON copies
+EXTERNAL|Čedomir|Šuštaršič|2
+STUDENT|Žiga|Kovač|1
+copy: 122ef61f-c97c-4d33-a1fb-a26e0ab31a4c.json
+copy: 4239af4d-4a66-4e88-905d-15751aafaa79.json
+
+== DoD-P03 emails in Mailpit (after 3 s)
+New registration (EXTERNAL): Konferenca 2026 | to <organizer from .env> | attachments 1
+New registration (STUDENT): Konferenca 2026 | to <organizer from .env> | attachments 1
+Registration confirmed: Konferenca 2026 | to demo-ext-1791499547@example.si | attachments 0
+Registration confirmed: Konferenca 2026 | to demo-stu-1791499547@example.si | attachments 0
+
+== DoD-P04 export with and without organizer access
+organizer HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 3947 bytes
+PK (zip magic)
+no credentials HTTP 401
+wrong password HTTP 401
+
+== KP-02 each security header once
+/: 4 headers, duplicates: 
+/api/form: 4 headers, duplicates: 
+
+== NFR-02 data survives recreating every container (down, up)
+up exit=0
+rows after recreate: 2
+copies after recreate: 2
+export after recreate HTTP 200
+same email again HTTP 409
+
+== ES-07 backend log carries no participant data
+log lines with personal data: 0
+
+== teardown
+down exit=0
