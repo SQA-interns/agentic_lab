@@ -1,0 +1,11 @@
+{
+  "kind": "ORGANIZER_NOTIFICATION",
+  "from": "registration@konferenca.example",
+  "to": ["organizer1@konferenca.example", "organizer2@konferenca.example"],
+  "subject": "New registration (EXTERNAL): Konferenca 2026",
+  "contentType": "text/plain; charset=UTF-8",
+  "body": "Registration id: 3f2b8c1e-7a4d-4e8b-9c61-2d5f0a9e4b17\nReceived at: 2026-10-08T21:15:00Z\nRegistration type: External participant\nFirst name: Čedomir\nLast name: Šuštaršič\nEmail: cedomir@example.si\nOrganization / institution: Žalec d.o.o.\n\nWorkshops: Delavnica: testiranje programske opreme\nMeals: Conference dinner (vegetarian option)\n\nConsents: data-processing (2026-10-08T21:15:00Z)\n",
+  "attachments": [
+    { "filename": "registration-3f2b8c1e-7a4d-4e8b-9c61-2d5f0a9e4b17.json", "contentType": "application/json", "content": "see registration-copy.example-external.json" }
+  ]
+}

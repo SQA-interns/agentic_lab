@@ -1,0 +1,9 @@
+{
+  "kind": "PARTICIPANT_CONFIRMATION",
+  "from": "registration@konferenca.example",
+  "to": ["cedomir@example.si"],
+  "subject": "Registration confirmed: Konferenca 2026",
+  "contentType": "text/plain; charset=UTF-8",
+  "body": "Your registration for Konferenca 2026 was received.\n\nRegistration type: External participant\nFirst name: Čedomir\nLast name: Šuštaršič\nEmail: cedomir@example.si\nOrganization / institution: Žalec d.o.o.\n\nWorkshops: Delavnica: testiranje programske opreme\nMeals: Conference dinner (vegetarian option)\n",
+  "attachments": []
+}

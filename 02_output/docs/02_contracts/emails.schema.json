@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:konferenca:emails:1",
+  "title": "Emails sent by the backend over SMTP (US-006, US-007, SR-05, SR-07)",
+  "description": "Describes each message as the SMTP server receives it. Bodies are text/plain UTF-8 (no HTML, so input cannot add markup); header values are fixed text, configuration or the validated recipient address (no CR/LF possible). Sent only after the registration is stored; a send failure is logged without personal data and does not change the registration (D-13).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "from", "to", "subject", "contentType", "body", "attachments"],
+  "properties": {
+    "kind": { "enum": ["PARTICIPANT_CONFIRMATION", "ORGANIZER_NOTIFICATION"] },
+    "from": { "type": "string", "description": "MAIL_FROM setting" },
+    "to": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[^\\r\\n,;<>\"]+@[^\\r\\n,;<>\"]+$" }
+    },
+    "subject": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]+$",
+      "description": "PARTICIPANT_CONFIRMATION: 'Registration confirmed: <CONFERENCE_NAME>'. ORGANIZER_NOTIFICATION: 'New registration (<EXTERNAL|STUDENT>): <CONFERENCE_NAME>'. No participant input."
+    },
+    "contentType": { "const": "text/plain; charset=UTF-8" },
+    "body": {
+      "type": "string",
+      "description": "Lines 'Label: value' for every participant field of the type, then the selected options by category with display names, then (organizer only) the registration id, received time and consents. Values are printed as plain text."
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["filename", "contentType", "content"],
+        "properties": {
+          "filename": { "type": "string", "pattern": "^registration-[0-9a-f-]{36}\\.json$" },
+          "contentType": { "const": "application/json" },
+          "content": { "description": "Byte-identical to the stored raw JSON copy (registration-copy.schema.json)." }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "PARTICIPANT_CONFIRMATION" } } },
+      "then": { "properties": { "to": { "maxItems": 1 }, "attachments": { "maxItems": 0 } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "ORGANIZER_NOTIFICATION" } } },
+      "then": { "properties": { "to": { "description": "every address in ORGANIZER_EMAILS" }, "attachments": { "minItems": 1, "maxItems": 1 } } }
+    }
+  ]
+}
