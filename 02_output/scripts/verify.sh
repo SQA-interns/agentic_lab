@@ -4,7 +4,7 @@
 # Usage: verify.sh <phase> [tool ...]   (no tools = all)
 # gitleaks scans the history of the checked-out branch only (other branches hold other runs).
 # Tools: be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck
-#        fe-format fe-lint fe-typecheck fe-build fe-test fe-mutation fe-cpd fe-audit fe-audit-prod
+#        fe-format fe-lint fe-typecheck fe-build fe-test fe-e2e fe-mutation fe-cpd fe-audit fe-audit-prod
 #        semgrep gitleaks cloc contracts
 set -uo pipefail
 
@@ -78,6 +78,7 @@ t_fe_lint() { npmr fe-lint lint; line fe-lint $RC "$(grep -oE '[0-9]+ problems?'
 t_fe_typecheck() { npmr fe-typecheck typecheck; line fe-typecheck $RC "$(grep -c 'error TS' "$LOG") type errors" "$LOG"; }
 t_fe_build() { npmr fe-build build; line fe-build $RC "$(grep -c -i 'error' "$LOG") error lines" "$LOG"; }
 t_fe_test() { run fe-test "$FE" npx vitest run --coverage --passWithNoTests; line fe-test $RC "$(grep -E 'Tests +[0-9]' "$LOG" | tail -1 | tr -s ' ')" "$LOG"; }
+t_fe_e2e() { run fe-e2e "$FE" npx playwright test; line fe-e2e $RC "$(grep -E '^ +[0-9]+ (passed|failed|flaky|skipped)' "$LOG" | tr -s ' ' | paste -sd, -)" "$LOG"; }
 t_fe_mutation() { npmr fe-mutation mutation; line fe-mutation $RC "$(grep -oE 'Final mutation score of [0-9.]+' "$LOG" | tail -1)" "$LOG"; }
 t_fe_cpd() { npmr fe-cpd duplication; line fe-cpd $RC "$(grep -oE 'Found [0-9]+ clones' "$LOG" | tail -1)" "$LOG"; }
 t_fe_audit() { run fe-audit "$FE" npm audit; line fe-audit $RC "$(grep -E 'vulnerabilit' "$LOG" | tail -1)" "$LOG"; }
@@ -127,7 +128,7 @@ t_contracts() {
   line contracts $RC "$(grep -c '^PASS' "$LOG") pass, $(grep -c '^FAIL' "$LOG") fail" "$LOG"
 }
 
-ALL="be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck fe-format fe-lint fe-typecheck fe-build fe-test fe-mutation fe-cpd fe-audit fe-audit-prod semgrep gitleaks cloc contracts"
+ALL="be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck fe-format fe-lint fe-typecheck fe-build fe-test fe-e2e fe-mutation fe-cpd fe-audit fe-audit-prod semgrep gitleaks cloc contracts"
 TOOLS="${*:-$ALL}"
 for t in $TOOLS; do
   fn="t_${t//-/_}"
