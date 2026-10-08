@@ -18,6 +18,7 @@
 | D-14 | 2026-10-08T21:12:43Z | 1 | OQ-04 (options per category) unanswered | A maximum per category comes from configuration, default 1; more is rejected (AC-001-11) | pending review |
 | D-15 | 2026-10-08T21:12:43Z | 1 | OQ-05 (second registration with the same email) unanswered | Rejected: one registration per email address, compared case-insensitively after trimming (AC-001-15) | pending review |
 | D-16 | 2026-10-08T21:12:43Z | 1 | OQ-06 (retention) unanswered; SB-13 | Retention period from configuration, default 365 days after registration; then the database record and the JSON copy are deleted (AC-005-05) | pending review |
+| D-17 | 2026-10-08T21:19:49Z | 2 | Contract validation needs an OpenAPI/JSON Schema parser; none is listed in `tech-stack.md` | Dev-only tooling: host Python 3.12 with preinstalled PyYAML 6.0.1 and jsonschema 4.10.3 (nothing installed) plus the vendored official OpenAPI 3.1 meta-schema 2022-10-07 (`scripts/oas-3.1-schema-2022-10-07.json`); SQL validated by applying it to the pinned `postgres` image | pending review |
 
 ## Blocking
 

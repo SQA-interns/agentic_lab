@@ -1,0 +1,3 @@
+Čedomir Šuštaršič
+ERROR:  new row for relation "registration" violates check constraint "ck_registration_type_fields"
+DETAIL:  Failing row contains (967a8019-2dec-4e75-8444-240679b4c4cb, STUDENT, A, B, x@y.si, x@y.si, Org, U, P, 1, 2026-10-08 21:16:58.429429+00).

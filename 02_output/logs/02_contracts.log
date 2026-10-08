@@ -1,0 +1,7 @@
+PASS api.openapi.yaml: 3 paths, 24 schema objects valid, 9 refs resolved
+PASS conference-options.schema.json: schema ok, 1 instance(s) valid
+PASS emails.schema.json: schema ok, 2 instance(s) valid
+PASS recaptcha-verify.openapi.yaml: 1 paths, 2 schema objects valid, 0 refs resolved
+PASS registration-copy.schema.json: schema ok, 2 instance(s) valid
+PASS ui-form.schema.json: schema ok, 1 instance(s) valid
+PASS database.sql: applied to postgres:16.15-alpine

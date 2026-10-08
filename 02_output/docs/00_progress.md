@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 2 (design); branch `tjan/single-agent/sdd/v005`
-- Last gate result: phase 1 gate passed (2026-10-08T21:13:28Z): 46 ACs over US-001..US-008; OQ-01..OQ-06 decided as D-11..D-16.
-- Next step: phase 2 per `general/phases/2-design.md`.
+- Current phase: 3 (test design); branch `tjan/single-agent/sdd/v005`
+- Last gate result: phase 2 gate passed (2026-10-08T21:19:49Z): 7 contracts validate (`verify.sh 02 contracts`); specification traces every AC, SR, SB, NFR, AR, KP.
+- Next step: phase 3 per `general/phases/3-test-design.md`.
 - Waiting for the human on: nothing
