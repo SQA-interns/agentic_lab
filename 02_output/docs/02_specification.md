@@ -108,6 +108,7 @@ Environment variables; secrets have no default (`.env`, listed in `secrets.env.e
 | `RATE_LIMIT_REGISTRATIONS_PER_MINUTE` / `RATE_LIMIT_EXPORTS_PER_MINUTE` | `10` / `10` | SR-03 |
 | `MAX_REQUEST_BYTES` | `16384` | SR-03 |
 | `RETENTION_DAYS` | `365` | D-16 |
+| `RETENTION_CRON` | `0 0 3 * * *` | D-16; retention also runs once at startup |
 
 Rate limiting: in-process fixed one-minute window per client address and endpoint, 429 with `Retry-After`. Reason: a single backend instance; no extra dependency. Limit 10 per minute keeps a shared campus/NAT address usable (High in the severity scale would be locking out legitimate users).
 
@@ -126,7 +127,7 @@ Rate limiting: in-process fixed one-minute window per client address and endpoin
 | SB-09 | semgrep, gitleaks, SpotBugs, PMD |
 | SB-10, KP-02 | backend: Spring Security headers on `/api` (`Content-Security-Policy: default-src 'none'; frame-ancestors 'none'`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`); frontend nginx: same set on static responses with CSP `default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'`. `add_header ... always` only inside the static `location` blocks, never at `server` level and never in the `/api` location, so each header appears once |
 | SB-11 | backend image runs as UID 10001; frontend nginx runs as user `nginx` on port 8080; read-only root filesystem where possible |
-| SB-12, SB-13 | only the fields in `security-requirements.md` are collected; retention D-16 (daily scheduled job at 03:00 deletes rows and JSON files older than `RETENTION_DAYS`) |
+| SB-12, SB-13 | only the fields in `security-requirements.md` are collected; retention D-16 (runs once at startup and then per `RETENTION_CRON`, default daily 03:00; deletes rows and JSON files whose `receivedAt` is older than `RETENTION_DAYS`) |
 | SB-14 | consents never preselected (`ui-form.json`); stored with wording and time |
 | SR-01, SR-02 | section 8 |
 | SR-05 | section 4 control characters, section 7 |
@@ -140,7 +141,7 @@ One React component tree: `App` loads `GET /api/form` → `RegistrationForm` (ty
 
 ## 12. Deployment and runtime (NFR-02, NFR-04, KP-05, KP-06, KP-08)
 
-- `02_output/docker-compose.yml`: `db` (postgres image, volume `pgdata`, `pg_isready` health check), `mailpit` (ports 127.0.0.1:8025 UI, SMTP internal), `backend` (volume `jsoncopies` at `/data/registrations`, health check `wget -qO- http://127.0.0.1:8080/actuator/health/readiness`, `depends_on` db healthy), `frontend` (nginx, published on `127.0.0.1:8081`, proxies `/api` to `backend:8080`, health check on `/`). Only `127.0.0.1` is published. Secrets via `--env-file ../.env`; local settings (`APP_ENVIRONMENT=local`, `RECAPTCHA_TEST_MODE=true`, `ORGANIZER_HTTPS_ONLY=false`) in the compose file.
+- `02_output/docker-compose.yml`: `db` (postgres image, volume `pgdata`, `pg_isready` health check), `mailpit` (ports 127.0.0.1:8025 UI, SMTP internal), `backend` (volume `jsoncopies` at `/data/registrations`, health check `wget -qO- http://127.0.0.1:8080/actuator/health/readiness`, `depends_on` db healthy), `frontend` (nginx, published on `127.0.0.1:8081`, proxies `/api` to `backend:8080`, health check on `/`). Only `127.0.0.1` is published, on `FRONTEND_PORT` (default 8081) and `MAILPIT_PORT` (default 8025). `scripts/compose.sh` passes only the `KEY=value` lines of `.env` without printing them. Secrets via `--env-file ../.env`; local settings (`APP_ENVIRONMENT=local`, `RECAPTCHA_TEST_MODE=true`, `ORGANIZER_HTTPS_ONLY=false`) in the compose file.
 - Production: the external nginx forwards `/api` to the backend and `/` to the frontend; it sets `X-Forwarded-Proto`.
 - Testcontainers: if the Docker API version cannot be negotiated, `src/test/resources/docker-java.properties` sets `api.version` (KP-06, non-blocking decision).
 - End-to-end tests start their own stack with a unique compose project name and tear it down (KP-08).
