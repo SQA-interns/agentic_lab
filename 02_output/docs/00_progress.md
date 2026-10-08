@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 3 (test design); branch `tjan/single-agent/sdd/v005`
-- Last gate result: phase 2 gate passed (2026-10-08T21:19:49Z): 7 contracts validate (`verify.sh 02 contracts`); specification traces every AC, SR, SB, NFR, AR, KP.
-- Next step: phase 3 per `general/phases/3-test-design.md`.
+- Current phase: 4 (build); branch `tjan/single-agent/sdd/v005`
+- Last gate result: phase 3 gate passed (2026-10-08T21:43:17Z): every AC has a test; 99 tests (74 backend acceptance, 19 frontend acceptance, 6 e2e) all fail for behavioural reasons; frozen by `docs/03_acceptance-manifest.sha256` (31 files).
+- Next step: phase 4 per `general/phases/4-build.md`.
 - Waiting for the human on: nothing
