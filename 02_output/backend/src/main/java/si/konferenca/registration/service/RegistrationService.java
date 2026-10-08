@@ -39,6 +39,7 @@ public class RegistrationService {
   private final RegistrationStore store;
   private final JsonCopyStore copies;
   private final TransactionTemplate transaction;
+  private final NotificationService notifications;
   private final Clock clock;
 
   @Autowired
@@ -47,8 +48,10 @@ public class RegistrationService {
       RecaptchaVerifier recaptcha,
       RegistrationStore store,
       JsonCopyStore copies,
-      TransactionTemplate transaction) {
-    this(catalogueProvider, recaptcha, store, copies, transaction, Clock.systemUTC());
+      TransactionTemplate transaction,
+      NotificationService notifications) {
+    this(
+        catalogueProvider, recaptcha, store, copies, transaction, notifications, Clock.systemUTC());
   }
 
   RegistrationService(
@@ -57,12 +60,14 @@ public class RegistrationService {
       RegistrationStore store,
       JsonCopyStore copies,
       TransactionTemplate transaction,
+      NotificationService notifications,
       Clock clock) {
     this.catalogueProvider = catalogueProvider;
     this.recaptcha = recaptcha;
     this.store = store;
     this.copies = copies;
     this.transaction = transaction;
+    this.notifications = notifications;
     this.clock = clock;
   }
 
@@ -89,6 +94,7 @@ public class RegistrationService {
             valid.consents().stream().map(c -> new GivenConsent(c.id(), c.text(), now)).toList());
     store(registration);
     LOG.info("Registration {} accepted", registration.id());
+    notifications.registrationAccepted(registration);
     return registration;
   }
 
