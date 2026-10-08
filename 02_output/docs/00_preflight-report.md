@@ -21,7 +21,7 @@ Starting commit `b6c9dc6` (detached HEAD); run branch `tjan/single-agent/sdd/v00
 |---|---|---|---|---|
 | java | 21.0.10+7 (Temurin) | `java -version`: OpenJDK 21.0.12.1 (Ubuntu build) | `ls /usr/lib/jvm`: no Temurin JDK | runs, other version (D-01) |
 | node / npm | 24.13.0 / 11.6.2 | not on `PATH` | `~/.nvm/versions/node/v24.13.0/bin/node --version`, `npm --version` | pass (verify.sh uses this path) |
-| docker | 29.8.0 | `docker version`: daemon socket `~/.docker/desktop/docker.sock` missing | `docker context ls`, `/var/run/docker.sock` missing, `systemctl --user is-active docker-desktop`: inactive pass after D-04: Engine 29.3.1, other version (D-07) |
+| docker | 29.8.0 | `docker version`: daemon socket `~/.docker/desktop/docker.sock` missing | `docker context ls`, `/var/run/docker.sock` missing, `systemctl --user is-active docker-desktop`: inactive | pass after D-04: Engine 29.3.1, other version (D-07) |
 | compose | 5.5.1 | `docker compose version`: v5.1.1 | same binary via Docker Desktop CLI | runs, other version (D-02) |
 | Maven wrapper / Maven | 3.3.2 / 3.9.9 | `mvnw` header 3.3.2; `maven-wrapper.properties` | build log `apache-maven-3.9.9` | pass |
 | Maven plugins (spring-boot, spotless, spotbugs, pmd, jacoco, pitest + junit5, dependency-check) | as listed | resolved and executed by `verify.sh 00` | versions in `pom.xml` | pass; dependency-check runs with the NVD key |
