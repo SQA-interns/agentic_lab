@@ -1,6 +1,8 @@
 package si.konferenca.registration.api;
 
 import java.net.URI;
+import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import si.konferenca.registration.service.DuplicateEmailException;
+import si.konferenca.registration.service.RegistrationRejectedException;
+import si.konferenca.registration.service.StorageFailureException;
 
 /**
  * Maps every error to an RFC 9457 problem with a fixed title (section 13). Exception messages,
@@ -22,6 +27,30 @@ public class ProblemHandler extends ResponseEntityExceptionHandler {
 
   static final String PROCESSING_FAILED = "Registration could not be processed";
   private static final Logger LOG = LoggerFactory.getLogger(ProblemHandler.class);
+
+  @ExceptionHandler(RegistrationRejectedException.class)
+  ResponseEntity<ProblemDetail> rejected(RegistrationRejectedException e) {
+    return validation(
+        e.errors().stream().map(f -> Map.of("field", f.field(), "code", f.code())).toList());
+  }
+
+  @ExceptionHandler(MalformedRequestException.class)
+  ResponseEntity<ProblemDetail> malformed(MalformedRequestException e) {
+    return validation(List.of(Map.of("field", "body", "code", "malformed")));
+  }
+
+  @ExceptionHandler(DuplicateEmailException.class)
+  ResponseEntity<ProblemDetail> duplicate(DuplicateEmailException e) {
+    return problem(
+        HttpStatus.CONFLICT,
+        "urn:problem:email-already-registered",
+        "This email address is already registered.");
+  }
+
+  @ExceptionHandler(StorageFailureException.class)
+  ResponseEntity<ProblemDetail> storage(StorageFailureException e) {
+    return problem(HttpStatus.INTERNAL_SERVER_ERROR, "about:blank", PROCESSING_FAILED);
+  }
 
   @ExceptionHandler(Exception.class)
   ResponseEntity<ProblemDetail> unexpected(Exception e) {
@@ -37,6 +66,14 @@ public class ProblemHandler extends ResponseEntityExceptionHandler {
     detail.setType(URI.create("about:blank"));
     detail.setTitle(titleFor(status));
     return ResponseEntity.status(status).headers(headers).body(detail);
+  }
+
+  private static ResponseEntity<ProblemDetail> validation(List<Map<String, String>> errors) {
+    ProblemDetail detail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+    detail.setType(URI.create("urn:problem:invalid-registration"));
+    detail.setTitle("Invalid registration");
+    detail.setProperty("errors", errors);
+    return ResponseEntity.badRequest().body(detail);
   }
 
   static ResponseEntity<ProblemDetail> problem(HttpStatus status, String type, String title) {
