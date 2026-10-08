@@ -62,6 +62,16 @@ class EmailAddressTest {
   }
 
   @Test
+  void boundariesOfTotalAndLabelLength() {
+    String domain = "b".repeat(63) + "." + "c".repeat(63) + "." + "d".repeat(60) + ".si";
+    String at254 = "a".repeat(254 - 1 - domain.length()) + "@" + domain;
+    assertThat(at254).hasSize(254);
+    assertThat(EmailAddress.isValid(at254)).isTrue();
+    assertThat(EmailAddress.isValid("a" + at254)).isFalse();
+    assertThat(EmailAddress.isValid("x@" + "a".repeat(63) + ".si")).isTrue();
+  }
+
+  @Test
   void normaliseLowerCasesWithRootLocale() {
     assertThat(EmailAddress.normalise("Ana.NOVAK@Example.SI")).isEqualTo("ana.novak@example.si");
     assertThat(EmailAddress.normalise("TITLE@EXAMPLE.SI")).isEqualTo("title@example.si");

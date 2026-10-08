@@ -96,6 +96,26 @@ class FiltersTest {
   }
 
   @Test
+  @DisplayName("SB-06 tracked addresses from past windows are evicted, so memory stays bounded")
+  void staleWindowsAreEvicted() throws Exception {
+    MutableClock clock = new MutableClock(Instant.parse("2026-10-08T10:00:00Z"));
+    RateLimitFilter filter = new RateLimitFilter(props(1, 1, 100, true), clock);
+    Counting chain = new Counting();
+    for (int i = 0; i <= 10_001; i++) {
+      filter.doFilter(
+          request("POST", "/api/registrations", "10.0." + (i / 250) + "." + (i % 250)),
+          new MockHttpServletResponse(),
+          chain);
+    }
+    clock.now = Instant.parse("2026-10-08T10:01:00Z");
+    filter.doFilter(
+        request("POST", "/api/registrations", "10.9.9.9"), new MockHttpServletResponse(), chain);
+    java.lang.reflect.Field field = RateLimitFilter.class.getDeclaredField("windows");
+    field.setAccessible(true);
+    assertThat(((java.util.Map<?, ?>) field.get(filter)).size()).isEqualTo(1);
+  }
+
+  @Test
   void otherRequestsAreNotLimited() throws Exception {
     RateLimitFilter filter = new RateLimitFilter(props(1, 1, 100, true), Clock.systemUTC());
     Counting chain = new Counting();
