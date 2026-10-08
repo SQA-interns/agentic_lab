@@ -11,7 +11,7 @@ Starting commit `b6c9dc6` (detached HEAD); run branch `tjan/single-agent/sdd/v00
 | Local environments and services running or reachable | `project/00_setup/environments.md` | pass after D-04: Docker Engine 29.3.1 reachable (`docker version`, `docker info`); stack images resolve |
 | Secrets present in `.env` or marked test-only | `project/00_setup/secrets.env.example` | pass after D-05: 5 provided keys non-empty (`sed … \| grep -q .`), `.env` git-ignored; RECAPTCHA_*/SMTP_* test-only or not needed |
 | Every listed dependency resolves | `project/00_setup/tech-stack.md` | pass: Maven (`mvnw dependency:list`), npm (`npm install` + `npm ls`), images (Docker Hub tag API, HTTP 200) |
-| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | **open**: jscpd High (D-10). Maven: 2 false positives suppressed (D-08, D-09), 0 left. npm runtime: 0. vitest Critical fixed by upgrade (D-06) |
+| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | pass after D-10: jscpd High accepted as dev-only (option 3). Maven: 2 false positives suppressed (D-08, D-09), 0 left. npm runtime: 0. vitest Critical fixed by upgrade (D-06) |
 | Clean working tree on the starting commit | repository | pass: `git status` clean except untracked `03_statistics/run-log.json`; HEAD = `b6c9dc6` |
 | Input manifest written | `docs/00_input-manifest.sha256` | pass: 27 files (21 under `01_input/` + 6 protected root/statistics files), LF-normalised |
 
@@ -54,4 +54,4 @@ Starting commit `b6c9dc6` (detached HEAD); run branch `tjan/single-agent/sdd/v00
 | When | What was missing | Answer | Re-check |
 |---|---|---|---|
 | 2026-10-08T20:55:53Z | D-04 Docker Engine; D-05 `.env`; D-06 npm tooling vulnerabilities | D-04, D-05: done; D-06: upgrade vitest (2026-10-08T21:03:29Z) | 2026-10-08T21:07:07Z: pass; jscpd remains (D-10) |
-| 2026-10-08T21:07:07Z | D-10 jscpd High | pending | |
+| 2026-10-08T21:07:07Z | D-10 jscpd High | 3: accept as dev-only (2026-10-08T21:10:48Z) | 2026-10-08T21:10:48Z: pass |

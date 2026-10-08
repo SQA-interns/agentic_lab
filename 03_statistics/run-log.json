@@ -13,12 +13,12 @@
       "phase": 0,
       "name": "preflight-and-bootstrap",
       "start": "2026-10-08T20:49:53Z",
-      "end": null
+      "end": "2026-10-08T21:12:14Z"
     },
     {
       "phase": 1,
       "name": "requirements",
-      "start": null,
+      "start": "2026-10-08T21:12:14Z",
       "end": null
     },
     {
@@ -132,7 +132,7 @@
       "id": "D-10",
       "type": "blocking",
       "start": "2026-10-08T21:07:07Z",
-      "end": null
+      "end": "2026-10-08T21:10:48Z"
     }
   ],
   "humanInterventions": [
@@ -143,7 +143,7 @@
     },
     {
       "start": "2026-10-08T21:07:07Z",
-      "end": null,
+      "end": "2026-10-08T21:10:48Z",
       "reason": "phase 0: D-10 jscpd 4.3.0 High (braces) remains after vitest upgrade"
     }
   ],

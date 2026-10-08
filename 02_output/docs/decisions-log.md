@@ -44,5 +44,5 @@
 - Phase: 0
 - Trigger: after the vitest upgrade, `npm audit` (`logs/00_fe-audit.log`) still reports High GHSA-vfj7-8cjw-p6xm in braces 3.0.3 (stack-exhaustion DoS), reached only through jscpd 4.3.0 → @jscpd/finder → fast-glob → micromatch → braces (5 High entries, one advisory). Dev-only, not shipped (`npm audit --omit=dev`: 0). Also 2 Moderate (qs via @stryker-mutator/core → typed-rest-client), non-blocking.
 - Options: 1. (default) Approve upgrading jscpd to 5.4.0 (the only fixed version), in line with the vitest upgrade. 2. Drop jscpd and measure frontend duplication with PMD CPD (already pinned, supports TypeScript). 3. Keep jscpd 4.3.0 and accept the finding as dev-only tooling run on project code only; phase 6 gates on `npm audit --omit=dev`.
-- Human response: none
-- Resolution:
+- Human response: "3" (2026-10-08T21:10:48Z)
+- Resolution: 3; jscpd 4.3.0 kept, High accepted as dev-only tooling (not shipped). Phase 6 gates SB-08 on `npm audit --omit=dev`; the full audit is reported in the release notes.

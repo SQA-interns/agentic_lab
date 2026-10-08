@@ -1,11 +1,11 @@
-[33m23:04:01 (788995) WARN ProjectReader[39m Glob pattern "!src/**/*.test.{ts,tsx}" did not exclude any files.
-[32m23:04:01 (788995) INFO ProjectReader[39m Found 1 of 29 file(s) to be mutated.
-[32m23:04:01 (788995) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
-[32m23:04:02 (788995) INFO ConcurrencyTokenProvider[39m Creating 7 test runner process(es).
-[32m23:04:03 (788995) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
-[33m23:04:03 (789034) WARN VitestTestRunner[39m Vitest failed to find test files related to mutated files. Either disable `vitest.related` or import your source files directly from your test files. See https://stryker-mutator.io/docs/stryker-js/troubleshooting/#vitest-failed-to-find-test-files-related-to-mutated-files
-[32m23:04:03 (788995) INFO DryRunExecutor[39m No tests were found
-[91m23:04:03 (788995) ERROR Stryker[39m No tests were executed. Stryker will exit prematurely. Please check your configuration.
+[33m23:11:41 (794971) WARN ProjectReader[39m Glob pattern "!src/**/*.test.{ts,tsx}" did not exclude any files.
+[32m23:11:41 (794971) INFO ProjectReader[39m Found 1 of 29 file(s) to be mutated.
+[32m23:11:41 (794971) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
+[32m23:11:42 (794971) INFO ConcurrencyTokenProvider[39m Creating 7 test runner process(es).
+[32m23:11:43 (794971) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[33m23:11:43 (794997) WARN VitestTestRunner[39m Vitest failed to find test files related to mutated files. Either disable `vitest.related` or import your source files directly from your test files. See https://stryker-mutator.io/docs/stryker-js/troubleshooting/#vitest-failed-to-find-test-files-related-to-mutated-files
+[32m23:11:43 (794971) INFO DryRunExecutor[39m No tests were found
+[91m23:11:43 (794971) ERROR Stryker[39m No tests were executed. Stryker will exit prematurely. Please check your configuration.
 file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/node_modules/@stryker-mutator/core/dist/src/process/3-dry-run-executor.js:47
             throw new ConfigError('No tests were executed. Stryker will exit prematurely. Please check your configuration.');
                   ^
