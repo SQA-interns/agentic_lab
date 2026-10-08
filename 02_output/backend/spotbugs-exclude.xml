@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <!-- D-21: a constructor-injected Spring singleton is shared by design, not internal state. -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Class name="si.konferenca.registration.service.NotificationService"/>
+    <Field name="copies"/>
+  </Match>
+</FindBugsFilter>
