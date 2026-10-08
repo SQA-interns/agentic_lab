@@ -12,14 +12,14 @@ Run: `scripts/verify.sh 06` (all tools, `logs/06_*`), `scripts/runtime-demo.sh` 
 |---|---|---|
 | DoD-01 | pass | backend 231/231 (`logs/06_be-test.log`), frontend 56/56 (`logs/06_fe-test.log`), e2e 6/6 (`logs/06_fe-e2e.log`); acceptance manifest 34/34 and input manifest 27/27 match (`logs/06_hash-check.log`) |
 | DoD-02 | pass | spotless, PMD, CPD, SpotBugs 0; prettier, ESLint, tsc 0; semgrep see F-01, F-04 (`logs/06_*`) |
-| DoD-03 | partial | coverage backend line 97.3%, branch 93.0%, frontend line 97.07%, branch 91.26%; mutation backend 323/423 killed (76%) (unit and integration tests); frontend not measurable (F-05, D-27). Thresholds: record only |
+| DoD-03 | pass | coverage backend line 97.3%, branch 93.0%, frontend line 97.07%, branch 91.26%; mutation backend 323/423 killed (76%, unit and integration tests), frontend 347/466 killed (74.46%, command runner, D-27); thresholds: record only; validation survivors classified (F-08, F-12) |
 | DoD-04 | pass | `ArchitectureTest`: declared layers (AR-02), no cycles (AR-03), domain framework-free |
-| DoD-05 | open | F-01 High open (D-26); F-02 High accepted by human (D-10); Dependency-Check 0 after D-08/D-09; `npm audit --omit=dev` 0; gitleaks 0 after D-25 |
+| DoD-05 | pass | F-01 downgraded by the human (D-26); F-02 High accepted by the human (D-10); Dependency-Check 0 after D-08/D-09; `npm audit --omit=dev` 0; gitleaks 0 after D-25 |
 | DoD-06 | pass | `logs/06_runtime-demo.log`: fresh local stack healthy, both registrations, storage, emails, export, recreate |
 | DoD-07 | pass | traceability table below: 46/46 ACs have tests and commits |
 | DoD-08 | phase 7 | READMEs and clean-checkout log are produced in phase 7 (D-24) |
 | DoD-09 | phase 7 | release notes are produced in phase 7 (D-24) |
-| DoD-10 | pass | D-01..D-25 resolved or pending review; D-26, D-27 open (blocking); input manifest matches, protected files unchanged since `b6c9dc6` |
+| DoD-10 | pass | D-01..D-27 resolved or pending review; input manifest matches, protected files unchanged since `b6c9dc6` |
 | DoD-11 | pass with F-07 | phase 3 added no production source and the freeze commit holds only the manifest (`logs/06_phase3-evidence.log`); every story has a phase 4 commit (`logs/04_commits-since-freeze.txt`); 7 commits exceed the size guide without a stated reason (F-07, `logs/06_commit-sizes.log`) |
 | DoD-P01 | pass | external and student registration 201 on the running stack |
 | DoD-P02 | pass | 2 rows in PostgreSQL with options; 2 JSON copies on the volume |
@@ -127,16 +127,17 @@ Run: `scripts/verify.sh 06` (all tools, `logs/06_*`), `scripts/runtime-demo.sh` 
 
 | F | Severity | Source | Finding | Resolution |
 |---|---|---|---|---|
-| F-01 | High | semgrep `use-of-basic-authentication` | `api.openapi.yaml:104` organizer export uses HTTP Basic | open: downgrade to Low proposed with evidence (D-26, blocking) |
+| F-01 | High → Low | semgrep `use-of-basic-authentication` | `api.openapi.yaml:104` organizer export uses HTTP Basic | downgraded with evidence, approved by the human (D-26); suppression names D-26 (`58a6001`) |
 | F-02 | High | npm audit GHSA-vfj7-8cjw-p6xm | braces 3.0.3 via jscpd 4.3.0 (dev tooling, not shipped) | accepted by the human (D-10) |
 | F-03 | Medium | npm audit (qs) | qs via @stryker-mutator/core → typed-rest-client (dev tooling, not shipped) | accepted: dev only, `npm audit --omit=dev` 0 |
 | F-04 | Medium | semgrep `npm-missing-minimum-release-age` | `frontend/.npmrc` sets no minimum release age | accepted: npm 11.6.2 has no such setting; exact pins and lock file integrity hashes |
-| F-05 | Medium | Stryker | frontend mutation score not measurable: vitest-runner 10.0.0 does not activate mutants under vitest 5.0.3 | open (D-27, blocking) |
+| F-05 | Medium | Stryker | frontend mutation score not measurable: vitest-runner 10.0.0 does not activate mutants under vitest 5.0.3 | fixed: command runner (D-27), 60 s timeout (`99ccb7f`, `61d3704`); score 74.46% |
 | F-06 | Low | gitleaks | 15 matches: test constant and ephemeral generated passwords in phase 3 logs | false positive, suppressed by fingerprint (D-25) |
 | F-07 | Low | commit history | 7 commits exceed the 15-file / 400-line guide without a stated reason | accepted: history is not rewritten (`logs/06_commit-sizes.log`) |
 | F-08 | Low | PIT | surviving mutants in validation/security: email length limits (254, 63) and rate-limit eviction untested | fixed `f24bf67`; remaining 2 survivors are equivalent |
 | F-09 | Low | PIT | `RecaptchaVerifier` read timeout not covered by a unit test | accepted: fail-closed path covered (unreachable endpoint); a timeout test adds 5 s |
 | F-10 | Low | runtime demo | first demo run printed the organizer address from `.env` into an uncommitted log | fixed: log deleted, script masks non-test addresses, leak check clean |
+| F-12 | Low | Stryker | 21 survivors in `frontend/src/validation.ts`: message strings, regex anchors, email length boundaries, option counting | accepted: browser-side duplicates of backend rules, which are authoritative and tested (SB-01) |
 | F-11 | Low | test harness | frozen `AcceptanceStack.newTempDir` depends on an earlier test starting the stack | mitigated by alphabetical run order (D-22); frozen file unchanged |
 
 Other surviving mutants: equivalent or logging only (`RetentionService` count log, `JsonCopyStore` `fsync`, header and encoding writes), or killed only by acceptance tests that PIT excludes (`RegistrationValidator` empty-string returns, persistence, `SecurityConfig`).
@@ -145,4 +146,5 @@ Other surviving mutants: equivalent or logging only (`RetentionService` count lo
 
 | Loop | Findings | Change | Re-verification |
 |---|---|---|---|
-| — | none yet | Critical/High fixes wait for D-26 | — |
+| 1 | F-01 | D-26 approved: `# nosemgrep` with the decision id in `api.openapi.yaml` | `verify.sh 06 semgrep contracts`: semgrep only F-04 (Medium); contracts 7/7 |
+| 2 | F-05 | Stryker command runner; then timeout 60 s, 3 workers after a first run where all 466 mutants timed out | `verify.sh 06 fe-mutation`: 347 killed, 119 survived, 0 timeouts |
