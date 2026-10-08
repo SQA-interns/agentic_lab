@@ -175,6 +175,24 @@
       "type": "non-blocking",
       "start": "2026-10-08T21:19:49Z",
       "end": "2026-10-08T21:19:49Z"
+    },
+    {
+      "id": "D-18",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:42:59Z",
+      "end": "2026-10-08T21:42:59Z"
+    },
+    {
+      "id": "D-19",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:42:59Z",
+      "end": "2026-10-08T21:42:59Z"
+    },
+    {
+      "id": "D-20",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:42:59Z",
+      "end": "2026-10-08T21:42:59Z"
     }
   ],
   "humanInterventions": [

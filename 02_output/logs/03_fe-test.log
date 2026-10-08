@@ -1,0 +1,665 @@
+
+ RUN  v5.0.3 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ❯ tests/acceptance/us004-confirmation.test.tsx (3 tests | 3 failed) 3051ms
+   ❯ US-004 confirmation (3)
+     × AC-004-01 the confirmation appears only after the registration was accepted 1039ms
+     × AC-004-02 backend field errors appear next to the fields and no confirmation is shown 1003ms
+     × AC-004-02 a server failure shows a generic error without internal details 1005ms
+ ❯ tests/acceptance/us002-student-form.test.tsx (4 tests | 4 failed) 4055ms
+   ❯ US-002 student form (4)
+     × AC-002-01 a complete student registration is sent and confirmed 1040ms
+     × AC-002-02 the student form shows exactly its six required fields 1003ms
+     × AC-002-03 a student field of only no-break spaces is reported and nothing is sent 1004ms
+     × AC-002-06 options not available to students are not offered on the student form 1003ms
+ ❯ tests/acceptance/us001-external-form.test.tsx (12 tests | 12 failed) 12079ms
+   ❯ US-001 external participant form (12)
+     × AC-001-01 a complete external registration is sent and confirmed 1039ms
+     × AC-001-02 the external form shows exactly its four required fields 1004ms
+     × AC-001-03 an empty required field is reported and nothing is sent 1004ms
+     × AC-001-04 a value of only no-break spaces counts as empty 1003ms
+     × AC-001-05 surrounding whitespace including NBSP is removed before sending 1005ms
+     × AC-001-06 an invalid email is reported and nothing is sent 1003ms
+     × AC-001-07 Slovenian characters are sent unchanged 1003ms
+     × AC-001-08 options are offered grouped as workshops, events, meals and other activities 1003ms
+     × AC-001-12 the mandatory consent is shown with its wording and not preselected 1002ms
+     × AC-001-13 a missing mandatory consent is reported and nothing is sent 1002ms
+     × AC-001-14 without the anti-automation check nothing is sent 1002ms
+     × AC-001-15 an already registered email is reported without confirmation 1002ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-01 a complete external registration is sent and confirmed
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:16:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-02 the external form shows exactly its four required fields
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:38:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-03 an empty required field is reported and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:58:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-04 a value of only no-break spaces counts as empty
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:70:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-05 surrounding whitespace including NBSP is removed before sending
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:81:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-06 an invalid email is reported and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:95:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-07 Slovenian characters are sent unchanged
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:106:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-08 options are offered grouped as workshops, events, meals and other activities
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:123:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-12 the mandatory consent is shown with its wording and not preselected
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:146:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-13 a missing mandatory consent is reported and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:158:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-14 without the anti-automation check nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:169:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/19]⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-15 an already registered email is reported without confirmation
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us001-external-form.test.tsx:180:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/19]⎯
+
+ FAIL  tests/acceptance/us002-student-form.test.tsx > US-002 student form > AC-002-01 a complete student registration is sent and confirmed
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us002-student-form.test.tsx:15:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/19]⎯
+
+ FAIL  tests/acceptance/us002-student-form.test.tsx > US-002 student form > AC-002-02 the student form shows exactly its six required fields
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us002-student-form.test.tsx:36:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/19]⎯
+
+ FAIL  tests/acceptance/us002-student-form.test.tsx > US-002 student form > AC-002-03 a student field of only no-break spaces is reported and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us002-student-form.test.tsx:56:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/19]⎯
+
+ FAIL  tests/acceptance/us002-student-form.test.tsx > US-002 student form > AC-002-06 options not available to students are not offered on the student form
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us002-student-form.test.tsx:67:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/19]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 confirmation > AC-004-01 the confirmation appears only after the registration was accepted
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:17:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/19]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 confirmation > AC-004-02 backend field errors appear next to the fields and no confirmation is shown
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:37:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/19]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 confirmation > AC-004-02 a server failure shows a generic error without internal details
+TestingLibraryElementError: Unable to find an element by: [data-testid="registration-page"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [0mConference registration[0m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openForm tests/acceptance/helpers.tsx:6:17
+      4| export async function openForm() {
+      5|   render(<App />);
+      6|   return screen.findByTestId("registration-page");
+       |                 ^
+      7| }
+      8|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:48:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/19]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  19 failed (19)
+   Start at  23:40:48
+   Duration  13.11s (tests 89%, environment 6%, import 2%, setup 1%, transform 1%, worker 1%)
+

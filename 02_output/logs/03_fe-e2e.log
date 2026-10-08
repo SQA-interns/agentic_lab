@@ -1,0 +1,324 @@
+ Image registration-e2e-62402ff0-frontend Building 
+ Image registration-e2e-62402ff0-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.16kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 328B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 470B done
+#3 DONE 0.0s
+
+#4 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#4 DONE 0.1s
+
+#5 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#5 DONE 0.1s
+
+#6 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#6 DONE 0.1s
+
+#7 [frontend internal] load .dockerignore
+#7 transferring context: 119B done
+#7 DONE 0.0s
+
+#8 [backend internal] load .dockerignore
+#8 transferring context: 81B done
+#8 DONE 0.0s
+
+#9 [backend internal] load build context
+#9 transferring context: 87B done
+#9 DONE 0.0s
+
+#10 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#10 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#10 DONE 0.1s
+
+#11 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#11 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#11 DONE 0.1s
+
+#12 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#12 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#12 DONE 0.1s
+
+#13 [backend 3/4] WORKDIR /app
+#13 CACHED
+
+#14 [backend 2/4] RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#14 CACHED
+
+#15 [backend 4/4] COPY target/registration-backend-0.1.0.jar /app/app.jar
+#15 CACHED
+
+#16 [frontend internal] load build context
+#16 transferring context: 9.67kB done
+#16 DONE 0.0s
+
+#17 [frontend build 2/6] WORKDIR /src
+#17 CACHED
+
+#18 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#18 CACHED
+
+#19 [frontend build 4/6] RUN npm ci --no-fund --no-audit
+#19 CACHED
+
+#20 [frontend build 5/6] COPY . .
+#20 DONE 0.1s
+
+#21 [frontend build 6/6] RUN npm run build
+#21 ...
+
+#22 [backend] exporting to image
+#22 exporting layers done
+#22 exporting manifest sha256:8ece88baeceb825dc0dfec553e33db83c3233850f56ad92a9cfa575b225d71b1 0.0s done
+#22 exporting config sha256:001d72fefc06a8bbe500e85f951f22eed3b1b7b3fdb980717eca5674ec8189a5 0.0s done
+#22 exporting attestation manifest sha256:749a7a8bcf143da7e8cba40768532c25119b817026dcb917b6f33ad8d7246cca 0.1s done
+#22 exporting manifest list sha256:0845ec457b3592731a8c4651efd4047052abaed91935066efa04aa5c10ba95d4 0.0s done
+#22 naming to docker.io/library/registration-e2e-62402ff0-backend:latest done
+#22 unpacking to docker.io/library/registration-e2e-62402ff0-backend:latest done
+#22 DONE 0.2s
+
+#21 [frontend build 6/6] RUN npm run build
+#21 ...
+
+#23 [backend] resolving provenance for metadata file
+#23 DONE 0.0s
+
+#21 [frontend build 6/6] RUN npm run build
+#21 0.472 
+#21 0.472 > registration-frontend@0.1.0 build
+#21 0.472 > tsc --noEmit && vite build
+#21 0.472 
+#21 3.788 vite v6.4.3 building for production...
+#21 3.888 transforming...
+#21 5.132 ✓ 28 modules transformed.
+#21 5.301 rendering chunks...
+#21 5.310 computing gzip size...
+#21 5.319 dist/index.html                  0.33 kB │ gzip:  0.24 kB
+#21 5.319 dist/assets/index-DsWjscts.js  223.96 kB │ gzip: 69.53 kB
+#21 5.320 ✓ built in 1.49s
+#21 DONE 5.4s
+
+#24 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#24 CACHED
+
+#25 [frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html
+#25 CACHED
+
+#26 [frontend] exporting to image
+#26 exporting layers done
+#26 exporting manifest sha256:2b6fe1fcbb0e6aa7cb56218b34a7005971c549dfd104ede590b69c8305a383e7 0.0s done
+#26 exporting config sha256:1f7c841514b8d8d5183c6604c77e4b14bdd4bf84046c46b0f6a2e0d9c119e44e 0.0s done
+#26 exporting attestation manifest sha256:a8b99e6628f593be21a4358d9d46f597c430eac1bbb5b9832bc087dcf41fd1ba 0.0s done
+#26 exporting manifest list sha256:0a8c09c8624a94274c1742b2554a7551eaf86719efbac88f7b10751405808742 0.0s done
+#26 naming to docker.io/library/registration-e2e-62402ff0-frontend:latest
+#26 naming to docker.io/library/registration-e2e-62402ff0-frontend:latest done
+#26 unpacking to docker.io/library/registration-e2e-62402ff0-frontend:latest done
+#26 DONE 0.2s
+
+#27 [frontend] resolving provenance for metadata file
+#27 DONE 0.0s
+ Image registration-e2e-62402ff0-backend Built 
+ Image registration-e2e-62402ff0-frontend Built 
+ Network registration-e2e-62402ff0_default Creating 
+ Network registration-e2e-62402ff0_default Created 
+ Volume registration-e2e-62402ff0_pgdata Creating 
+ Volume registration-e2e-62402ff0_pgdata Created 
+ Volume registration-e2e-62402ff0_jsoncopies Creating 
+ Volume registration-e2e-62402ff0_jsoncopies Created 
+ Container registration-e2e-62402ff0-mailpit-1 Creating 
+ Container registration-e2e-62402ff0-db-1 Creating 
+ Container registration-e2e-62402ff0-mailpit-1 Created 
+ Container registration-e2e-62402ff0-db-1 Created 
+ Container registration-e2e-62402ff0-backend-1 Creating 
+ Container registration-e2e-62402ff0-backend-1 Created 
+ Container registration-e2e-62402ff0-frontend-1 Creating 
+ Container registration-e2e-62402ff0-frontend-1 Created 
+ Container registration-e2e-62402ff0-mailpit-1 Starting 
+ Container registration-e2e-62402ff0-db-1 Starting 
+ Container registration-e2e-62402ff0-mailpit-1 Started 
+ Container registration-e2e-62402ff0-db-1 Started 
+ Container registration-e2e-62402ff0-db-1 Waiting 
+ Container registration-e2e-62402ff0-db-1 Healthy 
+ Container registration-e2e-62402ff0-backend-1 Starting 
+ Container registration-e2e-62402ff0-backend-1 Started 
+ Container registration-e2e-62402ff0-backend-1 Waiting 
+ Container registration-e2e-62402ff0-backend-1 Healthy 
+ Container registration-e2e-62402ff0-frontend-1 Starting 
+ Container registration-e2e-62402ff0-frontend-1 Started 
+ Container registration-e2e-62402ff0-db-1 Waiting 
+ Container registration-e2e-62402ff0-mailpit-1 Waiting 
+ Container registration-e2e-62402ff0-backend-1 Waiting 
+ Container registration-e2e-62402ff0-frontend-1 Waiting 
+ Container registration-e2e-62402ff0-db-1 Healthy 
+ Container registration-e2e-62402ff0-mailpit-1 Healthy 
+ Container registration-e2e-62402ff0-backend-1 Healthy 
+ Container registration-e2e-62402ff0-frontend-1 Healthy 
+
+Running 6 tests using 1 worker
+
+  ✘  1 [chromium] › tests/e2e/us001-external.spec.ts:7:1 › AC-001-01 AC-006-01 AC-007-01 AC-007-02 external registration with Slovenian text end to end (10.1s)
+  ✘  2 [chromium] › tests/e2e/us001-external.spec.ts:37:1 › AC-001-04 AC-001-05 no-break spaces are whitespace in the browser and the backend (10.2s)
+  ✘  3 [chromium] › tests/e2e/us001-external.spec.ts:70:1 › AC-001-12 the consent checkbox is not preselected (5.1s)
+  ✘  4 [chromium] › tests/e2e/us002-student.spec.ts:5:1 › AC-002-01 student registration end to end (10.1s)
+  ✘  5 [chromium] › tests/e2e/us005-storage.spec.ts:6:1 › AC-005-04 registrations survive recreating every container (10.1s)
+  ✘  6 [chromium] › tests/e2e/us008-export.spec.ts:5:1 › AC-008-01 AC-008-02 the export is a workbook for organizers and refused otherwise (317ms)
+ Container registration-e2e-62402ff0-frontend-1 Stopping 
+ Container registration-e2e-62402ff0-frontend-1 Stopped 
+ Container registration-e2e-62402ff0-frontend-1 Removing 
+ Container registration-e2e-62402ff0-frontend-1 Removed 
+ Container registration-e2e-62402ff0-backend-1 Stopping 
+ Container registration-e2e-62402ff0-backend-1 Stopped 
+ Container registration-e2e-62402ff0-backend-1 Removing 
+ Container registration-e2e-62402ff0-backend-1 Removed 
+ Container registration-e2e-62402ff0-db-1 Stopping 
+ Container registration-e2e-62402ff0-mailpit-1 Stopping 
+ Container registration-e2e-62402ff0-db-1 Stopped 
+ Container registration-e2e-62402ff0-db-1 Removing 
+ Container registration-e2e-62402ff0-db-1 Removed 
+ Container registration-e2e-62402ff0-mailpit-1 Stopped 
+ Container registration-e2e-62402ff0-mailpit-1 Removing 
+ Container registration-e2e-62402ff0-mailpit-1 Removed 
+ Network registration-e2e-62402ff0_default Removing 
+ Volume registration-e2e-62402ff0_jsoncopies Removing 
+ Volume registration-e2e-62402ff0_pgdata Removing 
+ Volume registration-e2e-62402ff0_jsoncopies Removed 
+ Volume registration-e2e-62402ff0_pgdata Removed 
+ Network registration-e2e-62402ff0_default Removed 
+
+
+  1) [chromium] › tests/e2e/us001-external.spec.ts:7:1 › AC-001-01 AC-006-01 AC-007-01 AC-007-02 external registration with Slovenian text end to end 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-external')
+
+
+       at helpers.ts:16
+
+      14 | ) {
+      15 |   await page.goto("/");
+    > 16 |   await page.getByTestId("type-external").check();
+         |                                           ^
+      17 |   await page.getByTestId("field-firstName").fill(first);
+      18 |   await page.getByTestId("field-lastName").fill(last);
+      19 |   await page.getByTestId("field-email").fill(email);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/helpers.ts:16:43)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/us001-external.spec.ts:11:3
+
+    Error Context: test-results/us001-external-AC-001-01-A-2d3bc-h-Slovenian-text-end-to-end-chromium/error-context.md
+
+  2) [chromium] › tests/e2e/us001-external.spec.ts:37:1 › AC-001-04 AC-001-05 no-break spaces are whitespace in the browser and the backend 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-external')
+
+
+       at helpers.ts:16
+
+      14 | ) {
+      15 |   await page.goto("/");
+    > 16 |   await page.getByTestId("type-external").check();
+         |                                           ^
+      17 |   await page.getByTestId("field-firstName").fill(first);
+      18 |   await page.getByTestId("field-lastName").fill(last);
+      19 |   await page.getByTestId("field-email").fill(email);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/helpers.ts:16:43)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/us001-external.spec.ts:42:3
+
+    Error Context: test-results/us001-external-AC-001-04-A-2b17c-the-browser-and-the-backend-chromium/error-context.md
+
+  3) [chromium] › tests/e2e/us001-external.spec.ts:70:1 › AC-001-12 the consent checkbox is not preselected 
+
+    Error: expect(locator).not.toBeChecked() failed
+
+    Locator: getByTestId('consent-data-processing')
+    Expected: not checked
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toBeChecked" getByTestId('consent-data-processing') with timeout 5000ms
+      - waiting for getByTestId('consent-data-processing')
+
+
+      70 | test("AC-001-12 the consent checkbox is not preselected", async ({ page }) => {
+      71 |   await page.goto("/");
+    > 72 |   await expect(page.getByTestId("consent-data-processing")).not.toBeChecked();
+         |                                                                 ^
+      73 | });
+      74 |
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/us001-external.spec.ts:72:65
+
+    Error Context: test-results/us001-external-AC-001-12-t-fe839-checkbox-is-not-preselected-chromium/error-context.md
+
+  4) [chromium] › tests/e2e/us002-student.spec.ts:5:1 › AC-002-01 student registration end to end ──
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-student')
+
+
+       6 |   const email = uniqueEmail("e2e-stu");
+       7 |   await page.goto("/");
+    >  8 |   await page.getByTestId("type-student").check();
+         |                                          ^
+       9 |   await expect(page.getByTestId("field-organization")).toHaveCount(0);
+      10 |   await page.getByTestId("field-firstName").fill("Žiga");
+      11 |   await page.getByTestId("field-lastName").fill("Kovač");
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/us002-student.spec.ts:8:42
+
+    Error Context: test-results/us002-student-AC-002-01-student-registration-end-to-end-chromium/error-context.md
+
+  5) [chromium] › tests/e2e/us005-storage.spec.ts:6:1 › AC-005-04 registrations survive recreating every container 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-external')
+
+
+       at helpers.ts:16
+
+      14 | ) {
+      15 |   await page.goto("/");
+    > 16 |   await page.getByTestId("type-external").check();
+         |                                           ^
+      17 |   await page.getByTestId("field-firstName").fill(first);
+      18 |   await page.getByTestId("field-lastName").fill(last);
+      19 |   await page.getByTestId("field-email").fill(email);
+        at fillExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/helpers.ts:16:43)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/us005-storage.spec.ts:8:3
+
+    Error Context: test-results/us005-storage-AC-005-04-re-124ff--recreating-every-container-chromium/error-context.md
+
+  6) [chromium] › tests/e2e/us008-export.spec.ts:5:1 › AC-008-01 AC-008-02 the export is a workbook for organizers and refused otherwise 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 401
+
+      19 |     headers: { Authorization: organizerAuth() },
+      20 |   });
+    > 21 |   expect(exported.status()).toBe(200);
+         |                             ^
+      22 |   expect(exported.headers()["content-type"]).toContain(
+      23 |     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      24 |   );
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/tests/e2e/us008-export.spec.ts:21:29
+
+    Error Context: test-results/us008-export-AC-008-01-AC--477e5-izers-and-refused-otherwise-chromium/error-context.md
+
+  6 failed
+    [chromium] › tests/e2e/us001-external.spec.ts:7:1 › AC-001-01 AC-006-01 AC-007-01 AC-007-02 external registration with Slovenian text end to end 
+    [chromium] › tests/e2e/us001-external.spec.ts:37:1 › AC-001-04 AC-001-05 no-break spaces are whitespace in the browser and the backend 
+    [chromium] › tests/e2e/us001-external.spec.ts:70:1 › AC-001-12 the consent checkbox is not preselected 
+    [chromium] › tests/e2e/us002-student.spec.ts:5:1 › AC-002-01 student registration end to end ───
+    [chromium] › tests/e2e/us005-storage.spec.ts:6:1 › AC-005-04 registrations survive recreating every container 
+    [chromium] › tests/e2e/us008-export.spec.ts:5:1 › AC-008-01 AC-008-02 the export is a workbook for organizers and refused otherwise 

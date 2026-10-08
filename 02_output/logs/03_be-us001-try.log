@@ -1,0 +1,786 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 11 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest
+23:26:15.000 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+23:26:15.007 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+23:26:15.039 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+23:26:16.475 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+23:26:16.477 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+23:26:16.501 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+23:26:16.943 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+23:26:17.194 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 48d2a7e19d4168724611d612ef6a70e4f81da0c9c64baf66a9a6e770d485bd63
+23:26:17.834 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.890959499S
+23:26:17.839 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+23:26:17.839 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+23:26:17.840 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+23:26:17.841 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+23:26:17.944 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 58536e45b0b41d62ee3082332d177c600d8301230b909b4d6795c6b40f4d123a
+23:26:19.934 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.092622649S
+23:26:19.934 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:39595/test?loggerLevel=OFF)
+23:26:19.937 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+23:26:20.700 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 5360884ebbb18b9ed8c9aa0dc05de5d7297b47c0c4a5ca020979da99760c5b80
+23:26:21.113 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /awesome_solomon: Waiting for 60 seconds for URL: http://localhost:36683/api/v1/messages (where port 36683 maps to container port 8025)
+23:26:21.138 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT1.200725231S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-08T23:26:22.055+02:00  INFO 800807 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.12.1 with PID 800807 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend)
+2026-10-08T23:26:22.057+02:00  INFO 800807 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-08T23:26:23.175+02:00  INFO 800807 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-08T23:26:23.210+02:00  INFO 800807 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 0 JPA repository interfaces.
+2026-10-08T23:26:24.033+02:00  INFO 800807 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-08T23:26:24.065+02:00  INFO 800807 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-08T23:26:24.065+02:00  INFO 800807 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-08T23:26:24.117+02:00  INFO 800807 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1997 ms
+2026-10-08T23:26:24.591+02:00  INFO 800807 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-08T23:26:24.867+02:00  INFO 800807 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b51740b
+2026-10-08T23:26:24.868+02:00  INFO 800807 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-08T23:26:24.906+02:00  INFO 800807 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:39595/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-08T23:26:24.972+02:00  INFO 800807 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-08T23:26:24.974+02:00  INFO 800807 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.012s)
+2026-10-08T23:26:24.975+02:00  WARN 800807 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-08T23:26:24.996+02:00  INFO 800807 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-08T23:26:25.067+02:00  INFO 800807 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-08T23:26:25.072+02:00  INFO 800807 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-08T23:26:25.205+02:00  INFO 800807 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-08T23:26:25.282+02:00  INFO 800807 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-08T23:26:25.852+02:00  INFO 800807 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-08T23:26:26.012+02:00  INFO 800807 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:39595/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-08T23:26:26.563+02:00  INFO 800807 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-08T23:26:26.617+02:00  INFO 800807 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-08T23:26:27.222+02:00  WARN 800807 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a6510007-a24f-4be6-9940-99532275bafb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-08T23:26:27.249+02:00  INFO 800807 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-08T23:26:27.459+02:00  INFO 800807 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-08T23:26:27.579+02:00  INFO 800807 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 44023 (http) with context path '/'
+2026-10-08T23:26:27.593+02:00  INFO 800807 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 6.228 seconds (process running for 14.13)
+2026-10-08T23:26:28.036+02:00  INFO 800807 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-08T23:26:28.036+02:00  INFO 800807 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-08T23:26:28.038+02:00  INFO 800807 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[ERROR] Tests run: 32, Failures: 7, Errors: 25, Skipped: 0, Time elapsed: 13.94 s <<< FAILURE! -- in si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(String)[1] -- Time elapsed: 0.050 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(Us001ExternalRegistrationAcceptanceTest.java:72)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(String)[2] -- Time elapsed: 0.018 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(Us001ExternalRegistrationAcceptanceTest.java:72)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(String)[3] -- Time elapsed: 0.018 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(Us001ExternalRegistrationAcceptanceTest.java:72)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(String)[4] -- Time elapsed: 0.015 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected(Us001ExternalRegistrationAcceptanceTest.java:72)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_13_missingMandatoryConsentIsRejected -- Time elapsed: 0.015 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_13_missingMandatoryConsentIsRejected(Us001ExternalRegistrationAcceptanceTest.java:225)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_10_unknownOptionIsRejected -- Time elapsed: 0.014 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_10_unknownOptionIsRejected(Us001ExternalRegistrationAcceptanceTest.java:183)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_07_unicodeTextIsStoredUnchanged -- Time elapsed: 0.426 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401  ] 
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_07_unicodeTextIsStoredUnchanged(Us001ExternalRegistrationAcceptanceTest.java:138)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_14_failedAntiAutomationCheckIsRejected(String)[1] -- Time elapsed: 0.023 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_14_failedAntiAutomationCheckIsRejected(Us001ExternalRegistrationAcceptanceTest.java:238)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_14_failedAntiAutomationCheckIsRejected(String)[2] -- Time elapsed: 0.022 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_14_failedAntiAutomationCheckIsRejected(Us001ExternalRegistrationAcceptanceTest.java:238)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_12_formProvidesMandatoryConsentWithWording -- Time elapsed: 0.021 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401  ] 
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_12_formProvidesMandatoryConsentWithWording(Us001ExternalRegistrationAcceptanceTest.java:213)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_15_duplicateEmailIsRejected -- Time elapsed: 0.015 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_15_duplicateEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:268)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_05_surroundingWhitespaceIsTrimmedBeforeStoring -- Time elapsed: 0.025 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401  ] 
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_05_surroundingWhitespaceIsTrimmedBeforeStoring(Us001ExternalRegistrationAcceptanceTest.java:94)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(String)[1] -- Time elapsed: 0.043 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:61)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(String)[2] -- Time elapsed: 0.016 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:61)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(String)[3] -- Time elapsed: 0.015 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:61)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(String)[4] -- Time elapsed: 0.014 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:61)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_11_tooManyOptionsInOneCategoryAreRejected -- Time elapsed: 0.013 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_11_tooManyOptionsInOneCategoryAreRejected(Us001ExternalRegistrationAcceptanceTest.java:197)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_09_inactiveOptionIsRejected -- Time elapsed: 0.013 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_09_inactiveOptionIsRejected(Us001ExternalRegistrationAcceptanceTest.java:170)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_01_validExternalRegistrationIsAccepted -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401  ] 
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_01_validExternalRegistrationIsAccepted(Us001ExternalRegistrationAcceptanceTest.java:39)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(String)[1] -- Time elapsed: 0.015 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:50)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(String)[2] -- Time elapsed: 0.016 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:50)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(String)[3] -- Time elapsed: 0.017 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:50)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(String)[4] -- Time elapsed: 0.014 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected(Us001ExternalRegistrationAcceptanceTest.java:50)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_08_formOffersOnlyActiveOptionsGroupedByCategory -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401  ] 
+expected: 200
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_08_formOffersOnlyActiveOptionsGroupedByCategory(Us001ExternalRegistrationAcceptanceTest.java:153)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_14_tokenIsVerifiedServerSide -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401  ] 
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_14_tokenIsVerifiedServerSide(Us001ExternalRegistrationAcceptanceTest.java:255)
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[1] -- Time elapsed: 0.016 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[2] -- Time elapsed: 0.013 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[3] -- Time elapsed: 0.013 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[4] -- Time elapsed: 0.015 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[5] -- Time elapsed: 0.016 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[6] -- Time elapsed: 0.013 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[ERROR] si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(String)[7] -- Time elapsed: 0.016 s <<< ERROR!
+java.lang.IllegalStateException: 
+org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:91)
+	at si.konferenca.registration.acceptance.support.Db.queryLong(Db.java:73)
+	at si.konferenca.registration.acceptance.support.Db.countRegistrations(Db.java:31)
+	at si.konferenca.registration.acceptance.support.Storage.snapshot(Storage.java:30)
+	at si.konferenca.registration.acceptance.Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected(Us001ExternalRegistrationAcceptanceTest.java:120)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2993)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2656)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:446)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:533)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:449)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:197)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:140)
+	at si.konferenca.registration.acceptance.support.Db.query(Db.java:79)
+	... 4 more
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_01_validExternalRegistrationIsAccepted:39 [HTTP 401  ] 
+expected: 201
+ but was: 401
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_05_surroundingWhitespaceIsTrimmedBeforeStoring:94 [HTTP 401  ] 
+expected: 201
+ but was: 401
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_07_unicodeTextIsStoredUnchanged:138 [HTTP 401  ] 
+expected: 201
+ but was: 401
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_08_formOffersOnlyActiveOptionsGroupedByCategory:153 [HTTP 401  ] 
+expected: 200
+ but was: 401
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_12_formProvidesMandatoryConsentWithWording:213 [HTTP 401  ] 
+expected: 200
+ but was: 401
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_14_tokenIsVerifiedServerSide:255 [HTTP 401  ] 
+expected: 201
+ but was: 401
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_15_duplicateEmailIsRejected:268 
+expected: 201
+ but was: 401
+[ERROR] Errors: 
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected:50 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected:50 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected:50 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_emptyRequiredFieldIsRejected:50 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected:61 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected:61 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected:61 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_03_missingRequiredFieldIsRejected:61 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected:72 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected:72 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected:72 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_04_whitespaceOnlyIncludingNoBreakSpaceIsRejected:72 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_06_invalidEmailIsRejected:120 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_09_inactiveOptionIsRejected:170 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_10_unknownOptionIsRejected:183 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_11_tooManyOptionsInOneCategoryAreRejected:197 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_13_missingMandatoryConsentIsRejected:225 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_14_failedAntiAutomationCheckIsRejected:238 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[ERROR]   Us001ExternalRegistrationAcceptanceTest.ac001_14_failedAntiAutomationCheckIsRejected:238 » IllegalState org.postgresql.util.PSQLException: ERROR: relation "registration" does not exist
+  Position: 22
+[INFO] 
+[ERROR] Tests run: 32, Failures: 7, Errors: 25, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.110 s
+[INFO] Finished at: 2026-10-08T23:26:29+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

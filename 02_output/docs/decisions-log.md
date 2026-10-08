@@ -19,6 +19,9 @@
 | D-15 | 2026-10-08T21:12:43Z | 1 | OQ-05 (second registration with the same email) unanswered | Rejected: one registration per email address, compared case-insensitively after trimming (AC-001-15) | pending review |
 | D-16 | 2026-10-08T21:12:43Z | 1 | OQ-06 (retention) unanswered; SB-13 | Retention period from configuration, default 365 days after registration; then the database record and the JSON copy are deleted (AC-005-05) | pending review |
 | D-17 | 2026-10-08T21:19:49Z | 2 | Contract validation needs an OpenAPI/JSON Schema parser; none is listed in `tech-stack.md` | Dev-only tooling: host Python 3.12 with preinstalled PyYAML 6.0.1 and jsonschema 4.10.3 (nothing installed) plus the vendored official OpenAPI 3.1 meta-schema 2022-10-07 (`scripts/oas-3.1-schema-2022-10-07.json`); SQL validated by applying it to the pinned `postgres` image | pending review |
+| D-18 | 2026-10-08T21:42:59Z | 3 | End-to-end tests need the local stack before production code exists (KP-08); compose and images are deployment configuration, not production source | Added \`docker-compose.yml\`, both Dockerfiles, minimal \`frontend/nginx.conf\` and \`scripts/compose.sh\` in phase 3 (commit before the tests); security headers follow in phase 4 | pending review |
+| D-19 | 2026-10-08T21:42:59Z | 3 | Playwright global setup/teardown use Node APIs; TypeScript needs Node types; not listed in \`tech-stack.md\` | Added dev dependency \`@types/node\` 24.13.0 (MIT, matches the Node platform pin); \`npm audit --omit=dev\` unchanged at 0 | pending review |
+| D-20 | 2026-10-08T21:42:59Z | 3 | The repository \`.env\` has a line that is not \`KEY=value\` (Compose: "unexpected character" on line 2) | \`scripts/compose.sh\` passes only the \`KEY=value\` lines to Compose through a temporary 0600 file, never printed; \`.env\` not edited | pending review |
 
 ## Blocking
 
