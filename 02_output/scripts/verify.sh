@@ -5,7 +5,7 @@
 # gitleaks scans the history of the checked-out branch only (other branches hold other runs).
 # Tools: be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck
 #        fe-format fe-lint fe-typecheck fe-build fe-test fe-mutation fe-cpd fe-audit fe-audit-prod
-#        semgrep gitleaks cloc
+#        semgrep gitleaks cloc contracts
 set -uo pipefail
 
 PHASE="${1:?usage: verify.sh <phase> [tool ...]}"
@@ -106,7 +106,28 @@ t_cloc() {
   line cloc $RC "$(grep -E '^SUM' "$LOG" | tr -s ' ')" "$LOG"
 }
 
-ALL="be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck fe-format fe-lint fe-typecheck fe-build fe-test fe-mutation fe-cpd fe-audit fe-audit-prod semgrep gitleaks cloc"
+t_contracts() {
+  LOG="$LOGS/${PHASE}_contracts.log"
+  python3 -I "$OUT/scripts/validate-contracts.py" >"$LOG" 2>&1
+  RC=$?
+  if docker_ok; then
+    local c="contracts-sql-$$" pw
+    pw="$(head -c 18 /dev/urandom | base64 | tr -dc 'A-Za-z0-9')"
+    docker run --rm -d --name "$c" -e POSTGRES_PASSWORD="$pw" postgres:16.15-alpine >/dev/null
+    for _ in $(seq 60); do docker exec "$c" pg_isready -U postgres -q 2>/dev/null && break; sleep 1; done
+    if docker exec -i "$c" psql -U postgres -v ON_ERROR_STOP=1 -q <"$OUT/docs/02_contracts/database.sql" >>"$LOG" 2>&1; then
+      echo "PASS database.sql: applied to postgres:16.15-alpine" >>"$LOG"
+    else
+      echo "FAIL database.sql" >>"$LOG"; RC=1
+    fi
+    docker stop "$c" >/dev/null
+  else
+    echo "SKIP database.sql: Docker Engine not reachable" >>"$LOG"
+  fi
+  line contracts $RC "$(grep -c '^PASS' "$LOG") pass, $(grep -c '^FAIL' "$LOG") fail" "$LOG"
+}
+
+ALL="be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck fe-format fe-lint fe-typecheck fe-build fe-test fe-mutation fe-cpd fe-audit fe-audit-prod semgrep gitleaks cloc contracts"
 TOOLS="${*:-$ALL}"
 for t in $TOOLS; do
   fn="t_${t//-/_}"
