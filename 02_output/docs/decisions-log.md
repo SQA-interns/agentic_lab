@@ -22,6 +22,7 @@
 | D-18 | 2026-10-08T21:42:59Z | 3 | End-to-end tests need the local stack before production code exists (KP-08); compose and images are deployment configuration, not production source | Added \`docker-compose.yml\`, both Dockerfiles, minimal \`frontend/nginx.conf\` and \`scripts/compose.sh\` in phase 3 (commit before the tests); security headers follow in phase 4 | pending review |
 | D-19 | 2026-10-08T21:42:59Z | 3 | Playwright global setup/teardown use Node APIs; TypeScript needs Node types; not listed in \`tech-stack.md\` | Added dev dependency \`@types/node\` 24.13.0 (MIT, matches the Node platform pin); \`npm audit --omit=dev\` unchanged at 0 | pending review |
 | D-20 | 2026-10-08T21:42:59Z | 3 | The repository \`.env\` has a line that is not \`KEY=value\` (Compose: "unexpected character" on line 2) | \`scripts/compose.sh\` passes only the \`KEY=value\` lines to Compose through a temporary 0600 file, never printed; \`.env\` not edited | pending review |
+| D-21 | 2026-10-08T21:56:20Z | 4 | SpotBugs EI_EXPOSE_REP2 (Medium) on `NotificationService.copies`: the constructor stores the injected `JsonCopyStore` singleton | Not a defect: shared Spring bean by design. Excluded for that class and field only in `backend/spotbugs-exclude.xml`; raw log `logs/04_be-spotbugs.log` | pending review |
 
 ## Blocking
 
