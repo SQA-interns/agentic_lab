@@ -101,7 +101,7 @@ paths:
 components:
   securitySchemes:
     organizerBasic:
-      type: http
+      type: http  # nosemgrep: yaml.openapi.security.use-of-basic-authentication.use-of-basic-authentication -- D-26
       scheme: basic
   responses:
     TooManyRequests:
