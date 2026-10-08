@@ -9,8 +9,8 @@
 | Acceptance, backend | JUnit 6 + AssertJ + Awaitility, Testcontainers | `backend/src/test/java/.../acceptance/Us00n*AcceptanceTest.java` | HTTP to `/api` (`api.openapi.yaml`); observes `database.sql` tables, JSON copy files, Mailpit API, log output | PostgreSQL and Mailpit containers (pinned images), JDK HTTP server as reCAPTCHA verify endpoint (production code path, DoD-P05) |
 | Acceptance, frontend | Vitest + Testing Library (jsdom) | `frontend/tests/acceptance/us00n-*.test.tsx` | rendered `<App/>`, test ids of `ui-form.json` | `fetch` stubbed with `api.openapi.yaml` responses |
 | End-to-end | Playwright (bundled Chromium) | `frontend/tests/e2e/us00n-*.spec.ts` | browser on the frontend nginx, `/api` through the proxy, Mailpit API | fresh compose project per run with generated credentials, reCAPTCHA test mode (KP-08) |
-| Unit / integration, backend | JUnit 6 + AssertJ + Mockito, ArchUnit, Spring MockMvc (standalone), JDK HTTP server | \`backend/src/test/java/si/konferenca/registration/{domain,config,service,infrastructure,api,architecture}\` | classes and filters directly; MockMvc for controller and problem mapping | mocked collaborators, temporary directories, local HTTP server for the verify endpoint |
-| Unit / component, frontend | Vitest + Testing Library | \`frontend/src/*.test.ts(x)\` | modules and components | \`fetch\` and \`window.grecaptcha\` stubbed |
+| Unit / integration, backend | JUnit 6 + AssertJ + Mockito, ArchUnit, Spring MockMvc (standalone), JDK HTTP server | `backend/src/test/java/si/konferenca/registration/{domain,config,service,infrastructure,api,architecture}` | classes and filters directly; MockMvc for controller and problem mapping | mocked collaborators, temporary directories, local HTTP server for the verify endpoint |
+| Unit / component, frontend | Vitest + Testing Library | `frontend/src/*.test.ts(x)` | modules and components | `fetch` and `window.grecaptcha` stubbed |
 
 - Backend instances are started by the harness with only the environment settings of specification section 9 (`AcceptanceStack`); several instances cover restart, configuration change, broken storage and SMTP failure.
 - Rejection tests also check that nothing changed: registration row count and JSON copy count (`Storage.Snapshot`), and no email.
@@ -39,7 +39,7 @@ Tests passing on bootstrap code: none. Harness checks done: containers start, th
 
 ## First complete run (before any fix)
 
-Run 2026-10-08T22:14:51Z, \`verify.sh 05-first be-test fe-test fe-e2e\` (logs \`logs/05-first_*\`). No compile fixes were needed.
+Run 2026-10-08T22:14:51Z, `verify.sh 05-first be-test fe-test fe-e2e` (logs `logs/05-first_*`). No compile fixes were needed.
 
 | Level | Tests | Passed | Failed |
 |---|---|---|---|
@@ -50,6 +50,10 @@ Run 2026-10-08T22:14:51Z, \`verify.sh 05-first be-test fe-test fe-e2e\` (logs \`
 
 | Failure | Class | Action |
 |---|---|---|
-| \`RegistrationValidatorTest.repeatedOptionIdCountsOnceAndNullIdIsUnknown\`: \`NullPointerException\` in \`RegistrationCommand\` (\`List.copyOf\` rejects a null element, while the validator is written to report a null option id as \`unknown_option\`) | Implementation defect (Low: the REST controller already maps null elements to strings, so not reachable over HTTP) | fix the code: copy lists so null elements reach the validator |
+| `RegistrationValidatorTest.repeatedOptionIdCountsOnceAndNullIdIsUnknown`: `NullPointerException` in `RegistrationCommand` (`List.copyOf` rejects a null element, while the validator is written to report a null option id as `unknown_option`) | Implementation defect (Low: the REST controller already maps null elements to strings, so not reachable over HTTP) | fix the code: copy lists so null elements reach the validator |
+
+Fix: commit "fix: keep null option and consent ids for validation" maps a null element to an empty id, which the validator reports as `unknown_option`. No test was changed.
+
+Phase 5 gate run 2026-10-08T22:22:14Z: backend 229/229 (`logs/05_be-test.log`), frontend 56/56 and e2e 6/6 unchanged since the first run (no frontend change).
 
 ## Final run (phase 6)
