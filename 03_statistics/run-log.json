@@ -133,6 +133,42 @@
       "type": "blocking",
       "start": "2026-10-08T21:07:07Z",
       "end": "2026-10-08T21:10:48Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:12:43Z",
+      "end": "2026-10-08T21:12:43Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:12:43Z",
+      "end": "2026-10-08T21:12:43Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:12:43Z",
+      "end": "2026-10-08T21:12:43Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:12:43Z",
+      "end": "2026-10-08T21:12:43Z"
+    },
+    {
+      "id": "D-15",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:12:43Z",
+      "end": "2026-10-08T21:12:43Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:12:43Z",
+      "end": "2026-10-08T21:12:43Z"
     }
   ],
   "humanInterventions": [

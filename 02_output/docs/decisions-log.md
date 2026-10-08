@@ -12,6 +12,12 @@
 | D-07 | 2026-10-08T21:07:07Z | 0 | tech-stack `docker` 29.8.0; `docker version` and `docker info` report Engine 29.3.1 (Docker Desktop) | Use the running Engine; pin stays authoritative | pending review |
 | D-08 | 2026-10-08T21:07:07Z | 0 | Dependency-Check CVE-2025-7962 (CVSS 7.5) on `angus-activation` 2.0.3, matched via `cpe:…:eclipse:angus_mail:2.0.3`; the CVE affects Jakarta/Angus Mail before 2.0.2; shipped `angus-mail` is 2.0.5 (KP-07) | False positive (identifier mismatch); suppressed in `backend/dependency-check-suppressions.xml`; raw report `logs/00_be-depcheck-raw.json` | pending review |
 | D-09 | 2026-10-08T21:07:07Z | 0 | Dependency-Check CVE-2025-15104 (CVSS 5.3) on `hibernate-validator` 9.1.3.Final, matched via `cpe:…:validator:validator`; the CVE is in Nu Html Checker (validator.nu) | False positive (identifier mismatch); suppressed in the same file; raw report kept | pending review |
+| D-11 | 2026-10-08T21:12:43Z | 1 | OQ-01 (options for students) unanswered; US-002 says "activities available to students" | Each option's configuration states which registration types may select it (default: both); a student form offers and accepts only options available to students (AC-002-06, AC-002-07) | pending review |
+| D-12 | 2026-10-08T21:12:43Z | 1 | OQ-02 (consents) unanswered; BR-05 requires mandatory consents | One mandatory consent to processing the personal data for the conference registration; wording and list come from configuration; never preselected; registration rejected without it (AC-001-12, AC-001-13, AC-002-09) | pending review |
+| D-13 | 2026-10-08T21:12:43Z | 1 | OQ-03 (storage succeeds, email fails) unanswered; scope priority 1 | The registration stays accepted and the confirmation is shown; the email failure is logged without personal data; no automatic retry (AC-006-03, AC-007-03) | pending review |
+| D-14 | 2026-10-08T21:12:43Z | 1 | OQ-04 (options per category) unanswered | A maximum per category comes from configuration, default 1; more is rejected (AC-001-11) | pending review |
+| D-15 | 2026-10-08T21:12:43Z | 1 | OQ-05 (second registration with the same email) unanswered | Rejected: one registration per email address, compared case-insensitively after trimming (AC-001-15) | pending review |
+| D-16 | 2026-10-08T21:12:43Z | 1 | OQ-06 (retention) unanswered; SB-13 | Retention period from configuration, default 365 days after registration; then the database record and the JSON copy are deleted (AC-005-05) | pending review |
 
 ## Blocking
 
