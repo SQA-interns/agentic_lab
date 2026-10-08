@@ -2,6 +2,7 @@
 # Runs every check and scanner. Full output goes to 02_output/logs/<phase>_<tool>.log;
 # one summary line per tool is printed: tool, exit code, key numbers, log path.
 # Usage: verify.sh <phase> [tool ...]   (no tools = all)
+# gitleaks scans the history of the checked-out branch only (other branches hold other runs).
 # Tools: be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck
 #        fe-format fe-lint fe-typecheck fe-build fe-test fe-mutation fe-cpd fe-audit fe-audit-prod
 #        semgrep gitleaks cloc
@@ -86,14 +87,16 @@ t_semgrep() {
   if ! docker_ok; then skip semgrep "Docker Engine not reachable"; return; fi
   run semgrep "$OUT" docker run --rm -v "$OUT:/src" -w /src "$SEMGREP_IMAGE" \
     semgrep scan --config p/default --metrics off --json --output /src/logs/"${PHASE}"_semgrep.json \
-    --exclude node_modules --exclude target --exclude dist --exclude logs
+    --exclude node_modules --exclude target --exclude dist --exclude logs \
+    --exclude coverage --exclude reports --exclude .stryker-tmp
   local n="?"
   [ -f "$LOGS/${PHASE}_semgrep.json" ] && n="$(node -e 'const r=require(process.argv[1]);const c={};for(const x of r.results)c[x.extra.severity]=(c[x.extra.severity]||0)+1;console.log(JSON.stringify(c))' "$LOGS/${PHASE}_semgrep.json")"
   line semgrep $RC "findings by severity: $n" "$LOG"
 }
 t_gitleaks() {
   if ! docker_ok; then skip gitleaks "Docker Engine not reachable"; return; fi
-  run gitleaks "$ROOT" docker run --rm -v "$ROOT:/repo" "$GITLEAKS_IMAGE" git /repo --redact --no-banner
+  run gitleaks "$ROOT" docker run --rm -v "$ROOT:/repo" "$GITLEAKS_IMAGE" git /repo --redact --no-banner --log-opts=HEAD \
+    --report-format json --report-path /repo/02_output/logs/"${PHASE}"_gitleaks.json
   line gitleaks $RC "$(grep -oE 'leaks found: [0-9]+|no leaks found' "$LOG" | tail -1)" "$LOG"
 }
 t_cloc() {
