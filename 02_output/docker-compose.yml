@@ -1,0 +1,72 @@
+# Local stack (environments.md "local"): plain HTTP on 127.0.0.1 only.
+# Start: docker compose --env-file ../.env up -d --build --wait   (build the backend jar first)
+name: registration
+
+services:
+  db:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD missing}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:${MAILPIT_PORT:-8025}:8025"
+
+  backend:
+    build: ./backend
+    environment:
+      APP_ENVIRONMENT: local
+      DATABASE_URL: jdbc:postgresql://db:5432/registration
+      DATABASE_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD missing}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_STARTTLS: "false"
+      MAIL_FROM: registration@konferenca.local
+      CONFERENCE_NAME: ${CONFERENCE_NAME:-Konferenca 2026}
+      JSON_COPY_DIR: /data/registrations
+      RECAPTCHA_TEST_MODE: "true"
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?ORGANIZER_USERNAME missing}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?ORGANIZER_PASSWORD missing}
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?ORGANIZER_EMAILS missing}
+      ORGANIZER_HTTPS_ONLY: "false"
+    volumes:
+      - jsoncopies:/data/registrations
+    depends_on:
+      db:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/actuator/health/readiness || exit 1"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+      start_period: 10s
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-8081}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/ >/dev/null || exit 1"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
+  jsoncopies:

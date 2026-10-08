@@ -11,3 +11,4 @@
 02_output/frontend/.stryker-tmp/
 02_output/frontend/test-results/
 02_output/frontend/playwright-report/
+__pycache__/
