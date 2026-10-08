@@ -201,6 +201,16 @@
           <targetClasses>
             <param>si.konferenca.registration.*</param>
           </targetClasses>
+          <!-- Acceptance tests start containers per run; mutation uses unit and integration tests. -->
+          <excludedTestClasses>
+            <param>si.konferenca.registration.acceptance.*</param>
+          </excludedTestClasses>
+          <threads>4</threads>
+          <timestampedReports>false</timestampedReports>
+          <outputFormats>
+            <param>HTML</param>
+            <param>CSV</param>
+          </outputFormats>
         </configuration>
       </plugin>
       <plugin>

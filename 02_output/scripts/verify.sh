@@ -3,8 +3,8 @@
 # one summary line per tool is printed: tool, exit code, key numbers, log path.
 # Usage: verify.sh <phase> [tool ...]   (no tools = all)
 # gitleaks scans the history of the checked-out branch only (other branches hold other runs).
-# Tools: be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck
-#        fe-format fe-lint fe-typecheck fe-build fe-test fe-e2e fe-mutation fe-cpd fe-audit fe-audit-prod
+# Tools: be-build be-format be-lint be-cpd be-spotbugs be-test be-coverage be-mutation be-depcheck
+#        fe-format fe-lint fe-typecheck fe-build fe-test fe-coverage fe-e2e fe-mutation fe-cpd fe-audit fe-audit-prod
 #        semgrep gitleaks cloc contracts
 set -uo pipefail
 
@@ -61,6 +61,20 @@ t_be_test() {
   local s
   s="$(grep -E 'Tests run: [0-9]+, Failures' "$LOG" | tail -1 | sed 's/^\[[A-Z]*\] *//')"
   line be-test $RC "${s:-no tests}" "$LOG"
+}
+t_be_coverage() {
+  LOG="$LOGS/${PHASE}_be-coverage.log"
+  local csv="$BE/target/site/jacoco/jacoco.csv"
+  if [ ! -f "$csv" ]; then skip be-coverage "run be-test first"; return; fi
+  awk -F, 'NR>1 {lm+=$8; lc+=$9; bm+=$6; bc+=$7} END {printf "line %.1f%% (%d/%d), branch %.1f%% (%d/%d)\n", 100*lc/(lc+lm), lc, lc+lm, 100*bc/(bc+bm), bc, bc+bm}' "$csv" >"$LOG"
+  line be-coverage 0 "$(cat "$LOG")" "$LOG"
+}
+t_fe_coverage() {
+  LOG="$LOGS/${PHASE}_fe-coverage.log"
+  local json="$FE/coverage/coverage-summary.json"
+  if [ ! -f "$json" ]; then skip fe-coverage "run fe-test first"; return; fi
+  node -e 'const t=require(process.argv[1]).total;console.log(`line ${t.lines.pct}% (${t.lines.covered}/${t.lines.total}), branch ${t.branches.pct}% (${t.branches.covered}/${t.branches.total})`)' "$json" >"$LOG"
+  line fe-coverage 0 "$(cat "$LOG")" "$LOG"
 }
 t_be_mutation() { mvn be-mutation test-compile org.pitest:pitest-maven:mutationCoverage; line be-mutation $RC "$(grep -E 'Generated [0-9]+ mutations Killed' "$LOG" | tail -1 | sed 's/^>> //')" "$LOG"; }
 t_be_depcheck() {
@@ -128,7 +142,7 @@ t_contracts() {
   line contracts $RC "$(grep -c '^PASS' "$LOG") pass, $(grep -c '^FAIL' "$LOG") fail" "$LOG"
 }
 
-ALL="be-build be-format be-lint be-cpd be-spotbugs be-test be-mutation be-depcheck fe-format fe-lint fe-typecheck fe-build fe-test fe-e2e fe-mutation fe-cpd fe-audit fe-audit-prod semgrep gitleaks cloc contracts"
+ALL="be-build be-format be-lint be-cpd be-spotbugs be-test be-coverage be-mutation be-depcheck fe-format fe-lint fe-typecheck fe-build fe-test fe-coverage fe-e2e fe-mutation fe-cpd fe-audit fe-audit-prod semgrep gitleaks cloc contracts"
 TOOLS="${*:-$ALL}"
 for t in $TOOLS; do
   fn="t_${t//-/_}"
