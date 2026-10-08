@@ -1,0 +1,262 @@
+ Image registration-e2e-721e523e-frontend Building 
+ Image registration-e2e-721e523e-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.16kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 388B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 470B done
+#3 DONE 0.0s
+
+#4 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#4 DONE 0.1s
+
+#5 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#5 DONE 0.1s
+
+#6 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#6 DONE 0.1s
+
+#7 [backend internal] load .dockerignore
+#7 transferring context: 81B done
+#7 DONE 0.0s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 119B done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#10 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#10 DONE 0.1s
+
+#11 [backend internal] load build context
+#11 ...
+
+#12 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#12 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#12 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 transferring context: 22.84kB done
+#9 DONE 0.0s
+
+#13 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#13 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#13 CACHED
+
+#14 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#14 CACHED
+
+#15 [frontend build 2/6] WORKDIR /src
+#15 CACHED
+
+#16 [frontend build 4/6] RUN npm ci --no-fund --no-audit
+#16 CACHED
+
+#11 [backend internal] load build context
+#11 ...
+
+#17 [frontend build 5/6] COPY . .
+#17 DONE 0.1s
+
+#18 [frontend stage-1 2/4] COPY nginx.conf /etc/nginx/nginx.conf
+#18 DONE 0.2s
+
+#11 [backend internal] load build context
+#11 ...
+
+#19 [frontend stage-1 3/4] COPY security-headers.conf /etc/nginx/security-headers.conf
+#19 DONE 0.2s
+
+#11 [backend internal] load build context
+#11 transferring context: 80.24MB 0.9s done
+#11 DONE 0.9s
+
+#20 [backend 2/4] RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#20 CACHED
+
+#21 [backend 3/4] WORKDIR /app
+#21 CACHED
+
+#22 [backend 4/4] COPY target/registration-backend-0.1.0.jar /app/app.jar
+#22 DONE 0.3s
+
+#23 [frontend build 6/6] RUN npm run build
+#23 0.687 
+#23 0.687 > registration-frontend@0.1.0 build
+#23 0.687 > tsc --noEmit && vite build
+#23 0.687 
+#23 4.781 vite v6.4.3 building for production...
+#23 4.905 transforming...
+#23 ...
+
+#24 [backend] exporting to image
+#24 exporting layers 4.9s done
+#24 exporting manifest sha256:8a7172072bb91e5581765d97ee3c5f982cf30ab998664dfaac0430f9c495cfb6 0.0s done
+#24 exporting config sha256:92c2e45be1bf46565c4c4929247982921ced607fea33f09928da6e442ce4c80e 0.0s done
+#24 exporting attestation manifest sha256:e75b5599ece7c58a4f16765491586101d949caf1c8aa8a959384785ae4e0dc40 0.0s done
+#24 exporting manifest list sha256:72e4015784e93c0a5cdd40c1d0c092b2fd31802c3770172d53c8d4ec550e4cdd 0.0s done
+#24 naming to docker.io/library/registration-e2e-721e523e-backend:latest done
+#24 unpacking to docker.io/library/registration-e2e-721e523e-backend:latest
+#24 ...
+
+#23 [frontend build 6/6] RUN npm run build
+#23 6.370 ✓ 33 modules transformed.
+#23 ...
+
+#24 [backend] exporting to image
+#24 unpacking to docker.io/library/registration-e2e-721e523e-backend:latest 0.5s done
+#24 DONE 5.6s
+
+#23 [frontend build 6/6] RUN npm run build
+#23 6.616 rendering chunks...
+#23 6.628 computing gzip size...
+#23 6.650 dist/index.html                   0.41 kB │ gzip:  0.27 kB
+#23 6.650 dist/assets/index-B0OGzW19.css    0.50 kB │ gzip:  0.30 kB
+#23 6.650 dist/assets/index-wb9Tjvw1.js   232.30 kB │ gzip: 72.75 kB
+#23 6.651 ✓ built in 1.81s
+#23 DONE 7.4s
+
+#25 [backend] resolving provenance for metadata file
+#25 DONE 0.0s
+
+#26 [frontend stage-1 4/4] COPY --from=build /src/dist /usr/share/nginx/html
+#26 DONE 0.1s
+
+#27 [frontend] exporting to image
+#27 exporting layers 0.2s done
+#27 exporting manifest sha256:3b6c0bfcecc4b897a7ad933eedc6b759cccda5827f221bc80e545553d3c34b38 0.0s done
+#27 exporting config sha256:a5e67775291b8945b2f3cd81ae195859027316d09a79c1b909a3bc69e31aed74 0.0s done
+#27 exporting attestation manifest sha256:caae6dee218e0bcda2686756713d51029596c3a74f362b03492294336aa6a32d 0.0s done
+#27 exporting manifest list sha256:90b4f2754c766c0b352f2430780036b87c832b9b0a839b52e90f167848c77dd8
+#27 exporting manifest list sha256:90b4f2754c766c0b352f2430780036b87c832b9b0a839b52e90f167848c77dd8 0.0s done
+#27 naming to docker.io/library/registration-e2e-721e523e-frontend:latest done
+#27 unpacking to docker.io/library/registration-e2e-721e523e-frontend:latest 0.1s done
+#27 DONE 0.4s
+
+#28 [frontend] resolving provenance for metadata file
+#28 DONE 0.0s
+ Image registration-e2e-721e523e-frontend Built 
+ Image registration-e2e-721e523e-backend Built 
+ Network registration-e2e-721e523e_default Creating 
+ Network registration-e2e-721e523e_default Created 
+ Volume registration-e2e-721e523e_pgdata Creating 
+ Volume registration-e2e-721e523e_pgdata Created 
+ Volume registration-e2e-721e523e_jsoncopies Creating 
+ Volume registration-e2e-721e523e_jsoncopies Created 
+ Container registration-e2e-721e523e-mailpit-1 Creating 
+ Container registration-e2e-721e523e-db-1 Creating 
+ Container registration-e2e-721e523e-mailpit-1 Created 
+ Container registration-e2e-721e523e-db-1 Created 
+ Container registration-e2e-721e523e-backend-1 Creating 
+ Container registration-e2e-721e523e-backend-1 Created 
+ Container registration-e2e-721e523e-frontend-1 Creating 
+ Container registration-e2e-721e523e-frontend-1 Created 
+ Container registration-e2e-721e523e-mailpit-1 Starting 
+ Container registration-e2e-721e523e-db-1 Starting 
+ Container registration-e2e-721e523e-db-1 Started 
+ Container registration-e2e-721e523e-mailpit-1 Started 
+ Container registration-e2e-721e523e-db-1 Waiting 
+ Container registration-e2e-721e523e-db-1 Healthy 
+ Container registration-e2e-721e523e-backend-1 Starting 
+ Container registration-e2e-721e523e-backend-1 Started 
+ Container registration-e2e-721e523e-backend-1 Waiting 
+ Container registration-e2e-721e523e-backend-1 Healthy 
+ Container registration-e2e-721e523e-frontend-1 Starting 
+ Container registration-e2e-721e523e-frontend-1 Started 
+ Container registration-e2e-721e523e-frontend-1 Waiting 
+ Container registration-e2e-721e523e-db-1 Waiting 
+ Container registration-e2e-721e523e-mailpit-1 Waiting 
+ Container registration-e2e-721e523e-backend-1 Waiting 
+ Container registration-e2e-721e523e-backend-1 Healthy 
+ Container registration-e2e-721e523e-db-1 Healthy 
+ Container registration-e2e-721e523e-mailpit-1 Healthy 
+ Container registration-e2e-721e523e-frontend-1 Healthy 
+
+Running 6 tests using 1 worker
+
+  ✓  1 [chromium] › tests/e2e/us001-external.spec.ts:7:1 › AC-001-01 AC-006-01 AC-007-01 AC-007-02 external registration with Slovenian text end to end (910ms)
+  ✓  2 [chromium] › tests/e2e/us001-external.spec.ts:37:1 › AC-001-04 AC-001-05 no-break spaces are whitespace in the browser and the backend (456ms)
+  ✓  3 [chromium] › tests/e2e/us001-external.spec.ts:70:1 › AC-001-12 the consent checkbox is not preselected (118ms)
+  ✓  4 [chromium] › tests/e2e/us002-student.spec.ts:5:1 › AC-002-01 student registration end to end (396ms)
+ Container registration-e2e-721e523e-frontend-1 Stopping 
+ Container registration-e2e-721e523e-frontend-1 Stopped 
+ Container registration-e2e-721e523e-frontend-1 Removing 
+ Container registration-e2e-721e523e-frontend-1 Removed 
+ Container registration-e2e-721e523e-backend-1 Stopping 
+ Container registration-e2e-721e523e-backend-1 Stopped 
+ Container registration-e2e-721e523e-backend-1 Removing 
+ Container registration-e2e-721e523e-backend-1 Removed 
+ Container registration-e2e-721e523e-db-1 Stopping 
+ Container registration-e2e-721e523e-mailpit-1 Stopping 
+ Container registration-e2e-721e523e-db-1 Stopped 
+ Container registration-e2e-721e523e-db-1 Removing 
+ Container registration-e2e-721e523e-db-1 Removed 
+ Container registration-e2e-721e523e-mailpit-1 Stopped 
+ Container registration-e2e-721e523e-mailpit-1 Removing 
+ Container registration-e2e-721e523e-mailpit-1 Removed 
+ Network registration-e2e-721e523e_default Removing 
+ Network registration-e2e-721e523e_default Removed 
+ Network registration-e2e-721e523e_default Creating 
+ Network registration-e2e-721e523e_default Created 
+ Container registration-e2e-721e523e-db-1 Creating 
+ Container registration-e2e-721e523e-mailpit-1 Creating 
+ Container registration-e2e-721e523e-mailpit-1 Created 
+ Container registration-e2e-721e523e-db-1 Created 
+ Container registration-e2e-721e523e-backend-1 Creating 
+ Container registration-e2e-721e523e-backend-1 Created 
+ Container registration-e2e-721e523e-frontend-1 Creating 
+ Container registration-e2e-721e523e-frontend-1 Created 
+ Container registration-e2e-721e523e-mailpit-1 Starting 
+ Container registration-e2e-721e523e-db-1 Starting 
+ Container registration-e2e-721e523e-db-1 Started 
+ Container registration-e2e-721e523e-mailpit-1 Started 
+ Container registration-e2e-721e523e-db-1 Waiting 
+ Container registration-e2e-721e523e-db-1 Healthy 
+ Container registration-e2e-721e523e-backend-1 Starting 
+ Container registration-e2e-721e523e-backend-1 Started 
+ Container registration-e2e-721e523e-backend-1 Waiting 
+ Container registration-e2e-721e523e-backend-1 Healthy 
+ Container registration-e2e-721e523e-frontend-1 Starting 
+ Container registration-e2e-721e523e-frontend-1 Started 
+ Container registration-e2e-721e523e-db-1 Waiting 
+ Container registration-e2e-721e523e-mailpit-1 Waiting 
+ Container registration-e2e-721e523e-backend-1 Waiting 
+ Container registration-e2e-721e523e-frontend-1 Waiting 
+ Container registration-e2e-721e523e-db-1 Healthy 
+ Container registration-e2e-721e523e-mailpit-1 Healthy 
+ Container registration-e2e-721e523e-backend-1 Healthy 
+ Container registration-e2e-721e523e-frontend-1 Healthy 
+  ✓  5 [chromium] › tests/e2e/us005-storage.spec.ts:6:1 › AC-005-04 registrations survive recreating every container (27.5s)
+  ✓  6 [chromium] › tests/e2e/us008-export.spec.ts:5:1 › AC-008-01 AC-008-02 the export is a workbook for organizers and refused otherwise (228ms)
+ Container registration-e2e-721e523e-frontend-1 Stopping 
+ Container registration-e2e-721e523e-frontend-1 Stopped 
+ Container registration-e2e-721e523e-frontend-1 Removing 
+ Container registration-e2e-721e523e-frontend-1 Removed 
+ Container registration-e2e-721e523e-backend-1 Stopping 
+ Container registration-e2e-721e523e-backend-1 Stopped 
+ Container registration-e2e-721e523e-backend-1 Removing 
+ Container registration-e2e-721e523e-backend-1 Removed 
+ Container registration-e2e-721e523e-mailpit-1 Stopping 
+ Container registration-e2e-721e523e-db-1 Stopping 
+ Container registration-e2e-721e523e-db-1 Stopped 
+ Container registration-e2e-721e523e-db-1 Removing 
+ Container registration-e2e-721e523e-db-1 Removed 
+ Container registration-e2e-721e523e-mailpit-1 Stopped 
+ Container registration-e2e-721e523e-mailpit-1 Removing 
+ Container registration-e2e-721e523e-mailpit-1 Removed 
+ Volume registration-e2e-721e523e_pgdata Removing 
+ Network registration-e2e-721e523e_default Removing 
+ Volume registration-e2e-721e523e_jsoncopies Removing 
+ Volume registration-e2e-721e523e_pgdata Removed 
+ Volume registration-e2e-721e523e_jsoncopies Removed 
+ Network registration-e2e-721e523e_default Removed 
+
+  6 passed (1.2m)

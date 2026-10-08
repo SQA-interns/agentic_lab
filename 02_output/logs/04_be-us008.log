@@ -1,0 +1,149 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.Us005StorageAcceptanceTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.099 s <<< FAILURE! -- in si.konferenca.registration.acceptance.Us005StorageAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.Us005StorageAcceptanceTest.ac005_04_registrationsSurviveRestart -- Time elapsed: 0.063 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:233)
+	at java.base/java.nio.file.Files.createTempDirectory(Files.java:977)
+	at si.konferenca.registration.acceptance.support.AcceptanceStack.newTempDir(AcceptanceStack.java:150)
+	at si.konferenca.registration.acceptance.Us005StorageAcceptanceTest.ac005_04_registrationsSurviveRestart(Us005StorageAcceptanceTest.java:118)
+
+[INFO] Running si.konferenca.registration.acceptance.Us008ExportAcceptanceTest
+23:57:26.506 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+23:57:26.518 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+23:57:26.553 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+23:57:28.158 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+23:57:28.160 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+23:57:28.186 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+23:57:28.628 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+23:57:28.902 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: cb8b72738ce3f9c9217a466cc3fa446419463a256430575363776015bf61243b
+23:57:29.686 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT1.057038312S
+23:57:29.692 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+23:57:29.693 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+23:57:29.694 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+23:57:29.695 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+23:57:29.789 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: b34f455a69141662c87c3155113de03584bb87a0116554e5122bfc343b5f162b
+23:57:32.026 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.331505806S
+23:57:32.028 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:40701/test?loggerLevel=OFF)
+23:57:32.031 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+23:57:32.124 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 00aefac58e52731ebe781671795224c23abf243d3cea476c9ca796331dba02aa
+23:57:32.542 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /sleepy_curie: Waiting for 60 seconds for URL: http://localhost:44061/api/v1/messages (where port 44061 maps to container port 8025)
+23:57:32.557 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.525802986S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-08T23:57:33.774+02:00  INFO 815944 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.12.1 with PID 815944 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend)
+2026-10-08T23:57:33.776+02:00  INFO 815944 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-08T23:57:35.332+02:00  INFO 815944 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-08T23:57:35.431+02:00  INFO 815944 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 1 JPA repository interface.
+2026-10-08T23:57:36.692+02:00  INFO 815944 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-08T23:57:36.718+02:00  INFO 815944 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-08T23:57:36.719+02:00  INFO 815944 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-08T23:57:36.781+02:00  INFO 815944 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2896 ms
+2026-10-08T23:57:37.425+02:00  INFO 815944 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-08T23:57:37.742+02:00  INFO 815944 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@56f919b9
+2026-10-08T23:57:37.744+02:00  INFO 815944 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-08T23:57:37.786+02:00  INFO 815944 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:40701/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-08T23:57:37.861+02:00  INFO 815944 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-08T23:57:37.868+02:00  INFO 815944 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.027s)
+2026-10-08T23:57:37.898+02:00  INFO 815944 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-08T23:57:37.973+02:00  INFO 815944 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-08T23:57:37.998+02:00  INFO 815944 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - registration schema"
+2026-10-08T23:57:38.069+02:00  INFO 815944 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.045s)
+2026-10-08T23:57:38.240+02:00  INFO 815944 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-08T23:57:38.327+02:00  INFO 815944 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-08T23:57:39.036+02:00  INFO 815944 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-08T23:57:39.224+02:00  INFO 815944 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:40701/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-08T23:57:40.924+02:00  INFO 815944 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-08T23:57:40.993+02:00  INFO 815944 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-08T23:57:41.118+02:00  INFO 815944 --- [registration-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-08T23:57:42.861+02:00  INFO 815944 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-08T23:57:43.675+02:00  INFO 815944 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-08T23:57:43.773+02:00  INFO 815944 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 45421 (http) with context path '/'
+2026-10-08T23:57:43.787+02:00  INFO 815944 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 10.864 seconds (process running for 19.029)
+2026-10-08T23:57:44.017+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-08T23:57:44.017+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-08T23:57:44.019+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-08T23:57:44.548+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-1] s.k.r.service.RegistrationService        : Registration db619118-ae4f-4cca-a969-63ea164e8f5b accepted
+2026-10-08T23:57:44.762+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-3] s.k.r.service.RegistrationService        : Registration 5e2e2dc3-695c-40f6-b35a-46038fc137a9 accepted
+2026-10-08T23:57:45.029+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-6] s.k.r.service.RegistrationService        : Registration ab3721a1-deee-4c20-9802-057e9d323157 accepted
+2026-10-08T23:57:46.317+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-8] s.k.r.service.RegistrationService        : Registration 0f8d2d79-a997-42d7-bb50-6ca2faadc288 accepted
+2026-10-08T23:57:46.391+02:00  INFO 815944 --- [registration-backend] [o-auto-1-exec-9] s.k.r.service.RegistrationService        : Registration d287332a-9a36-4e8d-9579-1136cc85ff88 accepted
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.24 s -- in si.konferenca.registration.acceptance.Us008ExportAcceptanceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   Us005StorageAcceptanceTest.ac005_04_registrationsSurviveRestart:118 » NullPointer
+[INFO] 
+[ERROR] Tests run: 5, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.167 s
+[INFO] Finished at: 2026-10-08T23:57:47+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: 
+[ERROR] 
+[ERROR] See /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/backend/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

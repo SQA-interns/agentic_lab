@@ -1,0 +1,150 @@
+ Image registration-frontend Building 
+ Image registration-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.10kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 388B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 470B done
+#3 DONE 0.0s
+
+#4 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#4 DONE 0.1s
+
+#5 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#5 DONE 0.1s
+
+#6 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#6 DONE 0.1s
+
+#7 [backend internal] load .dockerignore
+#7 transferring context: 81B done
+#7 DONE 0.0s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 119B done
+#8 DONE 0.0s
+
+#9 [backend internal] load build context
+#9 transferring context: 87B done
+#9 DONE 0.0s
+
+#10 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#10 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.0s done
+#10 DONE 0.1s
+
+#11 [backend 3/4] WORKDIR /app
+#11 CACHED
+
+#12 [backend 2/4] RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app app     && mkdir -p /data/registrations && chown app:app /data/registrations
+#12 CACHED
+
+#13 [backend 4/4] COPY target/registration-backend-0.1.0.jar /app/app.jar
+#13 CACHED
+
+#14 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#14 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.0s done
+#14 DONE 0.1s
+
+#15 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#15 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.0s done
+#15 DONE 0.1s
+
+#16 [frontend internal] load build context
+#16 transferring context: 1.64kB done
+#16 DONE 0.0s
+
+#17 [backend] exporting to image
+#17 exporting layers done
+#17 exporting manifest sha256:df1df2d20ef407962ff00eecff79fb37fef6fb58a199ed359a4fb609672742f1
+#17 ...
+
+#18 [frontend build 2/6] WORKDIR /src
+#18 CACHED
+
+#19 [frontend build 4/6] RUN npm ci --no-fund --no-audit
+#19 CACHED
+
+#20 [frontend stage-1 3/4] COPY security-headers.conf /etc/nginx/security-headers.conf
+#20 CACHED
+
+#21 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#21 CACHED
+
+#22 [frontend build 5/6] COPY . .
+#22 CACHED
+
+#23 [frontend build 6/6] RUN npm run build
+#23 CACHED
+
+#24 [frontend stage-1 2/4] COPY nginx.conf /etc/nginx/nginx.conf
+#24 CACHED
+
+#25 [frontend stage-1 4/4] COPY --from=build /src/dist /usr/share/nginx/html
+#25 CACHED
+
+#17 [backend] exporting to image
+#17 exporting manifest sha256:df1df2d20ef407962ff00eecff79fb37fef6fb58a199ed359a4fb609672742f1 0.0s done
+#17 exporting config sha256:38ad9265d3bfcdd50be76c5ec243c9f00d1218532cc71a1c54261d028f48da79 0.0s done
+#17 exporting attestation manifest sha256:7e1eb04481012e44792868a9fe5775d2c8ae1d7c21252597cd3937e181d445fd
+#17 exporting attestation manifest sha256:7e1eb04481012e44792868a9fe5775d2c8ae1d7c21252597cd3937e181d445fd 0.1s done
+#17 exporting manifest list sha256:10b467499b8027efd811a280c2fae6db49c3656b867d2668a7de02f4b57ecaf8 0.0s done
+#17 naming to docker.io/library/registration-backend:latest 0.0s done
+#17 unpacking to docker.io/library/registration-backend:latest 0.0s done
+#17 DONE 0.3s
+
+#26 [frontend] exporting to image
+#26 exporting layers done
+#26 exporting manifest sha256:368f10e7cc74f5218afe8fb0fc477b8fbf4cbdc90f4f183b8beaace9526a3341 0.0s done
+#26 exporting config sha256:c88e62585b387ee8ad475b90a647a543543ef68604d2b179fafc93a62b1df7b1 0.0s done
+#26 exporting attestation manifest sha256:7a34957e30ba1240bbba2738f7554d894e0cc7ecfd60e96058c3e119a36a6f32 0.1s done
+#26 exporting manifest list sha256:b9a3262b93256b928191434a65729aa340814d75877ee0e347768d87e1eec588 0.0s done
+#26 naming to docker.io/library/registration-frontend:latest done
+#26 unpacking to docker.io/library/registration-frontend:latest 0.0s done
+#26 DONE 0.3s
+
+#27 [backend] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [frontend] resolving provenance for metadata file
+#28 DONE 0.0s
+ Image registration-backend Built 
+ Image registration-frontend Built 
+ Network registration_default Creating 
+ Network registration_default Created 
+ Volume registration_jsoncopies Creating 
+ Volume registration_jsoncopies Created 
+ Volume registration_pgdata Creating 
+ Volume registration_pgdata Created 
+ Container registration-mailpit-1 Creating 
+ Container registration-db-1 Creating 
+ Container registration-mailpit-1 Created 
+ Container registration-db-1 Created 
+ Container registration-backend-1 Creating 
+ Container registration-backend-1 Created 
+ Container registration-frontend-1 Creating 
+ Container registration-frontend-1 Created 
+ Container registration-mailpit-1 Starting 
+ Container registration-db-1 Starting 
+ Container registration-db-1 Started 
+ Container registration-mailpit-1 Started 
+ Container registration-db-1 Waiting 
+ Container registration-db-1 Healthy 
+ Container registration-backend-1 Starting 
+ Container registration-backend-1 Started 
+ Container registration-backend-1 Waiting 
+ Container registration-backend-1 Healthy 
+ Container registration-frontend-1 Starting 
+ Container registration-frontend-1 Started 
+ Container registration-db-1 Waiting 
+ Container registration-mailpit-1 Waiting 
+ Container registration-backend-1 Waiting 
+ Container registration-frontend-1 Waiting 
+ Container registration-mailpit-1 Healthy 
+ Container registration-backend-1 Healthy 
+ Container registration-db-1 Healthy 
+ Container registration-frontend-1 Healthy 

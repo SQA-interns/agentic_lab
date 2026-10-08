@@ -1,0 +1,17 @@
+ad8ecd8 feat: send security headers once on static responses (SB-10, KP-02)
+3f77e55 feat: show the confirmation only after acceptance (US-004)
+39db43f feat: add the external and student registration form (US-001, US-002)
+d216b7f feat: add API client, browser validation and reCAPTCHA widget (US-001, SR-01)
+9c1c961 feat: rate limit and size limit registration and export (SR-03, SB-06)
+dea133d feat: delete registrations after the retention period (US-005, D-16)
+db8be79 docs: record decisions D-22 and D-23
+58ebbc9 feat: export registrations to Excel for organizers (US-008, SR-06)
+cbc1960 build: run tests alphabetically and widen bean exclusion (D-22, D-23)
+16ac901 docs: record decision D-21
+42e9c2b feat: email participant and organizers after storing (US-006, US-007)
+87affb9 build: exclude one SpotBugs false positive on an injected bean (D-21)
+dab9619 feat: accept external and student registrations (US-001, US-002, US-004)
+968b272 feat: store registrations in PostgreSQL and as JSON copies (US-005)
+f261470 feat: load conference options from a file and serve the form (US-003)
+4182729 feat: add settings, startup checks, security and problem details (SR-02, SB-10)
+3d08010 docs: pass the phase 3 gate
