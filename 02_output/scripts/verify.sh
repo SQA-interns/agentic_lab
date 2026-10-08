@@ -110,7 +110,7 @@ t_semgrep() {
 }
 t_gitleaks() {
   if ! docker_ok; then skip gitleaks "Docker Engine not reachable"; return; fi
-  run gitleaks "$ROOT" docker run --rm -v "$ROOT:/repo" "$GITLEAKS_IMAGE" git /repo --redact --no-banner --log-opts=HEAD \
+  run gitleaks "$ROOT" docker run --rm -v "$ROOT:/repo" "$GITLEAKS_IMAGE" git /repo --redact --no-banner --log-opts=HEAD --gitleaks-ignore-path /repo/02_output/.gitleaksignore \
     --report-format json --report-path /repo/02_output/logs/"${PHASE}"_gitleaks.json
   line gitleaks $RC "$(grep -oE 'leaks found: [0-9]+|no leaks found' "$LOG" | tail -1)" "$LOG"
 }

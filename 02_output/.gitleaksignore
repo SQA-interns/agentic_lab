@@ -1,0 +1,16 @@
+# D-25: test-fixture constant and ephemeral passwords printed by the phase 3 skeleton; not real secrets.
+b1ee4427491a67a706bf3e5e022b170990f06066:02_output/backend/src/test/java/si/konferenca/registration/acceptance/support/AcceptanceStack.java:generic-api-key:28
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-us001-try.log:generic-api-key:105
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-acceptance-run.log:generic-api-key:107
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-acceptance-run.log:generic-api-key:192
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-acceptance-run.log:generic-api-key:316
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-acceptance-run.log:generic-api-key:1007
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-acceptance-run.log:generic-api-key:1500
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-acceptance-run.log:generic-api-key:1562
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:105
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:190
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:252
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:372
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:1063
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:1556
+1a45eca96088cca36ef9e5d70988342b6fda5535:02_output/logs/03_be-test.log:generic-api-key:1618
