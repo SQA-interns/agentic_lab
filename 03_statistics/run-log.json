@@ -19,12 +19,12 @@
       "phase": 1,
       "name": "requirements",
       "start": "2026-10-08T21:12:14Z",
-      "end": null
+      "end": "2026-10-08T21:13:28Z"
     },
     {
       "phase": 2,
       "name": "design",
-      "start": null,
+      "start": "2026-10-08T21:13:28Z",
       "end": null
     },
     {
