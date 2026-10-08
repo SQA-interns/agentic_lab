@@ -59,8 +59,8 @@
     }
   ],
   "firstTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 290,
+    "failed": 1
   },
   "finalTestRun": {
     "passed": null,
