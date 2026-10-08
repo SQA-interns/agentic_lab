@@ -1,0 +1,16 @@
+{
+  "categories": { "WORKSHOP": 2, "EVENT": 3, "MEAL": 3, "OTHER": 2 },
+  "options": [
+    { "id": "ws-testing", "name": "Delavnica: testiranje programske opreme", "category": "WORKSHOP", "active": true },
+    { "id": "ws-security", "name": "Workshop: application security", "category": "WORKSHOP", "active": true, "registrationTypes": ["EXTERNAL"] },
+    { "id": "ws-legacy", "name": "Workshop: retired topic", "category": "WORKSHOP", "active": false },
+    { "id": "ev-reception", "name": "Welcome reception", "category": "EVENT", "active": true },
+    { "id": "ev-career-fair", "name": "Career fair", "category": "EVENT", "active": true, "registrationTypes": ["STUDENT"] },
+    { "id": "meal-lunch-day1", "name": "Lunch, day 1", "category": "MEAL", "active": true },
+    { "id": "meal-dinner", "name": "Conference dinner (vegetarian option)", "category": "MEAL", "active": true },
+    { "id": "other-city-tour", "name": "Ljubljana city tour", "category": "OTHER", "active": true }
+  ],
+  "consents": [
+    { "id": "data-processing", "text": "I agree that my personal data is processed for registering me for the conference and organising my attendance.", "mandatory": true }
+  ]
+}
