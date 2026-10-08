@@ -1,4 +1,5 @@
-# Environment-specific values come from environment variables (ES-01); secrets have no default.
+# Environment-specific values come from environment variables (ES-01, specification section 9).
+# Secrets have no default; startup checks reject empty required values.
 spring:
   application:
     name: registration-backend
@@ -12,10 +13,35 @@ spring:
       ddl-auto: validate
   flyway:
     locations: classpath:db/migration
+  mail:
+    host: ${SMTP_HOST:}
+    port: ${SMTP_PORT:25}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.starttls.enable: ${SMTP_STARTTLS:true}
+      mail.smtp.starttls.required: ${SMTP_STARTTLS:true}
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
+  mvc:
+    problemdetails:
+      enabled: true
+  task:
+    execution:
+      thread-name-prefix: notify-
+      pool:
+        core-size: 2
+        max-size: 4
+        queue-capacity: 500
 server:
+  forward-headers-strategy: native
   error:
     include-message: never
     include-stacktrace: never
+    include-binding-errors: never
+    include-exception: false
 management:
   endpoints:
     web:
@@ -25,3 +51,31 @@ management:
     health:
       probes:
         enabled: true
+  health:
+    mail:
+      enabled: false
+
+app:
+  environment: ${APP_ENVIRONMENT:production}
+  conference-name: ${CONFERENCE_NAME:Conference}
+  options-file: ${CONFERENCE_OPTIONS_FILE:}
+  json-copy-dir: ${JSON_COPY_DIR:/data/registrations}
+  mail-from: ${MAIL_FROM:registration@localhost}
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:false}
+    site-key: ${RECAPTCHA_SITE_KEY:}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  organizer:
+    username: ${ORGANIZER_USERNAME:}
+    password: ${ORGANIZER_PASSWORD:}
+    emails: ${ORGANIZER_EMAILS:}
+    https-only: ${ORGANIZER_HTTPS_ONLY:true}
+  cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:}
+  rate-limit:
+    registrations-per-minute: ${RATE_LIMIT_REGISTRATIONS_PER_MINUTE:10}
+    exports-per-minute: ${RATE_LIMIT_EXPORTS_PER_MINUTE:10}
+  max-request-bytes: ${MAX_REQUEST_BYTES:16384}
+  retention:
+    days: ${RETENTION_DAYS:365}
+    cron: ${RETENTION_CRON:0 0 3 * * *}
