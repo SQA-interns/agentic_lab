@@ -1,0 +1,245 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: >
+    REST interface between the frontend or organizer and the backend (AR-01).
+    All paths are under /api. Errors use RFC 9457 problem details.
+servers:
+  - url: /api
+paths:
+  /form:
+    get:
+      operationId: getForm
+      summary: Form configuration for both registration types (US-001, US-002, US-003)
+      description: Only active options are returned (BR-04). Public.
+      responses:
+        "200":
+          description: Form configuration
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/FormConfig" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+  /registrations:
+    post:
+      operationId: createRegistration
+      summary: Submit a registration (US-001, US-002, US-004..US-007)
+      description: >
+        Public, rate limited and size limited (SR-03). 201 is returned only after the database
+        row and the JSON copy are written (AR-05). Emails are sent after that and never change
+        the response (D-13).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/RegistrationRequest" }
+      responses:
+        "201":
+          description: Registration accepted
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/RegistrationAccepted" }
+        "400":
+          description: Validation or anti-automation failure; nothing stored
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/ValidationProblem" }
+        "409":
+          description: The email address is already registered (D-15); nothing stored
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "413":
+          description: Request body larger than the configured limit
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "415":
+          description: Content type is not application/json
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500":
+          description: Registration could not be stored; nothing stored, no internal details
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+  /export:
+    get:
+      operationId: exportRegistrations
+      summary: Excel export of all current registrations (US-008)
+      description: >
+        Organizer only (BR-08), HTTP Basic over HTTPS (SR-06). Rate limited (SR-03).
+      security:
+        - organizerBasic: []
+      responses:
+        "200":
+          description: Excel workbook, one row per registration
+          headers:
+            Content-Disposition:
+              schema: { type: string, example: 'attachment; filename="registrations.xlsx"' }
+            Cache-Control:
+              schema: { type: string, const: no-store }
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema: { type: string, contentMediaType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet }
+        "401":
+          description: Missing or wrong organizer credentials; no data
+          headers:
+            WWW-Authenticate:
+              schema: { type: string, example: 'Basic realm="organizer"' }
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "403":
+          description: Request over plain HTTP while HTTPS-only organizer access is on
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema: { type: integer, minimum: 1 }
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+    Category:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+    FormConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, recaptcha, categories, options, consents]
+      properties:
+        conferenceName: { type: string }
+        recaptcha:
+          type: object
+          additionalProperties: false
+          required: [siteKey, testMode]
+          properties:
+            siteKey: { type: string, description: Public site key; empty in test mode }
+            testMode: { type: boolean }
+        categories:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [category, maxSelections]
+            properties:
+              category: { $ref: "#/components/schemas/Category" }
+              maxSelections: { type: integer, minimum: 0 }
+        options:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, name, category, registrationTypes]
+            properties:
+              id: { type: string, pattern: "^[a-z0-9][a-z0-9-]{0,63}$" }
+              name: { type: string }
+              category: { $ref: "#/components/schemas/Category" }
+              registrationTypes:
+                type: array
+                minItems: 1
+                uniqueItems: true
+                items: { $ref: "#/components/schemas/RegistrationType" }
+        consents:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, text, mandatory]
+            properties:
+              id: { type: string, pattern: "^[a-z0-9][a-z0-9-]{0,63}$" }
+              text: { type: string }
+              mandatory: { type: boolean }
+    RegistrationRequest:
+      type: object
+      description: >
+        Field presence depends on type: EXTERNAL needs organization; STUDENT needs
+        studyInstitution, studyProgramme, studentId. Fields of the other type must be absent or
+        null. Text is trimmed of Unicode whitespace before validation (BR-02, KP-03).
+      additionalProperties: false
+      required: [type, firstName, lastName, email, optionIds, consentIds, recaptchaToken]
+      properties:
+        type: { $ref: "#/components/schemas/RegistrationType" }
+        firstName: { type: string, maxLength: 100 }
+        lastName: { type: string, maxLength: 100 }
+        email: { type: string, maxLength: 254 }
+        organization: { type: [string, "null"], maxLength: 200 }
+        studyInstitution: { type: [string, "null"], maxLength: 200 }
+        studyProgramme: { type: [string, "null"], maxLength: 200 }
+        studentId: { type: [string, "null"], maxLength: 50 }
+        optionIds:
+          type: array
+          maxItems: 50
+          uniqueItems: true
+          items: { type: string, maxLength: 64 }
+        consentIds:
+          type: array
+          maxItems: 20
+          uniqueItems: true
+          items: { type: string, maxLength: 64 }
+        recaptchaToken: { type: string, maxLength: 4096 }
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [id, receivedAt]
+      properties:
+        id: { type: string, format: uuid }
+        receivedAt: { type: string, format: date-time }
+    Problem:
+      type: object
+      required: [type, title, status]
+      properties:
+        type: { type: string, description: "URI reference, e.g. urn:problem:email-already-registered" }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+    ValidationProblem:
+      allOf:
+        - $ref: "#/components/schemas/Problem"
+        - type: object
+          required: [errors]
+          properties:
+            errors:
+              type: array
+              minItems: 1
+              items: { $ref: "#/components/schemas/FieldError" }
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, code]
+      properties:
+        field:
+          type: string
+          description: Request property name; optionIds and consentIds errors name the array
+        code:
+          type: string
+          enum:
+            - required
+            - too_long
+            - invalid_email
+            - invalid_characters
+            - not_allowed_for_type
+            - unknown_option
+            - inactive_option
+            - option_not_available
+            - too_many_options
+            - consent_missing
+            - unknown_consent
+            - captcha_failed
+            - malformed
