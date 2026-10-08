@@ -1,10 +1,17 @@
 {
   "testRunner": "command",
-  "commandRunner": { "command": "npx vitest run --reporter=dot" },
+  "commandRunner": {
+    "command": "npx vitest run --reporter=dot"
+  },
   "coverageAnalysis": "off",
-  "concurrency": 6,
+  "concurrency": 3,
   "mutate": ["src/**/*.{ts,tsx}", "!src/**/*.test.{ts,tsx}", "!src/main.tsx", "!src/test-setup.ts"],
   "reporters": ["clear-text", "json", "html"],
-  "htmlReporter": { "fileName": "reports/mutation/index.html" },
-  "jsonReporter": { "fileName": "reports/mutation/mutation.json" }
+  "htmlReporter": {
+    "fileName": "reports/mutation/index.html"
+  },
+  "jsonReporter": {
+    "fileName": "reports/mutation/mutation.json"
+  },
+  "timeoutMS": 60000
 }
