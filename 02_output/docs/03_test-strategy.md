@@ -69,7 +69,7 @@ Run 2026-10-08T22:22:57Z (`verify.sh 06`, all tools) and 2026-10-08T22:47:42Z (b
 | Measure | Backend | Frontend |
 |---|---|---|
 | Line / branch coverage | 97.3% / 93.0% (JaCoCo) | 97.07% / 91.26% (v8) |
-| Mutation | 323/423 killed, 76% (PIT, unit and integration tests; acceptance tests excluded because they start containers) | not measurable with the pinned Stryker runner under vitest 5 (F-05, D-27) |
+| Mutation | 323/423 killed, 76% (PIT, unit and integration tests; acceptance tests excluded because they start containers) | 347/466 killed, 74.46% (Stryker command runner, D-27) |
 
 Tests added in phase 6: `EmailAddressTest.boundariesOfTotalAndLabelLength`, `FiltersTest.staleWindowsAreEvicted` (F-08).
 

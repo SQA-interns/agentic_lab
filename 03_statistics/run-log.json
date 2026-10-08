@@ -49,12 +49,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-10-08T22:22:14Z",
-      "end": null
+      "end": "2026-10-08T23:35:15Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-10-08T23:35:15Z",
       "end": null
     }
   ],
@@ -70,9 +70,28 @@
     "critical": 0,
     "high": 2,
     "medium": 3,
-    "low": 6
+    "low": 7
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "change": "semgrep suppression after approved downgrade (D-26)",
+      "start": "2026-10-08T22:55:08Z",
+      "end": "2026-10-08T22:56:04Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-05"
+      ],
+      "change": "Stryker command runner, then 60 s timeout and 3 workers (D-27)",
+      "start": "2026-10-08T22:56:04Z",
+      "end": "2026-10-08T23:35:15Z"
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -228,13 +247,13 @@
       "id": "D-26",
       "type": "blocking",
       "start": "2026-10-08T22:48:29Z",
-      "end": null
+      "end": "2026-10-08T22:55:08Z"
     },
     {
       "id": "D-27",
       "type": "blocking",
       "start": "2026-10-08T22:48:29Z",
-      "end": null
+      "end": "2026-10-08T22:55:08Z"
     }
   ],
   "humanInterventions": [
@@ -250,7 +269,7 @@
     },
     {
       "start": "2026-10-08T22:50:01Z",
-      "end": null,
+      "end": "2026-10-08T22:55:08Z",
       "reason": "phase 6: D-26 semgrep High on Basic authentication, D-27 frontend mutation runner"
     }
   ],

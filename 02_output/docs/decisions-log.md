@@ -67,13 +67,13 @@
 - Phase: 6
 - Trigger: semgrep `yaml.openapi.security.use-of-basic-authentication` (ERROR = High) on `docs/02_contracts/api.openapi.yaml:104` (F-01). Basic is the specified mechanism for the single organizer export (specification section 6; security requirements leave the mechanism to phase 2, identity providers out of scope). Evidence against realistic exploitability: credentials accepted only over HTTPS or from localhost (`HttpsOnlyFilter`, SR-06; production refuses to start with it off), password at least 16 characters, BCrypt in memory (SB-03), export rate limit counts failed logins (SB-06), stateless (no session or CSRF surface), one read-only operation; tests `FiltersTest`, `Us008ExportAcceptanceTest`, `StartupChecksTest`.
 - Options: 1. (default) Approve the downgrade to Low with this evidence; keep Basic over HTTPS and add a semgrep suppression naming D-26. 2. Replace Basic with a session login (form login, session cookie, CSRF protection) — more code, no stronger credential. 3. Keep High and do not release until an identity provider is in scope.
-- Human response: none
-- Resolution:
+- Human response: "i aprove defaults. d-26: a" (2026-10-08T22:55:08Z)
+- Resolution: 1; F-01 downgraded to Low with the evidence above; semgrep suppression in `api.openapi.yaml` names D-26
 
 ## D-27: Frontend mutation score cannot be measured with the pinned Stryker and vitest
 - Timestamp: 2026-10-08T22:48:29Z
 - Phase: 6
 - Trigger: `@stryker-mutator/vitest-runner` 10.0.0 does not activate mutants under vitest 5.0.3 (the D-06 upgrade): score 15.67%, and mutants that break every test (for example `loadForm` emptied, `isValidEmail` always false) are reported as surviving; same result with `coverageAnalysis` perTest, off and all (`logs/06_fe-mutation*.log`) (F-05). DoD-03 asks for a recorded mutation score (threshold: record only).
 - Options: 1. (default) Configure Stryker's built-in command runner (`testRunner: "command"`, `npx vitest run`, coverage analysis off) — no version change, slower (one full test run per mutant, about 20 to 30 minutes). 2. Record the frontend mutation score as not measurable with the pinned toolset and accept F-05 (Medium). 3. Approve another `@stryker-mutator/*` version or a vitest version that work together (needs a compatibility check).
-- Human response: none
-- Resolution:
+- Human response: "d-27: a" (2026-10-08T22:55:08Z)
+- Resolution: 1; Stryker uses its command runner (`npx vitest run`), no version change

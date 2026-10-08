@@ -1,5 +1,125 @@
-[32m00:39:50 (843941) INFO ProjectReader[39m Found 1 of 64 file(s) to be mutated.
-[32m00:39:50 (843941) INFO Instrumenter[39m Instrumented 1 source file(s) with 157 mutant(s)
-[32m00:39:51 (843941) INFO ConcurrencyTokenProvider[39m Creating 6 test runner process(es).
-[32m00:39:52 (843941) INFO DryRunExecutor[39m Starting initial test run (command test runner with "off" coverage analysis). This may take a while.
-[32m00:39:54 (843941) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 2 seconds (net 2623 ms, overhead 0 ms).
+[32m01:09:29 (919573) INFO ProjectReader[39m Found 1 of 64 file(s) to be mutated.
+[32m01:09:29 (919573) INFO Instrumenter[39m Instrumented 1 source file(s) with 157 mutant(s)
+[32m01:09:30 (919573) INFO ConcurrencyTokenProvider[39m Creating 3 test runner process(es).
+[32m01:09:31 (919573) INFO DryRunExecutor[39m Starting initial test run (command test runner with "off" coverage analysis). This may take a while.
+[32m01:09:34 (919573) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 3 seconds (net 3139 ms, overhead 0 ms).
+
+All tests
+  ✓ All tests (killed 136)
+
+[Survived] StringLiteral
+src/validation.ts:31:13
+-     too_long: "This value is too long.",
++     too_long: "",
+
+[Survived] StringLiteral
+src/validation.ts:33:23
+-     invalid_characters: "This value contains characters that are not allowed.",
++     invalid_characters: "",
+
+[Survived] StringLiteral
+src/validation.ts:34:25
+-     not_allowed_for_type: "This field does not belong to the selected form.",
++     not_allowed_for_type: "",
+
+[Survived] StringLiteral
+src/validation.ts:35:19
+-     unknown_option: "A selected option is not offered.",
++     unknown_option: "",
+
+[Survived] StringLiteral
+src/validation.ts:37:25
+-     option_not_available: "A selected option is not available for this registration type.",
++     option_not_available: "",
+
+[Survived] StringLiteral
+src/validation.ts:40:20
+-     unknown_consent: "A consent is not recognised.",
++     unknown_consent: "",
+
+[Survived] Regex
+src/validation.ts:46:15
+-   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?$/u;
++   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?/u;
+
+[Survived] Regex
+src/validation.ts:46:15
+-   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?$/u;
++   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])$/u;
+
+[Survived] Regex
+src/validation.ts:46:15
+-   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?$/u;
++   const LABEL = /^[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\P{N}])?$/u;
+
+[Survived] Regex
+src/validation.ts:47:19
+-   const TOP_LEVEL = /^\p{L}{2,}$/u;
++   const TOP_LEVEL = /\p{L}{2,}$/u;
+
+[Survived] Regex
+src/validation.ts:47:19
+-   const TOP_LEVEL = /^\p{L}{2,}$/u;
++   const TOP_LEVEL = /^\p{L}{2,}/u;
+
+[Survived] ConditionalExpression
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (false) {
+
+[Survived] LogicalOperator
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (email.length > 254 && CONTROL.test(email)) {
+
+[Survived] ConditionalExpression
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (false || CONTROL.test(email)) {
+
+[Survived] EqualityOperator
+src/validation.ts:52:7
+-     if (email.length > 254 || CONTROL.test(email)) {
++     if (email.length >= 254 || CONTROL.test(email)) {
+
+[Survived] BlockStatement
+src/validation.ts:52:50
+-     if (email.length > 254 || CONTROL.test(email)) {
+-       return false;
+-     }
++     if (email.length > 254 || CONTROL.test(email)) {}
+
+[Survived] ConditionalExpression
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => true && LABEL.test(label)) &&
+
+[Survived] EqualityOperator
+src/validation.ts:62:29
+-       labels.every((label) => label.length <= 63 && LABEL.test(label)) &&
++       labels.every((label) => label.length < 63 && LABEL.test(label)) &&
+
+[Survived] ConditionalExpression
+src/validation.ts:90:65
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
++       const option = config.options.find((o: ConferenceOption) => true);
+
+[Survived] EqualityOperator
+src/validation.ts:90:65
+-       const option = config.options.find((o: ConferenceOption) => o.id === id);
++       const option = config.options.find((o: ConferenceOption) => o.id !== id);
+
+[Survived] ConditionalExpression
+src/validation.ts:91:9
+-       if (option) {
++       if (true) {
+
+Ran 1.00 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  86.62 |   86.62 |      136 |         0 |         21 |        0 |        0 |
+ validation.ts |  86.62 |   86.62 |      136 |         0 |         21 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m01:16:15 (919573) INFO MutationTestExecutor[39m Done in 6 minutes and 46 seconds.

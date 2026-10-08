@@ -3,16 +3,16 @@
 ┌─────────────┐
 │ Scan Status │
 └─────────────┘
-  Scanning 116 files tracked by git with 1074 Code rules:
+  Scanning 118 files tracked by git with 1074 Code rules:
                                                                                                                         
   Language      Rules   Files          Origin      Rules                                                                
  ─────────────────────────────        ───────────────────                                                               
-  <multilang>      74      78          Community    1074                                                                
+  <multilang>      74      79          Community    1074                                                                
   java            118      46                                                                                           
   json              4      19                                                                                           
   ts              163      13                                                                                           
   yaml             35       4                                                                                           
-  bash              4       3                                                                                           
+  bash              4       4                                                                                           
   dockerfile        6       2                                                                                           
   html              1       2                                                                                           
   python          243       1                                                                                           
@@ -24,14 +24,14 @@
 │ Scan Summary │
 └──────────────┘
 ✅ Scan completed successfully.
- • Findings: 2 (2 blocking)
+ • Findings: 1 (1 blocking)
  • Rules run: 642
- • Targets scanned: 116
+ • Targets scanned: 118
  • Parsed lines: ~99.9%
  • Scan skipped: 
    ◦ Matching --exclude patterns: 6
    ◦ Files matching .semgrepignore patterns: 4
  • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
-Ran 642 rules on 116 files: 2 findings.
+Ran 642 rules on 118 files: 1 finding.
 
 A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
