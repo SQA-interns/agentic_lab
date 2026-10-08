@@ -4,7 +4,8 @@
 Usage: validate-contracts.py [oas-3.1-meta-schema.json]  (default: the copy next to this script)
 - *.openapi.yaml: against the official OpenAPI 3.1 JSON Schema; every component schema is a
   valid JSON Schema 2020-12 and every local $ref resolves.
-- *.schema.json: a valid JSON Schema 2020-12; each matching *.example*.json validates against it.
+- *.schema.json: a valid JSON Schema 2020-12; each matching *.example*.json and
+  a normative <stem>.json validate against it.
 - *.sql: checked separately by applying it to the pinned PostgreSQL image (see verify.sh).
 Prints one line per contract and exits non-zero on any failure.
 """
@@ -76,9 +77,11 @@ def check_schema(path):
     validator = jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker())
     stem = path.name.removesuffix(".schema.json")
     examples = sorted(CONTRACTS.glob(f"{stem}.example*.json"))
+    if (CONTRACTS / f"{stem}.json").exists():
+        examples.append(CONTRACTS / f"{stem}.json")
     for example in examples:
         validator.validate(json.loads(example.read_text(encoding="utf-8")))
-    return f"schema ok, {len(examples)} example(s) valid"
+    return f"schema ok, {len(examples)} instance(s) valid"
 
 
 def main():
