@@ -23,6 +23,8 @@
 | D-19 | 2026-10-08T21:42:59Z | 3 | Playwright global setup/teardown use Node APIs; TypeScript needs Node types; not listed in \`tech-stack.md\` | Added dev dependency \`@types/node\` 24.13.0 (MIT, matches the Node platform pin); \`npm audit --omit=dev\` unchanged at 0 | pending review |
 | D-20 | 2026-10-08T21:42:59Z | 3 | The repository \`.env\` has a line that is not \`KEY=value\` (Compose: "unexpected character" on line 2) | \`scripts/compose.sh\` passes only the \`KEY=value\` lines to Compose through a temporary 0600 file, never printed; \`.env\` not edited | pending review |
 | D-21 | 2026-10-08T21:56:20Z | 4 | SpotBugs EI_EXPOSE_REP2 (Medium) on `NotificationService.copies`: the constructor stores the injected `JsonCopyStore` singleton | Not a defect: shared Spring bean by design. Excluded for that class and field only in `backend/spotbugs-exclude.xml`; raw log `logs/04_be-spotbugs.log` | pending review |
+| D-22 | 2026-10-08T22:00:38Z | 4 | Frozen harness `AcceptanceStack.newTempDir` assumes the stack was started by an earlier test; Surefire's default `filesystem` order makes that order-dependent (seen running `Us005` alone: NullPointerException) | Surefire `runOrder` set to `alphabetical` in `pom.xml`, so `Us001` (which starts the stack) always runs first; frozen tests untouched. Running a later class alone still needs `-Dtest=Us001*,<class>` | pending review |
+| D-23 | 2026-10-08T22:00:38Z | 4 | Follow-up to D-21: the same SpotBugs EI_EXPOSE_REP2 on `ExportService.store` and `.writer` (injected singletons) | Added those two fields to the same explicit exclusion; nothing else excluded | pending review |
 
 ## Blocking
 
