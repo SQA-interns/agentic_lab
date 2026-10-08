@@ -17,8 +17,8 @@ Run: `scripts/verify.sh 06` (all tools, `logs/06_*`), `scripts/runtime-demo.sh` 
 | DoD-05 | pass | F-01 downgraded by the human (D-26); F-02 High accepted by the human (D-10); Dependency-Check 0 after D-08/D-09; `npm audit --omit=dev` 0; gitleaks 0 after D-25 |
 | DoD-06 | pass | `logs/06_runtime-demo.log`: fresh local stack healthy, both registrations, storage, emails, export, recreate |
 | DoD-07 | pass | traceability table below: 46/46 ACs have tests and commits |
-| DoD-08 | phase 7 | READMEs and clean-checkout log are produced in phase 7 (D-24) |
-| DoD-09 | phase 7 | release notes are produced in phase 7 (D-24) |
+| DoD-08 | pass (phase 7, D-24) | root, backend and frontend READMEs followed from a clean clone in a short path: every command exit 0 (`logs/07_clean-checkout.log`) |
+| DoD-09 | pass (phase 7, D-24) | `docs/release-notes.md` "Must be tested manually by a human" |
 | DoD-10 | pass | D-01..D-27 resolved or pending review; input manifest matches, protected files unchanged since `b6c9dc6` |
 | DoD-11 | pass with F-07 | phase 3 added no production source and the freeze commit holds only the manifest (`logs/06_phase3-evidence.log`); every story has a phase 4 commit (`logs/04_commits-since-freeze.txt`); 7 commits exceed the size guide without a stated reason (F-07, `logs/06_commit-sizes.log`) |
 | DoD-P01 | pass | external and student registration 201 on the running stack |
