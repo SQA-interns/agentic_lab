@@ -96,26 +96,55 @@
       "id": "D-04",
       "type": "blocking",
       "start": "2026-10-08T20:55:53Z",
-      "end": null
+      "end": "2026-10-08T21:03:29Z"
     },
     {
       "id": "D-05",
       "type": "blocking",
       "start": "2026-10-08T20:55:53Z",
-      "end": null
+      "end": "2026-10-08T21:03:29Z"
     },
     {
       "id": "D-06",
       "type": "blocking",
       "start": "2026-10-08T20:55:53Z",
+      "end": "2026-10-08T21:03:29Z"
+    },
+    {
+      "id": "D-07",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:07:07Z",
+      "end": "2026-10-08T21:07:07Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:07:07Z",
+      "end": "2026-10-08T21:07:07Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-08T21:07:07Z",
+      "end": "2026-10-08T21:07:07Z"
+    },
+    {
+      "id": "D-10",
+      "type": "blocking",
+      "start": "2026-10-08T21:07:07Z",
       "end": null
     }
   ],
   "humanInterventions": [
     {
       "start": "2026-10-08T20:55:53Z",
-      "end": null,
+      "end": "2026-10-08T21:03:29Z",
       "reason": "phase 0 preflight: D-04 Docker Engine not running, D-05 .env missing, D-06 npm dev-tooling Critical/High"
+    },
+    {
+      "start": "2026-10-08T21:07:07Z",
+      "end": null,
+      "reason": "phase 0: D-10 jscpd 4.3.0 High (braces) remains after vitest upgrade"
     }
   ],
   "codeMetrics": {

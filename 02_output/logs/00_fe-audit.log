@@ -1,19 +1,5 @@
 # npm audit report
 
-@vitest/mocker  2.1.0 - 4.1.10
-Severity: moderate
-Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock - https://github.com/advisories/GHSA-82fw-gwwq-j7x9
-fix available via `npm audit fix --force`
-Will install vitest@5.0.3, which is a breaking change
-node_modules/@vitest/mocker
-  vitest  0.0.95 - 4.1.10
-  Depends on vulnerable versions of @vitest/mocker
-  Depends on vulnerable versions of tinypool
-  node_modules/vitest
-    @vitest/coverage-v8  2.1.0-beta.1 - 4.1.10
-    Depends on vulnerable versions of vitest
-    node_modules/@vitest/coverage-v8
-
 braces  *
 Severity: high
 braces vulnerable to stack-exhaustion denial of service through deeply nested patterns - https://github.com/advisories/GHSA-vfj7-8cjw-p6xm
@@ -44,16 +30,7 @@ node_modules/qs
   Depends on vulnerable versions of qs
   node_modules/typed-rest-client
 
-tinypool  <=2.1.1
-Severity: critical
-Tinypool: Prototype Pollution gadget in worker options leads to Remote Code Execution - https://github.com/advisories/GHSA-5gmw-xhrv-c9v3
-Tinypool: Prototype Pollution Gadget to RCE in run() options - https://github.com/advisories/GHSA-85c8-ppgw-ccpr
-fix available via `npm audit fix --force`
-Will install vitest@5.0.3, which is a breaking change
-node_modules/tinypool
-
-
-11 vulnerabilities (4 moderate, 5 high, 2 critical)
+7 vulnerabilities (2 moderate, 5 high)
 
 To address issues that do not require attention, run:
   npm audit fix

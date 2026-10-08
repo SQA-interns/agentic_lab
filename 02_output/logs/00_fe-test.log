@@ -1,17 +1,17 @@
 
- RUN  v3.2.7 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+ RUN  v5.0.3 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
       Coverage enabled with v8
 
 No test files found, exiting with code 0
 
 include: src/**/*.test.{ts,tsx}, tests/acceptance/**/*.test.{ts,tsx}
-exclude:  **/node_modules/**, **/dist/**, **/cypress/**, **/.{idea,git,cache,output,temp}/**, **/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*
+exclude:  **/node_modules/**, **/.git/**
 
- % Coverage report from v8
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
 
 =============================== Coverage summary ===============================
-Statements   : 0% ( 0/11 )
-Branches     : 0% ( 0/2 )
-Functions    : 0% ( 0/2 )
-Lines        : 0% ( 0/11 )
+Statements   : 0% ( 0/2 )
+Branches     : 100% ( 0/0 )
+Functions    : 0% ( 0/1 )
+Lines        : 0% ( 0/2 )
 ================================================================================
