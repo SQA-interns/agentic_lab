@@ -24,7 +24,9 @@ Only a human can read these; fill them right after the run. `usage.estimates` in
 
 | Item | Value |
 |---|---|
-| API time | |
-| Approval prompts | |
-| Cost shown | |
-| Difference to `usage.costUsd` | |
+| API time | not shown: subscription plan; the usage panel shows only plan-limit percentages (transcript estimate in `usage.estimates`: 40 to 77 minutes of model time) |
+| Approval prompts | not counted (Auto permission mode). Decision answers by the human: 3 (D-07 vitest 4.1.11, D-08 CVE-2025-7962 false positive, D-20 Basic auth Low); the other human interventions in `run-log.json` are "continue" after the agent stopped at passed gates and one resume after the session usage limit |
+| Cost shown | not shown: subscription plan, no per-session cost in the usage panel |
+| Difference to `usage.costUsd` | n/a (no panel cost; `usage.costUsd` is the API-price equivalent from the transcript) |
+
+Threat to validity: the run agent worked in the same folder as the operator's Claude Code chat and therefore shared its project memory. Operator notes from other runs (including the confreg experiment and notes on this run's expected decisions) were visible to it from the start; it also wrote its own memory file there. The notes were moved out of the shared memory during phase 5. Host JDK was Oracle 21.0.11 instead of the pinned Temurin 21.0.10+7 (D-01, non-blocking).
