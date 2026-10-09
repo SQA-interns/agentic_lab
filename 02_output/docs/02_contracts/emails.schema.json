@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "emails.schema.json",
+  "title": "Outgoing emails (US-006, US-007, SR-05)",
+  "description": "Messages the backend sends over SMTP after the registration is committed. Plain text, UTF-8. User input appears only in the body, never in a header; recipients are validated addresses (SR-05). A send failure is logged with the registration id only and never undoes the registration (D-16).",
+  "oneOf": [{ "$ref": "#/$defs/participantConfirmation" }, { "$ref": "#/$defs/organizerNotification" }],
+  "$defs": {
+    "common": {
+      "type": "object",
+      "required": ["from", "to", "subject", "contentType", "body"],
+      "properties": {
+        "from": { "description": "MAIL_FROM", "type": "string" },
+        "subject": { "description": "Fixed template; CONFERENCE_NAME is the only variable", "type": "string" },
+        "contentType": { "const": "text/plain; charset=UTF-8" },
+        "body": {
+          "description": "Lines 'Label: value' for every submitted field of the type, then the selected options by category and the consents given",
+          "type": "string"
+        }
+      }
+    },
+    "participantConfirmation": {
+      "allOf": [{ "$ref": "#/$defs/common" }],
+      "type": "object",
+      "properties": {
+        "kind": { "const": "PARTICIPANT_CONFIRMATION" },
+        "to": { "description": "The participant's accepted email only", "type": "array", "minItems": 1, "maxItems": 1, "items": { "type": "string" } },
+        "subject": { "pattern": "^Registration confirmed: .+$" },
+        "attachments": { "type": "array", "maxItems": 0 }
+      },
+      "required": ["kind"]
+    },
+    "organizerNotification": {
+      "allOf": [{ "$ref": "#/$defs/common" }],
+      "type": "object",
+      "properties": {
+        "kind": { "const": "ORGANIZER_NOTIFICATION" },
+        "to": { "description": "ORGANIZER_EMAILS", "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "subject": { "pattern": "^New registration \\((external participant|student)\\): .+$" },
+        "attachments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["filename", "contentType", "content"],
+            "properties": {
+              "filename": { "type": "string", "pattern": "^registration-[0-9a-f-]{36}\\.json$" },
+              "contentType": { "const": "application/json" },
+              "content": { "description": "Byte-identical to the JSON copy (registration-copy.schema.json)", "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["kind", "attachments"]
+    }
+  }
+}
