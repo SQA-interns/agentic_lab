@@ -1,0 +1,659 @@
+
+> registration-frontend@0.1.0 e2e
+> playwright test
+
+
+Running 17 tests using 1 worker
+
+  ✘   1 e2e/us001-external.e2e.spec.ts:18:3 › US-001 External participant registration › AC-001-01 the external form asks for exactly the external fields (5.3s)
+  ✘   2 e2e/us001-external.e2e.spec.ts:32:3 › US-001 External participant registration › AC-001-02 AC-004-01 NFR-01 a valid external registration with Slovenian characters is confirmed, stored, copied, emailed and exported unchanged (5.3s)
+  ✘   3 e2e/us001-external.e2e.spec.ts:72:3 › US-001 External participant registration › AC-001-04 NFR-03 an empty required field is reported next to the field and nothing is confirmed (5.3s)
+  ✘   4 e2e/us001-external.e2e.spec.ts:87:3 › US-001 External participant registration › AC-001-05 KP-03 a required field with only no-break spaces is reported as required (5.3s)
+  ✘   5 e2e/us001-external.e2e.spec.ts:102:3 › US-001 External participant registration › AC-001-09 only active options for external participants are offered, grouped by category (5.3s)
+  ✘   6 e2e/us001-external.e2e.spec.ts:133:3 › US-001 External participant registration › AC-001-13 no consent is preselected (5.3s)
+  ✘   7 e2e/us001-external.e2e.spec.ts:142:3 › US-001 External participant registration › AC-001-14 a missing mandatory consent is identified and nothing is confirmed (5.3s)
+  ✘   8 e2e/us001-external.e2e.spec.ts:156:3 › US-001 External participant registration › AC-001-16 a submission without the anti-automation check is not confirmed (5.3s)
+  ✘   9 e2e/us002-student.e2e.spec.ts:15:3 › US-002 Student registration › AC-002-01 the student form asks for exactly the student fields (5.3s)
+  ✘  10 e2e/us002-student.e2e.spec.ts:33:3 › US-002 Student registration › AC-002-02 AC-004-01 a valid student registration is confirmed and stored (5.3s)
+  ✘  11 e2e/us002-student.e2e.spec.ts:50:3 › US-002 Student registration › AC-002-03 an empty student ID is reported next to the field (5.3s)
+  ✘  12 e2e/us002-student.e2e.spec.ts:65:3 › US-002 Student registration › AC-002-05 only active options available to students are offered (5.3s)
+  ✘  13 e2e/us003-options.e2e.spec.ts:5:3 › US-003 Configurable conference options › AC-003-01 configured options appear under their category headings (5.3s)
+  ✘  14 e2e/us003-options.e2e.spec.ts:22:3 › US-003 Configurable conference options › AC-003-04 each configured consent is shown with its wording, unticked (5.3s)
+  ✘  15 e2e/us004-confirmation.e2e.spec.ts:25:3 › US-004 Registration confirmation › AC-004-01 an accepted registration shows the confirmation instead of the form (5.3s)
+  ✘  16 e2e/us004-confirmation.e2e.spec.ts:36:3 › US-004 Registration confirmation › AC-004-02 a registration rejected by the server shows the reason and no confirmation (5.3s)
+  ✘  17 e2e/us004-confirmation.e2e.spec.ts:51:3 › US-004 Registration confirmation › AC-004-03 a storage failure shows a general error and no confirmation (5.3s)
+
+
+  1) e2e/us001-external.e2e.spec.ts:18:3 › US-001 External participant registration › AC-001-01 the external form asks for exactly the external fields 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:21:5
+
+    Error Context: test-results/us001-external.e2e-US-001--54cc9-exactly-the-external-fields/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--54cc9-exactly-the-external-fields/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--54cc9-exactly-the-external-fields/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e/us001-external.e2e.spec.ts:32:3 › US-001 External participant registration › AC-001-02 AC-004-01 NFR-01 a valid external registration with Slovenian characters is confirmed, stored, copied, emailed and exported unchanged 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:36:5
+
+    Error Context: test-results/us001-external.e2e-US-001--a95e2-iled-and-exported-unchanged/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--a95e2-iled-and-exported-unchanged/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--a95e2-iled-and-exported-unchanged/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e/us001-external.e2e.spec.ts:72:3 › US-001 External participant registration › AC-001-04 NFR-03 an empty required field is reported next to the field and nothing is confirmed 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:75:5
+
+    Error Context: test-results/us001-external.e2e-US-001--ed6a9-ld-and-nothing-is-confirmed/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--ed6a9-ld-and-nothing-is-confirmed/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--ed6a9-ld-and-nothing-is-confirmed/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) e2e/us001-external.e2e.spec.ts:87:3 › US-001 External participant registration › AC-001-05 KP-03 a required field with only no-break spaces is reported as required 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:90:5
+
+    Error Context: test-results/us001-external.e2e-US-001--41053-ces-is-reported-as-required/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--41053-ces-is-reported-as-required/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--41053-ces-is-reported-as-required/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) e2e/us001-external.e2e.spec.ts:102:3 › US-001 External participant registration › AC-001-09 only active options for external participants are offered, grouped by category 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:105:5
+
+    Error Context: test-results/us001-external.e2e-US-001--4b151-offered-grouped-by-category/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--4b151-offered-grouped-by-category/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--4b151-offered-grouped-by-category/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) e2e/us001-external.e2e.spec.ts:133:3 › US-001 External participant registration › AC-001-13 no consent is preselected 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:134:5
+
+    Error Context: test-results/us001-external.e2e-US-001--0178e-3-no-consent-is-preselected/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--0178e-3-no-consent-is-preselected/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--0178e-3-no-consent-is-preselected/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) e2e/us001-external.e2e.spec.ts:142:3 › US-001 External participant registration › AC-001-14 a missing mandatory consent is identified and nothing is confirmed 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:145:5
+
+    Error Context: test-results/us001-external.e2e-US-001--8a826-ed-and-nothing-is-confirmed/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--8a826-ed-and-nothing-is-confirmed/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--8a826-ed-and-nothing-is-confirmed/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) e2e/us001-external.e2e.spec.ts:156:3 › US-001 External participant registration › AC-001-16 a submission without the anti-automation check is not confirmed 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us001-external.e2e.spec.ts:160:5
+
+    Error Context: test-results/us001-external.e2e-US-001--81823-tion-check-is-not-confirmed/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us001-external.e2e-US-001--81823-tion-check-is-not-confirmed/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us001-external.e2e-US-001--81823-tion-check-is-not-confirmed/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) e2e/us002-student.e2e.spec.ts:15:3 › US-002 Student registration › AC-002-01 the student form asks for exactly the student fields 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-student')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-student') with timeout 5000ms
+      - waiting for getByTestId('type-student')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us002-student.e2e.spec.ts:18:5
+
+    Error Context: test-results/us002-student.e2e-US-002-S-69709--exactly-the-student-fields/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us002-student.e2e-US-002-S-69709--exactly-the-student-fields/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us002-student.e2e-US-002-S-69709--exactly-the-student-fields/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) e2e/us002-student.e2e.spec.ts:33:3 › US-002 Student registration › AC-002-02 AC-004-01 a valid student registration is confirmed and stored 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-student')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-student') with timeout 5000ms
+      - waiting for getByTestId('type-student')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us002-student.e2e.spec.ts:37:5
+
+    Error Context: test-results/us002-student.e2e-US-002-S-64a44-ion-is-confirmed-and-stored/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us002-student.e2e-US-002-S-64a44-ion-is-confirmed-and-stored/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us002-student.e2e-US-002-S-64a44-ion-is-confirmed-and-stored/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) e2e/us002-student.e2e.spec.ts:50:3 › US-002 Student registration › AC-002-03 an empty student ID is reported next to the field 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-student')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-student') with timeout 5000ms
+      - waiting for getByTestId('type-student')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us002-student.e2e.spec.ts:53:5
+
+    Error Context: test-results/us002-student.e2e-US-002-S-0ae65--reported-next-to-the-field/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us002-student.e2e-US-002-S-0ae65--reported-next-to-the-field/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us002-student.e2e-US-002-S-0ae65--reported-next-to-the-field/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) e2e/us002-student.e2e.spec.ts:65:3 › US-002 Student registration › AC-002-05 only active options available to students are offered 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-student')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-student') with timeout 5000ms
+      - waiting for getByTestId('type-student')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us002-student.e2e.spec.ts:68:5
+
+    Error Context: test-results/us002-student.e2e-US-002-S-0db78-ble-to-students-are-offered/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us002-student.e2e-US-002-S-0db78-ble-to-students-are-offered/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us002-student.e2e-US-002-S-0db78-ble-to-students-are-offered/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) e2e/us003-options.e2e.spec.ts:5:3 › US-003 Configurable conference options › AC-003-01 configured options appear under their category headings 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us003-options.e2e.spec.ts:8:5
+
+    Error Context: test-results/us003-options.e2e-US-003-C-914b2-der-their-category-headings/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us003-options.e2e-US-003-C-914b2-der-their-category-headings/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us003-options.e2e-US-003-C-914b2-der-their-category-headings/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) e2e/us003-options.e2e.spec.ts:22:3 › US-003 Configurable conference options › AC-003-04 each configured consent is shown with its wording, unticked 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-student')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-student') with timeout 5000ms
+      - waiting for getByTestId('type-student')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us003-options.e2e.spec.ts:25:5
+
+    Error Context: test-results/us003-options.e2e-US-003-C-bb1e4-n-with-its-wording-unticked/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us003-options.e2e-US-003-C-bb1e4-n-with-its-wording-unticked/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us003-options.e2e-US-003-C-bb1e4-n-with-its-wording-unticked/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) e2e/us004-confirmation.e2e.spec.ts:25:3 › US-004 Registration confirmation › AC-004-01 an accepted registration shows the confirmation instead of the form 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at registerExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us004-confirmation.e2e.spec.ts:17:3)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us004-confirmation.e2e.spec.ts:28:5
+
+    Error Context: test-results/us004-confirmation.e2e-US--9e2f1-rmation-instead-of-the-form/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us004-confirmation.e2e-US--9e2f1-rmation-instead-of-the-form/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us004-confirmation.e2e-US--9e2f1-rmation-instead-of-the-form/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) e2e/us004-confirmation.e2e.spec.ts:36:3 › US-004 Registration confirmation › AC-004-02 a registration rejected by the server shows the reason and no confirmation 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at registerExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us004-confirmation.e2e.spec.ts:17:3)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us004-confirmation.e2e.spec.ts:40:5
+
+    Error Context: test-results/us004-confirmation.e2e-US--77a3f--reason-and-no-confirmation/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us004-confirmation.e2e-US--77a3f--reason-and-no-confirmation/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us004-confirmation.e2e-US--77a3f--reason-and-no-confirmation/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) e2e/us004-confirmation.e2e.spec.ts:51:3 › US-004 Registration confirmation › AC-004-03 a storage failure shows a general error and no confirmation 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('type-external')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('type-external') with timeout 5000ms
+      - waiting for getByTestId('type-external')
+
+
+       at support/form.ts:34
+
+      32 | export async function openForm(page: Page, type: "EXTERNAL" | "STUDENT") {
+      33 |   await page.goto(stack().frontendUrl);
+    > 34 |   await expect(page.getByTestId(ui.type[type])).toBeVisible();
+         |                                                 ^
+      35 |   await page.getByTestId(ui.type[type]).click();
+      36 |   await expect(page.getByTestId(ui.field("firstName"))).toBeVisible();
+      37 | }
+        at openForm (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/support/form.ts:34:49)
+        at registerExternal (/home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us004-confirmation.e2e.spec.ts:17:3)
+        at /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/e2e/us004-confirmation.e2e.spec.ts:62:5
+
+    Error Context: test-results/us004-confirmation.e2e-US--bcc39-l-error-and-no-confirmation/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/us004-confirmation.e2e-US--bcc39-l-error-and-no-confirmation/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/us004-confirmation.e2e-US--bcc39-l-error-and-no-confirmation/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17 failed
+    e2e/us001-external.e2e.spec.ts:18:3 › US-001 External participant registration › AC-001-01 the external form asks for exactly the external fields 
+    e2e/us001-external.e2e.spec.ts:32:3 › US-001 External participant registration › AC-001-02 AC-004-01 NFR-01 a valid external registration with Slovenian characters is confirmed, stored, copied, emailed and exported unchanged 
+    e2e/us001-external.e2e.spec.ts:72:3 › US-001 External participant registration › AC-001-04 NFR-03 an empty required field is reported next to the field and nothing is confirmed 
+    e2e/us001-external.e2e.spec.ts:87:3 › US-001 External participant registration › AC-001-05 KP-03 a required field with only no-break spaces is reported as required 
+    e2e/us001-external.e2e.spec.ts:102:3 › US-001 External participant registration › AC-001-09 only active options for external participants are offered, grouped by category 
+    e2e/us001-external.e2e.spec.ts:133:3 › US-001 External participant registration › AC-001-13 no consent is preselected 
+    e2e/us001-external.e2e.spec.ts:142:3 › US-001 External participant registration › AC-001-14 a missing mandatory consent is identified and nothing is confirmed 
+    e2e/us001-external.e2e.spec.ts:156:3 › US-001 External participant registration › AC-001-16 a submission without the anti-automation check is not confirmed 
+    e2e/us002-student.e2e.spec.ts:15:3 › US-002 Student registration › AC-002-01 the student form asks for exactly the student fields 
+    e2e/us002-student.e2e.spec.ts:33:3 › US-002 Student registration › AC-002-02 AC-004-01 a valid student registration is confirmed and stored 
+    e2e/us002-student.e2e.spec.ts:50:3 › US-002 Student registration › AC-002-03 an empty student ID is reported next to the field 
+    e2e/us002-student.e2e.spec.ts:65:3 › US-002 Student registration › AC-002-05 only active options available to students are offered 
+    e2e/us003-options.e2e.spec.ts:5:3 › US-003 Configurable conference options › AC-003-01 configured options appear under their category headings 
+    e2e/us003-options.e2e.spec.ts:22:3 › US-003 Configurable conference options › AC-003-04 each configured consent is shown with its wording, unticked 
+    e2e/us004-confirmation.e2e.spec.ts:25:3 › US-004 Registration confirmation › AC-004-01 an accepted registration shows the confirmation instead of the form 
+    e2e/us004-confirmation.e2e.spec.ts:36:3 › US-004 Registration confirmation › AC-004-02 a registration rejected by the server shows the reason and no confirmation 
+    e2e/us004-confirmation.e2e.spec.ts:51:3 › US-004 Registration confirmation › AC-004-03 a storage failure shows a general error and no confirmation 
