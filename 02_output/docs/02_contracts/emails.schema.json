@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/emails.schema.json",
+  "title": "Email contract",
+  "description": "Describes each email the backend sends over SMTP: recipients, fixed headers, body content and attachments. emails.json is the contract instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["common", "emails"],
+  "properties": {
+    "common": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "contentType", "rules"],
+      "properties": {
+        "from": { "type": "string" },
+        "contentType": { "type": "string" },
+        "rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "emails": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "trigger", "to", "subject", "bodyContains", "attachments"],
+        "properties": {
+          "id": { "type": "string" },
+          "trigger": { "type": "string" },
+          "to": { "type": "string" },
+          "subject": { "type": "string" },
+          "bodyContains": { "type": "array", "items": { "type": "string" } },
+          "bodyExcludes": { "type": "array", "items": { "type": "string" } },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fileName", "contentType", "content"],
+              "properties": {
+                "fileName": { "type": "string" },
+                "contentType": { "type": "string" },
+                "content": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "common": {
+    "from": "MAIL_FROM (configuration)",
+    "contentType": "text/plain; charset=UTF-8 (no HTML part, so markup in user input is shown as text: SR-05)",
+    "rules": [
+      "User input never appears in a header: the subject uses only the configured conference name; the only header value derived from input is the participant's address in To, which has passed email validation (no whitespace or control characters).",
+      "Emails are sent only after the registration is stored (AR-05); a send failure is logged with the registration id only and does not change the response (D-11).",
+      "Field labels are English (D-18); option names and consent texts come from the stored registration."
+    ]
+  },
+  "emails": [
+    {
+      "id": "participant-confirmation",
+      "trigger": "registration accepted (US-006)",
+      "to": "the participant's email as accepted",
+      "subject": "Registration confirmation: {conferenceName}",
+      "bodyContains": [
+        "{firstName} {lastName}",
+        "Registration type: External participant | Student",
+        "every selected option name, listed under its category label (Workshops, Events, Meals, Other activities), or 'No options selected'",
+        "Registration ID: {registrationId}"
+      ],
+      "bodyExcludes": ["anti-automation token", "organizer addresses"],
+      "attachments": []
+    },
+    {
+      "id": "organizer-notification",
+      "trigger": "registration accepted (US-007)",
+      "to": "every address in ORGANIZER_EMAILS, in one message",
+      "subject": "New registration: {conferenceName}",
+      "bodyContains": [
+        "Registration ID: {registrationId}",
+        "Registered at: {registeredAt, ISO-8601 UTC}",
+        "Registration type: External participant | Student",
+        "First name, Last name, Email, and Organization or Study institution, Study programme, Student ID, each as 'Label: value'",
+        "every selected option name under its category label",
+        "every consent given with the time given"
+      ],
+      "bodyExcludes": ["anti-automation token", "client IP address", "database or system identifiers other than the registration ID"],
+      "attachments": [
+        {
+          "fileName": "registration-{registrationId}.json",
+          "contentType": "application/json",
+          "content": "the stored JSON copy, byte for byte (registration-copy.schema.json)"
+        }
+      ]
+    }
+  ]
+}
