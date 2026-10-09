@@ -8,7 +8,7 @@ description: Write and check the READMEs from a clean checkout, write the releas
 ## Do
 
 1. Write the READMEs (ES-06): commands only, each one run and working.
-2. Follow them from a clean checkout in a short path (through `verify.sh`, the stack stopped first); save the log to `out/logs/`. Fix what fails. Do not copy `.env` into the checkout: start its stack with the original repository's `secrets.sh run … -- docker compose -f <checkout>/02_output/docker-compose.yml …`.
+2. Follow them from a clean checkout in a short path, the stack stopped first: run only the build, test, check and run commands the READMEs give (through `verify.sh`), not mutation testing or the scanners, which phase 6 already ran on the same sources. Save the log to `out/logs/`. Fix what fails. Do not copy `.env` into the checkout: start its stack with the original repository's `secrets.sh run … -- docker compose -f <checkout>/02_output/docker-compose.yml …`.
 3. Write the release notes into their skeleton, section by section:
    - "Delivered": one row per story.
    - "Known limitations": behaviour the product does not have, from decisions and accepted findings.

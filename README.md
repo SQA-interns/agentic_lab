@@ -2,7 +2,7 @@
 
 > Owner: Team lead · Agent: read-only
 
-Template version: **tanej-2.0** (derived from tanej-1.2; changes at the end of this file). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
+Template version: **tanej-3.0** (derived from tanej-2.0; changes at the end of this file). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
 
 Humans start here; agents start at `AGENTS.md`.
 
@@ -13,8 +13,8 @@ AGENTS.md                      agent entry point: read order, precedence, never-
 01_input/
   00_general/                  filled once per organisation, reused by every project
     rules.md                   rules of every phase
-    phases.md                  phase order: skill, reads, writes, gate, commits
-    skills/<name>/SKILL.md     one procedure per file (9)
+    phases.md                  phase order: reads, writes, short steps or skill, gate, commits
+    skills/<name>/SKILL.md     the long or reusable procedures, one per file (5)
     standards/                 lookup tables: engineering, testing, security, done
     tools/                     secrets.sh, usage-from-transcript.mjs
   01_project/                  filled per project (5 files; run-config.md in 00_setup/ because metrics.md names that path)
@@ -25,7 +25,7 @@ AGENTS.md                      agent entry point: read order, precedence, never-
 ## Running
 
 1. Fill section 1, copy `01_input/01_project/secrets.env.example` to `.env` in the repository root and fill it, commit the inputs. Start each run on its own branch from the template commit.
-2. Install the platform versions of `project/stack.md` on the host (JDK, Node.js with npm, Docker); another version costs a decision.
+2. Before the run, install exactly the platform versions listed under "Platforms" in `project/stack.md` on the host (JDK distribution and version, Node.js with its npm, Docker, Compose), and check them with each entry's version command. Every earlier run spent two blocking decisions on a host JDK and Node that differed from the pins.
 3. Keep the agent away from `.env`: in `.claude/settings.local.json` deny `Read(./.env)`, `Read(./.env.*)`, `Edit(./.env)` and the shell commands that print it. The agent reaches the values only through `tools/secrets.sh`, which prints key names and states, never values.
 4. Start the agent in the repository root with: "Read `AGENTS.md` and start."
 5. At a blocking question the agent asks and waits for you; the session stays open. Answer in your own words, for example "D-16: 1"; a pasted answer needs one line of your own. Answering after more than an hour costs one rewrite of the prompt cache (a few dollars); a new session started with "Read `AGENTS.md` and resume; answer to D-nn: …" avoids it.
@@ -35,7 +35,7 @@ AGENTS.md                      agent entry point: read order, precedence, never-
 
 | File | When | What goes in it |
 |---|---|---|
-| `01_input/01_project/00_setup/run-config.md` | every run | model, effort, run id, attended or not |
+| `01_input/01_project/00_setup/run-config.md` | every run | model, effort, template version, run id |
 | `01_input/01_project/secrets.env.example` | per project | names of every secret (values go only in `.env`) |
 | `01_input/01_project/requirements.md` | per project | user stories, business rules, data, glossary, scope, open questions |
 | `01_input/01_project/stack.md` | per project; refresh versions before each run | platforms, dependencies, tooling with exact versions; environments and external services |
@@ -73,15 +73,23 @@ They are written once, but they are not frozen forever. Each file states in its 
 ## Rules for editing this template
 
 - Every Markdown file starts with `> Owner: … · Fill: … · Read in: … · Agent: …` (skills: after the front matter; agent-written skeletons: `> Written in: …`).
-- An always-on rule goes in `rules.md`; a phase's contract (reads, writes, gate, commits) in `phases.md`; a procedure in one skill; a table looked up by ID in `standards/`. State each rule once.
+- An always-on rule goes in `rules.md`; a phase's contract (reads, writes, gate, commits) and its short steps in `phases.md`; a procedure that is long, used in several phases or reusable on its own in one skill; a table looked up by ID in `standards/`. State each rule once.
 - `03_statistics/metrics.md` and `run-log.template.json` are shared with the other templates and never change here.
 
-## Changes since tanej-1.2
+## Changes since tanej-2.0
+
+| Change | Where | Reason |
+|---|---|---|
+| The four short procedures (derive acceptance criteria, write the specification, build, unit tests) moved from skill files into their phase in `phases.md`; five skills remain (preflight, write-acceptance-tests, verify-release, release, decisions) | `phases.md`, `skills/` | a skill file for three or four phase-only steps added a file hop without reuse; the remaining skills are long, used in every phase, or reusable by a separate agent |
+| The clean-checkout check runs only the README's build, test, check and run commands, not mutation testing or the scanners | `skills/release` | run tanej-04 re-ran mutation testing in phase 7 on unchanged sources |
+| Install the pinned platform versions before the run | this README, "Running" | every run so far spent two blocking decisions on host JDK and Node versions |
+
+## Changes from tanej-1.2 to tanej-2.0
 
 | Change | Where | Reason |
 |---|---|---|
 | Ten project files merged into three (`requirements.md`, `stack.md`, `constraints.md`); secrets list moved up; `00_setup/run-config.md` stays where the shared `metrics.md` expects it | `01_input/01_project/` | fewer files to fill per project; the owner-role split meant nothing with one operator. Content unchanged. |
-| General rules that lived in project files moved to general files (version rules from the tech stack, AC format from the user stories) | `standards/engineering.md`, `skills/derive-acceptance-criteria` | they would have had to be copied into every project |
+| General rules that lived in project files moved to general files (version rules from the tech stack, AC format from the user stories) | `standards/engineering.md`, `phases.md` (phase 1) | they would have had to be copied into every project |
 | Procedures moved out of the phase cards into one skill per file; cards replaced by one phase map | `skills/`, `phases.md` | skills were spread over eight cards; separate files are easier to maintain and to give to a single agent later |
 | Standards split by topic | `standards/` | different owners and review cycles |
 | Decision making taken over from the other template (v002) unchanged: its blocking list, ask and wait, one full record per decision, "pending review", every Critical or High downgrade (including false positives) blocking; no unattended mode | `rules.md`, `skills/decisions`, `standards/security.md` | keeps decision making equal between the two templates, so the comparison tests structure only |
