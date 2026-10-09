@@ -33,7 +33,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     static Group of(HttpServletRequest request) {
       for (Group group : values()) {
         if (group.method.equals(request.getMethod())
-            && group.path.equals(request.getRequestURI())) {
+            && group.path.equals(RequestPath.of(request))) {
           return group;
         }
       }

@@ -40,7 +40,7 @@ public class OrganizerHttpsFilter extends OncePerRequestFilter {
 
   @Override
   protected boolean shouldNotFilter(HttpServletRequest request) {
-    return !EXPORT_PATH.equals(request.getRequestURI());
+    return !EXPORT_PATH.equals(RequestPath.of(request));
   }
 
   static boolean isLoopback(String address) {

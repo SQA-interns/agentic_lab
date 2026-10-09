@@ -47,7 +47,7 @@ public class RequestSizeFilter extends OncePerRequestFilter {
 
   @Override
   protected boolean shouldNotFilter(HttpServletRequest request) {
-    return !request.getRequestURI().startsWith("/api/");
+    return !RequestPath.of(request).startsWith("/api/");
   }
 
   private static final class LimitedRequest extends HttpServletRequestWrapper {
