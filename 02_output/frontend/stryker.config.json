@@ -6,6 +6,7 @@
     "src/**/*.{ts,tsx}",
     "!src/**/*.test.{ts,tsx}",
     "!src/test/**",
+    "!src/acceptance/**",
     "!src/main.tsx",
     "!src/vite-env.d.ts"
   ],

@@ -1,0 +1,77 @@
+# Local stack (project/stack.md, "Environments": local). Plain HTTP on 127.0.0.1 only.
+# Secrets come from the environment (.env through general/tools/secrets.sh); build the backend
+# jar first (backend: ./mvnw -B -DskipTests package).
+name: registration
+
+services:
+  postgres:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:8025:8025"
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/registration
+      DATABASE_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_TLS: "false"
+      MAIL_FROM: registration@konferenca.si
+      CONFERENCE_NAME: Konferenca 2026
+      JSON_COPY_DIR: /data/registrations
+      RECAPTCHA_TEST_MODE: "true"
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?ORGANIZER_USERNAME must be set}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?ORGANIZER_PASSWORD must be set}
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?ORGANIZER_EMAILS must be set}
+      ORGANIZER_HTTPS_ONLY: "false"
+    volumes:
+      - registration-copies:/data/registrations
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/actuator/health/readiness || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+      start_period: 20s
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      backend:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  db-data:
+  registration-copies:

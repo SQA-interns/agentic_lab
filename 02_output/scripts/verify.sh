@@ -8,7 +8,7 @@
 #   tools        comma-separated tool names, or "default" (the default), or "all"
 #                default: every tool that needs no running stack, except the slow ones
 #                all:     default plus mutation testing and the backend dependency scan
-#                e2e and the runtime checks run only when named (they need `docker compose up`)
+#                e2e, stack-up and stack-down run only when named (e2e needs stack-up first)
 #   test-filter  optional subset of tests: backend -Dtest pattern, vitest name filter,
 #                Playwright --grep pattern
 #
@@ -39,7 +39,7 @@ IMG_POSTGRES="postgres:16.15-alpine"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-spotbugs be-cpd be-test fe-build fe-format fe-lint fe-typecheck fe-cpd fe-test fe-audit contracts semgrep gitleaks cloc"
 ALL_TOOLS="$DEFAULT_TOOLS be-mutation be-depscan fe-mutation"
-KNOWN_TOOLS="$ALL_TOOLS e2e"
+KNOWN_TOOLS="$ALL_TOOLS e2e stack-up stack-down"
 
 mkdir -p "$LOGS"
 export FORCE_COLOR=0 NO_COLOR=1
@@ -243,16 +243,34 @@ run_tool() {
       key="$(json "$LOG" '`${d.SUM.nFiles} files, ${d.SUM.code} code lines`')"
       ;;
     e2e)
-      # Needs the local stack (docker compose up in 02_output); joins its network.
-      local net="${E2E_NETWORK:-02_output_default}" args=()
+      # Needs the local stack (stack-up); joins its network. Organizer settings come from .env.
+      local net="${E2E_NETWORK:-registration_default}" args=()
       docker network inspect "$net" >/dev/null 2>&1 || net=bridge
       [ -n "$FILTER" ] && args=("--grep" "$FILTER")
-      docker_run --network "$net" -e npm_config_update_notifier=false -e "E2E_BASE_URL=${E2E_BASE_URL:-http://frontend:8080}" \
+      MSYS_NO_PATHCONV=1 bash "$SECRETS" run ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+        docker run --rm --network "$net" -e npm_config_update_notifier=false \
+        -e ORGANIZER_USERNAME -e ORGANIZER_PASSWORD -e ORGANIZER_EMAILS \
+        -e "E2E_BASE_URL=${E2E_BASE_URL:-http://frontend:8080}" \
         -e "E2E_MAILPIT_URL=${E2E_MAILPIT_URL:-http://mailpit:8025}" \
         -v "$WROOT/02_output/frontend:/work" -w /work "$IMG_PLAYWRIGHT" \
         npx playwright test --pass-with-no-tests "${args[@]}" >"$LOG" 2>&1 || code=$?
-      key="$(grep -oE '[0-9]+ (passed|failed|flaky|skipped)' "$LOG" | tr '\n' ' ')"
+      key="$(grep -oE '[0-9]+ (passed|failed|flaky|skipped|did not run)' "$LOG" | tr '\n' ' ')"
       key="${key:-no tests run}"
+      ;;
+    stack-up)
+      # Builds the backend jar and both images, starts the local stack and waits for health checks.
+      {
+        (cd "$BE" && ./mvnw -B -q -DskipTests package) &&
+          (cd "$OUT" && bash "$SECRETS" run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+            docker compose up -d --build --wait --wait-timeout 240)
+      } >"$LOG" 2>&1 || code=$?
+      key="$(cd "$OUT" && docker compose ps -a --format '{{.Service}}={{.State}}/{{.Health}}' 2>&1 | tr '\n' ' ')"
+      ;;
+    stack-down)
+      # Stops the local stack; named volumes (data) are kept.
+      (cd "$OUT" && bash "$SECRETS" run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+        docker compose down) >"$LOG" 2>&1 || code=$?
+      key="stopped"
       ;;
     *)
       LOG=""
