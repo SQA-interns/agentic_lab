@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- D-21: false positives only; each match names the class and the reason. -->
+<FindBugsFilter>
+  <!-- Spring-injected collaborators (beans) are stored by reference by design. -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Or>
+      <Class name="si.konferenca.registration.application.ExportRegistrations"/>
+      <Class name="si.konferenca.registration.application.RegisterParticipant"/>
+      <Class name="si.konferenca.registration.application.RegistrationTransaction"/>
+      <Class name="si.konferenca.registration.adapter.persistence.JpaRegistrationStore"/>
+    </Or>
+  </Match>
+  <!-- Records whose list components are made immutable with List.copyOf in the compact constructor. -->
+  <Match>
+    <Or>
+      <Bug pattern="EI_EXPOSE_REP"/>
+      <Bug pattern="EI_EXPOSE_REP2"/>
+    </Or>
+    <Or>
+      <Class name="si.konferenca.registration.application.GetRegistrationForm$CategoryView"/>
+      <Class name="si.konferenca.registration.application.GetRegistrationForm$FormView"/>
+      <Class name="si.konferenca.registration.config.AppSettings"/>
+      <Class name="si.konferenca.registration.domain.RegistrationValidator$Outcome"/>
+    </Or>
+  </Match>
+  <!-- HttpSecurity.build() declares "throws Exception"; the bean method must propagate it. -->
+  <Match>
+    <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
+    <Class name="si.konferenca.registration.config.SecurityConfig"/>
+  </Match>
+</FindBugsFilter>
