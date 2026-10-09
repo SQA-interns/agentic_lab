@@ -4,8 +4,8 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 7 (release), next to start
-- Last gate result: phase 6 passed 2026-10-09T14:24:12Z: every DoD and DoD-P item except DoD-08/09 has evidence (`docs/06_verification-report.md`); findings F-01..F-10, the one High (F-02, encoded paths skipped the filters) fixed in loop 1, F-03 (email in error logs) in loop 2; manifests 27/27 and 30/30; leak-check clean; final run 307 passed, 0 failed.
+- Current phase: run finished (phase 7 done)
+- Last gate result: phase 7 passed 2026-10-09T15:31:10Z: READMEs work from a clean checkout (`logs/7clone_*`), release notes complete, DoD-08/09 evidence in the verification report, every decision resolved or pending review, `usage` filled in `03_statistics/run-log.json`, run summary written.
 - Interruption: the run stopped at about 12:03Z (14:03 local) when the session usage limit was reached and resumed 2026-10-09T12:33:30Z on the human's "continue"; no work was lost.
-- Next step: phase 7, `skills/release`: READMEs (root and per component), release notes, DoD-08/09 rows, run summary and run log.
+- Next step: none for the agent; the human fills the usage-panel values in `03_statistics/usage.md`.
 - Waiting for the human on: nothing
