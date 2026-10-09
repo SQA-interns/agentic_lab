@@ -34,7 +34,8 @@ public record AppSettings(
 
   static final String PRODUCTION = "production";
   private static final List<String> ENVIRONMENTS = List.of(PRODUCTION, "local", "test");
-  private static final Pattern EMAIL = Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$");
+  private static final Pattern EMAIL =
+      Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", Pattern.UNICODE_CHARACTER_CLASS);
   private static final int MIN_PASSWORD_LENGTH = 16;
 
   public AppSettings {

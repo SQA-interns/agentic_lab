@@ -17,7 +17,8 @@ import java.util.regex.Pattern;
  */
 public final class RegistrationValidator {
 
-  private static final Pattern EMAIL = Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$");
+  private static final Pattern EMAIL =
+      Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", Pattern.UNICODE_CHARACTER_CLASS);
 
   private final ConferenceCatalogue catalogue;
   private final Clock clock;
