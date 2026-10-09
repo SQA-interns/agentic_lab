@@ -1,0 +1,71 @@
+{
+  "maxSelectionsPerCategory": {
+    "WORKSHOP": 2,
+    "EVENT": 1,
+    "MEAL": 3,
+    "OTHER": 1
+  },
+  "options": [
+    {
+      "id": "ws-testing-ai",
+      "name": "Delavnica: testiranje sistemov UI",
+      "category": "WORKSHOP",
+      "active": true,
+      "availableTo": ["EXTERNAL", "STUDENT"]
+    },
+    {
+      "id": "ws-industry-masterclass",
+      "name": "Industry masterclass",
+      "category": "WORKSHOP",
+      "active": true,
+      "availableTo": ["EXTERNAL"]
+    },
+    {
+      "id": "ws-retired",
+      "name": "Retired workshop",
+      "category": "WORKSHOP",
+      "active": false,
+      "availableTo": ["EXTERNAL", "STUDENT"]
+    },
+    {
+      "id": "ev-gala-dinner",
+      "name": "Gala večerja",
+      "category": "EVENT",
+      "active": true,
+      "availableTo": ["EXTERNAL", "STUDENT"]
+    },
+    {
+      "id": "ev-reception",
+      "name": "Welcome reception",
+      "category": "EVENT",
+      "active": true,
+      "availableTo": ["EXTERNAL", "STUDENT"]
+    },
+    {
+      "id": "meal-lunch-day1",
+      "name": "Lunch, day 1",
+      "category": "MEAL",
+      "active": true,
+      "availableTo": ["EXTERNAL", "STUDENT"]
+    },
+    {
+      "id": "other-city-tour",
+      "name": "Ljubljana city tour",
+      "category": "OTHER",
+      "active": true,
+      "availableTo": ["EXTERNAL", "STUDENT"]
+    }
+  ],
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree that the organizer processes my personal data to organise the conference.",
+      "mandatory": true
+    },
+    {
+      "id": "photo",
+      "text": "I agree to appear in conference photos.",
+      "mandatory": false
+    }
+  ]
+}
