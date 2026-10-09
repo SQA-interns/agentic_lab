@@ -55,6 +55,11 @@ public class RateLimitFilter extends OncePerRequestFilter {
     this.clock = clock;
   }
 
+  /** Number of client windows held in memory (bounded by the cleanup below). */
+  int trackedWindows() {
+    return windows.size();
+  }
+
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain chain)
