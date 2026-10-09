@@ -24,6 +24,7 @@ public class RegistrationService {
   private final CaptchaVerifier captchaVerifier;
   private final RegistrationRepository repository;
   private final RegistrationCopyStore copyStore;
+  private final RegistrationNotifier notifier;
   private final TransactionTemplate transactions;
   private final Clock clock;
 
@@ -32,12 +33,14 @@ public class RegistrationService {
       CaptchaVerifier captchaVerifier,
       RegistrationRepository repository,
       RegistrationCopyStore copyStore,
+      RegistrationNotifier notifier,
       TransactionTemplate transactions,
       Clock clock) {
     this.validator = validator;
     this.captchaVerifier = captchaVerifier;
     this.repository = repository;
     this.copyStore = copyStore;
+    this.notifier = notifier;
     this.transactions = transactions;
     this.clock = clock;
   }
@@ -58,9 +61,24 @@ public class RegistrationService {
       throw new DuplicateEmailException();
     }
     Registration registration = toRegistration(valid);
-    store(registration);
+    byte[] copy = store(registration);
     LOG.info("Registration {} accepted", registration.id());
+    sendQuietly("participant", registration, () -> notifier.notifyParticipant(registration));
+    sendQuietly("organizer", registration, () -> notifier.notifyOrganizers(registration, copy));
     return registration;
+  }
+
+  /** An email failure never undoes an accepted registration (D-11); only the id is logged. */
+  private static void sendQuietly(String kind, Registration registration, Runnable send) {
+    try {
+      send.run();
+    } catch (RuntimeException e) {
+      LOG.warn(
+          "The {} email for registration {} was not sent ({})",
+          kind,
+          registration.id(),
+          e.getClass().getName());
+    }
   }
 
   private Registration toRegistration(RegistrationValidator.ValidRegistration valid) {
