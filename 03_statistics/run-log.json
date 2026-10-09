@@ -1,0 +1,300 @@
+{
+  "runId": "tanej-05_conference-registration_opus5.5_sdd_template-tanej-3.0",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "templateVersion": "tanej-3.0",
+  "transcript": "C:/Users/tanej/.claude/projects/c--Users-tanej-Documents-LAB-agentic-lab/ced77948-2216-42bb-b259-d9f5024bf31c.jsonl",
+  "startCommit": "61663142f170039022547f4af58474acc7d742b6",
+  "finalCommit": "f676b0f67231ddf5a44ca11e8e8e35a335e11406",
+  "start": "2026-10-09T08:07:25Z",
+  "end": "2026-10-09T15:31:10Z",
+  "phases": [
+    {
+      "phase": 0,
+      "name": "preflight-and-bootstrap",
+      "start": "2026-10-09T08:07:25Z",
+      "end": "2026-10-09T08:41:38Z"
+    },
+    {
+      "phase": 1,
+      "name": "requirements",
+      "start": "2026-10-09T08:42:22Z",
+      "end": "2026-10-09T08:44:35Z"
+    },
+    {
+      "phase": 2,
+      "name": "design",
+      "start": "2026-10-09T08:44:46Z",
+      "end": "2026-10-09T09:09:44Z"
+    },
+    {
+      "phase": 3,
+      "name": "test-design",
+      "start": "2026-10-09T09:09:54Z",
+      "end": "2026-10-09T09:36:14Z"
+    },
+    {
+      "phase": 4,
+      "name": "build",
+      "start": "2026-10-09T09:36:31Z",
+      "end": "2026-10-09T10:44:23Z"
+    },
+    {
+      "phase": 5,
+      "name": "unit-tests",
+      "start": "2026-10-09T11:21:05Z",
+      "end": "2026-10-09T13:12:06Z"
+    },
+    {
+      "phase": 6,
+      "name": "verify",
+      "start": "2026-10-09T13:36:50Z",
+      "end": "2026-10-09T14:24:12Z"
+    },
+    {
+      "phase": 7,
+      "name": "release",
+      "start": "2026-10-09T15:15:41Z",
+      "end": "2026-10-09T15:31:10Z"
+    }
+  ],
+  "firstTestRun": {
+    "passed": 257,
+    "failed": 5
+  },
+  "finalTestRun": {
+    "passed": 307,
+    "failed": 0
+  },
+  "findings": {
+    "critical": 0,
+    "high": 1,
+    "medium": 3,
+    "low": 7
+  },
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-02"
+      ],
+      "change": "filters match the decoded request path (RequestPath), regression tests",
+      "start": "2026-10-09T13:59:22Z",
+      "end": "2026-10-09T14:04:37Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-03"
+      ],
+      "change": "database error detail kept out of application and PostgreSQL logs",
+      "start": "2026-10-09T14:04:52Z",
+      "end": "2026-10-09T14:07:19Z"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-01",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:27:05Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:27:05Z"
+    },
+    {
+      "id": "D-03",
+      "type": "blocking",
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:34:24Z"
+    },
+    {
+      "id": "D-04",
+      "type": "blocking",
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:34:24Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:27:05Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:27:05Z"
+    },
+    {
+      "id": "D-07",
+      "type": "blocking",
+      "start": "2026-10-09T08:34:24Z",
+      "end": "2026-10-09T08:34:24Z"
+    },
+    {
+      "id": "D-08",
+      "type": "blocking",
+      "start": "2026-10-09T08:34:24Z",
+      "end": "2026-10-09T08:34:24Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-15",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:44:05Z",
+      "end": "2026-10-09T08:44:05Z"
+    },
+    {
+      "id": "D-17",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:46:48Z",
+      "end": "2026-10-09T08:46:48Z"
+    },
+    {
+      "id": "D-18",
+      "type": "non-blocking",
+      "start": "2026-10-09T08:46:48Z",
+      "end": "2026-10-09T08:46:48Z"
+    },
+    {
+      "id": "D-19",
+      "type": "blocking",
+      "start": "2026-10-09T09:01:27Z",
+      "end": "2026-10-09T09:03:08Z"
+    },
+    {
+      "id": "D-20",
+      "type": "blocking",
+      "start": "2026-10-09T09:03:08Z",
+      "end": "2026-10-09T09:03:08Z"
+    }
+  ],
+  "humanInterventions": [
+    {
+      "start": "2026-10-09T08:27:05Z",
+      "end": "2026-10-09T08:34:24Z",
+      "reason": "phase 0 blocking decisions D-03 (vitest Critical) and D-04 (CVE-2025-7962 false positive)"
+    },
+    {
+      "start": "2026-10-09T09:01:27Z",
+      "end": "2026-10-09T09:03:08Z",
+      "reason": "phase 2 blocking decision D-19 (Semgrep High on Basic authentication)"
+    },
+    {
+      "start": "2026-10-09T12:03:00Z",
+      "end": "2026-10-09T12:33:30Z",
+      "reason": "phase 5 run stopped: session usage limit reached (human reported stop about 14:03 and reset 14:30 local, UTC+2; start is that report, end is the resume time); the human typed continue"
+    },
+    {
+      "start": "2026-10-09T10:44:23Z",
+      "end": "2026-10-09T11:21:05Z",
+      "reason": "the agent ended its turn after the phase 4 gate; the human typed continue (start: gate, end: phase 5 start)"
+    },
+    {
+      "start": "2026-10-09T13:12:06Z",
+      "end": "2026-10-09T13:36:50Z",
+      "reason": "the agent ended its turn after the phase 5 gate; the human typed continue (start: gate, end: phase 6 start)"
+    },
+    {
+      "start": "2026-10-09T14:24:12Z",
+      "end": "2026-10-09T15:15:41Z",
+      "reason": "the agent ended its turn after the phase 6 gate; the human typed continue (start: gate, end: phase 7 start)"
+    },
+    {
+      "start": null,
+      "end": null,
+      "startReason": "not recorded: in phase 6 the agent ended its turn while the verify run was in the background; the human typed continue, the time was not captured",
+      "reason": "phase 6 mid-phase continue"
+    }
+  ],
+  "codeMetrics": {
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2969,
+        "testLoc": 4309
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 954,
+        "testLoc": 1430
+      }
+    ],
+    "complexity": null,
+    "complexityReason": "no tool with purpose complexity is listed in project/stack.md; cloc 2.10 counts lines only",
+    "duplicationPct": 2.67
+  },
+  "commits": [],
+  "usage": {
+    "inputTokens": 668,
+    "outputTokens": 528848,
+    "cacheReadTokens": 140419744,
+    "cacheWriteTokens": 737635,
+    "modelCalls": 326,
+    "toolCalls": {
+      "total": 586,
+      "byTool": {
+        "Bash": 223,
+        "Write": 188,
+        "Edit": 157,
+        "Read": 14,
+        "AskUserQuestion": 2,
+        "Grep": 1,
+        "ToolSearch": 1
+      }
+    },
+    "costUsd": 44.56,
+    "priceTableDate": "2026-09-25",
+    "estimates": {
+      "modelTimeMinutesLowerBound": 40,
+      "modelTimeMinutesUpperBound": 77,
+      "permissionDenials": 0,
+      "note": "estimated from the transcript; the usage panel in 03_statistics/usage.md is authoritative; approved commands are not recorded in a transcript"
+    }
+  }
+}
