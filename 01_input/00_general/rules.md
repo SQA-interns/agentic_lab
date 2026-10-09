@@ -69,6 +69,8 @@ You never need to see a secret value; the tools that run need it. Only `general/
 
 Update `docs/00_progress.md` at every gate and before any stop, so a fresh session can resume from it alone.
 
+When a gate passes, record it, commit and start the next phase in the same turn. End the turn only to ask a blocking decision or after phase 7; do not ask the human whether to continue.
+
 ## Statistics
 
 At the start and end of each phase, and for every fix loop, human intervention and decision, update `03_statistics/run-log.json` as `03_statistics/metrics.md` defines. Phase 7 fills `usage` with `general/tools/usage-from-transcript.mjs` and writes `03_statistics/run-summary.md`. Do nothing else in `03_statistics/`.

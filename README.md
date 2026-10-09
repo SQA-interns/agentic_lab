@@ -2,7 +2,7 @@
 
 > Owner: Team lead · Agent: read-only
 
-Template version: **tanej-3.0** (derived from tanej-2.0; changes at the end of this file). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
+Template version: **tanej-3.1** (derived from tanej-3.0; changes at the end of this file). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
 
 Humans start here; agents start at `AGENTS.md`.
 
@@ -76,7 +76,13 @@ They are written once, but they are not frozen forever. Each file states in its 
 - An always-on rule goes in `rules.md`; a phase's contract (reads, writes, gate, commits) in `phases.md`; every procedure, however short, in a skill (one per phase, plus `decisions`); a table looked up by ID in `standards/`. State each rule once.
 - `03_statistics/metrics.md` and `run-log.template.json` are shared with the other templates and never change here.
 
-## Changes since tanej-2.0
+## Changes since tanej-3.0
+
+| Change | Where | Reason |
+|---|---|---|
+| Continue after a passed gate in the same turn; end the turn only for a blocking decision or after phase 7 | `rules.md` "Progress", `AGENTS.md` | run tanej-05 (v005) stopped after the phase 4 and phase 5 gates and confreg run C1 before phase 3, each needing a "continue" from the human with nothing to decide |
+
+## Changes from tanej-2.0 to tanej-3.0
 
 | Change | Where | Reason |
 |---|---|---|

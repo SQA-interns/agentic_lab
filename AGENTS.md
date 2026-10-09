@@ -28,6 +28,6 @@ Start with phase 0. If `02_output/docs/00_progress.md` shows work in progress, r
 - Do not change a technology, version, service or secret named in `project/stack.md` or `project/secrets.env.example`, and do not install or upgrade host software, without human approval.
 - Do not read `.env` or print its values; only `general/tools/secrets.sh` reads it. Do not ask the human to paste a secret; ask them to put it in `.env`.
 - Do not commit secrets or environment-specific values.
-- Do not start a phase before the previous gate has passed.
+- Do not start a phase before the previous gate has passed, and do not stop after a passed gate: continue with the next phase (`rules.md`, "Progress").
 - Do not finish while a Critical or High finding is open.
 - Do not touch `03_statistics/` except as `rules.md` ("Statistics") says.
