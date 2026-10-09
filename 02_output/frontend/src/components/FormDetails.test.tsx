@@ -158,7 +158,8 @@ describe("form details", () => {
     fireEvent.click(screen.getByTestId("submit"));
 
     await screen.findByTestId("form-error");
-    expect(reset).toHaveBeenCalledWith(5);
+    // The reset runs in a passive effect, possibly after the error is on screen.
+    await vi.waitFor(() => expect(reset).toHaveBeenCalledWith(5));
   });
 });
 
