@@ -229,6 +229,11 @@
             <format>JSON</format>
           </formats>
           <failBuildOnCVSS>11</failBuildOnCVSS>
+          <!-- D-02: OSS Index needs Sonatype credentials not listed in secrets.env.example -->
+          <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
+          <suppressionFiles>
+            <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+          </suppressionFiles>
         </configuration>
       </plugin>
     </plugins>

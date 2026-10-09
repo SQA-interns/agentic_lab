@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes>D-03: CVE-2025-7962 targets Jakarta Mail/Angus Mail before 2.0.2 and is matched by product
+      name (cpe angus_mail:2.0.3) on angus-activation 2.0.3; the shipped angus-mail is 2.0.5 (KP-07).</notes>
+    <packageUrl regex="true">^pkg:maven/org\.eclipse\.angus/angus-activation@.*$</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
+  <suppress>
+    <notes>D-04: CVE-2025-15104 concerns the Nu Html Checker (validator.nu), matched by product name
+      (cpe validator:validator) on hibernate-validator 9.1.3.Final.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.hibernate\.validator/hibernate-validator@.*$</packageUrl>
+    <cve>CVE-2025-15104</cve>
+  </suppress>
+</suppressions>
