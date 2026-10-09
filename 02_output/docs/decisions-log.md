@@ -16,6 +16,12 @@
 | D-08 | 2026-10-09T10:54:09Z | 0 | Tool `aldanial/cloc:2.10` image reports `--version` 1.98 | Use the pinned tag; pin stays authoritative | pending review |
 | D-10 | 2026-10-09T10:54:09Z | 0 | Starting commit b6c9dc6 was checked out as a detached HEAD | Commits go to a new local branch `run/tanej-01_conference-registration_opus5.5_sdd_template-tanej-1.0` at b6c9dc6; nothing pushed | pending review |
 | D-13 | 2026-10-09T11:01:38Z | 0 | `npm audit` (npm 11.6.2): 2 Moderate, `qs` 6.15.1 (GHSA-q8mj-m7cp-5q26, GHSA-x5fp-wj9c-mxmx, GHSA-4mjr-xmp4-gh2g) via `typed-rest-client` 2.3.1 from `@stryker-mutator/core` 10.0.0 (mutation tooling, not shipped) | Recorded, not blocking (Medium); re-checked in phase 6 | pending review |
+| D-14 | 2026-10-09T11:08:47Z | 1 | OQ-01 unanswered: options for students | Each option states in configuration which registration types it is available to; a form offers only options available to its type and a registration selecting any other option is rejected (stricter than all-for-all) | pending review |
+| D-15 | 2026-10-09T11:08:47Z | 1 | OQ-02 unanswered: mandatory consents and wording | One mandatory consent: processing of the entered personal data for organising the conference; the set of consents and their wording come from configuration, each consent is mandatory unless configured otherwise, never preselected | pending review |
+| D-16 | 2026-10-09T11:08:47Z | 1 | OQ-03 unanswered: storage succeeds, email fails | The registration stays accepted and stored (scope priority 1) and the confirmation is shown; the email failure is recorded for operators without personal data; no automatic resend | pending review |
+| D-17 | 2026-10-09T11:08:47Z | 1 | OQ-04 unanswered: options per category | Selecting options is optional; the maximum per category comes from configuration and defaults to 1; more than the maximum is rejected | pending review |
+| D-18 | 2026-10-09T11:08:47Z | 1 | OQ-05 unanswered: second registration with the same email | Rejected: at most one registration per email address across both types, compared after trimming and ignoring letter case | pending review |
+| D-19 | 2026-10-09T11:08:47Z | 1 | OQ-06 unanswered: retention | Registrations and JSON copies are kept until 12 months after the conference, then deleted by the organizer through an operations procedure (no deletion feature; editing and admin UI are out of scope); stated in the consent text and release notes (SB-13) | pending review |
 
 ## Blocking
 
