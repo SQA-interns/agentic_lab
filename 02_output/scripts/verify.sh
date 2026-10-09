@@ -35,6 +35,7 @@ IMG_GITLEAKS="zricethezav/gitleaks:v8.30.1"
 IMG_CLOC="aldanial/cloc:2.10"
 IMG_REDOCLY="redocly/cli:2.57.0"
 IMG_PLAYWRIGHT="mcr.microsoft.com/playwright:v1.63.0-noble"
+IMG_POSTGRES="postgres:16.15-alpine"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-spotbugs be-cpd be-test fe-build fe-format fe-lint fe-typecheck fe-cpd fe-test fe-audit contracts semgrep gitleaks cloc"
 ALL_TOOLS="$DEFAULT_TOOLS be-mutation be-depscan fe-mutation"
@@ -195,14 +196,26 @@ run_tool() {
           echo "no JSON Schema contracts yet"; (cd "$FE" && node -e 'console.log("ajv " + require("ajv/package.json").version)')
         fi
       } >>"$LOG" 2>&1 || code=$?
-      key="$(grep -cE 'INVALID|[1-9][0-9]* errors?\b' "$LOG") invalid; $(grep -c 'valid schema' "$LOG") schemas"
+      {
+        echo "== SQL (applied to an empty PostgreSQL)"
+        local sql
+        for sql in "$CONTRACTS"/*.sql; do
+          [ -f "$sql" ] || { echo "no SQL contracts yet"; break; }
+          MSYS_NO_PATHCONV=1 docker run --rm -i -e POSTGRES_PASSWORD=contract-check -e POSTGRES_HOST_AUTH_METHOD=trust \
+            "$IMG_POSTGRES" sh -c 'docker-entrypoint.sh postgres >/tmp/pg.log 2>&1 & \
+              for i in $(seq 60); do pg_isready -q -U postgres -h 127.0.0.1 && break; sleep 1; done; \
+              psql -q -v ON_ERROR_STOP=1 -U postgres -h 127.0.0.1 -f - && echo "SQL valid"' <"$sql" &&
+            echo "$(basename "$sql"): valid sql" || { echo "$(basename "$sql"): INVALID"; false; }
+        done
+      } >>"$LOG" 2>&1 || code=$?
+      key="$(grep -cE 'INVALID|[1-9][0-9]* errors?\b' "$LOG") invalid; $(grep -c 'valid schema' "$LOG") schemas, $(grep -c ': valid sql' "$LOG") sql"
       ;;
     semgrep)
       # --no-git-ignore: also scan files not committed yet; build output is excluded explicitly.
       docker_run -v "$WROOT:/src" -w /src "$IMG_SEMGREP" semgrep scan --config p/default --metrics=off \
         --no-git-ignore --exclude=node_modules --exclude=target --exclude=dist --exclude=coverage \
         --exclude=reports --exclude=.stryker-tmp --json --output "/src/02_output/logs/${PHASE}_semgrep.json" \
-        02_output/backend/src 02_output/frontend/src >"$LOG" 2>&1 || code=$?
+        02_output/backend/src 02_output/frontend/src 02_output/docs/02_contracts >"$LOG" 2>&1 || code=$?
       key="$(json "$LOGS/${PHASE}_semgrep.json" '
         const c = {}; for (const r of d.results) c[r.extra.severity] = (c[r.extra.severity] || 0) + 1;
         `${d.results.length} results ${JSON.stringify(c)}, ${d.errors.length} errors`')"
