@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 2 (design), next to start
-- Last gate result: phase 1 passed 2026-10-09T08:44:35Z: 61 ACs over US-001..US-008; OQ-01..OQ-06 decided as D-09..D-14 (pending review); gaps D-15, D-16.
-- Next step: phase 2, `skills/write-specification` → `docs/02_specification.md`, `docs/02_contracts/`.
+- Current phase: 3 (test design), next to start
+- Last gate result: phase 2 passed 2026-10-09T09:09:44Z: specification with full traceability; 8 contracts in `docs/02_contracts/` valid (`verify.sh 2 contracts`: redocly, ajv, PostgreSQL); Semgrep and gitleaks clean (Basic auth accepted as Low, D-19/D-20).
+- Next step: phase 3, `skills/write-acceptance-tests`: acceptance and end-to-end tests per story, `docs/03_test-strategy.md`, then the manifest freeze commit.
 - Waiting for the human on: nothing

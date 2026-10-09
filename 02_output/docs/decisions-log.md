@@ -163,3 +163,21 @@
 - Options: 1. English texts, kept in one module per component so they can be translated; consent wording and option names come from configuration in any language (proposed); 2. Slovenian
 - Human response: none
 - Resolution: 1, pending review
+
+## D-19: Semgrep High on HTTP Basic authentication for the export
+- Timestamp: 2026-10-09T09:01:27Z
+- Phase: 2
+- Type: blocking
+- Trigger: `verify.sh 2 semgrep`: rule `yaml.openapi.security.use-of-basic-authentication` (ERROR → High) on `docs/02_contracts/openapi.yaml` (`organizerBasic`, used only by `GET /api/export`). Mitigations in the design: credentials accepted only over HTTPS except on localhost (SR-06), password held only as a BCrypt hash in memory (SB-03), export rate limited (SR-03), read-only GET so no CSRF exposure; identity providers are out of scope and ASVS Level 1 applies. Lowering a High needs the human.
+- Options: 1. keep Basic with these mitigations and classify the finding Low (accepted, evidence above); suppress only this rule on this contract and recheck in phase 6 (proposed); 2. replace Basic with a session login (organizer login form, session cookie, CSRF protection), which adds a login page to an otherwise UI-less organizer feature
+- Human response: pending
+- Resolution: pending
+
+## D-20: Answer to D-19 (Basic authentication)
+- Timestamp: 2026-10-09T09:03:08Z
+- Phase: 2
+- Type: blocking
+- Trigger: human answer to D-19
+- Options: as D-19
+- Human response: "Keep Basic, classify Low (Recommended)", 2026-10-09T09:03:08Z
+- Resolution: D-19 option 1: Low; inline `nosemgrep` for this rule on the `organizerBasic` scheme only; recheck in phase 6
