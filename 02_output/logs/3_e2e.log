@@ -1,0 +1,148 @@
+
+Running 6 tests using 1 worker
+
+  ✘  1 [chromium] › e2e/registration.e2e.ts:13:3 › Registration through the running stack › AC-001-01 AC-004-01 AC-006-01 NFR-01 an external participant with Slovenian characters registers (30.1s)
+  ✘  2 [chromium] › e2e/registration.e2e.ts:40:3 › Registration through the running stack › AC-002-01 AC-004-01 a student registers (30.1s)
+  ✘  3 [chromium] › e2e/registration.e2e.ts:59:3 › Registration through the running stack › AC-001-17 the page shows an invalid email next to the field and sends nothing (30.1s)
+  ✘  4 [chromium] › e2e/registration.e2e.ts:83:3 › Registration through the running stack › AC-003-03 each form offers only the options available to its type (30.1s)
+  ✘  5 [chromium] › e2e/registration.e2e.ts:95:3 › Registration through the running stack › AC-007-02 the organizer email carries the registration JSON (30.1s)
+  ✘  6 [chromium] › e2e/registration.e2e.ts:121:3 › Registration through the running stack › AC-008-01 AC-008-02 only the organizer can download the workbook (140ms)
+
+
+  1) [chromium] › e2e/registration.e2e.ts:13:3 › Registration through the running stack › AC-001-01 AC-004-01 AC-006-01 NFR-01 an external participant with Slovenian characters registers 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-external')
+
+
+       at support/stack.ts:77
+
+      75 |   fields: Record<string, string>,
+      76 | ): Promise<void> {
+    > 77 |   await page.getByTestId(type === "EXTERNAL" ? "type-external" : "type-student").check();
+         |                                                                                  ^
+      78 |   for (const [field, value] of Object.entries(fields)) {
+      79 |     await page.getByTestId(`field-${field}`).fill(value);
+      80 |   }
+        at fillRegistration (/work/e2e/support/stack.ts:77:82)
+        at /work/e2e/registration.e2e.ts:19:11
+
+    Error Context: test-results/registration.e2e.ts-Regist-ad9e0-venian-characters-registers-chromium/error-context.md
+
+  2) [chromium] › e2e/registration.e2e.ts:40:3 › Registration through the running stack › AC-002-01 AC-004-01 a student registers 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-student')
+
+
+       at support/stack.ts:77
+
+      75 |   fields: Record<string, string>,
+      76 | ): Promise<void> {
+    > 77 |   await page.getByTestId(type === "EXTERNAL" ? "type-external" : "type-student").check();
+         |                                                                                  ^
+      78 |   for (const [field, value] of Object.entries(fields)) {
+      79 |     await page.getByTestId(`field-${field}`).fill(value);
+      80 |   }
+        at fillRegistration (/work/e2e/support/stack.ts:77:82)
+        at /work/e2e/registration.e2e.ts:42:11
+
+    Error Context: test-results/registration.e2e.ts-Regist-80b9e--004-01-a-student-registers-chromium/error-context.md
+
+  3) [chromium] › e2e/registration.e2e.ts:59:3 › Registration through the running stack › AC-001-17 the page shows an invalid email next to the field and sends nothing 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-external')
+
+
+       at support/stack.ts:77
+
+      75 |   fields: Record<string, string>,
+      76 | ): Promise<void> {
+    > 77 |   await page.getByTestId(type === "EXTERNAL" ? "type-external" : "type-student").check();
+         |                                                                                  ^
+      78 |   for (const [field, value] of Object.entries(fields)) {
+      79 |     await page.getByTestId(`field-${field}`).fill(value);
+      80 |   }
+        at fillRegistration (/work/e2e/support/stack.ts:77:82)
+        at /work/e2e/registration.e2e.ts:69:11
+
+    Error Context: test-results/registration.e2e.ts-Regist-608b7-the-field-and-sends-nothing-chromium/error-context.md
+
+  4) [chromium] › e2e/registration.e2e.ts:83:3 › Registration through the running stack › AC-003-03 each form offers only the options available to its type 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-student')
+
+
+      84 |     await page.goto("/");
+      85 |
+    > 86 |     await page.getByTestId("type-student").check();
+         |                                            ^
+      87 |     await expect(page.getByTestId("option-other-career-fair")).toBeVisible();
+      88 |     await expect(page.getByTestId("option-ev-industry-dinner")).toHaveCount(0);
+      89 |
+        at /work/e2e/registration.e2e.ts:86:44
+
+    Error Context: test-results/registration.e2e.ts-Regist-ee0e1-tions-available-to-its-type-chromium/error-context.md
+
+  5) [chromium] › e2e/registration.e2e.ts:95:3 › Registration through the running stack › AC-007-02 the organizer email carries the registration JSON 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByTestId('type-external')
+
+
+       at support/stack.ts:77
+
+      75 |   fields: Record<string, string>,
+      76 | ): Promise<void> {
+    > 77 |   await page.getByTestId(type === "EXTERNAL" ? "type-external" : "type-student").check();
+         |                                                                                  ^
+      78 |   for (const [field, value] of Object.entries(fields)) {
+      79 |     await page.getByTestId(`field-${field}`).fill(value);
+      80 |   }
+        at fillRegistration (/work/e2e/support/stack.ts:77:82)
+        at /work/e2e/registration.e2e.ts:98:11
+
+    Error Context: test-results/registration.e2e.ts-Regist-e8605-rries-the-registration-JSON-chromium/error-context.md
+
+  6) [chromium] › e2e/registration.e2e.ts:121:3 › Registration through the running stack › AC-008-01 AC-008-02 only the organizer can download the workbook 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 200
+
+      121 |   test("AC-008-01 AC-008-02 only the organizer can download the workbook", async ({ request }) => {
+      122 |     const anonymous = await request.get("/api/export");
+    > 123 |     expect(anonymous.status()).toBe(401);
+          |                                ^
+      124 |
+      125 |     const wrong = await request.get("/api/export", {
+      126 |       headers: { Authorization: basicAuth(organizer().username, "not-the-password") },
+        at /work/e2e/registration.e2e.ts:123:32
+
+    Error Context: test-results/registration.e2e.ts-Regist-901b6-r-can-download-the-workbook-chromium/error-context.md
+
+  6 failed
+    [chromium] › e2e/registration.e2e.ts:13:3 › Registration through the running stack › AC-001-01 AC-004-01 AC-006-01 NFR-01 an external participant with Slovenian characters registers 
+    [chromium] › e2e/registration.e2e.ts:40:3 › Registration through the running stack › AC-002-01 AC-004-01 a student registers 
+    [chromium] › e2e/registration.e2e.ts:59:3 › Registration through the running stack › AC-001-17 the page shows an invalid email next to the field and sends nothing 
+    [chromium] › e2e/registration.e2e.ts:83:3 › Registration through the running stack › AC-003-03 each form offers only the options available to its type 
+    [chromium] › e2e/registration.e2e.ts:95:3 › Registration through the running stack › AC-007-02 the organizer email carries the registration JSON 
+    [chromium] › e2e/registration.e2e.ts:121:3 › Registration through the running stack › AC-008-01 AC-008-02 only the organizer can download the workbook 

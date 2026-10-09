@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 [chromium] › e2e/probe.e2e.ts:4:1 › probe e2e helpers (895ms)
+
+  1 passed (8.0s)

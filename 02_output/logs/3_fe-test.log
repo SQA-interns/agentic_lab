@@ -1,0 +1,625 @@
+
+ RUN  v4.1.11 C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ❯ src/acceptance/conference-options.test.tsx (3 tests | 3 failed) 3140ms
+     × AC-003-01 offers the options of the form data by name, grouped by category 1084ms
+     × AC-003-03 options not available to the chosen type are not offered 1027ms
+     × AC-003-05 the participant fields are exactly those of BR-01 for each type 1023ms
+ ❯ src/acceptance/student-registration.test.tsx (4 tests | 4 failed) 4149ms
+     × AC-002-01 submits exactly the entered student registration 1088ms
+     × AC-002-02 the student form asks for the student fields and not for organization 1016ms
+     × AC-002-11 no consent is preselected on the student form 1031ms
+     × AC-002-15 an empty required student field is shown next to it and nothing is sent 1009ms
+ ❯ src/acceptance/registration-confirmation.test.tsx (4 tests | 4 failed) 4139ms
+     × AC-004-01 an accepted registration shows the confirmation instead of the form 1082ms
+     × AC-004-02 a rejected registration shows each field error next to its field and keeps the values 1023ms
+     × AC-004-02 a duplicate email is shown next to the email field 1017ms
+     × AC-004-03 a failed registration shows a general error without internal details 1012ms
+ ❯ src/acceptance/external-registration.test.tsx (5 tests | 5 failed) 5147ms
+     × AC-001-01 submits exactly the entered external registration 1078ms
+     × AC-001-02 the external form asks for the external fields and no student field 1024ms
+     × AC-001-13 no consent is preselected on the external form 1015ms
+     × AC-001-17 an empty required field is shown next to the field and nothing is sent 1013ms
+     × AC-001-17 an invalid email is shown next to the field and nothing is sent 1011ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 16 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/acceptance/conference-options.test.tsx > US-003 Configurable conference options (UI) > AC-003-01 offers the options of the form data by name, grouped by category
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/conference-options.test.tsx:23:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/16]⎯
+
+ FAIL  src/acceptance/conference-options.test.tsx > US-003 Configurable conference options (UI) > AC-003-03 options not available to the chosen type are not offered
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-student"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/conference-options.test.tsx:43:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/16]⎯
+
+ FAIL  src/acceptance/conference-options.test.tsx > US-003 Configurable conference options (UI) > AC-003-05 the participant fields are exactly those of BR-01 for each type
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/conference-options.test.tsx:58:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/16]⎯
+
+ FAIL  src/acceptance/external-registration.test.tsx > US-001 External participant registration (UI) > AC-001-01 submits exactly the entered external registration
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/external-registration.test.tsx:15:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/16]⎯
+
+ FAIL  src/acceptance/external-registration.test.tsx > US-001 External participant registration (UI) > AC-001-02 the external form asks for the external fields and no student field
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/external-registration.test.tsx:46:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/16]⎯
+
+ FAIL  src/acceptance/external-registration.test.tsx > US-001 External participant registration (UI) > AC-001-13 no consent is preselected on the external form
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/external-registration.test.tsx:63:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/16]⎯
+
+ FAIL  src/acceptance/external-registration.test.tsx > US-001 External participant registration (UI) > AC-001-17 an empty required field is shown next to the field and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/external-registration.test.tsx:78:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/16]⎯
+
+ FAIL  src/acceptance/external-registration.test.tsx > US-001 External participant registration (UI) > AC-001-17 an invalid email is shown next to the field and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/external-registration.test.tsx:96:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/16]⎯
+
+ FAIL  src/acceptance/registration-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-01 an accepted registration shows the confirmation instead of the form
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/registration-confirmation.test.tsx:15:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/16]⎯
+
+ FAIL  src/acceptance/registration-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-02 a rejected registration shows each field error next to its field and keeps the values
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/registration-confirmation.test.tsx:42:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/16]⎯
+
+ FAIL  src/acceptance/registration-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-02 a duplicate email is shown next to the email field
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/registration-confirmation.test.tsx:70:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/16]⎯
+
+ FAIL  src/acceptance/registration-confirmation.test.tsx > US-004 Registration confirmation (UI) > AC-004-03 a failed registration shows a general error without internal details
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-external"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/registration-confirmation.test.tsx:91:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/16]⎯
+
+ FAIL  src/acceptance/student-registration.test.tsx > US-002 Student registration (UI) > AC-002-01 submits exactly the entered student registration
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-student"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/student-registration.test.tsx:15:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/16]⎯
+
+ FAIL  src/acceptance/student-registration.test.tsx > US-002 Student registration (UI) > AC-002-02 the student form asks for the student fields and not for organization
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-student"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/student-registration.test.tsx:42:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/16]⎯
+
+ FAIL  src/acceptance/student-registration.test.tsx > US-002 Student registration (UI) > AC-002-11 no consent is preselected on the student form
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-student"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/student-registration.test.tsx:61:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/16]⎯
+
+ FAIL  src/acceptance/student-registration.test.tsx > US-002 Student registration (UI) > AC-002-15 an empty required student field is shown next to it and nothing is sent
+TestingLibraryElementError: Unable to find an element by: [data-testid="type-student"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType src/acceptance/support/form.ts:6:30
+      4|
+      5| export async function chooseType(type: "EXTERNAL" | "STUDENT"): Promis…
+      6|   const radio = await screen.findByTestId(type === "EXTERNAL" ? "type-…
+       |                              ^
+      7|   fireEvent.click(radio);
+      8| }
+ ❯ src/acceptance/student-registration.test.tsx:69:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/16]⎯
+
+
+ Test Files  4 failed (4)
+      Tests  16 failed (16)
+   Start at  11:26:54
+   Duration  40.06s (transform 1.15s, setup 21.00s, import 14.72s, tests 16.57s, environment 95.95s)
+
