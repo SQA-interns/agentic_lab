@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/ui-form.schema.json",
+  "title": "Registration form UI contract",
+  "description": "Elements of the registration page that tests and users rely on. ui-form.json is the contract instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["page", "behaviour", "elements"],
+  "properties": {
+    "page": { "type": "string" },
+    "behaviour": { "type": "array", "items": { "type": "string" } },
+    "elements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["testId", "element", "purpose"],
+        "properties": {
+          "testId": { "type": "string" },
+          "element": { "type": "string" },
+          "label": { "type": "string" },
+          "shownFor": { "enum": ["both", "EXTERNAL", "STUDENT", "test-mode", "recaptcha-mode", "after-acceptance", "on-error"] },
+          "purpose": { "type": "string" }
+        }
+      }
+    }
+  }
+}

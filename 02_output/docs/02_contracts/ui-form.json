@@ -1,0 +1,35 @@
+{
+  "page": "/ (single page; loads GET /api/registration-form, submits POST /api/registrations)",
+  "behaviour": [
+    "No registration type is preselected; the fields and options appear after a type is chosen. Switching type keeps the shared fields (first name, last name, email).",
+    "Options are shown per category in the order workshop, event, meal, other, filtered to those whose availableTo includes the chosen type; a category with no option for the type is not shown (AC-003-01..03).",
+    "Consent checkboxes are never preselected (BR-05).",
+    "On submit the form validates every field with the rules of RegistrationRequest in openapi.yaml; if any fails it shows each error in error-<field> and sends nothing (NFR-03).",
+    "A 400 or 409 response with fieldErrors shows each message in error-<field> (unknown field names go to form-error); the entered values stay (AC-004-02).",
+    "Any other error shows a generic message in form-error and no confirmation (AC-004-03).",
+    "A 201 response replaces the form with the confirmation (BR-06).",
+    "Each input has a visible label linked to it; each error element is linked with aria-describedby and has role=alert.",
+    "The submit button is disabled while a request is in progress."
+  ],
+  "elements": [
+    { "testId": "registration-form", "element": "form", "shownFor": "both", "purpose": "the registration form" },
+    { "testId": "type-external", "element": "input[type=radio][name=type][value=EXTERNAL]", "label": "External participant", "shownFor": "both", "purpose": "choose the external form (AC-001-02)" },
+    { "testId": "type-student", "element": "input[type=radio][name=type][value=STUDENT]", "label": "Student", "shownFor": "both", "purpose": "choose the student form (AC-002-02)" },
+    { "testId": "field-firstName", "element": "input[type=text][name=firstName]", "label": "First name", "shownFor": "both", "purpose": "first name" },
+    { "testId": "field-lastName", "element": "input[type=text][name=lastName]", "label": "Last name", "shownFor": "both", "purpose": "last name" },
+    { "testId": "field-email", "element": "input[type=email][name=email]", "label": "Email", "shownFor": "both", "purpose": "email" },
+    { "testId": "field-organization", "element": "input[type=text][name=organization]", "label": "Organization / institution", "shownFor": "EXTERNAL", "purpose": "organization" },
+    { "testId": "field-studyInstitution", "element": "input[type=text][name=studyInstitution]", "label": "Study institution", "shownFor": "STUDENT", "purpose": "study institution" },
+    { "testId": "field-studyProgramme", "element": "input[type=text][name=studyProgramme]", "label": "Study programme", "shownFor": "STUDENT", "purpose": "study programme" },
+    { "testId": "field-studentId", "element": "input[type=text][name=studentId]", "label": "Student ID", "shownFor": "STUDENT", "purpose": "student ID" },
+    { "testId": "error-<field>", "element": "p[role=alert]", "shownFor": "on-error", "purpose": "error for one field; <field> is a request property name, including optionIds and consentIds" },
+    { "testId": "options-<category>", "element": "fieldset with legend Workshops | Events | Meals | Other activities", "shownFor": "both", "purpose": "options of one category" },
+    { "testId": "option-<optionId>", "element": "input[type=checkbox]", "label": "the option name", "shownFor": "both", "purpose": "select one option" },
+    { "testId": "consent-<consentId>", "element": "input[type=checkbox]", "label": "the consent text", "shownFor": "both", "purpose": "give one consent; unchecked initially" },
+    { "testId": "captcha-test", "element": "input[type=checkbox]", "label": "I am not a robot (test mode)", "shownFor": "test-mode", "purpose": "checked gives the token test-valid; unchecked gives no token" },
+    { "testId": "captcha-widget", "element": "div holding the Google reCAPTCHA v2 widget", "shownFor": "recaptcha-mode", "purpose": "anti-automation proof (SR-01)" },
+    { "testId": "submit", "element": "button[type=submit]", "label": "Register", "shownFor": "both", "purpose": "submit the registration" },
+    { "testId": "form-error", "element": "div[role=alert]", "shownFor": "on-error", "purpose": "error not tied to a field, e.g. storage failure or rate limit, without internal details" },
+    { "testId": "confirmation", "element": "section[role=status]", "shownFor": "after-acceptance", "purpose": "text 'Thank you, {firstName} {lastName}. Your registration has been received.' and the registration ID (AC-004-01)" }
+  ]
+}
