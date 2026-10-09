@@ -1,0 +1,63 @@
+| AC-001-01 | ExternalRegistrationAcceptanceTest.java, external-registration.test.tsx, registration.e2e.ts | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-02 | AcceptanceCriterionNames.java, external-registration.test.tsx | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-03 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-04 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-05 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-06 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-07 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-08 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-09 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-10 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-11 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-12 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-13 | external-registration.test.tsx | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-14 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-15 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-16 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-17 | external-registration.test.tsx, registration.e2e.ts | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-001-18 | ExternalRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-01 | StudentRegistrationAcceptanceTest.java, student-registration.test.tsx, registration.e2e.ts | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-02 | student-registration.test.tsx | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-03 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-04 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-05 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-06 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-07 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-08 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-09 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-10 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-11 | student-registration.test.tsx | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-12 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-13 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-14 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-15 | student-registration.test.tsx | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-002-16 | StudentRegistrationAcceptanceTest.java | f122605, c3442f5, 04c65ee, d69a030 |
+| AC-003-01 | ConferenceOptionsAcceptanceTest.java, conference-options.test.tsx | f122605, 884c8e5, 19e2db0 |
+| AC-003-02 | ConferenceOptionsAcceptanceTest.java | f122605, 884c8e5, 19e2db0 |
+| AC-003-03 | ConferenceOptionsAcceptanceTest.java, conference-options.test.tsx, registration.e2e.ts | f122605, 884c8e5, 19e2db0 |
+| AC-003-04 | ConferenceOptionsAcceptanceTest.java | f122605, 884c8e5, 19e2db0 |
+| AC-003-05 | ConferenceOptionsAcceptanceTest.java, conference-options.test.tsx | f122605, 884c8e5, 19e2db0 |
+| AC-003-06 | ConferenceOptionsAcceptanceTest.java | f122605, 884c8e5, 19e2db0 |
+| AC-004-01 | RegistrationConfirmationAcceptanceTest.java, registration-confirmation.test.tsx, registration.e2e.ts | f122605, 04c65ee |
+| AC-004-02 | RegistrationConfirmationAcceptanceTest.java, registration-confirmation.test.tsx | f122605 |
+| AC-004-03 | RegistrationConfirmationAcceptanceTest.java, RegistrationStorageAcceptanceTest.java, registration-confirmation.test.tsx | f122605 |
+| AC-005-01 | RegistrationStorageAcceptanceTest.java | b5c623b |
+| AC-005-02 | RegistrationStorageAcceptanceTest.java | b5c623b |
+| AC-005-03 | RegistrationStorageAcceptanceTest.java | b5c623b |
+| AC-005-04 | DatabaseUnavailableAcceptanceTest.java | b5c623b |
+| AC-005-05 | RegistrationStorageAcceptanceTest.java | b5c623b |
+| AC-006-01 | ParticipantEmailAcceptanceTest.java, registration.e2e.ts | 5ec4276 |
+| AC-006-02 | ParticipantEmailAcceptanceTest.java | 5ec4276 |
+| AC-006-03 | ParticipantEmailAcceptanceTest.java | 5ec4276 |
+| AC-006-04 | MailFailureAcceptanceTest.java | 5ec4276 |
+| AC-006-05 | ParticipantEmailAcceptanceTest.java | 5ec4276 |
+| AC-007-01 | OrganizerNotificationAcceptanceTest.java | 5ec4276 |
+| AC-007-02 | OrganizerNotificationAcceptanceTest.java, registration.e2e.ts | 5ec4276 |
+| AC-007-03 | OrganizerNotificationAcceptanceTest.java | 5ec4276 |
+| AC-007-04 | OrganizerNotificationAcceptanceTest.java | 5ec4276 |
+| AC-007-05 | MailFailureAcceptanceTest.java | 5ec4276 |
+| AC-008-01 | RegistrationExportAcceptanceTest.java, registration.e2e.ts | e1093c9 |
+| AC-008-02 | RegistrationExportAcceptanceTest.java, registration.e2e.ts | e1093c9 |
+| AC-008-03 | RegistrationExportAcceptanceTest.java | e1093c9 |
+| AC-008-04 | RegistrationExportAcceptanceTest.java | e1093c9 |
+| AC-008-05 | RegistrationExportAcceptanceTest.java | e1093c9 |

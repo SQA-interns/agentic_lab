@@ -1,0 +1,16 @@
+== phase 3 (90c71d4^..510f4b9): production source changes
+(none above = no production code)
+== freeze commit 510f4b9 files
+02_output/docs/03_acceptance-manifest.sha256
+== commits over 400 changed lines (excluding logs, lock files, generated wrapper)
+3a356c6 513 test: add frontend unit tests for rules, client and components
+573c2f8 438 test: add unit tests for filters and startup guard (SR-02, SR-03, SR-06)
+bcbf7f9 544 test: add unit tests for adapters, incl. reCAPTCHA stub (DoD-P05)
+ee5cb2b 516 test: add unit tests for validation and registration flow
+f122605 572 feat: add registration page with options and confirmation (US-001..US-004)
+04c65ee 558 feat: accept registrations through the API (US-001, US-002, AC-004-01)
+b5c623b 546 feat: store registrations in the database and as JSON copies (US-005)
+884c8e5 498 feat: serve form data with options per category (US-003, AR-04)
+39a19d5 418 test: add acceptance tests for US-001 (AC-001-01..AC-001-18)
+119508c 872 test: add backend acceptance harness (US-001..US-008)
+4e36361 434 docs: add REST API contract (US-001..US-008, D-20)

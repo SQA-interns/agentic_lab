@@ -1,0 +1,6 @@
+== docs/00_input-manifest.sha256 (repository root)
+27 entries checked
+== docs/03_acceptance-manifest.sha256 (02_output)
+30 entries checked
+== files under 01_input changed since start
+(none listed above = unchanged)

@@ -1,0 +1,698 @@
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 2.86157584190369,
+  "n_files"            : 137,
+  "n_lines"            : 11535,
+  "files_per_second"   : 47.875718684031,
+  "lines_per_second"   : 4030.99573007516},
+"backend/src/test/java/si/konferenca/registration/acceptance/ExternalRegistrationAcceptanceTest.java" :{
+  "blank": 63,
+  "comment": 1,
+  "code": 248,
+  "language": "Java"},
+"frontend/src/components/FormDetails.test.tsx" :{
+  "blank": 37,
+  "comment": 2,
+  "code": 248,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/application/RegistrationValidatorTest.java" :{
+  "blank": 34,
+  "comment": 0,
+  "code": 247,
+  "language": "Java"},
+"backend/pom.xml" :{
+  "blank": 6,
+  "comment": 5,
+  "code": 243,
+  "language": "Maven"},
+"backend/src/test/java/si/konferenca/registration/api/FiltersTest.java" :{
+  "blank": 29,
+  "comment": 2,
+  "code": 242,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/StudentRegistrationAcceptanceTest.java" :{
+  "blank": 48,
+  "comment": 1,
+  "code": 206,
+  "language": "Java"},
+"frontend/src/components/RegistrationForm.tsx" :{
+  "blank": 15,
+  "comment": 1,
+  "code": 201,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/application/RegistrationServiceTest.java" :{
+  "blank": 35,
+  "comment": 0,
+  "code": 200,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/integration/ApiIntegrationTest.java" :{
+  "blank": 35,
+  "comment": 1,
+  "code": 186,
+  "language": "Java"},
+"backend/mvnw" :{
+  "blank": 26,
+  "comment": 48,
+  "code": 185,
+  "language": "Bourne Shell"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationValidator.java" :{
+  "blank": 15,
+  "comment": 11,
+  "code": 181,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/ConferenceOptionsAcceptanceTest.java" :{
+  "blank": 28,
+  "comment": 1,
+  "code": 170,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/OptionsFileLoader.java" :{
+  "blank": 16,
+  "comment": 5,
+  "code": 161,
+  "language": "Java"},
+"frontend/src/components/RegistrationForm.test.tsx" :{
+  "blank": 27,
+  "comment": 0,
+  "code": 161,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/api/FilterDetailsTest.java" :{
+  "blank": 21,
+  "comment": 1,
+  "code": 157,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/RegistrationExportAcceptanceTest.java" :{
+  "blank": 20,
+  "comment": 1,
+  "code": 153,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/application/ExportAndFormServiceTest.java" :{
+  "blank": 13,
+  "comment": 0,
+  "code": 147,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/RegistrationStorageAcceptanceTest.java" :{
+  "blank": 19,
+  "comment": 1,
+  "code": 145,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/config/ConfigurationGuardTest.java" :{
+  "blank": 20,
+  "comment": 1,
+  "code": 144,
+  "language": "Java"},
+"backend/mvnw.cmd" :{
+  "blank": 15,
+  "comment": 0,
+  "code": 134,
+  "language": "DOS Batch"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/SmtpRegistrationNotifier.java" :{
+  "blank": 11,
+  "comment": 5,
+  "code": 134,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/AdapterDetailsTest.java" :{
+  "blank": 19,
+  "comment": 2,
+  "code": 133,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/config/AppConfiguration.java" :{
+  "blank": 15,
+  "comment": 2,
+  "code": 129,
+  "language": "Java"},
+"frontend/e2e/registration.e2e.ts" :{
+  "blank": 18,
+  "comment": 0,
+  "code": 123,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/Mailpit.java" :{
+  "blank": 19,
+  "comment": 6,
+  "code": 120,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/RecaptchaCaptchaVerifierTest.java" :{
+  "blank": 24,
+  "comment": 4,
+  "code": 120,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/ApiExceptionHandler.java" :{
+  "blank": 18,
+  "comment": 4,
+  "code": 117,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/SmtpRegistrationNotifierTest.java" :{
+  "blank": 15,
+  "comment": 1,
+  "code": 114,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/OptionsFileLoaderTest.java" :{
+  "blank": 12,
+  "comment": 0,
+  "code": 107,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/OrganizerNotificationAcceptanceTest.java" :{
+  "blank": 18,
+  "comment": 1,
+  "code": 106,
+  "language": "Java"},
+"frontend/src/components/Captcha.test.tsx" :{
+  "blank": 11,
+  "comment": 0,
+  "code": 106,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/integration/RequestLimitsIntegrationTest.java" :{
+  "blank": 15,
+  "comment": 1,
+  "code": 104,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/integration/ProductionModeIntegrationTest.java" :{
+  "blank": 18,
+  "comment": 4,
+  "code": 100,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/RequestSizeFilter.java" :{
+  "blank": 19,
+  "comment": 5,
+  "code": 97,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationService.java" :{
+  "blank": 9,
+  "comment": 14,
+  "code": 97,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/Registration.java" :{
+  "blank": 24,
+  "comment": 2,
+  "code": 95,
+  "language": "Java"},
+"frontend/src/acceptance/support/api-stub.ts" :{
+  "blank": 6,
+  "comment": 5,
+  "code": 92,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/api/RegistrationController.java" :{
+  "blank": 12,
+  "comment": 4,
+  "code": 90,
+  "language": "Java"},
+"frontend/src/acceptance/external-registration.test.tsx" :{
+  "blank": 16,
+  "comment": 0,
+  "code": 90,
+  "language": "TypeScript"},
+"frontend/src/acceptance/registration-confirmation.test.tsx" :{
+  "blank": 13,
+  "comment": 0,
+  "code": 90,
+  "language": "TypeScript"},
+"frontend/src/api.test.ts" :{
+  "blank": 16,
+  "comment": 0,
+  "code": 90,
+  "language": "TypeScript"},
+"frontend/src/components/Captcha.tsx" :{
+  "blank": 9,
+  "comment": 2,
+  "code": 90,
+  "language": "TypeScript"},
+"frontend/src/validation.test.ts" :{
+  "blank": 13,
+  "comment": 0,
+  "code": 89,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/acceptance/ParticipantEmailAcceptanceTest.java" :{
+  "blank": 18,
+  "comment": 1,
+  "code": 88,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/FileRegistrationCopyStoreTest.java" :{
+  "blank": 18,
+  "comment": 0,
+  "code": 86,
+  "language": "Java"},
+"frontend/src/components/MutationGaps.test.tsx" :{
+  "blank": 14,
+  "comment": 1,
+  "code": 83,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/application/ExportService.java" :{
+  "blank": 9,
+  "comment": 5,
+  "code": 82,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/Database.java" :{
+  "blank": 12,
+  "comment": 4,
+  "code": 81,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/RateLimitFilter.java" :{
+  "blank": 12,
+  "comment": 6,
+  "code": 78,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/TestStack.java" :{
+  "blank": 12,
+  "comment": 6,
+  "code": 78,
+  "language": "Java"},
+"frontend/src/index.css" :{
+  "blank": 13,
+  "comment": 0,
+  "code": 74,
+  "language": "CSS"},
+"backend/src/main/resources/application.yml" :{
+  "blank": 4,
+  "comment": 4,
+  "code": 73,
+  "language": "YAML"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/ApiClient.java" :{
+  "blank": 16,
+  "comment": 3,
+  "code": 73,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/Workbook.java" :{
+  "blank": 11,
+  "comment": 4,
+  "code": 73,
+  "language": "Java"},
+"frontend/e2e/support/stack.ts" :{
+  "blank": 9,
+  "comment": 3,
+  "code": 73,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/CopyStore.java" :{
+  "blank": 12,
+  "comment": 7,
+  "code": 71,
+  "language": "Java"},
+"frontend/src/validation.ts" :{
+  "blank": 7,
+  "comment": 4,
+  "code": 70,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/acceptance/MailFailureAcceptanceTest.java" :{
+  "blank": 14,
+  "comment": 2,
+  "code": 69,
+  "language": "Java"},
+"frontend/src/acceptance/student-registration.test.tsx" :{
+  "blank": 13,
+  "comment": 0,
+  "code": 69,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/JpaRegistrationRepository.java" :{
+  "blank": 9,
+  "comment": 5,
+  "code": 67,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/FileRegistrationCopyStore.java" :{
+  "blank": 9,
+  "comment": 5,
+  "code": 65,
+  "language": "Java"},
+"frontend/src/acceptance/conference-options.test.tsx" :{
+  "blank": 11,
+  "comment": 0,
+  "code": 65,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/RecaptchaCaptchaVerifier.java" :{
+  "blank": 7,
+  "comment": 4,
+  "code": 64,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/RegistrationCopyJson.java" :{
+  "blank": 8,
+  "comment": 1,
+  "code": 63,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/Registrations.java" :{
+  "blank": 12,
+  "comment": 7,
+  "code": 63,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/AcceptanceTest.java" :{
+  "blank": 11,
+  "comment": 7,
+  "code": 62,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/RegistrationFormController.java" :{
+  "blank": 10,
+  "comment": 6,
+  "code": 61,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/DatabaseUnavailableAcceptanceTest.java" :{
+  "blank": 10,
+  "comment": 1,
+  "code": 58,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/ArchitectureTest.java" :{
+  "blank": 8,
+  "comment": 1,
+  "code": 56,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationFormService.java" :{
+  "blank": 8,
+  "comment": 4,
+  "code": 54,
+  "language": "Java"},
+"frontend/src/api.ts" :{
+  "blank": 6,
+  "comment": 1,
+  "code": 54,
+  "language": "TypeScript"},
+"frontend/src/components/RegistrationPage.tsx" :{
+  "blank": 4,
+  "comment": 1,
+  "code": 54,
+  "language": "TypeScript"},
+"frontend/src/types.ts" :{
+  "blank": 11,
+  "comment": 1,
+  "code": 53,
+  "language": "TypeScript"},
+"frontend/package.json" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 51,
+  "language": "JSON"},
+"frontend/src/messages.ts" :{
+  "blank": 2,
+  "comment": 1,
+  "code": 49,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/api/EncodedPathTest.java" :{
+  "blank": 12,
+  "comment": 1,
+  "code": 48,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/config/AppProperties.java" :{
+  "blank": 8,
+  "comment": 7,
+  "code": 45,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/OptionsFileBoundaryTest.java" :{
+  "blank": 9,
+  "comment": 1,
+  "code": 45,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/OrganizerHttpsFilter.java" :{
+  "blank": 8,
+  "comment": 5,
+  "code": 43,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/config/SecurityConfiguration.java" :{
+  "blank": 6,
+  "comment": 58,
+  "code": 43,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/OptionCatalogue.java" :{
+  "blank": 9,
+  "comment": 2,
+  "code": 42,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/PoiWorkbookWriter.java" :{
+  "blank": 4,
+  "comment": 4,
+  "code": 42,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/config/ConfigurationGuard.java" :{
+  "blank": 6,
+  "comment": 4,
+  "code": 41,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/config/WebConfiguration.java" :{
+  "blank": 5,
+  "comment": 1,
+  "code": 41,
+  "language": "Java"},
+"frontend/src/components/TextField.tsx" :{
+  "blank": 3,
+  "comment": 1,
+  "code": 39,
+  "language": "TypeScript"},
+"backend/src/test/resources/acceptance/conference-options.json" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 37,
+  "language": "JSON"},
+"backend/src/main/resources/db/migration/V1__create_registration_tables.sql" :{
+  "blank": 4,
+  "comment": 6,
+  "code": 36,
+  "language": "SQL"},
+"backend/src/test/java/si/konferenca/registration/infrastructure/PoiWorkbookWriterTest.java" :{
+  "blank": 7,
+  "comment": 0,
+  "code": 36,
+  "language": "Java"},
+"frontend/src/acceptance/support/form.ts" :{
+  "blank": 8,
+  "comment": 2,
+  "code": 36,
+  "language": "TypeScript"},
+"frontend/src/components/OptionsFieldset.tsx" :{
+  "blank": 2,
+  "comment": 1,
+  "code": 34,
+  "language": "TypeScript"},
+"backend/src/test/java/si/konferenca/registration/acceptance/RegistrationConfirmationAcceptanceTest.java" :{
+  "blank": 9,
+  "comment": 5,
+  "code": 33,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/integration/EncodedPathIntegrationTest.java" :{
+  "blank": 8,
+  "comment": 1,
+  "code": 33,
+  "language": "Java"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/AppInstance.java" :{
+  "blank": 7,
+  "comment": 5,
+  "code": 30,
+  "language": "Java"},
+"frontend/scripts/validate-schemas.mjs" :{
+  "blank": 2,
+  "comment": 4,
+  "code": 29,
+  "language": "JavaScript"},
+"frontend/vite.config.ts" :{
+  "blank": 1,
+  "comment": 1,
+  "code": 29,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/api/ExportController.java" :{
+  "blank": 6,
+  "comment": 1,
+  "code": 28,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/GivenConsent.java" :{
+  "blank": 10,
+  "comment": 1,
+  "code": 28,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/SelectedOption.java" :{
+  "blank": 10,
+  "comment": 1,
+  "code": 27,
+  "language": "Java"},
+"backend/spotbugs-exclude.xml" :{
+  "blank": 0,
+  "comment": 4,
+  "code": 26,
+  "language": "XML"},
+"backend/src/main/java/si/konferenca/registration/domain/Category.java" :{
+  "blank": 7,
+  "comment": 3,
+  "code": 24,
+  "language": "Java"},
+"frontend/eslint.config.js" :{
+  "blank": 1,
+  "comment": 0,
+  "code": 24,
+  "language": "JavaScript"},
+"backend/src/test/java/si/konferenca/registration/domain/CategoryConverterTest.java" :{
+  "blank": 6,
+  "comment": 0,
+  "code": 22,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationCommand.java" :{
+  "blank": 3,
+  "comment": 4,
+  "code": 20,
+  "language": "Java"},
+"frontend/stryker.config.json" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 19,
+  "language": "JSON"},
+"frontend/tsconfig.json" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 19,
+  "language": "JSON"},
+"backend/src/test/java/si/konferenca/registration/acceptance/support/AcceptanceCriterionNames.java" :{
+  "blank": 4,
+  "comment": 1,
+  "code": 18,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/ErrorResponseWriter.java" :{
+  "blank": 5,
+  "comment": 1,
+  "code": 17,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/CategoryConverter.java" :{
+  "blank": 4,
+  "comment": 1,
+  "code": 17,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/CaptchaVerifier.java" :{
+  "blank": 6,
+  "comment": 9,
+  "code": 16,
+  "language": "Java"},
+"frontend/src/components/Confirmation.tsx" :{
+  "blank": 2,
+  "comment": 1,
+  "code": 16,
+  "language": "TypeScript"},
+"backend/dependency-check-suppressions.xml" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 15,
+  "language": "XML"},
+"backend/src/main/java/si/konferenca/registration/application/ValidationException.java" :{
+  "blank": 6,
+  "comment": 2,
+  "code": 15,
+  "language": "Java"},
+"frontend/playwright.config.ts" :{
+  "blank": 1,
+  "comment": 2,
+  "code": 14,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationCopyStore.java" :{
+  "blank": 6,
+  "comment": 8,
+  "code": 13,
+  "language": "Java"},
+"frontend/Dockerfile" :{
+  "blank": 1,
+  "comment": 0,
+  "code": 13,
+  "language": "Dockerfile"},
+"frontend/src/main.tsx" :{
+  "blank": 2,
+  "comment": 0,
+  "code": 13,
+  "language": "TypeScript"},
+"backend/src/main/java/si/konferenca/registration/domain/RegistrationType.java" :{
+  "blank": 4,
+  "comment": 2,
+  "code": 12,
+  "language": "Java"},
+"frontend/index.html" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 12,
+  "language": "HTML"},
+"backend/src/main/java/si/konferenca/registration/api/ErrorResponse.java" :{
+  "blank": 5,
+  "comment": 2,
+  "code": 11,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/ConferenceOption.java" :{
+  "blank": 4,
+  "comment": 1,
+  "code": 11,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/infrastructure/TestModeCaptchaVerifier.java" :{
+  "blank": 4,
+  "comment": 4,
+  "code": 11,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/RegistrationApplication.java" :{
+  "blank": 3,
+  "comment": 1,
+  "code": 9,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/api/RequestPath.java" :{
+  "blank": 4,
+  "comment": 5,
+  "code": 9,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/EmailAddress.java" :{
+  "blank": 5,
+  "comment": 1,
+  "code": 9,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/domain/ParticipantDetails.java" :{
+  "blank": 1,
+  "comment": 3,
+  "code": 9,
+  "language": "Java"},
+"backend/Dockerfile" :{
+  "blank": 0,
+  "comment": 1,
+  "code": 8,
+  "language": "Dockerfile"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationRepository.java" :{
+  "blank": 5,
+  "comment": 7,
+  "code": 8,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/DuplicateEmailException.java" :{
+  "blank": 2,
+  "comment": 1,
+  "code": 7,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/RegistrationNotifier.java" :{
+  "blank": 4,
+  "comment": 3,
+  "code": 6,
+  "language": "Java"},
+"backend/src/main/java/si/konferenca/registration/application/WorkbookWriter.java" :{
+  "blank": 3,
+  "comment": 1,
+  "code": 5,
+  "language": "Java"},
+"frontend/src/App.tsx" :{
+  "blank": 1,
+  "comment": 0,
+  "code": 4,
+  "language": "TypeScript"},
+"frontend/test-results/.last-run.json" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 4,
+  "language": "JSON"},
+"backend/.mvn/wrapper/maven-wrapper.properties" :{
+  "blank": 0,
+  "comment": 16,
+  "code": 3,
+  "language": "Properties"},
+"frontend/.prettierrc.json" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 3,
+  "language": "JSON"},
+"backend/src/main/java/si/konferenca/registration/domain/ConsentDefinition.java" :{
+  "blank": 1,
+  "comment": 1,
+  "code": 2,
+  "language": "Java"},
+"frontend/src/test/setup.ts" :{
+  "blank": 0,
+  "comment": 0,
+  "code": 1,
+  "language": "TypeScript"},
+"frontend/src/vite-env.d.ts" :{
+  "blank": 0,
+  "comment": 1,
+  "code": 0,
+  "language": "TypeScript"},
+"SUM": {
+  "blank": 1436,
+  "comment": 437,
+  "code": 9662,
+  "nFiles": 137} }

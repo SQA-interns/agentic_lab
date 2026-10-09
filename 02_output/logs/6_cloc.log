@@ -1,0 +1,83 @@
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 6.73235106468201,
+  "n_files"            : 134,
+  "n_lines"            : 11407,
+  "files_per_second"   : 19.903893708539,
+  "lines_per_second"   : 1694.35608606944},
+"Java" :{
+  "nFiles": 84,
+  "blank": 1062,
+  "comment": 311,
+  "code": 6428},
+"TypeScript" :{
+  "nFiles": 30,
+  "blank": 278,
+  "comment": 30,
+  "code": 2136},
+"Maven" :{
+  "nFiles": 1,
+  "blank": 6,
+  "comment": 5,
+  "code": 243},
+"Bourne Shell" :{
+  "nFiles": 1,
+  "blank": 26,
+  "comment": 48,
+  "code": 185},
+"DOS Batch" :{
+  "nFiles": 1,
+  "blank": 15,
+  "comment": 0,
+  "code": 134},
+"JSON" :{
+  "nFiles": 6,
+  "blank": 0,
+  "comment": 0,
+  "code": 133},
+"CSS" :{
+  "nFiles": 1,
+  "blank": 13,
+  "comment": 0,
+  "code": 74},
+"YAML" :{
+  "nFiles": 1,
+  "blank": 3,
+  "comment": 2,
+  "code": 70},
+"JavaScript" :{
+  "nFiles": 2,
+  "blank": 3,
+  "comment": 4,
+  "code": 53},
+"XML" :{
+  "nFiles": 2,
+  "blank": 0,
+  "comment": 4,
+  "code": 41},
+"SQL" :{
+  "nFiles": 1,
+  "blank": 4,
+  "comment": 6,
+  "code": 36},
+"Dockerfile" :{
+  "nFiles": 2,
+  "blank": 1,
+  "comment": 1,
+  "code": 21},
+"HTML" :{
+  "nFiles": 1,
+  "blank": 0,
+  "comment": 0,
+  "code": 12},
+"Properties" :{
+  "nFiles": 1,
+  "blank": 0,
+  "comment": 16,
+  "code": 3},
+"SUM": {
+  "blank": 1411,
+  "comment": 427,
+  "code": 9569,
+  "nFiles": 134} }

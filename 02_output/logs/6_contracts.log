@@ -1,0 +1,27 @@
+== redocly lint
+No configurations were provided -- using built in recommended configuration by default.
+
+validating 02_contracts/openapi.yaml...
+02_contracts/openapi.yaml: validated in 406ms
+
+No configurations were provided -- using built in recommended configuration by default.
+
+validating 02_contracts/recaptcha-siteverify.yaml...
+02_contracts/recaptcha-siteverify.yaml: validated in 143ms
+
+Woohoo! Your API descriptions are valid. 🎉
+
+== ajv (JSON Schema 2020-12)
+conference-options.schema.json: valid schema
+conference-options.example.json: valid
+emails.schema.json: valid schema
+emails.json: valid
+export-workbook.schema.json: valid schema
+export-workbook.json: valid
+registration-copy.schema.json: valid schema
+registration-copy.example.json: valid
+ui-form.schema.json: valid schema
+ui-form.json: valid
+== SQL (applied to an empty PostgreSQL)
+SQL valid
+database.sql: valid sql

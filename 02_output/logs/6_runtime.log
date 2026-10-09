@@ -1,0 +1,70 @@
+
+== containers and health checks (NFR-04)
+frontend: Up 11 minutes (healthy)
+backend: Up 11 minutes (healthy)
+postgres: Up 11 minutes (healthy)
+mailpit: Up 11 minutes (healthy)
+GET /api/registration-form through nginx: 200
+{"status":"UP"}
+
+== external registration (DoD-P01, NFR-01)
+{"registrationId":"a5187d88-d9c8-45fb-8cec-9ea87a91fe0d","registeredAt":"2026-10-09T14:19:58.293Z","type":"EXTERNAL"}
+201
+
+== student registration (DoD-P01)
+{"registrationId":"31f36a77-5d8f-42a6-bad9-23547b61a865","registeredAt":"2026-10-09T14:19:58.456Z","type":"STUDENT"}
+201
+
+== rejected registration: wrong anti-automation token
+{"error":"captcha_failed","message":"Please confirm that you are not a robot.","fieldErrors":[]}
+400
+
+== database rows (DoD-P02)
+                  id                  |   type   | first_name |  last_name   |     organization     |             study_institution             |       registered_at        
+--------------------------------------+----------+------------+--------------+----------------------+-------------------------------------------+----------------------------
+ a5187d88-d9c8-45fb-8cec-9ea87a91fe0d | EXTERNAL | Črtomir    | Šuštar Žižek | Univerza v Ljubljani |                                           | 2026-10-09 14:19:58.293+00
+ 31f36a77-5d8f-42a6-bad9-23547b61a865 | STUDENT  | Žana       | Kovač        |                      | Fakulteta za računalništvo in informatiko | 2026-10-09 14:19:58.456+00
+(2 rows)
+
+           registration_id            |     option_id     | category 
+--------------------------------------+-------------------+----------
+ 31f36a77-5d8f-42a6-bad9-23547b61a865 | other-career-fair | other
+ 31f36a77-5d8f-42a6-bad9-23547b61a865 | ws-security       | workshop
+ a5187d88-d9c8-45fb-8cec-9ea87a91fe0d | ev-reception      | event
+ a5187d88-d9c8-45fb-8cec-9ea87a91fe0d | meal-lunch-1      | meal
+ a5187d88-d9c8-45fb-8cec-9ea87a91fe0d | ws-ai             | workshop
+(5 rows)
+
+
+== JSON copies on the volume (DoD-P02)
+-rw------- 1 app app 709 Oct  9 14:19 /data/registrations/registration-31f36a77-5d8f-42a6-bad9-23547b61a865.json
+-rw------- 1 app app 683 Oct  9 14:19 /data/registrations/registration-a5187d88-d9c8-45fb-8cec-9ea87a91fe0d.json
+{"registrationId":"a5187d88-d9c8-45fb-8cec-9ea87a91fe0d","registeredAt":"2026-10-09T14:19:58.293Z","type":"EXTERNAL","participant":{"firstName":"Črtomir","lastName":"Šuštar Žižek","email":"runtime.external.6.20261009141957@example.si","organization":"Univerza v Ljubljani"},"options":[{"id":"ws-ai","name":"Delavnica umetne inteligence","category":"workshop"},{"id":"ev-reception","name":"Welcome reception","category":"event"},{"id":"meal-lunch-1","name":"Lunch, day 1","category":"meal"}],"consents":[{"id":"data-processing","text":"I agree to the processing of my personal data for the registration and organisation of the conference.","givenAt":"2026-10-09T14:19:58.293Z"}]}
+
+== emails in Mailpit (DoD-P03)
+external participant email: 1 message(s), subject "Registration confirmation: Konferenca 2026"
+external organizer email: 1 message(s) to 1 organizer address(es), attachment registration-a5187d88-d9c8-45fb-8cec-9ea87a91fe0d.json (application/json)
+external attachment registrationId matches: true
+student participant email: 1 message(s), subject "Registration confirmation: Konferenca 2026"
+student organizer email: 1 message(s) to 1 organizer address(es), attachment registration-31f36a77-5d8f-42a6-bad9-23547b61a865.json (application/json)
+student attachment registrationId matches: true
+
+== organizer workbook (DoD-P04)
+without credentials: 401
+wrong password: 401
+organizer: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+content-disposition: attachment; filename="registrations.xlsx"
+bytes: 6835, zip signature: PK
+     6656  2026-10-09 14:20   xl/sharedStrings.xml
+    16172  2026-10-09 14:20   xl/worksheets/sheet1.xml
+workbook contains: Registration ID
+workbook contains: Consents
+workbook contains: a5187d88-d9c8-45fb-8cec-9ea87a91fe0d
+workbook contains: 31f36a77-5d8f-42a6-bad9-23547b61a865
+workbook contains: Črtomir
+workbook contains: Šuštar Žižek
+workbook contains: Žana
+
+== personal data in the backend log (ES-07)
+backend log lines containing the demo email addresses: 0
+backend log lines containing the demo names: 0

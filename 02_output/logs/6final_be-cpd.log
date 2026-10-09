@@ -1,0 +1,23 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> pmd:3.26.0:cpd-check (default-cli) > :cpd @ registration-backend >>>
+[INFO] 
+[INFO] --- pmd:3.26.0:cpd (cpd) @ registration-backend ---
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< pmd:3.26.0:cpd-check (default-cli) < :cpd @ registration-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.26.0:cpd-check (default-cli) @ registration-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.407 s
+[INFO] Finished at: 2026-10-09T16:09:28+02:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,30 @@
+
+ RUN  v4.1.11 C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+ ❯ src/components/FormDetails.test.tsx (12 tests | 1 failed) 760ms
+     × resets the reCAPTCHA widget after a submission the server refused 91ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/FormDetails.test.tsx > form details > resets the reCAPTCHA widget after a submission the server refused
+AssertionError: expected "vi.fn()" to be called with arguments: [ 5 ]
+
+Number of calls: 0
+
+ ❯ src/components/FormDetails.test.tsx:161:19
+    159|
+    160|     await screen.findByTestId("form-error");
+    161|     expect(reset).toHaveBeenCalledWith(5);
+       |                   ^
+    162|   });
+    163| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 9 passed (10)
+      Tests  1 failed | 61 passed (62)
+   Start at  15:42:54
+   Duration  7.16s (transform 2.95s, setup 6.17s, import 7.65s, tests 5.64s, environment 32.87s)
+
