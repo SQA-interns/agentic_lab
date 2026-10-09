@@ -1,0 +1,169 @@
+ Image registration-backend Building 
+ Image registration-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.11kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 472B 0.0s done
+#2 DONE 0.1s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 424B 0.0s done
+#3 DONE 0.1s
+
+#4 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#4 DONE 0.1s
+
+#5 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#5 DONE 0.2s
+
+#6 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#6 DONE 0.1s
+
+#7 [frontend internal] load .dockerignore
+#7 transferring context: 119B 0.0s done
+#7 DONE 0.0s
+
+#8 [backend internal] load .dockerignore
+#8 transferring context: 81B 0.0s done
+#8 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [backend internal] load build context
+#10 ...
+
+#11 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#11 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#11 DONE 0.1s
+
+#10 [backend internal] load build context
+#10 ...
+
+#12 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#12 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#12 DONE 0.1s
+
+#13 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#13 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#13 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 transferring context: 39.68kB 0.0s done
+#9 DONE 0.1s
+
+#14 [frontend build 2/6] WORKDIR /app
+#14 CACHED
+
+#15 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#15 CACHED
+
+#16 [frontend build 4/6] RUN npm ci
+#16 CACHED
+
+#17 [frontend build 5/6] COPY . .
+#17 DONE 0.2s
+
+#10 [backend internal] load build context
+#10 transferring context: 52.80MB 5.2s
+#10 transferring context: 80.26MB 7.4s done
+#10 DONE 7.5s
+
+#18 [backend 2/4] RUN addgroup -S app && adduser -S app -G app   && mkdir -p /data/registrations && chown app:app /data/registrations
+#18 CACHED
+
+#19 [backend 3/4] WORKDIR /app
+#19 CACHED
+
+#20 [backend 4/4] COPY target/registration-backend-0.1.0.jar app.jar
+#20 DONE 0.7s
+
+#21 [frontend build 6/6] RUN npm run build
+#21 3.939 
+#21 3.939 > registration-frontend@0.1.0 build
+#21 3.939 > tsc --noEmit && vite build
+#21 3.939 
+#21 ...
+
+#22 [backend] exporting to image
+#22 exporting layers
+#22 exporting layers 5.6s done
+#22 exporting manifest sha256:1dfec97511141d069ea603b5b74699ba29d0efc9093cc939cc9ac4486472bdb6 0.0s done
+#22 exporting config sha256:2faac8d97141d4b89c1b24d7971b3b892e1dc4ae65ff74fe6781f032927428bc 0.0s done
+#22 exporting attestation manifest sha256:d0895223aeaa8473052711ad57affd3f6f611996c63431d9e7fc274c937faff6
+#22 exporting attestation manifest sha256:d0895223aeaa8473052711ad57affd3f6f611996c63431d9e7fc274c937faff6 0.0s done
+#22 exporting manifest list sha256:f01b25a2db9f6812448fc431b566dc7eff3b8818a15b4948bbbed8825287f444 0.0s done
+#22 naming to docker.io/library/registration-backend:latest done
+#22 unpacking to docker.io/library/registration-backend:latest
+#22 ...
+
+#21 [frontend build 6/6] RUN npm run build
+#21 14.53 vite v6.4.3 building for production...
+#21 ...
+
+#22 [backend] exporting to image
+#22 unpacking to docker.io/library/registration-backend:latest 0.9s done
+#22 DONE 6.8s
+
+#21 [frontend build 6/6] RUN npm run build
+#21 ...
+
+#23 [backend] resolving provenance for metadata file
+#23 DONE 0.0s
+
+#21 [frontend build 6/6] RUN npm run build
+#21 14.89 transforming...
+#21 18.12 ✓ 38 modules transformed.
+#21 18.67 rendering chunks...
+#21 18.70 computing gzip size...
+#21 18.73 dist/index.html                   0.41 kB │ gzip:  0.27 kB
+#21 18.73 dist/assets/index-8whfVrkj.css    0.99 kB │ gzip:  0.46 kB
+#21 18.73 dist/assets/index-D4f1cgHC.js   233.77 kB │ gzip: 73.15 kB
+#21 18.73 ✓ built in 4.05s
+#21 DONE 19.2s
+
+#24 [frontend stage-1 3/4] COPY --from=build /app/dist /usr/share/nginx/html
+#24 CACHED
+
+#25 [frontend stage-1 2/4] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#25 CACHED
+
+#26 [frontend stage-1 4/4] RUN chown -R nginx:nginx /var/cache/nginx /var/run /var/log/nginx /etc/nginx/conf.d   && touch /var/run/nginx.pid && chown nginx:nginx /var/run/nginx.pid
+#26 CACHED
+
+#27 [frontend] exporting to image
+#27 exporting layers 0.0s done
+#27 exporting manifest sha256:c469d549b880546b731367fb9ecc19438a85f3fbe80dd9353b733811c2614382 done
+#27 exporting config sha256:d718815446b4caa3fc88516f15ba13e372ce02d323710584b7697c5b2e7fc1c1 done
+#27 exporting attestation manifest sha256:5d1517ec42590edb6d428ec257cbc569ac4abd9c652cdf5bc4841a32804a8777 0.0s done
+#27 exporting manifest list sha256:6d35c81d6ba00266d50587284b5074909fb8f362333830f9f909c8749d5a189d
+#27 exporting manifest list sha256:6d35c81d6ba00266d50587284b5074909fb8f362333830f9f909c8749d5a189d 0.0s done
+#27 naming to docker.io/library/registration-frontend:latest done
+#27 unpacking to docker.io/library/registration-frontend:latest 0.1s done
+#27 DONE 0.4s
+
+#28 [frontend] resolving provenance for metadata file
+#28 DONE 0.0s
+ Image registration-frontend Built 
+ Image registration-backend Built 
+ Container registration-frontend-1 Running 
+ Container registration-postgres-1 Running 
+ Container registration-mailpit-1 Running 
+ Container registration-backend-1 Recreate 
+ Container registration-backend-1 Recreated 
+ Container registration-postgres-1 Waiting 
+ Container registration-mailpit-1 Waiting 
+ Container registration-mailpit-1 Healthy 
+ Container registration-postgres-1 Healthy 
+ Container registration-backend-1 Starting 
+ Container registration-backend-1 Started 
+ Container registration-frontend-1 Waiting 
+ Container registration-postgres-1 Waiting 
+ Container registration-mailpit-1 Waiting 
+ Container registration-backend-1 Waiting 
+ Container registration-postgres-1 Healthy 
+ Container registration-mailpit-1 Healthy 
+ Container registration-frontend-1 Healthy 
+ Container registration-backend-1 Healthy 

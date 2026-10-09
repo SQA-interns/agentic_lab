@@ -1,0 +1,318 @@
+[32m14:39:04 (39092) INFO ProjectReader[39m Found 11 of 70 file(s) to be mutated.
+[32m14:39:05 (39092) INFO Instrumenter[39m Instrumented 11 source file(s) with 498 mutant(s)
+[32m14:39:06 (39092) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m14:39:12 (39092) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m14:39:43 (39092) INFO DryRunExecutor[39m Initial test run succeeded. Ran 57 tests in 31 seconds (net 3535.989699999981 ms, overhead 28066.01030000002 ms).
+
+All tests
+  acceptance
+    conference-options.test.tsx
+      ✓ US-003 Configurable conference options (UI) AC-003-01 offers the options of the form data by name, grouped by category (killed 5)
+      ✓ US-003 Configurable conference options (UI) AC-003-03 options not available to the chosen type are not offered (killed 1)
+      ✓ US-003 Configurable conference options (UI) AC-003-05 the participant fields are exactly those of BR-01 for each type (killed 3)
+    external-registration.test.tsx
+      ✓ US-001 External participant registration (UI) AC-001-01 submits exactly the entered external registration (killed 11)
+      ✓ US-001 External participant registration (UI) AC-001-02 the external form asks for the external fields and no student field (killed 3)
+      ~ US-001 External participant registration (UI) AC-001-13 no consent is preselected on the external form (covered 154)
+      ✓ US-001 External participant registration (UI) AC-001-17 an empty required field is shown next to the field and nothing is sent (killed 3)
+      ✓ US-001 External participant registration (UI) AC-001-17 an invalid email is shown next to the field and nothing is sent (killed 1)
+    registration-confirmation.test.tsx
+      ✓ US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation instead of the form (killed 29)
+      ✓ US-004 Registration confirmation (UI) AC-004-02 a rejected registration shows each field error next to its field and keeps the values (killed 11)
+      ✓ US-004 Registration confirmation (UI) AC-004-02 a duplicate email is shown next to the email field (killed 1)
+      ✓ US-004 Registration confirmation (UI) AC-004-03 a failed registration shows a general error without internal details (killed 1)
+    student-registration.test.tsx
+      ✓ US-002 Student registration (UI) AC-002-01 submits exactly the entered student registration (killed 20)
+      ✓ US-002 Student registration (UI) AC-002-02 the student form asks for the student fields and not for organization (killed 1)
+      ~ US-002 Student registration (UI) AC-002-11 no consent is preselected on the student form (covered 157)
+      ✓ US-002 Student registration (UI) AC-002-15 an empty required student field is shown next to it and nothing is sent (killed 5)
+  components
+    Captcha.test.tsx
+      ~ captcha gives the test token while the test checkbox is checked (covered 11)
+      ✓ captcha loads Google's script once and renders the widget with the site key (killed 2)
+      ✓ captcha renders at once when the script is already loaded and resets after a submission (killed 2)
+    FormDetails.test.tsx
+      ✓ form details unchecks an option on a second click (killed 12)
+      ✓ form details reports fields that were never touched as required (killed 3)
+      ✓ form details sends a registration only once while the first submission is pending (killed 16)
+      ✓ form details shows no general error when every server error belongs to a field (killed 11)
+      ✓ form details joins several general errors and gives list errors their ids (killed 5)
+      ✓ form details resets the reCAPTCHA widget after a submission the server refused (killed 24)
+      ✓ captcha details does not reset on first render or before the widget exists (killed 5)
+      ✓ captcha details renders the widget once and adds the script once, asynchronously (killed 8)
+      ~ captcha details does not render before Google's script has loaded (covered 37)
+      ✓ captcha details passes an empty site key when none is configured (killed 2)
+      ✓ api details treats field errors of other statuses as a failure (killed 3)
+      ✓ api details treats a JSON string answer as a failure without a code (killed 8)
+    RegistrationForm.test.tsx
+      ✓ registration form shows nothing but the type choice until a type is chosen (killed 1)
+      ✓ registration form drops selected options that the new type cannot have (killed 21)
+      ✓ registration form sends trimmed values and reports the accepted registration (killed 40)
+      ✓ registration form blocks submission without the anti-automation check or with too many options (killed 19)
+      ✓ registration form shows a missing consent next to the consents (killed 5)
+      ✓ registration form shows server errors for unknown fields and known codes in the form error (killed 21)
+      ✓ registration form maps a 429 rate_limited answer to a fixed message (killed 5)
+      ✓ registration form maps a 400 captcha_failed answer to a fixed message (killed 3)
+      ~ registration form maps a 503 captcha_unavailable answer to a fixed message (covered 264)
+      ✓ registration form maps a 500 internal_error answer to a fixed message (killed 1)
+      ✓ registration page says so when the form data cannot be loaded (killed 15)
+      ✓ registration page shows the conference name once loaded (killed 7)
+  api.test.ts
+    ✓ api client posts JSON to the relative registration endpoint (killed 1)
+    ✓ api client returns field errors of 400 and 409 as a rejection (killed 5)
+    ~ api client returns the error code of other failures (covered 48)
+    ✓ api client treats unreadable answers and network failures as failed without a code (killed 11)
+    ✓ api client loads the form data and fails on an error status (killed 1)
+  validation.test.ts
+    ✓ text field rules requires a value after trimming (killed 5)
+    ✓ text field rules rejects control characters inside the value (killed 4)
+    ✓ text field rules counts code points against the maximum (killed 8)
+    ✓ text field rules checks the email format (killed 8)
+    ~ text field rules accepts Slovenian characters (covered 19)
+    ✓ text field rules lists the fields of each type (killed 4)
+    ✓ draft validation accepts a complete draft (killed 4)
+    ✓ draft validation reports too many options, a missing mandatory consent and a missing token (killed 19)
+    ✓ draft validation reports missing fields of the chosen type only (killed 7)
+
+[Survived] ArrayDeclaration
+src/components/Captcha.tsx:91:6
+-     }, [siteKey]);
++     }, []);
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha details renders the widget once and adds the script once, asynchronously
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:94:9
+-       if (resetSignal > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (true && widgetId.current !== null) {
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha details renders the widget once and adds the script once, asynchronously
+  and 4 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:94:9
+-       if (resetSignal > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (resetSignal > 0 && window.grecaptcha || widgetId.current !== null) {
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha details renders the widget once and adds the script once, asynchronously
+  and 4 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:94:9
+-       if (resetSignal > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (resetSignal > 0 || window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha details renders the widget once and adds the script once, asynchronously
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:94:49
+-       if (resetSignal > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (resetSignal > 0 && window.grecaptcha && true) {
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha renders at once when the script is already loaded and resets after a submission
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:94:9
+-       if (resetSignal > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (true && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha details renders the widget once and adds the script once, asynchronously
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/components/Captcha.tsx:94:9
+-       if (resetSignal > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (resetSignal >= 0 && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    form details resets the reCAPTCHA widget after a submission the server refused
+    captcha details does not reset on first render or before the widget exists
+    captcha details renders the widget once and adds the script once, asynchronously
+  and 4 more tests!
+
+
+[NoCoverage] StringLiteral
+src/components/RegistrationForm.tsx:86:77
+-         ...Object.fromEntries(fields.map((field) => [field, (values[field] ?? "").trim()])),
++         ...Object.fromEntries(fields.map((field) => [field, (values[field] ?? "Stryker was here!").trim()])),
+
+[NoCoverage] StringLiteral
+src/components/RegistrationForm.tsx:95:57
+-         onRegistered(result.created, request.firstName ?? "", request.lastName ?? "");
++         onRegistered(result.created, request.firstName ?? "Stryker was here!", request.lastName ?? "");
+
+[NoCoverage] StringLiteral
+src/components/RegistrationForm.tsx:95:81
+-         onRegistered(result.created, request.firstName ?? "", request.lastName ?? "");
++         onRegistered(result.created, request.firstName ?? "", request.lastName ?? "Stryker was here!");
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:57:44
+-       return list.includes(id) ? list.filter((item) => item !== id) : [...list, id];
++       return list.includes(id) ? list.filter(() => undefined) : [...list, id];
+Tests ran:
+    registration form sends trimmed values and reports the accepted registration
+    registration form shows a missing consent next to the consents
+    form details unchecks an option on a second click
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:57:54
+-       return list.includes(id) ? list.filter((item) => item !== id) : [...list, id];
++       return list.includes(id) ? list.filter((item) => false) : [...list, id];
+Tests ran:
+    registration form sends trimmed values and reports the accepted registration
+    registration form shows a missing consent next to the consents
+    form details unchecks an option on a second click
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:80:5
+-       setFormError(null);
++       ;
+Tests ran:
+    registration form sends trimmed values and reports the accepted registration
+    registration form blocks submission without the anti-automation check or with too many options
+    registration form shows a missing consent next to the consents
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:115:8
+-         (result.errorCode !== null ? messages.serverErrors[result.errorCode] : undefined) ??
++         (true ? messages.serverErrors[result.errorCode] : undefined) ??
+Tests ran:
+    registration form maps a 429 rate_limited answer to a fixed message
+    registration form maps a 400 captcha_failed answer to a fixed message
+    registration form maps a 503 captcha_unavailable answer to a fixed message
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationPage.tsx:29:13
+-           if (active) {
++           if (true) {
+Tests ran:
+    registration page says so when the form data cannot be loaded
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationPage.tsx:17:48
+-     const [loadFailed, setLoadFailed] = useState(false);
++     const [loadFailed, setLoadFailed] = useState(true);
+Tests ran:
+    registration page says so when the form data cannot be loaded
+    registration page shows the conference name once loaded
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation instead of the form
+  and 15 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationPage.tsx:33:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    registration page says so when the form data cannot be loaded
+    registration page shows the conference name once loaded
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation instead of the form
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/components/TextField.tsx:31:45
+-           autoComplete={AUTOCOMPLETE[name] ?? "off"}
++           autoComplete={AUTOCOMPLETE[name] ?? ""}
+Tests ran:
+    registration form drops selected options that the new type cannot have
+    US-002 Student registration (UI) AC-002-01 submits exactly the entered student registration
+    US-002 Student registration (UI) AC-002-02 the student form asks for the student fields and not for organization
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:50:10
+-     return typeof body === "object" && body !== null && "registrationId" in body;
++     return true && "registrationId" in body;
+Tests ran:
+    registration form sends trimmed values and reports the accepted registration
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation instead of the form
+    US-001 External participant registration (UI) AC-001-01 submits exactly the entered external registration
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:50:10
+-     return typeof body === "object" && body !== null && "registrationId" in body;
++     return true && body !== null && "registrationId" in body;
+Tests ran:
+    registration form sends trimmed values and reports the accepted registration
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation instead of the form
+    US-001 External participant registration (UI) AC-001-01 submits exactly the entered external registration
+  and 3 more tests!
+
+
+[Survived] LogicalOperator
+src/api.ts:50:10
+-     return typeof body === "object" && body !== null && "registrationId" in body;
++     return typeof body === "object" || body !== null && "registrationId" in body;
+Tests ran:
+    registration form sends trimmed values and reports the accepted registration
+    US-004 Registration confirmation (UI) AC-004-01 an accepted registration shows the confirmation instead of the form
+    US-001 External participant registration (UI) AC-001-01 submits exactly the entered external registration
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/messages.ts:44:19
+-     registrationId: "Registration ID",
++     registrationId: "",
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:17:15
+-   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+Ran all tests for this mutant.
+
+Ran 3.07 tests per mutant on average.
+-----------------------|------------------|----------|-----------|------------|----------|----------|
+                       | % Mutation score |          |           |            |          |          |
+File                   |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files              |  95.38 |   95.96 |      411 |        64 |         20 |        3 |        0 |
+ components            |  93.75 |   94.74 |      225 |        45 |         15 |        3 |        0 |
+  Captcha.tsx          |  88.33 |   88.33 |       52 |         1 |          7 |        0 |        0 |
+  Confirmation.tsx     | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+  OptionsFieldset.tsx  | 100.00 |  100.00 |        5 |         1 |          0 |        0 |        0 |
+  RegistrationForm.tsx |  95.76 |   97.53 |      133 |        25 |          4 |        3 |        0 |
+  RegistrationPage.tsx |  88.89 |   88.89 |       22 |         2 |          3 |        0 |        0 |
+  TextField.tsx        |  96.55 |   96.55 |       12 |        16 |          1 |        0 |        0 |
+ api.ts                |  96.30 |   96.30 |       69 |         9 |          3 |        0 |        0 |
+ App.tsx               | 100.00 |  100.00 |        1 |         0 |          0 |        0 |        0 |
+ messages.ts           |  97.56 |   97.56 |       30 |        10 |          1 |        0 |        0 |
+ validation.ts         |  98.85 |   98.85 |       86 |         0 |          1 |        0 |        0 |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m14:48:01 (39092) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m14:48:01 (39092) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend/reports/mutation/mutation.html
+[32m14:48:01 (39092) INFO MutationTestExecutor[39m Done in 8 minutes and 58 seconds.

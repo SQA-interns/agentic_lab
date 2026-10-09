@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/registration.e2e.ts:13:3 › Registration through the running stack › AC-001-01 AC-004-01 AC-006-01 NFR-01 an external participant with Slovenian characters registers (996ms)
+  ✓  2 [chromium] › e2e/registration.e2e.ts:40:3 › Registration through the running stack › AC-002-01 AC-004-01 a student registers (550ms)
+  ✓  3 [chromium] › e2e/registration.e2e.ts:59:3 › Registration through the running stack › AC-001-17 the page shows an invalid email next to the field and sends nothing (388ms)
+  ✓  4 [chromium] › e2e/registration.e2e.ts:83:3 › Registration through the running stack › AC-003-03 each form offers only the options available to its type (195ms)
+  ✓  5 [chromium] › e2e/registration.e2e.ts:95:3 › Registration through the running stack › AC-007-02 the organizer email carries the registration JSON (444ms)
+  ✓  6 [chromium] › e2e/registration.e2e.ts:121:3 › Registration through the running stack › AC-008-01 AC-008-02 only the organizer can download the workbook (285ms)
+
+  6 passed (5.3s)
