@@ -1,0 +1,13 @@
+
+> registration-frontend@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+
+
+ Test Files  5 passed (5)
+      Tests  33 passed (33)
+   Start at  14:13:27
+   Duration  1.25s (transform 329ms, setup 855ms, import 387ms, tests 527ms, environment 2.56s)
+
