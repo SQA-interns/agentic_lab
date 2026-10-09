@@ -1,6 +1,7 @@
 package si.konferenca.registration.config;
 
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,6 +16,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import si.konferenca.registration.api.ErrorResponse;
 import si.konferenca.registration.api.ErrorResponseWriter;
 
@@ -29,7 +32,14 @@ public class SecurityConfiguration {
   private static final String REALM = "organizer";
 
   @Bean
-  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  SecurityFilterChain securityFilterChain(HttpSecurity http, AppProperties properties)
+      throws Exception {
+    CorsConfiguration cors = new CorsConfiguration();
+    cors.setAllowedOrigins(properties.corsAllowedOrigins());
+    cors.setAllowedMethods(List.of("GET", "POST"));
+    cors.setAllowedHeaders(List.of("Content-Type", "Authorization"));
+    UrlBasedCorsConfigurationSource corsSource = new UrlBasedCorsConfigurationSource();
+    corsSource.registerCorsConfiguration("/api/**", cors);
     AuthenticationEntryPoint unauthorized =
         (request, response, exception) -> {
           response.setHeader("WWW-Authenticate", "Basic realm=\"" + REALM + "\"");
@@ -45,6 +55,7 @@ public class SecurityConfiguration {
                 HttpServletResponse.SC_FORBIDDEN,
                 ErrorResponse.of("unauthorized", "Access is not allowed."));
     http.csrf(csrf -> csrf.disable())
+        .cors(c -> c.configurationSource(corsSource))
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .requestCache(cache -> cache.disable())
