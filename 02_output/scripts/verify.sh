@@ -171,7 +171,8 @@ run_tool() {
         `${valid} mutants, killed ${k}, survived ${s}, timeout ${t}, no coverage ${n}, score ${valid ? (100 * (k + t) / valid).toFixed(1) : "n/a"}%`')"
       ;;
     fe-audit)
-      (cd "$FE" && npm audit --json) >"$LOG" 2>&1 || code=$?
+      # Exit code follows the severity policy: Critical and High block; lower levels are counted.
+      (cd "$FE" && npm audit --json --audit-level=high) >"$LOG" 2>&1 || code=$?
       key="$(json "$LOG" 'const v = d.metadata.vulnerabilities; `critical ${v.critical}, high ${v.high}, moderate ${v.moderate}, low ${v.low}`')"
       ;;
     contracts)
