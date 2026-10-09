@@ -46,7 +46,7 @@ ArchUnit rules (test `ArchitectureTest`): the table above as a `layeredArchitect
 
 One `RegistrationValidator` in `application`; the frontend mirrors the same rules in `src/validation.ts`.
 
-- Every text field is stripped of leading and trailing Unicode whitespace (`String.strip()`), then: empty → `required`; contains a character of Unicode category Cc → `invalid_characters`; longer than its maximum (email 254, names 100, organization / study institution / study programme 200, student ID 50) in code points → `too_long`.
+- Every text field is stripped of leading and trailing Unicode whitespace (`String.strip()`), then: absent, null or empty → `required`; contains a character of Unicode category Cc → `invalid_characters`; longer than its maximum (email 254, names 100, organization / study institution / study programme 200, student ID 50) in code points → `too_long`.
 - Email additionally matches `^[^\s@]+@[^\s@]+\.[^\s@]+$` → otherwise `invalid_email`. `email_normalized` = `email.toLowerCase(Locale.ROOT)`.
 - A property of the other type present (e.g. `organization` on a student) → `not_allowed`; unknown properties → 400 `invalid_request`.
 - Options (SR-04, BR-04, D-09, D-12): each id must exist in the configuration (`unknown_option`), be active (`inactive_option`) and be available to the type (`option_not_available`); per category the count must not exceed `maxSelections` (`too_many_options`). All option errors use field `optionIds`.
@@ -64,6 +64,7 @@ One `RegistrationValidator` in `application`; the frontend mirrors the same rule
 
 - `RECAPTCHA_TEST_MODE=false` (default): the form gets `captcha.mode=recaptcha` and `RECAPTCHA_SITE_KEY`; the backend posts the token to `RECAPTCHA_VERIFY_URL` (default Google's) per [recaptcha-siteverify.yaml](02_contracts/recaptcha-siteverify.yaml), 5 s timeout.
 - `RECAPTCHA_TEST_MODE=true`: the form gets `captcha.mode=test`, shows `captcha-test`; the backend accepts exactly the token `test-valid` and calls nothing.
+- `captchaToken` is not a validated field: absent, empty or rejected → 400 `captcha_failed` (after field validation passed).
 - Startup refuses (exception naming the setting, never its value) when test mode is off and either key is empty, or when test mode is on and the Spring profile `production` is active.
 - Production code path tests use a local HTTP stub as `RECAPTCHA_VERIFY_URL`, with accepted, rejected, non-200 and timeout answers (DoD-P05).
 
@@ -89,7 +90,7 @@ Environment variables, mapped in `application.yml`; secrets have no default. `lo
 | `SMTP_USERNAME`, `SMTP_PASSWORD` | empty | production only |
 | `MAIL_FROM` | `registration@konferenca.si` | |
 | `CONFERENCE_NAME` | `Conference` | |
-| `OPTIONS_FILE` | `classpath:conference-options.json` (copy of [conference-options.example.json](02_contracts/conference-options.example.json)) | profile `production` requires an explicit file path |
+| `OPTIONS_FILE` | `classpath:conference-options.json` (copy of [conference-options.example.json](02_contracts/conference-options.example.json)) | a Spring resource location (`classpath:` or `file:`); profile `production` requires an explicit `file:` location |
 | `JSON_COPY_DIR` | `/data/registrations` | named volume |
 | `RECAPTCHA_TEST_MODE`, `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY`, `RECAPTCHA_VERIFY_URL` | `false`, empty, empty, Google | compose and tests: test mode `true` |
 | `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD`, `ORGANIZER_EMAILS` | none | from `.env` |
