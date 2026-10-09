@@ -137,7 +137,37 @@ cloc() {
   line cloc "$rc" "$(grep -E '^SUM:' "$log" | tr -s ' ')" "$log"
 }
 
-ALL=(backend_build backend_check backend_test frontend_build frontend_check frontend_test
+contracts() {
+  local log="$LOGS/${PHASE}_contracts.log" dir="$OUT/docs/02_contracts" rc=0
+  : >"$log"
+  for f in registration-api.openapi.yaml recaptcha-verify.openapi.yaml; do
+    (cd "$dir" && npx --yes @redocly/cli@2.62.0 lint --format stylish "$f") >>"$log" 2>&1 || rc=1
+  done
+  python3 - "$dir" >>"$log" 2>&1 <<'PY' || rc=1
+import json, sys, pathlib
+from jsonschema import Draft202012Validator
+d = pathlib.Path(sys.argv[1])
+pairs = {"ui-form.json": "ui-form.schema.json",
+         "examples/conference-config.example.json": "conference-config.schema.json",
+         "examples/registration-copy.example.json": "registration-copy.schema.json"}
+for s in sorted(d.glob("*.schema.json")):
+    Draft202012Validator.check_schema(json.loads(s.read_text("utf-8")))
+    print("schema ok:", s.name)
+for inst, sch in pairs.items():
+    Draft202012Validator(json.loads((d / sch).read_text("utf-8"))).validate(json.loads((d / inst).read_text("utf-8")))
+    print("instance ok:", inst, "against", sch)
+PY
+  local cid
+  cid="$(docker run -d --rm -e POSTGRES_PASSWORD=contract-check postgres:16.15-alpine)"
+  for _ in $(seq 1 30); do docker exec "$cid" pg_isready -U postgres >/dev/null 2>&1 && break; sleep 1; done
+  sleep 2
+  docker exec -i "$cid" psql -U postgres -v ON_ERROR_STOP=1 -q <"$dir/database.sql" >>"$log" 2>&1 \
+    && echo "sql ok: database.sql" >>"$log" || rc=1
+  docker rm -f "$cid" >/dev/null 2>&1
+  line contracts "$rc" "$(grep -cE ' ok:|validated|Woohoo' "$log") ok lines, $(grep -ciE 'error' "$log") error lines" "$log"
+}
+
+ALL=(contracts backend_build backend_check backend_test frontend_build frontend_check frontend_test
   dependency_check npm_audit semgrep gitleaks cloc)
 TOOLS=("$@")
 [ ${#TOOLS[@]} -eq 0 ] && TOOLS=("${ALL[@]}")
