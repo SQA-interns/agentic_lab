@@ -14,6 +14,10 @@ spring:
       ddl-auto: validate
   flyway:
     locations: classpath:db/migration
+  jackson:
+    deserialization:
+      # Unknown request properties are an invalid request (specification section 4, SB-01).
+      fail-on-unknown-properties: true
 
 server:
   forward-headers-strategy: native
