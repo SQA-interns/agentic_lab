@@ -27,6 +27,7 @@
 | D-22 | 2026-10-09T12:06:48Z | 4 | Commit 45da222 (US-003) does not compile on its own: `api/Problems.java` imports `domain/ValidationError`, which the next commit 9c91e44 adds; every later commit compiles (checked in clean worktrees) | History is not rewritten (rules.md "Commits"); recorded here instead | pending review |
 | D-23 | 2026-10-09T12:06:48Z | 4 | `docker compose --env-file .env` cannot parse the repository-root `.env` (line 2 is not `KEY=value`); `.env` is the human's file and is not read or edited | `02_output/scripts/compose.sh` exports only POSTGRES_PASSWORD, ORGANIZER_EMAILS, ORGANIZER_USERNAME, ORGANIZER_PASSWORD with the `sed` method of rules.md and runs compose; the human may add `#` to that line | pending review |
 | D-25 | 2026-10-09T18:29:24Z | 6 | Gitleaks `generic-api-key` on the test-only value in `AppSettingsTest.java` line 16 (commit d4bd454); matched artifact is a unit-test fixture, not a credential | Inline `gitleaks:allow`; fingerprint in `02_output/.gitleaksignore`, passed by `verify.sh`; raw report `out/logs/6_gitleaks.json` | pending review |
+| D-26 | 2026-10-09T21:47:14Z | 6 | `03_statistics/usage.md` is in `docs/00_input-manifest.sha256` (phase 0 included every README section 1 file), but README section 1 says it is filled after the run; the human asked the agent to fill the panel values now | Filled on the human's request; its manifest hash is expected to differ and is excluded from the hash comparison (the manifest itself stays frozen) | pending review |
 
 ## Blocking
 

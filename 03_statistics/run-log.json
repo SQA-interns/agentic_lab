@@ -233,6 +233,12 @@
       "type": "blocking",
       "start": "2026-10-09T18:29:24Z",
       "end": null
+    },
+    {
+      "id": "D-26",
+      "type": "non-blocking",
+      "start": "2026-10-09T21:47:14Z",
+      "end": "2026-10-09T21:47:14Z"
     }
   ],
   "humanInterventions": [
