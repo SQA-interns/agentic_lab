@@ -13,6 +13,9 @@ FRONTEND="$OUT/frontend"
 PHASE="${1:?usage: verify.sh <phase> [tool ...]}"
 shift
 mkdir -p "$LOGS"
+# Node.js from tech-stack.md; nvm installs are not on a non-interactive PATH.
+NODE_BIN="${NVM_DIR:-$HOME/.nvm}/versions/node/v24.13.0/bin"
+[ -d "$NODE_BIN" ] && PATH="$NODE_BIN:$PATH"
 
 # Image tags from tech-stack.md
 SEMGREP_IMAGE="semgrep/semgrep:1.177.0"
