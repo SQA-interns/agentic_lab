@@ -110,7 +110,7 @@ Implemented identically in the backend (authoritative) and the frontend (conveni
 
 ## 7. Export (US-008)
 
-One sheet `Registrations`, row 1 headings, then one row per registration ordered by submission time: Registration ID, Type, First name, Last name, Email, Organization / institution, Study institution, Study programme, Student ID, Workshops, Events, Meals, Other activities (option names joined with `; `), Consents (ids joined), Registered at (UTC, ISO 8601). Response headers per the API contract.
+One sheet `Registrations`, row 1 headings, then one row per registration ordered by submission time: Registration ID, Type, First name, Last name, Email, Organization / institution, Study institution, Study programme, Student ID, Workshops, Events, Meals, Other activities (option names joined with `; `), Consents (given consent ids joined with `; `), Registered at (UTC, ISO 8601 with `Z`). Type is `External participant` or `Student`; a field the type does not have is an empty cell. All cells are text. Response headers per the API contract.
 
 ## 8. Frontend
 
