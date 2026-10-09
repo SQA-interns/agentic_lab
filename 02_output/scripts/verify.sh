@@ -39,7 +39,7 @@ IMG_POSTGRES="postgres:16.15-alpine"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-spotbugs be-cpd be-test fe-build fe-format fe-lint fe-typecheck fe-cpd fe-test fe-audit contracts semgrep gitleaks cloc"
 ALL_TOOLS="$DEFAULT_TOOLS be-mutation be-mutation-wiring be-depscan fe-mutation"
-KNOWN_TOOLS="$ALL_TOOLS e2e stack-up stack-down runtime runtime-restart"
+KNOWN_TOOLS="$ALL_TOOLS fe-install e2e stack-up stack-down runtime runtime-restart"
 
 mkdir -p "$LOGS"
 export FORCE_COLOR=0 NO_COLOR=1
@@ -141,6 +141,12 @@ run_tool() {
           c[k in c ? k : "low"]++;
         }
         `critical ${c.critical}, high ${c.high}, medium ${c.medium}, low ${c.low}`')"
+      ;;
+    fe-install)
+      # Installs exactly the locked dependencies (needed once after a clean checkout).
+      (cd "$FE" && npm ci) >"$LOG" 2>&1 || code=$?
+      key="$(grep -oE 'added [0-9]+ packages' "$LOG" | tail -n 1)"
+      key="${key:-no install summary}"
       ;;
     fe-build)
       (cd "$FE" && npm run build) >"$LOG" 2>&1 || code=$?
