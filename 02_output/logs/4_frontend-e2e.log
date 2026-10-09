@@ -1,0 +1,26 @@
+
+> registration-frontend@0.1.0 e2e
+> playwright test
+
+
+Running 17 tests using 1 worker
+
+  ✓   1 e2e/us001-external.e2e.spec.ts:18:3 › US-001 External participant registration › AC-001-01 the external form asks for exactly the external fields (413ms)
+  ✓   2 e2e/us001-external.e2e.spec.ts:32:3 › US-001 External participant registration › AC-001-02 AC-004-01 NFR-01 a valid external registration with Slovenian characters is confirmed, stored, copied, emailed and exported unchanged (2.3s)
+  ✓   3 e2e/us001-external.e2e.spec.ts:72:3 › US-001 External participant registration › AC-001-04 NFR-03 an empty required field is reported next to the field and nothing is confirmed (554ms)
+  ✓   4 e2e/us001-external.e2e.spec.ts:87:3 › US-001 External participant registration › AC-001-05 KP-03 a required field with only no-break spaces is reported as required (500ms)
+  ✓   5 e2e/us001-external.e2e.spec.ts:102:3 › US-001 External participant registration › AC-001-09 only active options for external participants are offered, grouped by category (332ms)
+  ✓   6 e2e/us001-external.e2e.spec.ts:133:3 › US-001 External participant registration › AC-001-13 no consent is preselected (324ms)
+  ✓   7 e2e/us001-external.e2e.spec.ts:142:3 › US-001 External participant registration › AC-001-14 a missing mandatory consent is identified and nothing is confirmed (484ms)
+  ✓   8 e2e/us001-external.e2e.spec.ts:156:3 › US-001 External participant registration › AC-001-16 a submission without the anti-automation check is not confirmed (474ms)
+  ✓   9 e2e/us002-student.e2e.spec.ts:15:3 › US-002 Student registration › AC-002-01 the student form asks for exactly the student fields (315ms)
+  ✓  10 e2e/us002-student.e2e.spec.ts:33:3 › US-002 Student registration › AC-002-02 AC-004-01 a valid student registration is confirmed and stored (586ms)
+  ✓  11 e2e/us002-student.e2e.spec.ts:50:3 › US-002 Student registration › AC-002-03 an empty student ID is reported next to the field (506ms)
+  ✓  12 e2e/us002-student.e2e.spec.ts:65:3 › US-002 Student registration › AC-002-05 only active options available to students are offered (305ms)
+  ✓  13 e2e/us003-options.e2e.spec.ts:5:3 › US-003 Configurable conference options › AC-003-01 configured options appear under their category headings (313ms)
+  ✓  14 e2e/us003-options.e2e.spec.ts:22:3 › US-003 Configurable conference options › AC-003-04 each configured consent is shown with its wording, unticked (293ms)
+  ✓  15 e2e/us004-confirmation.e2e.spec.ts:25:3 › US-004 Registration confirmation › AC-004-01 an accepted registration shows the confirmation instead of the form (520ms)
+  ✓  16 e2e/us004-confirmation.e2e.spec.ts:36:3 › US-004 Registration confirmation › AC-004-02 a registration rejected by the server shows the reason and no confirmation (940ms)
+  ✓  17 e2e/us004-confirmation.e2e.spec.ts:51:3 › US-004 Registration confirmation › AC-004-03 a storage failure shows a general error and no confirmation (538ms)
+
+  17 passed (25.5s)

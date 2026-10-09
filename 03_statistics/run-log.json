@@ -37,12 +37,12 @@
       "phase": 4,
       "name": "build",
       "start": "2026-10-09T11:41:54Z",
-      "end": null
+      "end": "2026-10-09T12:06:48Z"
     },
     {
       "phase": 5,
       "name": "unit-tests",
-      "start": null,
+      "start": "2026-10-09T12:06:48Z",
       "end": null
     },
     {
@@ -193,6 +193,24 @@
       "type": "non-blocking",
       "start": "2026-10-09T11:14:38Z",
       "end": "2026-10-09T11:14:38Z"
+    },
+    {
+      "id": "D-21",
+      "type": "non-blocking",
+      "start": "2026-10-09T12:06:48Z",
+      "end": "2026-10-09T12:06:48Z"
+    },
+    {
+      "id": "D-22",
+      "type": "non-blocking",
+      "start": "2026-10-09T12:06:48Z",
+      "end": "2026-10-09T12:06:48Z"
+    },
+    {
+      "id": "D-23",
+      "type": "non-blocking",
+      "start": "2026-10-09T12:06:48Z",
+      "end": "2026-10-09T12:06:48Z"
     }
   ],
   "humanInterventions": [

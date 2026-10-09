@@ -1,0 +1,188 @@
+ Image registration-smoke-backend Building 
+ Image registration-smoke-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.13kB done
+#1 DONE 0.0s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 558B done
+#2 DONE 0.0s
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 529B done
+#3 DONE 0.0s
+
+#4 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#4 DONE 0.1s
+
+#5 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#5 DONE 0.1s
+
+#6 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#6 DONE 0.1s
+
+#7 [backend internal] load .dockerignore
+#7 transferring context: 81B done
+#7 DONE 0.0s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 123B done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#10 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#10 CACHED
+
+#11 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#11 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#11 DONE 0.1s
+
+#12 [backend 2/4] RUN addgroup -S app && adduser -S -G app -H app     && mkdir -p /app /data/json-copies     && chown app:app /data/json-copies
+#12 ...
+
+#13 [frontend build 1/7] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#13 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#13 CACHED
+
+#9 [frontend internal] load build context
+#9 transferring context: 279.70kB 0.0s done
+#9 DONE 0.1s
+
+#11 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#11 CACHED
+
+#14 [frontend build 2/7] WORKDIR /build
+#14 DONE 0.1s
+
+#15 [frontend stage-1 2/4] COPY nginx.conf /etc/nginx/nginx.conf
+#15 DONE 0.1s
+
+#16 [backend internal] load build context
+#16 ...
+
+#17 [frontend build 3/7] COPY package.json package-lock.json .npmrc ./
+#17 DONE 0.2s
+
+#12 [backend 2/4] RUN addgroup -S app && adduser -S -G app -H app     && mkdir -p /app /data/json-copies     && chown app:app /data/json-copies
+#12 DONE 0.4s
+
+#18 [backend 3/4] WORKDIR /app
+#18 DONE 0.2s
+
+#16 [backend internal] load build context
+#16 transferring context: 80.24MB 0.7s done
+#16 DONE 0.7s
+
+#19 [backend 4/4] COPY target/registration-backend-0.1.0.jar /app/app.jar
+#19 DONE 0.2s
+
+#20 [frontend build 4/7] RUN npm ci --no-audit --no-fund
+#20 3.023 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+#20 ...
+
+#21 [backend] exporting to image
+#21 exporting layers 3.5s done
+#21 exporting manifest sha256:b02927c6b3fa689abb09460c465bdfdfe56fa2c7839702b3a2c5f7fb8bad4f9a 0.0s done
+#21 exporting config sha256:b939b8b0bc6f13b2767c0c8339953bc4f59472715b6037f7296fe37b0eab20e2 0.0s done
+#21 exporting attestation manifest sha256:c8e10b5afe0a2a960131a6496195dc8b7f8aa32ef7f436839fee91caf2e20b6c 0.0s done
+#21 exporting manifest list sha256:5add02cde639b2c4e3a2e8258dce89fa1d4ca13aa28c5584225142969dbd78bd 0.0s done
+#21 naming to docker.io/library/registration-smoke-backend:latest done
+#21 unpacking to docker.io/library/registration-smoke-backend:latest 0.5s done
+#21 DONE 4.2s
+
+#22 [backend] resolving provenance for metadata file
+#22 DONE 0.0s
+
+#20 [frontend build 4/7] RUN npm ci --no-audit --no-fund
+#20 10.92 npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+#20 30.06 
+#20 30.06 added 446 packages in 29s
+#20 30.06 npm notice
+#20 30.06 npm notice New minor version of npm available! 11.6.2 -> 11.21.0
+#20 30.06 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.0
+#20 30.06 npm notice To update run: npm install -g npm@11.21.0
+#20 30.06 npm notice
+#20 DONE 32.6s
+
+#23 [frontend build 5/7] COPY index.html tsconfig.json vite.config.ts ./
+#23 DONE 0.2s
+
+#24 [frontend build 6/7] COPY src ./src
+#24 DONE 0.0s
+
+#25 [frontend build 7/7] RUN npm run build
+#25 0.373 
+#25 0.373 > registration-frontend@0.1.0 build
+#25 0.373 > tsc --noEmit && vite build
+#25 0.373 
+#25 2.813 vite v6.4.3 building for production...
+#25 2.911 transforming...
+#25 4.146 ✓ 35 modules transformed.
+#25 4.333 rendering chunks...
+#25 4.343 computing gzip size...
+#25 4.354 dist/index.html                   0.41 kB │ gzip:  0.27 kB
+#25 4.354 dist/assets/index-CD1LqDnu.css    0.50 kB │ gzip:  0.30 kB
+#25 4.354 dist/assets/index-DnldTcJ3.js   232.70 kB │ gzip: 72.84 kB
+#25 4.355 ✓ built in 1.50s
+#25 DONE 4.4s
+
+#26 [frontend stage-1 3/4] COPY --from=build /build/dist /usr/share/nginx/html
+#26 DONE 0.1s
+
+#27 [frontend stage-1 4/4] RUN chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html
+#27 DONE 0.2s
+
+#28 [frontend] exporting to image
+#28 exporting layers
+#28 exporting layers 0.2s done
+#28 exporting manifest sha256:3ae84e77ca55a4ea974554cc1824caf17fba6f7d0dc44f3e71905902c9d3448a 0.0s done
+#28 exporting config sha256:7d5e34242d87eca65b23fe0e3efcadc6b254aa59b2345ddbacc6f8dbb05cad06 0.0s done
+#28 exporting attestation manifest sha256:d6c740bd717b6b0ba65d70637bed01a4ec926371dc4fd52df4f0472b53295adc 0.0s done
+#28 exporting manifest list sha256:8dc38b060912038e033116a0033f77862afbf672684adfaa9b584f9fd3ed64a3 0.0s done
+#28 naming to docker.io/library/registration-smoke-frontend:latest done
+#28 unpacking to docker.io/library/registration-smoke-frontend:latest
+#28 unpacking to docker.io/library/registration-smoke-frontend:latest 0.1s done
+#28 DONE 0.4s
+
+#29 [frontend] resolving provenance for metadata file
+#29 DONE 0.0s
+ Image registration-smoke-backend Built 
+ Image registration-smoke-frontend Built 
+ Network registration-smoke_default Creating 
+ Network registration-smoke_default Created 
+ Volume registration-smoke_db-data Creating 
+ Volume registration-smoke_db-data Created 
+ Volume registration-smoke_json-copies Creating 
+ Volume registration-smoke_json-copies Created 
+ Container registration-smoke-mailpit-1 Creating 
+ Container registration-smoke-db-1 Creating 
+ Container registration-smoke-mailpit-1 Created 
+ Container registration-smoke-db-1 Created 
+ Container registration-smoke-backend-1 Creating 
+ Container registration-smoke-backend-1 Created 
+ Container registration-smoke-frontend-1 Creating 
+ Container registration-smoke-frontend-1 Created 
+ Container registration-smoke-db-1 Starting 
+ Container registration-smoke-mailpit-1 Starting 
+ Container registration-smoke-mailpit-1 Started 
+ Container registration-smoke-db-1 Started 
+ Container registration-smoke-db-1 Waiting 
+ Container registration-smoke-db-1 Healthy 
+ Container registration-smoke-backend-1 Starting 
+ Container registration-smoke-backend-1 Started 
+ Container registration-smoke-backend-1 Waiting 
+ Container registration-smoke-backend-1 Healthy 
+ Container registration-smoke-frontend-1 Starting 
+ Container registration-smoke-frontend-1 Started 
+ Container registration-smoke-frontend-1 Waiting 
+ Container registration-smoke-db-1 Waiting 
+ Container registration-smoke-mailpit-1 Waiting 
+ Container registration-smoke-backend-1 Waiting 
+ Container registration-smoke-mailpit-1 Healthy 
+ Container registration-smoke-backend-1 Healthy 
+ Container registration-smoke-db-1 Healthy 
+ Container registration-smoke-frontend-1 Healthy 
