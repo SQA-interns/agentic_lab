@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui-form.schema.json",
+  "title": "Schema of the UI contract ui-form.json",
+  "type": "object",
+  "required": ["typeChoice", "fields", "fieldErrorTestIdPattern", "categories", "optionTestIdPattern", "consentTestIdPattern", "consentErrorTestIdPattern", "captcha", "submit", "formErrorTestId", "confirmation", "messages"],
+  "properties": {
+    "typeChoice": {
+      "type": "object",
+      "required": ["testId", "choices"],
+      "properties": {
+        "testId": { "type": "string" },
+        "choices": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "object", "required": ["type", "testId", "label"], "properties": { "type": { "enum": ["EXTERNAL", "STUDENT"] } } } }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "testId", "label", "types"],
+        "properties": {
+          "name": { "enum": ["firstName", "lastName", "email", "organization", "studyInstitution", "studyProgramme", "studentId"] },
+          "testId": { "type": "string", "pattern": "^field-" },
+          "label": { "type": "string" },
+          "types": { "type": "array", "minItems": 1, "items": { "enum": ["EXTERNAL", "STUDENT"] } }
+        }
+      }
+    },
+    "categories": { "type": "array", "minItems": 4, "maxItems": 4 },
+    "messages": {
+      "type": "object",
+      "required": ["REQUIRED", "INVALID_EMAIL", "TOO_LONG", "OPTION_NOT_AVAILABLE", "TOO_MANY_OPTIONS", "CONSENT_REQUIRED", "UNKNOWN_CONSENT", "ALREADY_REGISTERED", "CAPTCHA_FAILED", "MALFORMED", "GENERAL", "RATE_LIMITED"],
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

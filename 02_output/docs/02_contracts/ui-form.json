@@ -1,0 +1,49 @@
+{
+  "$schema": "./ui-form.schema.json",
+  "description": "Registration form UI contract (participant and frontend). Elements are found by data-testid; labels are associated with their inputs; errors are linked with aria-describedby (NFR-03).",
+  "typeChoice": {
+    "testId": "type-choice",
+    "choices": [
+      { "type": "EXTERNAL", "testId": "type-external", "label": "External participant" },
+      { "type": "STUDENT", "testId": "type-student", "label": "Student" }
+    ]
+  },
+  "fields": [
+    { "name": "firstName", "testId": "field-firstName", "label": "First name", "types": ["EXTERNAL", "STUDENT"] },
+    { "name": "lastName", "testId": "field-lastName", "label": "Last name", "types": ["EXTERNAL", "STUDENT"] },
+    { "name": "email", "testId": "field-email", "label": "Email", "types": ["EXTERNAL", "STUDENT"] },
+    { "name": "organization", "testId": "field-organization", "label": "Organization / institution", "types": ["EXTERNAL"] },
+    { "name": "studyInstitution", "testId": "field-studyInstitution", "label": "Study institution", "types": ["STUDENT"] },
+    { "name": "studyProgramme", "testId": "field-studyProgramme", "label": "Study programme", "types": ["STUDENT"] },
+    { "name": "studentId", "testId": "field-studentId", "label": "Student ID", "types": ["STUDENT"] }
+  ],
+  "fieldErrorTestIdPattern": "error-{name}",
+  "categories": [
+    { "category": "WORKSHOP", "testId": "category-WORKSHOP", "heading": "Workshops" },
+    { "category": "EVENT", "testId": "category-EVENT", "heading": "Events" },
+    { "category": "MEAL", "testId": "category-MEAL", "heading": "Meals" },
+    { "category": "OTHER", "testId": "category-OTHER", "heading": "Other activities" }
+  ],
+  "optionTestIdPattern": "option-{id}",
+  "optionsErrorTestId": "error-optionIds",
+  "consentTestIdPattern": "consent-{id}",
+  "consentErrorTestIdPattern": "error-consent-{id}",
+  "captcha": { "testId": "captcha", "testModeTestId": "captcha-test-checkbox", "testModeLabel": "I am not a robot (test mode)", "errorTestId": "error-recaptchaToken" },
+  "submit": { "testId": "submit", "label": "Register", "disabledWhileSubmitting": true },
+  "formErrorTestId": "form-error",
+  "confirmation": { "testId": "confirmation", "heading": "Registration received", "nameTestId": "confirmation-name", "optionsTestId": "confirmation-options" },
+  "messages": {
+    "REQUIRED": "This field is required.",
+    "INVALID_EMAIL": "Enter a valid email address.",
+    "TOO_LONG": "This value is too long.",
+    "OPTION_NOT_AVAILABLE": "One of the selected options is not available.",
+    "TOO_MANY_OPTIONS": "Too many options selected in this category.",
+    "CONSENT_REQUIRED": "This consent is required.",
+    "UNKNOWN_CONSENT": "The form is out of date. Reload the page.",
+    "ALREADY_REGISTERED": "A registration with this email already exists.",
+    "CAPTCHA_FAILED": "Please confirm that you are not a robot.",
+    "MALFORMED": "The form could not be submitted. Reload the page.",
+    "GENERAL": "Your registration could not be saved. Please try again later.",
+    "RATE_LIMITED": "Too many attempts. Please wait a minute and try again."
+  }
+}
