@@ -1,0 +1,28 @@
+{
+  "sheetName": "Registrations",
+  "headerRow": 1,
+  "rowOrder": "one row per registration from row 2, ordered by registration time, oldest first; with no registration only the header row exists (AC-008-03)",
+  "cellRules": [
+    "Every cell is a string cell, so a value starting with =, +, - or @ is never evaluated as a formula (SB-05).",
+    "Text is written as stored (UTF-8 in, Unicode cells out), so č, š, ž survive (NFR-01).",
+    "An empty cell means the field does not belong to the registration type.",
+    "Only the columns below; no internal or system data (SR-07)."
+  ],
+  "columns": [
+    { "header": "Registration ID", "value": "registrationId" },
+    { "header": "Registered at", "value": "registeredAt, ISO-8601 UTC" },
+    { "header": "Type", "value": "External participant | Student" },
+    { "header": "First name", "value": "firstName" },
+    { "header": "Last name", "value": "lastName" },
+    { "header": "Email", "value": "email" },
+    { "header": "Organization", "value": "organization (external only)" },
+    { "header": "Study institution", "value": "studyInstitution (student only)" },
+    { "header": "Study programme", "value": "studyProgramme (student only)" },
+    { "header": "Student ID", "value": "studentId (student only)" },
+    { "header": "Workshops", "value": "selected workshop names joined with '; '" },
+    { "header": "Events", "value": "selected event names joined with '; '" },
+    { "header": "Meals", "value": "selected meal names joined with '; '" },
+    { "header": "Other activities", "value": "selected other-activity names joined with '; '" },
+    { "header": "Consents", "value": "'{consentId} ({givenAt})' for each consent given, joined with '; '" }
+  ]
+}

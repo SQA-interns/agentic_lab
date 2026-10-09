@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/export-workbook.schema.json",
+  "title": "Export workbook contract",
+  "description": "Layout of the Excel workbook returned by GET /api/export. export-workbook.json is the contract instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["sheetName", "headerRow", "rowOrder", "cellRules", "columns"],
+  "properties": {
+    "sheetName": { "type": "string" },
+    "headerRow": { "type": "integer", "minimum": 1 },
+    "rowOrder": { "type": "string" },
+    "cellRules": { "type": "array", "items": { "type": "string" } },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["header", "value"],
+        "properties": {
+          "header": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    }
+  }
+}
