@@ -15,8 +15,8 @@ This is a self-check by the development agent, not an independent review.
 | DoD-05 | pass | findings below: 1 High (F-02) fixed and re-verified; dependency scans 0 Critical/High (`6final_be-depscan.log`, `6final_fe-audit.log`); gitleaks 0 (tree and history); `secrets.sh leak-check` clean (`6final_leak-check.log`) |
 | DoD-06 | pass | runtime demonstration below (`logs/6_runtime.log`, `6_runtime-restart.log`, `6final_runtime-headers-users.log`) |
 | DoD-07 | pass | traceability table below: 63/63 ACs with at least one test and one commit (`logs/6_traceability.txt`) |
-| DoD-08 | phase 7 | |
-| DoD-09 | phase 7 | |
+| DoD-08 | pass | clean checkout `git clone` of `f145b0f` to `C:\rc7`, no `.env`, stack stopped first: README build, test, check commands through the checkout's `verify.sh` all exit 0 (backend 239/0, frontend 62/0; `logs/7clone_*.log`); README run command with the original `secrets.sh`: all four containers healthy, page, form data and Mailpit answer 200 (`logs/7clone_run.log`); the frontend run command `npm run dev` was fixed first (F-11: dev proxy changed the Host header, so POSTs were refused as cross-origin; `3c3f27e`, `logs/7_fe-dev-check.log`) |
+| DoD-09 | pass | `docs/release-notes.md` "Before production": real reCAPTCHA submission, real SMTP delivery, HTTPS and routing through the external proxy, Stryker upgrade (F-05); kept apart from the run's results |
 | DoD-10 | pass | decisions D-01..D-20 each with a resolution: 14 pending review (D-01, D-02, D-05, D-06, D-09..D-18), D-03/D-04/D-19 answered by the human in D-07/D-08/D-20; inputs unchanged: input manifest 27/27, `git diff 6166314 -- 01_input AGENTS.md README.md 03_statistics/metrics.md 03_statistics/run-log.template.json` empty |
 | DoD-11 | pass with F-04 | phase 3 added no production code (`git diff 90c71d4^ 510f4b9 -- */src/main frontend/src`, empty); freeze commit `510f4b9` holds only the manifest; every manifest file committed before it; phase 4 has a commit per story (`logs/4_git-log-since-freeze.txt`); 11 commits exceed the size guide without a stated reason (F-04, `logs/6_evidence-checks.txt`); manifests match; decisions resolved |
 | DoD-P01 | pass | `6_runtime.log`: external and student registrations through nginx answered 201; a forged token answered 400 `captcha_failed` |
@@ -147,6 +147,7 @@ Tests list the files holding the AC id; commits are the feature commits after th
 | F-08 | Low | jscpd | 2.7 % duplication in frontend test files (7 clones); production code 0 % (CPD 0 in the backend) | accepted: repeated test set-up |
 | F-09 | Low | runtime demonstration | harness defect: Git Bash rewrote container paths of `docker exec`, so the first run could not list the JSON copies | fixed in `runtime-demo.sh` and `verify.sh`; re-run passed |
 | F-10 | Medium | phase 5 first run | unknown request properties accepted (specification section 4, SB-01) | fixed `de3e3e7` in phase 5 |
+| F-11 | Low | phase 7 README check | `npm run dev`: the Vite proxy shorthand rewrote the Host header, so registrations from the dev server were refused as cross-origin (development only) | fixed `3c3f27e` |
 
 ## Fix loops
 
