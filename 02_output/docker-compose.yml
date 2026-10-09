@@ -6,6 +6,8 @@ name: registration
 services:
   postgres:
     image: postgres:16.15-alpine
+    # Terse error logging leaves out DETAIL lines, which repeat key values such as emails (F-03).
+    command: ["postgres", "-c", "log_error_verbosity=terse"]
     environment:
       POSTGRES_DB: registration
       POSTGRES_USER: registration

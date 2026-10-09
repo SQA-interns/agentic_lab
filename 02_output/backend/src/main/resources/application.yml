@@ -19,6 +19,12 @@ spring:
       # Unknown request properties are an invalid request (specification section 4, SB-01).
       fail-on-unknown-properties: true
 
+logging:
+  level:
+    # Hibernate logs the database's error detail, which can contain submitted values such as
+    # an email address (ES-07, F-03); failures are logged by the application without values.
+    org.hibernate.orm.jdbc.error: "OFF"
+
 server:
   forward-headers-strategy: native
   error:
