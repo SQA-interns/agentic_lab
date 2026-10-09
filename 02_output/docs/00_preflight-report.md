@@ -5,11 +5,11 @@
 | Check | Source of truth | Result |
 |---|---|---|
 | Run configuration complete | `project/00_setup/run-config.md` | pass: model, effort, template version, run id present (read) |
-| Platforms and tools installed at the listed versions | `project/00_setup/tech-stack.md` | **fail: node 24.13.0 / npm 11.6.2 absent (D-09)**, confirmed by `command -v` in a login shell and a search of install dirs. java, docker, compose run with other versions (D-05..D-07). Maven 3.9.9 via wrapper 3.3.2, all Maven plugins run (`verify.sh` backend tools). semgrep 1.177.0, gitleaks v8.30.1 run; cloc tag 2.10 reports 1.98 (D-08). npm-based tools not runnable (D-09). Log: `out/logs/0_platforms.log`, `0_container-tools.log` |
+| Platforms and tools installed at the listed versions | `project/00_setup/tech-stack.md` | pass after re-check: node v24.13.0 / npm 11.6.2 under nvm (D-09 follow-up; first search was faulty). java, docker, compose run with other versions (D-05..D-07). Maven 3.9.9 via wrapper 3.3.2, all Maven plugins run (`verify.sh` backend tools). semgrep 1.177.0, gitleaks v8.30.1 run; cloc tag 2.10 reports 1.98 (D-08). npm-based tools run through `verify.sh` (vite, tsc, eslint, prettier, vitest; others run in later phases). Log: `out/logs/0_platforms.log`, `0_container-tools.log` |
 | Local environments and services running or reachable | `project/00_setup/environments.md` | pass: Docker Engine running (`docker run`), Docker Hub, Maven Central, npm registry reachable (HTTP); compose stack is built in later phases |
 | Secrets present in `.env` or marked test-only | `project/00_setup/secrets.env.example` | pass: POSTGRES_PASSWORD, ORGANIZER_USERNAME, ORGANIZER_PASSWORD (≥ 16 chars), ORGANIZER_EMAILS, NVD_API_KEY non-empty (`sed … \| grep -q .`, then `grep -c "^KEY=..*"`); RECAPTCHA_* test-mode only, SMTP_* not needed |
 | Every listed dependency resolves | `project/00_setup/tech-stack.md` | pass: 61/61 entries HTTP 200 (Maven Central POM, npm registry version document, `docker manifest inspect`), plus Maven 3.9.9 and pitest-junit5-plugin 1.2.3; backend resolved by `./mvnw` at exact versions (`out/logs/0_backend-deps.txt`) |
-| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | backend: pass (Dependency-Check 12.1.0, NVD analyser; 1 High + 1 Medium false positives suppressed, D-03, D-04; OSS Index disabled, D-02; raw `out/logs/0_dependency-check-raw.json`). **npm set: not scanned until D-09 is resolved** |
+| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | backend: pass (Dependency-Check 12.1.0, NVD analyser; 1 High + 1 Medium false positives suppressed, D-03, D-04; OSS Index disabled, D-02; raw `out/logs/0_dependency-check-raw.json`). **npm set: fail, `npm audit` 2 Critical, 5 High, 4 Moderate in pinned dev tooling: vitest 3.2.7 / @vitest/coverage-v8 3.2.7 (D-11), jscpd 4.3.0 (D-12); Moderate qs (D-13). Raw `out/logs/0_npm-audit.json`** |
 | Clean working tree on the starting commit | repository | pass: `git status` clean apart from `run-log.json` at HEAD b6c9dc6 (detached; branch created, D-10) |
 | Input manifest written | `docs/00_input-manifest.sha256` | pass: 27 files, LF-normalised SHA-256 |
 
@@ -18,7 +18,7 @@
 | Component | build | test | check | run |
 |---|---|---|---|---|
 | backend | `./mvnw -B package -DskipTests` | `./mvnw -B verify` | `./mvnw -B spotless:check pmd:check pmd:cpd-check spotbugs:check` | `./mvnw spring-boot:run` (needs the database settings) |
-| frontend | blocked by D-09 | | | |
+| frontend | `npm run build` | `npm test` | `npm run check` | `npm start` |
 
 ## Dependency results
 
@@ -44,15 +44,15 @@
 | `org.testcontainers:testcontainers-junit-jupiter` | 2.0.5 | yes (HTTP 200) | none |
 | `org.testcontainers:testcontainers-postgresql` | 2.0.5 | yes (HTTP 200) | none |
 | `com.tngtech.archunit:archunit-junit5` | 1.3.2 | yes (HTTP 200) | none |
-| `react` | 19.3.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `react-dom` | 19.3.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@types/react` | 19.3.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@types/react-dom` | 19.3.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@vitejs/plugin-react` | 4.7.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@testing-library/react` | 16.3.3 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@testing-library/jest-dom` | 6.9.1 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `jsdom` | 26.1.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `globals` | 15.15.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
+| `react` | 19.3.0 | yes (HTTP 200) | none |
+| `react-dom` | 19.3.0 | yes (HTTP 200) | none |
+| `@types/react` | 19.3.0 | yes (HTTP 200) | none |
+| `@types/react-dom` | 19.3.0 | yes (HTTP 200) | none |
+| `@vitejs/plugin-react` | 4.7.0 | yes (HTTP 200) | none |
+| `@testing-library/react` | 16.3.3 | yes (HTTP 200) | none |
+| `@testing-library/jest-dom` | 6.9.1 | yes (HTTP 200) | none |
+| `jsdom` | 26.1.0 | yes (HTTP 200) | none |
+| `globals` | 15.15.0 | yes (HTTP 200) | none |
 | `postgres` | 16.15-alpine | yes (HTTP 200) | not scanned (images scanned in phase 6) |
 | `eclipse-temurin` | 21.0.10_7-jre-alpine | yes (HTTP 200) | not scanned (images scanned in phase 6) |
 | `node` | 24.13.0-alpine | yes (HTTP 200) | not scanned (images scanned in phase 6) |
@@ -66,21 +66,21 @@
 | `org.jacoco:jacoco-maven-plugin` | 0.8.12 | yes (HTTP 200) | n/a (tool) |
 | `org.pitest:pitest-maven` | 1.30.0 | yes (HTTP 200) | n/a (tool) |
 | `org.owasp:dependency-check-maven` | 12.1.0 | yes (HTTP 200) | n/a (tool) |
-| `vite` | 6.4.3 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `typescript` | 5.9.3 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `eslint` | 9.39.5 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@eslint/js` | 9.39.5 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `typescript-eslint` | 8.70.1 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `eslint-plugin-react-hooks` | 5.2.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `eslint-plugin-react-refresh` | 0.4.26 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `prettier` | 3.9.9 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `vitest` | 3.2.7 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@vitest/coverage-v8` | 3.2.7 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@playwright/test` | 1.63.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@stryker-mutator/core` | 10.0.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `@stryker-mutator/vitest-runner` | 10.0.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `jscpd` | 4.3.0 | yes (HTTP 200) | not scanned: npm missing (D-09) |
-| `npm audit (npm 11.6.2)` | 11.6.2 | yes (HTTP 200) | not scanned: npm missing (D-09) |
+| `vite` | 6.4.3 | yes (HTTP 200) | none |
+| `typescript` | 5.9.3 | yes (HTTP 200) | none |
+| `eslint` | 9.39.5 | yes (HTTP 200) | none |
+| `@eslint/js` | 9.39.5 | yes (HTTP 200) | none |
+| `typescript-eslint` | 8.70.1 | yes (HTTP 200) | none |
+| `eslint-plugin-react-hooks` | 5.2.0 | yes (HTTP 200) | none |
+| `eslint-plugin-react-refresh` | 0.4.26 | yes (HTTP 200) | none |
+| `prettier` | 3.9.9 | yes (HTTP 200) | none |
+| `vitest` | 3.2.7 | yes (HTTP 200) | Critical (D-11) |
+| `@vitest/coverage-v8` | 3.2.7 | yes (HTTP 200) | Critical (D-11) |
+| `@playwright/test` | 1.63.0 | yes (HTTP 200) | none |
+| `@stryker-mutator/core` | 10.0.0 | yes (HTTP 200) | Moderate, transitive qs (D-13) |
+| `@stryker-mutator/vitest-runner` | 10.0.0 | yes (HTTP 200) | none |
+| `jscpd` | 4.3.0 | yes (HTTP 200) | High (D-12) |
+| `npm audit (npm 11.6.2)` | 11.6.2 | yes (HTTP 200) | none |
 | `semgrep/semgrep` | 1.177.0 | yes (HTTP 200) | not scanned (images scanned in phase 6) |
 | `zricethezav/gitleaks` | v8.30.1 | yes (HTTP 200) | not scanned (images scanned in phase 6) |
 | `aldanial/cloc` | 2.10 | yes (HTTP 200) | not scanned (images scanned in phase 6) |
@@ -90,4 +90,5 @@
 
 | When | What was missing | Answer | Re-check |
 |---|---|---|---|
-| 2026-10-09T10:54:33Z | Node.js 24.13.0 with npm 11.6.2 on the host (D-09) | none yet | node/npm version checks, frontend skeleton, npm audit |
+| 2026-10-09T10:54:33Z | Node.js 24.13.0 with npm 11.6.2 on the host (D-09) | 2026-10-09T10:58:38Z: already installed, defaults | pass (nvm v24.13.0); frontend skeleton built; npm audit raised D-11, D-12 |
+| 2026-10-09T11:01:38Z | Approval to change vitest/@vitest/coverage-v8 (D-11) and jscpd (D-12) pins | none yet | npm audit, frontend tools |

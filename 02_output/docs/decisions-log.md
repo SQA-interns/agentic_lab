@@ -15,6 +15,7 @@
 | D-07 | 2026-10-09T10:54:09Z | 0 | Platform `compose` pinned 5.5.1; `docker compose version` reports v5.1.1 | Use as is; pin stays authoritative | pending review |
 | D-08 | 2026-10-09T10:54:09Z | 0 | Tool `aldanial/cloc:2.10` image reports `--version` 1.98 | Use the pinned tag; pin stays authoritative | pending review |
 | D-10 | 2026-10-09T10:54:09Z | 0 | Starting commit b6c9dc6 was checked out as a detached HEAD | Commits go to a new local branch `run/tanej-01_conference-registration_opus5.5_sdd_template-tanej-1.0` at b6c9dc6; nothing pushed | pending review |
+| D-13 | 2026-10-09T11:01:38Z | 0 | `npm audit` (npm 11.6.2): 2 Moderate, `qs` 6.15.1 (GHSA-q8mj-m7cp-5q26, GHSA-x5fp-wj9c-mxmx, GHSA-4mjr-xmp4-gh2g) via `typed-rest-client` 2.3.1 from `@stryker-mutator/core` 10.0.0 (mutation tooling, not shipped) | Recorded, not blocking (Medium); re-checked in phase 6 | pending review |
 
 ## Blocking
 
@@ -26,5 +27,32 @@
   1. (proposed default) The human installs Node.js 24.13.0 on the host (it bundles npm 11.6.2), e.g. `nvm install 24.13.0` or the nodejs.org tarball; `node --version` must print v24.13.0 and `npm --version` 11.6.2. Then answer "D-09: 1, installed".
   2. Approve running all frontend tooling inside the pinned `node:24.13.0-alpine` container instead of a host install. Caveat: Playwright's bundled Chromium does not run on Alpine (musl), so end-to-end tests would need an extra image (e.g. `mcr.microsoft.com/playwright:v1.63.0-noble`), which is itself a tech-stack addition to approve.
   3. Other (state it).
+- Human response: none
+- Resolution: open
+
+## D-09 follow-up
+- Timestamp: 2026-10-09T11:01:38Z
+- Human response: "i already had the proposed default node version. i select defaults" (received 2026-10-09T10:58:38Z)
+- Resolution: option 1. Node.js v24.13.0 / npm 11.6.2 were installed under nvm (`~/.nvm/versions/node/v24.13.0`), not on the non-interactive PATH; the preflight search missed it because a zsh glob error aborted the command. Versions confirmed (`out/logs/0_node.log`); `verify.sh` prepends that nvm path.
+
+## D-11: vitest 3.2.7 has Critical and High vulnerabilities
+- Timestamp: 2026-10-09T11:01:38Z
+- Phase: 0
+- Trigger: `npm audit` (`out/logs/0_npm-audit.json`) on the pinned set: `vitest` 3.2.7 Critical (tinypool <2.1.2: GHSA-5gmw-xhrv-c9v3, GHSA-85c8-ppgw-ccpr, prototype pollution to RCE) and `@vitest/mocker` <4.1.11 (GHSA-82fw-gwwq-j7x9, path traversal / file read); `@vitest/coverage-v8` 3.2.7 inherits it. Real advisories on the pinned artifacts, not an identifier mismatch; test tooling only, not in the shipped bundle. No override possible: vitest 3.2.7 pins `@vitest/mocker` 3.2.7.
+- Options:
+  1. (proposed default) Change `vitest` and `@vitest/coverage-v8` to 4.1.11, the first fixed release. Trial in a scratch copy: installs, `tsc` passes, vitest runs, Critical/High = 0; peers fit (vite `^6`, node `>=24`, `@stryker-mutator/vitest-runner` 10.0.0 `vitest >=2`).
+  2. Change both to 5.0.3 (latest, the version `npm audit fix` suggests).
+  3. Keep 3.2.7 and accept the risk as dev-only tooling (needs your written acceptance; the finding stays in the release notes).
+- Human response: none
+- Resolution: open
+
+## D-12: jscpd 4.3.0 has High vulnerabilities
+- Timestamp: 2026-10-09T11:01:38Z
+- Phase: 0
+- Trigger: `npm audit`: `jscpd` 4.3.0 High via `@jscpd/finder` → `fast-glob` → `micromatch` → `braces` <=3.0.3 (GHSA-vfj7-8cjw-p6xm, stack-exhaustion DoS). All of jscpd 3.3.0-alpha.2 – 4.3.0 is affected. Duplication tooling only, not shipped.
+- Options:
+  1. (proposed default) Change `jscpd` to 5.4.0 (the fixed version `npm audit` names). Trial: installs, `jscpd src` runs (0 clones), no High left.
+  2. Keep 4.3.0 and accept the risk as dev-only tooling.
+  3. Drop jscpd and use PMD CPD (already pinned for the backend) for frontend duplication too.
 - Human response: none
 - Resolution: open
