@@ -145,3 +145,21 @@
 - Options: 1. the system refuses to start and reports the configuration error (proposed: never accept registrations against a wrong option set); 2. start and ignore invalid entries
 - Human response: none
 - Resolution: 1, pending review (AC-003-06)
+
+## D-17: Control characters in text fields
+- Timestamp: 2026-10-09T08:46:48Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: gap found in design: BR-03 accepts Unicode text but no rule covers line breaks or other control characters, which can break emails, logs and the workbook (SR-05).
+- Options: 1. reject any text field that contains a Unicode control character (category Cc), naming the field; AC-001-18 and AC-002-16 added, AC-006-03 narrowed to markup characters (proposed, more conservative); 2. accept and neutralise them on output
+- Human response: none
+- Resolution: 1, pending review
+
+## D-18: Language of the user interface and emails
+- Timestamp: 2026-10-09T08:46:48Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: gap: no input states the language of the form and emails; the requirements are in English.
+- Options: 1. English texts, kept in one module per component so they can be translated; consent wording and option names come from configuration in any language (proposed); 2. Slovenian
+- Human response: none
+- Resolution: 1, pending review

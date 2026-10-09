@@ -23,6 +23,7 @@
 | AC-001-15 | D-13 | an accepted registration with an email address | a second registration (either type) is submitted with the same address in any letter case | the second registration is rejected and the first is unchanged |
 | AC-001-16 | D-15 | a valid external registration with one text field longer than its maximum length | the participant submits it | the registration is rejected and the error names that field |
 | AC-001-17 | BR-02, BR-03 | the external form with an empty required field or an invalid email | the participant tries to submit it | the form shows the error next to that field and sends nothing |
+| AC-001-18 | BR-03, D-17 | a valid external registration with a line break or other control character in a text field | the participant submits it | the registration is rejected and the error names that field |
 
 ## US-002 Student registration
 
@@ -43,6 +44,7 @@
 | AC-002-13 | D-13 | an accepted external registration with an email address | a student registration is submitted with the same address | the student registration is rejected |
 | AC-002-14 | D-15 | a valid student registration with one text field longer than its maximum length | the student submits it | the registration is rejected and the error names that field |
 | AC-002-15 | BR-02 | the student form with an empty required field | the student tries to submit it | the form shows the error next to that field and sends nothing |
+| AC-002-16 | BR-03, D-17 | a valid student registration with a line break or other control character in a text field | the student submits it | the registration is rejected and the error names that field |
 
 ## US-003 Configurable conference options
 
@@ -79,7 +81,7 @@
 |---|---|---|---|---|
 | AC-006-01 | — | a valid registration | it is accepted | an email is sent to the participant's address confirming the registration, with the participant's name, the registration type and the selected options |
 | AC-006-02 | BR-03 | an accepted registration whose name contains č, š, ž | the participant email is sent | the name appears unchanged |
-| AC-006-03 | — | an accepted registration whose text fields contain markup or line breaks | the participant email is sent | the markup appears as plain text, and the email has no recipient or header other than the intended ones |
+| AC-006-03 | — | an accepted registration whose text fields contain markup characters such as `<`, `>`, `&` and quotes | the participant email is sent | the markup appears as plain text, and the email has no recipient or header other than the intended ones |
 | AC-006-04 | D-11 | the email cannot be sent | a valid registration is submitted | the registration is still accepted, stored and confirmed in the application |
 | AC-006-05 | — | a rejected registration | it is rejected | no email is sent |
 
