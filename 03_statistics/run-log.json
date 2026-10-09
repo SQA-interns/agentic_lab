@@ -13,12 +13,12 @@
       "phase": 0,
       "name": "preflight-and-bootstrap",
       "start": "2026-10-09T10:43:03Z",
-      "end": null
+      "end": "2026-10-09T11:08:04Z"
     },
     {
       "phase": 1,
       "name": "requirements",
-      "start": null,
+      "start": "2026-10-09T11:08:04Z",
       "end": null
     },
     {
@@ -138,13 +138,13 @@
       "id": "D-11",
       "type": "blocking",
       "start": "2026-10-09T11:01:38Z",
-      "end": null
+      "end": "2026-10-09T11:07:30Z"
     },
     {
       "id": "D-12",
       "type": "blocking",
       "start": "2026-10-09T11:01:38Z",
-      "end": null
+      "end": "2026-10-09T11:07:30Z"
     },
     {
       "id": "D-13",
@@ -161,7 +161,7 @@
     },
     {
       "start": "2026-10-09T11:01:38Z",
-      "end": null,
+      "end": "2026-10-09T11:07:30Z",
       "reason": "D-11, D-12: approve pin changes for vulnerable dev tooling"
     }
   ],
