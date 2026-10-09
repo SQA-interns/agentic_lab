@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration (BR-07, US-005, US-007)",
+  "description": "Written as <JSON_COPY_DIR>/<id>.json, UTF-8, before the database transaction commits (AR-05). The same bytes are attached to the organizer notification. Values are as accepted: trimmed (BR-02), otherwise unchanged (NFR-01). The reCAPTCHA token is never included.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "type", "submittedAt", "participant", "selectedOptions", "consents"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "lastName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+        "organization": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studyInstitution": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studyProgramme": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "studentId": { "type": "string", "minLength": 1, "maxLength": 50 }
+      }
+    },
+    "selectedOptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "description": "Consents given, with their wording at the time and timestamp (SB-14)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": { "properties": { "participant": { "required": ["organization"], "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] } } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": { "properties": { "participant": { "required": ["studyInstitution", "studyProgramme", "studentId"], "not": { "required": ["organization"] } } } }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "0b8f8a3e-3c1f-4b8e-9a51-2f6a2d1c7e44",
+  "type": "STUDENT",
+  "submittedAt": "2026-10-09T11:00:00Z",
+  "participant": {
+    "firstName": "Žiga",
+    "lastName": "Šušteršič",
+    "email": "ziga@example.si",
+    "studyInstitution": "Univerza v Ljubljani",
+    "studyProgramme": "Računalništvo in informatika",
+    "studentId": "63210001"
+  },
+  "selectedOptions": [{ "id": "ws-testing-ai", "name": "Workshop: Testing AI systems", "category": "WORKSHOP" }],
+  "consents": [{ "id": "data-processing", "text": "I agree …", "givenAt": "2026-10-09T11:00:00Z" }]
+}
