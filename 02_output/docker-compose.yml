@@ -1,0 +1,82 @@
+# Local stack (environments.md "local"): plain HTTP on 127.0.0.1 only.
+# From the repository root:
+#   (cd 02_output/backend && ./mvnw -B -DskipTests package)
+#   02_output/scripts/compose.sh up -d --build --wait   (exports the needed keys from .env)
+name: registration
+
+services:
+  db:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:8025:8025"
+
+  backend:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    environment:
+      APP_ENVIRONMENT: local
+      DATABASE_URL: jdbc:postgresql://db:5432/registration
+      DATABASE_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_TLS: "false"
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
+      MAIL_FROM: registration@konferenca.local
+      CONFERENCE_NAME: Konferenca 2026
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?set ORGANIZER_EMAILS in .env}
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?set ORGANIZER_USERNAME in .env}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?set ORGANIZER_PASSWORD in .env}
+      # Local plain HTTP only (SR-06 allows it outside production).
+      ORGANIZER_HTTPS_ONLY: "false"
+      CONFERENCE_CONFIG_PATH: /config/conference.json
+      JSON_COPY_DIR: /data/json-copies
+      # Deterministic test mode; no call to Google locally (SR-02, environments.md).
+      RECAPTCHA_TEST_MODE: "true"
+    volumes:
+      - ./config/conference.json:/config/conference.json:ro
+      - json-copies:/data/json-copies
+    ports:
+      - "127.0.0.1:8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/actuator/health/readiness | grep -q UP"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 20s
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8081:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/ >/dev/null"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  db-data:
+  json-copies:

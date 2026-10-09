@@ -1,0 +1,14 @@
+{
+  "maxSelectionsPerCategory": { "WORKSHOP": 2, "EVENT": 3, "MEAL": 3, "OTHER": 2 },
+  "options": [
+    { "id": "ws-testing-ai", "name": "Workshop: Testing AI systems", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ws-industry-masterclass", "name": "Industry masterclass", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "ws-legacy", "name": "Retired workshop", "category": "WORKSHOP", "active": false, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ev-gala-dinner", "name": "Gala večerja", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "meal-lunch-day1", "name": "Lunch, day 1", "category": "MEAL", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "other-city-tour", "name": "Ljubljana city tour", "category": "OTHER", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] }
+  ],
+  "consents": [
+    { "id": "data-processing", "text": "I agree that the organizer processes the personal data entered in this form to organise the conference. The data is kept until 12 months after the conference and then deleted.", "mandatory": true }
+  ]
+}
