@@ -39,7 +39,7 @@ IMG_POSTGRES="postgres:16.15-alpine"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-spotbugs be-cpd be-test fe-build fe-format fe-lint fe-typecheck fe-cpd fe-test fe-audit contracts semgrep gitleaks cloc"
 ALL_TOOLS="$DEFAULT_TOOLS be-mutation be-mutation-wiring be-depscan fe-mutation"
-KNOWN_TOOLS="$ALL_TOOLS e2e stack-up stack-down"
+KNOWN_TOOLS="$ALL_TOOLS e2e stack-up stack-down runtime runtime-restart"
 
 mkdir -p "$LOGS"
 export FORCE_COLOR=0 NO_COLOR=1
@@ -278,6 +278,28 @@ run_tool() {
       } >"$LOG" 2>&1 || code=$?
       key="$(docker ps -a --filter label=com.docker.compose.project=registration \
         --format '{{.Label "com.docker.compose.service"}}={{.State}}/{{.Status}}' 2>&1 | sed 's/ (.*)//' | tr '\n' ' ')"
+      ;;
+    runtime)
+      # Runtime demonstration against the running stack (needs stack-up).
+      bash "$OUT/scripts/runtime-demo.sh" "$PHASE" "$SECRETS" "$WROOT" >"$LOG" 2>&1 || code=$?
+      key="$(grep -cE 'MISSING|matches: false' "$LOG") problems; $(grep -c '^201$' "$LOG") registrations accepted"
+      ;;
+    runtime-restart)
+      # NFR-02: recreate every container, then look for the last demonstration's data.
+      local ids
+      ids="$(cat "$LOGS/.runtime-ids" 2>/dev/null)"
+      {
+        (cd "$OUT" && bash "$SECRETS" run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+          docker compose down) &&
+          (cd "$OUT" && bash "$SECRETS" run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
+            docker compose up -d --wait --wait-timeout 240) &&
+          for id in $ids; do
+            docker exec registration-postgres-1 psql -U registration -d registration -tAc \
+              "SELECT 'row ' || id || ' ' || type FROM registration WHERE id = '$id'"
+            docker exec registration-backend-1 ls "/data/registrations/registration-$id.json"
+          done
+      } >"$LOG" 2>&1 || code=$?
+      key="$(grep -c '^row ' "$LOG") rows, $(grep -c 'registration-.*\.json' "$LOG") copies of ${ids:+2} after down/up"
       ;;
     stack-down)
       # Stops the local stack; named volumes (data) are kept.
