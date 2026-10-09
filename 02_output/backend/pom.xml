@@ -217,6 +217,20 @@
           <targetClasses>
             <param>si.konferenca.registration.*</param>
           </targetClasses>
+          <!-- Unit tests only: acceptance and integration tests need containers. -->
+          <excludedTestClasses>
+            <param>*AcceptanceTest</param>
+            <param>*IntegrationTest</param>
+            <param>*ArchitectureTest</param>
+          </excludedTestClasses>
+          <excludedClasses>
+            <param>si.konferenca.registration.RegistrationApplication</param>
+          </excludedClasses>
+          <outputFormats>
+            <param>XML</param>
+            <param>HTML</param>
+          </outputFormats>
+          <timestampedReports>false</timestampedReports>
         </configuration>
       </plugin>
       <plugin>

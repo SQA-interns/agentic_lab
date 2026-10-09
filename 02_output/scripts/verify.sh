@@ -55,7 +55,28 @@ backend_check() {
   bugs="$(grep -oE 'BugInstance size is [0-9]+' "$log" | grep -oE '[0-9]+$' | tail -1)"
   line backend-check "$rc" "pmd=${pmd} spotbugs=${bugs:-?}" "$log"
 }
-backend_mutation() { mvn_tool backend-mutation test-compile org.pitest:pitest-maven:mutationCoverage; }
+backend_mutation() {
+  local log="$LOGS/${PHASE}_backend-mutation.log"
+  run "$log" "$BACKEND" ./mvnw -B test-compile org.pitest:pitest-maven:mutationCoverage
+  local rc=$?
+  line backend-mutation "$rc" "$(grep -E 'Generated [0-9]+ mutations Killed' "$log" | tail -1 | sed 's/^>> //')" "$log"
+}
+
+backend_coverage() {
+  local csv="$BACKEND/target/site/jacoco/jacoco.csv" log="$LOGS/${PHASE}_backend-coverage.log"
+  if [ ! -f "$csv" ]; then
+    line backend-coverage "-" "run backend_test first" "$log"
+    return
+  fi
+  python3 - "$csv" >"$log" <<'PY'
+import csv, sys
+rows = list(csv.DictReader(open(sys.argv[1])))
+t = lambda k: sum(int(r[k]) for r in rows)
+lc, lm, bc, bm = t("LINE_COVERED"), t("LINE_MISSED"), t("BRANCH_COVERED"), t("BRANCH_MISSED")
+print(f"line={100*lc/(lc+lm):.1f}% branch={100*bc/(bc+bm):.1f}% lines={lc}/{lc+lm} branches={bc}/{bc+bm}")
+PY
+  line backend-coverage 0 "$(cat "$log")" "$log"
+}
 
 dependency_check() {
   local log="$LOGS/${PHASE}_dependency-check.log"
@@ -101,6 +122,16 @@ frontend_build() { frontend_npm frontend-build run build; }
 frontend_test() { frontend_npm frontend-test test; }
 frontend_check() { frontend_npm frontend-check run check; }
 frontend_e2e() { frontend_npm frontend-e2e run e2e; }
+frontend_coverage() {
+  frontend_npm frontend-coverage run coverage
+  local summary="$FRONTEND/coverage/coverage-summary.json"
+  [ -f "$summary" ] && python3 -c 'import json,sys; t=json.load(open(sys.argv[1]))["total"]; print("  frontend-coverage line=%s%% branch=%s%%" % (t["lines"]["pct"], t["branches"]["pct"]))' "$summary"
+}
+frontend_mutation() {
+  frontend_npm frontend-mutation run mutation
+  grep -E 'All files' "$LOGS/${PHASE}_frontend-mutation.log" | tail -1 | tr -s ' ' | sed 's/^/  /'
+}
+frontend_duplication() { frontend_npm frontend-duplication run duplication; }
 npm_audit() { frontend_npm npm-audit audit --audit-level=high; }
 
 semgrep() {
@@ -123,7 +154,7 @@ gitleaks() {
   start="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["startCommit"])' \
     "$ROOT/03_statistics/run-log.json")"
   docker run --rm -v "$ROOT:/repo" "$GITLEAKS_IMAGE" \
-    git /repo --no-banner --redact --log-opts="${start}..HEAD" --report-format json \
+    git /repo --no-banner --redact --gitleaks-ignore-path /repo/02_output/.gitleaksignore --log-opts="${start}..HEAD" --report-format json \
     --report-path /repo/02_output/logs/"${PHASE}"_gitleaks.json >"$log" 2>&1
   local rc=$?
   local n
@@ -170,7 +201,7 @@ PY
   line contracts "$rc" "$(grep -cE ' ok:|validated|Woohoo' "$log") ok lines, $(grep -ciE 'error' "$log") error lines" "$log"
 }
 
-ALL=(contracts backend_build backend_check backend_test frontend_build frontend_check frontend_test frontend_e2e
+ALL=(contracts backend_build backend_check backend_test backend_coverage backend_mutation frontend_build frontend_check frontend_test frontend_coverage frontend_mutation frontend_duplication frontend_e2e
   dependency_check npm_audit semgrep gitleaks cloc)
 TOOLS=("$@")
 [ ${#TOOLS[@]} -eq 0 ] && TOOLS=("${ALL[@]}")

@@ -13,7 +13,7 @@ class AppSettingsTest {
         .withProperty("APP_ENVIRONMENT", "production")
         .withProperty("ORGANIZER_EMAILS", "a@konferenca.si, b@konferenca.si")
         .withProperty("ORGANIZER_USERNAME", "organizer")
-        .withProperty("ORGANIZER_PASSWORD", "0123456789abcdef")
+        .withProperty("ORGANIZER_PASSWORD", "0123456789abcdef") // gitleaks:allow (test-only value)
         .withProperty("CONFERENCE_CONFIG_PATH", "/config/conference.json")
         .withProperty("RECAPTCHA_SITE_KEY", "site")
         .withProperty("RECAPTCHA_SECRET_KEY", "secret");

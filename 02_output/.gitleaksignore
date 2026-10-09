@@ -1,0 +1,2 @@
+# D-25: test-only values matched by generic-api-key (fingerprints of earlier commits)
+d4bd454214ec0a2665f224c794fbc0144084d3a5:02_output/backend/src/test/java/si/konferenca/registration/config/AppSettingsTest.java:generic-api-key:16
