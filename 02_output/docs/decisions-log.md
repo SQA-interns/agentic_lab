@@ -56,3 +56,8 @@
   3. Drop jscpd and use PMD CPD (already pinned for the backend) for frontend duplication too.
 - Human response: none
 - Resolution: open
+
+## D-11 and D-12 follow-up
+- Timestamp: 2026-10-09T11:08:04Z
+- Human response: "d11 default d12 default" (received 2026-10-09T11:07:30Z)
+- Resolution: D-11 option 1 (`vitest`, `@vitest/coverage-v8` 4.1.11); D-12 option 1 (`jscpd` 5.4.0). These replace the tech-stack entries for this run. Re-audit: Critical 0, High 0, Moderate 2 (D-13); frontend build, check, test pass (`out/logs/0_*`).

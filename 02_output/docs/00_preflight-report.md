@@ -9,7 +9,7 @@
 | Local environments and services running or reachable | `project/00_setup/environments.md` | pass: Docker Engine running (`docker run`), Docker Hub, Maven Central, npm registry reachable (HTTP); compose stack is built in later phases |
 | Secrets present in `.env` or marked test-only | `project/00_setup/secrets.env.example` | pass: POSTGRES_PASSWORD, ORGANIZER_USERNAME, ORGANIZER_PASSWORD (≥ 16 chars), ORGANIZER_EMAILS, NVD_API_KEY non-empty (`sed … \| grep -q .`, then `grep -c "^KEY=..*"`); RECAPTCHA_* test-mode only, SMTP_* not needed |
 | Every listed dependency resolves | `project/00_setup/tech-stack.md` | pass: 61/61 entries HTTP 200 (Maven Central POM, npm registry version document, `docker manifest inspect`), plus Maven 3.9.9 and pitest-junit5-plugin 1.2.3; backend resolved by `./mvnw` at exact versions (`out/logs/0_backend-deps.txt`) |
-| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | backend: pass (Dependency-Check 12.1.0, NVD analyser; 1 High + 1 Medium false positives suppressed, D-03, D-04; OSS Index disabled, D-02; raw `out/logs/0_dependency-check-raw.json`). **npm set: fail, `npm audit` 2 Critical, 5 High, 4 Moderate in pinned dev tooling: vitest 3.2.7 / @vitest/coverage-v8 3.2.7 (D-11), jscpd 4.3.0 (D-12); Moderate qs (D-13). Raw `out/logs/0_npm-audit.json`** |
+| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | backend: pass (Dependency-Check 12.1.0, NVD analyser; 1 High + 1 Medium false positives suppressed, D-03, D-04; OSS Index disabled, D-02; raw `out/logs/0_dependency-check-raw.json`). npm set: pass after D-11, D-12 (approved pin changes): `npm audit` Critical 0, High 0, Moderate 2 (D-13); raw first audit superseded, current `out/logs/0_npm-audit.json` |
 | Clean working tree on the starting commit | repository | pass: `git status` clean apart from `run-log.json` at HEAD b6c9dc6 (detached; branch created, D-10) |
 | Input manifest written | `docs/00_input-manifest.sha256` | pass: 27 files, LF-normalised SHA-256 |
 
@@ -74,12 +74,12 @@
 | `eslint-plugin-react-hooks` | 5.2.0 | yes (HTTP 200) | none |
 | `eslint-plugin-react-refresh` | 0.4.26 | yes (HTTP 200) | none |
 | `prettier` | 3.9.9 | yes (HTTP 200) | none |
-| `vitest` | 3.2.7 | yes (HTTP 200) | Critical (D-11) |
-| `@vitest/coverage-v8` | 3.2.7 | yes (HTTP 200) | Critical (D-11) |
+| `vitest` | 3.2.7 → 4.1.11 (approved D-11) | yes (HTTP 200) | none after change |
+| `@vitest/coverage-v8` | 3.2.7 → 4.1.11 (approved D-11) | yes (HTTP 200) | none after change |
 | `@playwright/test` | 1.63.0 | yes (HTTP 200) | none |
 | `@stryker-mutator/core` | 10.0.0 | yes (HTTP 200) | Moderate, transitive qs (D-13) |
 | `@stryker-mutator/vitest-runner` | 10.0.0 | yes (HTTP 200) | none |
-| `jscpd` | 4.3.0 | yes (HTTP 200) | High (D-12) |
+| `jscpd` | 4.3.0 → 5.4.0 (approved D-12) | yes (HTTP 200) | none after change |
 | `npm audit (npm 11.6.2)` | 11.6.2 | yes (HTTP 200) | none |
 | `semgrep/semgrep` | 1.177.0 | yes (HTTP 200) | not scanned (images scanned in phase 6) |
 | `zricethezav/gitleaks` | v8.30.1 | yes (HTTP 200) | not scanned (images scanned in phase 6) |
@@ -91,4 +91,4 @@
 | When | What was missing | Answer | Re-check |
 |---|---|---|---|
 | 2026-10-09T10:54:33Z | Node.js 24.13.0 with npm 11.6.2 on the host (D-09) | 2026-10-09T10:58:38Z: already installed, defaults | pass (nvm v24.13.0); frontend skeleton built; npm audit raised D-11, D-12 |
-| 2026-10-09T11:01:38Z | Approval to change vitest/@vitest/coverage-v8 (D-11) and jscpd (D-12) pins | none yet | npm audit, frontend tools |
+| 2026-10-09T11:01:38Z | Approval to change vitest/@vitest/coverage-v8 (D-11) and jscpd (D-12) pins | 2026-10-09T11:07:30Z: defaults | pass: pins changed, audit 0 Critical/High |
