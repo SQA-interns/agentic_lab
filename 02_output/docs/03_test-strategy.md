@@ -85,5 +85,16 @@ Mutation runs: first run backend 82 %, frontend 93.0 %; the survivors in validat
 
 ## Final run (phase 6)
 
+`verify.sh 6final` after fix loops 1 and 2, 2026-10-09; stack rebuilt from the final code. Frontend code unchanged since its phase 5 mutation run.
+
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools | Log |
 |---|---|---|---|---|---|---|---|
+| backend | acceptance | 113 / 0 | 97.9 % (all levels) | 90.3 % (all levels) | — | JUnit 6, Testcontainers, JaCoCo | `logs/6final_be-test.log` |
+| backend | unit | 104 / 0 | | | 98 % (292/297): unit-tested scope as in phase 5 | Pitest 1.30.0 | `logs/6final_be-mutation.log` |
+| backend | integration | 18 / 0 | | | 60 % (37/62), Spring-wired scope, phase 5; survivors classified | Pitest 1.30.0 | `logs/5_be-mutation-wiring.log` |
+| backend | architecture | 4 / 0 | | | — | ArchUnit 1.3.2 | `logs/6final_be-test.log` |
+| frontend | acceptance | 16 / 0 | 100 % (unit + acceptance) | 95.5 % | — | Vitest 4.1.11, Testing Library, V8 | `logs/6final_fe-test.log` |
+| frontend | unit / component | 46 / 0 | | | 97.2 % (phase 5) | Stryker 10.0.0 | `logs/5_fe-mutation.log` |
+| all | end-to-end | 6 / 0 | — | — | — | Playwright 1.63.0 | `logs/6final_e2e.log` |
+
+Phase 6 added `EncodedPathTest` (5 unit cases) and `EncodedPathIntegrationTest` (1) for F-02, and fixed the flaky non-frozen test of F-01.
