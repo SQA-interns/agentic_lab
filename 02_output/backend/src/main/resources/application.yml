@@ -12,6 +12,19 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+  flyway:
+    locations: classpath:db/migration
+
+server:
+  forward-headers-strategy: native
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-exception: false
+    include-binding-errors: never
+  tomcat:
+    max-swallow-size: ${MAX_REQUEST_BYTES:16384}
+    max-http-form-post-size: ${MAX_REQUEST_BYTES:16384}
 
 management:
   endpoints:
@@ -22,3 +35,37 @@ management:
     health:
       probes:
         enabled: true
+      group:
+        readiness:
+          include: readinessState,db
+  health:
+    mail:
+      enabled: false
+
+app:
+  conference-name: ${CONFERENCE_NAME:Conference}
+  mail-from: ${MAIL_FROM:registration@konferenca.si}
+  options-file: ${OPTIONS_FILE:classpath:conference-options.json}
+  json-copy-dir: ${JSON_COPY_DIR:/data/registrations}
+  recaptcha:
+    test-mode: ${RECAPTCHA_TEST_MODE:false}
+    site-key: ${RECAPTCHA_SITE_KEY:}
+    secret-key: ${RECAPTCHA_SECRET_KEY:}
+    verify-url: ${RECAPTCHA_VERIFY_URL:https://www.google.com/recaptcha/api/siteverify}
+  organizer:
+    username: ${ORGANIZER_USERNAME:}
+    password: ${ORGANIZER_PASSWORD:}
+    emails: ${ORGANIZER_EMAILS:}
+    https-only: ${ORGANIZER_HTTPS_ONLY:true}
+  smtp:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    tls: ${SMTP_TLS:true}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+  cors-allowed-origins: ${CORS_ALLOWED_ORIGINS:}
+  limits:
+    registrations-per-minute: ${RATE_LIMIT_REGISTRATIONS_PER_MINUTE:30}
+    exports-per-minute: ${RATE_LIMIT_EXPORTS_PER_MINUTE:10}
+    form-per-minute: ${RATE_LIMIT_FORM_PER_MINUTE:120}
+    max-request-bytes: ${MAX_REQUEST_BYTES:16384}
