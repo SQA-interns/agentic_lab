@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 import si.konferenca.registration.application.CaptchaVerifier;
+import si.konferenca.registration.application.ExportService;
 import si.konferenca.registration.application.RegistrationCopyStore;
 import si.konferenca.registration.application.RegistrationFormService;
 import si.konferenca.registration.application.RegistrationNotifier;
@@ -23,6 +24,7 @@ import si.konferenca.registration.domain.OptionCatalogue;
 import si.konferenca.registration.infrastructure.FileRegistrationCopyStore;
 import si.konferenca.registration.infrastructure.JpaRegistrationRepository;
 import si.konferenca.registration.infrastructure.OptionsFileLoader;
+import si.konferenca.registration.infrastructure.PoiWorkbookWriter;
 import si.konferenca.registration.infrastructure.RecaptchaCaptchaVerifier;
 import si.konferenca.registration.infrastructure.SmtpRegistrationNotifier;
 import si.konferenca.registration.infrastructure.TestModeCaptchaVerifier;
@@ -121,6 +123,14 @@ public class AppConfiguration {
         notifier,
         new TransactionTemplate(transactionManager),
         clock);
+  }
+
+  @Bean
+  ExportService exportService(
+      RegistrationRepository repository, PlatformTransactionManager transactionManager) {
+    TransactionTemplate readOnly = new TransactionTemplate(transactionManager);
+    readOnly.setReadOnly(true);
+    return new ExportService(repository, new PoiWorkbookWriter(), readOnly);
   }
 
   @Bean
