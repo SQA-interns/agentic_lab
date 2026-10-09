@@ -59,8 +59,9 @@ docker exec registration-postgres-1 psql -U registration -d registration -c \
   "SELECT registration_id, option_id, category FROM registration_option WHERE registration_id IN ('$EXTERNAL_ID', '$STUDENT_ID') ORDER BY 1, 2;"
 
 step "JSON copies on the volume (DoD-P02)"
-docker exec registration-backend-1 ls -l "/data/registrations/registration-$EXTERNAL_ID.json" "/data/registrations/registration-$STUDENT_ID.json"
-docker exec registration-backend-1 cat "/data/registrations/registration-$EXTERNAL_ID.json"
+# MSYS_NO_PATHCONV: Git Bash would otherwise rewrite the container path into a Windows path.
+MSYS_NO_PATHCONV=1 docker exec registration-backend-1 ls -l "/data/registrations/registration-$EXTERNAL_ID.json" "/data/registrations/registration-$STUDENT_ID.json"
+MSYS_NO_PATHCONV=1 docker exec registration-backend-1 cat "/data/registrations/registration-$EXTERNAL_ID.json"
 echo
 
 step "emails in Mailpit (DoD-P03)"

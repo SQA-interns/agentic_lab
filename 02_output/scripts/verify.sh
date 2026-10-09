@@ -248,11 +248,22 @@ run_tool() {
       key="tree $(json "$tree" 'd.length') leaks, history $(json "$hist" 'd.length') leaks"
       ;;
     cloc)
-      docker_run -v "$WROOT/02_output:/src" -w /src "$IMG_CLOC" --json --quiet \
+      docker_run -v "$WROOT/02_output:/src" -w /src "$IMG_CLOC" --json --quiet --by-file \
         --exclude-dir=node_modules,target,dist,coverage,reports,.stryker-tmp,logs,docs \
         --not-match-f='package-lock\.json' \
         backend frontend >"$LOG" 2>&1 || code=$?
-      key="$(json "$LOG" '`${d.SUM.nFiles} files, ${d.SUM.code} code lines`')"
+      # Production and test code lines per component (test: test folders, *.test.*, e2e).
+      key="$(json "$LOG" '
+        const c = {};
+        for (const [f, v] of Object.entries(d)) {
+          if (f === "header" || f === "SUM") continue;
+          const comp = f.startsWith("backend") ? "backend" : "frontend";
+          const test = /src\/test\/|\.test\.|\/e2e\/|\/acceptance\/|playwright\.config/.test(f);
+          c[comp] = c[comp] || { prod: 0, test: 0 };
+          c[comp][test ? "test" : "prod"] += v.code;
+        }
+        `${d.SUM.nFiles} files, ${d.SUM.code} code lines; ` +
+          Object.entries(c).map(([k, v]) => `${k} prod ${v.prod} test ${v.test}`).join(", ")')"
       ;;
     e2e)
       # Needs the local stack (stack-up); joins its network. Organizer settings come from .env.
@@ -296,7 +307,7 @@ run_tool() {
           for id in $ids; do
             docker exec registration-postgres-1 psql -U registration -d registration -tAc \
               "SELECT 'row ' || id || ' ' || type FROM registration WHERE id = '$id'"
-            docker exec registration-backend-1 ls "/data/registrations/registration-$id.json"
+            MSYS_NO_PATHCONV=1 docker exec registration-backend-1 ls "/data/registrations/registration-$id.json"
           done
       } >"$LOG" 2>&1 || code=$?
       key="$(grep -c '^row ' "$LOG") rows, $(grep -c 'registration-.*\.json' "$LOG") copies of ${ids:+2} after down/up"
