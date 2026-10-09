@@ -33,6 +33,7 @@ public record AppSettings(
     long maxRequestBytes) {
 
   static final String PRODUCTION = "production";
+  static final String DEFAULT_MAIL_FROM = "registration@localhost.localdomain";
   private static final List<String> ENVIRONMENTS = List.of(PRODUCTION, "local", "test");
   private static final Pattern EMAIL =
       Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", Pattern.UNICODE_CHARACTER_CLASS);
@@ -47,7 +48,7 @@ public record AppSettings(
     AppSettings settings =
         new AppSettings(
             env.getProperty("APP_ENVIRONMENT", PRODUCTION).trim().toLowerCase(Locale.ROOT),
-            env.getProperty("MAIL_FROM", "registration@localhost").trim(),
+            env.getProperty("MAIL_FROM", DEFAULT_MAIL_FROM).trim(),
             env.getProperty("CONFERENCE_NAME", "Conference").trim(),
             Arrays.stream(required(env, "ORGANIZER_EMAILS").split(","))
                 .map(String::trim)
