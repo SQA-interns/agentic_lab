@@ -82,6 +82,31 @@ class RegistrationRequestParserTest {
   }
 
   @Test
+  void listsAtTheirMaximumSizeAreAccepted() {
+    String fifty = "[" + "\"a\",".repeat(49) + "\"a\"]";
+    String twenty = "[" + "\"c\",".repeat(19) + "\"c\"]";
+
+    RegistrationRequestParser.Parsed parsed =
+        RegistrationRequestParser.parse(
+            "{\"type\":\"EXTERNAL\",\"optionIds\":" + fifty + ",\"consentIds\":" + twenty + "}");
+
+    assertThat(parsed.errors()).isEmpty();
+    assertThat(parsed.submission().optionIds()).hasSize(50);
+    assertThat(parsed.submission().consentIds()).hasSize(20);
+  }
+
+  @Test
+  void tokenAtTheMaximumLengthIsKept() {
+    String token = "t".repeat(RegistrationRequestParser.MAX_TOKEN);
+
+    assertThat(
+            RegistrationRequestParser.parse(
+                    "{\"type\":\"EXTERNAL\",\"recaptchaToken\":\"" + token + "\"}")
+                .captchaToken())
+        .isEqualTo(token);
+  }
+
+  @Test
   void overlongTokenIsDropped() {
     String token = "t".repeat(RegistrationRequestParser.MAX_TOKEN + 1);
 

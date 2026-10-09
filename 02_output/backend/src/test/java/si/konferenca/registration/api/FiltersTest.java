@@ -120,6 +120,42 @@ class FiltersTest {
   }
 
   @Test
+  void allowedRequestsReachTheHandlerAndOtherPathsAreNotLimited() throws Exception {
+    RateLimitFilter filter = new RateLimitFilter(1, 1, 1, () -> 0L);
+    for (String path :
+        new String[] {
+          "/api/registrations", "/api/registrations/export", "/api/registration-form/x"
+        }) {
+      MockFilterChain chain = new MockFilterChain();
+      MockHttpServletRequest request = new MockHttpServletRequest("GET", path);
+      if (path.equals("/api/registrations")) {
+        request.setMethod("POST");
+      }
+      filter.doFilter(request, new MockHttpServletResponse(), chain);
+      assertThat(chain.getRequest()).as(path).isNotNull();
+    }
+    for (int i = 0; i < 3; i++) {
+      MockFilterChain chain = new MockFilterChain();
+      filter.doFilter(
+          new MockHttpServletRequest("GET", "/api/registrations"),
+          new MockHttpServletResponse(),
+          chain);
+      assertThat(chain.getRequest()).as("GET /api/registrations is not limited").isNotNull();
+    }
+  }
+
+  @Test
+  void sr06_permittedExportRequestReachesTheHandler() throws Exception {
+    MockHttpServletRequest local = new MockHttpServletRequest("GET", "/api/registrations/export");
+    local.setRemoteAddr("127.0.0.1");
+    MockFilterChain chain = new MockFilterChain();
+
+    new OrganizerHttpsFilter().doFilter(local, new MockHttpServletResponse(), chain);
+
+    assertThat(chain.getRequest()).isNotNull();
+  }
+
+  @Test
   void es07_loggedCauseChainHasClassNamesOnly() {
     RuntimeException e =
         new RuntimeException("Key (email)=(ana@example.si) exists", new IOException("disk /x"));
