@@ -1,7 +1,10 @@
-# Environment-specific values come from environment variables (ES-01); secrets have no default.
+# Settings come from environment variables of the same name (ES-01, specification section 3).
+# Secrets have no default here.
 spring:
   application:
     name: registration-backend
+  main:
+    banner-mode: off
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USER}
@@ -10,8 +13,25 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+  flyway:
+    locations: classpath:db/migration
+  mvc:
+    problemdetails:
+      enabled: false
+server:
+  forward-headers-strategy: native
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-exception: false
+    include-binding-errors: never
+    whitelabel:
+      enabled: false
+  tomcat:
+    max-swallow-size: 64KB
 management:
-  endpoints:
+  health:
+    endpoints:
     web:
       exposure:
         include: health
@@ -19,3 +39,7 @@ management:
     health:
       probes:
         enabled: true
+      show-details: never
+logging:
+  level:
+    org.hibernate.SQL: warn
