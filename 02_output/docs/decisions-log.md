@@ -73,3 +73,75 @@
 - Options: as D-04
 - Human response: "False positive → Low (Recommended)", 2026-10-09T08:34:24Z
 - Resolution: D-04 option 1: Low, suppressed for `angus-activation` and CVE-2025-7962 only in `backend/dependency-check-suppressions.xml`; re-check in phase 6
+
+## D-09: OQ-01, option availability per registration type
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-01 unanswered (`project/requirements.md`).
+- Options: 1. every option states in configuration which registration types may select it (default: both); a selection not available to the registrant's type is rejected and not offered (proposed, more conservative); 2. every active option is available to both types
+- Human response: none
+- Resolution: 1, pending review (AC-001-09, AC-002-08, AC-003-03)
+
+## D-10: OQ-02, mandatory consents
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-02 unanswered.
+- Options: 1. one mandatory consent: processing of the submitted personal data for the registration and organisation of the conference; its wording comes from configuration; never preselected; stored with the time it was given (proposed, the minimum SB-12/SB-14 need); 2. additional optional consents (e.g. photos, newsletter)
+- Human response: none
+- Resolution: 1, pending review (AC-001-12, AC-002-10)
+
+## D-11: OQ-03, storage succeeds but an email fails
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-03 unanswered; priority 1 in `project/requirements.md` puts storage before notification.
+- Options: 1. the registration stays accepted, stored and confirmed; the failure is logged without personal data; no automatic retry (proposed: a stored registration is never reported as failed, which would invite a duplicate rejected by D-13); 2. report the registration as failed; 3. retry emails from a queue
+- Human response: none
+- Resolution: 1, pending review (AC-006-04, AC-007-05)
+
+## D-12: OQ-04, options per category
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-04 unanswered.
+- Options: 1. each category has a maximum number of selections in configuration, default 1; selecting none is allowed; more than the maximum is rejected (proposed, more conservative); 2. no limit
+- Human response: none
+- Resolution: 1, pending review (AC-001-10, AC-001-11, AC-002-09)
+
+## D-13: OQ-05, second registration with the same email
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-05 unanswered.
+- Options: 1. rejected: one registration per email address across both types, compared after trimming and ignoring letter case (proposed, more conservative: no duplicates, and editing is out of scope); 2. allowed
+- Human response: none
+- Resolution: 1, pending review (AC-001-15, AC-002-13)
+
+## D-14: OQ-06, retention of registrations and JSON copies
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-06 unanswered; SB-13 needs a stated retention period.
+- Options: 1. the system deletes nothing automatically (deleting is out of scope); the retention period is set by the operator and listed under "Before production" in the release notes (proposed: no data is lost by an invented rule); 2. automatic deletion after a fixed period
+- Human response: none
+- Resolution: 1, pending review (no acceptance criterion; release notes)
+
+## D-15: Maximum field lengths
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: gap: no rule limits field length, but SR-03 limits request size and an unbounded field would be rejected only by the size limit, without naming the field.
+- Options: 1. maximum lengths after trimming: email 254, first and last name 100, organization / institution, study institution and study programme 200, student ID 50; longer values are rejected naming the field (proposed); 2. no per-field limit
+- Human response: none
+- Resolution: 1, pending review (AC-001-16, AC-002-14)
+
+## D-16: Invalid options configuration
+- Timestamp: 2026-10-09T08:44:05Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: gap: US-003 does not say what happens with an invalid configuration.
+- Options: 1. the system refuses to start and reports the configuration error (proposed: never accept registrations against a wrong option set); 2. start and ignore invalid entries
+- Human response: none
+- Resolution: 1, pending review (AC-003-06)

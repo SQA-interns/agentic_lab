@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 1 (requirements), next to start
-- Last gate result: phase 0 passed 2026-10-09T08:41:38Z: preflight checks pass (D-01..D-08), both skeletons build, every listed tool runs through `out/scripts/verify.sh` (`0_*` logs), input manifest written.
-- Next step: phase 1, `skills/derive-acceptance-criteria` → `docs/01_acceptance-criteria.md`.
+- Current phase: 2 (design), next to start
+- Last gate result: phase 1 passed 2026-10-09T08:44:35Z: 61 ACs over US-001..US-008; OQ-01..OQ-06 decided as D-09..D-14 (pending review); gaps D-15, D-16.
+- Next step: phase 2, `skills/write-specification` → `docs/02_specification.md`, `docs/02_contracts/`.
 - Waiting for the human on: nothing
