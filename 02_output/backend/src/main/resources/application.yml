@@ -24,9 +24,10 @@ spring:
     properties:
       mail.smtp.starttls.enable: ${SMTP_TLS:true}
       mail.smtp.starttls.required: ${SMTP_TLS:true}
-      mail.smtp.connectiontimeout: 5000
-      mail.smtp.timeout: 10000
-      mail.smtp.writetimeout: 10000
+      # RFC 5321 4.5.3.2 lets a server take minutes; sending is asynchronous (F-01).
+      mail.smtp.connectiontimeout: 10000
+      mail.smtp.timeout: 60000
+      mail.smtp.writetimeout: 60000
   mvc:
     problemdetails:
       enabled: false
