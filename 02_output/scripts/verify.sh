@@ -38,7 +38,7 @@ IMG_PLAYWRIGHT="mcr.microsoft.com/playwright:v1.63.0-noble"
 IMG_POSTGRES="postgres:16.15-alpine"
 
 DEFAULT_TOOLS="be-build be-format be-lint be-spotbugs be-cpd be-test fe-build fe-format fe-lint fe-typecheck fe-cpd fe-test fe-audit contracts semgrep gitleaks cloc"
-ALL_TOOLS="$DEFAULT_TOOLS be-mutation be-depscan fe-mutation"
+ALL_TOOLS="$DEFAULT_TOOLS be-mutation be-mutation-wiring be-depscan fe-mutation"
 KNOWN_TOOLS="$ALL_TOOLS e2e stack-up stack-down"
 
 mkdir -p "$LOGS"
@@ -116,6 +116,18 @@ run_tool() {
     be-mutation)
       rm -rf "$BE/target/pit-reports"
       (cd "$BE" && ./mvnw -B test-compile org.pitest:pitest-maven:mutationCoverage -DfailWhenNoMutations=false) >"$LOG" 2>&1 || code=$?
+      key="$(grep -E '>> Generated [0-9]+ mutations Killed [0-9]+' "$LOG" | tail -n 1 | sed 's/^.*>> //')"
+      key="${key:-no mutation summary}"
+      ;;
+    be-mutation-wiring)
+      # Persistence adapter, security configuration, controllers and error mapping, which only
+      # the Spring-context tests reach; report in target/pit-reports-wiring.
+      rm -rf "$BE/target/pit-reports-wiring"
+      (cd "$BE" && ./mvnw -B test-compile org.pitest:pitest-maven:mutationCoverage -DfailWhenNoMutations=false \
+        -DreportsDirectory=target/pit-reports-wiring -DexcludedClasses=none.Excluded \
+        "-DtargetClasses=si.konferenca.registration.infrastructure.JpaRegistrationRepository,si.konferenca.registration.config.SecurityConfiguration,si.konferenca.registration.api.ApiExceptionHandler,si.konferenca.registration.api.*Controller" \
+        "-DtargetTests=si.konferenca.registration.integration.ApiIntegrationTest,si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest,si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest,si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest" \
+        -Dthreads=1) >"$LOG" 2>&1 || code=$?
       key="$(grep -E '>> Generated [0-9]+ mutations Killed [0-9]+' "$LOG" | tail -n 1 | sed 's/^.*>> //')"
       key="${key:-no mutation summary}"
       ;;
