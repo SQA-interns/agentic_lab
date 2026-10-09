@@ -1,0 +1,25 @@
+# local configuration and secrets (ES-02)
+.env
+.env.*
+.claude/
+.idea/
+.vscode/
+*.iml
+
+# backend build output
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# frontend dependencies and build output
+node_modules/
+dist/
+coverage/
+reports/
+.stryker-tmp/
+playwright-report/
+test-results/
+blob-report/
+
+# OS files
+.DS_Store
+Thumbs.db
