@@ -1,0 +1,15 @@
+3a6c626 build: report stack status without compose interpolation
+123054c build: proxy /api with the page's origin and own the copy volume (AR-01, SB-10, SB-11)
+f122605 feat: add registration page with options and confirmation (US-001..US-004)
+c3442f5 feat: add frontend API client and field rules (US-001, US-002, NFR-03)
+11db8b7 feat: rate limit public and organizer endpoints, optional CORS (SR-03)
+e1093c9 feat: export registrations as an Excel workbook for organizers (US-008, SR-06)
+5ec4276 feat: email participant confirmation and organizer notification (US-006, US-007)
+04c65ee feat: accept registrations through the API (US-001, US-002, AC-004-01)
+e9f7049 feat: verify anti-automation tokens on the backend (SR-01, SR-02)
+d69a030 feat: validate external and student registrations (US-001, US-002)
+b5c623b feat: store registrations in the database and as JSON copies (US-005)
+884c8e5 feat: serve form data with options per category (US-003, AR-04)
+19e2db0 feat: load and validate the conference options file (US-003, D-16)
+d4c5152 build: exclude one SpotBugs pattern forced by the Spring Security API
+e4132b8 docs: record phase 3 gate in progress

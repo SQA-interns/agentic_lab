@@ -1,0 +1,18 @@
+
+ RUN  v4.1.11 C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  4 passed (4)
+      Tests  16 passed (16)
+   Start at  12:25:34
+   Duration  5.67s (transform 1.36s, setup 2.54s, import 3.03s, tests 2.55s, environment 10.75s)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 76.84% ( 146/190 )
+Branches     : 69.17% ( 92/133 )
+Functions    : 81.15% ( 56/69 )
+Lines        : 77.34% ( 140/181 )
+================================================================================
