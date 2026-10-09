@@ -1,0 +1,21 @@
+{
+  "registrationId": "3f1c2a9e-8d4b-4c6a-9b1e-2f7d5e8a1c40",
+  "registeredAt": "2026-10-09T08:15:30.123Z",
+  "type": "STUDENT",
+  "participant": {
+    "firstName": "Žana",
+    "lastName": "Kovač",
+    "email": "zana@example.si",
+    "studyInstitution": "Fakulteta za računalništvo in informatiko",
+    "studyProgramme": "Računalništvo in informatika",
+    "studentId": "63200001"
+  },
+  "options": [{ "id": "ws-ai", "name": "Delavnica umetne inteligence", "category": "workshop" }],
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree to the processing of my personal data for the registration and organisation of the conference.",
+      "givenAt": "2026-10-09T08:15:30.123Z"
+    }
+  ]
+}
