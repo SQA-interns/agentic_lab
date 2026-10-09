@@ -1,0 +1,7 @@
+== working tree (tracked and untracked, not ignored)
+[90m8:41AM[0m [32mINF[0m [1mscanned ~254287 bytes (254.29 KB) in 81.6ms[0m
+[90m8:41AM[0m [32mINF[0m [1mno leaks found[0m
+== history of the current branch
+[90m8:41AM[0m [32mINF[0m [1m35 commits scanned.[0m
+[90m8:41AM[0m [32mINF[0m [1mscanned ~580904 bytes (580.90 KB) in 4.45s[0m
+[90m8:41AM[0m [32mINF[0m [1mno leaks found[0m

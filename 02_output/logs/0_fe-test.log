@@ -1,0 +1,17 @@
+
+ RUN  v4.1.11 C:/Users/tanej/Documents/LAB/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+No test files found, exiting with code 0
+
+include: src/**/*.test.{ts,tsx}
+exclude:  **/node_modules/**, **/.git/**
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 0% ( 0/1 )
+Branches     : 100% ( 0/0 )
+Functions    : 0% ( 0/1 )
+Lines        : 0% ( 0/1 )
+================================================================================

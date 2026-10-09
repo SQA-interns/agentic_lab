@@ -1,0 +1,836 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.10.0:resolve (default-cli) @ registration-backend ---
+[INFO] 
+[INFO] The following files have been resolved:
+[INFO]    org.springframework.boot:spring-boot-starter-webmvc:jar:4.1.1:compile -- module spring.boot.starter.webmvc [auto]
+[INFO]    org.springframework.boot:spring-boot-starter:jar:4.1.1:compile -- module spring.boot.starter [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-logging:jar:4.1.1:compile -- module spring.boot.starter.logging [auto]
+[INFO]    ch.qos.logback:logback-classic:jar:1.5.38:compile -- module ch.qos.logback.classic
+[INFO]    ch.qos.logback:logback-core:jar:1.5.38:compile -- module ch.qos.logback.core
+[INFO]    org.apache.logging.log4j:log4j-to-slf4j:jar:2.26.1:compile -- module org.apache.logging.log4j.to.slf4j
+[INFO]    org.slf4j:jul-to-slf4j:jar:2.0.18:compile -- module jul.to.slf4j
+[INFO]    org.springframework.boot:spring-boot-autoconfigure:jar:4.1.1:compile -- module spring.boot.autoconfigure [auto]
+[INFO]    jakarta.annotation:jakarta.annotation-api:jar:3.0.0:compile -- module jakarta.annotation
+[INFO]    org.yaml:snakeyaml:jar:2.6:compile -- module org.yaml.snakeyaml
+[INFO]    org.springframework.boot:spring-boot-starter-jackson:jar:4.1.1:compile -- module spring.boot.starter.jackson [auto]
+[INFO]    org.springframework.boot:spring-boot-jackson:jar:4.1.1:compile -- module spring.boot.jackson [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-tomcat:jar:4.1.1:compile -- module spring.boot.starter.tomcat [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-tomcat-runtime:jar:4.1.1:compile -- module spring.boot.starter.tomcat.runtime [auto]
+[INFO]    org.apache.tomcat.embed:tomcat-embed-websocket:jar:11.0.26:compile -- module org.apache.tomcat.embed.websocket
+[INFO]    org.springframework.boot:spring-boot-tomcat:jar:4.1.1:compile -- module spring.boot.tomcat [auto]
+[INFO]    org.springframework.boot:spring-boot-http-converter:jar:4.1.1:compile -- module spring.boot.http.converter [auto]
+[INFO]    org.springframework.boot:spring-boot:jar:4.1.1:compile -- module spring.boot [auto]
+[INFO]    org.springframework:spring-context:jar:7.0.9:compile -- module spring.context [auto]
+[INFO]    org.springframework:spring-web:jar:7.0.9:compile -- module spring.web [auto]
+[INFO]    org.springframework.boot:spring-boot-webmvc:jar:4.1.1:compile -- module spring.boot.webmvc [auto]
+[INFO]    org.springframework.boot:spring-boot-servlet:jar:4.1.1:compile -- module spring.boot.servlet [auto]
+[INFO]    org.springframework:spring-webmvc:jar:7.0.9:compile -- module spring.webmvc [auto]
+[INFO]    org.springframework:spring-expression:jar:7.0.9:compile -- module spring.expression [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-data-jpa:jar:4.1.1:compile -- module spring.boot.starter.data.jpa [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-jdbc:jar:4.1.1:compile -- module spring.boot.starter.jdbc [auto]
+[INFO]    com.zaxxer:HikariCP:jar:7.0.2:compile -- module com.zaxxer.hikari
+[INFO]    org.springframework.boot:spring-boot-data-jpa:jar:4.1.1:compile -- module spring.boot.data.jpa [auto]
+[INFO]    org.springframework.boot:spring-boot-data-commons:jar:4.1.1:compile -- module spring.boot.data.commons [auto]
+[INFO]    org.springframework.boot:spring-boot-persistence:jar:4.1.1:compile -- module spring.boot.persistence [auto]
+[INFO]    org.springframework.data:spring-data-commons:jar:4.1.1:compile -- module spring.data.commons [auto]
+[INFO]    org.springframework.boot:spring-boot-hibernate:jar:4.1.1:compile -- module spring.boot.hibernate [auto]
+[INFO]    org.springframework.boot:spring-boot-jpa:jar:4.1.1:compile -- module spring.boot.jpa [auto]
+[INFO]    jakarta.persistence:jakarta.persistence-api:jar:3.2.0:compile -- module jakarta.persistence
+[INFO]    org.hibernate.orm:hibernate-core:jar:7.4.5.Final:compile -- module org.hibernate.orm.core [auto]
+[INFO]    jakarta.transaction:jakarta.transaction-api:jar:2.0.1:compile -- module jakarta.transaction
+[INFO]    org.hibernate.models:hibernate-models:jar:1.1.1:runtime -- module org.hibernate.models [auto]
+[INFO]    org.glassfish.jaxb:jaxb-runtime:jar:4.0.9:runtime -- module org.glassfish.jaxb.runtime
+[INFO]    org.glassfish.jaxb:jaxb-core:jar:4.0.9:runtime -- module org.glassfish.jaxb.core
+[INFO]    org.glassfish.jaxb:txw2:jar:4.0.9:runtime -- module com.sun.xml.txw2
+[INFO]    com.sun.istack:istack-commons-runtime:jar:4.1.2:runtime -- module com.sun.istack.runtime
+[INFO]    jakarta.inject:jakarta.inject-api:jar:2.0.1:runtime -- module jakarta.inject
+[INFO]    org.springframework:spring-orm:jar:7.0.9:compile -- module spring.orm [auto]
+[INFO]    org.springframework.data:spring-data-jpa:jar:4.1.1:compile -- module spring.data.jpa [auto]
+[INFO]    org.springframework:spring-tx:jar:7.0.9:compile -- module spring.tx [auto]
+[INFO]    org.antlr:antlr4-runtime:jar:4.13.2:compile -- module org.antlr.antlr4.runtime [auto]
+[INFO]    org.springframework:spring-aspects:jar:7.0.9:compile -- module spring.aspects [auto]
+[INFO]    org.aspectj:aspectjweaver:jar:1.9.25.1:compile -- module org.aspectj.weaver [auto]
+[INFO]    org.springframework.boot:spring-boot-jdbc:jar:4.1.1:compile -- module spring.boot.jdbc [auto]
+[INFO]    org.springframework.boot:spring-boot-sql:jar:4.1.1:compile -- module spring.boot.sql [auto]
+[INFO]    org.springframework.boot:spring-boot-transaction:jar:4.1.1:compile -- module spring.boot.transaction [auto]
+[INFO]    org.springframework:spring-jdbc:jar:7.0.9:compile -- module spring.jdbc [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-validation:jar:4.1.1:compile -- module spring.boot.starter.validation [auto]
+[INFO]    org.springframework.boot:spring-boot-validation:jar:4.1.1:compile -- module spring.boot.validation [auto]
+[INFO]    org.apache.tomcat.embed:tomcat-embed-el:jar:11.0.26:compile -- module org.apache.tomcat.embed.el
+[INFO]    org.hibernate.validator:hibernate-validator:jar:9.1.3.Final:compile -- module org.hibernate.validator
+[INFO]    jakarta.validation:jakarta.validation-api:jar:3.1.1:compile -- module jakarta.validation
+[INFO]    org.jboss.logging:jboss-logging:jar:3.6.3.Final:compile -- module org.jboss.logging
+[INFO]    com.fasterxml:classmate:jar:1.7.3:compile -- module com.fasterxml.classmate
+[INFO]    org.springframework.boot:spring-boot-starter-mail:jar:4.1.1:compile -- module spring.boot.starter.mail [auto]
+[INFO]    org.springframework.boot:spring-boot-mail:jar:4.1.1:compile -- module spring.boot.mail [auto]
+[INFO]    org.springframework:spring-context-support:jar:7.0.9:compile -- module spring.context.support [auto]
+[INFO]    jakarta.mail:jakarta.mail-api:jar:2.1.5:compile -- module jakarta.mail
+[INFO]    org.eclipse.angus:angus-mail:jar:2.0.5:runtime -- module org.eclipse.angus.mail
+[INFO]    org.eclipse.angus:angus-activation:jar:2.0.3:runtime -- module org.eclipse.angus.activation
+[INFO]    org.springframework.boot:spring-boot-starter-actuator:jar:4.1.1:compile -- module spring.boot.starter.actuator [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-micrometer-metrics:jar:4.1.1:compile -- module spring.boot.starter.micrometer.metrics [auto]
+[INFO]    org.springframework.boot:spring-boot-micrometer-metrics:jar:4.1.1:compile -- module spring.boot.micrometer.metrics [auto]
+[INFO]    org.springframework.boot:spring-boot-micrometer-observation:jar:4.1.1:compile -- module spring.boot.micrometer.observation [auto]
+[INFO]    org.springframework.boot:spring-boot-actuator-autoconfigure:jar:4.1.1:compile -- module spring.boot.actuator.autoconfigure [auto]
+[INFO]    org.springframework.boot:spring-boot-actuator:jar:4.1.1:compile -- module spring.boot.actuator [auto]
+[INFO]    org.springframework.boot:spring-boot-health:jar:4.1.1:compile -- module spring.boot.health [auto]
+[INFO]    io.micrometer:micrometer-observation:jar:1.17.1:compile -- module micrometer.observation [auto]
+[INFO]    org.jspecify:jspecify:jar:1.0.1:compile -- module org.jspecify
+[INFO]    io.micrometer:micrometer-commons:jar:1.17.1:compile -- module micrometer.commons [auto]
+[INFO]    io.micrometer:micrometer-jakarta9:jar:1.17.1:compile -- module micrometer.jakarta9 [auto]
+[INFO]    io.micrometer:micrometer-core:jar:1.17.1:compile -- module micrometer.core [auto]
+[INFO]    org.hdrhistogram:HdrHistogram:jar:2.2.2:runtime -- module HdrHistogram (auto)
+[INFO]    org.springframework.boot:spring-boot-starter-security:jar:4.1.1:compile -- module spring.boot.starter.security [auto]
+[INFO]    org.springframework.boot:spring-boot-security:jar:4.1.1:compile -- module spring.boot.security [auto]
+[INFO]    org.springframework.security:spring-security-config:jar:7.1.1:compile -- module spring.security.config [auto]
+[INFO]    org.springframework.security:spring-security-core:jar:7.1.1:compile -- module spring.security.core [auto]
+[INFO]    org.springframework.security:spring-security-crypto:jar:7.1.1:compile -- module spring.security.crypto [auto]
+[INFO]    org.springframework.security:spring-security-web:jar:7.1.1:compile -- module spring.security.web [auto]
+[INFO]    org.springframework:spring-aop:jar:7.0.9:compile -- module spring.aop [auto]
+[INFO]    org.springframework:spring-beans:jar:7.0.9:compile -- module spring.beans [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-flyway:jar:4.1.1:compile -- module spring.boot.starter.flyway [auto]
+[INFO]    org.springframework.boot:spring-boot-flyway:jar:4.1.1:compile -- module spring.boot.flyway [auto]
+[INFO]    org.flywaydb:flyway-core:jar:12.4.0:compile -- module flyway.core (auto)
+[INFO]    tools.jackson.core:jackson-databind:jar:3.1.5:compile -- module tools.jackson.databind
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.21:compile -- module com.fasterxml.jackson.annotation
+[INFO]    tools.jackson.core:jackson-core:jar:3.1.5:compile -- module tools.jackson.core
+[INFO]    org.flywaydb:flyway-database-postgresql:jar:12.4.0:compile -- module flyway.database.postgresql (auto)
+[INFO]    org.postgresql:postgresql:jar:42.7.13:runtime -- module org.postgresql.jdbc [auto]
+[INFO]    org.checkerframework:checker-qual:jar:3.55.1:runtime -- module org.checkerframework.checker.qual
+[INFO]    org.apache.poi:poi-ooxml:jar:5.5.1:compile -- module org.apache.poi.ooxml
+[INFO]    org.apache.poi:poi:jar:5.5.1:compile -- module org.apache.poi.poi
+[INFO]    commons-codec:commons-codec:jar:1.21.0:compile -- module org.apache.commons.codec
+[INFO]    org.apache.commons:commons-math3:jar:3.6.1:compile -- module commons.math3 (auto)
+[INFO]    com.zaxxer:SparseBitSet:jar:1.3:compile -- module com.zaxxer.sparsebitset [auto]
+[INFO]    org.apache.poi:poi-ooxml-lite:jar:5.5.1:compile -- module org.apache.poi.ooxml.schemas
+[INFO]    org.apache.xmlbeans:xmlbeans:jar:5.3.0:compile -- module org.apache.xmlbeans
+[INFO]    org.apache.commons:commons-compress:jar:1.28.0:compile -- module org.apache.commons.compress
+[INFO]    commons-io:commons-io:jar:2.21.0:compile -- module org.apache.commons.io
+[INFO]    com.github.virtuald:curvesapi:jar:1.08:compile -- module com.github.virtuald.curvesapi [auto]
+[INFO]    org.apache.commons:commons-collections4:jar:4.5.0:compile -- module org.apache.commons.collections4
+[INFO]    org.apache.tomcat.embed:tomcat-embed-core:jar:11.0.26:compile -- module org.apache.tomcat.embed.core
+[INFO]    org.apache.tomcat:tomcat-annotations-api:jar:11.0.26:compile -- module jakarta.annotation
+[INFO]    org.apache.logging.log4j:log4j-api:jar:2.26.1:compile -- module org.apache.logging.log4j
+[INFO]    org.apache.commons:commons-lang3:jar:3.20.0:compile -- module org.apache.commons.lang3
+[INFO]    org.springframework.boot:spring-boot-starter-test:jar:4.1.1:test -- module spring.boot.starter.test [auto]
+[INFO]    org.springframework.boot:spring-boot-test:jar:4.1.1:test -- module spring.boot.test [auto]
+[INFO]    org.springframework.boot:spring-boot-test-autoconfigure:jar:4.1.1:test -- module spring.boot.test.autoconfigure [auto]
+[INFO]    com.jayway.jsonpath:json-path:jar:2.10.0:test -- module json.path [auto]
+[INFO]    org.slf4j:slf4j-api:jar:2.0.18:compile -- module org.slf4j
+[INFO]    jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.5:runtime -- module jakarta.xml.bind
+[INFO]    jakarta.activation:jakarta.activation-api:jar:2.1.4:compile -- module jakarta.activation
+[INFO]    net.minidev:json-smart:jar:2.6.0:test -- module json.smart (auto)
+[INFO]    net.minidev:accessors-smart:jar:2.6.0:test -- module accessors.smart (auto)
+[INFO]    org.ow2.asm:asm:jar:9.7.1:test -- module org.objectweb.asm
+[INFO]    org.assertj:assertj-core:jar:3.27.7:test -- module org.assertj.core
+[INFO]    net.bytebuddy:byte-buddy:jar:1.18.11:runtime -- module net.bytebuddy
+[INFO]    org.awaitility:awaitility:jar:4.3.0:test -- module awaitility (auto)
+[INFO]    org.hamcrest:hamcrest:jar:3.0:test -- module org.hamcrest [auto]
+[INFO]    org.junit.jupiter:junit-jupiter:jar:6.0.3:test -- module org.junit.jupiter
+[INFO]    org.junit.jupiter:junit-jupiter-api:jar:6.0.3:test -- module org.junit.jupiter.api
+[INFO]    org.opentest4j:opentest4j:jar:1.3.0:test -- module org.opentest4j
+[INFO]    org.junit.platform:junit-platform-commons:jar:6.0.3:test -- module org.junit.platform.commons
+[INFO]    org.apiguardian:apiguardian-api:jar:1.1.2:test -- module org.apiguardian.api
+[INFO]    org.junit.jupiter:junit-jupiter-params:jar:6.0.3:test -- module org.junit.jupiter.params
+[INFO]    org.junit.jupiter:junit-jupiter-engine:jar:6.0.3:test -- module org.junit.jupiter.engine
+[INFO]    org.junit.platform:junit-platform-engine:jar:6.0.3:test -- module org.junit.platform.engine
+[INFO]    org.mockito:mockito-core:jar:5.23.0:test -- module org.mockito
+[INFO]    net.bytebuddy:byte-buddy-agent:jar:1.18.11:test -- module net.bytebuddy.agent
+[INFO]    org.objenesis:objenesis:jar:3.3:test -- module org.objenesis [auto]
+[INFO]    org.mockito:mockito-junit-jupiter:jar:5.23.0:test -- module org.mockito.junit.jupiter
+[INFO]    org.skyscreamer:jsonassert:jar:1.5.3:test -- module jsonassert (auto)
+[INFO]    com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test -- module android.json (auto)
+[INFO]    org.springframework:spring-core:jar:7.0.9:compile -- module spring.core [auto]
+[INFO]    commons-logging:commons-logging:jar:1.3.6:compile -- module org.apache.commons.logging
+[INFO]    org.springframework:spring-test:jar:7.0.9:test -- module spring.test [auto]
+[INFO]    org.xmlunit:xmlunit-core:jar:2.11.0:test -- module org.xmlunit [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-webmvc-test:jar:4.1.1:test -- module spring.boot.starter.webmvc.test [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-jackson-test:jar:4.1.1:test -- module spring.boot.starter.jackson.test [auto]
+[INFO]    org.springframework.boot:spring-boot-webmvc-test:jar:4.1.1:test -- module spring.boot.webmvc.test [auto]
+[INFO]    org.springframework.boot:spring-boot-web-server:jar:4.1.1:compile -- module spring.boot.web.server [auto]
+[INFO]    org.springframework.boot:spring-boot-resttestclient:jar:4.1.1:test -- module spring.boot.resttestclient [auto]
+[INFO]    org.testcontainers:testcontainers-junit-jupiter:jar:2.0.5:test -- module testcontainers.junit.jupiter (auto)
+[INFO]    org.testcontainers:testcontainers:jar:2.0.5:test -- module testcontainers (auto)
+[INFO]    org.rnorth.duct-tape:duct-tape:jar:1.0.8:test -- module duct.tape (auto)
+[INFO]    org.jetbrains:annotations:jar:17.0.0:test -- module org.jetbrains.annotations [auto]
+[INFO]    com.github.docker-java:docker-java-api:jar:3.7.1:test -- module com.github.dockerjava.api [auto]
+[INFO]    com.github.docker-java:docker-java-transport-zerodep:jar:3.7.1:test -- module com.github.dockerjava.transport.zerodep [auto]
+[INFO]    com.github.docker-java:docker-java-transport:jar:3.7.1:test -- module com.github.dockerjava.transport [auto]
+[INFO]    net.java.dev.jna:jna:jar:5.18.1:test -- module com.sun.jna [auto]
+[INFO]    org.testcontainers:testcontainers-postgresql:jar:2.0.5:test -- module testcontainers.postgresql (auto)
+[INFO]    org.testcontainers:testcontainers-jdbc:jar:2.0.5:test -- module testcontainers.jdbc (auto)
+[INFO]    org.testcontainers:testcontainers-database-commons:jar:2.0.5:test -- module testcontainers.database.commons (auto)
+[INFO]    com.tngtech.archunit:archunit-junit5:jar:1.3.2:test -- module com.tngtech.archunit.junit5 [auto]
+[INFO]    com.tngtech.archunit:archunit-junit5-api:jar:1.3.2:test -- module com.tngtech.archunit.junit5.api [auto]
+[INFO]    com.tngtech.archunit:archunit:jar:1.3.2:test -- module com.tngtech.archunit [auto]
+[INFO]    com.tngtech.archunit:archunit-junit5-engine:jar:1.3.2:test -- module com.tngtech.archunit.junit5.engine [auto]
+[INFO]    com.tngtech.archunit:archunit-junit5-engine-api:jar:1.3.2:test -- module com.tngtech.archunit.junit5.engineapi [auto]
+[INFO] 
+[INFO] 
+[INFO] --- dependency:3.10.0:resolve-plugins (default-cli) @ registration-backend ---
+[INFO] 
+[INFO] The following plugins have been resolved:
+[INFO]    org.apache.maven.plugins:maven-pmd-plugin:jar:3.26.0
+[INFO]       org.apache.maven.plugins:maven-pmd-plugin:jar:3.26.0
+[INFO]       org.apache.maven.shared:maven-artifact-transfer:jar:0.13.1
+[INFO]       org.apache.maven:maven-core:jar:3.0
+[INFO]       org.apache.maven:maven-model:jar:3.0
+[INFO]       org.apache.maven:maven-settings:jar:3.0
+[INFO]       org.apache.maven:maven-settings-builder:jar:3.0
+[INFO]       org.apache.maven:maven-repository-metadata:jar:3.0
+[INFO]       org.apache.maven:maven-plugin-api:jar:3.0
+[INFO]       org.apache.maven:maven-model-builder:jar:3.0
+[INFO]       org.apache.maven:maven-aether-provider:jar:3.0
+[INFO]       org.sonatype.aether:aether-impl:jar:1.7
+[INFO]       org.sonatype.aether:aether-spi:jar:1.7
+[INFO]       org.sonatype.aether:aether-api:jar:1.7
+[INFO]       org.sonatype.aether:aether-util:jar:1.7
+[INFO]       org.sonatype.sisu:sisu-inject-plexus:jar:1.4.2
+[INFO]       org.sonatype.sisu:sisu-inject-bean:jar:1.4.2
+[INFO]       org.sonatype.sisu:sisu-guice:jar:noaop:2.1.7
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.14
+[INFO]       org.codehaus.plexus:plexus-classworlds:jar:2.2.3
+[INFO]       org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3
+[INFO]       org.sonatype.plexus:plexus-cipher:jar:1.4
+[INFO]       org.apache.maven:maven-artifact:jar:3.0
+[INFO]       org.codehaus.plexus:plexus-component-annotations:jar:2.0.0
+[INFO]       org.apache.maven.shared:maven-common-artifact-filters:jar:3.4.0
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.4.1
+[INFO]       net.sourceforge.pmd:pmd-core:jar:7.7.0
+[INFO]       org.slf4j:jul-to-slf4j:jar:1.7.36
+[INFO]       org.antlr:antlr4-runtime:jar:4.9.3
+[INFO]       net.sf.saxon:Saxon-HE:jar:12.5
+[INFO]       org.xmlresolver:xmlresolver:jar:5.2.2
+[INFO]       org.apache.httpcomponents.client5:httpclient5:jar:5.1.3
+[INFO]       org.apache.httpcomponents.core5:httpcore5-h2:jar:5.1.3
+[INFO]       org.apache.httpcomponents.core5:httpcore5:jar:5.1.3
+[INFO]       org.xmlresolver:xmlresolver:jar:data:5.2.2
+[INFO]       org.apache.commons:commons-lang3:jar:3.14.0
+[INFO]       org.ow2.asm:asm:jar:9.7
+[INFO]       com.google.code.gson:gson:jar:2.11.0
+[INFO]       com.google.errorprone:error_prone_annotations:jar:2.27.0
+[INFO]       org.checkerframework:checker-qual:jar:3.48.1
+[INFO]       org.pcollections:pcollections:jar:4.0.2
+[INFO]       com.github.oowekyala.ooxml:nice-xml-messages:jar:3.1
+[INFO]       net.sourceforge.pmd:pmd-java:jar:7.7.0
+[INFO]       net.sourceforge.pmd:pmd-javascript:jar:7.7.0
+[INFO]       org.mozilla:rhino:jar:1.7.15
+[INFO]       net.sourceforge.pmd:pmd-jsp:jar:7.7.0
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       org.apache.maven.doxia:doxia-sink-api:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-core:jar:2.0.0
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       commons-io:commons-io:jar:2.17.0
+[INFO]       org.apache.commons:commons-text:jar:1.12.0
+[INFO]       org.apache.maven.reporting:maven-reporting-impl:jar:4.0.0
+[INFO]       org.apache.maven.reporting:maven-reporting-api:jar:4.0.0
+[INFO]       org.apache.maven.shared:maven-shared-utils:jar:3.4.2
+[INFO]       org.apache.maven.doxia:doxia-site-model:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-integration-tools:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-site-renderer:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-skin-model:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-module-xhtml5:jar:2.0.0
+[INFO]       org.codehaus.plexus:plexus-velocity:jar:2.2.0
+[INFO]       org.apache.velocity:velocity-engine-core:jar:2.4
+[INFO]       org.apache.velocity.tools:velocity-tools-generic:jar:3.1
+[INFO]       commons-beanutils:commons-beanutils:jar:1.9.4
+[INFO]       commons-logging:commons-logging:jar:1.2
+[INFO]       commons-collections:commons-collections:jar:3.2.2
+[INFO]       org.apache.commons:commons-digester3:jar:3.2
+[INFO]       com.github.cliftonlabs:json-simple:jar:3.0.2
+[INFO]       org.apache.maven.doxia:doxia-module-apt:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-module-xdoc:jar:2.0.0
+[INFO]       org.apache.maven:maven-archiver:jar:3.6.2
+[INFO]       org.codehaus.plexus:plexus-archiver:jar:4.9.2
+[INFO]       org.codehaus.plexus:plexus-io:jar:3.4.2
+[INFO]       org.apache.commons:commons-compress:jar:1.26.1
+[INFO]       commons-codec:commons-codec:jar:1.16.1
+[INFO]       org.iq80.snappy:snappy:jar:0.4
+[INFO]       org.tukaani:xz:jar:1.9
+[INFO]       com.github.luben:zstd-jni:jar:1.5.5-11
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.4.1
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.9.0.M3
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.9.0.M3
+[INFO]       org.codehaus.plexus:plexus-resources:jar:1.3.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.1
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.1
+[INFO]       org.codehaus.plexus:plexus-i18n:jar:1.0-beta-10
+[INFO]    org.apache.maven.plugins:maven-site-plugin:jar:3.12.1
+[INFO]       org.apache.maven.plugins:maven-site-plugin:jar:3.12.1
+[INFO]       org.apache.maven.reporting:maven-reporting-api:jar:3.1.1
+[INFO]       org.apache.maven.reporting:maven-reporting-exec:jar:1.6.0
+[INFO]       org.apache.maven:maven-artifact:jar:3.2.5
+[INFO]       org.apache.maven:maven-core:jar:3.2.5
+[INFO]       org.apache.maven:maven-repository-metadata:jar:3.2.5
+[INFO]       org.apache.maven:maven-model-builder:jar:3.2.5
+[INFO]       org.apache.maven:maven-aether-provider:jar:3.2.5
+[INFO]       org.eclipse.aether:aether-spi:jar:1.0.0.v20140518
+[INFO]       org.eclipse.aether:aether-impl:jar:1.0.0.v20140518
+[INFO]       org.eclipse.aether:aether-api:jar:1.0.0.v20140518
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.5
+[INFO]       javax.annotation:javax.annotation-api:jar:1.2
+[INFO]       javax.enterprise:cdi-api:jar:1.2
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5
+[INFO]       org.sonatype.sisu:sisu-guice:jar:no_aop:3.2.3
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       aopalliance:aopalliance:jar:1.0
+[INFO]       com.google.guava:guava:jar:16.0.1
+[INFO]       org.codehaus.plexus:plexus-classworlds:jar:2.5.2
+[INFO]       org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3
+[INFO]       org.sonatype.plexus:plexus-cipher:jar:1.4
+[INFO]       org.apache.maven:maven-model:jar:3.2.5
+[INFO]       org.apache.maven:maven-plugin-api:jar:3.2.5
+[INFO]       org.apache.maven:maven-settings:jar:3.2.5
+[INFO]       org.apache.maven:maven-settings-builder:jar:3.2.5
+[INFO]       org.eclipse.aether:aether-util:jar:1.0.0.v20140518
+[INFO]       org.apache.maven.shared:maven-shared-utils:jar:3.3.4
+[INFO]       commons-io:commons-io:jar:2.6
+[INFO]       org.apache.maven:maven-archiver:jar:3.5.2
+[INFO]       org.apache.commons:commons-compress:jar:1.20
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.26
+[INFO]       org.codehaus.plexus:plexus-archiver:jar:4.2.7
+[INFO]       org.codehaus.plexus:plexus-io:jar:3.2.0
+[INFO]       org.iq80.snappy:snappy:jar:0.4
+[INFO]       org.tukaani:xz:jar:1.9
+[INFO]       org.codehaus.plexus:plexus-i18n:jar:1.0-beta-10
+[INFO]       org.codehaus.plexus:plexus-utils:jar:3.4.2
+[INFO]       org.apache.maven.doxia:doxia-sink-api:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-logging-api:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-core:jar:1.11.1
+[INFO]       org.codehaus.plexus:plexus-container-default:jar:2.1.0
+[INFO]       org.apache.xbean:xbean-reflect:jar:3.7
+[INFO]       com.google.collections:google-collections:jar:1.0
+[INFO]       org.codehaus.plexus:plexus-component-annotations:jar:2.1.1
+[INFO]       org.apache.commons:commons-lang3:jar:3.8.1
+[INFO]       org.apache.commons:commons-text:jar:1.3
+[INFO]       org.apache.httpcomponents:httpclient:jar:4.5.13
+[INFO]       commons-logging:commons-logging:jar:1.2
+[INFO]       commons-codec:commons-codec:jar:1.11
+[INFO]       org.apache.httpcomponents:httpcore:jar:4.4.14
+[INFO]       org.apache.maven.doxia:doxia-module-xhtml:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-xhtml5:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-apt:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-xdoc:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-fml:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-markdown:jar:1.11.1
+[INFO]       com.vladsch.flexmark:flexmark-all:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-abbreviation:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-admonition:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-anchorlink:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-aside:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-attributes:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-autolink:jar:0.42.14
+[INFO]       org.nibor.autolink:autolink:jar:0.6.0
+[INFO]       com.vladsch.flexmark:flexmark-ext-definition:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-emoji:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-enumerated-reference:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-escaped-character:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-footnotes:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-gfm-issues:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-gfm-strikethrough:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-gfm-tables:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-gfm-tasklist:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-gfm-users:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-gitlab:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-jekyll-front-matter:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-jekyll-tag:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-media-tags:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-macros:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-ins:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-xwiki-macros:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-superscript:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-tables:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-toc:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-typographic:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-wikilink:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-yaml-front-matter:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-ext-youtube-embedded:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-formatter:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-html-parser:jar:0.42.14
+[INFO]       org.jsoup:jsoup:jar:1.10.2
+[INFO]       com.vladsch.flexmark:flexmark-jira-converter:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-profile-pegdown:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-util:jar:0.42.14
+[INFO]       com.vladsch.flexmark:flexmark-youtrack-converter:jar:0.42.14
+[INFO]       org.apache.maven.doxia:doxia-module-confluence:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-docbook-simple:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-twiki:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-decoration-model:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-site-renderer:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-skin-model:jar:1.11.1
+[INFO]       org.codehaus.plexus:plexus-velocity:jar:1.2
+[INFO]       org.apache.velocity:velocity:jar:1.7
+[INFO]       commons-lang:commons-lang:jar:2.4
+[INFO]       org.apache.velocity:velocity-tools:jar:2.0
+[INFO]       commons-beanutils:commons-beanutils:jar:1.7.0
+[INFO]       commons-digester:commons-digester:jar:1.8
+[INFO]       commons-chain:commons-chain:jar:1.1
+[INFO]       dom4j:dom4j:jar:1.1
+[INFO]       oro:oro:jar:2.0.8
+[INFO]       commons-collections:commons-collections:jar:3.2.2
+[INFO]       org.apache.maven.doxia:doxia-integration-tools:jar:1.11.1
+[INFO]       org.eclipse.jetty:jetty-server:jar:9.4.46.v20220331
+[INFO]       javax.servlet:javax.servlet-api:jar:3.1.0
+[INFO]       org.eclipse.jetty:jetty-http:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-io:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-servlet:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-security:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-util-ajax:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-webapp:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-xml:jar:9.4.46.v20220331
+[INFO]       org.eclipse.jetty:jetty-util:jar:9.4.46.v20220331
+[INFO]    com.github.spotbugs:spotbugs-maven-plugin:jar:4.10.4.1
+[INFO]       com.github.spotbugs:spotbugs-maven-plugin:jar:4.10.4.1
+[INFO]       com.github.spotbugs:spotbugs:jar:4.10.4
+[INFO]       org.ow2.asm:asm:jar:9.10.1
+[INFO]       org.ow2.asm:asm-analysis:jar:9.10.1
+[INFO]       org.ow2.asm:asm-commons:jar:9.10.1
+[INFO]       org.ow2.asm:asm-tree:jar:9.10.1
+[INFO]       org.ow2.asm:asm-util:jar:9.10.1
+[INFO]       org.apache.bcel:bcel:jar:6.12.0
+[INFO]       com.github.stephenc.jcip:jcip-annotations:jar:1.0-1
+[INFO]       org.dom4j:dom4j:jar:2.2.0
+[INFO]       org.apache.commons:commons-lang3:jar:3.20.0
+[INFO]       org.apache.commons:commons-text:jar:1.15.0
+[INFO]       com.github.spotbugs:spotbugs-annotations:jar:4.10.4
+[INFO]       com.google.code.findbugs:jsr305:jar:3.0.2
+[INFO]       com.google.code.gson:gson:jar:2.14.0
+[INFO]       com.google.errorprone:error_prone_annotations:jar:2.48.0
+[INFO]       jaxen:jaxen:jar:2.0.6
+[INFO]       net.sf.saxon:Saxon-HE:jar:12.10
+[INFO]       org.xmlresolver:xmlresolver:jar:5.3.3
+[INFO]       org.xmlresolver:xmlresolver:jar:data:5.3.3
+[INFO]       org.apache.logging.log4j:log4j-to-slf4j:jar:2.26.1
+[INFO]       org.apache.logging.log4j:log4j-api:jar:2.26.1
+[INFO]       org.slf4j:slf4j-api:jar:2.0.19
+[INFO]       org.slf4j:slf4j-simple:jar:2.0.19
+[INFO]       org.apache.groovy:groovy:jar:5.1.1
+[INFO]       org.apache.groovy:groovy-docgenerator:jar:5.1.1
+[INFO]       com.thoughtworks.qdox:qdox:jar:2.2.0
+[INFO]       org.apache.groovy:groovy-groovydoc:jar:5.1.1
+[INFO]       org.apache.groovy:groovy-json:jar:5.1.1
+[INFO]       org.apache.groovy:groovy-templates:jar:5.1.1
+[INFO]       org.apache.groovy:groovy-xml:jar:5.1.1
+[INFO]       com.github.javaparser:javaparser-core:jar:3.28.2
+[INFO]       org.apache.maven.reporting:maven-reporting-impl:jar:4.0.0
+[INFO]       org.apache.maven.reporting:maven-reporting-api:jar:4.0.0
+[INFO]       org.apache.maven.shared:maven-shared-utils:jar:3.4.2
+[INFO]       org.apache.maven.doxia:doxia-site-model:jar:2.1.0
+[INFO]       org.apache.maven.doxia:doxia-integration-tools:jar:2.1.0
+[INFO]       org.codehaus.plexus:plexus-i18n:jar:1.1.0
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.30.0
+[INFO]       org.apache.maven.doxia:doxia-site-renderer:jar:2.1.0
+[INFO]       org.apache.maven.doxia:doxia-skin-model:jar:2.1.0
+[INFO]       org.apache.maven.doxia:doxia-module-xhtml5:jar:2.1.0
+[INFO]       org.codehaus.plexus:plexus-velocity:jar:2.4.0
+[INFO]       org.apache.velocity:velocity-engine-core:jar:2.4.1
+[INFO]       org.apache.velocity.tools:velocity-tools-generic:jar:3.1
+[INFO]       commons-beanutils:commons-beanutils:jar:1.11.0
+[INFO]       commons-logging:commons-logging:jar:1.4.0
+[INFO]       commons-collections:commons-collections:jar:3.2.2
+[INFO]       org.apache.commons:commons-digester3:jar:3.2
+[INFO]       com.github.cliftonlabs:json-simple:jar:3.0.2
+[INFO]       org.apache.maven.doxia:doxia-module-apt:jar:2.0.0
+[INFO]       org.apache.maven.doxia:doxia-module-xdoc:jar:2.0.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.1.0
+[INFO]       org.apache.maven:maven-archiver:jar:3.6.2
+[INFO]       org.codehaus.plexus:plexus-archiver:jar:4.9.2
+[INFO]       org.codehaus.plexus:plexus-io:jar:3.4.2
+[INFO]       org.apache.commons:commons-compress:jar:1.26.1
+[INFO]       commons-codec:commons-codec:jar:1.22.1
+[INFO]       org.iq80.snappy:snappy:jar:0.4
+[INFO]       org.tukaani:xz:jar:1.9
+[INFO]       com.github.luben:zstd-jni:jar:1.5.5-11
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.4.1
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:1.1.0
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.inject:jar:1.1.0
+[INFO]       org.codehaus.plexus:plexus-component-annotations:jar:2.2.0
+[INFO]       org.codehaus.plexus:plexus-classworlds:jar:2.12.0
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       org.apache.maven.doxia:doxia-core:jar:2.1.0
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.1.0
+[INFO]       commons-io:commons-io:jar:2.22.0
+[INFO]       org.apache.maven.doxia:doxia-sink-api:jar:2.1.0
+[INFO]       org.codehaus.plexus:plexus-resources:jar:1.4.0
+[INFO]       org.checkerframework:checker-qual:jar:4.2.2
+[INFO]    org.apache.maven.plugins:maven-resources-plugin:jar:3.5.0
+[INFO]       org.apache.maven.plugins:maven-resources-plugin:jar:3.5.0
+[INFO]       org.apache.maven.shared:maven-filtering:jar:3.5.0
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       org.codehaus.plexus:plexus-build-api:jar:1.2.0
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       org.sonatype.plexus:plexus-build-api:jar:0.0.7
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.9.0.M4
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.29
+[INFO]       org.codehaus.plexus:plexus-utils:jar:3.6.0
+[INFO]    org.apache.maven.plugins:maven-compiler-plugin:jar:3.15.0
+[INFO]       org.apache.maven.plugins:maven-compiler-plugin:jar:3.15.0
+[INFO]       org.ow2.asm:asm:jar:9.9.1
+[INFO]       org.apache.maven.shared:maven-shared-utils:jar:3.4.2
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       commons-io:commons-io:jar:2.11.0
+[INFO]       org.apache.maven.shared:maven-shared-incremental:jar:1.1
+[INFO]       org.codehaus.plexus:plexus-java:jar:1.5.2
+[INFO]       com.thoughtworks.qdox:qdox:jar:2.2.0
+[INFO]       org.codehaus.plexus:plexus-compiler-api:jar:2.16.2
+[INFO]       org.codehaus.plexus:plexus-compiler-manager:jar:2.16.2
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.1
+[INFO]       org.codehaus.plexus:plexus-compiler-javac:jar:2.16.2
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.2
+[INFO]    org.apache.maven.plugins:maven-surefire-plugin:jar:3.5.6
+[INFO]       org.apache.maven.plugins:maven-surefire-plugin:jar:3.5.6
+[INFO]       org.apache.maven.surefire:surefire-api:jar:3.5.6
+[INFO]       org.apache.maven.surefire:surefire-logger-api:jar:3.5.6
+[INFO]       org.apache.maven.surefire:surefire-shared-utils:jar:3.5.6
+[INFO]       org.apache.maven.surefire:surefire-extensions-api:jar:3.5.6
+[INFO]       org.apache.maven.surefire:maven-surefire-common:jar:3.5.6
+[INFO]       org.apache.maven.surefire:surefire-booter:jar:3.5.6
+[INFO]       org.apache.maven.surefire:surefire-extensions-spi:jar:3.5.6
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.4.1
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.4.1
+[INFO]       org.apache.maven.shared:maven-common-artifact-filters:jar:3.4.0
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       org.codehaus.plexus:plexus-java:jar:1.5.2
+[INFO]       org.ow2.asm:asm:jar:9.9.1
+[INFO]       com.thoughtworks.qdox:qdox:jar:2.2.0
+[INFO]    org.apache.maven.plugins:maven-jar-plugin:jar:3.5.1
+[INFO]       org.apache.maven.plugins:maven-jar-plugin:jar:3.5.1
+[INFO]       org.apache.maven.shared:file-management:jar:3.2.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.3
+[INFO]       org.apache.maven:maven-archiver:jar:3.6.6
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.29
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.1
+[INFO]       org.codehaus.plexus:plexus-archiver:jar:4.12.0
+[INFO]       org.codehaus.plexus:plexus-io:jar:3.6.0
+[INFO]       org.apache.commons:commons-compress:jar:1.28.0
+[INFO]       commons-codec:commons-codec:jar:1.19.0
+[INFO]       org.apache.commons:commons-lang3:jar:3.18.0
+[INFO]       org.tukaani:xz:jar:1.12
+[INFO]       com.github.luben:zstd-jni:jar:1.5.7-9
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       commons-io:commons-io:jar:2.22.0
+[INFO]    com.diffplug.spotless:spotless-maven-plugin:jar:2.44.3
+[INFO]       com.diffplug.spotless:spotless-maven-plugin:jar:2.44.3
+[INFO]       com.diffplug.spotless:spotless-lib:jar:3.1.0
+[INFO]       com.diffplug.spotless:spotless-lib-extra:jar:3.1.0
+[INFO]       com.googlecode.concurrent-trees:concurrent-trees:jar:2.6.1
+[INFO]       dev.equo.ide:solstice:jar:1.8.1
+[INFO]       com.diffplug.durian:durian-swt.os:jar:4.3.0
+[INFO]       org.tukaani:xz:jar:1.9
+[INFO]       com.squareup.okhttp3:okhttp:jar:4.12.0
+[INFO]       com.squareup.okio:okio:jar:3.6.0
+[INFO]       com.squareup.okio:okio-jvm:jar:3.6.0
+[INFO]       org.jetbrains.kotlin:kotlin-stdlib-common:jar:1.9.10
+[INFO]       org.jetbrains.kotlin:kotlin-stdlib-jdk8:jar:1.8.21
+[INFO]       org.jetbrains.kotlin:kotlin-stdlib:jar:1.8.21
+[INFO]       org.jetbrains:annotations:jar:13.0
+[INFO]       org.jetbrains.kotlin:kotlin-stdlib-jdk7:jar:1.8.21
+[INFO]       org.eclipse.platform:org.eclipse.osgi:jar:3.18.500
+[INFO]       com.diffplug.durian:durian-core:jar:1.2.0
+[INFO]       com.diffplug.durian:durian-io:jar:1.2.0
+[INFO]       com.diffplug.durian:durian-collect:jar:1.2.0
+[INFO]       org.codehaus.plexus:plexus-resources:jar:1.3.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.0
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.0
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       org.eclipse.jgit:org.eclipse.jgit:jar:6.10.0.202406032230-r
+[INFO]       com.googlecode.javaewah:JavaEWAH:jar:1.2.3
+[INFO]       commons-codec:commons-codec:jar:1.17.0
+[INFO]       org.sonatype.plexus:plexus-build-api:jar:0.0.7
+[INFO]    org.apache.maven.plugins:maven-clean-plugin:jar:3.5.0
+[INFO]       org.apache.maven.plugins:maven-clean-plugin:jar:3.5.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.2
+[INFO]    org.owasp:dependency-check-maven:jar:12.1.0
+[INFO]       org.owasp:dependency-check-maven:jar:12.1.0
+[INFO]       org.owasp:dependency-check-core:jar:12.1.0
+[INFO]       org.anarres.jdiagnostics:jdiagnostics:jar:1.0.7
+[INFO]       org.whitesource:pecoff4j:jar:0.0.2.1
+[INFO]       org.apache.commons:commons-jcs3-core:jar:3.2.1
+[INFO]       us.springett:cpe-parser:jar:2.1.0
+[INFO]       org.semver4j:semver4j:jar:5.6.0
+[INFO]       org.jspecify:jspecify:jar:1.0.0
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       org.apache.commons:commons-collections4:jar:4.4
+[INFO]       org.apache.commons:commons-compress:jar:1.27.1
+[INFO]       commons-codec:commons-codec:jar:1.18.0
+[INFO]       commons-io:commons-io:jar:2.18.0
+[INFO]       org.apache.commons:commons-text:jar:1.13.0
+[INFO]       org.apache.commons:commons-dbcp2:jar:2.13.0
+[INFO]       org.apache.commons:commons-pool2:jar:2.12.0
+[INFO]       commons-logging:commons-logging:jar:1.3.4
+[INFO]       jakarta.transaction:jakarta.transaction-api:jar:1.3.3
+[INFO]       org.apache.lucene:lucene-core:jar:9.12.0
+[INFO]       org.apache.lucene:lucene-analysis-common:jar:9.12.0
+[INFO]       org.apache.lucene:lucene-queryparser:jar:9.12.0
+[INFO]       org.apache.lucene:lucene-queries:jar:9.12.0
+[INFO]       org.apache.lucene:lucene-sandbox:jar:9.12.0
+[INFO]       org.apache.lucene:lucene-facet:jar:9.12.0
+[INFO]       org.apache.velocity:velocity-engine-core:jar:2.4.1
+[INFO]       com.h2database:h2:jar:2.3.232
+[INFO]       org.glassfish:jakarta.json:jar:2.0.1
+[INFO]       org.jsoup:jsoup:jar:1.18.3
+[INFO]       com.fasterxml.jackson.core:jackson-databind:jar:2.18.2
+[INFO]       com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.18.2
+[INFO]       com.fasterxml.jackson.module:jackson-module-blackbird:jar:2.18.2
+[INFO]       com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.18.2
+[INFO]       org.yaml:snakeyaml:jar:2.3
+[INFO]       com.h3xstream.retirejs:retirejs-core:jar:3.0.4
+[INFO]       com.github.spullara.mustache.java:compiler:jar:0.9.6
+[INFO]       org.sonatype.ossindex:ossindex-service-client:jar:1.8.2
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       com.google.code.gson:gson:jar:2.9.0
+[INFO]       javax.xml.bind:jaxb-api:jar:2.3.1
+[INFO]       javax.activation:javax.activation-api:jar:1.2.0
+[INFO]       com.google.guava:guava:jar:33.4.0-jre
+[INFO]       com.google.guava:failureaccess:jar:1.0.2
+[INFO]       com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava
+[INFO]       org.checkerframework:checker-qual:jar:3.43.0
+[INFO]       com.google.errorprone:error_prone_annotations:jar:2.36.0
+[INFO]       com.google.j2objc:j2objc-annotations:jar:3.0.0
+[INFO]       com.moandjiezana.toml:toml4j:jar:0.7.2
+[INFO]       com.hankcs:aho-corasick-double-array-trie:jar:1.2.3
+[INFO]       commons-validator:commons-validator:jar:1.9.0
+[INFO]       commons-beanutils:commons-beanutils:jar:1.9.4
+[INFO]       commons-digester:commons-digester:jar:2.1
+[INFO]       commons-collections:commons-collections:jar:3.2.2
+[INFO]       org.eclipse.packager:packager-rpm:jar:0.21.0
+[INFO]       org.eclipse.packager:packager-core:jar:0.21.0
+[INFO]       org.bouncycastle:bcprov-jdk18on:jar:1.78
+[INFO]       org.bouncycastle:bcpg-jdk18on:jar:1.78
+[INFO]       org.tukaani:xz:jar:1.9
+[INFO]       org.apache.httpcomponents.core5:httpcore5:jar:5.3.3
+[INFO]       org.apache.httpcomponents.client5:httpclient5:jar:5.4.2
+[INFO]       org.apache.httpcomponents.core5:httpcore5-h2:jar:5.3.3
+[INFO]       com.fasterxml.jackson.core:jackson-core:jar:2.18.2
+[INFO]       com.fasterxml.jackson.core:jackson-annotations:jar:2.18.2
+[INFO]       org.sonatype.goodies:package-url-java:jar:1.2.0
+[INFO]       joda-time:joda-time:jar:2.13.1
+[INFO]       org.sonatype.ossindex:ossindex-service-api:jar:1.8.2
+[INFO]       javax.ws.rs:javax.ws.rs-api:jar:2.0.1
+[INFO]       com.esotericsoftware:minlog:jar:1.3.1
+[INFO]       com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1
+[INFO]       org.owasp:dependency-check-utils:jar:12.1.0
+[INFO]       io.github.jeremylong:jcs3-slf4j:jar:1.0.5
+[INFO]       org.apache.maven.doxia:doxia-sink-api:jar:2.0.0
+[INFO]       org.apache.maven.shared:file-management:jar:3.1.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.2
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.1
+[INFO]       org.apache.maven.reporting:maven-reporting-api:jar:4.0.0
+[INFO]       org.apache.maven.shared:maven-dependency-tree:jar:3.3.0
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.4.1
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.4.1
+[INFO]       org.apache.maven.shared:maven-artifact-transfer:jar:0.13.1
+[INFO]       org.apache.maven:maven-core:jar:3.6.3
+[INFO]       org.apache.maven:maven-model:jar:3.6.3
+[INFO]       org.apache.maven:maven-settings:jar:3.6.3
+[INFO]       org.apache.maven:maven-settings-builder:jar:3.6.3
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.25
+[INFO]       org.sonatype.plexus:plexus-sec-dispatcher:jar:1.4
+[INFO]       org.sonatype.plexus:plexus-cipher:jar:1.7
+[INFO]       org.apache.maven:maven-builder-support:jar:3.6.3
+[INFO]       org.apache.maven:maven-repository-metadata:jar:3.6.3
+[INFO]       org.apache.maven:maven-plugin-api:jar:3.6.3
+[INFO]       org.apache.maven:maven-model-builder:jar:3.6.3
+[INFO]       org.apache.maven:maven-resolver-provider:jar:3.6.3
+[INFO]       org.apache.maven.resolver:maven-resolver-impl:jar:1.4.1
+[INFO]       org.apache.maven.resolver:maven-resolver-spi:jar:1.4.1
+[INFO]       org.apache.maven.shared:maven-shared-utils:jar:3.4.2
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.4
+[INFO]       javax.enterprise:cdi-api:jar:1.0
+[INFO]       javax.annotation:jsr250-api:jar:1.0
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.4
+[INFO]       com.google.inject:guice:jar:no_aop:4.2.1
+[INFO]       aopalliance:aopalliance:jar:1.0
+[INFO]       org.codehaus.plexus:plexus-classworlds:jar:2.6.0
+[INFO]       org.apache.maven:maven-artifact:jar:3.6.3
+[INFO]       org.codehaus.plexus:plexus-component-annotations:jar:2.1.0
+[INFO]       org.apache.maven.shared:maven-common-artifact-filters:jar:3.4.0
+[INFO]       org.apache.commons:commons-lang3:jar:3.17.0
+[INFO]       io.github.jeremylong:open-vulnerability-clients:jar:7.2.2
+[INFO]       com.samskivert:jmustache:jar:1.16
+[INFO]       com.github.package-url:packageurl-java:jar:1.5.0
+[INFO]       org.jetbrains:annotations:jar:26.0.2
+[INFO]       com.github.spotbugs:spotbugs-annotations:jar:4.9.1
+[INFO]       com.google.code.findbugs:jsr305:jar:3.0.2
+[INFO]    org.apache.maven.plugins:maven-install-plugin:jar:3.1.4
+[INFO]       org.apache.maven.plugins:maven-install-plugin:jar:3.1.4
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.9.22
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.9.22
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.1
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.1
+[INFO]    org.springframework.boot:spring-boot-maven-plugin:jar:4.1.1
+[INFO]       org.springframework.boot:spring-boot-maven-plugin:jar:4.1.1
+[INFO]       org.springframework.boot:spring-boot-buildpack-platform:jar:4.1.1
+[INFO]       net.java.dev.jna:jna-platform:jar:5.17.0
+[INFO]       net.java.dev.jna:jna:jar:5.17.0
+[INFO]       org.apache.commons:commons-compress:jar:1.27.1
+[INFO]       commons-codec:commons-codec:jar:1.17.1
+[INFO]       org.apache.commons:commons-lang3:jar:3.16.0
+[INFO]       org.apache.httpcomponents.client5:httpclient5:jar:5.6.4
+[INFO]       org.apache.httpcomponents.core5:httpcore5:jar:5.4.3
+[INFO]       org.apache.httpcomponents.core5:httpcore5-h2:jar:5.4.3
+[INFO]       org.tomlj:tomlj:jar:1.0.0
+[INFO]       org.antlr:antlr4-runtime:jar:4.7.2
+[INFO]       com.google.code.findbugs:jsr305:jar:3.0.2
+[INFO]       tools.jackson.core:jackson-databind:jar:3.1.5
+[INFO]       com.fasterxml.jackson.core:jackson-annotations:jar:2.21
+[INFO]       tools.jackson.core:jackson-core:jar:3.1.5
+[INFO]       org.springframework.boot:spring-boot-loader-tools:jar:4.1.1
+[INFO]       org.apache.maven.shared:maven-common-artifact-filters:jar:3.4.0
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.4.1
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.4.1
+[INFO]       org.sonatype.plexus:plexus-build-api:jar:0.0.7
+[INFO]       org.springframework:spring-core:jar:7.0.9
+[INFO]       commons-logging:commons-logging:jar:1.3.5
+[INFO]       org.jspecify:jspecify:jar:1.0.0
+[INFO]       org.springframework:spring-context:jar:7.0.9
+[INFO]       org.springframework:spring-aop:jar:7.0.9
+[INFO]       org.springframework:spring-beans:jar:7.0.9
+[INFO]       org.springframework:spring-expression:jar:7.0.9
+[INFO]       io.micrometer:micrometer-observation:jar:1.16.7
+[INFO]       io.micrometer:micrometer-commons:jar:1.16.7
+[INFO]       org.apache.maven.plugins:maven-shade-plugin:jar:3.6.0
+[INFO]       org.codehaus.plexus:plexus-utils:jar:3.5.1
+[INFO]       org.ow2.asm:asm:jar:9.7
+[INFO]       org.ow2.asm:asm-commons:jar:9.7
+[INFO]       org.ow2.asm:asm-tree:jar:9.7
+[INFO]       org.jdom:jdom2:jar:2.0.6.1
+[INFO]       commons-io:commons-io:jar:2.16.1
+[INFO]       org.vafer:jdependency:jar:2.10
+[INFO]    org.apache.maven.plugins:maven-deploy-plugin:jar:3.1.4
+[INFO]       org.apache.maven.plugins:maven-deploy-plugin:jar:3.1.4
+[INFO]       org.codehaus.plexus:plexus-utils:jar:4.0.1
+[INFO]       org.codehaus.plexus:plexus-xml:jar:3.0.1
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.9.22
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.9.22
+[INFO]    org.jacoco:jacoco-maven-plugin:jar:0.8.12
+[INFO]       org.jacoco:jacoco-maven-plugin:jar:0.8.12
+[INFO]       org.codehaus.plexus:plexus-utils:jar:3.0.24
+[INFO]       org.apache.maven.shared:file-management:jar:3.1.0
+[INFO]       org.slf4j:slf4j-api:jar:1.7.36
+[INFO]       commons-io:commons-io:jar:2.11.0
+[INFO]       org.apache.maven.reporting:maven-reporting-api:jar:3.0
+[INFO]       org.apache.maven.doxia:doxia-sink-api:jar:1.0
+[INFO]       org.jacoco:org.jacoco.agent:jar:runtime:0.8.12
+[INFO]       org.jacoco:org.jacoco.core:jar:0.8.12
+[INFO]       org.ow2.asm:asm:jar:9.7
+[INFO]       org.ow2.asm:asm-commons:jar:9.7
+[INFO]       org.ow2.asm:asm-tree:jar:9.7
+[INFO]       org.jacoco:org.jacoco.report:jar:0.8.12
+[INFO]    org.pitest:pitest-maven:jar:1.30.0
+[INFO]       org.pitest:pitest-maven:jar:1.30.0
+[INFO]       org.pitest:pitest-junit5-plugin:jar:1.2.3
+[INFO]       org.pitest:pitest-entry:jar:1.30.0
+[INFO]       org.pitest:pitest:jar:1.30.0
+[INFO]       org.ow2.asm:asm-commons:jar:9.10.1
+[INFO]       org.ow2.asm:asm:jar:9.10.1
+[INFO]       org.ow2.asm:asm-util:jar:9.10.1
+[INFO]       org.ow2.asm:asm-tree:jar:9.10.1
+[INFO]       org.ow2.asm:asm-analysis:jar:9.10.1
+[INFO]       org.apache.commons:commons-text:jar:1.14.0
+[INFO]       org.apache.commons:commons-lang3:jar:3.18.0
+[INFO]       org.pitest:pitest-html-report:jar:1.30.0
+[INFO]       org.antlr:stringtemplate:jar:3.2.1
+[INFO]       antlr:antlr:jar:2.7.7
+[INFO]       org.pitest:pitest-aggregator:jar:1.30.0
+[INFO]       com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.18.8
+[INFO]       com.fasterxml.jackson.core:jackson-core:jar:2.18.8
+[INFO]       com.fasterxml.jackson.core:jackson-annotations:jar:2.18.8
+[INFO]       com.fasterxml.jackson.core:jackson-databind:jar:2.18.8
+[INFO]       org.codehaus.woodstox:stax2-api:jar:4.2.2
+[INFO]       com.fasterxml.woodstox:woodstox-core:jar:7.0.0
+[INFO]       org.apache.maven.reporting:maven-reporting-api:jar:3.1.0
+[INFO]       org.apache.maven.doxia:doxia-sink-api:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-logging-api:jar:1.11.1
+[INFO]       commons-collections:commons-collections:jar:3.2.2
+[INFO]       commons-beanutils:commons-beanutils:jar:1.11.0
+[INFO]       commons-logging:commons-logging:jar:1.3.5
+[INFO]       org.codehaus.plexus:plexus-utils:jar:3.3.1
+[INFO]       org.apache.maven.reporting:maven-reporting-impl:jar:3.1.0
+[INFO]       org.apache.maven:maven-core:jar:3.8.6
+[INFO]       org.apache.maven:maven-model:jar:3.8.6
+[INFO]       org.apache.maven:maven-settings:jar:3.8.6
+[INFO]       org.apache.maven:maven-settings-builder:jar:3.8.6
+[INFO]       org.codehaus.plexus:plexus-sec-dispatcher:jar:2.0
+[INFO]       org.codehaus.plexus:plexus-cipher:jar:2.0
+[INFO]       org.apache.maven:maven-builder-support:jar:3.8.6
+[INFO]       org.apache.maven:maven-repository-metadata:jar:3.8.6
+[INFO]       org.apache.maven:maven-artifact:jar:3.8.6
+[INFO]       org.apache.maven:maven-model-builder:jar:3.8.6
+[INFO]       org.apache.maven:maven-resolver-provider:jar:3.8.6
+[INFO]       org.apache.maven.resolver:maven-resolver-impl:jar:1.6.3
+[INFO]       org.apache.maven.resolver:maven-resolver-api:jar:1.6.3
+[INFO]       org.apache.maven.resolver:maven-resolver-spi:jar:1.6.3
+[INFO]       org.apache.maven.resolver:maven-resolver-util:jar:1.6.3
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.5
+[INFO]       javax.annotation:javax.annotation-api:jar:1.2
+[INFO]       org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5
+[INFO]       com.google.inject:guice:jar:no_aop:4.2.2
+[INFO]       aopalliance:aopalliance:jar:1.0
+[INFO]       com.google.guava:guava:jar:25.1-android
+[INFO]       com.google.code.findbugs:jsr305:jar:3.0.2
+[INFO]       org.checkerframework:checker-compat-qual:jar:2.0.0
+[INFO]       com.google.errorprone:error_prone_annotations:jar:2.1.3
+[INFO]       com.google.j2objc:j2objc-annotations:jar:1.1
+[INFO]       org.codehaus.mojo:animal-sniffer-annotations:jar:1.14
+[INFO]       javax.inject:javax.inject:jar:1
+[INFO]       org.codehaus.plexus:plexus-classworlds:jar:2.6.0
+[INFO]       org.codehaus.plexus:plexus-interpolation:jar:1.21
+[INFO]       org.codehaus.plexus:plexus-component-annotations:jar:2.1.0
+[INFO]       org.apache.maven:maven-plugin-api:jar:3.1.0
+[INFO]       org.apache.maven.shared:maven-shared-utils:jar:3.3.3
+[INFO]       commons-io:commons-io:jar:2.6
+[INFO]       org.apache.maven.doxia:doxia-decoration-model:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-core:jar:1.11.1
+[INFO]       org.codehaus.plexus:plexus-container-default:jar:2.1.0
+[INFO]       org.apache.xbean:xbean-reflect:jar:3.7
+[INFO]       com.google.collections:google-collections:jar:1.0
+[INFO]       org.apache.httpcomponents:httpclient:jar:4.5.13
+[INFO]       commons-codec:commons-codec:jar:1.11
+[INFO]       org.apache.httpcomponents:httpcore:jar:4.4.14
+[INFO]       org.apache.maven.doxia:doxia-site-renderer:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-skin-model:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-xhtml:jar:1.11.1
+[INFO]       org.apache.maven.doxia:doxia-module-xhtml5:jar:1.11.1
+[INFO]       org.codehaus.plexus:plexus-i18n:jar:1.0-beta-10
+[INFO]       org.codehaus.plexus:plexus-velocity:jar:1.2
+[INFO]       org.apache.velocity:velocity:jar:1.7
+[INFO]       commons-lang:commons-lang:jar:2.4
+[INFO]       org.apache.velocity:velocity-tools:jar:2.0
+[INFO]       commons-digester:commons-digester:jar:1.8
+[INFO]       commons-chain:commons-chain:jar:1.1
+[INFO]       dom4j:dom4j:jar:1.1
+[INFO]       oro:oro:jar:2.0.8
+[INFO]       org.apache.maven.surefire:surefire-booter:jar:3.2.5
+[INFO]       org.apache.maven.surefire:surefire-api:jar:3.2.5
+[INFO]       org.apache.maven.surefire:surefire-logger-api:jar:3.2.5
+[INFO]       org.apache.maven.surefire:surefire-extensions-spi:jar:3.2.5
+[INFO]       org.apache.maven.surefire:maven-surefire-common:jar:3.2.5
+[INFO]       org.apache.maven.surefire:surefire-extensions-api:jar:3.2.5
+[INFO]       org.eclipse.aether:aether-util:jar:1.0.0.v20140518
+[INFO]       org.eclipse.aether:aether-api:jar:1.0.0.v20140518
+[INFO]       org.apache.maven.shared:maven-common-artifact-filters:jar:3.1.1
+[INFO]       org.codehaus.plexus:plexus-java:jar:1.2.0
+[INFO]       com.thoughtworks.qdox:qdox:jar:2.0.3
+[INFO]       org.apache.maven.surefire:surefire-shared-utils:jar:3.2.5
+[INFO]       org.slf4j:jul-to-slf4j:jar:1.7.12
+[INFO]       org.slf4j:slf4j-api:jar:1.7.12
+[INFO]       uk.org.lidalia:sysout-over-slf4j:jar:1.0.2
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.568 s
+[INFO] Finished at: 2026-10-09T10:09:18+02:00
+[INFO] ------------------------------------------------------------------------

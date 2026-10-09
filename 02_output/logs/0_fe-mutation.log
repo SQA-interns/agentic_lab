@@ -1,0 +1,8 @@
+[33m10:36:15 (3100) WARN ProjectReader[39m Glob pattern "!src/**/*.test.{ts,tsx}" did not exclude any files.
+[32m10:36:15 (3100) INFO ProjectReader[39m Found 1 of 32 file(s) to be mutated.
+[32m10:36:15 (3100) INFO Instrumenter[39m Instrumented 1 source file(s) with 1 mutant(s)
+[32m10:36:15 (3100) INFO ConcurrencyTokenProvider[39m Creating 15 test runner process(es).
+[32m10:36:18 (3100) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[33m10:36:18 (26180) WARN VitestTestRunner[39m Vitest failed to find test files related to mutated files. Either disable `vitest.related` or import your source files directly from your test files. See https://stryker-mutator.io/docs/stryker-js/troubleshooting/#vitest-failed-to-find-test-files-related-to-mutated-files
+[32m10:36:18 (3100) INFO DryRunExecutor[39m No tests were found
+[32m10:36:18 (3100) INFO MutationTestExecutor[39m Done in 3 seconds.
