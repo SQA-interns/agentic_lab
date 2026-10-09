@@ -1,0 +1,4 @@
+page via dev server: 200
+form data via dev proxy: 200
+{"error":"validation_failed","message":"Some fields are invalid.","fieldErrors":[{"field":"firstName","code":"required","message":"First name is required."},{"field":"lastName","code":"required","message":"Last name is required."},{"field":"email","code":"required","message":"Email is required."},{"field":"organization","code":"required","message":"Organization / institution is required."},{"field":"consentIds","code":"consent_required","message":"Please give the required consent."}]}
+POST via dev proxy with Origin: 400

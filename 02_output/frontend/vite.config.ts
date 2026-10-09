@@ -7,7 +7,9 @@ export default defineConfig({
   server: {
     host: "127.0.0.1",
     proxy: {
-      "/api": "http://127.0.0.1:8080",
+      // The local stack's nginx; the Host header stays the dev server's, so requests are
+      // same-origin for the backend (no CORS setting needed).
+      "/api": { target: "http://127.0.0.1:8080", changeOrigin: false },
     },
   },
   test: {
