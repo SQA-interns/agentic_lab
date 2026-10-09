@@ -1,0 +1,10 @@
+{
+  "options": [
+    { "id": "ws-new-topic", "name": "Nova delavnica: varnost", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ws-testing-ai", "name": "Delavnica: testiranje sistemov UI", "category": "WORKSHOP", "active": false, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "other-hike", "name": "Pohod na Šmarno goro", "category": "OTHER", "active": true, "availableTo": ["STUDENT"] }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "Strinjam se z obdelavo osebnih podatkov za organizacijo konference (hramba do 12 mesecev po konferenci).", "mandatory": true }
+  ]
+}
