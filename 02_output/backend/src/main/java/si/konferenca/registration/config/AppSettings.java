@@ -47,25 +47,24 @@ public record AppSettings(
   public static AppSettings from(Environment env) {
     AppSettings settings =
         new AppSettings(
-            env.getProperty("APP_ENVIRONMENT", PRODUCTION).trim().toLowerCase(Locale.ROOT),
-            env.getProperty("MAIL_FROM", DEFAULT_MAIL_FROM).trim(),
-            env.getProperty("CONFERENCE_NAME", "Conference").trim(),
+            optional(env, "APP_ENVIRONMENT", PRODUCTION).toLowerCase(Locale.ROOT),
+            optional(env, "MAIL_FROM", DEFAULT_MAIL_FROM),
+            optional(env, "CONFERENCE_NAME", "Conference"),
             Arrays.stream(required(env, "ORGANIZER_EMAILS").split(","))
                 .map(String::trim)
                 .filter(s -> !s.isEmpty())
                 .toList(),
             required(env, "ORGANIZER_USERNAME"),
             required(env, "ORGANIZER_PASSWORD"),
-            Boolean.parseBoolean(env.getProperty("ORGANIZER_HTTPS_ONLY", "true").trim()),
+            Boolean.parseBoolean(optional(env, "ORGANIZER_HTTPS_ONLY", "true")),
             Path.of(required(env, "CONFERENCE_CONFIG_PATH")),
-            Path.of(env.getProperty("JSON_COPY_DIR", "/data/json-copies").trim()),
-            Boolean.parseBoolean(env.getProperty("RECAPTCHA_TEST_MODE", "false").trim()),
-            env.getProperty("RECAPTCHA_SITE_KEY", "").trim(),
-            env.getProperty("RECAPTCHA_SECRET_KEY", "").trim(),
-            env.getProperty(
-                    "RECAPTCHA_VERIFY_URL", "https://www.google.com/recaptcha/api/siteverify")
-                .trim(),
-            env.getProperty("CORS_ALLOWED_ORIGIN", "").trim(),
+            Path.of(optional(env, "JSON_COPY_DIR", "/data/json-copies")),
+            Boolean.parseBoolean(optional(env, "RECAPTCHA_TEST_MODE", "false")),
+            optional(env, "RECAPTCHA_SITE_KEY", ""),
+            optional(env, "RECAPTCHA_SECRET_KEY", ""),
+            optional(
+                env, "RECAPTCHA_VERIFY_URL", "https://www.google.com/recaptcha/api/siteverify"),
+            optional(env, "CORS_ALLOWED_ORIGIN", ""),
             positive(env, "RATE_LIMIT_REGISTRATIONS_PER_MINUTE", "10"),
             positive(env, "RATE_LIMIT_EXPORTS_PER_MINUTE", "10"),
             positive(env, "RATE_LIMIT_FORMS_PER_MINUTE", "60"),
@@ -106,6 +105,12 @@ public record AppSettings(
         && EMAIL.matcher(value).matches();
   }
 
+  /** The value, or the fallback when the variable is missing or blank. */
+  private static String optional(Environment env, String name, String fallback) {
+    String value = env.getProperty(name, "").trim();
+    return value.isEmpty() ? fallback : value;
+  }
+
   private static String required(Environment env, String name) {
     String value = env.getProperty(name, "").trim();
     require(!value.isEmpty(), name + " is required");
@@ -114,7 +119,7 @@ public record AppSettings(
 
   private static int positive(Environment env, String name, String fallback) {
     try {
-      int value = Integer.parseInt(env.getProperty(name, fallback).trim());
+      int value = Integer.parseInt(optional(env, name, fallback));
       require(value > 0, name + " must be positive");
       return value;
     } catch (NumberFormatException e) {
