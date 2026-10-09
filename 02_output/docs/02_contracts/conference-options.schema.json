@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/conference-options.schema.json",
+  "title": "Conference options configuration",
+  "description": "JSON file read once at startup from OPTIONS_FILE (AR-04, US-003). Changing it needs a restart, never a code change. It cannot define participant fields (BR-01). The backend refuses to start when the file breaks this schema or contains a duplicate option or consent id (D-16).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["categories", "options", "consents"],
+  "properties": {
+    "categories": {
+      "description": "Maximum selections per category (D-12). A category left out allows 1.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "workshop": { "$ref": "#/$defs/categoryLimit" },
+        "event": { "$ref": "#/$defs/categoryLimit" },
+        "meal": { "$ref": "#/$defs/categoryLimit" },
+        "other": { "$ref": "#/$defs/categoryLimit" }
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "active"],
+        "properties": {
+          "id": {
+            "description": "Stable identifier, never reused for another option.",
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["workshop", "event", "meal", "other"] },
+          "active": { "type": "boolean" },
+          "availableTo": {
+            "description": "Registration types that may select the option (D-09); left out means both.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "enum": ["EXTERNAL", "STUDENT"] }
+          }
+        }
+      }
+    },
+    "consents": {
+      "description": "Consents shown on both forms, never preselected (BR-05, D-10).",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "mandatory"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "type": "string", "minLength": 1, "maxLength": 2000 },
+          "mandatory": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "categoryLimit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxSelections"],
+      "properties": {
+        "maxSelections": { "type": "integer", "minimum": 0, "maximum": 50 }
+      }
+    }
+  }
+}
