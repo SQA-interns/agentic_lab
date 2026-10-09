@@ -126,20 +126,43 @@
       "id": "D-09",
       "type": "blocking",
       "start": "2026-10-09T10:54:09Z",
-      "end": null
+      "end": "2026-10-09T10:58:38Z"
     },
     {
       "id": "D-10",
       "type": "non-blocking",
       "start": "2026-10-09T10:54:09Z",
       "end": "2026-10-09T10:54:09Z"
+    },
+    {
+      "id": "D-11",
+      "type": "blocking",
+      "start": "2026-10-09T11:01:38Z",
+      "end": null
+    },
+    {
+      "id": "D-12",
+      "type": "blocking",
+      "start": "2026-10-09T11:01:38Z",
+      "end": null
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "start": "2026-10-09T11:01:38Z",
+      "end": "2026-10-09T11:01:38Z"
     }
   ],
   "humanInterventions": [
     {
       "start": "2026-10-09T10:54:42Z",
-      "end": null,
+      "end": "2026-10-09T10:58:38Z",
       "reason": "D-09: Node.js 24.13.0 / npm 11.6.2 missing on host"
+    },
+    {
+      "start": "2026-10-09T11:01:38Z",
+      "end": null,
+      "reason": "D-11, D-12: approve pin changes for vulnerable dev tooling"
     }
   ],
   "codeMetrics": {
