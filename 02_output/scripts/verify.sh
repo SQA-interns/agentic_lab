@@ -28,7 +28,9 @@ line() { printf '%-18s exit=%-3s %-50s %s\n' "$1" "$2" "$3" "${4#"$ROOT"/}"; }
 run() {
   local log="$1" dir="$2"
   shift 2
-  (cd "$dir" && "$@") >"$log" 2>&1
+  # Redact generated or configured passwords that frameworks print (rules.md "Secrets").
+  (cd "$dir" && "$@") 2>&1 | sed -E 's/(password: )[^[:space:]]+/\1[REDACTED]/I' >"$log"
+  return "${PIPESTATUS[0]}"
 }
 
 mvn_tool() {
@@ -98,6 +100,7 @@ frontend_npm() {
 frontend_build() { frontend_npm frontend-build run build; }
 frontend_test() { frontend_npm frontend-test test; }
 frontend_check() { frontend_npm frontend-check run check; }
+frontend_e2e() { frontend_npm frontend-e2e run e2e; }
 npm_audit() { frontend_npm npm-audit audit --audit-level=high; }
 
 semgrep() {
@@ -167,7 +170,7 @@ PY
   line contracts "$rc" "$(grep -cE ' ok:|validated|Woohoo' "$log") ok lines, $(grep -ciE 'error' "$log") error lines" "$log"
 }
 
-ALL=(contracts backend_build backend_check backend_test frontend_build frontend_check frontend_test
+ALL=(contracts backend_build backend_check backend_test frontend_build frontend_check frontend_test frontend_e2e
   dependency_check npm_audit semgrep gitleaks cloc)
 TOOLS=("$@")
 [ ${#TOOLS[@]} -eq 0 ] && TOOLS=("${ALL[@]}")
