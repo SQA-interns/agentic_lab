@@ -1,0 +1,37 @@
+{
+  "categories": {
+    "workshop": { "maxSelections": 1 },
+    "event": { "maxSelections": 2 },
+    "meal": { "maxSelections": 2 },
+    "other": { "maxSelections": 1 }
+  },
+  "options": [
+    { "id": "ws-ai", "name": "Delavnica umetne inteligence", "category": "workshop", "active": true },
+    { "id": "ws-security", "name": "Varnost spletnih aplikacij", "category": "workshop", "active": true },
+    { "id": "ws-legacy", "name": "Retired workshop", "category": "workshop", "active": false },
+    { "id": "ev-reception", "name": "Welcome reception", "category": "event", "active": true },
+    {
+      "id": "ev-industry-dinner",
+      "name": "Industry dinner",
+      "category": "event",
+      "active": true,
+      "availableTo": ["EXTERNAL"]
+    },
+    { "id": "meal-lunch-1", "name": "Lunch, day 1", "category": "meal", "active": true },
+    { "id": "meal-lunch-2", "name": "Lunch, day 2", "category": "meal", "active": true },
+    {
+      "id": "other-career-fair",
+      "name": "Career fair",
+      "category": "other",
+      "active": true,
+      "availableTo": ["STUDENT"]
+    }
+  ],
+  "consents": [
+    {
+      "id": "data-processing",
+      "text": "I agree to the processing of my personal data for the registration and organisation of the conference.",
+      "mandatory": true
+    }
+  ]
+}
