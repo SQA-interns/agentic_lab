@@ -4,7 +4,7 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Current phase: 7 (release), started 2026-10-09T21:57:29Z; branch `run/tanej-01_conference-registration_opus5.5_sdd_template-tanej-1.0` (D-10)
-- Last gate result: phase 6 passed at 2026-10-09T21:57:29Z: DoD evidence in `docs/06_verification-report.md`, no open Critical/High (F-01 fixed, F-03 accepted by D-24), hashes match, no leaks.
-- Next step: phase 7 per `general/phases/7-release.md`.
+- Current phase: run finished (2026-10-09T22:03:12Z); branch `run/tanej-01_conference-registration_opus5.5_sdd_template-tanej-1.0` (D-10)
+- Last gate result: phase 7 passed at 2026-10-09T22:03:12Z: READMEs work from a clean checkout (`out/logs/7_clean-checkout.log`), manual-test list in `docs/release-notes.md`, every decision resolved or pending review.
+- Next step: human review of the release notes; post-run session "Fill section 2 of `03_statistics/metrics.md`".
 - Waiting for the human on: nothing
