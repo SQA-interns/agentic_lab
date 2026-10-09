@@ -50,7 +50,7 @@ All values come from environment variables; the backend has no default for a sec
 | `APP_ENVIRONMENT` | backend | `production` | `production`, `local` or `test`; the safest value is the default |
 | `DATABASE_URL`, `DATABASE_USER`, `POSTGRES_PASSWORD` | backend | none | compose sets local values |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_TLS`, `SMTP_USERNAME`, `SMTP_PASSWORD` | backend | none; `SMTP_TLS=true` | local: Mailpit, `SMTP_TLS=false`, empty credentials |
-| `MAIL_FROM`, `CONFERENCE_NAME` | backend | `registration@localhost`, `Conference` | shown in emails |
+| `MAIL_FROM`, `CONFERENCE_NAME` | backend | `registration@localhost.localdomain`, `Conference` | shown in emails; a blank optional setting means its default |
 | `ORGANIZER_EMAILS` | backend | none | comma separated, each validated at startup |
 | `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD` | backend | none | password ≥ 16 characters, BCrypt-hashed at startup; the plain value is not kept (SB-03) |
 | `ORGANIZER_HTTPS_ONLY` | backend | `true` | `false` refused unless `APP_ENVIRONMENT=local` or `test` (SR-06) |

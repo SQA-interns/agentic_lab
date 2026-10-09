@@ -8,7 +8,9 @@
 |---|---|---|---|---|
 | Acceptance | `backend/src/test/java/si/konferenca/registration/acceptance/` | REST API over HTTP; backend started from its entry point with the §3 settings by name; observed through the export, the JSON copy directory and the Mailpit API | Testcontainers PostgreSQL (one database per backend instance), Mailpit container, reCAPTCHA test mode, JDK HTTP server as mocked Google verify endpoint (DoD-P05) | `verify.sh <phase> backend_test` |
 | End-to-end | `frontend/e2e/` | Browser (Playwright Chromium) on the UI contract `ui-form.json` | Fresh stack per run on free ports (KP-08): PostgreSQL and Mailpit containers, backend jar, Vite server proxying `/api` | `verify.sh <phase> frontend_e2e` |
-| Unit / integration | phase 5 | | | |
+| Unit (backend) | `backend/src/test/java/si/konferenca/registration/{domain,config,api,application,adapter}` | classes directly; Spring `MockEnvironment`, mock servlet objects, Mockito for ports, JDK HTTP server for the verify endpoint | none | `verify.sh <phase> backend_test` |
+| Integration (backend) | `adapter/persistence/JpaRegistrationStoreIntegrationTest`, `architecture/ArchitectureTest` | Spring context with Flyway on Testcontainers PostgreSQL; ArchUnit on compiled classes (AR-01..AR-03) | Testcontainers PostgreSQL | `verify.sh <phase> backend_test` |
+| Unit / component (frontend) | `frontend/src/*.test.ts(x)` | functions and React components (Testing Library, jsdom), `fetch` stubbed | none | `verify.sh <phase> frontend_test` |
 
 Coverage: all 50 ACs (68 acceptance tests, 17 end-to-end tests); NFR-01 in the US-001 end-to-end test, NFR-03 and KP-03 in US-001 end-to-end tests, SR-01/DoD-P05 in `Us001RecaptchaVerificationAcceptanceTest`.
 
@@ -24,5 +26,21 @@ Harness constraints: the backend reads its settings through the Spring environme
 Tests that would pass on bootstrap code: AC-008-03 and AC-008-04 (Spring Security's default already answers 401 with `WWW-Authenticate: Basic`); they fail now only because their class setup cannot register fixtures.
 
 ## First complete run (before any fix)
+
+Run at the end of phase 5 writing (2026-10-09T12:18:33Z recorded in `run-log.json` as `firstTestRun`), all levels, no compile errors. Logs: `out/logs/5_backend-test-first-run.log`, `5_frontend-test.log`, `5_frontend-e2e.log`.
+
+| Suite | Passed | Failed |
+|---|---|---|
+| Backend (unit, integration, acceptance) | 176 | 12 (5 failures, 7 errors) |
+| Frontend unit and component | 33 | 0 |
+| End-to-end | 17 | 0 |
+| Total | 226 | 12 |
+
+| Failure group | Tests | Class | Action |
+|---|---|---|---|
+| Default `MAIL_FROM` (`registration@localhost`) fails the startup address check, so the context cannot start without `MAIL_FROM` | 6 `AppSettingsTest`, 4 `JpaRegistrationStoreIntegrationTest` (context) , `es07_toStringShowsNoSecret` | Implementation defect (spec §3 had the same default) | Default changed to `registration@localhost.localdomain`; spec §3 corrected |
+| A blank `APP_ENVIRONMENT` is refused instead of meaning the default | `es01_defaultsAreTheSafeValues` | Implementation defect | Blank optional settings fall back to their default |
+
+Found after those fixes: `JpaRegistrationStoreIntegrationTest` used `WebEnvironment.NONE`, where the security configuration has no `HttpSecurity` bean (4 errors). Class: defect in a non-frozen test; fixed by using the default mock web environment. No frozen test failed.
 
 ## Final run (phase 6)
