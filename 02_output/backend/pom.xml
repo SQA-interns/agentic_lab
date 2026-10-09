@@ -206,9 +206,26 @@
           </dependency>
         </dependencies>
         <configuration>
+          <!-- Unit-tested code; Spring wiring, controllers and the JPA adapter are mutated in a
+               second, targeted run against the integration tests (docs/03_test-strategy.md). -->
           <targetClasses>
-            <param>si.konferenca.registration.*</param>
+            <param>si.konferenca.registration.application.*</param>
+            <param>si.konferenca.registration.domain.*</param>
+            <param>si.konferenca.registration.infrastructure.*</param>
+            <param>si.konferenca.registration.api.*Filter*</param>
+            <param>si.konferenca.registration.config.ConfigurationGuard</param>
           </targetClasses>
+          <excludedClasses>
+            <param>si.konferenca.registration.infrastructure.JpaRegistrationRepository</param>
+          </excludedClasses>
+          <targetTests>
+            <param>si.konferenca.registration.application.*Test</param>
+            <param>si.konferenca.registration.domain.*Test</param>
+            <param>si.konferenca.registration.infrastructure.*Test</param>
+            <param>si.konferenca.registration.api.*Test</param>
+            <param>si.konferenca.registration.config.*Test</param>
+          </targetTests>
+          <threads>4</threads>
           <outputFormats>
             <param>XML</param>
             <param>HTML</param>
