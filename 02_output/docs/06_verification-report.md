@@ -15,8 +15,8 @@ This is a self-check by the development agent, not an independent review.
 | DoD-05 | pass | F-03 accepted by the human (D-24); F-01 fixed; no other Critical/High (`out/logs/6_dependency-check.log`, `out/logs/6_npm-audit.log`, `out/logs/6c_gitleaks.log`) |
 | DoD-06 | pass | local compose stack, section "Runtime demonstration" (`out/logs/6_runtime-demo.log`) |
 | DoD-07 | pass | section "Traceability": every AC has tests and commits |
-| DoD-08 | phase 7 | READMEs and clean-checkout check are written in phase 7 |
-| DoD-09 | phase 7 | release notes are written in phase 7 |
+| DoD-08 | pass | READMEs followed from a clean clone: build, check, 192 + 33 + 17 tests, compose up/down all exit 0; longest path 119 characters (`out/logs/7_clean-checkout.log`) |
+| DoD-09 | pass | `docs/release-notes.md`, "Must be tested manually by a human" (7 items) |
 | DoD-10 | pass | every decision resolved or pending review; 27 input hashes match (`out/logs/6_hashes-and-leaks.log`) |
 | DoD-11 | pass with F-07, F-09 | `out/logs/6_evidence-commits.log`: phase 3 changed no production code; freeze commit = manifest only, all 23 files committed before; each US has a phase 4 commit (`out/logs/4_commits-since-freeze.log`); size guide exceeded by 8 commits (F-07) |
 | DoD-P01 | pass | external 201 and student 201 through the frontend `/api` |

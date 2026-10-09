@@ -1,0 +1,50 @@
+
+== 21:58:22 git -c core.longpaths=true clone (branch run/...)
+-> exit 0
+
+== 21:58:23 longest path under 02_output (KP-05)
+119 02_output/backend/src/test/java/si/konferenca/registration/adapter/persistence/JpaRegistrationStoreIntegrationTest.java
+
+== 21:58:23 cp .env (human step: fill .env)
+-> exit 0
+
+== 21:58:23 backend build: ./mvnw -B -DskipTests package
+-> exit 0
+
+== 21:58:33 backend check
+-> exit 0
+
+== 21:58:55 backend test: ./mvnw -B verify
+[INFO] Tests run: 192, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+-> exit 0
+
+== 22:00:55 frontend npm ci
+-> exit 0
+
+== 22:01:01 frontend npm run check
+-> exit 0
+
+== 22:01:08 frontend npm test
+      Tests  33 passed (33)
+-> exit 0
+
+== 22:01:10 frontend npm run build
+-> exit 0
+
+== 22:01:15 frontend npm run e2e
+  17 passed (35.5s)
+-> exit 0
+
+== 22:01:52 compose.sh up -d --build --wait (project registration-clean)
+-> exit 0
+
+== 22:02:37 open http://127.0.0.1:8081 and Mailpit
+frontend 200
+mailpit 200
+
+== 22:02:37 export without credentials
+401
+
+== 22:02:37 compose.sh down -v
+-> exit 0
