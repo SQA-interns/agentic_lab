@@ -1,6 +1,6 @@
 # Test strategy (as executed)
 
-> Written in: phases 3, 5 and 6 · Source: `standards/testing.md` · Procedure: `skills/write-acceptance-tests`, `general/phases.md` (phase 5), `skills/verify-release` · Agent: writes
+> Written in: phases 3, 5 and 6 · Source: `standards/testing.md` · Procedure: `skills/write-acceptance-tests`, `skills/unit-tests`, `skills/verify-release` · Agent: writes
 
 ## Test levels as executed
 

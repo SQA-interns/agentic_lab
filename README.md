@@ -13,8 +13,8 @@ AGENTS.md                      agent entry point: read order, precedence, never-
 01_input/
   00_general/                  filled once per organisation, reused by every project
     rules.md                   rules of every phase
-    phases.md                  phase order: reads, writes, short steps or skill, gate, commits
-    skills/<name>/SKILL.md     the long or reusable procedures, one per file (5)
+    phases.md                  phase order: skill, reads, writes, gate, commits
+    skills/<name>/SKILL.md     how each phase is done, one per phase, plus decisions (9)
     standards/                 lookup tables: engineering, testing, security, done
     tools/                     secrets.sh, usage-from-transcript.mjs
   01_project/                  filled per project (5 files; run-config.md in 00_setup/ because metrics.md names that path)
@@ -73,14 +73,14 @@ They are written once, but they are not frozen forever. Each file states in its 
 ## Rules for editing this template
 
 - Every Markdown file starts with `> Owner: … · Fill: … · Read in: … · Agent: …` (skills: after the front matter; agent-written skeletons: `> Written in: …`).
-- An always-on rule goes in `rules.md`; a phase's contract (reads, writes, gate, commits) and its short steps in `phases.md`; a procedure that is long, used in several phases or reusable on its own in one skill; a table looked up by ID in `standards/`. State each rule once.
+- An always-on rule goes in `rules.md`; a phase's contract (reads, writes, gate, commits) in `phases.md`; every procedure, however short, in a skill (one per phase, plus `decisions`); a table looked up by ID in `standards/`. State each rule once.
 - `03_statistics/metrics.md` and `run-log.template.json` are shared with the other templates and never change here.
 
 ## Changes since tanej-2.0
 
 | Change | Where | Reason |
 |---|---|---|
-| The four short procedures (derive acceptance criteria, write the specification, build, unit tests) moved from skill files into their phase in `phases.md`; five skills remain (preflight, write-acceptance-tests, verify-release, release, decisions) | `phases.md`, `skills/` | a skill file for three or four phase-only steps added a file hop without reuse; the remaining skills are long, used in every phase, or reusable by a separate agent |
+| Rule made explicit: every procedure lives in a skill (one per phase, plus `decisions`), never in `phases.md`; folding the short ones into `phases.md` was tried and reverted before any run | README, "Rules for editing" | one place for every "how" is easier to navigate and to hand to a separate agent per phase later |
 | The clean-checkout check runs only the README's build, test, check and run commands, not mutation testing or the scanners | `skills/release` | run tanej-04 re-ran mutation testing in phase 7 on unchanged sources |
 | Install the pinned platform versions before the run | this README, "Running" | every run so far spent two blocking decisions on host JDK and Node versions |
 
@@ -89,7 +89,7 @@ They are written once, but they are not frozen forever. Each file states in its 
 | Change | Where | Reason |
 |---|---|---|
 | Ten project files merged into three (`requirements.md`, `stack.md`, `constraints.md`); secrets list moved up; `00_setup/run-config.md` stays where the shared `metrics.md` expects it | `01_input/01_project/` | fewer files to fill per project; the owner-role split meant nothing with one operator. Content unchanged. |
-| General rules that lived in project files moved to general files (version rules from the tech stack, AC format from the user stories) | `standards/engineering.md`, `phases.md` (phase 1) | they would have had to be copied into every project |
+| General rules that lived in project files moved to general files (version rules from the tech stack, AC format from the user stories) | `standards/engineering.md`, `skills/derive-acceptance-criteria` | they would have had to be copied into every project |
 | Procedures moved out of the phase cards into one skill per file; cards replaced by one phase map | `skills/`, `phases.md` | skills were spread over eight cards; separate files are easier to maintain and to give to a single agent later |
 | Standards split by topic | `standards/` | different owners and review cycles |
 | Decision making taken over from the other template (v002) unchanged: its blocking list, ask and wait, one full record per decision, "pending review", every Critical or High downgrade (including false positives) blocking; no unattended mode | `rules.md`, `skills/decisions`, `standards/security.md` | keeps decision making equal between the two templates, so the comparison tests structure only |
