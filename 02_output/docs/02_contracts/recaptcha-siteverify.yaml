@@ -1,0 +1,70 @@
+openapi: 3.1.0
+info:
+  title: Google reCAPTCHA v2 verification (consumed by the backend)
+  version: "2"
+  description: >-
+    The external call the backend makes for every registration outside test mode (SR-01). The URL
+    is configurable (RECAPTCHA_VERIFY_URL) so tests can point it to a mocked endpoint (DoD-P05).
+    Timeout 5 s; a connection failure, timeout or non-200 answer gives 503 `captcha_unavailable`;
+    `success: false` gives 400 `captcha_failed`.
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: https://www.google.com/recaptcha/api
+    description: production verification endpoint
+tags:
+  - name: recaptcha
+    description: Token verification.
+security: []
+paths:
+  /siteverify:
+    post:
+      tags: [recaptcha]
+      operationId: verifyToken
+      summary: Verify a reCAPTCHA response token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [secret, response]
+              properties:
+                secret:
+                  type: string
+                  description: RECAPTCHA_SECRET_KEY; never logged.
+                response:
+                  type: string
+                  description: The captchaToken of the registration.
+                remoteip:
+                  type: string
+                  description: Client IP address as seen by the backend.
+      responses:
+        "200":
+          description: Verification result.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success]
+                properties:
+                  success:
+                    type: boolean
+                  challenge_ts:
+                    type: string
+                    format: date-time
+                  hostname:
+                    type: string
+                  error-codes:
+                    type: array
+                    items:
+                      type: string
+              examples:
+                accepted:
+                  value: { success: true, challenge_ts: "2026-10-09T08:00:00Z", hostname: registration.example.si }
+                rejected:
+                  value: { success: false, error-codes: [invalid-input-response] }
+        "4XX":
+          description: Not expected from Google; handled like a connection failure (503 `captcha_unavailable`).
