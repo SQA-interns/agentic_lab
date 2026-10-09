@@ -22,6 +22,7 @@
 | D-17 | 2026-10-09T11:08:47Z | 1 | OQ-04 unanswered: options per category | Selecting options is optional; the maximum per category comes from configuration and defaults to 1; more than the maximum is rejected | pending review |
 | D-18 | 2026-10-09T11:08:47Z | 1 | OQ-05 unanswered: second registration with the same email | Rejected: at most one registration per email address across both types, compared after trimming and ignoring letter case | pending review |
 | D-19 | 2026-10-09T11:08:47Z | 1 | OQ-06 unanswered: retention | Registrations and JSON copies are kept until 12 months after the conference, then deleted by the organizer through an operations procedure (no deletion feature; editing and admin UI are out of scope); stated in the consent text and release notes (SB-13) | pending review |
+| D-20 | 2026-10-09T11:14:38Z | 2 | Phase 2 must validate contracts with a parser; no OpenAPI or JSON Schema validator is pinned in `tech-stack.md` | Dev-only tooling: `@redocly/cli` 2.62.0 run by `npx` (not installed into a project), host Python `jsonschema` 4.10.3 (already present) and the pinned `postgres:16.15-alpine` for SQL; all through `verify.sh contracts` | pending review |
 
 ## Blocking
 
