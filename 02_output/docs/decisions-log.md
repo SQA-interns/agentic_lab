@@ -84,3 +84,8 @@
   3. Other (state it, e.g. mTLS for the organizer at the reverse proxy).
 - Human response: none
 - Resolution: open
+
+## D-24 follow-up
+- Timestamp: 2026-10-09T21:57:29Z
+- Human response: "i chose the proposed fixes" (received 2026-10-09T21:56:41Z)
+- Resolution: option 1. HTTP Basic over enforced HTTPS kept; F-03 recorded as Low with the evidence above; `# nosemgrep` for this rule on line 127 of `registration-api.openapi.yaml` only. Re-scan: `out/logs/6d_semgrep.log` (remaining: F-04, accepted).

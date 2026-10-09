@@ -49,12 +49,12 @@
       "phase": 6,
       "name": "verify",
       "start": "2026-10-09T12:18:57Z",
-      "end": null
+      "end": "2026-10-09T21:57:29Z"
     },
     {
       "phase": 7,
       "name": "release",
-      "start": null,
+      "start": "2026-10-09T21:57:29Z",
       "end": null
     }
   ],
@@ -232,7 +232,7 @@
       "id": "D-24",
       "type": "blocking",
       "start": "2026-10-09T18:29:24Z",
-      "end": null
+      "end": "2026-10-09T21:56:41Z"
     },
     {
       "id": "D-26",
@@ -254,7 +254,7 @@
     },
     {
       "start": "2026-10-09T18:29:24Z",
-      "end": null,
+      "end": "2026-10-09T21:56:41Z",
       "reason": "D-24: accept or replace HTTP Basic for the organizer export (Semgrep High F-03)"
     }
   ],

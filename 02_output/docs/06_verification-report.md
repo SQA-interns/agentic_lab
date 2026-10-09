@@ -12,7 +12,7 @@ This is a self-check by the development agent, not an independent review.
 | DoD-02 | pass | Spotless, PMD, CPD, SpotBugs 0 (`out/logs/6c_backend-check.log`); Prettier, ESLint, tsc 0 (`out/logs/6_frontend-check.log`); Semgrep: F-03, F-04 |
 | DoD-03 | pass (record only) | backend line 95.9 %, branch 86.1 % (`out/logs/6_backend-coverage.log`); frontend line 97.4 %, branch 88.5 %; mutation backend 69 % unit-only (`out/logs/6b_backend-mutation.log`), frontend 65.3 % (`out/logs/6_frontend-mutation.log`); survivors classified: F-02 |
 | DoD-04 | pass | `ArchitectureTest` (AR-01..AR-03 rules, two slice cycle checks) in the backend run |
-| DoD-05 | **open** | F-03 (High, Semgrep) waits for D-24; F-01 fixed; no other Critical/High (`out/logs/6_dependency-check.log`, `out/logs/6_npm-audit.log`, `out/logs/6c_gitleaks.log`) |
+| DoD-05 | pass | F-03 accepted by the human (D-24); F-01 fixed; no other Critical/High (`out/logs/6_dependency-check.log`, `out/logs/6_npm-audit.log`, `out/logs/6c_gitleaks.log`) |
 | DoD-06 | pass | local compose stack, section "Runtime demonstration" (`out/logs/6_runtime-demo.log`) |
 | DoD-07 | pass | section "Traceability": every AC has tests and commits |
 | DoD-08 | phase 7 | READMEs and clean-checkout check are written in phase 7 |
@@ -131,7 +131,7 @@ This is a self-check by the development agent, not an independent review.
 |---|---|---|---|---|
 | F-01 | High | backend-test (AC-006-04 red in 6b) | SMTP read timeout 10 s drops emails when the server greets slowly (5 s stalls observed) | fixed: 60 s read/write, 10 s connect; loop 1 |
 | F-02 | Low | Pitest, Stryker | surviving mutants a unit test could catch (filter pass-through, parser and loader boundaries, client max length) | partly fixed (filters, parser); rest accepted: behaviour covered by acceptance tests |
-| F-03 | High | Semgrep `use-of-basic-authentication` (ERROR) | organizer export uses HTTP Basic (contract line 127) | **open: blocking D-24** |
+| F-03 | High → Low (D-24) | Semgrep `use-of-basic-authentication` (ERROR) | organizer export uses HTTP Basic (contract line 127) | accepted by the human (D-24, option 1): HTTPS enforced, BCrypt, rate limit; rule suppressed on that line only (`out/logs/6d_semgrep.log`) |
 | F-04 | Medium | Semgrep `npm-missing-minimum-release-age` | `.npmrc` sets no minimum release age | accepted: exact pins, committed lock file, `npm ci` |
 | F-05 | Medium | npm audit | 2 Moderate in `qs` via Stryker (dev only, D-13) | accepted: not shipped |
 | F-06 | Low | Gitleaks | test-only value in `AppSettingsTest` | false positive, suppressed (D-25) |
