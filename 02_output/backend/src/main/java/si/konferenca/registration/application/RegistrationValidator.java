@@ -143,7 +143,7 @@ public class RegistrationValidator {
     List<ConferenceOption> selected = new ArrayList<>();
     Map<Category, Integer> counts = new EnumMap<>(Category.class);
     for (String id : new LinkedHashSet<>(command.optionIds())) {
-      Optional<ConferenceOption> found = id == null ? Optional.empty() : catalogue.option(id);
+      Optional<ConferenceOption> found = catalogue.option(id);
       if (found.isEmpty()) {
         errors.add(error(OPTION_IDS, "unknown_option", "A selected option does not exist."));
         continue;
@@ -185,7 +185,7 @@ public class RegistrationValidator {
     Set<String> given = new LinkedHashSet<>(command.consentIds());
     List<ConsentDefinition> consents = new ArrayList<>();
     for (String id : given) {
-      Optional<ConsentDefinition> consent = id == null ? Optional.empty() : catalogue.consent(id);
+      Optional<ConsentDefinition> consent = catalogue.consent(id);
       if (consent.isEmpty()) {
         errors.add(error(CONSENT_IDS, "unknown_consent", "A selected consent does not exist."));
       } else {
