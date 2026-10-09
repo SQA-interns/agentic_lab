@@ -1,0 +1,13 @@
+
+> registration-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 38 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.27 kB
+dist/assets/index-8whfVrkj.css    0.99 kB │ gzip:  0.46 kB
+dist/assets/index-D4f1cgHC.js   233.77 kB │ gzip: 73.15 kB
+✓ built in 2.51s
