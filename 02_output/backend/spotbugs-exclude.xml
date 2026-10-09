@@ -9,4 +9,22 @@
     <Method name="securityFilterChain"/>
     <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
   </Match>
+  <!-- Constructor injection of shared collaborators (transaction template, entity manager,
+       mail sender, clock): keeping the injected reference is the intent. -->
+  <Match>
+    <Or>
+      <Class name="si.konferenca.registration.application.RegistrationService"/>
+      <Class name="si.konferenca.registration.application.ExportService"/>
+      <Class name="si.konferenca.registration.infrastructure.JpaRegistrationRepository"/>
+      <Class name="si.konferenca.registration.infrastructure.SmtpRegistrationNotifier"/>
+    </Or>
+    <Method name="&lt;init&gt;"/>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
+  <!-- A request wrapper must return the same input stream on every call. -->
+  <Match>
+    <Class name="si.konferenca.registration.api.RequestSizeFilter$LimitedRequest"/>
+    <Method name="getInputStream"/>
+    <Bug pattern="EI_EXPOSE_REP"/>
+  </Match>
 </FindBugsFilter>
