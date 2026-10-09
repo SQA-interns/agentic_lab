@@ -264,7 +264,8 @@ run_tool() {
           (cd "$OUT" && bash "$SECRETS" run POSTGRES_PASSWORD,ORGANIZER_USERNAME,ORGANIZER_PASSWORD,ORGANIZER_EMAILS -- \
             docker compose up -d --build --wait --wait-timeout 240)
       } >"$LOG" 2>&1 || code=$?
-      key="$(cd "$OUT" && docker compose ps -a --format '{{.Service}}={{.State}}/{{.Health}}' 2>&1 | tr '\n' ' ')"
+      key="$(docker ps -a --filter label=com.docker.compose.project=registration \
+        --format '{{.Label "com.docker.compose.service"}}={{.State}}/{{.Status}}' 2>&1 | sed 's/ (.*)//' | tr '\n' ' ')"
       ;;
     stack-down)
       # Stops the local stack; named volumes (data) are kept.
