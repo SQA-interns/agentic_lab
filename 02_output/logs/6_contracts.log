@@ -1,0 +1,26 @@
+No configurations were provided -- using built in recommended configuration by default.
+
+validating registration-api.openapi.yaml...
+registration-api.openapi.yaml: validated in 46ms
+
+Woohoo! Your API description is valid. 🎉
+
+No configurations were provided -- using built in recommended configuration by default.
+
+validating recaptcha-verify.openapi.yaml...
+recaptcha-verify.openapi.yaml:
+  37:7  warning  operation-4xx-response  Operation must have at least one `4XX` response.
+
+recaptcha-verify.openapi.yaml: validated in 33ms
+
+Woohoo! Your API description is valid. 🎉
+You have 1 warning.
+
+schema ok: conference-config.schema.json
+schema ok: emails.schema.json
+schema ok: registration-copy.schema.json
+schema ok: ui-form.schema.json
+instance ok: ui-form.json against ui-form.schema.json
+instance ok: examples/conference-config.example.json against conference-config.schema.json
+instance ok: examples/registration-copy.example.json against registration-copy.schema.json
+sql ok: database.sql

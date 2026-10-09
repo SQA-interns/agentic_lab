@@ -1,0 +1,35 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 125 files tracked by git with 1074 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      74      83          Community    1074                                                                
+  java            118      49                                                                                           
+  ts              163      24                                                                                           
+  json              4      16                                                                                           
+  yaml             35       4                                                                                           
+  bash              4       3                                                                                           
+  dockerfile        6       2                                                                                           
+  js              153       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 2 (2 blocking)
+ • Rules run: 400
+ • Targets scanned: 125
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 4
+   ◦ Files larger than  files 1.0 MB: 1
+   ◦ Files matching .semgrepignore patterns: 4
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 400 rules on 125 files: 2 findings.

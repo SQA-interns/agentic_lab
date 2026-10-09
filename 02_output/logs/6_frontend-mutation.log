@@ -1,0 +1,1524 @@
+
+> registration-frontend@0.1.0 mutation
+> stryker run
+
+[32m14:23:28 (1045240) INFO ProjectReader[39m Found 7 of 46 file(s) to be mutated.
+[32m14:23:29 (1045240) INFO Instrumenter[39m Instrumented 7 source file(s) with 445 mutant(s)
+[32m14:23:29 (1045240) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m14:23:30 (1045240) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m14:23:35 (1045240) INFO DryRunExecutor[39m Initial test run succeeded. Ran 33 tests in 4 seconds (net 461.4525990000002 ms, overhead 3702.547401 ms).
+
+All tests
+  api.test.ts
+    ✓ api client (AR-01) loads the form of a type from /api (killed 4)
+    ✓ api client (AR-01) fails when the form cannot be loaded (killed 1)
+    ✓ api client (AR-01) posts the flat request body (killed 4)
+    ✓ api client (AR-01) maps status 201 to { id: '1' } (killed 4)
+    ✓ api client (AR-01) maps status 400 to { errors: [ { field: 'email', code: 'INVALID_EMAIL' } ] } (killed 7)
+    ✓ api client (AR-01) maps status 409 to { errors: [ { field: 'email', code: 'ALREADY_REGISTERED' } ] } (killed 2)
+    ✓ api client (AR-01) maps status 400 to { title: 'Bad' } (killed 3)
+    ✓ api client (AR-01) maps status 429 to {} (killed 1)
+    ✓ api client (AR-01) maps status 503 to { title: 'x' } (killed 2)
+    ✓ api client (AR-01) AC-004-03 maps a network error to a general failure (killed 3)
+  App.test.tsx
+    ✓ App AC-004-01 replaces the form with the confirmation after acceptance (killed 21)
+    ✓ App marks the chosen type (killed 3)
+  Captcha.test.tsx
+    ✓ Captcha (SR-01, SR-02) test mode yields the deterministic token and clears it again (killed 3)
+    ✓ Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox (killed 15)
+    ✓ Captcha (SR-01, SR-02) shows the error with its id for aria-describedby (killed 2)
+  RegistrationForm.test.tsx
+    ✓ RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents (killed 32)
+    ✓ RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing (killed 52)
+    ✓ RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full (killed 17)
+    ✓ RegistrationForm (NFR-03) AC-004-01 reports an accepted registration (killed 25)
+    ✓ RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check (killed 13)
+    ✓ RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails (killed 10)
+    ✓ RegistrationForm (NFR-03) shows the rate-limit message on 429 (killed 8)
+    ✓ RegistrationForm (NFR-03) disables the submit button while the request is in flight (killed 2)
+    ✓ RegistrationForm (NFR-03) shows the general error when the form cannot be loaded (killed 7)
+    ✓ RegistrationForm (NFR-03) KP-03 trims a field when it loses focus (killed 4)
+  validation.test.ts
+    ~ validation (NFR-03, BR-02, BR-03) KP-03 trims Unicode whitespace including the no-break space (covered 2)
+    ✓ validation (NFR-03, BR-02, BR-03) AC-001-02 accepts a valid draft (killed 18)
+    ~ validation (NFR-03, BR-02, BR-03) AC-001-04 AC-001-05 reports each empty or whitespace-only field (covered 41)
+    ✓ validation (NFR-03, BR-02, BR-03) AC-001-07 reports an invalid email (killed 7)
+    ✓ validation (NFR-03, BR-02, BR-03) reports a value above the maximum length (killed 4)
+    ✓ validation (NFR-03, BR-02, BR-03) AC-001-12 reports too many options in one category (killed 8)
+    ✓ validation (NFR-03, BR-02, BR-03) AC-001-14 names each missing mandatory consent only (killed 4)
+    ✓ validation (NFR-03, BR-02, BR-03) AC-001-16 requires the anti-automation token (killed 4)
+
+[Survived] ObjectLiteral
+src/api.ts:57:80
+-     const response = await fetch(`/api/registration-form/${type.toLowerCase()}`, {
+-       headers: { Accept: "application/json" },
+-     });
++     const response = await fetch(`/api/registration-form/${type.toLowerCase()}`, {});
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 11 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:58:14
+-       headers: { Accept: "application/json" },
++       headers: {},
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:58:24
+-       headers: { Accept: "application/json" },
++       headers: { Accept: "" },
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:61:21
+-       throw new Error(`form ${response.status}`);
++       throw new Error(``);
+Tests ran:
+    RegistrationForm (NFR-03) shows the general error when the form cannot be loaded
+    api client (AR-01) fails when the form cannot be loaded
+
+
+[Survived] StringLiteral
+src/api.ts:72:15
+-         method: "POST",
++         method: "",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 11 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:73:16
+-         headers: {
+-           "Content-Type": "application/json",
+-           Accept: "application/json",
+-         },
++         headers: {},
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:74:25
+-           "Content-Type": "application/json",
++           "Content-Type": "",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:75:17
+-           Accept: "application/json",
++           Accept: "",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/api.ts:97:11
+-         if (Array.isArray(body.errors) && body.errors.length > 0) {
++         if (Array.isArray(body.errors) || body.errors.length > 0) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    api client (AR-01) maps status 400 to { errors: [ { field: 'email', code: 'INVALID_EMAIL' } ] }
+    api client (AR-01) maps status 409 to { errors: [ { field: 'email', code: 'ALREADY_REGISTERED' } ] }
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/api.ts:97:41
+-         if (Array.isArray(body.errors) && body.errors.length > 0) {
++         if (Array.isArray(body.errors) && true) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    api client (AR-01) maps status 400 to { errors: [ { field: 'email', code: 'INVALID_EMAIL' } ] }
+    api client (AR-01) maps status 409 to { errors: [ { field: 'email', code: 'ALREADY_REGISTERED' } ] }
+
+
+[Survived] EqualityOperator
+src/api.ts:97:41
+-         if (Array.isArray(body.errors) && body.errors.length > 0) {
++         if (Array.isArray(body.errors) && body.errors.length >= 0) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    api client (AR-01) maps status 400 to { errors: [ { field: 'email', code: 'INVALID_EMAIL' } ] }
+    api client (AR-01) maps status 409 to { errors: [ { field: 'email', code: 'ALREADY_REGISTERED' } ] }
+
+
+[NoCoverage] BlockStatement
+src/Captcha.tsx:67:44
+-       void loadGoogle().then((grecaptcha) => {
+-         if (cancelled || !container.current || widget.current !== null) return;
+-         widget.current = grecaptcha.render(container.current, {
+-           sitekey: siteKey,
+-           callback: onToken,
+-           "expired-callback": () => onToken(""),
+-         });
+-       });
++       void loadGoogle().then((grecaptcha) => {});
+
+[NoCoverage] ConditionalExpression
+src/Captcha.tsx:68:11
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (true) return;
+
+[NoCoverage] ConditionalExpression
+src/Captcha.tsx:68:11
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (false) return;
+
+[NoCoverage] LogicalOperator
+src/Captcha.tsx:68:11
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if ((cancelled || !container.current) && widget.current !== null) return;
+
+[NoCoverage] ConditionalExpression
+src/Captcha.tsx:68:11
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (false || widget.current !== null) return;
+
+[NoCoverage] LogicalOperator
+src/Captcha.tsx:68:11
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (cancelled && !container.current || widget.current !== null) return;
+
+[NoCoverage] BooleanLiteral
+src/Captcha.tsx:68:24
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (cancelled || container.current || widget.current !== null) return;
+
+[NoCoverage] ConditionalExpression
+src/Captcha.tsx:68:46
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (cancelled || !container.current || false) return;
+
+[NoCoverage] EqualityOperator
+src/Captcha.tsx:68:46
+-         if (cancelled || !container.current || widget.current !== null) return;
++         if (cancelled || !container.current || widget.current === null) return;
+
+[NoCoverage] ObjectLiteral
+src/Captcha.tsx:69:61
+-         widget.current = grecaptcha.render(container.current, {
+-           sitekey: siteKey,
+-           callback: onToken,
+-           "expired-callback": () => onToken(""),
+-         });
++         widget.current = grecaptcha.render(container.current, {});
+
+[NoCoverage] ArrowFunction
+src/Captcha.tsx:72:29
+-           "expired-callback": () => onToken(""),
++           "expired-callback": () => undefined,
+
+[NoCoverage] StringLiteral
+src/Captcha.tsx:72:43
+-           "expired-callback": () => onToken(""),
++           "expired-callback": () => onToken("Stryker was here!"),
+
+[NoCoverage] BlockStatement
+src/Captcha.tsx:81:71
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
+-         window.grecaptcha.reset(widget.current);
+-       }
++       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {}
+
+[NoCoverage] CallExpression
+src/Captcha.tsx:82:7
+-         window.grecaptcha.reset(widget.current);
++         ;
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:30:7
+-     if (!loading) {
++     if (true) {
+Tests ran:
+    Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox
+
+
+[Survived] ArrowFunction
+src/Captcha.tsx:32:34
+-         window.onRecaptchaLoaded = () => resolve(window.grecaptcha as GreCaptcha);
++         window.onRecaptchaLoaded = () => undefined;
+Tests ran:
+    Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:35:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:65:9
+-       if (mode !== "GOOGLE" || !siteKey || !container.current) return;
++       if (false) return;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:65:9
+-       if (mode !== "GOOGLE" || !siteKey || !container.current) return;
++       if ((mode !== "GOOGLE" || !siteKey) && !container.current) return;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:65:9
+-       if (mode !== "GOOGLE" || !siteKey || !container.current) return;
++       if (false || !container.current) return;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:65:9
+-       if (mode !== "GOOGLE" || !siteKey || !container.current) return;
++       if (mode !== "GOOGLE" && !siteKey || !container.current) return;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:65:9
+-       if (mode !== "GOOGLE" || !siteKey || !container.current) return;
++       if (false || !siteKey || !container.current) return;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:66:21
+-       let cancelled = false;
++       let cancelled = true;
+Tests ran:
+    Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox
+
+
+[Survived] BlockStatement
+src/Captcha.tsx:75:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox
+
+
+[Survived] BooleanLiteral
+src/Captcha.tsx:76:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    Captcha (SR-01, SR-02) Google mode loads the widget script once and renders no test checkbox
+
+
+[Survived] ArrayDeclaration
+src/Captcha.tsx:78:6
+-     }, [mode, siteKey, onToken]);
++     }, []);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] BlockStatement
+src/Captcha.tsx:80:19
+-     useEffect(() => {
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
+-         window.grecaptcha.reset(widget.current);
+-       }
+-     }, [resetKey]);
++     useEffect(() => {}, [resetKey]);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (false) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetKey > 0 && widget.current !== null || window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (true && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetKey > 0 || widget.current !== null && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (true && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] EqualityOperator
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetKey >= 0 && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Captcha.tsx:81:25
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetKey > 0 && true && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+    RegistrationForm (NFR-03) shows the rate-limit message on 429
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/Captcha.tsx:81:25
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetKey > 0 && widget.current === null && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+    RegistrationForm (NFR-03) shows the rate-limit message on 429
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/Captcha.tsx:81:9
+-       if (resetKey > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetKey <= 0 && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ArrayDeclaration
+src/Captcha.tsx:84:6
+-     }, [resetKey]);
++     }, []);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/Confirmation.tsx:17:8
+-         {registration.selectedOptions.length > 0 && (
++         {true && (
+Tests ran:
+    App AC-004-01 replaces the form with the confirmation after acceptance
+
+
+[Survived] EqualityOperator
+src/Confirmation.tsx:17:8
+-         {registration.selectedOptions.length > 0 && (
++         {registration.selectedOptions.length >= 0 && (
+Tests ran:
+    App AC-004-01 replaces the form with the confirmation after acceptance
+
+
+[Survived] StringLiteral
+src/messages.ts:5:18
+-     INVALID_EMAIL: "Enter a valid email address.",
++     INVALID_EMAIL: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:6:13
+-     TOO_LONG: "This value is too long.",
++     TOO_LONG: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:7:25
+-     OPTION_NOT_AVAILABLE: "One of the selected options is not available.",
++     OPTION_NOT_AVAILABLE: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:8:21
+-     TOO_MANY_OPTIONS: "Too many options selected in this category.",
++     TOO_MANY_OPTIONS: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:10:20
+-     UNKNOWN_CONSENT: "The form is out of date. Reload the page.",
++     UNKNOWN_CONSENT: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:13:14
+-     MALFORMED: "The form could not be submitted. Reload the page.",
++     MALFORMED: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:19:14
+-     firstName: "First name",
++     firstName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:20:13
+-     lastName: "Last name",
++     lastName: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:21:10
+-     email: "Email",
++     email: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:23:21
+-     studyInstitution: "Study institution",
++     studyInstitution: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:24:19
+-     studyProgramme: "Study programme",
++     studyProgramme: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:25:14
+-     studentId: "Student ID",
++     studentId: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:34:13
+-     WORKSHOP: "Workshops",
++     WORKSHOP: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:36:9
+-     MEAL: "Meals",
++     MEAL: "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/messages.ts:37:10
+-     OTHER: "Other activities",
++     OTHER: "",
+Ran all tests for this mutant.
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:83:59
+-           form.fields.map((f) => [f.name, values[f.name] ?? ""]),
++           form.fields.map((f) => [f.name, values[f.name] ?? "Stryker was here!"]),
+
+[NoCoverage] CallExpression
+src/RegistrationForm.tsx:101:20
+-         if (general) setFormError(message(general.code));
++         if (general) ;
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:22:48
+-     const [loadFailed, setLoadFailed] = useState(false);
++     const [loadFailed, setLoadFailed] = useState(true);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:24:56
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
++     const [optionIds, setOptionIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:25:58
+-     const [consentIds, setConsentIds] = useState<string[]>([]);
++     const [consentIds, setConsentIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:28:54
+-     const [errors, setErrors] = useState<FieldError[]>([]);
++     const [errors, setErrors] = useState<FieldError[]>(["Stryker was here"]);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:29:46
+-     const [formError, setFormError] = useState("");
++     const [formError, setFormError] = useState("Stryker was here!");
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:34:5
+-       setForm(null);
++       ;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:38:13
+-           if (!cancelled) setForm(definition);
++           if (true) setForm(definition);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:41:13
+-           if (!cancelled) setLoadFailed(true);
++           if (true) setLoadFailed(true);
+Tests ran:
+    RegistrationForm (NFR-03) shows the general error when the form cannot be loaded
+
+
+[Survived] BlockStatement
+src/RegistrationForm.tsx:43:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:44:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:46:6
+-     }, [type]);
++     }, []);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:48:67
+-     const onToken = useCallback((value: string) => setToken(value), []);
++     const onToken = useCallback((value: string) => setToken(value), ["Stryker was here"]);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:53:18
+-           {message("GENERAL")}
++           {message("")}
+Tests ran:
+    RegistrationForm (NFR-03) shows the general error when the form cannot be loaded
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:62:24
+-       errors.find((e) => e.field === name && !e.consentId);
++       errors.find((e) => true);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:62:24
+-       errors.find((e) => e.field === name && !e.consentId);
++       errors.find((e) => e.field === name || !e.consentId);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:62:24
+-       errors.find((e) => e.field === name && !e.consentId);
++       errors.find((e) => true && !e.consentId);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:64:24
+-       errors.find((e) => e.field === "consentIds" && e.consentId === id);
++       errors.find((e) => true && e.consentId === id);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:64:24
+-       errors.find((e) => e.field === "consentIds" && e.consentId === id);
++       errors.find((e) => e.field === "consentIds" || e.consentId === id);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:64:52
+-       errors.find((e) => e.field === "consentIds" && e.consentId === id);
++       errors.find((e) => e.field === "consentIds" && true);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:65:43
+-     const optionsError = errors.find((e) => e.field === "optionIds");
++     const optionsError = errors.find((e) => true);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:65:43
+-     const optionsError = errors.find((e) => e.field === "optionIds");
++     const optionsError = errors.find((e) => false);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:65:43
+-     const optionsError = errors.find((e) => e.field === "optionIds");
++     const optionsError = errors.find((e) => e.field !== "optionIds");
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:65:36
+-     const optionsError = errors.find((e) => e.field === "optionIds");
++     const optionsError = errors.find(() => undefined);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:65:55
+-     const optionsError = errors.find((e) => e.field === "optionIds");
++     const optionsError = errors.find((e) => e.field === "");
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:66:43
+-     const captchaError = errors.find((e) => e.field === "recaptchaToken");
++     const captchaError = errors.find((e) => true);
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:66:43
+-     const captchaError = errors.find((e) => e.field === "recaptchaToken");
++     const captchaError = errors.find((e) => e.field !== "recaptchaToken");
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:69:38
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter(() => undefined);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:69:45
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter((x) => false);
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:72:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:73:9
+-       if (submitting || !form) return;
++       if (false) return;
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+  and 4 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:73:9
+-       if (submitting || !form) return;
++       if (submitting && !form) return;
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:74:18
+-       setFormError("");
++       setFormError("Stryker was here!");
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+  and 4 more tests!
+
+
+[Survived] ObjectLiteral
+src/RegistrationForm.tsx:80:45
+-       const result = await submitRegistration({
+-         type,
+-         values: Object.fromEntries(
+-           form.fields.map((f) => [f.name, values[f.name] ?? ""]),
+-         ),
+-         optionIds,
+-         consentIds,
+-         recaptchaToken: token,
+-       });
++       const result = await submitRegistration({});
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 3 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:83:32
+-           form.fields.map((f) => [f.name, values[f.name] ?? ""]),
++           form.fields.map((f) => []),
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 3 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:83:41
+-           form.fields.map((f) => [f.name, values[f.name] ?? ""]),
++           form.fields.map((f) => [f.name, values[f.name] && ""]),
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:94:14
+-       setToken("");
++       setToken("Stryker was here!");
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+    RegistrationForm (NFR-03) shows the rate-limit message on 429
+  and 1 more test!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:95:21
+-       setCaptchaReset((n) => n + 1);
++       setCaptchaReset(() => undefined);
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+    RegistrationForm (NFR-03) shows the rate-limit message on 429
+  and 1 more test!
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:95:28
+-       setCaptchaReset((n) => n + 1);
++       setCaptchaReset((n) => n - 1);
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+    RegistrationForm (NFR-03) shows the rate-limit message on 429
+  and 1 more test!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:99:9
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           () => undefined,
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:99:16
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => true,
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:99:16
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => false,
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:99:16
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => e.field === "type" && e.code === "UNKNOWN_CONSENT",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:99:16
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => false || e.code === "UNKNOWN_CONSENT",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:99:16
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => e.field !== "type" || e.code === "UNKNOWN_CONSENT",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:99:28
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => e.field === "" || e.code === "UNKNOWN_CONSENT",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:99:38
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => e.field === "type" || false,
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:99:38
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => e.field === "type" || e.code !== "UNKNOWN_CONSENT",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:99:49
+-           (e) => e.field === "type" || e.code === "UNKNOWN_CONSENT",
++           (e) => e.field === "type" || e.code === "",
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:101:11
+-         if (general) setFormError(message(general.code));
++         if (false) setFormError(message(general.code));
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:104:66
+-           message(result.kind === "rateLimited" ? "RATE_LIMITED" : "GENERAL"),
++           message(result.kind === "rateLimited" ? "RATE_LIMITED" : ""),
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+    RegistrationForm (NFR-03) disables the submit button while the request is in flight
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:121:21
+-                 type={field.name === "email" ? "email" : "text"}
++                 type={true ? "email" : "text"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:121:21
+-                 type={field.name === "email" ? "email" : "text"}
++                 type={false ? "email" : "text"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:121:21
+-                 type={field.name === "email" ? "email" : "text"}
++                 type={field.name !== "email" ? "email" : "text"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:121:36
+-                 type={field.name === "email" ? "email" : "text"}
++                 type={field.name === "" ? "email" : "text"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:121:46
+-                 type={field.name === "email" ? "email" : "text"}
++                 type={field.name === "email" ? "" : "text"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:121:56
+-                 type={field.name === "email" ? "email" : "text"}
++                 type={field.name === "email" ? "email" : ""}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:122:29
+-                 autoComplete={field.name === "email" ? "email" : "off"}
++                 autoComplete={true ? "email" : "off"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:122:29
+-                 autoComplete={field.name === "email" ? "email" : "off"}
++                 autoComplete={false ? "email" : "off"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:122:29
+-                 autoComplete={field.name === "email" ? "email" : "off"}
++                 autoComplete={field.name !== "email" ? "email" : "off"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:122:44
+-                 autoComplete={field.name === "email" ? "email" : "off"}
++                 autoComplete={field.name === "" ? "email" : "off"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:122:54
+-                 autoComplete={field.name === "email" ? "email" : "off"}
++                 autoComplete={field.name === "email" ? "" : "off"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:122:64
+-                 autoComplete={field.name === "email" ? "email" : "off"}
++                 autoComplete={field.name === "email" ? "email" : ""}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:125:37
+-                 aria-invalid={error ? true : undefined}
++                 aria-invalid={error ? false : undefined}
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:124:44
+-                 value={values[field.name] ?? ""}
++                 value={values[field.name] ?? "Stryker was here!"}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:140:21
+-                   id={`error-${field.name}`}
++                   id={``}
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:162:14
+-               {category.options.length === 0 && (
++               {true && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
+-                 <p className="hint">Choose up to {category.maxSelections}.</p>
+-               )}
++               {true}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
+-                 <p className="hint">Choose up to {category.maxSelections}.</p>
+-               )}
++               {false}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
+-                 <p className="hint">Choose up to {category.maxSelections}.</p>
+-               )}
++               {category.options.length > 0 && category.maxSelections > 0 || <p className="hint">Choose up to {category.maxSelections}.</p>}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {true && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {category.options.length > 0 || category.maxSelections > 0 && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {true && category.maxSelections > 0 && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {category.options.length >= 0 && category.maxSelections > 0 && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:165:14
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {category.options.length <= 0 && category.maxSelections > 0 && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:165:45
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {category.options.length > 0 && true && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:165:45
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {category.options.length > 0 && category.maxSelections >= 0 && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:165:45
+-               {category.options.length > 0 && category.maxSelections > 0 && (
++               {category.options.length > 0 && category.maxSelections <= 0 && (
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:190:8
+-         {optionsError && (
+-           <p className="error" id="error-optionIds" data-testid="error-optionIds">
+-             {message(optionsError.code)}
+-           </p>
+-         )}
++         {true}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:190:8
+-         {optionsError && (
+-           <p className="error" id="error-optionIds" data-testid="error-optionIds">
+-             {message(optionsError.code)}
+-           </p>
+-         )}
++         {false}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:207:41
+-                     aria-invalid={error ? true : undefined}
++                     aria-invalid={error ? false : undefined}
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:209:29
+-                       error ? `error-consent-${consent.id}` : undefined
++                       error ? `` : undefined
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:219:16
+-                 {consent.mandatory && <span className="hint"> (required)</span>}
++                 {true}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:219:16
+-                 {consent.mandatory && <span className="hint"> (required)</span>}
++                 {false}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:219:16
+-                 {consent.mandatory && <span className="hint"> (required)</span>}
++                 {consent.mandatory || <span className="hint"> (required)</span>}
+Tests ran:
+    RegistrationForm (NFR-03) AC-001-01 AC-001-09 AC-001-13 renders the fields, grouped options and unticked consents
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-001-12 disables further options once a category is full
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:223:23
+-                     id={`error-consent-${consent.id}`}
++                     id={``}
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+
+
+[Survived] EqualityOperator
+src/validation.ts:26:16
+-       } else if (value.length > field.maxLength) {
++       } else if (value.length >= field.maxLength) {
+Tests ran:
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+    RegistrationForm (NFR-03) AC-004-03 shows the general error when storage fails
+  and 10 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:34:19
+-       const count = draft.optionIds.filter((id) => ids.has(id)).length;
++       const count = draft.optionIds.length;
+Tests ran:
+    RegistrationForm (NFR-03) NFR-03 shows client errors next to the fields and sends nothing
+    RegistrationForm (NFR-03) AC-004-01 reports an accepted registration
+    RegistrationForm (NFR-03) AC-004-02 shows server field errors and resets the anti-automation check
+  and 11 more tests!
+
+
+Ran 3.85 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  65.32 |   67.76 |      290 |         0 |        138 |       16 |        1 |
+ api.ts               |  80.70 |   80.70 |       46 |         0 |         11 |        0 |        0 |
+ App.tsx              | 100.00 |  100.00 |       11 |         0 |          0 |        0 |        0 |
+ Captcha.tsx          |  44.78 |   56.60 |       30 |         0 |         23 |       14 |        0 |
+ Confirmation.tsx     |  75.00 |   75.00 |        6 |         0 |          2 |        0 |        0 |
+ messages.ts          |  46.43 |   46.43 |       13 |         0 |         15 |        0 |        0 |
+ RegistrationForm.tsx |  56.93 |   57.50 |      115 |         0 |         85 |        2 |        1 |
+ validation.ts        |  97.18 |   97.18 |       69 |         0 |          2 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m14:26:09 (1045240) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend/reports/mutation/mutation.json
+[32m14:26:09 (1045240) INFO MutationTestExecutor[39m Done in 2 minutes and 41 seconds.

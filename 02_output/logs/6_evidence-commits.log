@@ -1,0 +1,21 @@
+== phase 3 commits: production files touched (src/main, frontend/src non-test)
+none
+== phase 3 non-test files touched
+.gitignore
+02_output/frontend/.prettierignore
+02_output/frontend/playwright.config.ts
+02_output/frontend/vite.config.ts
+02_output/scripts/verify.sh
+== freeze commit files
+02_output/docs/03_acceptance-manifest.sha256
+== manifest files committed before freeze
+ok
+== commits over 15 files or 400 lines (excluding logs, lock files)
+49419d7 test: add frontend unit and component tests (NFR-03) files=8 lines=516
+f1888bf feat: add registration form, reCAPTCHA and confirmation UI (US files=6 lines=484
+9f7466f feat: register participants with reCAPTCHA check (US-001, US-0 files=9 lines=449
+2332f2a feat: store registrations atomically with a JSON copy (US-005, files=13 lines=635
+45da222 feat: load conference options and serve the form (US-003, AR-0 files=14 lines=819
+d7d31ee test: add US-001 acceptance and e2e tests (AC-001-01..16) files=3 lines=606
+170f682 test: add acceptance and e2e harness with fresh local stacks ( files=12 lines=1014
+1f7411c build: add backend Maven skeleton with pinned versions (ES-04, files=7 lines=689

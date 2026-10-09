@@ -1,0 +1,22 @@
+
+> registration-frontend@0.1.0 coverage
+> vitest run --coverage --passWithNoTests
+
+
+ RUN  v4.1.11 /home/tjan-kazar/storage/Work/lab/agentic_lab/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  5 passed (5)
+      Tests  33 passed (33)
+   Start at  14:23:26
+   Duration  1.51s (transform 310ms, setup 924ms, import 431ms, tests 670ms, environment 2.59s)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 95.29% ( 162/170 )
+Branches     : 88.46% ( 115/130 )
+Functions    : 94.11% ( 48/51 )
+Lines        : 97.38% ( 149/153 )
+================================================================================

@@ -44,3 +44,11 @@ Run at the end of phase 5 writing (2026-10-09T12:18:33Z recorded in `run-log.jso
 Found after those fixes: `JpaRegistrationStoreIntegrationTest` used `WebEnvironment.NONE`, where the security configuration has no `HttpSecurity` bean (4 errors). Class: defect in a non-frozen test; fixed by using the default mock web environment. No frozen test failed.
 
 ## Final run (phase 6)
+
+| Suite | Passed | Failed | Log |
+|---|---|---|---|
+| Backend (unit, integration, architecture, acceptance) | 192 | 0 | `out/logs/6c_backend-test.log` |
+| Frontend unit and component | 33 | 0 | `out/logs/6_frontend-test.log` |
+| End-to-end | 17 | 0 | `out/logs/6_frontend-e2e.log` |
+
+Coverage (record only): backend line 95.9 %, branch 86.1 %; frontend line 97.4 %, branch 88.5 %. Mutation (record only): backend 69 % (unit tests; acceptance and integration excluded because they need containers), frontend 65.3 %. One frozen test (AC-006-04) failed in the 6b run; root cause F-01 in production code, fixed; the test was not changed.

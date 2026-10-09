@@ -1,0 +1,20 @@
+contracts          exit=0   12 ok lines, 0 error lines                         02_output/logs/6_contracts.log
+backend-build      exit=0   BUILD SUCCESS                                      02_output/logs/6_backend-build.log
+backend-check      exit=0   pmd=0 spotbugs=0                                   02_output/logs/6_backend-check.log
+backend-test       exit=0   Tests run: 188, Failures: 0, Errors: 0, Skipped: 0 02_output/logs/6_backend-test.log
+backend-coverage   exit=0   line=95.9% branch=86.1% lines=1019/1063 branches=340/395 02_output/logs/6_backend-coverage.log
+backend-mutation   exit=0   Generated 465 mutations Killed 312 (67%)           02_output/logs/6_backend-mutation.log
+frontend-build     exit=0                                                      02_output/logs/6_frontend-build.log
+frontend-check     exit=0                                                      02_output/logs/6_frontend-check.log
+frontend-test      exit=0    Tests 33 passed (33)                              02_output/logs/6_frontend-test.log
+frontend-coverage  exit=0    Tests 33 passed (33)                              02_output/logs/6_frontend-coverage.log
+  frontend-coverage line=97.38% branch=88.46%
+frontend-mutation  exit=0                                                      02_output/logs/6_frontend-mutation.log
+  All files | 65.32 | 67.76 | 290 | 0 | 138 | 16 | 1 |
+frontend-duplication exit=0                                                      02_output/logs/6_frontend-duplication.log
+frontend-e2e       exit=0    17 passed (25.3s)                                 02_output/logs/6_frontend-e2e.log
+dependency-check   exit=0   critical=0 high=0 medium=0 low=0                   02_output/logs/6_dependency-check.log
+npm-audit          exit=0   2 moderate severity vulnerabilities                02_output/logs/6_npm-audit.log
+semgrep            exit=1   findings=2                                         02_output/logs/6_semgrep.log
+gitleaks           exit=1   leaks=1                                            02_output/logs/6_gitleaks.log
+cloc               exit=0   SUM: 145 1233 308 16420                            02_output/logs/6_cloc.log

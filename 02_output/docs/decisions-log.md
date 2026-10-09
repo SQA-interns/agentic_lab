@@ -26,6 +26,7 @@
 | D-21 | 2026-10-09T12:06:48Z | 4 | SpotBugs (threshold Low) reported 19 rank 18-19 findings: EI_EXPOSE_REP/REP2 on Spring-injected beans and on records whose lists are already `List.copyOf`, and THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION on `SecurityConfig` (`HttpSecurity.build()` throws Exception) | Defensive copies added where missing; the remaining false positives excluded per class in `backend/spotbugs-exclude.xml` (pom `excludeFilterFile`); 0 findings after | pending review |
 | D-22 | 2026-10-09T12:06:48Z | 4 | Commit 45da222 (US-003) does not compile on its own: `api/Problems.java` imports `domain/ValidationError`, which the next commit 9c91e44 adds; every later commit compiles (checked in clean worktrees) | History is not rewritten (rules.md "Commits"); recorded here instead | pending review |
 | D-23 | 2026-10-09T12:06:48Z | 4 | `docker compose --env-file .env` cannot parse the repository-root `.env` (line 2 is not `KEY=value`); `.env` is the human's file and is not read or edited | `02_output/scripts/compose.sh` exports only POSTGRES_PASSWORD, ORGANIZER_EMAILS, ORGANIZER_USERNAME, ORGANIZER_PASSWORD with the `sed` method of rules.md and runs compose; the human may add `#` to that line | pending review |
+| D-25 | 2026-10-09T18:29:24Z | 6 | Gitleaks `generic-api-key` on the test-only value in `AppSettingsTest.java` line 16 (commit d4bd454); matched artifact is a unit-test fixture, not a credential | Inline `gitleaks:allow`; fingerprint in `02_output/.gitleaksignore`, passed by `verify.sh`; raw report `out/logs/6_gitleaks.json` | pending review |
 
 ## Blocking
 
@@ -71,3 +72,14 @@
 - Timestamp: 2026-10-09T11:08:04Z
 - Human response: "d11 default d12 default" (received 2026-10-09T11:07:30Z)
 - Resolution: D-11 option 1 (`vitest`, `@vitest/coverage-v8` 4.1.11); D-12 option 1 (`jscpd` 5.4.0). These replace the tech-stack entries for this run. Re-audit: Critical 0, High 0, Moderate 2 (D-13); frontend build, check, test pass (`out/logs/0_*`).
+
+## D-24: Semgrep reports HTTP Basic for the organizer export as High (F-03)
+- Timestamp: 2026-10-09T18:29:24Z
+- Phase: 6
+- Trigger: Semgrep 1.177.0 rule `use-of-basic-authentication` (ERROR → High per `standards.md`) on `docs/02_contracts/registration-api.openapi.yaml` line 127 (`organizerBasic`). Not an identifier mismatch, so it is not a false positive under `rules.md`; accepting or downgrading it needs a human. Design and mitigations (spec §6): one organizer and one read-only operation (ASVS L1, `security-requirements.md`); credentials accepted only over HTTPS or from localhost (SR-06, enforced before authentication); BCrypt hash, password ≥ 16 characters, constant-time check (SB-03); export rate limit 10/min per client (SR-03); no session or cookie, so no CSRF surface. Evidence: `FiltersTest.sr06_*`, `AppSettingsTest.sr06_*`, AC-008-03/04, runtime DoD-P04.
+- Options:
+  1. (proposed default) Accept HTTP Basic over enforced HTTPS as designed; record F-03 as Low with this evidence and add a Semgrep exclusion for this rule on the contract file only.
+  2. Replace Basic with a login endpoint issuing a short-lived HttpOnly, Secure, SameSite=Strict session cookie (plus CSRF protection on the login); adds a login form for organizers, about one day of work, and new tests.
+  3. Other (state it, e.g. mTLS for the organizer at the reverse proxy).
+- Human response: none
+- Resolution: open

@@ -1,0 +1,72 @@
+
+== build backend jar and start the stack
+jar built
+ Container registration-backend-1 Healthy 
+ Container registration-backend-1 Started 
+ Container registration-db-1 Healthy 
+ Container registration-db-1 Started 
+ Container registration-frontend-1 Healthy 
+ Container registration-frontend-1 Started 
+ Container registration-mailpit-1 Healthy 
+ Container registration-mailpit-1 Started 
+registration-backend-1 Up 16 seconds (healthy)
+registration-db-1 Up 22 seconds (healthy)
+registration-frontend-1 Up 5 seconds (healthy)
+registration-mailpit-1 Up 22 seconds (healthy)
+
+== NFR-04 health and readiness
+{"status":"UP"}
+{"status":"UP"}
+
+== frontend page and SB-10 headers (static, via nginx)
+GET / -> 200
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googl
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+
+== KP-02 /api headers (each once)
+      1 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+      1 Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+      1 Referrer-Policy: no-referrer
+      1 X-Content-Type-Options: nosniff
+      1 X-Frame-Options: DENY
+
+== DoD-P01 external registration through the frontend /api (NFR-01 characters)
+{"id":"bdd9d872-6e17-40c4-b07e-62983bf085cc","type":"EXTERNAL","firstName":"Špela","lastName":"Čebašek","selectedOptions":[{"category":"WORKSHOP","id":"ws-testing-ai","name":"Workshop: Testing AI systems"},{"category":"EVENT","id":"ev-gala-dinner","name":"Gala večerja"}]}
+-> 201
+
+== DoD-P01 student registration
+{"id":"9ed161dd-9deb-43eb-aee1-7468b9c8ac4e","type":"STUDENT","firstName":"Luka","lastName":"Kranjc","selectedOptions":[{"category":"WORKSHOP","id":"ws-testing-ai","name":"Workshop: Testing AI systems"}]}
+-> 201
+
+== rejections: duplicate email, failed anti-automation
+duplicate -> 409
+bad token -> 400
+
+== DoD-P02 rows in PostgreSQL
+bdd9d872-6e17-40c4-b07e-62983bf085cc|EXTERNAL|Špela|Čebašek|ext-1791570385@example.si
+9ed161dd-9deb-43eb-aee1-7468b9c8ac4e|STUDENT|Luka|Kranjc|stu-1791570385@example.si
+
+== DoD-P02 JSON copies on the volume
+-rw------- 1 app app 686 Oct  9 18:27 /data/json-copies/9ed161dd-9deb-43eb-aee1-7468b9c8ac4e.json
+-rw------- 1 app app 687 Oct  9 18:27 /data/json-copies/bdd9d872-6e17-40c4-b07e-62983bf085cc.json
+{"schemaVersion":1,"id":"bdd9d872-6e17-40c4-b07e-62983bf085cc","type":"EXTERNAL","submittedAt":"2026-10-09T18:27:00.134023354Z","participant":{"firstName":"Špe
+
+== DoD-P03 emails in Mailpit
+  ['<ORGANIZER_EMAILS>'] | New registration (external participant): Konferenca 2026 | attachments: 1
+  ['ext-1791570385@example.si'] | Registration confirmed: Konferenca 2026 | attachments: 0
+  ['<ORGANIZER_EMAILS>'] | New registration (student): Konferenca 2026 | attachments: 1
+  ['stu-1791570385@example.si'] | Registration confirmed: Konferenca 2026 | attachments: 0
+
+== DoD-P04 export with and without organizer access
+with credentials -> 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  valid xlsx entries: 9 | contains both registrations: True | Slovenian kept: True
+without credentials -> 401
+wrong password -> 401
+
+== NFR-02 recreate every container; data survives
+containers removed: 5
+healthy after up: 6
+2
+2

@@ -63,16 +63,26 @@
     "failed": 12
   },
   "finalTestRun": {
-    "passed": null,
-    "failed": null
+    "passed": 242,
+    "failed": 0
   },
   "findings": {
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0
+    "high": 2,
+    "medium": 2,
+    "low": 5
   },
-  "fixLoops": [],
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "change": "SMTP read/write timeout 10 s -> 60 s, connect 5 s -> 10 s (application.yml)",
+      "start": "2026-10-09T18:22:00Z",
+      "end": "2026-10-09T18:25:58Z"
+    }
+  ],
   "decisions": [
     {
       "id": "D-01",
@@ -211,6 +221,18 @@
       "type": "non-blocking",
       "start": "2026-10-09T12:06:48Z",
       "end": "2026-10-09T12:06:48Z"
+    },
+    {
+      "id": "D-25",
+      "type": "non-blocking",
+      "start": "2026-10-09T18:29:24Z",
+      "end": "2026-10-09T18:29:24Z"
+    },
+    {
+      "id": "D-24",
+      "type": "blocking",
+      "start": "2026-10-09T18:29:24Z",
+      "end": null
     }
   ],
   "humanInterventions": [
@@ -223,12 +245,30 @@
       "start": "2026-10-09T11:01:38Z",
       "end": "2026-10-09T11:07:30Z",
       "reason": "D-11, D-12: approve pin changes for vulnerable dev tooling"
+    },
+    {
+      "start": "2026-10-09T18:29:24Z",
+      "end": null,
+      "reason": "D-24: accept or replace HTTP Basic for the organizer export (Semgrep High F-03)"
     }
   ],
   "codeMetrics": {
-    "components": [],
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2342,
+        "testLoc": 2899
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 644,
+        "testLoc": 943
+      }
+    ],
     "complexity": null,
-    "duplicationPct": null
+    "complexityReason": "no tool with purpose complexity is pinned in tech-stack.md",
+    "duplicationPct": 0.58,
+    "duplicationNote": "frontend jscpd 0.58 % (test code); backend PMD CPD 0 duplicates at 100 tokens"
   },
   "commits": [],
   "usage": {

@@ -1,0 +1,23 @@
+[
+ {
+  "RuleID": "generic-api-key",
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 16,
+  "EndLine": 16,
+  "StartColumn": 25,
+  "EndColumn": 63,
+  "Match": "ORGANIZER_PASSWORD\", \"REDACTED\"",
+  "Secret": "REDACTED",
+  "File": "02_output/backend/src/test/java/si/konferenca/registration/config/AppSettingsTest.java",
+  "SymlinkFile": "",
+  "Commit": "d4bd454214ec0a2665f224c794fbc0144084d3a5",
+  "Link": "https://github.com/SQA-interns/agentic_lab/blob/d4bd454214ec0a2665f224c794fbc0144084d3a5/02_output/backend/src/test/java/si/konferenca/registration/config/AppSettingsTest.java#L16",
+  "Entropy": 4,
+  "Author": "TjanKazar",
+  "Email": "tjan.kazar3@gmail.com",
+  "Date": "2026-10-09T12:18:47Z",
+  "Message": "test: add settings and options-file tests (ES-01, SR-02, SR-06, AR-04)\n\nCo-Authored-By: Claude Opus 5.5 \u003cnoreply@anthropic.com\u003e",
+  "Tags": [],
+  "Fingerprint": "d4bd454214ec0a2665f224c794fbc0144084d3a5:02_output/backend/src/test/java/si/konferenca/registration/config/AppSettingsTest.java:generic-api-key:16"
+ }
+]

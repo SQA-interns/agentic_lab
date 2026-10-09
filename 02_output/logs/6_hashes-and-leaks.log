@@ -1,0 +1,8 @@
+== input manifest
+checked 27
+== acceptance manifest
+checked 23
+== input files not in manifest
+== leak: files
+== leak: commit messages
+0
